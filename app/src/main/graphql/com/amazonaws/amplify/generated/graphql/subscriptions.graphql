@@ -1,9 +1,34 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateTodo {
-  onCreateTodo {
+subscription OnCreateFamily {
+  onCreateFamily {
     id
-    name
-    description
+    namebwe
+    surveyId
+    country
+    community
+    date
+    headHouseholdName {
+      surname
+      givenname
+    }
+    headHouseholdSex
+    headHouseholdMaritalStatus
+    headHouseholdAge
+    headHouseholdOccupation
+    headHouseholdEducationLevel
+    interviewee
+    numberPeopleHousehold
+    numberMaleHousehold1
+    numberFemaleHousehold1
+    numberMaleHousehold5
+    numberFemaleHousehold5
+    numberMaleHousehold12
+    numberFemaleHousehold12
+    numberMaleHousehold17
+    numberFemaleHousehold17
+    numberMaleHousehold18
+    numberFemaleHousehold18
+    reasonChildrenNotInSchool
     _version
     _deleted
     _lastChangedAt
@@ -11,11 +36,36 @@ subscription OnCreateTodo {
     updatedAt
   }
 }
-subscription OnUpdateTodo {
-  onUpdateTodo {
+subscription OnUpdateFamily {
+  onUpdateFamily {
     id
-    name
-    description
+    namebwe
+    surveyId
+    country
+    community
+    date
+    headHouseholdName {
+      surname
+      givenname
+    }
+    headHouseholdSex
+    headHouseholdMaritalStatus
+    headHouseholdAge
+    headHouseholdOccupation
+    headHouseholdEducationLevel
+    interviewee
+    numberPeopleHousehold
+    numberMaleHousehold1
+    numberFemaleHousehold1
+    numberMaleHousehold5
+    numberFemaleHousehold5
+    numberMaleHousehold12
+    numberFemaleHousehold12
+    numberMaleHousehold17
+    numberFemaleHousehold17
+    numberMaleHousehold18
+    numberFemaleHousehold18
+    reasonChildrenNotInSchool
     _version
     _deleted
     _lastChangedAt
@@ -23,11 +73,75 @@ subscription OnUpdateTodo {
     updatedAt
   }
 }
-subscription OnDeleteTodo {
-  onDeleteTodo {
+subscription OnDeleteFamily {
+  onDeleteFamily {
     id
-    name
-    description
+    namebwe
+    surveyId
+    country
+    community
+    date
+    headHouseholdName {
+      surname
+      givenname
+    }
+    headHouseholdSex
+    headHouseholdMaritalStatus
+    headHouseholdAge
+    headHouseholdOccupation
+    headHouseholdEducationLevel
+    interviewee
+    numberPeopleHousehold
+    numberMaleHousehold1
+    numberFemaleHousehold1
+    numberMaleHousehold5
+    numberFemaleHousehold5
+    numberMaleHousehold12
+    numberFemaleHousehold12
+    numberMaleHousehold17
+    numberFemaleHousehold17
+    numberMaleHousehold18
+    numberFemaleHousehold18
+    reasonChildrenNotInSchool
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateFamilyDef {
+  onCreateFamilyDef {
+    id
+    fieldName
+    fieldQuestionText
+    fieldAnswerType
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateFamilyDef {
+  onUpdateFamilyDef {
+    id
+    fieldName
+    fieldQuestionText
+    fieldAnswerType
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteFamilyDef {
+  onDeleteFamilyDef {
+    id
+    fieldName
+    fieldQuestionText
+    fieldAnswerType
     _version
     _deleted
     _lastChangedAt

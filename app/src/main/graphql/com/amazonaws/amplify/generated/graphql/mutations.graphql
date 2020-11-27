@@ -1,12 +1,37 @@
 # this is an auto generated file. This will be overwritten
-mutation CreateTodo(
-  $input: CreateTodoInput!
-  $condition: ModelTodoConditionInput
+mutation CreateFamily(
+  $input: CreateFamilyInput!
+  $condition: ModelFamilyConditionInput
 ) {
-  createTodo(input: $input, condition: $condition) {
+  createFamily(input: $input, condition: $condition) {
     id
-    name
-    description
+    namebwe
+    surveyId
+    country
+    community
+    date
+    headHouseholdName {
+      surname
+      givenname
+    }
+    headHouseholdSex
+    headHouseholdMaritalStatus
+    headHouseholdAge
+    headHouseholdOccupation
+    headHouseholdEducationLevel
+    interviewee
+    numberPeopleHousehold
+    numberMaleHousehold1
+    numberFemaleHousehold1
+    numberMaleHousehold5
+    numberFemaleHousehold5
+    numberMaleHousehold12
+    numberFemaleHousehold12
+    numberMaleHousehold17
+    numberFemaleHousehold17
+    numberMaleHousehold18
+    numberFemaleHousehold18
+    reasonChildrenNotInSchool
     _version
     _deleted
     _lastChangedAt
@@ -14,14 +39,39 @@ mutation CreateTodo(
     updatedAt
   }
 }
-mutation UpdateTodo(
-  $input: UpdateTodoInput!
-  $condition: ModelTodoConditionInput
+mutation UpdateFamily(
+  $input: UpdateFamilyInput!
+  $condition: ModelFamilyConditionInput
 ) {
-  updateTodo(input: $input, condition: $condition) {
+  updateFamily(input: $input, condition: $condition) {
     id
-    name
-    description
+    namebwe
+    surveyId
+    country
+    community
+    date
+    headHouseholdName {
+      surname
+      givenname
+    }
+    headHouseholdSex
+    headHouseholdMaritalStatus
+    headHouseholdAge
+    headHouseholdOccupation
+    headHouseholdEducationLevel
+    interviewee
+    numberPeopleHousehold
+    numberMaleHousehold1
+    numberFemaleHousehold1
+    numberMaleHousehold5
+    numberFemaleHousehold5
+    numberMaleHousehold12
+    numberFemaleHousehold12
+    numberMaleHousehold17
+    numberFemaleHousehold17
+    numberMaleHousehold18
+    numberFemaleHousehold18
+    reasonChildrenNotInSchool
     _version
     _deleted
     _lastChangedAt
@@ -29,14 +79,87 @@ mutation UpdateTodo(
     updatedAt
   }
 }
-mutation DeleteTodo(
-  $input: DeleteTodoInput!
-  $condition: ModelTodoConditionInput
+mutation DeleteFamily(
+  $input: DeleteFamilyInput!
+  $condition: ModelFamilyConditionInput
 ) {
-  deleteTodo(input: $input, condition: $condition) {
+  deleteFamily(input: $input, condition: $condition) {
     id
-    name
-    description
+    namebwe
+    surveyId
+    country
+    community
+    date
+    headHouseholdName {
+      surname
+      givenname
+    }
+    headHouseholdSex
+    headHouseholdMaritalStatus
+    headHouseholdAge
+    headHouseholdOccupation
+    headHouseholdEducationLevel
+    interviewee
+    numberPeopleHousehold
+    numberMaleHousehold1
+    numberFemaleHousehold1
+    numberMaleHousehold5
+    numberFemaleHousehold5
+    numberMaleHousehold12
+    numberFemaleHousehold12
+    numberMaleHousehold17
+    numberFemaleHousehold17
+    numberMaleHousehold18
+    numberFemaleHousehold18
+    reasonChildrenNotInSchool
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateFamilyDef(
+  $input: CreateFamilyDefInput!
+  $condition: ModelFamilyDefConditionInput
+) {
+  createFamilyDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldQuestionText
+    fieldAnswerType
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateFamilyDef(
+  $input: UpdateFamilyDefInput!
+  $condition: ModelFamilyDefConditionInput
+) {
+  updateFamilyDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldQuestionText
+    fieldAnswerType
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteFamilyDef(
+  $input: DeleteFamilyDefInput!
+  $condition: ModelFamilyDefConditionInput
+) {
+  deleteFamilyDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldQuestionText
+    fieldAnswerType
     _version
     _deleted
     _lastChangedAt

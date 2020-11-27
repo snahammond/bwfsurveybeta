@@ -1,5 +1,104 @@
-type Todo @model {
-  id: ID!
-  name: String!
-  description: String
+enum Sex {
+  MALE
+  FEMALE
+}
+
+enum MaritalStatus {
+  MARRIED
+  SINGLE
+  WIDOWED
+  DIVORCED
+  COHABITING
+}
+
+enum Occupation {
+  FARMER
+  TRADER
+  TEACHER
+  FISHERMAN
+  CIVILSERVANT
+  NONE
+  OTHER
+}
+
+enum EducationLevel {
+  NOFORMALEDUCATION
+  SOMEPRIMARYEDUCATION
+  COMPLETEDPRIMARYEDUCATION
+  SOMESECONDARYEDUCATION
+  COMPLETEDJRHIGH
+  COMPLETEDSECONDARY
+  COMPLETEDMORETHANSECONDARY
+}
+
+enum Interviewee{
+  FATHER
+  MOTHER
+  UNCLE
+  AUNT
+  SISTER
+  BROTHER
+  GRANDFATHER
+  GRANDMOTHER
+  SONORDAUGHTER
+  OTHER
+}
+
+enum NoSchoolReason{
+  DAILYLABOR
+  NOTENOUGHFUNDS
+  SCHOOLTOOFARAWAY
+  SUPPORTFAMILYWITHLABOR
+  FETCHINGWATER
+  MARRIAGEANDORPREGNANCY
+}
+
+type Fullname {
+	surname: String!
+	givenname: String!
+}
+
+
+type Family @model{
+	id: ID!
+	#Name of BWE
+	namebwe: String!
+	surveyId: Int!
+	#Name of Country
+	country: String!
+	community: String!
+	date: AWSDate
+	headHouseholdName: Fullname!
+	headHouseholdSex: Sex!	
+	headHouseholdMaritalStatus: MaritalStatus!
+	headHouseholdAge: Int!
+	headHouseholdOccupation: Occupation!
+	headHouseholdEducationLevel: EducationLevel!
+	interviewee: Interviewee!
+	numberPeopleHousehold: Int!
+	numberMaleHousehold1: Int!
+	numberFemaleHousehold1: Int!
+	numberMaleHousehold5: Int!
+	numberFemaleHousehold5: Int!
+	numberMaleHousehold12: Int!
+	numberFemaleHousehold12: Int!
+	numberMaleHousehold17: Int!
+	numberFemaleHousehold17: Int!
+	numberMaleHousehold18: Int!
+	numberFemaleHousehold18: Int!
+	reasonChildrenNotInSchool: NoSchoolReason!
+}
+
+enum AnswerType {
+  TEXTVALUE
+  ENUMVALUE
+  NUMBERVALUE
+  DATEVALUE
+}
+
+type FamilyDef @model{
+	id: ID!
+	fieldName: String!
+	fieldQuestionText: String!
+	fieldAnswerType: AnswerType!
 }

@@ -1,11 +1,11 @@
 # this is an auto generated file. This will be overwritten
-query SyncTodos(
-  $filter: ModelTodoFilterInput
+query SyncFamilies(
+  $filter: ModelFamilyFilterInput
   $limit: Int
   $nextToken: String
   $lastSync: AWSTimestamp
 ) {
-  syncTodos(
+  syncFamilies(
     filter: $filter
     limit: $limit
     nextToken: $nextToken
@@ -13,8 +13,33 @@ query SyncTodos(
   ) {
     items {
       id
-      name
-      description
+      namebwe
+      surveyId
+      country
+      community
+      date
+      headHouseholdName {
+        surname
+        givenname
+      }
+      headHouseholdSex
+      headHouseholdMaritalStatus
+      headHouseholdAge
+      headHouseholdOccupation
+      headHouseholdEducationLevel
+      interviewee
+      numberPeopleHousehold
+      numberMaleHousehold1
+      numberFemaleHousehold1
+      numberMaleHousehold5
+      numberFemaleHousehold5
+      numberMaleHousehold12
+      numberFemaleHousehold12
+      numberMaleHousehold17
+      numberFemaleHousehold17
+      numberMaleHousehold18
+      numberFemaleHousehold18
+      reasonChildrenNotInSchool
       _version
       _deleted
       _lastChangedAt
@@ -25,11 +50,36 @@ query SyncTodos(
     startedAt
   }
 }
-query GetTodo($id: ID!) {
-  getTodo(id: $id) {
+query GetFamily($id: ID!) {
+  getFamily(id: $id) {
     id
-    name
-    description
+    namebwe
+    surveyId
+    country
+    community
+    date
+    headHouseholdName {
+      surname
+      givenname
+    }
+    headHouseholdSex
+    headHouseholdMaritalStatus
+    headHouseholdAge
+    headHouseholdOccupation
+    headHouseholdEducationLevel
+    interviewee
+    numberPeopleHousehold
+    numberMaleHousehold1
+    numberFemaleHousehold1
+    numberMaleHousehold5
+    numberFemaleHousehold5
+    numberMaleHousehold12
+    numberFemaleHousehold12
+    numberMaleHousehold17
+    numberFemaleHousehold17
+    numberMaleHousehold18
+    numberFemaleHousehold18
+    reasonChildrenNotInSchool
     _version
     _deleted
     _lastChangedAt
@@ -37,16 +87,102 @@ query GetTodo($id: ID!) {
     updatedAt
   }
 }
-query ListTodos(
-  $filter: ModelTodoFilterInput
+query ListFamilys(
+  $filter: ModelFamilyFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listFamilys(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      name
-      description
+      namebwe
+      surveyId
+      country
+      community
+      date
+      headHouseholdName {
+        surname
+        givenname
+      }
+      headHouseholdSex
+      headHouseholdMaritalStatus
+      headHouseholdAge
+      headHouseholdOccupation
+      headHouseholdEducationLevel
+      interviewee
+      numberPeopleHousehold
+      numberMaleHousehold1
+      numberFemaleHousehold1
+      numberMaleHousehold5
+      numberFemaleHousehold5
+      numberMaleHousehold12
+      numberFemaleHousehold12
+      numberMaleHousehold17
+      numberFemaleHousehold17
+      numberMaleHousehold18
+      numberFemaleHousehold18
+      reasonChildrenNotInSchool
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncFamilyDefs(
+  $filter: ModelFamilyDefFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncFamilyDefs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      fieldName
+      fieldQuestionText
+      fieldAnswerType
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetFamilyDef($id: ID!) {
+  getFamilyDef(id: $id) {
+    id
+    fieldName
+    fieldQuestionText
+    fieldAnswerType
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListFamilyDefs(
+  $filter: ModelFamilyDefFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listFamilyDefs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      fieldName
+      fieldQuestionText
+      fieldAnswerType
       _version
       _deleted
       _lastChangedAt

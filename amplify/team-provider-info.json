@@ -10,6 +10,17 @@
       "StackName": "amplify-bwfsurveybetadev-dev-121946",
       "StackId": "arn:aws:cloudformation:us-east-1:346642543284:stack/amplify-bwfsurveybetadev-dev-121946/a3bbee70-2cb4-11eb-b050-0e6115325dc3",
       "AmplifyAppId": "d359f9rv2w9w2o"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d359f9rv2w9w2o",
+          "type": "manual"
+        }
+      },
+      "auth": {
+        "bwfsurveybetadev731a0c66": {}
+      }
     }
   }
 }

@@ -3,4 +3,24 @@
     <string name="button_add">Add data</string>
     <string name="button_clear">Clear data</string>
     <string name="button_query">Query data</string>
+    <string name="authentication">Authentication</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="Login">Login</string>
+    <string name="newuser">New User?</string>
+    <string name="signup">Sign Up</string>
+    <string name="username">username</string>
+    <string name="Username">Name</string>
+    <string name="confirm_signup">Confirm SignUp</string>
+    <string name="confirmation_code">confirmation code</string>
+    <string name="confirm">confirm</string>
+    <string name="cancel">cancel</string>
+    <string name="continueAs">continue as</string>
+    <string name="authenticated">Authenticated</string>
+    <string name="collectData">collect data</string>
+    <string name="viewCollectedData">view data</string>
+    <string name="initialSurvey">Initial Survey</string>
+    <string name="waterSurvey">Water Survey</string>
+    <string name="healthCheck">health check</string>
+    <string name="followUpSurvey">follow up survey</string>
 </resources>

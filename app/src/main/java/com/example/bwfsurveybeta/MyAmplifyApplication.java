@@ -5,7 +5,9 @@ import android.util.Log;
 
 import com.amplifyframework.AmplifyException;
 import com.amplifyframework.api.aws.AWSApiPlugin;
+import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.core.AmplifyConfiguration;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 
 public class MyAmplifyApplication extends Application {
@@ -15,7 +17,12 @@ public class MyAmplifyApplication extends Application {
         try {
             Amplify.addPlugin(new AWSApiPlugin());
             Amplify.addPlugin(new AWSDataStorePlugin());
-            Amplify.configure(getApplicationContext());
+            Amplify.addPlugin(new AWSCognitoAuthPlugin());
+            AmplifyConfiguration config = AmplifyConfiguration.builder(getApplicationContext())
+                    .devMenuEnabled(false)
+                    .build();
+            Amplify.configure(config,getApplicationContext());
+            //Amplify.configure(getApplicationContext());
 
             Log.i("Tutorial", "Initialized Amplify");
         } catch (AmplifyException e) {
