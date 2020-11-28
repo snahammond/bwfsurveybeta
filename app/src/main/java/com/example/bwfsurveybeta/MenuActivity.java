@@ -17,11 +17,13 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        String namebwe = getIntent().getStringExtra("NAME_BWE");
 
         Button initialFullSurvey = (Button) findViewById(R.id.button_initialFullSurvey);
         initialFullSurvey.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                Intent i = new Intent(getApplicationContext(),InitialSurveyActivity.class);
+                i.putExtra("NAME_BWE", namebwe);
                 startActivity(i);
             }
         });

@@ -18,10 +18,7 @@ query SyncFamilies(
       country
       community
       date
-      headHouseholdName {
-        surname
-        givenname
-      }
+      headHouseholdName
       headHouseholdSex
       headHouseholdMaritalStatus
       headHouseholdAge
@@ -58,10 +55,7 @@ query GetFamily($id: ID!) {
     country
     community
     date
-    headHouseholdName {
-      surname
-      givenname
-    }
+    headHouseholdName
     headHouseholdSex
     headHouseholdMaritalStatus
     headHouseholdAge
@@ -100,10 +94,7 @@ query ListFamilys(
       country
       community
       date
-      headHouseholdName {
-        surname
-        givenname
-      }
+      headHouseholdName
       headHouseholdSex
       headHouseholdMaritalStatus
       headHouseholdAge
@@ -149,6 +140,7 @@ query SyncFamilyDefs(
       fieldName
       fieldQuestionText
       fieldAnswerType
+      fieldAnswerTypeName
       _version
       _deleted
       _lastChangedAt
@@ -165,6 +157,7 @@ query GetFamilyDef($id: ID!) {
     fieldName
     fieldQuestionText
     fieldAnswerType
+    fieldAnswerTypeName
     _version
     _deleted
     _lastChangedAt
@@ -183,6 +176,363 @@ query ListFamilyDefs(
       fieldName
       fieldQuestionText
       fieldAnswerType
+      fieldAnswerTypeName
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncSexDefs(
+  $filter: ModelSexDefFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncSexDefs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      fieldName
+      fieldDescription
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetSexDef($id: ID!) {
+  getSexDef(id: $id) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListSexDefs(
+  $filter: ModelSexDefFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listSexDefs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      fieldName
+      fieldDescription
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncMaritalStatusDefs(
+  $filter: ModelMaritalStatusDefFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncMaritalStatusDefs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      fieldName
+      fieldDescription
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetMaritalStatusDef($id: ID!) {
+  getMaritalStatusDef(id: $id) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListMaritalStatusDefs(
+  $filter: ModelMaritalStatusDefFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listMaritalStatusDefs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      fieldName
+      fieldDescription
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncOccupationDefs(
+  $filter: ModelOccupationDefFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncOccupationDefs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      fieldName
+      fieldDescription
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetOccupationDef($id: ID!) {
+  getOccupationDef(id: $id) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListOccupationDefs(
+  $filter: ModelOccupationDefFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listOccupationDefs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      fieldName
+      fieldDescription
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncEducationLevelDefs(
+  $filter: ModelEducationLevelDefFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncEducationLevelDefs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      fieldName
+      fieldDescription
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetEducationLevelDef($id: ID!) {
+  getEducationLevelDef(id: $id) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListEducationLevelDefs(
+  $filter: ModelEducationLevelDefFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listEducationLevelDefs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      fieldName
+      fieldDescription
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncIntervieweeDefs(
+  $filter: ModelIntervieweeDefFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncIntervieweeDefs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      fieldName
+      fieldDescription
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetIntervieweeDef($id: ID!) {
+  getIntervieweeDef(id: $id) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListIntervieweeDefs(
+  $filter: ModelIntervieweeDefFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listIntervieweeDefs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      fieldName
+      fieldDescription
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncNoSchoolReasonDefs(
+  $filter: ModelNoSchoolReasonDefFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncNoSchoolReasonDefs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      fieldName
+      fieldDescription
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetNoSchoolReasonDef($id: ID!) {
+  getNoSchoolReasonDef(id: $id) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListNoSchoolReasonDefs(
+  $filter: ModelNoSchoolReasonDefFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listNoSchoolReasonDefs(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      fieldName
+      fieldDescription
       _version
       _deleted
       _lastChangedAt

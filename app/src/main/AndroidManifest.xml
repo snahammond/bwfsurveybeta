@@ -12,9 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BwfSurveyBeta">
-        <activity android:name=".MainActivity">
 
-        </activity>
         <activity
             android:name=".AuthenticationActivity"
             android:noHistory="true">
@@ -23,18 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.amazonaws.mobileconnectors.cognitoauth.activities.CustomTabsRedirectActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="myapp" />
-            </intent-filter>
-        </activity>
         <activity
-            android:name=".MenuActivity" >
+            android:name=".MenuActivity"
+            android:label="Menu">
+        </activity>
+
+        <activity
+            android:name=".InitialSurveyActivity"
+            android:label="Initial Survey">
         </activity>
 
     </application>

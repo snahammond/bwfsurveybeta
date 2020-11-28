@@ -150,13 +150,13 @@
                     android:orientation="vertical">
 
                     <Button
-                        android:id="@+id/button_viewCollectedData"
+                        android:id="@+id/button_updateCollectedData"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="?android:attr/selectableItemBackground"
                         android:gravity="start"
                         android:shadowColor="#FFFFFF"
-                        android:text="@string/viewCollectedData"
+                        android:text="@string/updateCollectedData"
                         android:textColor="#3F51B5"
                         app:backgroundTint="#FFFFFF" />
 
@@ -166,13 +166,58 @@
                         android:layout_height="1dp"
                         android:background="?android:attr/listDivider" />
 
-                    <TextView
-                        android:id="@+id/address2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:gravity="left"
-                        android:text="More and more and momre lines Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                        android:textSize="18sp"></TextView>
+                    <Button
+                        android:id="@+id/button_initialFullSurveyUpdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="start"
+                        android:shadowColor="#FFFFFF"
+                        android:text="@string/initialSurvey"
+                        android:textColor="#3F51B5"
+                        app:backgroundTint="#FFFFFF"/>
+
+                    <Button
+                        android:id="@+id/button_waterSurveyUpdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="start"
+                        android:shadowColor="#FFFFFF"
+                        android:text="@string/waterSurvey"
+                        android:textColor="#3F51B5"
+                        app:backgroundTint="#FFFFFF"/>
+
+                    <Button
+                        android:id="@+id/button_healthCheckUpdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="start"
+                        android:shadowColor="#FFFFFF"
+                        android:text="@string/healthCheck"
+                        android:textColor="#3F51B5"
+                        app:backgroundTint="#FFFFFF"/>
+
+                    <Button
+                        android:id="@+id/button_followUpSurveyUpdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="start"
+                        android:shadowColor="#FFFFFF"
+                        android:text="@string/followUpSurvey"
+                        android:textColor="#3F51B5"
+                        app:backgroundTint="#FFFFFF" />
+
 
                 </LinearLayout>
 

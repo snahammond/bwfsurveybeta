@@ -10,10 +10,7 @@ mutation CreateFamily(
     country
     community
     date
-    headHouseholdName {
-      surname
-      givenname
-    }
+    headHouseholdName
     headHouseholdSex
     headHouseholdMaritalStatus
     headHouseholdAge
@@ -50,10 +47,7 @@ mutation UpdateFamily(
     country
     community
     date
-    headHouseholdName {
-      surname
-      givenname
-    }
+    headHouseholdName
     headHouseholdSex
     headHouseholdMaritalStatus
     headHouseholdAge
@@ -90,10 +84,7 @@ mutation DeleteFamily(
     country
     community
     date
-    headHouseholdName {
-      surname
-      givenname
-    }
+    headHouseholdName
     headHouseholdSex
     headHouseholdMaritalStatus
     headHouseholdAge
@@ -128,6 +119,7 @@ mutation CreateFamilyDef(
     fieldName
     fieldQuestionText
     fieldAnswerType
+    fieldAnswerTypeName
     _version
     _deleted
     _lastChangedAt
@@ -144,6 +136,7 @@ mutation UpdateFamilyDef(
     fieldName
     fieldQuestionText
     fieldAnswerType
+    fieldAnswerTypeName
     _version
     _deleted
     _lastChangedAt
@@ -160,6 +153,277 @@ mutation DeleteFamilyDef(
     fieldName
     fieldQuestionText
     fieldAnswerType
+    fieldAnswerTypeName
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateSexDef(
+  $input: CreateSexDefInput!
+  $condition: ModelSexDefConditionInput
+) {
+  createSexDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateSexDef(
+  $input: UpdateSexDefInput!
+  $condition: ModelSexDefConditionInput
+) {
+  updateSexDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteSexDef(
+  $input: DeleteSexDefInput!
+  $condition: ModelSexDefConditionInput
+) {
+  deleteSexDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateMaritalStatusDef(
+  $input: CreateMaritalStatusDefInput!
+  $condition: ModelMaritalStatusDefConditionInput
+) {
+  createMaritalStatusDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateMaritalStatusDef(
+  $input: UpdateMaritalStatusDefInput!
+  $condition: ModelMaritalStatusDefConditionInput
+) {
+  updateMaritalStatusDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteMaritalStatusDef(
+  $input: DeleteMaritalStatusDefInput!
+  $condition: ModelMaritalStatusDefConditionInput
+) {
+  deleteMaritalStatusDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateOccupationDef(
+  $input: CreateOccupationDefInput!
+  $condition: ModelOccupationDefConditionInput
+) {
+  createOccupationDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateOccupationDef(
+  $input: UpdateOccupationDefInput!
+  $condition: ModelOccupationDefConditionInput
+) {
+  updateOccupationDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteOccupationDef(
+  $input: DeleteOccupationDefInput!
+  $condition: ModelOccupationDefConditionInput
+) {
+  deleteOccupationDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateEducationLevelDef(
+  $input: CreateEducationLevelDefInput!
+  $condition: ModelEducationLevelDefConditionInput
+) {
+  createEducationLevelDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateEducationLevelDef(
+  $input: UpdateEducationLevelDefInput!
+  $condition: ModelEducationLevelDefConditionInput
+) {
+  updateEducationLevelDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteEducationLevelDef(
+  $input: DeleteEducationLevelDefInput!
+  $condition: ModelEducationLevelDefConditionInput
+) {
+  deleteEducationLevelDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateIntervieweeDef(
+  $input: CreateIntervieweeDefInput!
+  $condition: ModelIntervieweeDefConditionInput
+) {
+  createIntervieweeDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateIntervieweeDef(
+  $input: UpdateIntervieweeDefInput!
+  $condition: ModelIntervieweeDefConditionInput
+) {
+  updateIntervieweeDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteIntervieweeDef(
+  $input: DeleteIntervieweeDefInput!
+  $condition: ModelIntervieweeDefConditionInput
+) {
+  deleteIntervieweeDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateNoSchoolReasonDef(
+  $input: CreateNoSchoolReasonDefInput!
+  $condition: ModelNoSchoolReasonDefConditionInput
+) {
+  createNoSchoolReasonDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateNoSchoolReasonDef(
+  $input: UpdateNoSchoolReasonDefInput!
+  $condition: ModelNoSchoolReasonDefConditionInput
+) {
+  updateNoSchoolReasonDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteNoSchoolReasonDef(
+  $input: DeleteNoSchoolReasonDefInput!
+  $condition: ModelNoSchoolReasonDefConditionInput
+) {
+  deleteNoSchoolReasonDef(input: $input, condition: $condition) {
+    id
+    fieldName
+    fieldDescription
     _version
     _deleted
     _lastChangedAt

@@ -23,4 +23,9 @@
     <string name="waterSurvey">Water Survey</string>
     <string name="healthCheck">health check</string>
     <string name="followUpSurvey">follow up survey</string>
+    <string name="Surname">Surname</string>
+    <string name="firstname">first name</string>
+    <string name="saveData">save data</string>
+    <string name="action_settings">setting</string>
+    <string name="updateCollectedData">update data</string>
 </resources>

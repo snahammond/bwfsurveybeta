@@ -53,11 +53,6 @@ enum NoSchoolReason{
   MARRIAGEANDORPREGNANCY
 }
 
-type Fullname {
-	surname: String!
-	givenname: String!
-}
-
 
 type Family @model{
 	id: ID!
@@ -68,8 +63,8 @@ type Family @model{
 	country: String!
 	community: String!
 	date: AWSDate
-	headHouseholdName: Fullname!
-	headHouseholdSex: Sex!	
+	headHouseholdName: String!
+	headHouseholdSex: Sex!
 	headHouseholdMaritalStatus: MaritalStatus!
 	headHouseholdAge: Int!
 	headHouseholdOccupation: Occupation!
@@ -101,4 +96,41 @@ type FamilyDef @model{
 	fieldName: String!
 	fieldQuestionText: String!
 	fieldAnswerType: AnswerType!
+	fieldAnswerTypeName: String!
+}
+
+type SexDef @model{
+	id: ID!
+	fieldName: String!
+	fieldDescription: String!
+}
+
+type MaritalStatusDef @model{
+	id: ID!
+	fieldName: String!
+	fieldDescription: String!
+}
+
+type OccupationDef @model{
+	id: ID!
+	fieldName: String!
+	fieldDescription: String!
+}
+
+type EducationLevelDef @model{
+	id: ID!
+	fieldName: String!
+	fieldDescription: String!
+}
+
+type IntervieweeDef @model{
+	id: ID!
+	fieldName: String!
+	fieldDescription: String!
+}
+
+type NoSchoolReasonDef @model{
+	id: ID!
+	fieldName: String!
+	fieldDescription: String!
 }

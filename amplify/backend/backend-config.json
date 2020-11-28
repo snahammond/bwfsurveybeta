@@ -9,7 +9,7 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 365,
-              "description": "pass1234"
+              "description": "password"
             }
           },
           "additionalAuthenticationProviders": []
@@ -18,18 +18,12 @@
     }
   },
   "auth": {
-    "bwfsurveybetadev731a0c66": {
+    "bwfsurveybetadeva764992e": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false
     }
   },
-  "hosting": {
-    "amplifyhosting": {
-      "service": "amplifyhosting",
-      "providerPlugin": "awscloudformation",
-      "type": "manual"
-    }
-  }
+  "hosting": {}
 }

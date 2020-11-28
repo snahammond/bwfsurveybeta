@@ -51,7 +51,7 @@ public final class Family implements Model {
   private final @ModelField(targetType="String", isRequired = true) String country;
   private final @ModelField(targetType="String", isRequired = true) String community;
   private final @ModelField(targetType="AWSDate") Temporal.Date date;
-  private final @ModelField(targetType="Fullname", isRequired = true) Fullname headHouseholdName;
+  private final @ModelField(targetType="String", isRequired = true) String headHouseholdName;
   private final @ModelField(targetType="Sex", isRequired = true) Sex headHouseholdSex;
   private final @ModelField(targetType="MaritalStatus", isRequired = true) MaritalStatus headHouseholdMaritalStatus;
   private final @ModelField(targetType="Int", isRequired = true) Integer headHouseholdAge;
@@ -94,7 +94,7 @@ public final class Family implements Model {
       return date;
   }
   
-  public Fullname getHeadHouseholdName() {
+  public String getHeadHouseholdName() {
       return headHouseholdName;
   }
   
@@ -170,7 +170,7 @@ public final class Family implements Model {
       return reasonChildrenNotInSchool;
   }
   
-  private Family(String id, String namebwe, Integer surveyId, String country, String community, Temporal.Date date, Fullname headHouseholdName, Sex headHouseholdSex, MaritalStatus headHouseholdMaritalStatus, Integer headHouseholdAge, Occupation headHouseholdOccupation, EducationLevel headHouseholdEducationLevel, Interviewee interviewee, Integer numberPeopleHousehold, Integer numberMaleHousehold1, Integer numberFemaleHousehold1, Integer numberMaleHousehold5, Integer numberFemaleHousehold5, Integer numberMaleHousehold12, Integer numberFemaleHousehold12, Integer numberMaleHousehold17, Integer numberFemaleHousehold17, Integer numberMaleHousehold18, Integer numberFemaleHousehold18, NoSchoolReason reasonChildrenNotInSchool) {
+  private Family(String id, String namebwe, Integer surveyId, String country, String community, Temporal.Date date, String headHouseholdName, Sex headHouseholdSex, MaritalStatus headHouseholdMaritalStatus, Integer headHouseholdAge, Occupation headHouseholdOccupation, EducationLevel headHouseholdEducationLevel, Interviewee interviewee, Integer numberPeopleHousehold, Integer numberMaleHousehold1, Integer numberFemaleHousehold1, Integer numberMaleHousehold5, Integer numberFemaleHousehold5, Integer numberMaleHousehold12, Integer numberFemaleHousehold12, Integer numberMaleHousehold17, Integer numberFemaleHousehold17, Integer numberMaleHousehold18, Integer numberFemaleHousehold18, NoSchoolReason reasonChildrenNotInSchool) {
     this.id = id;
     this.namebwe = namebwe;
     this.surveyId = surveyId;
@@ -399,7 +399,7 @@ public final class Family implements Model {
   
 
   public interface HeadHouseholdNameStep {
-    HeadHouseholdSexStep headHouseholdName(Fullname headHouseholdName);
+    HeadHouseholdSexStep headHouseholdName(String headHouseholdName);
   }
   
 
@@ -506,7 +506,7 @@ public final class Family implements Model {
     private Integer surveyId;
     private String country;
     private String community;
-    private Fullname headHouseholdName;
+    private String headHouseholdName;
     private Sex headHouseholdSex;
     private MaritalStatus headHouseholdMaritalStatus;
     private Integer headHouseholdAge;
@@ -587,7 +587,7 @@ public final class Family implements Model {
     }
     
     @Override
-     public HeadHouseholdSexStep headHouseholdName(Fullname headHouseholdName) {
+     public HeadHouseholdSexStep headHouseholdName(String headHouseholdName) {
         Objects.requireNonNull(headHouseholdName);
         this.headHouseholdName = headHouseholdName;
         return this;
@@ -748,7 +748,7 @@ public final class Family implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String namebwe, Integer surveyId, String country, String community, Temporal.Date date, Fullname headHouseholdName, Sex headHouseholdSex, MaritalStatus headHouseholdMaritalStatus, Integer headHouseholdAge, Occupation headHouseholdOccupation, EducationLevel headHouseholdEducationLevel, Interviewee interviewee, Integer numberPeopleHousehold, Integer numberMaleHousehold1, Integer numberFemaleHousehold1, Integer numberMaleHousehold5, Integer numberFemaleHousehold5, Integer numberMaleHousehold12, Integer numberFemaleHousehold12, Integer numberMaleHousehold17, Integer numberFemaleHousehold17, Integer numberMaleHousehold18, Integer numberFemaleHousehold18, NoSchoolReason reasonChildrenNotInSchool) {
+    private CopyOfBuilder(String id, String namebwe, Integer surveyId, String country, String community, Temporal.Date date, String headHouseholdName, Sex headHouseholdSex, MaritalStatus headHouseholdMaritalStatus, Integer headHouseholdAge, Occupation headHouseholdOccupation, EducationLevel headHouseholdEducationLevel, Interviewee interviewee, Integer numberPeopleHousehold, Integer numberMaleHousehold1, Integer numberFemaleHousehold1, Integer numberMaleHousehold5, Integer numberFemaleHousehold5, Integer numberMaleHousehold12, Integer numberFemaleHousehold12, Integer numberMaleHousehold17, Integer numberFemaleHousehold17, Integer numberMaleHousehold18, Integer numberFemaleHousehold18, NoSchoolReason reasonChildrenNotInSchool) {
       super.id(id);
       super.namebwe(namebwe)
         .surveyId(surveyId)
@@ -797,7 +797,7 @@ public final class Family implements Model {
     }
     
     @Override
-     public CopyOfBuilder headHouseholdName(Fullname headHouseholdName) {
+     public CopyOfBuilder headHouseholdName(String headHouseholdName) {
       return (CopyOfBuilder) super.headHouseholdName(headHouseholdName);
     }
     

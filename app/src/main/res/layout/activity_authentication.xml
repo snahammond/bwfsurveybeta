@@ -9,10 +9,10 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="300dp"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginBottom="20dp"
@@ -41,15 +41,28 @@
                 android:textSize="30sp" />
 
             <EditText
-                android:id="@+id/editTextUsername"
+                android:id="@+id/editTextUserfamilyname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:autofillHints=""
                 android:ems="10"
-                android:hint="@string/Username"
-                android:inputType="textPersonName" />
+                android:hint="@string/Surname"
+                android:inputType="textPersonName"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/editTextUsergivenname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/firstname"
+                android:inputType="textPersonName"
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/editTextEmailAddress"
@@ -60,8 +73,7 @@
                 android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:visibility="gone" />
+                android:inputType="textEmailAddress" />
 
             <EditText
                 android:id="@+id/editTextPassword"

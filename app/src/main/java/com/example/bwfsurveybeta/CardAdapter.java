@@ -14,8 +14,11 @@ import java.util.ArrayList;
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardHolder> {
 
     private ArrayList<Question> questions;
+    private Context context;
 
-    public CardAdapter(MainActivity mainActivity, ArrayList<Question> questions) {
+
+    public CardAdapter(InitialSurveyActivity mainActivity, ArrayList<Question> questions) {
+        this.context = mainActivity;
         this.questions = questions;
     }
 

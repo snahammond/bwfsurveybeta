@@ -23,10 +23,12 @@ public final class FamilyDef implements Model {
   public static final QueryField FIELD_NAME = field("fieldName");
   public static final QueryField FIELD_QUESTION_TEXT = field("fieldQuestionText");
   public static final QueryField FIELD_ANSWER_TYPE = field("fieldAnswerType");
+  public static final QueryField FIELD_ANSWER_TYPE_NAME = field("fieldAnswerTypeName");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String fieldName;
   private final @ModelField(targetType="String", isRequired = true) String fieldQuestionText;
   private final @ModelField(targetType="AnswerType", isRequired = true) AnswerType fieldAnswerType;
+  private final @ModelField(targetType="String", isRequired = true) String fieldAnswerTypeName;
   public String getId() {
       return id;
   }
@@ -43,11 +45,16 @@ public final class FamilyDef implements Model {
       return fieldAnswerType;
   }
   
-  private FamilyDef(String id, String fieldName, String fieldQuestionText, AnswerType fieldAnswerType) {
+  public String getFieldAnswerTypeName() {
+      return fieldAnswerTypeName;
+  }
+  
+  private FamilyDef(String id, String fieldName, String fieldQuestionText, AnswerType fieldAnswerType, String fieldAnswerTypeName) {
     this.id = id;
     this.fieldName = fieldName;
     this.fieldQuestionText = fieldQuestionText;
     this.fieldAnswerType = fieldAnswerType;
+    this.fieldAnswerTypeName = fieldAnswerTypeName;
   }
   
   @Override
@@ -61,7 +68,8 @@ public final class FamilyDef implements Model {
       return ObjectsCompat.equals(getId(), familyDef.getId()) &&
               ObjectsCompat.equals(getFieldName(), familyDef.getFieldName()) &&
               ObjectsCompat.equals(getFieldQuestionText(), familyDef.getFieldQuestionText()) &&
-              ObjectsCompat.equals(getFieldAnswerType(), familyDef.getFieldAnswerType());
+              ObjectsCompat.equals(getFieldAnswerType(), familyDef.getFieldAnswerType()) &&
+              ObjectsCompat.equals(getFieldAnswerTypeName(), familyDef.getFieldAnswerTypeName());
       }
   }
   
@@ -72,6 +80,7 @@ public final class FamilyDef implements Model {
       .append(getFieldName())
       .append(getFieldQuestionText())
       .append(getFieldAnswerType())
+      .append(getFieldAnswerTypeName())
       .toString()
       .hashCode();
   }
@@ -83,7 +92,8 @@ public final class FamilyDef implements Model {
       .append("id=" + String.valueOf(getId()) + ", ")
       .append("fieldName=" + String.valueOf(getFieldName()) + ", ")
       .append("fieldQuestionText=" + String.valueOf(getFieldQuestionText()) + ", ")
-      .append("fieldAnswerType=" + String.valueOf(getFieldAnswerType()))
+      .append("fieldAnswerType=" + String.valueOf(getFieldAnswerType()) + ", ")
+      .append("fieldAnswerTypeName=" + String.valueOf(getFieldAnswerTypeName()))
       .append("}")
       .toString();
   }
@@ -115,6 +125,7 @@ public final class FamilyDef implements Model {
       id,
       null,
       null,
+      null,
       null
     );
   }
@@ -123,7 +134,8 @@ public final class FamilyDef implements Model {
     return new CopyOfBuilder(id,
       fieldName,
       fieldQuestionText,
-      fieldAnswerType);
+      fieldAnswerType,
+      fieldAnswerTypeName);
   }
   public interface FieldNameStep {
     FieldQuestionTextStep fieldName(String fieldName);
@@ -136,7 +148,12 @@ public final class FamilyDef implements Model {
   
 
   public interface FieldAnswerTypeStep {
-    BuildStep fieldAnswerType(AnswerType fieldAnswerType);
+    FieldAnswerTypeNameStep fieldAnswerType(AnswerType fieldAnswerType);
+  }
+  
+
+  public interface FieldAnswerTypeNameStep {
+    BuildStep fieldAnswerTypeName(String fieldAnswerTypeName);
   }
   
 
@@ -146,11 +163,12 @@ public final class FamilyDef implements Model {
   }
   
 
-  public static class Builder implements FieldNameStep, FieldQuestionTextStep, FieldAnswerTypeStep, BuildStep {
+  public static class Builder implements FieldNameStep, FieldQuestionTextStep, FieldAnswerTypeStep, FieldAnswerTypeNameStep, BuildStep {
     private String id;
     private String fieldName;
     private String fieldQuestionText;
     private AnswerType fieldAnswerType;
+    private String fieldAnswerTypeName;
     @Override
      public FamilyDef build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -159,7 +177,8 @@ public final class FamilyDef implements Model {
           id,
           fieldName,
           fieldQuestionText,
-          fieldAnswerType);
+          fieldAnswerType,
+          fieldAnswerTypeName);
     }
     
     @Override
@@ -177,9 +196,16 @@ public final class FamilyDef implements Model {
     }
     
     @Override
-     public BuildStep fieldAnswerType(AnswerType fieldAnswerType) {
+     public FieldAnswerTypeNameStep fieldAnswerType(AnswerType fieldAnswerType) {
         Objects.requireNonNull(fieldAnswerType);
         this.fieldAnswerType = fieldAnswerType;
+        return this;
+    }
+    
+    @Override
+     public BuildStep fieldAnswerTypeName(String fieldAnswerTypeName) {
+        Objects.requireNonNull(fieldAnswerTypeName);
+        this.fieldAnswerTypeName = fieldAnswerTypeName;
         return this;
     }
     
@@ -206,11 +232,12 @@ public final class FamilyDef implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String fieldName, String fieldQuestionText, AnswerType fieldAnswerType) {
+    private CopyOfBuilder(String id, String fieldName, String fieldQuestionText, AnswerType fieldAnswerType, String fieldAnswerTypeName) {
       super.id(id);
       super.fieldName(fieldName)
         .fieldQuestionText(fieldQuestionText)
-        .fieldAnswerType(fieldAnswerType);
+        .fieldAnswerType(fieldAnswerType)
+        .fieldAnswerTypeName(fieldAnswerTypeName);
     }
     
     @Override
@@ -226,6 +253,11 @@ public final class FamilyDef implements Model {
     @Override
      public CopyOfBuilder fieldAnswerType(AnswerType fieldAnswerType) {
       return (CopyOfBuilder) super.fieldAnswerType(fieldAnswerType);
+    }
+    
+    @Override
+     public CopyOfBuilder fieldAnswerTypeName(String fieldAnswerTypeName) {
+      return (CopyOfBuilder) super.fieldAnswerTypeName(fieldAnswerTypeName);
     }
   }
   
