@@ -123,13 +123,13 @@ query ListFamilys(
     startedAt
   }
 }
-query SyncFamilyDefs(
-  $filter: ModelFamilyDefFilterInput
+query SyncConfigDefs(
+  $filter: ModelConfigDefFilterInput
   $limit: Int
   $nextToken: String
   $lastSync: AWSTimestamp
 ) {
-  syncFamilyDefs(
+  syncConfigDefs(
     filter: $filter
     limit: $limit
     nextToken: $nextToken
@@ -137,10 +137,12 @@ query SyncFamilyDefs(
   ) {
     items {
       id
-      fieldName
-      fieldQuestionText
-      fieldAnswerType
-      fieldAnswerTypeName
+      Name
+      Value
+      Description
+      ParentName
+      ParentValue
+      ParentDescription
       _version
       _deleted
       _lastChangedAt
@@ -151,13 +153,15 @@ query SyncFamilyDefs(
     startedAt
   }
 }
-query GetFamilyDef($id: ID!) {
-  getFamilyDef(id: $id) {
+query GetConfigDef($id: ID!) {
+  getConfigDef(id: $id) {
     id
-    fieldName
-    fieldQuestionText
-    fieldAnswerType
-    fieldAnswerTypeName
+    Name
+    Value
+    Description
+    ParentName
+    ParentValue
+    ParentDescription
     _version
     _deleted
     _lastChangedAt
@@ -165,374 +169,20 @@ query GetFamilyDef($id: ID!) {
     updatedAt
   }
 }
-query ListFamilyDefs(
-  $filter: ModelFamilyDefFilterInput
+query ListConfigDefs(
+  $filter: ModelConfigDefFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listFamilyDefs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listConfigDefs(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      fieldName
-      fieldQuestionText
-      fieldAnswerType
-      fieldAnswerTypeName
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query SyncSexDefs(
-  $filter: ModelSexDefFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncSexDefs(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      fieldName
-      fieldDescription
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query GetSexDef($id: ID!) {
-  getSexDef(id: $id) {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-query ListSexDefs(
-  $filter: ModelSexDefFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listSexDefs(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      fieldName
-      fieldDescription
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query SyncMaritalStatusDefs(
-  $filter: ModelMaritalStatusDefFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncMaritalStatusDefs(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      fieldName
-      fieldDescription
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query GetMaritalStatusDef($id: ID!) {
-  getMaritalStatusDef(id: $id) {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-query ListMaritalStatusDefs(
-  $filter: ModelMaritalStatusDefFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listMaritalStatusDefs(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      fieldName
-      fieldDescription
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query SyncOccupationDefs(
-  $filter: ModelOccupationDefFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncOccupationDefs(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      fieldName
-      fieldDescription
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query GetOccupationDef($id: ID!) {
-  getOccupationDef(id: $id) {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-query ListOccupationDefs(
-  $filter: ModelOccupationDefFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listOccupationDefs(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      fieldName
-      fieldDescription
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query SyncEducationLevelDefs(
-  $filter: ModelEducationLevelDefFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncEducationLevelDefs(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      fieldName
-      fieldDescription
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query GetEducationLevelDef($id: ID!) {
-  getEducationLevelDef(id: $id) {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-query ListEducationLevelDefs(
-  $filter: ModelEducationLevelDefFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listEducationLevelDefs(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-  ) {
-    items {
-      id
-      fieldName
-      fieldDescription
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query SyncIntervieweeDefs(
-  $filter: ModelIntervieweeDefFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncIntervieweeDefs(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      fieldName
-      fieldDescription
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query GetIntervieweeDef($id: ID!) {
-  getIntervieweeDef(id: $id) {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-query ListIntervieweeDefs(
-  $filter: ModelIntervieweeDefFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listIntervieweeDefs(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      fieldName
-      fieldDescription
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query SyncNoSchoolReasonDefs(
-  $filter: ModelNoSchoolReasonDefFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncNoSchoolReasonDefs(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      fieldName
-      fieldDescription
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-    }
-    nextToken
-    startedAt
-  }
-}
-query GetNoSchoolReasonDef($id: ID!) {
-  getNoSchoolReasonDef(id: $id) {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-query ListNoSchoolReasonDefs(
-  $filter: ModelNoSchoolReasonDefFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listNoSchoolReasonDefs(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-  ) {
-    items {
-      id
-      fieldName
-      fieldDescription
+      Name
+      Value
+      Description
+      ParentName
+      ParentValue
+      ParentDescription
       _version
       _deleted
       _lastChangedAt

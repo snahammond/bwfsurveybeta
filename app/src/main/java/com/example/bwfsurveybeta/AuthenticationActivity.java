@@ -18,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 
+import com.amplifyframework.AmplifyException;
+import com.amplifyframework.api.aws.AWSApiPlugin;
 import com.amplifyframework.auth.AuthProvider;
 import com.amplifyframework.auth.AuthUser;
 import com.amplifyframework.auth.AuthUserAttribute;
@@ -25,6 +27,7 @@ import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.core.AmplifyConfiguration;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,60 +44,123 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
     EditText editTextUsergivenname;
     EditText editTextEmailAddress;
     EditText editTextPassword;
-    String authUserSurname = "";
-    String authUserFirstname = "";
+    String uniqueBWEName = null;
+    String authenticatedName = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splashscreen);
+        doAuthentication();
+    }
 
-        Amplify.Auth.fetchUserAttributes(
+    public void doAuthentication(){
+        //get the current authenticated user from local
+        AuthUser authUser = Amplify.Auth.getCurrentUser();
+        if(authUser!=null){
+            //user is signed-in
+            uniqueBWEName = authUser.getUsername();
+            //could be offline or online
+            //try to get the Attrubutes if we cannot get it we will use his email to welcome him;
+            Amplify.Auth.fetchUserAttributes(
                 attributes -> {
+                    //user is online
+                    String firstname = null;
+                    String surname = null;
                     for(AuthUserAttribute attribute : attributes)
                     {
                         if(attribute.getKey().getKeyString().contentEquals(AuthUserAttributeKey.givenName().getKeyString())){
-                            authUserFirstname = attribute.getValue();
+                            firstname = attribute.getValue();
                         }
                         if(attribute.getKey().getKeyString().contentEquals(AuthUserAttributeKey.familyName().getKeyString())){
-                            authUserSurname = attribute.getValue();
+                            surname = attribute.getValue();
                         }
                     }
+                    authenticatedName = firstname +" "+ surname;
+                    Log.i("Tutorials", "user online uniqueBWEName: " + uniqueBWEName + " authenticatedName: " +authenticatedName);
 
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            //Toast.makeText(AuthenticationActivity.this, "Log in successful " + authUserSurname + " " + authUserFirstname, Toast.LENGTH_SHORT).show();
-                            showAuthenticatedScreen(authUserSurname,authUserFirstname);
-                        }
-                    });
-
-
+                    try {
+                        Amplify.DataStore.start(
+                                ()->{
+                                    runOnUiThread(new Runnable() {
+                                        public void run() {
+                                            showAuthenticatedScreen(authenticatedName);
+                                        }
+                                    });
+                                },
+                                onError->{
+                                    runOnUiThread(new Runnable() {
+                                        public void run() {
+                                            showAuthenticatedScreen(authenticatedName);
+                                        }
+                                    });
+                                }
+                        );
+                    }catch (Exception c){
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                showAuthenticatedScreen(authenticatedName);
+                            }
+                        });
+                    }
 
                 },
-                error -> {
-                    Log.e("Tutorial", "Failed to fetch user attributes.", error);
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            //Toast.makeText(AuthenticationActivity.this, "Log in successful " + authUserSurname + " " + authUserFirstname, Toast.LENGTH_SHORT).show();
-                            showAuthenticationScreen();
-                        }
-                    });
+                error ->{
+                    //the user is offline
+                    authenticatedName = uniqueBWEName;
+                    Log.i("Tutorials", "user offline uniqueBWEName: " + uniqueBWEName + " authenticatedName: " +authenticatedName);
 
+                    try {
+                        Amplify.DataStore.start(
+                                ()->{
+                                    runOnUiThread(new Runnable() {
+                                        public void run() {
+                                            Toast.makeText(AuthenticationActivity.this, "Please note that you are offline", Toast.LENGTH_SHORT).show();
+                                            showAuthenticatedScreen(authenticatedName);
+                                        }
+                                    });
+                                },
+                                onError->{
+                                    runOnUiThread(new Runnable() {
+                                        public void run() {
+                                            Toast.makeText(AuthenticationActivity.this, "Please note that you are offline", Toast.LENGTH_SHORT).show();
+                                            showAuthenticatedScreen(authenticatedName);
+                                        }
+                                    });
+                                }
+                        );
+                    }catch (Exception c){
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(AuthenticationActivity.this, "Please note that you are offline", Toast.LENGTH_SHORT).show();
+                                showAuthenticatedScreen(authenticatedName);
+                            }
+                        });
+                    }
+                });
+        }else{
+            //user is not sign-in
+            Log.i("Tutorials", "user not signed in" );
+            //ask the user to log in or sign up if he is a new user
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    showAuthenticationScreen();
                 }
-        );
-
+            });
+        }
 
     }
 
-    public void showAuthenticatedScreen(String surname, String firstname){
+    public void showAuthenticatedScreen(String authenticatedName){
         setContentView(R.layout.activity_authenticated);
         TextView textAuthenticated = (TextView) findViewById(R.id.textAuthenticated);
-        textAuthenticated.setText(surname + " " +firstname);
+        textAuthenticated.setText(authenticatedName);
 
         Button button_continueAs = (Button) findViewById(R.id.button_continueAs);
         button_continueAs.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //go to menu screen
                 Intent i = new Intent(getApplicationContext(),MenuActivity.class);
-                i.putExtra("NAME_BWE", surname + " " +firstname);
+                i.putExtra("NAME_BWE", uniqueBWEName);
                 startActivity(i);
             }
         });
@@ -183,34 +249,12 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                     Log.i("Tutorial","User state after sign in " + UserState);
 
                     if(UserState=="SIGNED_IN"){
-                        Amplify.Auth.fetchUserAttributes(
-                            attributes -> {
-                                for(AuthUserAttribute attribute : attributes)
-                                {
-                                    if(attribute.getKey().getKeyString().contentEquals(AuthUserAttributeKey.givenName().getKeyString())){
-                                        authUserFirstname = attribute.getValue();
-                                    }
-                                    if(attribute.getKey().getKeyString().contentEquals(AuthUserAttributeKey.familyName().getKeyString())){
-                                        authUserSurname = attribute.getValue();
-                                    }
-                                }
-                                AuthenticationActivity.this.runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        Toast.makeText(AuthenticationActivity.this, "Log in successful " + authUserSurname + " " + authUserFirstname, Toast.LENGTH_SHORT).show();
-                                        showAuthenticatedScreen(authUserSurname,authUserFirstname);
-                                    }
-                                });
-
-                            },
-                            error -> {
-                                Log.e("Tutorial", "Log in failed Please check, if you are a new user please sign in", error);
-                            }
-                        );
+                        doAuthentication();
                     }
                 }else{
                     AuthenticationActivity.this.runOnUiThread(new Runnable() {
                         public void run() {
-                            Toast.makeText(AuthenticationActivity.this, "Log in failed Please check, if you are a new user please sign in", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AuthenticationActivity.this, "Log in failed Please check, if you are a new user please sign up", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -224,7 +268,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
 
                 AuthenticationActivity.this.runOnUiThread(new Runnable() {
                     public void run() {
-                        Toast.makeText(AuthenticationActivity.this, "Log in failed Please check, if you are a new user please sign in", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AuthenticationActivity.this, "Log in failed Please check network, if you are a new user please sign up", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

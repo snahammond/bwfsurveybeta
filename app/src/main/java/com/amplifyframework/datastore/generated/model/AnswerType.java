@@ -4,6 +4,8 @@ package com.amplifyframework.datastore.generated.model;
 public enum AnswerType {
   TEXTVALUE,
   ENUMVALUE,
+  ENUMWITHNONEVALUE,
+  ENUMDROPDOWNVALUE,
   NUMBERVALUE,
   DATEVALUE
 }

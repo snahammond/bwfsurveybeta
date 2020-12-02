@@ -1,58 +1,11 @@
-enum Sex {
-  MALE
-  FEMALE
+enum AnswerType {
+  TEXTVALUE
+  ENUMVALUE
+  ENUMWITHNONEVALUE
+  ENUMDROPDOWNVALUE
+  NUMBERVALUE
+  DATEVALUE
 }
-
-enum MaritalStatus {
-  MARRIED
-  SINGLE
-  WIDOWED
-  DIVORCED
-  COHABITING
-}
-
-enum Occupation {
-  FARMER
-  TRADER
-  TEACHER
-  FISHERMAN
-  CIVILSERVANT
-  NONE
-  OTHER
-}
-
-enum EducationLevel {
-  NOFORMALEDUCATION
-  SOMEPRIMARYEDUCATION
-  COMPLETEDPRIMARYEDUCATION
-  SOMESECONDARYEDUCATION
-  COMPLETEDJRHIGH
-  COMPLETEDSECONDARY
-  COMPLETEDMORETHANSECONDARY
-}
-
-enum Interviewee{
-  FATHER
-  MOTHER
-  UNCLE
-  AUNT
-  SISTER
-  BROTHER
-  GRANDFATHER
-  GRANDMOTHER
-  SONORDAUGHTER
-  OTHER
-}
-
-enum NoSchoolReason{
-  DAILYLABOR
-  NOTENOUGHFUNDS
-  SCHOOLTOOFARAWAY
-  SUPPORTFAMILYWITHLABOR
-  FETCHINGWATER
-  MARRIAGEANDORPREGNANCY
-}
-
 
 type Family @model{
 	id: ID!
@@ -64,12 +17,12 @@ type Family @model{
 	community: String!
 	date: AWSDate
 	headHouseholdName: String!
-	headHouseholdSex: Sex!
-	headHouseholdMaritalStatus: MaritalStatus!
+	headHouseholdSex: String!
+	headHouseholdMaritalStatus: String!
 	headHouseholdAge: Int!
-	headHouseholdOccupation: Occupation!
-	headHouseholdEducationLevel: EducationLevel!
-	interviewee: Interviewee!
+	headHouseholdOccupation: String!
+	headHouseholdEducationLevel: String!
+	interviewee: String!
 	numberPeopleHousehold: Int!
 	numberMaleHousehold1: Int!
 	numberFemaleHousehold1: Int!
@@ -81,56 +34,28 @@ type Family @model{
 	numberFemaleHousehold17: Int!
 	numberMaleHousehold18: Int!
 	numberFemaleHousehold18: Int!
-	reasonChildrenNotInSchool: NoSchoolReason!
+	reasonChildrenNotInSchool: String!
 }
 
-enum AnswerType {
-  TEXTVALUE
-  ENUMVALUE
-  NUMBERVALUE
-  DATEVALUE
-}
 
-type FamilyDef @model{
+
+type ConfigDef @model{
 	id: ID!
-	fieldName: String!
-	fieldQuestionText: String!
-	fieldAnswerType: AnswerType!
-	fieldAnswerTypeName: String!
-}
+	#Name of the config, eg; Sex, Occupation, Country, Question
+	Name: String!
 
-type SexDef @model{
-	id: ID!
-	fieldName: String!
-	fieldDescription: String!
-}
+	#Value to be held by the Name, eg if Name is Sex, which sex (Male or Female)
+	Value: String!
 
-type MaritalStatusDef @model{
-	id: ID!
-	fieldName: String!
-	fieldDescription: String!
-}
+	#Description of the Value
+    Description: String!
 
-type OccupationDef @model{
-	id: ID!
-	fieldName: String!
-	fieldDescription: String!
-}
+    #Parent name is extra info for the config name (if the config is community, the parent will be Country)
+    ParentName: String!
 
-type EducationLevelDef @model{
-	id: ID!
-	fieldName: String!
-	fieldDescription: String!
-}
+    #Parent value is particular value for the parent eg, if parent is Country, which country
+    ParentValue: String!
 
-type IntervieweeDef @model{
-	id: ID!
-	fieldName: String!
-	fieldDescription: String!
-}
-
-type NoSchoolReasonDef @model{
-	id: ID!
-	fieldName: String!
-	fieldDescription: String!
+    #Parent description
+    ParentDescription: String!
 }

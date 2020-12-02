@@ -101,13 +101,15 @@ subscription OnDeleteFamily {
     updatedAt
   }
 }
-subscription OnCreateFamilyDef {
-  onCreateFamilyDef {
+subscription OnCreateConfigDef {
+  onCreateConfigDef {
     id
-    fieldName
-    fieldQuestionText
-    fieldAnswerType
-    fieldAnswerTypeName
+    Name
+    Value
+    Description
+    ParentName
+    ParentValue
+    ParentDescription
     _version
     _deleted
     _lastChangedAt
@@ -115,13 +117,15 @@ subscription OnCreateFamilyDef {
     updatedAt
   }
 }
-subscription OnUpdateFamilyDef {
-  onUpdateFamilyDef {
+subscription OnUpdateConfigDef {
+  onUpdateConfigDef {
     id
-    fieldName
-    fieldQuestionText
-    fieldAnswerType
-    fieldAnswerTypeName
+    Name
+    Value
+    Description
+    ParentName
+    ParentValue
+    ParentDescription
     _version
     _deleted
     _lastChangedAt
@@ -129,229 +133,15 @@ subscription OnUpdateFamilyDef {
     updatedAt
   }
 }
-subscription OnDeleteFamilyDef {
-  onDeleteFamilyDef {
+subscription OnDeleteConfigDef {
+  onDeleteConfigDef {
     id
-    fieldName
-    fieldQuestionText
-    fieldAnswerType
-    fieldAnswerTypeName
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnCreateSexDef {
-  onCreateSexDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnUpdateSexDef {
-  onUpdateSexDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeleteSexDef {
-  onDeleteSexDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnCreateMaritalStatusDef {
-  onCreateMaritalStatusDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnUpdateMaritalStatusDef {
-  onUpdateMaritalStatusDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeleteMaritalStatusDef {
-  onDeleteMaritalStatusDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnCreateOccupationDef {
-  onCreateOccupationDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnUpdateOccupationDef {
-  onUpdateOccupationDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeleteOccupationDef {
-  onDeleteOccupationDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnCreateEducationLevelDef {
-  onCreateEducationLevelDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnUpdateEducationLevelDef {
-  onUpdateEducationLevelDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeleteEducationLevelDef {
-  onDeleteEducationLevelDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnCreateIntervieweeDef {
-  onCreateIntervieweeDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnUpdateIntervieweeDef {
-  onUpdateIntervieweeDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeleteIntervieweeDef {
-  onDeleteIntervieweeDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnCreateNoSchoolReasonDef {
-  onCreateNoSchoolReasonDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnUpdateNoSchoolReasonDef {
-  onUpdateNoSchoolReasonDef {
-    id
-    fieldName
-    fieldDescription
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeleteNoSchoolReasonDef {
-  onDeleteNoSchoolReasonDef {
-    id
-    fieldName
-    fieldDescription
+    Name
+    Value
+    Description
+    ParentName
+    ParentValue
+    ParentDescription
     _version
     _deleted
     _lastChangedAt

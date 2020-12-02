@@ -1,21 +1,28 @@
 package com.example.bwfsurveybeta;
 
 
+import com.amplifyframework.datastore.generated.model.AnswerType;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class Question {
+public class Question  implements Comparable<Question>{
     private String questionText;
-    private AnsType ansType;
+    private AnswerType ansType;
     private String ansTypeName;
     private ArrayList<PossibleAns> possibleAnss;
+    private int questionNum;
     private Object Ans;
 
-    public Question(String questionText, String ansType, String ansTypeName, ArrayList<PossibleAns> possibleAnss) {
+
+    public Question(String questionText, String ansType, String ansTypeName, ArrayList<PossibleAns> possibleAnss, int questionNum) {
+        super();
         this.questionText = questionText;
-        this.ansType = AnsType.valueOf(ansType);
+        this.ansType = AnswerType.valueOf(ansType);
         this.ansTypeName = ansTypeName;
         this.possibleAnss = possibleAnss;
+        this.questionNum = questionNum;
     }
 
     public String getQuestionText() {
@@ -26,12 +33,12 @@ public class Question {
         this.questionText = questionText;
     }
 
-    public AnsType getAnsType() {
+    public AnswerType getAnsType() {
         return ansType;
     }
 
     public void setAnsType(String ansType) {
-        this.ansType = AnsType.valueOf(ansType);
+        this.ansType = AnswerType.valueOf(ansType);
     }
 
     public String getAnsTypeName() {
@@ -50,11 +57,25 @@ public class Question {
         this.possibleAnss = possibleAnss;
     }
 
+    public int getQuestionNum() {
+        return questionNum;
+    }
+
+    public void setQuestionNum(int questionNum) {
+        this.questionNum = questionNum;
+    }
+
     public Object getAns() {
         return Ans;
     }
 
     public void setAns(Object ans) {
         Ans = ans;
+    }
+
+
+    @Override
+    public int compareTo(Question o) {
+        return this.getQuestionNum() - o.getQuestionNum();
     }
 }

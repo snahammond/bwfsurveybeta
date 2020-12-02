@@ -1,15 +1,12 @@
 package com.example.bwfsurveybeta;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -17,11 +14,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amplifyframework.auth.AuthUserAttributeKey;
-import com.amplifyframework.datastore.generated.model.Sex;
+import com.amplifyframework.datastore.generated.model.AnswerType;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class QuestionCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
@@ -76,11 +71,11 @@ public class QuestionCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public int getItemViewType(int position) {
 
-        if (questions.get(position).getAnsType()==AnsType.TEXTVALUE) {
+        if (questions.get(position).getAnsType()== AnswerType.TEXTVALUE) {
             return ANSTYPE_TEXT;
-        } else if(questions.get(position).getAnsType()==AnsType.ENUMVALUE){
+        } else if(questions.get(position).getAnsType()==AnswerType.ENUMVALUE){
             return ANSTYPE_ENUM;
-        }else if(questions.get(position).getAnsType()==AnsType.NUMBERVALUE){
+        }else if(questions.get(position).getAnsType()==AnswerType.NUMBERVALUE){
             return ANSTYPE_NUMBER;
         }else{
             return 0;
