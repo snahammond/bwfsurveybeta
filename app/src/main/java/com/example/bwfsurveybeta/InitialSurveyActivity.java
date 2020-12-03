@@ -26,13 +26,6 @@ public class InitialSurveyActivity extends AppCompatActivity implements SaveSurv
     private RecyclerView recyclerView;
     private QuestionCardAdapter adapter;
     private static ArrayList<Question> questions;
-    /*
-    private static ArrayList<PossibleAns> possibleAnssSex = null;
-    private static ArrayList<PossibleAns> possibleAnssMaritalStatus = null;
-    private static ArrayList<PossibleAns> possibleAnssOccupation = null;
-    private static ArrayList<Question> familyQuestions = null;
-
-     */
     private String namebwe;
 
     @Override
@@ -103,6 +96,92 @@ public class InitialSurveyActivity extends AppCompatActivity implements SaveSurv
                                     }else if(answerTypeName.contentEquals("MaritalStatus")){
                                         possibleAnss=possibleAnssMaritalStatus;
                                     }
+                                    //manually do country and community
+                                    if(questionNum==1){
+                                        answerType = AnswerType.ENUMDROPDOWNVALUE.name();
+                                        answerTypeName = "COUNTRY";
+                                        ArrayList<PossibleAns> possibleAnssCountries = new ArrayList<>();
+                                        possibleAnssCountries.add(new PossibleAns("GHANA","Ghana"));
+                                        possibleAnssCountries.add(new PossibleAns("UGANDA","Uganda"));
+                                        possibleAnssCountries.add(new PossibleAns("RWANDA","Rwanda"));
+                                        possibleAnssCountries.add(new PossibleAns("PERU","Peru"));
+                                        possibleAnss = possibleAnssCountries;
+                                    }
+                                    if(questionNum==2){
+                                        answerType = AnswerType.ENUMDROPDOWNVALUE.name();
+                                        answerTypeName = "COMMUNITY";
+                                        ArrayList<PossibleAns> possibleAnssCommunities = new ArrayList<>();
+                                        PossibleAns comm1Ghana = new PossibleAns("KUMASI","KUMASI");
+                                        comm1Ghana.setParent_name("COUNTRY");
+                                        comm1Ghana.setParent_value("GHANA");
+                                        possibleAnssCommunities.add(comm1Ghana);
+                                        PossibleAns comm2Ghana = new PossibleAns("OSU","OSU");
+                                        comm2Ghana.setParent_name("COUNTRY");
+                                        comm2Ghana.setParent_value("GHANA");
+                                        possibleAnssCommunities.add(comm2Ghana);
+                                        PossibleAns comm3Ghana = new PossibleAns("TESHIE","TESHIE");
+                                        comm3Ghana.setParent_name("COUNTRY");
+                                        comm3Ghana.setParent_value("GHANA");
+                                        possibleAnssCommunities.add(comm3Ghana);
+                                        PossibleAns comm4Ghana = new PossibleAns("ABOKOBI","ABOKOBI");
+                                        comm4Ghana.setParent_name("COUNTRY");
+                                        comm4Ghana.setParent_value("GHANA");
+                                        possibleAnssCommunities.add(comm4Ghana);
+
+                                        PossibleAns comm1Uganda = new PossibleAns("KAMULI","KAMULI");
+                                        comm1Uganda.setParent_name("COUNTRY");
+                                        comm1Uganda.setParent_value("UGANDA");
+                                        possibleAnssCommunities.add(comm1Uganda);
+                                        PossibleAns comm2Uganda = new PossibleAns("BUKUNGU","BUKUNGU");
+                                        comm2Uganda.setParent_name("COUNTRY");
+                                        comm2Uganda.setParent_value("UGANDA");
+                                        possibleAnssCommunities.add(comm2Uganda);
+                                        PossibleAns comm3Uganda = new PossibleAns("KOBOKO","KOBOKO");
+                                        comm3Uganda.setParent_name("COUNTRY");
+                                        comm3Uganda.setParent_value("UGANDA");
+                                        possibleAnssCommunities.add(comm3Uganda);
+                                        PossibleAns comm4Uganda = new PossibleAns("NJERU","NJERU");
+                                        comm4Uganda.setParent_name("COUNTRY");
+                                        comm4Uganda.setParent_value("UGANDA");
+                                        possibleAnssCommunities.add(comm4Uganda);
+
+                                        PossibleAns comm1Rwanda = new PossibleAns("MUHANGA","MUHANGA");
+                                        comm1Rwanda.setParent_name("COUNTRY");
+                                        comm1Rwanda.setParent_value("RWANDA");
+                                        possibleAnssCommunities.add(comm1Rwanda);
+                                        PossibleAns comm2Rwanda = new PossibleAns("CYANGUGU","CYANGUGU");
+                                        comm2Rwanda.setParent_name("COUNTRY");
+                                        comm2Rwanda.setParent_value("RWANDA");
+                                        possibleAnssCommunities.add(comm2Rwanda);
+                                        PossibleAns comm3Rwanda = new PossibleAns("UMUTARA","UMUTARA");
+                                        comm3Rwanda.setParent_name("COUNTRY");
+                                        comm3Rwanda.setParent_value("RWANDA");
+                                        possibleAnssCommunities.add(comm3Rwanda);
+                                        PossibleAns comm4Rwanda = new PossibleAns("KIBUYE","KIBUYE");
+                                        comm4Rwanda.setParent_name("COUNTRY");
+                                        comm4Rwanda.setParent_value("RWANDA");
+                                        possibleAnssCommunities.add(comm4Rwanda);
+
+                                        PossibleAns comm1Peru = new PossibleAns("AYACUCHO","AYACUCHO");
+                                        comm1Peru.setParent_name("COUNTRY");
+                                        comm1Peru.setParent_value("PERU");
+                                        possibleAnssCommunities.add(comm1Peru);
+                                        PossibleAns comm2Peru = new PossibleAns("CAHUANUYO","CAHUANUYO");
+                                        comm2Peru.setParent_name("COUNTRY");
+                                        comm2Peru.setParent_value("PERU");
+                                        possibleAnssCommunities.add(comm2Peru);
+                                        PossibleAns comm3Peru = new PossibleAns("CHIVAY","CHIVAY");
+                                        comm3Peru.setParent_name("COUNTRY");
+                                        comm3Peru.setParent_value("PERU");
+                                        possibleAnssCommunities.add(comm3Peru);
+                                        PossibleAns comm4Peru = new PossibleAns("HUACHO","HUACHO");
+                                        comm4Peru.setParent_name("COUNTRY");
+                                        comm4Peru.setParent_value("PERU");
+                                        possibleAnssCommunities.add(comm4Peru);
+
+                                        possibleAnss = possibleAnssCommunities;
+                                    }
+
                                     familyQuestions.add(new Question(questionText,answerType,answerTypeName,possibleAnss,questionNum));
                                 }
                             }
@@ -224,7 +303,6 @@ public class InitialSurveyActivity extends AppCompatActivity implements SaveSurv
         return super.onCreateOptionsMenu(menu);
     }
 
-    // handle button activities
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -303,7 +381,6 @@ public class InitialSurveyActivity extends AppCompatActivity implements SaveSurv
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     public void showSaveSurvey(String content) {
         DialogFragment newFragment = new SaveSurveyDialog(content);

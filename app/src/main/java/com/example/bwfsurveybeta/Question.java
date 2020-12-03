@@ -8,16 +8,15 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Question  implements Comparable<Question>{
+    private int questionNum;
     private String questionText;
     private AnswerType ansType;
     private String ansTypeName;
     private ArrayList<PossibleAns> possibleAnss;
-    private int questionNum;
     private Object Ans;
 
 
     public Question(String questionText, String ansType, String ansTypeName, ArrayList<PossibleAns> possibleAnss, int questionNum) {
-        super();
         this.questionText = questionText;
         this.ansType = AnswerType.valueOf(ansType);
         this.ansTypeName = ansTypeName;

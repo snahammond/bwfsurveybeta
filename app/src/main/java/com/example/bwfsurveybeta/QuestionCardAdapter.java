@@ -1,14 +1,20 @@
 package com.example.bwfsurveybeta;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.CursorAdapter;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.datastore.generated.model.AnswerType;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class QuestionCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
@@ -26,6 +33,7 @@ public class QuestionCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static int ANSTYPE_TEXT = 1;
     private static int ANSTYPE_ENUM = 2;
     private static int ANSTYPE_NUMBER = 3;
+    private static int ANSTYPE_ENUMDROPDOWN = 4;
 
     public QuestionCardAdapter(InitialSurveyActivity mainActivity, ArrayList<Question> questions) {
         this.questions = questions;
@@ -46,11 +54,13 @@ public class QuestionCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }else if (viewType == ANSTYPE_NUMBER){ // for number answer card
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_card_number, parent, false);
             return new QuestionNumberAnsViewHolder(view);
+        }else if (viewType == ANSTYPE_ENUMDROPDOWN){ // for spinner answer card
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_card_spinner, parent, false);
+            return new QuestionSpinnerAnsViewHolder(view);
         }else{
             return null;
         }
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
@@ -60,6 +70,8 @@ public class QuestionCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             ((QuestionEnumAnsViewHolder) holder).setQuestionEnumAnsDetails(questions.get(position),position);
         }else if(getItemViewType(position) == ANSTYPE_NUMBER){
             ((QuestionNumberAnsViewHolder) holder).setQuestionNumberAnsDetails(questions.get(position),position);
+        }else if(getItemViewType(position) == ANSTYPE_ENUMDROPDOWN){
+            ((QuestionSpinnerAnsViewHolder) holder).setQuestionSpinnerAnsDetails(questions.get(position),position);
         }
     }
 
@@ -77,6 +89,8 @@ public class QuestionCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             return ANSTYPE_ENUM;
         }else if(questions.get(position).getAnsType()==AnswerType.NUMBERVALUE){
             return ANSTYPE_NUMBER;
+        }else if(questions.get(position).getAnsType()==AnswerType.ENUMDROPDOWNVALUE){
+            return ANSTYPE_ENUMDROPDOWN;
         }else{
             return 0;
         }
@@ -314,8 +328,120 @@ public class QuestionCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 });
             }
         }
+    }
 
+    class QuestionSpinnerAnsViewHolder extends RecyclerView.ViewHolder {
 
+        private TextView txtQuestion;
+        private Spinner spinnerAnswer;
+        private Question question;
+        private List<CharSequence> possibleAnss;
+        private ArrayAdapter<CharSequence> adapter;
+
+        public List<CharSequence> getPossibleAnss() {
+            return possibleAnss;
+        }
+
+        public void setPossibleAnss(List<CharSequence> possibleAnss) {
+            this.possibleAnss = possibleAnss;
+        }
+
+        public Question getQuestion() {
+            return question;
+        }
+
+        public void setQuestion(Question question) {
+            this.question = question;
+        }
+
+        public ArrayAdapter<CharSequence> getAdapter() {
+            return adapter;
+        }
+
+        public void setAdapter(ArrayAdapter<CharSequence> adapter) {
+            this.adapter = adapter;
+        }
+
+        QuestionSpinnerAnsViewHolder(@NonNull View itemView) {
+            super(itemView);
+            txtQuestion = itemView.findViewById(R.id.txtQuestion);
+            spinnerAnswer = itemView.findViewById(R.id.spinnerAnswer);
+        }
+
+        void setQuestionSpinnerAnsDetails(Question question,int position) {
+            this.question = question;
+            txtQuestion.setText(question.getQuestionText());
+            //make CharSequence for arrayadapter from possible answer
+            possibleAnss = new ArrayList<>();
+            for(PossibleAns possibleAns : question.getPossibleAnss()){
+                possibleAnss.add(possibleAns.getValue());
+            }
+            adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item, possibleAnss);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerAnswer.setAdapter(adapter);
+            spinnerAnswer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                        if(question.getQuestionNum() == 1){
+                            String countrySelected = (String)parent.getItemAtPosition(position);
+                            String countryName = "";
+
+                            //get the actual value of the country not the description, as countrySelectednly contains the description
+                            for(PossibleAns possibleAns : question.getPossibleAnss()){
+                                if(possibleAns.getValue().contentEquals(countrySelected))
+                                    countryName = possibleAns.getName();
+                            }
+
+                            //trying to get the community view
+                            RecyclerView recycler = (RecyclerView) parent.getParent().getParent().getParent();
+                            QuestionSpinnerAnsViewHolder viewHolderCommunity = (QuestionSpinnerAnsViewHolder) recycler.findViewHolderForAdapterPosition(1);
+                            if(viewHolderCommunity!=null){
+                                //get the question that cantains all possible answers
+                                Question communityQuestion = viewHolderCommunity.getQuestion();
+
+                                //get the adapter for the spinner
+                                ArrayAdapter<CharSequence> communityAdapter = viewHolderCommunity.getAdapter();
+
+                                //select only the answer that matches the country selected
+                                List<CharSequence> possibleAnss = new ArrayList<>();
+                                for(PossibleAns possibleAns : communityQuestion.getPossibleAnss()){
+                                    if(possibleAns.getParent_value().contentEquals(countryName)){
+                                        Log.i("Tutorial", "community question posibleAns "+ possibleAns.getName() +possibleAns.getValue()+possibleAns.getParent_name()+possibleAns.getParent_value());
+                                        possibleAnss.add(possibleAns.getValue());
+                                    }
+                                }
+
+                                //notify the adapter to change the answers for community
+                                communityAdapter.clear();
+                                communityAdapter.addAll(possibleAnss);
+                                communityAdapter.notifyDataSetChanged();
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                }
+            );
+            /*
+            spinnerAnswer.addTextChangedListener(new TextWatcher() {
+
+                public void afterTextChanged(Editable s) {}
+
+                public void beforeTextChanged(CharSequence s, int start,
+                                              int count, int after) {
+                }
+
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    _retQuestionsWithAns.get(position).setAns((String)s.toString()); ;
+                }
+            });
+             */
+        }
     }
 
     public ArrayList<Question> retrieveData()
