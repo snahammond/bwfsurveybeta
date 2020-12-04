@@ -16,17 +16,21 @@ import com.amplifyframework.datastore.generated.model.AnswerType;
 import com.amplifyframework.datastore.generated.model.ConfigDef;
 import com.amplifyframework.datastore.generated.model.Family;
 
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class InitialSurveyActivity extends AppCompatActivity implements SaveSurveyDialog.SaveQuestionaireDialogListener {
+public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSurveyDialog.SaveQuestionaireDialogListener*/ {
     private RecyclerView recyclerView;
-    private QuestionCardAdapter adapter;
-    private static ArrayList<Question> questions;
+    private InterchangeCardAdapter adapter;
     private String namebwe;
+    private static ArrayList<Interchange> interchanges;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +41,125 @@ public class InitialSurveyActivity extends AppCompatActivity implements SaveSurv
     }
 
     private void initView() {
-        createQuestionaire();
+        createInitialSurveyQuestionaire();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new QuestionCardAdapter(InitialSurveyActivity.this, this.questions);
+        adapter = new InterchangeCardAdapter(InitialSurveyActivity.this, InitialSurveyActivity.interchanges);
         recyclerView.setAdapter(adapter);
+
     }
 
+    private void createInitialSurveyQuestionaire(){
+        InitialSurveyActivity.interchanges = new ArrayList<>();
+        int[] interchangesRequired = null;
+
+        //load in all the configs
+        ArrayList<Config> configs = loadInAllConfigs();
+
+        if(configs!=null){
+            ArrayList<AnswerValue> answerValuesPool = new ArrayList<>();
+            ArrayList<AnswerDef> answerDefPool = new ArrayList<>();
+            ArrayList<Question> questionPool = new ArrayList<>();
+            ArrayList<Interchange> interchangePool = new ArrayList<>();
+            ArrayList<Answer> answerPool = new ArrayList<>();
+
+            for(Config config : configs){
+                Log.i("Tutorial", "config " +config.getType() + " "+ config.getName() +" "+ config.getValue());
+                if(config.getType().contentEquals("AV")){
+                    answerValuesPool.add(new AnswerValue(config));
+                }else if(config.getType().contentEquals("AD")){
+                    answerDefPool.add(new AnswerDef(config));
+                }else if(config.getType().contentEquals("Q")){
+                    questionPool.add(new Question(config));
+                }else if(config.getType().contentEquals("I")){
+                    int interchangeNo = -1;
+                    try {
+                        Log.i("Tutorial", "interchangeNo before" +config.getValue());
+                        interchangeNo = Integer.parseInt(config.getValue());
+                        Log.i("Tutorial", "interchangeNo after " +interchangeNo);
+                    }catch (Exception x){
+                        interchangeNo = -1;
+                    }
+                    interchangePool.add(new Interchange(config.getName(),interchangeNo));
+                }else if(config.getType().contentEquals("S")&& config.getName().contentEquals("INITAILSURVEY")) {
+                    String rawData = config.getChildValue();
+                    String strIntArrInterchangesNeeded = rawData.substring(1, rawData.length() - 1);
+                    String[] integerStrings = strIntArrInterchangesNeeded.split(",");
+                    interchangesRequired = new int[integerStrings.length];
+                    for (int i = 0; i < integerStrings.length; i++) {
+                        interchangesRequired[i] = Integer.parseInt(integerStrings[i]);
+                    }
+                }
+            }
+
+            //we have made all the answers
+            for(AnswerDef answerDef : answerDefPool){
+                //get all AV for each answer def
+                ArrayList<AnswerValue> answerValArrayList = new ArrayList<>();
+                for(AnswerValue answerValue : answerValuesPool){
+                    if(answerDef.getName().contentEquals(answerValue.getName())){
+                        answerValArrayList.add(answerValue);
+                    }
+                }
+                answerPool.add(new Answer(answerDef,answerValArrayList));
+                Log.i("Tutorial", "answerDef " +answerDef.getType() + " "+ answerDef.getName() +" "+ answerDef.getDesc());
+            }
+
+            //get the required interchanges
+            Log.i("Tutorial", "interchangesRequired " +interchangesRequired.length);
+            for(int interchangenorequired : interchangesRequired){
+                Log.i("Tutorial", "interchangenorequired " +interchangenorequired);
+            }
+            for(Interchange interchange : interchangePool){
+                Log.i("Tutorial", "interchange " +interchange.getName() +" "+ interchange.getInterchangeNumber());
+            }
+            if (interchangesRequired != null) {
+                int positionOnRecyler = 0;
+                for(Interchange interchange : interchangePool){
+                    for(int interchangeNo : interchangesRequired){
+                        if(interchangeNo == interchange.getInterchangeNumber()){
+                            InitialSurveyActivity.interchanges.add(interchange);
+                            interchange.setPositionOnRecyler(positionOnRecyler);
+                            positionOnRecyler += 1;
+                            Log.i("Tutorial", "interchange " +interchange.getName() + " "+  interchange.getInterchangeNumber());
+                        }
+                    }
+                }
+
+            }
+            Log.i("Tutorial", "interchanges selected no " +InitialSurveyActivity.interchanges.size());
+            //update interchanges with their questions and answers
+            for(Interchange interchange : InitialSurveyActivity.interchanges){
+                for(Question question: questionPool){
+                    if(interchange.getName().contentEquals(question.getName())){
+                        interchange.setQuestion(question);
+                    }
+                }
+                for(Answer answer: answerPool){
+                    if(interchange.getName().contentEquals(answer.getAnswerDef().getName())){
+                        interchange.setAnswer(answer);
+                    }
+                }
+            }
+        }
+    }
+
+    private ArrayList<Config> loadInAllConfigs(){
+        ArrayList<Config> configs = null;
+        //load from file
+        ConfigXmlParser configXmlParser = new ConfigXmlParser();
+        InputStream is = getResources().openRawResource(R.raw.config);
+
+        try {
+            configs = (ArrayList<Config>) configXmlParser.parse(is);
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return configs;
+    }
+/*
     private static class GetFamilyQuestionsConfigs{
 
         public interface GetFamilyQuestionsConfigsListerner{
@@ -396,4 +512,6 @@ public class InitialSurveyActivity extends AppCompatActivity implements SaveSurv
     public void onDialogNegativeClick(DialogFragment dialog) {
         dialog.getDialog().cancel();
     }
+
+ */
 }

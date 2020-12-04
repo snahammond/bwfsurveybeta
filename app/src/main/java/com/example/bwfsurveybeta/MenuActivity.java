@@ -25,7 +25,7 @@ public class MenuActivity extends AppCompatActivity {
             namebwe = getIntent().getStringExtra("NAME_BWE");
         Log.i("Tutorials", "namebwe: " + namebwe);
 
-        doProgress();
+        //doProgress();
 
     }
 

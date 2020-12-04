@@ -25,7 +25,7 @@ public class MyAmplifyApplication extends Application {
         try {
 
             Amplify.addPlugin(new AWSDataStorePlugin());
-            Amplify.addPlugin(new AWSApiPlugin());
+            //Amplify.addPlugin(new AWSApiPlugin());
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
 
             AmplifyConfiguration config = AmplifyConfiguration.builder(getApplicationContext())

@@ -1,17 +1,14 @@
 package com.example.bwfsurveybeta;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CursorAdapter;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -25,19 +22,19 @@ import com.amplifyframework.datastore.generated.model.AnswerType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.ViewHolder>*/{
-    /*
-    private ArrayList<Question> questions;
-    private ArrayList<Question> _retQuestionsWithAns;
+public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+    private ArrayList<Interchange> interchanges;
+    private ArrayList<Interchange> _retInterchangesWithAns;
     private Context context;
+
     private static int ANSTYPE_TEXT = 1;
     private static int ANSTYPE_ENUM = 2;
     private static int ANSTYPE_NUMBER = 3;
     private static int ANSTYPE_ENUMDROPDOWN = 4;
 
-    public QuestionCardAdapter(InitialSurveyActivity mainActivity, ArrayList<Question> questions) {
-        this.questions = questions;
-        this._retQuestionsWithAns = questions;
+    public InterchangeCardAdapter(InitialSurveyActivity mainActivity, ArrayList<Interchange> interchanges) {
+        this.interchanges = interchanges;
+        this._retInterchangesWithAns = interchanges;
         this.context = mainActivity;
     }
 
@@ -45,71 +42,36 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
-        if (viewType == ANSTYPE_TEXT) { // for string answer card
+        if (viewType == ANSTYPE_TEXT) { // for interchange card with string answer
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_card_string, parent, false);
-            return new QuestionTextAnsViewHolder(view);
-        } else if (viewType == ANSTYPE_ENUM){ // for enum answer card
+            return new InterchangeTextAnsViewHolder(view);
+        } else if (viewType == ANSTYPE_ENUM){ // for interchange card with enum answer
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_card_enum, parent, false);
-            return new QuestionEnumAnsViewHolder(view);
-        }else if (viewType == ANSTYPE_NUMBER){ // for number answer card
+            return new InterchangeEnumAnsViewHolder(view);
+        }else if (viewType == ANSTYPE_NUMBER){ // for interchange card with number answer
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_card_number, parent, false);
-            return new QuestionNumberAnsViewHolder(view);
-        }else if (viewType == ANSTYPE_ENUMDROPDOWN){ // for spinner answer card
+            return new InterchangeNumberAnsViewHolder(view);
+        }else if (viewType == ANSTYPE_ENUMDROPDOWN){ // for interchange card with spinner answer
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_card_spinner, parent, false);
-            return new QuestionSpinnerAnsViewHolder(view);
+            return new InterchangeSpinnerAnsViewHolder(view);
         }else{
             return null;
         }
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if (getItemViewType(position) == ANSTYPE_TEXT) {
-            ((QuestionTextAnsViewHolder) holder).setQuestionTextAnsDetails(questions.get(position),position);
-        } else if (getItemViewType(position) == ANSTYPE_ENUM){
-            ((QuestionEnumAnsViewHolder) holder).setQuestionEnumAnsDetails(questions.get(position),position);
-        }else if(getItemViewType(position) == ANSTYPE_NUMBER){
-            ((QuestionNumberAnsViewHolder) holder).setQuestionNumberAnsDetails(questions.get(position),position);
-        }else if(getItemViewType(position) == ANSTYPE_ENUMDROPDOWN){
-            ((QuestionSpinnerAnsViewHolder) holder).setQuestionSpinnerAnsDetails(questions.get(position),position);
-        }
-    }
-
-    @Override
-    public int getItemCount() {
-        return questions.size();
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-
-        if (questions.get(position).getAnsType()== AnswerType.TEXTVALUE) {
-            return ANSTYPE_TEXT;
-        } else if(questions.get(position).getAnsType()==AnswerType.ENUMVALUE){
-            return ANSTYPE_ENUM;
-        }else if(questions.get(position).getAnsType()==AnswerType.NUMBERVALUE){
-            return ANSTYPE_NUMBER;
-        }else if(questions.get(position).getAnsType()==AnswerType.ENUMDROPDOWNVALUE){
-            return ANSTYPE_ENUMDROPDOWN;
-        }else{
-            return 0;
-        }
-
-    }
-
-    class QuestionTextAnsViewHolder extends RecyclerView.ViewHolder {
+    class InterchangeTextAnsViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtQuestion;
         private TextView editAnswer;
 
-        QuestionTextAnsViewHolder(@NonNull View itemView) {
+        InterchangeTextAnsViewHolder(@NonNull View itemView) {
             super(itemView);
             txtQuestion = itemView.findViewById(R.id.txtQuestion);
             editAnswer = itemView.findViewById(R.id.editAnswer);
         }
 
-        void setQuestionTextAnsDetails(Question question,int position) {
-            txtQuestion.setText(question.getQuestionText());
+        void setQuestionTextAnsDetails(Interchange interchange,int position) {
+            txtQuestion.setText(interchange.getQuestion().getQuestionText());
             editAnswer.addTextChangedListener(new TextWatcher() {
 
                 public void afterTextChanged(Editable s) {}
@@ -119,25 +81,25 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
                 }
 
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    _retQuestionsWithAns.get(position).setAns((String)s.toString()); ;
+                    _retInterchangesWithAns.get(position).getAnswer().setAns((String)s.toString()); ;
                 }
             });
         }
     }
 
-    class QuestionNumberAnsViewHolder extends RecyclerView.ViewHolder {
+    class InterchangeNumberAnsViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtQuestion;
         private TextView editAnswer;
 
-        QuestionNumberAnsViewHolder(@NonNull View itemView) {
+        InterchangeNumberAnsViewHolder(@NonNull View itemView) {
             super(itemView);
             txtQuestion = itemView.findViewById(R.id.txtQuestion);
             editAnswer = itemView.findViewById(R.id.editAnswer);
         }
 
-        void setQuestionNumberAnsDetails(Question question,int position) {
-            txtQuestion.setText(question.getQuestionText());
+        void setQuestionNumberAnsDetails(Interchange interchange,int position) {
+            txtQuestion.setText(interchange.getQuestion().getQuestionText());
             editAnswer.addTextChangedListener(new TextWatcher() {
 
                 public void afterTextChanged(Editable s) {}
@@ -153,13 +115,13 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
                     } catch(NumberFormatException nfe) {
                         System.out.println("Could not parse " + nfe);
                     }
-                    _retQuestionsWithAns.get(position).setAns((Integer)myNum);
+                    _retInterchangesWithAns.get(position).getAnswer().setAns((Integer)myNum);
                 }
             });
         }
     }
 
-    class QuestionEnumAnsViewHolder extends RecyclerView.ViewHolder{
+    class InterchangeEnumAnsViewHolder extends RecyclerView.ViewHolder{
 
         private TextView txtQuestion;
         private RadioGroup radioEnum;
@@ -176,7 +138,7 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
 
 
 
-        QuestionEnumAnsViewHolder(@NonNull View itemView) {
+        InterchangeEnumAnsViewHolder(@NonNull View itemView) {
             super(itemView);
             txtQuestion = itemView.findViewById(R.id.txtQuestion);
             radioEnum = (RadioGroup) itemView.findViewById(R.id.radioEnum);
@@ -192,13 +154,13 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
             radio_10 = (RadioButton)itemView.findViewById(R.id.radio_10);
         }
 
-        void setQuestionEnumAnsDetails(Question question, int position) {
-            txtQuestion.setText(question.getQuestionText());
-            Log.i("Tutorial", "question "+ question.getQuestionText());
-            addRadioButtons(question.getPossibleAnss(),position);
+        void setQuestionEnumAnsDetails(Interchange interchange, int position) {
+            txtQuestion.setText(interchange.getQuestion().getQuestionText());
+            Log.i("Tutorial", "question "+ interchange.getQuestion().getQuestionText());
+            addRadioButtons(interchange.getAnswer().getAnswerValArrayList(),position);
         }
 
-        public void addRadioButtons(ArrayList<PossibleAns> possibleAnss,int position) {
+        public void addRadioButtons(ArrayList<AnswerValue> possibleAnss,int position) {
 
             if(possibleAnss.size()>0){
                 radio_1.setVisibility(View.VISIBLE);
@@ -208,7 +170,7 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
                     @Override
                     public void onClick(View v) {
                         String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retQuestionsWithAns.get(position).setAns(selectedRadioEnumStrValue);
+                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
                     }
                 });
             }
@@ -221,7 +183,7 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
                     @Override
                     public void onClick(View v) {
                         String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retQuestionsWithAns.get(position).setAns(selectedRadioEnumStrValue);
+                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
                     }
                 });
             }
@@ -234,7 +196,7 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
                     @Override
                     public void onClick(View v) {
                         String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retQuestionsWithAns.get(position).setAns(selectedRadioEnumStrValue);
+                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
                     }
                 });
             }
@@ -246,7 +208,7 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
                     @Override
                     public void onClick(View v) {
                         String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retQuestionsWithAns.get(position).setAns(selectedRadioEnumStrValue);
+                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
                     }
                 });
             }
@@ -258,7 +220,7 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
                     @Override
                     public void onClick(View v) {
                         String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retQuestionsWithAns.get(position).setAns(selectedRadioEnumStrValue);
+                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
                     }
                 });
             }
@@ -271,7 +233,7 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
                     @Override
                     public void onClick(View v) {
                         String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retQuestionsWithAns.get(position).setAns(selectedRadioEnumStrValue);
+                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
                     }
                 });
             }
@@ -284,7 +246,7 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
                     @Override
                     public void onClick(View v) {
                         String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retQuestionsWithAns.get(position).setAns(selectedRadioEnumStrValue);
+                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
                     }
                 });
             }
@@ -297,7 +259,7 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
                     @Override
                     public void onClick(View v) {
                         String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retQuestionsWithAns.get(position).setAns(selectedRadioEnumStrValue);
+                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
                     }
                 });
             }
@@ -310,7 +272,7 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
                     @Override
                     public void onClick(View v) {
                         String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retQuestionsWithAns.get(position).setAns(selectedRadioEnumStrValue);
+                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
                     }
                 });
             }
@@ -323,36 +285,19 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
                     @Override
                     public void onClick(View v) {
                         String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retQuestionsWithAns.get(position).setAns(selectedRadioEnumStrValue);
+                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
                     }
                 });
             }
         }
     }
 
-    class QuestionSpinnerAnsViewHolder extends RecyclerView.ViewHolder {
+    class InterchangeSpinnerAnsViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtQuestion;
         private Spinner spinnerAnswer;
-        private Question question;
-        private List<CharSequence> possibleAnss;
+        private Interchange interchange;
         private ArrayAdapter<CharSequence> adapter;
-
-        public List<CharSequence> getPossibleAnss() {
-            return possibleAnss;
-        }
-
-        public void setPossibleAnss(List<CharSequence> possibleAnss) {
-            this.possibleAnss = possibleAnss;
-        }
-
-        public Question getQuestion() {
-            return question;
-        }
-
-        public void setQuestion(Question question) {
-            this.question = question;
-        }
 
         public ArrayAdapter<CharSequence> getAdapter() {
             return adapter;
@@ -362,19 +307,20 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
             this.adapter = adapter;
         }
 
-        QuestionSpinnerAnsViewHolder(@NonNull View itemView) {
+        InterchangeSpinnerAnsViewHolder(@NonNull View itemView) {
             super(itemView);
             txtQuestion = itemView.findViewById(R.id.txtQuestion);
             spinnerAnswer = itemView.findViewById(R.id.spinnerAnswer);
         }
 
-        void setQuestionSpinnerAnsDetails(Question question,int position) {
-            this.question = question;
-            txtQuestion.setText(question.getQuestionText());
+        void setQuestionSpinnerAnsDetails(Interchange interchange,int position) {
+            this.interchange = interchange;
+            txtQuestion.setText(interchange.getQuestion().getQuestionText());
+
             //make CharSequence for arrayadapter from possible answer
-            possibleAnss = new ArrayList<>();
-            for(PossibleAns possibleAns : question.getPossibleAnss()){
-                possibleAnss.add(possibleAns.getValue());
+            List<CharSequence> possibleAnss = new ArrayList<>();
+            for(AnswerValue possibleAns : interchange.getAnswer().getAnswerValArrayList()){
+                possibleAnss.add(possibleAns.getDesc());
             }
             adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item, possibleAnss);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -382,43 +328,64 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
             spinnerAnswer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        //get the item that was selected
+                        String selectedAnswerValueDescStr = (String)parent.getItemAtPosition(position);
+                        Log.i("Tutorial", "selectedAnswerValueDescStr " +selectedAnswerValueDescStr);
 
-                        if(question.getQuestionNum() == 1){
-                            String countrySelected = (String)parent.getItemAtPosition(position);
-                            String countryName = "";
-
-                            //get the actual value of the country not the description, as countrySelectednly contains the description
-                            for(PossibleAns possibleAns : question.getPossibleAnss()){
-                                if(possibleAns.getValue().contentEquals(countrySelected))
-                                    countryName = possibleAns.getName();
+                        AnswerValue answerValueSelected = null;
+                        //look for the answer value object this selected str value and see if it has children
+                        for(AnswerValue answerValue : interchange.getAnswer().getAnswerValArrayList()){
+                            if(selectedAnswerValueDescStr.contentEquals(answerValue.getDesc())){
+                                //this is the Answer value selected
+                                answerValueSelected = answerValue;
                             }
+                        }
+                        Log.i("Tutorial", "answerValueSelected " +answerValueSelected);
 
-                            //trying to get the community view
-                            RecyclerView recycler = (RecyclerView) parent.getParent().getParent().getParent();
-                            QuestionSpinnerAnsViewHolder viewHolderCommunity = (QuestionSpinnerAnsViewHolder) recycler.findViewHolderForAdapterPosition(1);
-                            if(viewHolderCommunity!=null){
-                                //get the question that cantains all possible answers
-                                Question communityQuestion = viewHolderCommunity.getQuestion();
+                        if(answerValueSelected!=null){
+                            if(!answerValueSelected.getChildname().isEmpty()){
+                                //this answer value has a child with the name answerValueSelected.getChildname()
+                                Log.i("Tutorial", "answerValueSelected has children " );
+                                //try to get the child view by getting the recycler
+                                RecyclerView recycler = (RecyclerView) parent.getParent().getParent().getParent();
 
-                                //get the adapter for the spinner
-                                ArrayAdapter<CharSequence> communityAdapter = viewHolderCommunity.getAdapter();
-
-                                //select only the answer that matches the country selected
-                                List<CharSequence> possibleAnss = new ArrayList<>();
-                                for(PossibleAns possibleAns : communityQuestion.getPossibleAnss()){
-                                    if(possibleAns.getParent_value().contentEquals(countryName)){
-                                        Log.i("Tutorial", "community question posibleAns "+ possibleAns.getName() +possibleAns.getValue()+possibleAns.getParent_name()+possibleAns.getParent_value());
-                                        possibleAnss.add(possibleAns.getValue());
+                                int childPos = -1;
+                                List<CharSequence> possibleAnssChild = new ArrayList<>();
+                                for(Interchange interchange : interchanges){
+                                    if(interchange.getName() == answerValueSelected.getChildname()){
+                                        //this is the interface the has the, get its position on the recyler
+                                        childPos = interchange.getPositionOnRecyler();
+                                        Log.i("Tutorial", "childPos on recycler is " +childPos);
+                                        //select only the answer values of this child that child that has parent
+                                        for(AnswerValue answerValue : interchange.getAnswer().getAnswerValArrayList()){
+                                            if(answerValue.getParentvalue().contentEquals(answerValueSelected.getValue())){
+                                                possibleAnssChild.add(answerValue.getValue());
+                                                Log.i("Tutorial", "child posibleAns "+ answerValue.getName() +answerValue.getValue()+answerValue.getParentvalue()+answerValue.getParentvalue());
+                                            }
+                                        }
                                     }
                                 }
 
-                                //notify the adapter to change the answers for community
-                                communityAdapter.clear();
-                                communityAdapter.addAll(possibleAnss);
-                                communityAdapter.notifyDataSetChanged();
+                                //trying to get the community view
+                                InterchangeSpinnerAnsViewHolder viewHolderChild = (InterchangeSpinnerAnsViewHolder) recycler.findViewHolderForAdapterPosition(childPos);
+                                if(viewHolderChild!=null){
+                                    Log.i("Tutorial", "Got child view holder on the recycler");
+
+                                    //get the adapter for the spinner
+                                    ArrayAdapter<CharSequence> childAdapter = viewHolderChild.getAdapter();
+                                    if(childAdapter!=null){
+                                        Log.i("Tutorial", "Got child adapter from view holder");
+                                        //notify the adapter to change the answers for child
+                                        childAdapter.clear();
+                                        childAdapter.addAll(possibleAnssChild);
+                                        childAdapter.notifyDataSetChanged();
+                                    }
+
+                                }
 
                             }
                         }
+
                     }
 
                     @Override
@@ -428,7 +395,7 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
                 }
             );
 
-     */
+
             /*
             spinnerAnswer.addTextChangedListener(new TextWatcher() {
 
@@ -443,14 +410,41 @@ public class QuestionCardAdapter /*extends RecyclerView.Adapter<RecyclerView.Vie
                 }
             });
              */
-    /*
+
+        }
+    }
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        if (getItemViewType(position) == ANSTYPE_TEXT) {
+            ((InterchangeTextAnsViewHolder) holder).setQuestionTextAnsDetails(interchanges.get(position),position);
+        } else if (getItemViewType(position) == ANSTYPE_ENUM){
+            ((InterchangeEnumAnsViewHolder) holder).setQuestionEnumAnsDetails(interchanges.get(position),position);
+        }else if(getItemViewType(position) == ANSTYPE_NUMBER){
+            ((InterchangeNumberAnsViewHolder) holder).setQuestionNumberAnsDetails(interchanges.get(position),position);
+        }else if(getItemViewType(position) == ANSTYPE_ENUMDROPDOWN){
+            ((InterchangeSpinnerAnsViewHolder) holder).setQuestionSpinnerAnsDetails(interchanges.get(position),position);
         }
     }
 
-    public ArrayList<Question> retrieveData()
-    {
-        return _retQuestionsWithAns;
+    @Override
+    public int getItemCount() {
+        return interchanges.size();
     }
 
-     */
+    @Override
+    public int getItemViewType(int position) {
+
+        if (interchanges.get(position).getAnswer().getAnswerDef().getType()== AnswerType.TEXTVALUE) {
+            return ANSTYPE_TEXT;
+        } else if(interchanges.get(position).getAnswer().getAnswerDef().getType()==AnswerType.ENUMVALUE){
+            return ANSTYPE_ENUM;
+        }else if(interchanges.get(position).getAnswer().getAnswerDef().getType()==AnswerType.NUMBERVALUE){
+            return ANSTYPE_NUMBER;
+        }else if(interchanges.get(position).getAnswer().getAnswerDef().getType()==AnswerType.ENUMDROPDOWNVALUE){
+            return ANSTYPE_ENUMDROPDOWN;
+        }else{
+            return 0;
+        }
+
+    }
 }

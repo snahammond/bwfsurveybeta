@@ -7,7 +7,37 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Question  implements Comparable<Question>{
+public class Question  /*implements Comparable<Question>*/{
+    private String name;
+    private String questionText;
+
+    public Question(String name, String questionText) {
+        this.name = name;
+        this.questionText = questionText;
+    }
+
+    public Question(Config config){
+        this.name = config.getName();
+        this.questionText = config.getValue();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getQuestionText() {
+        return questionText;
+    }
+
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
+    }
+
+    /*
     private int questionNum;
     private String questionText;
     private AnswerType ansType;
@@ -77,4 +107,6 @@ public class Question  implements Comparable<Question>{
     public int compareTo(Question o) {
         return this.getQuestionNum() - o.getQuestionNum();
     }
+
+     */
 }
