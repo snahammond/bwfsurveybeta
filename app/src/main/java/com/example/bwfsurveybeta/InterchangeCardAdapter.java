@@ -63,15 +63,20 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         private TextView txtQuestion;
         private TextView editAnswer;
+        private int interchangePosition;
+
+        public int getInterchangePosition() {
+            return interchangePosition;
+        }
+
+        public void setInterchangePosition(int interchangePosition) {
+            this.interchangePosition = interchangePosition;
+        }
 
         InterchangeTextAnsViewHolder(@NonNull View itemView) {
             super(itemView);
             txtQuestion = itemView.findViewById(R.id.txtQuestion);
             editAnswer = itemView.findViewById(R.id.editAnswer);
-        }
-
-        void setQuestionTextAnsDetails(Interchange interchange,int position) {
-            txtQuestion.setText(interchange.getQuestion().getQuestionText());
             editAnswer.addTextChangedListener(new TextWatcher() {
 
                 public void afterTextChanged(Editable s) {}
@@ -81,9 +86,20 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 }
 
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    _retInterchangesWithAns.get(position).getAnswer().setAns((String)s.toString()); ;
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)s.toString()); ;
                 }
             });
+        }
+
+        void setQuestionTextAnsDetails(Interchange interchange,int position) {
+            this.setInterchangePosition(position);
+            txtQuestion.setText(interchange.getQuestion().getQuestionText());
+            if(interchange.getAnswer().getAns()!=null){
+                editAnswer.setText(interchange.getAnswer().getAns().toString());
+            }else{
+                editAnswer.setText("");
+            }
+
         }
     }
 
@@ -91,18 +107,25 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         private TextView txtQuestion;
         private TextView editAnswer;
+        private int interchangePosition;
+
+        public int getInterchangePosition() {
+            return interchangePosition;
+        }
+
+        public void setInterchangePosition(int interchangePosition) {
+            this.interchangePosition = interchangePosition;
+        }
 
         InterchangeNumberAnsViewHolder(@NonNull View itemView) {
             super(itemView);
             txtQuestion = itemView.findViewById(R.id.txtQuestion);
             editAnswer = itemView.findViewById(R.id.editAnswer);
-        }
-
-        void setQuestionNumberAnsDetails(Interchange interchange,int position) {
-            txtQuestion.setText(interchange.getQuestion().getQuestionText());
             editAnswer.addTextChangedListener(new TextWatcher() {
 
-                public void afterTextChanged(Editable s) {}
+                public void afterTextChanged(Editable s) {
+
+                }
 
                 public void beforeTextChanged(CharSequence s, int start,
                                               int count, int after) {
@@ -115,9 +138,20 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     } catch(NumberFormatException nfe) {
                         System.out.println("Could not parse " + nfe);
                     }
-                    _retInterchangesWithAns.get(position).getAnswer().setAns((Integer)myNum);
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((Integer)myNum);
                 }
             });
+        }
+
+        void setQuestionNumberAnsDetails(Interchange interchange,int position) {
+            this.setInterchangePosition(position);
+            txtQuestion.setText(interchange.getQuestion().getQuestionText());
+
+            if(interchange.getAnswer().getAns()!=null){
+                editAnswer.setText(interchange.getAnswer().getAns().toString());
+            }else{
+                editAnswer.setText("0");
+            }
         }
     }
 
@@ -135,159 +169,243 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         private RadioButton radio_8;
         private RadioButton radio_9;
         private RadioButton radio_10;
+        private int interchangePosition;
 
+        public int getInterchangePosition() {
+            return interchangePosition;
+        }
 
+        public void setInterchangePosition(int interchangePosition) {
+            this.interchangePosition = interchangePosition;
+        }
 
         InterchangeEnumAnsViewHolder(@NonNull View itemView) {
             super(itemView);
             txtQuestion = itemView.findViewById(R.id.txtQuestion);
             radioEnum = (RadioGroup) itemView.findViewById(R.id.radioEnum);
             radio_1 = (RadioButton)itemView.findViewById(R.id.radio_1);
+            radio_1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
             radio_2 = (RadioButton)itemView.findViewById(R.id.radio_2);
+            radio_2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
             radio_3 = (RadioButton)itemView.findViewById(R.id.radio_3);
+            radio_3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
             radio_4 = (RadioButton)itemView.findViewById(R.id.radio_4);
+            radio_4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
             radio_5 = (RadioButton)itemView.findViewById(R.id.radio_5);
+            radio_5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
             radio_6 = (RadioButton)itemView.findViewById(R.id.radio_6);
+            radio_6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
             radio_7 = (RadioButton)itemView.findViewById(R.id.radio_7);
+            radio_7.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
             radio_8 = (RadioButton)itemView.findViewById(R.id.radio_8);
+            radio_8.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
             radio_9 = (RadioButton)itemView.findViewById(R.id.radio_9);
+            radio_9.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
             radio_10 = (RadioButton)itemView.findViewById(R.id.radio_10);
+            radio_10.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
         }
 
         void setQuestionEnumAnsDetails(Interchange interchange, int position) {
+            this.setInterchangePosition(position);
             txtQuestion.setText(interchange.getQuestion().getQuestionText());
-            Log.i("Tutorial", "question "+ interchange.getQuestion().getQuestionText());
-            addRadioButtons(interchange.getAnswer().getAnswerValArrayList(),position);
+
+            //Log.i("Tutorial", "question "+ interchange.getQuestion().getQuestionText());
+            String selectedOptionStr = null;
+            //set which of the radio is already selected
+            if(interchange.getAnswer().getAns()!=null){
+                selectedOptionStr = interchange.getAnswer().getAns().toString();
+            }
+            //this.setSelectedValue(selectedOptionStr);
+            Log.i("Tutorial", "selected option b "+ selectedOptionStr);
+            addRadioButtons(interchange.getAnswer().getAnswerValArrayList(),position,selectedOptionStr);
         }
 
-        public void addRadioButtons(ArrayList<AnswerValue> possibleAnss,int position) {
+        public void addRadioButtons(ArrayList<AnswerValue> possibleAnss,int position,String selectedOption) {
 
+            radio_1.setVisibility(View.GONE);
+            radio_2.setVisibility(View.GONE);
+            radio_3.setVisibility(View.GONE);
+            radio_4.setVisibility(View.GONE);
+            radio_5.setVisibility(View.GONE);
+            radio_6.setVisibility(View.GONE);
+            radio_7.setVisibility(View.GONE);
+            radio_8.setVisibility(View.GONE);
+            radio_9.setVisibility(View.GONE);
+            radio_10.setVisibility(View.GONE);
+
+            radioEnum.clearCheck();
+
+            Log.i("Tutorial", "selected option a "+ selectedOption);
             if(possibleAnss.size()>0){
                 radio_1.setVisibility(View.VISIBLE);
-                radio_1.setText( possibleAnss.get(0).getValue());
-                radio_1.setHint(possibleAnss.get(0).getName());
-                radio_1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
+                radio_1.setText(possibleAnss.get(0).getDesc());
+                radio_1.setHint(possibleAnss.get(0).getValue());
+                if(selectedOption!=null){
+                    if(possibleAnss.get(0).getValue().contentEquals(selectedOption)){
+                        radioEnum.check(R.id.radio_1);
                     }
-                });
+                }
             }
 
             if(possibleAnss.size()>1){
                 radio_2.setVisibility(View.VISIBLE);
-                radio_2.setText( possibleAnss.get(1).getValue());
-                radio_2.setHint(possibleAnss.get(1).getName());
-                radio_2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
-                    }
-                });
+                radio_2.setChecked(false);
+                radio_2.setText( possibleAnss.get(1).getDesc());
+                radio_2.setHint(possibleAnss.get(1).getValue());
+                if(selectedOption!=null) {
+                    if (possibleAnss.get(1).getValue().contentEquals(selectedOption))
+                        radioEnum.check(R.id.radio_2);
+                }
             }
 
             if(possibleAnss.size()>2){
                 radio_3.setVisibility(View.VISIBLE);
-                radio_3.setText( possibleAnss.get(2).getValue());
-                radio_3.setHint(possibleAnss.get(2).getName());
-                radio_3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
-                    }
-                });
+                radio_3.setChecked(false);
+                radio_3.setText( possibleAnss.get(2).getDesc());
+                radio_3.setHint(possibleAnss.get(2).getValue());
+                if(selectedOption!=null) {
+                    if(possibleAnss.get(2).getValue().contentEquals(selectedOption))
+                        radioEnum.check(R.id.radio_3);
+                }
             }
+
             if(possibleAnss.size()>3){
                 radio_4.setVisibility(View.VISIBLE);
-                radio_4.setText( possibleAnss.get(3).getValue());
-                radio_4.setHint(possibleAnss.get(3).getName());
-                radio_4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
-                    }
-                });
+                radio_4.setChecked(false);
+                radio_4.setText( possibleAnss.get(3).getDesc());
+                radio_4.setHint(possibleAnss.get(3).getValue());
+                if(selectedOption!=null) {
+                    if(possibleAnss.get(3).getValue().contentEquals(selectedOption))
+                        radioEnum.check(R.id.radio_4);
+                }
             }
+
             if(possibleAnss.size()>4){
                 radio_5.setVisibility(View.VISIBLE);
-                radio_5.setText( possibleAnss.get(4).getValue());
-                radio_5.setHint(possibleAnss.get(4).getName());
-                radio_5.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
-                    }
-                });
+                radio_5.setChecked(false);
+                radio_5.setText( possibleAnss.get(4).getDesc());
+                radio_5.setHint(possibleAnss.get(4).getValue());
+                if(selectedOption!=null) {
+                    if(possibleAnss.get(4).getValue().contentEquals(selectedOption))
+                        radioEnum.check(R.id.radio_5);
+                }
             }
 
             if(possibleAnss.size()>5){
                 radio_6.setVisibility(View.VISIBLE);
-                radio_6.setText( possibleAnss.get(5).getValue());
-                radio_6.setHint(possibleAnss.get(5).getName());
-                radio_6.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
-                    }
-                });
+                radio_6.setChecked(false);
+                radio_6.setText( possibleAnss.get(5).getDesc());
+                radio_6.setHint(possibleAnss.get(5).getValue());
+                if(selectedOption!=null) {
+                    if(possibleAnss.get(5).getValue().contentEquals(selectedOption))
+                        radioEnum.check(R.id.radio_6);
+                }
             }
 
             if(possibleAnss.size()>6){
                 radio_7.setVisibility(View.VISIBLE);
-                radio_7.setText( possibleAnss.get(6).getValue());
-                radio_7.setHint(possibleAnss.get(6).getName());
-                radio_7.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
-                    }
-                });
+                radio_7.setChecked(false);
+                radio_7.setText( possibleAnss.get(6).getDesc());
+                radio_7.setHint(possibleAnss.get(6).getValue());
+                if(selectedOption!=null) {
+                    if(possibleAnss.get(6).getValue().contentEquals(selectedOption))
+                        radioEnum.check(R.id.radio_7);
+                }
+
             }
 
             if(possibleAnss.size()>7){
                 radio_8.setVisibility(View.VISIBLE);
-                radio_8.setText( possibleAnss.get(7).getValue());
-                radio_8.setHint(possibleAnss.get(7).getName());
-                radio_8.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
-                    }
-                });
+                radio_8.setChecked(false);
+                radio_8.setText( possibleAnss.get(7).getDesc());
+                radio_8.setHint(possibleAnss.get(7).getValue());
+                if(selectedOption!=null) {
+                    if(possibleAnss.get(7).getValue().contentEquals(selectedOption))
+                        radioEnum.check(R.id.radio_8);
+                }
+
             }
 
             if(possibleAnss.size()>8){
                 radio_9.setVisibility(View.VISIBLE);
-                radio_9.setText( possibleAnss.get(8).getValue());
-                radio_9.setHint(possibleAnss.get(8).getName());
-                radio_9.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
-                    }
-                });
+                radio_9.setChecked(false);
+                radio_9.setText( possibleAnss.get(8).getDesc());
+                radio_9.setHint(possibleAnss.get(8).getValue());
+                if(selectedOption!=null) {
+                    if(possibleAnss.get(8).getValue().contentEquals(selectedOption))
+                        radioEnum.check(R.id.radio_9);
+                }
             }
 
             if(possibleAnss.size()>9){
                 radio_10.setVisibility(View.VISIBLE);
-                radio_10.setText( possibleAnss.get(9).getValue());
-                radio_10.setHint(possibleAnss.get(9).getName());
-                radio_10.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
-                        _retInterchangesWithAns.get(position).getAnswer().setAns(selectedRadioEnumStrValue);
-                    }
-                });
+                radio_10.setChecked(false);
+                radio_10.setText( possibleAnss.get(9).getDesc());
+                radio_10.setHint(possibleAnss.get(9).getValue());
+                if(selectedOption!=null) {
+                    if(possibleAnss.get(9).getValue().contentEquals(selectedOption))
+                        radioEnum.check(R.id.radio_10);
+                }
             }
         }
     }
@@ -296,8 +414,17 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         private TextView txtQuestion;
         private Spinner spinnerAnswer;
+        private int interchangePosition;
         private Interchange interchange;
         private ArrayAdapter<CharSequence> adapter;
+
+        public int getInterchangePosition() {
+            return interchangePosition;
+        }
+
+        public void setInterchangePosition(int interchangePosition) {
+            this.interchangePosition = interchangePosition;
+        }
 
         public ArrayAdapter<CharSequence> getAdapter() {
             return adapter;
@@ -307,13 +434,99 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             this.adapter = adapter;
         }
 
+        public Spinner getSpinnerAnswer() {
+            return spinnerAnswer;
+        }
+
+        public void setSpinnerAnswer(Spinner spinnerAnswer) {
+            this.spinnerAnswer = spinnerAnswer;
+        }
+
         InterchangeSpinnerAnsViewHolder(@NonNull View itemView) {
             super(itemView);
             txtQuestion = itemView.findViewById(R.id.txtQuestion);
             spinnerAnswer = itemView.findViewById(R.id.spinnerAnswer);
+            spinnerAnswer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    //get the item that was selected
+                    String selectedAnswerValueDescStr = (String)parent.getItemAtPosition(position);
+                    //Log.i("Tutorial", "selectedAnswerValueDescStr " +selectedAnswerValueDescStr);
+
+                    AnswerValue answerValueSelected = null;
+                    //look for the answer value object this selected str value and see if it has children
+                    for(AnswerValue answerValue : interchange.getAnswer().getAnswerValArrayList()){
+                        if(selectedAnswerValueDescStr.contentEquals(answerValue.getDesc())){
+                            //this is the Answer value selected
+                            answerValueSelected = answerValue;
+                        }
+                    }
+                    //Log.i("Tutorial", "answerValueSelected " +answerValueSelected);
+
+                    if(answerValueSelected!=null){
+                        if(!answerValueSelected.getChildname().isEmpty()){
+                            //this answer value has a child with the name answerValueSelected.getChildname()
+                            //Log.i("Tutorial", "answerValueSelected has children " );
+                            //try to get the child view by getting the recycler
+                            RecyclerView recycler = (RecyclerView) parent.getParent().getParent().getParent();
+
+                            int childPos = -1;
+                            List<CharSequence> possibleAnssChild = new ArrayList<>();
+                            for(Interchange interchange : interchanges){
+                                if(interchange.getName() == answerValueSelected.getChildname()){
+                                    //this is the interface the has the, get its position on the recyler
+                                    childPos = interchange.getPositionOnRecyler();
+                                    //Log.i("Tutorial", "childPos on recycler is " +childPos);
+                                    //select only the answer values of this child that child that has parent
+                                    for(AnswerValue answerValue : interchange.getAnswer().getAnswerValArrayList()){
+                                        if(answerValue.getParentvalue().contentEquals(answerValueSelected.getValue())){
+                                            possibleAnssChild.add(answerValue.getDesc());
+                                            //Log.i("Tutorial", "child posibleAns "+ answerValue.getName() +answerValue.getValue()+answerValue.getParentvalue()+answerValue.getParentvalue());
+                                        }
+                                    }
+                                }
+                            }
+
+                            //trying to get the community view
+                            InterchangeSpinnerAnsViewHolder viewHolderChild = (InterchangeSpinnerAnsViewHolder) recycler.findViewHolderForAdapterPosition(childPos);
+                            if(viewHolderChild!=null){
+                                //Log.i("Tutorial", "Got child view holder on the recycler");
+
+                                //get the adapter for the spinner
+                                ArrayAdapter<CharSequence> childAdapter = viewHolderChild.getAdapter();
+                                if(childAdapter!=null){
+                                    //Log.i("Tutorial", "Got child adapter from view holder");
+                                    //notify the adapter to change the answers for child
+                                    childAdapter.clear();
+                                    childAdapter.addAll(possibleAnssChild);
+                                    childAdapter.notifyDataSetChanged();
+
+                                    viewHolderChild.setAdapter(childAdapter);
+                                    Interchange childInterchange = _retInterchangesWithAns.get(childPos);
+                                    if(childInterchange.getAnswer().getAns()!=null){
+                                        viewHolderChild.getSpinnerAnswer().setSelection(childAdapter.getPosition(childInterchange.getAnswer().getAns().toString()));
+                                    }else{
+                                        viewHolderChild.getSpinnerAnswer().setSelection(0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedAnswerValueDescStr);
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            }
+            );
         }
 
         void setQuestionSpinnerAnsDetails(Interchange interchange,int position) {
+            this.setInterchangePosition(position);
             this.interchange = interchange;
             txtQuestion.setText(interchange.getQuestion().getQuestionText());
 
@@ -325,104 +538,28 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item, possibleAnss);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinnerAnswer.setAdapter(adapter);
-            spinnerAnswer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        //get the item that was selected
-                        String selectedAnswerValueDescStr = (String)parent.getItemAtPosition(position);
-                        Log.i("Tutorial", "selectedAnswerValueDescStr " +selectedAnswerValueDescStr);
-
-                        AnswerValue answerValueSelected = null;
-                        //look for the answer value object this selected str value and see if it has children
-                        for(AnswerValue answerValue : interchange.getAnswer().getAnswerValArrayList()){
-                            if(selectedAnswerValueDescStr.contentEquals(answerValue.getDesc())){
-                                //this is the Answer value selected
-                                answerValueSelected = answerValue;
-                            }
-                        }
-                        Log.i("Tutorial", "answerValueSelected " +answerValueSelected);
-
-                        if(answerValueSelected!=null){
-                            if(!answerValueSelected.getChildname().isEmpty()){
-                                //this answer value has a child with the name answerValueSelected.getChildname()
-                                Log.i("Tutorial", "answerValueSelected has children " );
-                                //try to get the child view by getting the recycler
-                                RecyclerView recycler = (RecyclerView) parent.getParent().getParent().getParent();
-
-                                int childPos = -1;
-                                List<CharSequence> possibleAnssChild = new ArrayList<>();
-                                for(Interchange interchange : interchanges){
-                                    if(interchange.getName() == answerValueSelected.getChildname()){
-                                        //this is the interface the has the, get its position on the recyler
-                                        childPos = interchange.getPositionOnRecyler();
-                                        Log.i("Tutorial", "childPos on recycler is " +childPos);
-                                        //select only the answer values of this child that child that has parent
-                                        for(AnswerValue answerValue : interchange.getAnswer().getAnswerValArrayList()){
-                                            if(answerValue.getParentvalue().contentEquals(answerValueSelected.getValue())){
-                                                possibleAnssChild.add(answerValue.getValue());
-                                                Log.i("Tutorial", "child posibleAns "+ answerValue.getName() +answerValue.getValue()+answerValue.getParentvalue()+answerValue.getParentvalue());
-                                            }
-                                        }
-                                    }
-                                }
-
-                                //trying to get the community view
-                                InterchangeSpinnerAnsViewHolder viewHolderChild = (InterchangeSpinnerAnsViewHolder) recycler.findViewHolderForAdapterPosition(childPos);
-                                if(viewHolderChild!=null){
-                                    Log.i("Tutorial", "Got child view holder on the recycler");
-
-                                    //get the adapter for the spinner
-                                    ArrayAdapter<CharSequence> childAdapter = viewHolderChild.getAdapter();
-                                    if(childAdapter!=null){
-                                        Log.i("Tutorial", "Got child adapter from view holder");
-                                        //notify the adapter to change the answers for child
-                                        childAdapter.clear();
-                                        childAdapter.addAll(possibleAnssChild);
-                                        childAdapter.notifyDataSetChanged();
-                                    }
-
-                                }
-
-                            }
-                        }
-
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                }
-            );
+            if(interchange.getAnswer().getAns()!=null){
+                spinnerAnswer.setSelection(adapter.getPosition(interchange.getAnswer().getAns().toString()));
+            }else{
+                spinnerAnswer.setSelection(0);
+            }
 
 
-            /*
-            spinnerAnswer.addTextChangedListener(new TextWatcher() {
 
-                public void afterTextChanged(Editable s) {}
 
-                public void beforeTextChanged(CharSequence s, int start,
-                                              int count, int after) {
-                }
-
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    _retQuestionsWithAns.get(position).setAns((String)s.toString()); ;
-                }
-            });
-             */
 
         }
     }
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == ANSTYPE_TEXT) {
-            ((InterchangeTextAnsViewHolder) holder).setQuestionTextAnsDetails(interchanges.get(position),position);
+            ((InterchangeTextAnsViewHolder) holder).setQuestionTextAnsDetails(_retInterchangesWithAns.get(position),position);
         } else if (getItemViewType(position) == ANSTYPE_ENUM){
-            ((InterchangeEnumAnsViewHolder) holder).setQuestionEnumAnsDetails(interchanges.get(position),position);
+            ((InterchangeEnumAnsViewHolder) holder).setQuestionEnumAnsDetails(_retInterchangesWithAns.get(position),position);
         }else if(getItemViewType(position) == ANSTYPE_NUMBER){
-            ((InterchangeNumberAnsViewHolder) holder).setQuestionNumberAnsDetails(interchanges.get(position),position);
+            ((InterchangeNumberAnsViewHolder) holder).setQuestionNumberAnsDetails(_retInterchangesWithAns.get(position),position);
         }else if(getItemViewType(position) == ANSTYPE_ENUMDROPDOWN){
-            ((InterchangeSpinnerAnsViewHolder) holder).setQuestionSpinnerAnsDetails(interchanges.get(position),position);
+            ((InterchangeSpinnerAnsViewHolder) holder).setQuestionSpinnerAnsDetails(_retInterchangesWithAns.get(position),position);
         }
     }
 

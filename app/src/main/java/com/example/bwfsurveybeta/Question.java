@@ -18,7 +18,7 @@ public class Question  /*implements Comparable<Question>*/{
 
     public Question(Config config){
         this.name = config.getName();
-        this.questionText = config.getValue();
+        this.questionText = config.getDescription();
     }
 
     public String getName() {

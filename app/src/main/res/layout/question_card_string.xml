@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_margin="15dp"
     android:orientation="vertical"
-    app:cardCornerRadius="2dp"
+    app:cardCornerRadius="8dp"
     app:cardElevation="6dp">
 
     <LinearLayout
@@ -19,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="1dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
 
         <EditText
             android:id="@+id/editAnswer"

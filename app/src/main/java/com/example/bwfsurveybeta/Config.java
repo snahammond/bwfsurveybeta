@@ -14,6 +14,9 @@ public class Config {
     private String ParentValue;
     private String ParentDescription;
 
+    public Config() {
+    }
+
     public Config(String type, String name, String value, String description, String childName, String childValue, String childDescription, String parentName, String parentValue, String parentDescription) {
         Type = type;
         Name = name;

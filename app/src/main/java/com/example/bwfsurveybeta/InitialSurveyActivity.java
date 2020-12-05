@@ -48,9 +48,10 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         recyclerView.setAdapter(adapter);
 
     }
-
+/*
     private void createInitialSurveyQuestionaire(){
         InitialSurveyActivity.interchanges = new ArrayList<>();
+
         int[] interchangesRequired = null;
 
         //load in all the configs
@@ -141,6 +142,18 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                     }
                 }
             }
+        }
+    }
+*/
+    private void createInitialSurveyQuestionaire(){
+        try{
+            InitialSurveyActivity.interchanges = MyAmplifyApplication.getInterchanges("INITAILSURVEY");
+            Log.i("Tutorial", "InitialSurveyActivity.interchanges.size()  " +InitialSurveyActivity.interchanges.size() );
+            for(Interchange interchange : InitialSurveyActivity.interchanges){
+                Log.i("Tutorial", "interchange " +interchange.getName() +" "+ interchange.getInterchangeNumber());
+            }
+        }catch (Exception c){
+            Log.i("Tutorial", "we cannot get list of interchanges " );
         }
     }
 
