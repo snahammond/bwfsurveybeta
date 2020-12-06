@@ -1,10 +1,12 @@
 package com.example.bwfsurveybeta;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,7 +48,6 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new InterchangeCardAdapter(InitialSurveyActivity.this, InitialSurveyActivity.interchanges);
         recyclerView.setAdapter(adapter);
-
     }
 /*
     private void createInitialSurveyQuestionaire(){
@@ -147,16 +148,21 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
 */
     private void createInitialSurveyQuestionaire(){
         try{
-            InitialSurveyActivity.interchanges = MyAmplifyApplication.getInterchanges("INITAILSURVEY");
-            Log.i("Tutorial", "InitialSurveyActivity.interchanges.size()  " +InitialSurveyActivity.interchanges.size() );
-            for(Interchange interchange : InitialSurveyActivity.interchanges){
-                Log.i("Tutorial", "interchange " +interchange.getName() +" "+ interchange.getInterchangeNumber());
+            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("INITAILSURVEY");
+            if(returnedInterchanges!=null){
+                InitialSurveyActivity.interchanges = new ArrayList<>();
+                int positionOnRecyler = 0;
+                for(Interchange interchange : returnedInterchanges){
+                    interchange.setPositionOnRecyler(positionOnRecyler);
+                    InitialSurveyActivity.interchanges.add(interchange);
+                    positionOnRecyler += 1;
+                }
             }
         }catch (Exception c){
             Log.i("Tutorial", "we cannot get list of interchanges " );
         }
     }
-
+/*
     private ArrayList<Config> loadInAllConfigs(){
         ArrayList<Config> configs = null;
         //load from file
@@ -172,7 +178,7 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         }
         return configs;
     }
-/*
+
     private static class GetFamilyQuestionsConfigs{
 
         public interface GetFamilyQuestionsConfigsListerner{
@@ -423,6 +429,7 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         });
         getFamilyQuestionsConfigs.execute();
     }
+    */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -438,8 +445,26 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
 
         if (id == R.id.menu_save) {
             // do something here
-            ArrayList<Question> questionsWithAns = adapter.retrieveData();
+            ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
+            //we have to validate now
+            ArrayList<Interchange> invalideInterchanges = validateUserAns(interchangesWithUserAns);
+            Log.i("Tutorial", "how many invalid interfaces: " + invalideInterchanges.size());
+
+            if(invalideInterchanges.size()>0){
+                new AlertDialog.Builder(InitialSurveyActivity.this)
+                        .setTitle("Invalid Questions")
+                        .setMessage("Some questions have not been correctly answered \n" )
+                        // A null listener allows the button to dismiss the dialog and take no further action.
+                        .setNegativeButton(android.R.string.ok, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            }else{
+                Log.i("Tutorial", "we can proceed to save");
+            }
+
+
+/*
             Calendar calendar = Calendar.getInstance();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String date_s = dateFormat.format(calendar.getTime());
@@ -506,11 +531,27 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                 }
             );
 
-
+    */
         }
         return super.onOptionsItemSelected(item);
     }
 
+    //this function will return a list of invalid interchanges
+    private ArrayList<Interchange> validateUserAns(ArrayList<Interchange> interchangesWithUserAns) {
+        Log.i("Tutorial", "we are now validating " );
+        ArrayList<Interchange> invalidinterchange = new ArrayList<>();
+        for(Interchange interchange: interchangesWithUserAns){
+            //check for its validation
+            //Log.i("Tutorial", "interchange: "+interchange.getValidation().getName() +" mandatory: "+interchange.getValidation().isMandatory() + "user answer: "+interchange.getAnswer().getAns());
+            if(!interchange.isValid()){
+                invalidinterchange.add(interchange);
+                Log.i("Tutorial", "invalid interchange: "+interchange.getValidation().getName() +" mandatory: "+interchange.getValidation().isMandatory() + " default value: "+interchange.getValidation().getDefaultValue() + "user answer: "+interchange.getAnswer().getAns());
+            }
+
+        }
+        return invalidinterchange;
+    }
+/*
     public void showSaveSurvey(String content) {
         DialogFragment newFragment = new SaveSurveyDialog(content);
         newFragment.show(getSupportFragmentManager(), "confirmSignUp");

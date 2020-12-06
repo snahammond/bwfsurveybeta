@@ -46,6 +46,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>Country</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>Country</name>
         <value>Country</value>
@@ -116,6 +125,15 @@
         <name>Community</name>
         <value>2</value>
         <desc>Community's Name</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>Community</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -340,6 +358,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>HeadHouseholdName</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>HeadHouseholdName</name>
         <value>HeadHouseholdName</value>
@@ -362,6 +389,15 @@
         <name>HeadHouseholdSex</name>
         <value>6</value>
         <desc>Head of Household Sex</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>HeadHouseholdSex</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -413,6 +449,15 @@
         <name>HeadHouseholdMaritalStatus</name>
         <value>7</value>
         <desc>Head of Household Marital Status</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>HeadHouseholdMaritalStatus</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -505,6 +550,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>HeadHouseholdAge</name>
+        <value>1</value>
+        <desc>17</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>HeadHouseholdAge</name>
         <value>HeadHouseholdAge</value>
@@ -527,6 +581,15 @@
         <name>HeadHouseholdOccupation</name>
         <value>9</value>
         <desc>Head of Household Occupation</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>HeadHouseholdOccupation</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -643,6 +706,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>HeadHouseholdEducation</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>HeadHouseholdEducation</name>
         <value>HeadHouseholdEducation</value>
@@ -749,6 +821,15 @@
         <name>PersonBeingInterviewed</name>
         <value>11</value>
         <desc>Person being Interviewed (Should be &gt;18 Years)</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>PersonBeingInterviewed</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -901,6 +982,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>TotalNoPeopleHousehold</name>
+        <value>1</value>
+        <desc>0</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>TotalNoPeopleHousehold</name>
         <value>TotalNoPeopleHousehold</value>
@@ -923,6 +1013,15 @@
         <name>NoHouseholdMale0_1Year</name>
         <value>13</value>
         <desc>No. of Household Male Members 0-1 Year</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoHouseholdMale0_1Year</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -955,6 +1054,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>NoHouseholdFemale0_1Year</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>NoHouseholdFemale0_1Year</name>
         <value>NoHouseholdFemale0_1Year</value>
@@ -977,6 +1085,15 @@
         <name>NoHouseholdMale1_5Year</name>
         <value>15</value>
         <desc>No. of Household Male Members 1-5 Years</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoHouseholdMale1_5Year</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -1009,6 +1126,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>NoHouseholdFemale1_5Year</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>NoHouseholdFemale1_5Year</name>
         <value>NoHouseholdFemale1_5Year</value>
@@ -1031,6 +1157,15 @@
         <name>NoHouseholdMale5_12Year</name>
         <value>17</value>
         <desc>No. of Household Male Members 5-12 Years</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoHouseholdMale5_12Year</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -1063,6 +1198,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>NoHouseholdFemale5_12Year</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>NoHouseholdFemale5_12Year</name>
         <value>NoHouseholdFemale5_12Year</value>
@@ -1085,6 +1229,15 @@
         <name>NoHouseholdMale13_17Year</name>
         <value>19</value>
         <desc>No. of Household Male Members 13-17 Years</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoHouseholdMale13_17Year</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -1117,6 +1270,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>NoHouseholdFemale13_17Year</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>NoHouseholdFemale13_17Year</name>
         <value>NoHouseholdFemale13_17Year</value>
@@ -1139,6 +1301,15 @@
         <name>NoHouseholdMale18_Year</name>
         <value>21</value>
         <desc>No. of Household Male Members 18+ Years</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoHouseholdMale18_Year</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -1171,6 +1342,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>NoHouseholdFemale18_Year</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>NoHouseholdFemale18_Year</name>
         <value>NoHouseholdFemale18_Year</value>
@@ -1193,6 +1373,15 @@
         <name>ReasonNoSchoolChildren5_17Year</name>
         <value>23</value>
         <desc>If any children 5-17 years are not in school, why not?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>ReasonNoSchoolChildren5_17Year</name>
+        <value>0</value>
+        <desc>NOTAPPLICABLE</desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -1304,6 +1493,15 @@
         <name>MainSourceDrinkingWater</name>
         <value>24</value>
         <desc>What is the main source of drinking water for members of your household?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>MainSourceDrinkingWater</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -1432,6 +1630,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>MainSourceOtherPurposeWater</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>MainSourceOtherPurposeWater</name>
         <value>MainSourceOtherPurposeWater</value>
@@ -1555,6 +1762,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>TimeToWaterSourceGetReturn</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>TimeToWaterSourceGetReturn</name>
         <value>TimeToWaterSourceAndReturn</value>
@@ -1577,6 +1793,15 @@
         <name>HouseholdFrequencyAtWaterSource</name>
         <value>27</value>
         <desc>How often does someone in your household go to the water source to collect water?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>HouseholdFrequencyAtWaterSource</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -1669,6 +1894,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>UsualHouseholdWaterFetcher</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>UsualHouseholdWaterFetcher</name>
         <value>UsualHouseholdWaterFetcher</value>
@@ -1739,6 +1973,15 @@
         <name>ContainerCarryWater</name>
         <value>29</value>
         <desc>What kind of container do you use to carry your water?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>ContainerCarryWater</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -1855,6 +2098,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>WaterTreatmentBeforeDrinking</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>WaterTreatmentBeforeDrinking</name>
         <value>WaterTreatmentBeforeDrinking</value>
@@ -1901,6 +2153,15 @@
         <name>MainReasonNoWaterTreatmentBeforeDrinking</name>
         <value>31</value>
         <desc>If you do not treat your water, what is the main reason you do not treat your water for drinking?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>MainReasonNoWaterTreatmentBeforeDrinking</name>
+        <value>0</value>
+        <desc>NOTAPPLICABLE</desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -2000,6 +2261,15 @@
         <name>WaterTreatmentMethod</name>
         <value>32</value>
         <desc>If you treat your drinking water, what do you usually do to make it safer to drink?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>WaterTreatmentMethod</name>
+        <value>0</value>
+        <desc>NOTAPPLICABLE</desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -2128,6 +2398,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>HowLongUsingWaterTreatment</name>
+        <value>0</value>
+        <desc>NOTAPPLICABLE</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>HowLongUsingWaterTreatment</name>
         <value>HowLongUsingWaterTreatment</value>
@@ -2227,6 +2506,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>FrequencyWaterTreatment</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>FrequencyWaterTreatment</name>
         <value>FrequencyWaterTreatment</value>
@@ -2285,6 +2573,15 @@
         <name>WaterStorageAtHome</name>
         <value>35</value>
         <desc>Where do you store the water you drink in the home? (If practical, ask to see where the water is stored for drinking.)</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>WaterStorageAtHome</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -2389,6 +2686,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>TakingWaterFromStorage</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>TakingWaterFromStorage</name>
         <value>TakingWaterFromStorage</value>
@@ -2459,6 +2765,15 @@
         <name>RubbishDisposal</name>
         <value>37</value>
         <desc>Where does this household dispose of rubbish or trash?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>RubbishDisposal</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -2539,6 +2854,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>HouseholdDefecationMethod</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>HouseholdDefecationMethod</name>
         <value>HouseholdDefecationMethod</value>
@@ -2585,6 +2909,15 @@
         <name>SatisfactionHouseholdDefecationMethod</name>
         <value>39</value>
         <desc>How satisfied are you with your current place of defecation?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>SatisfactionHouseholdDefecationMethod</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -2648,6 +2981,15 @@
         <name>WasteDisposalYoungestChild</name>
         <value>40</value>
         <desc>The last time the youngest child in the household passed a stool, what was done to dispose of the waste?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>WasteDisposalYoungestChild</name>
+        <value>0</value>
+        <desc>NOTAPPLICABLE</desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -2788,6 +3130,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>WashedHandsIn24Hours</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>WashedHandsIn24Hours</name>
         <value>WashedHandsIn24Hours</value>
@@ -2846,6 +3197,15 @@
         <name>WhenWashedHandsIn24Hours</name>
         <value>42</value>
         <desc>In the past 24 hours, when did you wash your hands?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>WhenWashedHandsIn24Hours</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -2998,6 +3358,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>WhatUsedToWashYourHands</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>WhatUsedToWashYourHands</name>
         <value>WhatUsedToWashYourHands</value>
@@ -3097,6 +3466,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek</name>
+        <value>0</value>
+        <desc>0</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek</name>
         <value>NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek</value>
@@ -3119,6 +3497,15 @@
         <name>CommonIllnessAffectingChildrenUnder5</name>
         <value>45</value>
         <desc>What are the most common illnesses affecting children under 5 in this household?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>CommonIllnessAffectingChildrenUnder5</name>
+        <value>0</value>
+        <desc>NOTAPPLICABLE</desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -3250,10 +3637,31 @@
         <parentdesc></parentdesc>
     </config>
     <config>
+        <type>AV</type>
+        <name>CommonIllnessAffectingChildrenUnder5</name>
+        <value>NOTAPPLICABLE</value>
+        <desc>Not applicable</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+        <parentname></parentname>
+        <parentvalue></parentvalue>
+        <parentdesc></parentdesc>
+    </config>
+    <config>
         <type>I</type>
         <name>NoChildrenWithVomitingOrDiarrheaIn7days</name>
         <value>46</value>
         <desc>In the last week (7 days), how many children under 5 years old in your household had vomiting and/or diarrhea?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoChildrenWithVomitingOrDiarrheaIn7days</name>
+        <value>0</value>
+        <desc>0</desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -3281,6 +3689,15 @@
         <name>DidSickChildrenGoToHospital</name>
         <value>47</value>
         <desc>Did the child(ren) who had vomiting and/or diarrhea go to hospital?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>DidSickChildrenGoToHospital</name>
+        <value>0</value>
+        <desc>NOTAPPLICABLE</desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -3344,6 +3761,15 @@
         <name>DidSickChildrenGoToHospitalYes</name>
         <value>48</value>
         <desc>If yes, what medications were given to the child(ren)?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>DidSickChildrenGoToHospitalYes</name>
+        <value>0</value>
+        <desc>NOTAPPLICABLE</desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -3436,6 +3862,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>SickChildrenBreastfeeding</name>
+        <value>0</value>
+        <desc>NOTAPPLICABLE</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>SickChildrenBreastfeeding</name>
         <value>SickChildrenBreastfeeding</value>
@@ -3494,6 +3929,15 @@
         <name>OutcomeMostRecentVomiting_DiarrheaAtHospital</name>
         <value>50</value>
         <desc>What was the outcome of your child(ren)’s most recent vomiting/diarrhea at the hospital?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>OutcomeMostRecentVomiting_DiarrheaAtHospital</name>
+        <value>0</value>
+        <desc>NOTAPPLICABLE</desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -3574,6 +4018,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>NoDaysNoWorkBecauseOfOwnIllness</name>
+        <value>0</value>
+        <desc>0</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>NoDaysNoWorkBecauseOfOwnIllness</name>
         <value>NoDaysNoWorkBecauseOfOwnIllness</value>
@@ -3596,6 +4049,15 @@
         <name>NoDaysNoWorkBecauseOfIllnessFamilyMembers</name>
         <value>52</value>
         <desc>In the last two weeks, how many total days have other members of your family been unable to do work due to illness?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoDaysNoWorkBecauseOfIllnessFamilyMembers</name>
+        <value>0</value>
+        <desc>0</desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -3628,6 +4090,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>MoneySpentMedicalTreatmentLast4weeks</name>
+        <value>0</value>
+        <desc>0</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>MoneySpentMedicalTreatmentLast4weeks</name>
         <value>MoneySpentMedicalTreatmentLast4weeks</value>
@@ -3650,6 +4121,15 @@
         <name>HealthChangeInAYear</name>
         <value>54</value>
         <desc>Since this time last year, how has your own health changed?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>HealthChangeInAYear</name>
+        <value>1</value>
+        <desc></desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>
@@ -3730,6 +4210,15 @@
         <childdesc></childdesc>
     </config>
     <config>
+        <type>V</type>
+        <name>HealthChangeFamilyInAYear</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
         <type>Q</type>
         <name>HealthChangeFamilyInAYear</name>
         <value>HealthChangeFamilyInAYear</value>
@@ -3795,865 +4284,5 @@
         <parentvalue></parentvalue>
         <parentdesc></parentdesc>
     </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-    <config>
-        <type></type>
-        <name></name>
-        <value></value>
-        <desc></desc>
-        <childname></childname>
-        <childvalue></childvalue>
-        <childdesc></childdesc>
-    </config>
-
-
-
-
-
 
 </configs>

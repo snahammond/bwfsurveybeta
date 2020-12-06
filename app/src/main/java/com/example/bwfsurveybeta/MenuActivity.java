@@ -26,7 +26,7 @@ public class MenuActivity extends AppCompatActivity {
         Log.i("Tutorials", "namebwe: " + namebwe);
 
         //doProgress();
-
+        showMenu();
     }
 
     public void doProgress(){
@@ -68,6 +68,6 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        doProgress();
+        //doProgress();
     }
 }

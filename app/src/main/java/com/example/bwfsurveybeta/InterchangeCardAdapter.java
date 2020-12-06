@@ -138,7 +138,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     } catch(NumberFormatException nfe) {
                         System.out.println("Could not parse " + nfe);
                     }
-                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((Integer)myNum);
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((int)myNum);
                 }
             });
         }
@@ -151,6 +151,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 editAnswer.setText(interchange.getAnswer().getAns().toString());
             }else{
                 editAnswer.setText("0");
+                _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(0);
             }
         }
     }
@@ -276,7 +277,6 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 selectedOptionStr = interchange.getAnswer().getAns().toString();
             }
             //this.setSelectedValue(selectedOptionStr);
-            Log.i("Tutorial", "selected option b "+ selectedOptionStr);
             addRadioButtons(interchange.getAnswer().getAnswerValArrayList(),position,selectedOptionStr);
         }
 
@@ -295,7 +295,6 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
             radioEnum.clearCheck();
 
-            Log.i("Tutorial", "selected option a "+ selectedOption);
             if(possibleAnss.size()>0){
                 radio_1.setVisibility(View.VISIBLE);
                 radio_1.setText(possibleAnss.get(0).getDesc());
@@ -550,6 +549,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         }
     }
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == ANSTYPE_TEXT) {
@@ -582,6 +582,10 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }else{
             return 0;
         }
+    }
 
+    public ArrayList<Interchange> retrieveData()
+    {
+        return _retInterchangesWithAns;
     }
 }

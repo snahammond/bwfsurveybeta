@@ -77,6 +77,7 @@ public class MyAmplifyApplication extends Application {
             ArrayList<AnswerDef> answerDefPool = new ArrayList<>();
             ArrayList<Question> questionPool = new ArrayList<>();
             ArrayList<Answer> answerPool = new ArrayList<>();
+            ArrayList<Validation> validationPool = new ArrayList<>();
 
             for(Config config : configs){
                 //Log.i("Tutorial", "config " +config.getType() + " "+ config.getName() +" "+ config.getValue());
@@ -94,6 +95,20 @@ public class MyAmplifyApplication extends Application {
                         interchangeNo = -1;
                     }
                     allInterchangesFromConfig.add(new Interchange(config.getName(),interchangeNo));
+                } else if (config.getType().contentEquals("V")) {
+                    int mandatoryInt;
+                    boolean mandatory;
+                    try {
+                        mandatoryInt = Integer.parseInt(config.getValue());
+                    }catch (Exception x){
+                        mandatoryInt = 0;
+                    }
+                    if(mandatoryInt==1){
+                        mandatory=true;
+                    }else{
+                        mandatory = false;
+                    }
+                    validationPool.add(new Validation(config.getName(),mandatory,config.getDescription()));
                 }
             }
             //we have made all the answers
@@ -107,7 +122,7 @@ public class MyAmplifyApplication extends Application {
                 answerPool.add(new Answer(answerDef,answerValArrayList));
             }
 
-            //update the interchanges with questions and answers
+            //update the interchanges with questions and answers and validation
             for(Interchange interchange : allInterchangesFromConfig){
                 for(Question question: questionPool){
                     if(interchange.getName().contentEquals(question.getName())){
@@ -117,6 +132,11 @@ public class MyAmplifyApplication extends Application {
                 for(Answer answer: answerPool){
                     if(interchange.getName().contentEquals(answer.getAnswerDef().getName())){
                         interchange.setAnswer(answer);
+                    }
+                }
+                for(Validation validation : validationPool){
+                    if(interchange.getName().contentEquals(validation.getName())){
+                        interchange.setValidation(validation);
                     }
                 }
             }
@@ -142,7 +162,7 @@ public class MyAmplifyApplication extends Application {
 
     //get list of required interchanges with name of Survey
     public static ArrayList<Interchange> getInterchanges(String nameOfSurvey){
-        ArrayList<Interchange> interchanges = new ArrayList<>();
+        ArrayList<Interchange> interchanges = null;
 
         //search fo the config with name nameOfSurvey
         Config configOfSurveyBeingRequested = searchConfigForSurvey(nameOfSurvey);
