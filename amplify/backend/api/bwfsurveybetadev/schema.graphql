@@ -7,55 +7,88 @@ enum AnswerType {
   DATEVALUE
 }
 
-type Family @model{
-	id: ID!
-	#Name of BWE
-	namebwe: String!
-	surveyId: Int!
-	#Name of Country
-	country: String!
-	community: String!
-	date: AWSDate
-	headHouseholdName: String!
-	headHouseholdSex: String!
-	headHouseholdMaritalStatus: String!
-	headHouseholdAge: Int!
-	headHouseholdOccupation: String!
-	headHouseholdEducationLevel: String!
-	interviewee: String!
-	numberPeopleHousehold: Int!
-	numberMaleHousehold1: Int!
-	numberFemaleHousehold1: Int!
-	numberMaleHousehold5: Int!
-	numberFemaleHousehold5: Int!
-	numberMaleHousehold12: Int!
-	numberFemaleHousehold12: Int!
-	numberMaleHousehold17: Int!
-	numberFemaleHousehold17: Int!
-	numberMaleHousehold18: Int!
-	numberFemaleHousehold18: Int!
-	reasonChildrenNotInSchool: String!
+
+
+type InitialSurvey @model{
+id: ID!
+Namebwe: String!
+Country: String!
+Community: String!
+SurveyId: Int!
+date: AWSDate
+HeadHouseholdName: String!
+HeadHouseholdSex: String!
+HeadHouseholdMaritalStatus: String!
+HeadHouseholdAge: Int!
+HeadHouseholdOccupation: String!
+HeadHouseholdEducation: String!
+PersonBeingInterviewed: String!
+TotalNoPeopleHousehold: Int!
+NoHouseholdMale0_1Year: Int!
+NoHouseholdFemale0_1Year: Int!
+NoHouseholdMale1_5Year: Int!
+NoHouseholdFemale1_5Year: Int!
+NoHouseholdMale5_12Year: Int!
+NoHouseholdFemale5_12Year: Int!
+NoHouseholdMale13_17Year: Int!
+NoHouseholdFemale13_17Year: Int!
+NoHouseholdMale18_Year: Int!
+NoHouseholdFemale18_Year: Int!
+ReasonNoSchoolChildren5_17Year: String!
+MainSourceDrinkingWater: String!
+MainSourceOtherPurposeWater: String!
+TimeToWaterSourceGetReturn: Int!
+HouseholdFrequencyAtWaterSource: String!
+UsualHouseholdWaterFetcher: String!
+ContainerCarryWater: String!
+WaterTreatmentBeforeDrinking: String!
+MainReasonNoWaterTreatmentBeforeDrinking: String!
+WaterTreatmentMethod: String!
+HowLongUsingWaterTreatment: String!
+FrequencyWaterTreatment: String!
+WaterStorageAtHome: String!
+TakingWaterFromStorage: String!
+RubbishDisposal: String!
+HouseholdDefecationMethod: String!
+SatisfactionHouseholdDefecationMethod: String!
+WasteDisposalYoungestChild: String!
+WashedHandsIn24Hours: String!
+WhenWashedHandsIn24Hours: String!
+WhatUsedToWashYourHands: String!
+NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek: Int!
+CommonIllnessAffectingChildrenUnder5: String!
+NoChildrenWithVomitingOrDiarrheaIn7days: Int!
+DidSickChildrenGoToHospital: String!
+DidSickChildrenGoToHospitalYes: String!
+SickChildrenBreastfeeding: String!
+OutcomeMostRecentVomiting_DiarrheaAtHospital: String!
+NoDaysNoWorkBecauseOfOwnIllness: Int!
+NoDaysNoWorkBecauseOfIllnessFamilyMembers: Int!
+MoneySpentMedicalTreatmentLast4weeks: Int!
+HealthChangeInAYear: String!
+HealthChangeFamilyInAYear: String!
 }
 
 
 
-type ConfigDef @model{
+type ConfigDefinitions @model{
 	id: ID!
-	#Name of the config, eg; Sex, Occupation, Country, Question
-	Name: String!
+	type: String!
 
-	#Value to be held by the Name, eg if Name is Sex, which sex (Male or Female)
-	Value: String!
+	name: String!
 
-	#Description of the Value
-    Description: String!
+    value: String!
 
-    #Parent name is extra info for the config name (if the config is community, the parent will be Country)
-    ParentName: String!
+    childname: String!
 
-    #Parent value is particular value for the parent eg, if parent is Country, which country
-    ParentValue: String!
+    childvalue: String!
 
-    #Parent description
-    ParentDescription: String!
+    childdesc: String!
+
+    parentname: String!
+
+    parentvalue: String!
+
+    parentdesc: String!
 }
+

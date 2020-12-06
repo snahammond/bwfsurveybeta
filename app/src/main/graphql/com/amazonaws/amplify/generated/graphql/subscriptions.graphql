@@ -1,31 +1,63 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateFamily {
-  onCreateFamily {
+subscription OnCreateInitialSurvey {
+  onCreateInitialSurvey {
     id
-    namebwe
-    surveyId
-    country
-    community
+    Namebwe
+    Country
+    Community
+    SurveyId
     date
-    headHouseholdName
-    headHouseholdSex
-    headHouseholdMaritalStatus
-    headHouseholdAge
-    headHouseholdOccupation
-    headHouseholdEducationLevel
-    interviewee
-    numberPeopleHousehold
-    numberMaleHousehold1
-    numberFemaleHousehold1
-    numberMaleHousehold5
-    numberFemaleHousehold5
-    numberMaleHousehold12
-    numberFemaleHousehold12
-    numberMaleHousehold17
-    numberFemaleHousehold17
-    numberMaleHousehold18
-    numberFemaleHousehold18
-    reasonChildrenNotInSchool
+    HeadHouseholdName
+    HeadHouseholdSex
+    HeadHouseholdMaritalStatus
+    HeadHouseholdAge
+    HeadHouseholdOccupation
+    HeadHouseholdEducation
+    PersonBeingInterviewed
+    TotalNoPeopleHousehold
+    NoHouseholdMale0_1Year
+    NoHouseholdFemale0_1Year
+    NoHouseholdMale1_5Year
+    NoHouseholdFemale1_5Year
+    NoHouseholdMale5_12Year
+    NoHouseholdFemale5_12Year
+    NoHouseholdMale13_17Year
+    NoHouseholdFemale13_17Year
+    NoHouseholdMale18_Year
+    NoHouseholdFemale18_Year
+    ReasonNoSchoolChildren5_17Year
+    MainSourceDrinkingWater
+    MainSourceOtherPurposeWater
+    TimeToWaterSourceGetReturn
+    HouseholdFrequencyAtWaterSource
+    UsualHouseholdWaterFetcher
+    ContainerCarryWater
+    WaterTreatmentBeforeDrinking
+    MainReasonNoWaterTreatmentBeforeDrinking
+    WaterTreatmentMethod
+    HowLongUsingWaterTreatment
+    FrequencyWaterTreatment
+    WaterStorageAtHome
+    TakingWaterFromStorage
+    RubbishDisposal
+    HouseholdDefecationMethod
+    SatisfactionHouseholdDefecationMethod
+    WasteDisposalYoungestChild
+    WashedHandsIn24Hours
+    WhenWashedHandsIn24Hours
+    WhatUsedToWashYourHands
+    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    CommonIllnessAffectingChildrenUnder5
+    NoChildrenWithVomitingOrDiarrheaIn7days
+    DidSickChildrenGoToHospital
+    DidSickChildrenGoToHospitalYes
+    SickChildrenBreastfeeding
+    OutcomeMostRecentVomiting_DiarrheaAtHospital
+    NoDaysNoWorkBecauseOfOwnIllness
+    NoDaysNoWorkBecauseOfIllnessFamilyMembers
+    MoneySpentMedicalTreatmentLast4weeks
+    HealthChangeInAYear
+    HealthChangeFamilyInAYear
     _version
     _deleted
     _lastChangedAt
@@ -33,33 +65,65 @@ subscription OnCreateFamily {
     updatedAt
   }
 }
-subscription OnUpdateFamily {
-  onUpdateFamily {
+subscription OnUpdateInitialSurvey {
+  onUpdateInitialSurvey {
     id
-    namebwe
-    surveyId
-    country
-    community
+    Namebwe
+    Country
+    Community
+    SurveyId
     date
-    headHouseholdName
-    headHouseholdSex
-    headHouseholdMaritalStatus
-    headHouseholdAge
-    headHouseholdOccupation
-    headHouseholdEducationLevel
-    interviewee
-    numberPeopleHousehold
-    numberMaleHousehold1
-    numberFemaleHousehold1
-    numberMaleHousehold5
-    numberFemaleHousehold5
-    numberMaleHousehold12
-    numberFemaleHousehold12
-    numberMaleHousehold17
-    numberFemaleHousehold17
-    numberMaleHousehold18
-    numberFemaleHousehold18
-    reasonChildrenNotInSchool
+    HeadHouseholdName
+    HeadHouseholdSex
+    HeadHouseholdMaritalStatus
+    HeadHouseholdAge
+    HeadHouseholdOccupation
+    HeadHouseholdEducation
+    PersonBeingInterviewed
+    TotalNoPeopleHousehold
+    NoHouseholdMale0_1Year
+    NoHouseholdFemale0_1Year
+    NoHouseholdMale1_5Year
+    NoHouseholdFemale1_5Year
+    NoHouseholdMale5_12Year
+    NoHouseholdFemale5_12Year
+    NoHouseholdMale13_17Year
+    NoHouseholdFemale13_17Year
+    NoHouseholdMale18_Year
+    NoHouseholdFemale18_Year
+    ReasonNoSchoolChildren5_17Year
+    MainSourceDrinkingWater
+    MainSourceOtherPurposeWater
+    TimeToWaterSourceGetReturn
+    HouseholdFrequencyAtWaterSource
+    UsualHouseholdWaterFetcher
+    ContainerCarryWater
+    WaterTreatmentBeforeDrinking
+    MainReasonNoWaterTreatmentBeforeDrinking
+    WaterTreatmentMethod
+    HowLongUsingWaterTreatment
+    FrequencyWaterTreatment
+    WaterStorageAtHome
+    TakingWaterFromStorage
+    RubbishDisposal
+    HouseholdDefecationMethod
+    SatisfactionHouseholdDefecationMethod
+    WasteDisposalYoungestChild
+    WashedHandsIn24Hours
+    WhenWashedHandsIn24Hours
+    WhatUsedToWashYourHands
+    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    CommonIllnessAffectingChildrenUnder5
+    NoChildrenWithVomitingOrDiarrheaIn7days
+    DidSickChildrenGoToHospital
+    DidSickChildrenGoToHospitalYes
+    SickChildrenBreastfeeding
+    OutcomeMostRecentVomiting_DiarrheaAtHospital
+    NoDaysNoWorkBecauseOfOwnIllness
+    NoDaysNoWorkBecauseOfIllnessFamilyMembers
+    MoneySpentMedicalTreatmentLast4weeks
+    HealthChangeInAYear
+    HealthChangeFamilyInAYear
     _version
     _deleted
     _lastChangedAt
@@ -67,33 +131,65 @@ subscription OnUpdateFamily {
     updatedAt
   }
 }
-subscription OnDeleteFamily {
-  onDeleteFamily {
+subscription OnDeleteInitialSurvey {
+  onDeleteInitialSurvey {
     id
-    namebwe
-    surveyId
-    country
-    community
+    Namebwe
+    Country
+    Community
+    SurveyId
     date
-    headHouseholdName
-    headHouseholdSex
-    headHouseholdMaritalStatus
-    headHouseholdAge
-    headHouseholdOccupation
-    headHouseholdEducationLevel
-    interviewee
-    numberPeopleHousehold
-    numberMaleHousehold1
-    numberFemaleHousehold1
-    numberMaleHousehold5
-    numberFemaleHousehold5
-    numberMaleHousehold12
-    numberFemaleHousehold12
-    numberMaleHousehold17
-    numberFemaleHousehold17
-    numberMaleHousehold18
-    numberFemaleHousehold18
-    reasonChildrenNotInSchool
+    HeadHouseholdName
+    HeadHouseholdSex
+    HeadHouseholdMaritalStatus
+    HeadHouseholdAge
+    HeadHouseholdOccupation
+    HeadHouseholdEducation
+    PersonBeingInterviewed
+    TotalNoPeopleHousehold
+    NoHouseholdMale0_1Year
+    NoHouseholdFemale0_1Year
+    NoHouseholdMale1_5Year
+    NoHouseholdFemale1_5Year
+    NoHouseholdMale5_12Year
+    NoHouseholdFemale5_12Year
+    NoHouseholdMale13_17Year
+    NoHouseholdFemale13_17Year
+    NoHouseholdMale18_Year
+    NoHouseholdFemale18_Year
+    ReasonNoSchoolChildren5_17Year
+    MainSourceDrinkingWater
+    MainSourceOtherPurposeWater
+    TimeToWaterSourceGetReturn
+    HouseholdFrequencyAtWaterSource
+    UsualHouseholdWaterFetcher
+    ContainerCarryWater
+    WaterTreatmentBeforeDrinking
+    MainReasonNoWaterTreatmentBeforeDrinking
+    WaterTreatmentMethod
+    HowLongUsingWaterTreatment
+    FrequencyWaterTreatment
+    WaterStorageAtHome
+    TakingWaterFromStorage
+    RubbishDisposal
+    HouseholdDefecationMethod
+    SatisfactionHouseholdDefecationMethod
+    WasteDisposalYoungestChild
+    WashedHandsIn24Hours
+    WhenWashedHandsIn24Hours
+    WhatUsedToWashYourHands
+    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    CommonIllnessAffectingChildrenUnder5
+    NoChildrenWithVomitingOrDiarrheaIn7days
+    DidSickChildrenGoToHospital
+    DidSickChildrenGoToHospitalYes
+    SickChildrenBreastfeeding
+    OutcomeMostRecentVomiting_DiarrheaAtHospital
+    NoDaysNoWorkBecauseOfOwnIllness
+    NoDaysNoWorkBecauseOfIllnessFamilyMembers
+    MoneySpentMedicalTreatmentLast4weeks
+    HealthChangeInAYear
+    HealthChangeFamilyInAYear
     _version
     _deleted
     _lastChangedAt
@@ -101,15 +197,18 @@ subscription OnDeleteFamily {
     updatedAt
   }
 }
-subscription OnCreateConfigDef {
-  onCreateConfigDef {
+subscription OnCreateConfigDefinitions {
+  onCreateConfigDefinitions {
     id
-    Name
-    Value
-    Description
-    ParentName
-    ParentValue
-    ParentDescription
+    type
+    name
+    value
+    childname
+    childvalue
+    childdesc
+    parentname
+    parentvalue
+    parentdesc
     _version
     _deleted
     _lastChangedAt
@@ -117,15 +216,18 @@ subscription OnCreateConfigDef {
     updatedAt
   }
 }
-subscription OnUpdateConfigDef {
-  onUpdateConfigDef {
+subscription OnUpdateConfigDefinitions {
+  onUpdateConfigDefinitions {
     id
-    Name
-    Value
-    Description
-    ParentName
-    ParentValue
-    ParentDescription
+    type
+    name
+    value
+    childname
+    childvalue
+    childdesc
+    parentname
+    parentvalue
+    parentdesc
     _version
     _deleted
     _lastChangedAt
@@ -133,15 +235,18 @@ subscription OnUpdateConfigDef {
     updatedAt
   }
 }
-subscription OnDeleteConfigDef {
-  onDeleteConfigDef {
+subscription OnDeleteConfigDefinitions {
+  onDeleteConfigDefinitions {
     id
-    Name
-    Value
-    Description
-    ParentName
-    ParentValue
-    ParentDescription
+    type
+    name
+    value
+    childname
+    childvalue
+    childdesc
+    parentname
+    parentvalue
+    parentdesc
     _version
     _deleted
     _lastChangedAt

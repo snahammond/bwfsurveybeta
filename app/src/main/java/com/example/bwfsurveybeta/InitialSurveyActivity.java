@@ -17,6 +17,7 @@ import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.AnswerType;
 import com.amplifyframework.datastore.generated.model.ConfigDef;
 import com.amplifyframework.datastore.generated.model.Family;
+import com.amplifyframework.datastore.generated.model.InitialSurvey;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -461,6 +462,48 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                         .show();
             }else{
                 Log.i("Tutorial", "we can proceed to save");
+                //make an InitialSurvey object
+                InitialSurvey initialSurveyToSave = makeInitialSurveyObject(interchangesWithUserAns);
+                //save the initialSurvey object
+                Amplify.DataStore.save(initialSurveyToSave,
+                        update -> {
+                            Log.i("Tutorial", "Saved Successfully ");
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    new AlertDialog.Builder(InitialSurveyActivity.this)
+                                            .setTitle("Saved Succussfully")
+                                            .setMessage("Initial Survey Saved Succussfully \n" )
+                                            // A null listener allows the button to dismiss the dialog and take no further action.
+                                            .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    InitialSurveyActivity.this.finish();
+                                                }
+                                            })
+                                            .setIcon(android.R.drawable.ic_dialog_info)
+                                            .show();
+                                }
+                            });
+
+
+                        },
+                        failure -> {
+                            Log.i("Tutorial", "Save Failed ");
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    new AlertDialog.Builder(InitialSurveyActivity.this)
+                                            .setTitle("Save Failed")
+                                            .setMessage("Initial Survey Save Failed Please try again\n" )
+                                            // A null listener allows the button to dismiss the dialog and take no further action.
+                                            .setNegativeButton(android.R.string.ok, null)
+                                            .setIcon(android.R.drawable.ic_dialog_alert)
+                                            .show();
+                                }
+                            });
+
+                        }
+                );
+
             }
 
 
@@ -550,6 +593,74 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
 
         }
         return invalidinterchange;
+    }
+
+    private InitialSurvey makeInitialSurveyObject(ArrayList<Interchange> validatedInterchangesWithAns){
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date_s = dateFormat.format(calendar.getTime());
+        Temporal.Date date = new Temporal.Date(date_s);
+
+        InitialSurvey initialSurvey = InitialSurvey.builder()
+                .namebwe(namebwe)
+                .country((String)validatedInterchangesWithAns.get(0).getAnswer().getAns())
+                .community((String)validatedInterchangesWithAns.get(1).getAnswer().getAns())
+                .surveyId(0)
+                .headHouseholdName((String)validatedInterchangesWithAns.get(2).getAnswer().getAns())
+                .headHouseholdSex((String)validatedInterchangesWithAns.get(3).getAnswer().getAns())
+                .headHouseholdMaritalStatus((String)validatedInterchangesWithAns.get(4).getAnswer().getAns())
+                .headHouseholdAge((Integer) validatedInterchangesWithAns.get(5).getAnswer().getAns())
+                .headHouseholdOccupation((String)validatedInterchangesWithAns.get(6).getAnswer().getAns())
+                .headHouseholdEducation((String)validatedInterchangesWithAns.get(7).getAnswer().getAns())
+                .personBeingInterviewed((String)validatedInterchangesWithAns.get(8).getAnswer().getAns())
+                .totalNoPeopleHousehold((Integer) validatedInterchangesWithAns.get(9).getAnswer().getAns())
+                .noHouseholdMale0_1Year((Integer)validatedInterchangesWithAns.get(10).getAnswer().getAns())
+                .noHouseholdFemale0_1Year((Integer)validatedInterchangesWithAns.get(11).getAnswer().getAns())
+                .noHouseholdMale1_5Year((Integer)validatedInterchangesWithAns.get(12).getAnswer().getAns())
+                .noHouseholdFemale1_5Year((Integer)validatedInterchangesWithAns.get(13).getAnswer().getAns())
+                .noHouseholdMale5_12Year((Integer)validatedInterchangesWithAns.get(14).getAnswer().getAns())
+                .noHouseholdFemale5_12Year((Integer)validatedInterchangesWithAns.get(15).getAnswer().getAns())
+                .noHouseholdMale13_17Year((Integer)validatedInterchangesWithAns.get(16).getAnswer().getAns())
+                .noHouseholdFemale13_17Year((Integer)validatedInterchangesWithAns.get(17).getAnswer().getAns())
+                .noHouseholdMale18Year((Integer)validatedInterchangesWithAns.get(18).getAnswer().getAns())
+                .noHouseholdFemale18Year((Integer)validatedInterchangesWithAns.get(19).getAnswer().getAns())
+                .reasonNoSchoolChildren5_17Year((String)validatedInterchangesWithAns.get(20).getAnswer().getAns())
+                .mainSourceDrinkingWater((String)validatedInterchangesWithAns.get(21).getAnswer().getAns())
+                .mainSourceOtherPurposeWater((String)validatedInterchangesWithAns.get(22).getAnswer().getAns())
+                .timeToWaterSourceGetReturn((Integer) validatedInterchangesWithAns.get(23).getAnswer().getAns())
+                .householdFrequencyAtWaterSource((String)validatedInterchangesWithAns.get(24).getAnswer().getAns())
+                .usualHouseholdWaterFetcher((String)validatedInterchangesWithAns.get(25).getAnswer().getAns())
+                .containerCarryWater((String)validatedInterchangesWithAns.get(26).getAnswer().getAns())
+                .waterTreatmentBeforeDrinking((String)validatedInterchangesWithAns.get(27).getAnswer().getAns())
+                .mainReasonNoWaterTreatmentBeforeDrinking((String)validatedInterchangesWithAns.get(28).getAnswer().getAns())
+                .waterTreatmentMethod((String)validatedInterchangesWithAns.get(29).getAnswer().getAns())
+                .howLongUsingWaterTreatment((String)validatedInterchangesWithAns.get(30).getAnswer().getAns())
+                .frequencyWaterTreatment((String)validatedInterchangesWithAns.get(31).getAnswer().getAns())
+                .waterStorageAtHome((String)validatedInterchangesWithAns.get(32).getAnswer().getAns())
+                .takingWaterFromStorage((String)validatedInterchangesWithAns.get(33).getAnswer().getAns())
+                .rubbishDisposal((String)validatedInterchangesWithAns.get(34).getAnswer().getAns())
+                .householdDefecationMethod((String)validatedInterchangesWithAns.get(35).getAnswer().getAns())
+                .satisfactionHouseholdDefecationMethod((String)validatedInterchangesWithAns.get(36).getAnswer().getAns())
+                .wasteDisposalYoungestChild((String)validatedInterchangesWithAns.get(37).getAnswer().getAns())
+                .washedHandsIn24Hours((String)validatedInterchangesWithAns.get(38).getAnswer().getAns())
+                .whenWashedHandsIn24Hours((String)validatedInterchangesWithAns.get(39).getAnswer().getAns())
+                .whatUsedToWashYourHands((String)validatedInterchangesWithAns.get(40).getAnswer().getAns())
+                .noTotalSchoolDaysMissedByAllChildrenIn2LastWeek((Integer) validatedInterchangesWithAns.get(41).getAnswer().getAns())
+                .commonIllnessAffectingChildrenUnder5((String)validatedInterchangesWithAns.get(42).getAnswer().getAns())
+                .noChildrenWithVomitingOrDiarrheaIn7days((Integer) validatedInterchangesWithAns.get(43).getAnswer().getAns())
+                .didSickChildrenGoToHospital((String)validatedInterchangesWithAns.get(44).getAnswer().getAns())
+                .didSickChildrenGoToHospitalYes((String)validatedInterchangesWithAns.get(45).getAnswer().getAns())
+                .sickChildrenBreastfeeding((String)validatedInterchangesWithAns.get(46).getAnswer().getAns())
+                .outcomeMostRecentVomitingDiarrheaAtHospital((String)validatedInterchangesWithAns.get(47).getAnswer().getAns())
+                .noDaysNoWorkBecauseOfOwnIllness((Integer) validatedInterchangesWithAns.get(48).getAnswer().getAns())
+                .noDaysNoWorkBecauseOfIllnessFamilyMembers((Integer) validatedInterchangesWithAns.get(49).getAnswer().getAns())
+                .moneySpentMedicalTreatmentLast4weeks((Integer) validatedInterchangesWithAns.get(50).getAnswer().getAns())
+                .healthChangeInAYear((String)validatedInterchangesWithAns.get(51).getAnswer().getAns())
+                .healthChangeFamilyInAYear((String)validatedInterchangesWithAns.get(52).getAnswer().getAns())
+                .date(date)
+                .build();
+        return initialSurvey;
+
     }
 /*
     public void showSaveSurvey(String content) {

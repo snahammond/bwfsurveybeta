@@ -1,11 +1,11 @@
 # this is an auto generated file. This will be overwritten
-query SyncFamilies(
-  $filter: ModelFamilyFilterInput
+query SyncInitialSurveys(
+  $filter: ModelInitialSurveyFilterInput
   $limit: Int
   $nextToken: String
   $lastSync: AWSTimestamp
 ) {
-  syncFamilies(
+  syncInitialSurveys(
     filter: $filter
     limit: $limit
     nextToken: $nextToken
@@ -13,30 +13,62 @@ query SyncFamilies(
   ) {
     items {
       id
-      namebwe
-      surveyId
-      country
-      community
+      Namebwe
+      Country
+      Community
+      SurveyId
       date
-      headHouseholdName
-      headHouseholdSex
-      headHouseholdMaritalStatus
-      headHouseholdAge
-      headHouseholdOccupation
-      headHouseholdEducationLevel
-      interviewee
-      numberPeopleHousehold
-      numberMaleHousehold1
-      numberFemaleHousehold1
-      numberMaleHousehold5
-      numberFemaleHousehold5
-      numberMaleHousehold12
-      numberFemaleHousehold12
-      numberMaleHousehold17
-      numberFemaleHousehold17
-      numberMaleHousehold18
-      numberFemaleHousehold18
-      reasonChildrenNotInSchool
+      HeadHouseholdName
+      HeadHouseholdSex
+      HeadHouseholdMaritalStatus
+      HeadHouseholdAge
+      HeadHouseholdOccupation
+      HeadHouseholdEducation
+      PersonBeingInterviewed
+      TotalNoPeopleHousehold
+      NoHouseholdMale0_1Year
+      NoHouseholdFemale0_1Year
+      NoHouseholdMale1_5Year
+      NoHouseholdFemale1_5Year
+      NoHouseholdMale5_12Year
+      NoHouseholdFemale5_12Year
+      NoHouseholdMale13_17Year
+      NoHouseholdFemale13_17Year
+      NoHouseholdMale18_Year
+      NoHouseholdFemale18_Year
+      ReasonNoSchoolChildren5_17Year
+      MainSourceDrinkingWater
+      MainSourceOtherPurposeWater
+      TimeToWaterSourceGetReturn
+      HouseholdFrequencyAtWaterSource
+      UsualHouseholdWaterFetcher
+      ContainerCarryWater
+      WaterTreatmentBeforeDrinking
+      MainReasonNoWaterTreatmentBeforeDrinking
+      WaterTreatmentMethod
+      HowLongUsingWaterTreatment
+      FrequencyWaterTreatment
+      WaterStorageAtHome
+      TakingWaterFromStorage
+      RubbishDisposal
+      HouseholdDefecationMethod
+      SatisfactionHouseholdDefecationMethod
+      WasteDisposalYoungestChild
+      WashedHandsIn24Hours
+      WhenWashedHandsIn24Hours
+      WhatUsedToWashYourHands
+      NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+      CommonIllnessAffectingChildrenUnder5
+      NoChildrenWithVomitingOrDiarrheaIn7days
+      DidSickChildrenGoToHospital
+      DidSickChildrenGoToHospitalYes
+      SickChildrenBreastfeeding
+      OutcomeMostRecentVomiting_DiarrheaAtHospital
+      NoDaysNoWorkBecauseOfOwnIllness
+      NoDaysNoWorkBecauseOfIllnessFamilyMembers
+      MoneySpentMedicalTreatmentLast4weeks
+      HealthChangeInAYear
+      HealthChangeFamilyInAYear
       _version
       _deleted
       _lastChangedAt
@@ -47,33 +79,65 @@ query SyncFamilies(
     startedAt
   }
 }
-query GetFamily($id: ID!) {
-  getFamily(id: $id) {
+query GetInitialSurvey($id: ID!) {
+  getInitialSurvey(id: $id) {
     id
-    namebwe
-    surveyId
-    country
-    community
+    Namebwe
+    Country
+    Community
+    SurveyId
     date
-    headHouseholdName
-    headHouseholdSex
-    headHouseholdMaritalStatus
-    headHouseholdAge
-    headHouseholdOccupation
-    headHouseholdEducationLevel
-    interviewee
-    numberPeopleHousehold
-    numberMaleHousehold1
-    numberFemaleHousehold1
-    numberMaleHousehold5
-    numberFemaleHousehold5
-    numberMaleHousehold12
-    numberFemaleHousehold12
-    numberMaleHousehold17
-    numberFemaleHousehold17
-    numberMaleHousehold18
-    numberFemaleHousehold18
-    reasonChildrenNotInSchool
+    HeadHouseholdName
+    HeadHouseholdSex
+    HeadHouseholdMaritalStatus
+    HeadHouseholdAge
+    HeadHouseholdOccupation
+    HeadHouseholdEducation
+    PersonBeingInterviewed
+    TotalNoPeopleHousehold
+    NoHouseholdMale0_1Year
+    NoHouseholdFemale0_1Year
+    NoHouseholdMale1_5Year
+    NoHouseholdFemale1_5Year
+    NoHouseholdMale5_12Year
+    NoHouseholdFemale5_12Year
+    NoHouseholdMale13_17Year
+    NoHouseholdFemale13_17Year
+    NoHouseholdMale18_Year
+    NoHouseholdFemale18_Year
+    ReasonNoSchoolChildren5_17Year
+    MainSourceDrinkingWater
+    MainSourceOtherPurposeWater
+    TimeToWaterSourceGetReturn
+    HouseholdFrequencyAtWaterSource
+    UsualHouseholdWaterFetcher
+    ContainerCarryWater
+    WaterTreatmentBeforeDrinking
+    MainReasonNoWaterTreatmentBeforeDrinking
+    WaterTreatmentMethod
+    HowLongUsingWaterTreatment
+    FrequencyWaterTreatment
+    WaterStorageAtHome
+    TakingWaterFromStorage
+    RubbishDisposal
+    HouseholdDefecationMethod
+    SatisfactionHouseholdDefecationMethod
+    WasteDisposalYoungestChild
+    WashedHandsIn24Hours
+    WhenWashedHandsIn24Hours
+    WhatUsedToWashYourHands
+    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    CommonIllnessAffectingChildrenUnder5
+    NoChildrenWithVomitingOrDiarrheaIn7days
+    DidSickChildrenGoToHospital
+    DidSickChildrenGoToHospitalYes
+    SickChildrenBreastfeeding
+    OutcomeMostRecentVomiting_DiarrheaAtHospital
+    NoDaysNoWorkBecauseOfOwnIllness
+    NoDaysNoWorkBecauseOfIllnessFamilyMembers
+    MoneySpentMedicalTreatmentLast4weeks
+    HealthChangeInAYear
+    HealthChangeFamilyInAYear
     _version
     _deleted
     _lastChangedAt
@@ -81,38 +145,70 @@ query GetFamily($id: ID!) {
     updatedAt
   }
 }
-query ListFamilys(
-  $filter: ModelFamilyFilterInput
+query ListInitialSurveys(
+  $filter: ModelInitialSurveyFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listFamilys(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listInitialSurveys(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      namebwe
-      surveyId
-      country
-      community
+      Namebwe
+      Country
+      Community
+      SurveyId
       date
-      headHouseholdName
-      headHouseholdSex
-      headHouseholdMaritalStatus
-      headHouseholdAge
-      headHouseholdOccupation
-      headHouseholdEducationLevel
-      interviewee
-      numberPeopleHousehold
-      numberMaleHousehold1
-      numberFemaleHousehold1
-      numberMaleHousehold5
-      numberFemaleHousehold5
-      numberMaleHousehold12
-      numberFemaleHousehold12
-      numberMaleHousehold17
-      numberFemaleHousehold17
-      numberMaleHousehold18
-      numberFemaleHousehold18
-      reasonChildrenNotInSchool
+      HeadHouseholdName
+      HeadHouseholdSex
+      HeadHouseholdMaritalStatus
+      HeadHouseholdAge
+      HeadHouseholdOccupation
+      HeadHouseholdEducation
+      PersonBeingInterviewed
+      TotalNoPeopleHousehold
+      NoHouseholdMale0_1Year
+      NoHouseholdFemale0_1Year
+      NoHouseholdMale1_5Year
+      NoHouseholdFemale1_5Year
+      NoHouseholdMale5_12Year
+      NoHouseholdFemale5_12Year
+      NoHouseholdMale13_17Year
+      NoHouseholdFemale13_17Year
+      NoHouseholdMale18_Year
+      NoHouseholdFemale18_Year
+      ReasonNoSchoolChildren5_17Year
+      MainSourceDrinkingWater
+      MainSourceOtherPurposeWater
+      TimeToWaterSourceGetReturn
+      HouseholdFrequencyAtWaterSource
+      UsualHouseholdWaterFetcher
+      ContainerCarryWater
+      WaterTreatmentBeforeDrinking
+      MainReasonNoWaterTreatmentBeforeDrinking
+      WaterTreatmentMethod
+      HowLongUsingWaterTreatment
+      FrequencyWaterTreatment
+      WaterStorageAtHome
+      TakingWaterFromStorage
+      RubbishDisposal
+      HouseholdDefecationMethod
+      SatisfactionHouseholdDefecationMethod
+      WasteDisposalYoungestChild
+      WashedHandsIn24Hours
+      WhenWashedHandsIn24Hours
+      WhatUsedToWashYourHands
+      NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+      CommonIllnessAffectingChildrenUnder5
+      NoChildrenWithVomitingOrDiarrheaIn7days
+      DidSickChildrenGoToHospital
+      DidSickChildrenGoToHospitalYes
+      SickChildrenBreastfeeding
+      OutcomeMostRecentVomiting_DiarrheaAtHospital
+      NoDaysNoWorkBecauseOfOwnIllness
+      NoDaysNoWorkBecauseOfIllnessFamilyMembers
+      MoneySpentMedicalTreatmentLast4weeks
+      HealthChangeInAYear
+      HealthChangeFamilyInAYear
       _version
       _deleted
       _lastChangedAt
@@ -123,13 +219,13 @@ query ListFamilys(
     startedAt
   }
 }
-query SyncConfigDefs(
-  $filter: ModelConfigDefFilterInput
+query SyncConfigDefinitions(
+  $filter: ModelConfigDefinitionsFilterInput
   $limit: Int
   $nextToken: String
   $lastSync: AWSTimestamp
 ) {
-  syncConfigDefs(
+  syncConfigDefinitions(
     filter: $filter
     limit: $limit
     nextToken: $nextToken
@@ -137,12 +233,15 @@ query SyncConfigDefs(
   ) {
     items {
       id
-      Name
-      Value
-      Description
-      ParentName
-      ParentValue
-      ParentDescription
+      type
+      name
+      value
+      childname
+      childvalue
+      childdesc
+      parentname
+      parentvalue
+      parentdesc
       _version
       _deleted
       _lastChangedAt
@@ -153,15 +252,18 @@ query SyncConfigDefs(
     startedAt
   }
 }
-query GetConfigDef($id: ID!) {
-  getConfigDef(id: $id) {
+query GetConfigDefinitions($id: ID!) {
+  getConfigDefinitions(id: $id) {
     id
-    Name
-    Value
-    Description
-    ParentName
-    ParentValue
-    ParentDescription
+    type
+    name
+    value
+    childname
+    childvalue
+    childdesc
+    parentname
+    parentvalue
+    parentdesc
     _version
     _deleted
     _lastChangedAt
@@ -169,20 +271,27 @@ query GetConfigDef($id: ID!) {
     updatedAt
   }
 }
-query ListConfigDefs(
-  $filter: ModelConfigDefFilterInput
+query ListConfigDefinitionss(
+  $filter: ModelConfigDefinitionsFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listConfigDefs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listConfigDefinitionss(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
     items {
       id
-      Name
-      Value
-      Description
-      ParentName
-      ParentValue
-      ParentDescription
+      type
+      name
+      value
+      childname
+      childvalue
+      childdesc
+      parentname
+      parentvalue
+      parentdesc
       _version
       _deleted
       _lastChangedAt

@@ -1,34 +1,66 @@
 # this is an auto generated file. This will be overwritten
-mutation CreateFamily(
-  $input: CreateFamilyInput!
-  $condition: ModelFamilyConditionInput
+mutation CreateInitialSurvey(
+  $input: CreateInitialSurveyInput!
+  $condition: ModelInitialSurveyConditionInput
 ) {
-  createFamily(input: $input, condition: $condition) {
+  createInitialSurvey(input: $input, condition: $condition) {
     id
-    namebwe
-    surveyId
-    country
-    community
+    Namebwe
+    Country
+    Community
+    SurveyId
     date
-    headHouseholdName
-    headHouseholdSex
-    headHouseholdMaritalStatus
-    headHouseholdAge
-    headHouseholdOccupation
-    headHouseholdEducationLevel
-    interviewee
-    numberPeopleHousehold
-    numberMaleHousehold1
-    numberFemaleHousehold1
-    numberMaleHousehold5
-    numberFemaleHousehold5
-    numberMaleHousehold12
-    numberFemaleHousehold12
-    numberMaleHousehold17
-    numberFemaleHousehold17
-    numberMaleHousehold18
-    numberFemaleHousehold18
-    reasonChildrenNotInSchool
+    HeadHouseholdName
+    HeadHouseholdSex
+    HeadHouseholdMaritalStatus
+    HeadHouseholdAge
+    HeadHouseholdOccupation
+    HeadHouseholdEducation
+    PersonBeingInterviewed
+    TotalNoPeopleHousehold
+    NoHouseholdMale0_1Year
+    NoHouseholdFemale0_1Year
+    NoHouseholdMale1_5Year
+    NoHouseholdFemale1_5Year
+    NoHouseholdMale5_12Year
+    NoHouseholdFemale5_12Year
+    NoHouseholdMale13_17Year
+    NoHouseholdFemale13_17Year
+    NoHouseholdMale18_Year
+    NoHouseholdFemale18_Year
+    ReasonNoSchoolChildren5_17Year
+    MainSourceDrinkingWater
+    MainSourceOtherPurposeWater
+    TimeToWaterSourceGetReturn
+    HouseholdFrequencyAtWaterSource
+    UsualHouseholdWaterFetcher
+    ContainerCarryWater
+    WaterTreatmentBeforeDrinking
+    MainReasonNoWaterTreatmentBeforeDrinking
+    WaterTreatmentMethod
+    HowLongUsingWaterTreatment
+    FrequencyWaterTreatment
+    WaterStorageAtHome
+    TakingWaterFromStorage
+    RubbishDisposal
+    HouseholdDefecationMethod
+    SatisfactionHouseholdDefecationMethod
+    WasteDisposalYoungestChild
+    WashedHandsIn24Hours
+    WhenWashedHandsIn24Hours
+    WhatUsedToWashYourHands
+    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    CommonIllnessAffectingChildrenUnder5
+    NoChildrenWithVomitingOrDiarrheaIn7days
+    DidSickChildrenGoToHospital
+    DidSickChildrenGoToHospitalYes
+    SickChildrenBreastfeeding
+    OutcomeMostRecentVomiting_DiarrheaAtHospital
+    NoDaysNoWorkBecauseOfOwnIllness
+    NoDaysNoWorkBecauseOfIllnessFamilyMembers
+    MoneySpentMedicalTreatmentLast4weeks
+    HealthChangeInAYear
+    HealthChangeFamilyInAYear
     _version
     _deleted
     _lastChangedAt
@@ -36,36 +68,68 @@ mutation CreateFamily(
     updatedAt
   }
 }
-mutation UpdateFamily(
-  $input: UpdateFamilyInput!
-  $condition: ModelFamilyConditionInput
+mutation UpdateInitialSurvey(
+  $input: UpdateInitialSurveyInput!
+  $condition: ModelInitialSurveyConditionInput
 ) {
-  updateFamily(input: $input, condition: $condition) {
+  updateInitialSurvey(input: $input, condition: $condition) {
     id
-    namebwe
-    surveyId
-    country
-    community
+    Namebwe
+    Country
+    Community
+    SurveyId
     date
-    headHouseholdName
-    headHouseholdSex
-    headHouseholdMaritalStatus
-    headHouseholdAge
-    headHouseholdOccupation
-    headHouseholdEducationLevel
-    interviewee
-    numberPeopleHousehold
-    numberMaleHousehold1
-    numberFemaleHousehold1
-    numberMaleHousehold5
-    numberFemaleHousehold5
-    numberMaleHousehold12
-    numberFemaleHousehold12
-    numberMaleHousehold17
-    numberFemaleHousehold17
-    numberMaleHousehold18
-    numberFemaleHousehold18
-    reasonChildrenNotInSchool
+    HeadHouseholdName
+    HeadHouseholdSex
+    HeadHouseholdMaritalStatus
+    HeadHouseholdAge
+    HeadHouseholdOccupation
+    HeadHouseholdEducation
+    PersonBeingInterviewed
+    TotalNoPeopleHousehold
+    NoHouseholdMale0_1Year
+    NoHouseholdFemale0_1Year
+    NoHouseholdMale1_5Year
+    NoHouseholdFemale1_5Year
+    NoHouseholdMale5_12Year
+    NoHouseholdFemale5_12Year
+    NoHouseholdMale13_17Year
+    NoHouseholdFemale13_17Year
+    NoHouseholdMale18_Year
+    NoHouseholdFemale18_Year
+    ReasonNoSchoolChildren5_17Year
+    MainSourceDrinkingWater
+    MainSourceOtherPurposeWater
+    TimeToWaterSourceGetReturn
+    HouseholdFrequencyAtWaterSource
+    UsualHouseholdWaterFetcher
+    ContainerCarryWater
+    WaterTreatmentBeforeDrinking
+    MainReasonNoWaterTreatmentBeforeDrinking
+    WaterTreatmentMethod
+    HowLongUsingWaterTreatment
+    FrequencyWaterTreatment
+    WaterStorageAtHome
+    TakingWaterFromStorage
+    RubbishDisposal
+    HouseholdDefecationMethod
+    SatisfactionHouseholdDefecationMethod
+    WasteDisposalYoungestChild
+    WashedHandsIn24Hours
+    WhenWashedHandsIn24Hours
+    WhatUsedToWashYourHands
+    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    CommonIllnessAffectingChildrenUnder5
+    NoChildrenWithVomitingOrDiarrheaIn7days
+    DidSickChildrenGoToHospital
+    DidSickChildrenGoToHospitalYes
+    SickChildrenBreastfeeding
+    OutcomeMostRecentVomiting_DiarrheaAtHospital
+    NoDaysNoWorkBecauseOfOwnIllness
+    NoDaysNoWorkBecauseOfIllnessFamilyMembers
+    MoneySpentMedicalTreatmentLast4weeks
+    HealthChangeInAYear
+    HealthChangeFamilyInAYear
     _version
     _deleted
     _lastChangedAt
@@ -73,36 +137,68 @@ mutation UpdateFamily(
     updatedAt
   }
 }
-mutation DeleteFamily(
-  $input: DeleteFamilyInput!
-  $condition: ModelFamilyConditionInput
+mutation DeleteInitialSurvey(
+  $input: DeleteInitialSurveyInput!
+  $condition: ModelInitialSurveyConditionInput
 ) {
-  deleteFamily(input: $input, condition: $condition) {
+  deleteInitialSurvey(input: $input, condition: $condition) {
     id
-    namebwe
-    surveyId
-    country
-    community
+    Namebwe
+    Country
+    Community
+    SurveyId
     date
-    headHouseholdName
-    headHouseholdSex
-    headHouseholdMaritalStatus
-    headHouseholdAge
-    headHouseholdOccupation
-    headHouseholdEducationLevel
-    interviewee
-    numberPeopleHousehold
-    numberMaleHousehold1
-    numberFemaleHousehold1
-    numberMaleHousehold5
-    numberFemaleHousehold5
-    numberMaleHousehold12
-    numberFemaleHousehold12
-    numberMaleHousehold17
-    numberFemaleHousehold17
-    numberMaleHousehold18
-    numberFemaleHousehold18
-    reasonChildrenNotInSchool
+    HeadHouseholdName
+    HeadHouseholdSex
+    HeadHouseholdMaritalStatus
+    HeadHouseholdAge
+    HeadHouseholdOccupation
+    HeadHouseholdEducation
+    PersonBeingInterviewed
+    TotalNoPeopleHousehold
+    NoHouseholdMale0_1Year
+    NoHouseholdFemale0_1Year
+    NoHouseholdMale1_5Year
+    NoHouseholdFemale1_5Year
+    NoHouseholdMale5_12Year
+    NoHouseholdFemale5_12Year
+    NoHouseholdMale13_17Year
+    NoHouseholdFemale13_17Year
+    NoHouseholdMale18_Year
+    NoHouseholdFemale18_Year
+    ReasonNoSchoolChildren5_17Year
+    MainSourceDrinkingWater
+    MainSourceOtherPurposeWater
+    TimeToWaterSourceGetReturn
+    HouseholdFrequencyAtWaterSource
+    UsualHouseholdWaterFetcher
+    ContainerCarryWater
+    WaterTreatmentBeforeDrinking
+    MainReasonNoWaterTreatmentBeforeDrinking
+    WaterTreatmentMethod
+    HowLongUsingWaterTreatment
+    FrequencyWaterTreatment
+    WaterStorageAtHome
+    TakingWaterFromStorage
+    RubbishDisposal
+    HouseholdDefecationMethod
+    SatisfactionHouseholdDefecationMethod
+    WasteDisposalYoungestChild
+    WashedHandsIn24Hours
+    WhenWashedHandsIn24Hours
+    WhatUsedToWashYourHands
+    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    CommonIllnessAffectingChildrenUnder5
+    NoChildrenWithVomitingOrDiarrheaIn7days
+    DidSickChildrenGoToHospital
+    DidSickChildrenGoToHospitalYes
+    SickChildrenBreastfeeding
+    OutcomeMostRecentVomiting_DiarrheaAtHospital
+    NoDaysNoWorkBecauseOfOwnIllness
+    NoDaysNoWorkBecauseOfIllnessFamilyMembers
+    MoneySpentMedicalTreatmentLast4weeks
+    HealthChangeInAYear
+    HealthChangeFamilyInAYear
     _version
     _deleted
     _lastChangedAt
@@ -110,18 +206,21 @@ mutation DeleteFamily(
     updatedAt
   }
 }
-mutation CreateConfigDef(
-  $input: CreateConfigDefInput!
-  $condition: ModelConfigDefConditionInput
+mutation CreateConfigDefinitions(
+  $input: CreateConfigDefinitionsInput!
+  $condition: ModelConfigDefinitionsConditionInput
 ) {
-  createConfigDef(input: $input, condition: $condition) {
+  createConfigDefinitions(input: $input, condition: $condition) {
     id
-    Name
-    Value
-    Description
-    ParentName
-    ParentValue
-    ParentDescription
+    type
+    name
+    value
+    childname
+    childvalue
+    childdesc
+    parentname
+    parentvalue
+    parentdesc
     _version
     _deleted
     _lastChangedAt
@@ -129,18 +228,21 @@ mutation CreateConfigDef(
     updatedAt
   }
 }
-mutation UpdateConfigDef(
-  $input: UpdateConfigDefInput!
-  $condition: ModelConfigDefConditionInput
+mutation UpdateConfigDefinitions(
+  $input: UpdateConfigDefinitionsInput!
+  $condition: ModelConfigDefinitionsConditionInput
 ) {
-  updateConfigDef(input: $input, condition: $condition) {
+  updateConfigDefinitions(input: $input, condition: $condition) {
     id
-    Name
-    Value
-    Description
-    ParentName
-    ParentValue
-    ParentDescription
+    type
+    name
+    value
+    childname
+    childvalue
+    childdesc
+    parentname
+    parentvalue
+    parentdesc
     _version
     _deleted
     _lastChangedAt
@@ -148,18 +250,21 @@ mutation UpdateConfigDef(
     updatedAt
   }
 }
-mutation DeleteConfigDef(
-  $input: DeleteConfigDefInput!
-  $condition: ModelConfigDefConditionInput
+mutation DeleteConfigDefinitions(
+  $input: DeleteConfigDefinitionsInput!
+  $condition: ModelConfigDefinitionsConditionInput
 ) {
-  deleteConfigDef(input: $input, condition: $condition) {
+  deleteConfigDefinitions(input: $input, condition: $condition) {
     id
-    Name
-    Value
-    Description
-    ParentName
-    ParentValue
-    ParentDescription
+    type
+    name
+    value
+    childname
+    childvalue
+    childdesc
+    parentname
+    parentvalue
+    parentdesc
     _version
     _deleted
     _lastChangedAt

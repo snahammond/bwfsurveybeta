@@ -16,7 +16,7 @@
                 "description": null,
                 "fields": [
                     {
-                        "name": "syncFamilies",
+                        "name": "syncInitialSurveys",
                         "description": null,
                         "args": [
                             {
@@ -24,7 +24,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelFamilyFilterInput",
+                                    "name": "ModelInitialSurveyFilterInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -62,14 +62,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ModelFamilyConnection",
+                            "name": "ModelInitialSurveyConnection",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "getFamily",
+                        "name": "getInitialSurvey",
                         "description": null,
                         "args": [
                             {
@@ -89,14 +89,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Family",
+                            "name": "InitialSurvey",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "listFamilys",
+                        "name": "listInitialSurveys",
                         "description": null,
                         "args": [
                             {
@@ -104,7 +104,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelFamilyFilterInput",
+                                    "name": "ModelInitialSurveyFilterInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -132,14 +132,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ModelFamilyConnection",
+                            "name": "ModelInitialSurveyConnection",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "syncConfigDefs",
+                        "name": "syncConfigDefinitions",
                         "description": null,
                         "args": [
                             {
@@ -147,7 +147,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelConfigDefFilterInput",
+                                    "name": "ModelConfigDefinitionsFilterInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -185,14 +185,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ModelConfigDefConnection",
+                            "name": "ModelConfigDefinitionsConnection",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "getConfigDef",
+                        "name": "getConfigDefinitions",
                         "description": null,
                         "args": [
                             {
@@ -212,14 +212,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ConfigDef",
+                            "name": "ConfigDefinitions",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "listConfigDefs",
+                        "name": "listConfigDefinitionss",
                         "description": null,
                         "args": [
                             {
@@ -227,7 +227,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelConfigDefFilterInput",
+                                    "name": "ModelConfigDefinitionsFilterInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -255,7 +255,7 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ModelConfigDefConnection",
+                            "name": "ModelConfigDefinitionsConnection",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -269,7 +269,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "ModelFamilyFilterInput",
+                "name": "ModelInitialSurveyFilterInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -284,7 +284,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "namebwe",
+                        "name": "Namebwe",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -294,31 +294,31 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "surveyId",
+                        "name": "Country",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "Community",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "SurveyId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "country",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "community",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -334,7 +334,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdName",
+                        "name": "HeadHouseholdName",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -344,7 +344,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdSex",
+                        "name": "HeadHouseholdSex",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -354,7 +354,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdMaritalStatus",
+                        "name": "HeadHouseholdMaritalStatus",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -364,7 +364,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdAge",
+                        "name": "HeadHouseholdAge",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -374,7 +374,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdOccupation",
+                        "name": "HeadHouseholdOccupation",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -384,7 +384,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdEducationLevel",
+                        "name": "HeadHouseholdEducation",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -394,7 +394,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "interviewee",
+                        "name": "PersonBeingInterviewed",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -404,7 +404,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberPeopleHousehold",
+                        "name": "TotalNoPeopleHousehold",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -414,7 +414,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold1",
+                        "name": "NoHouseholdMale0_1Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -424,7 +424,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold1",
+                        "name": "NoHouseholdFemale0_1Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -434,7 +434,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold5",
+                        "name": "NoHouseholdMale1_5Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -444,7 +444,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold5",
+                        "name": "NoHouseholdFemale1_5Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -454,7 +454,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold12",
+                        "name": "NoHouseholdMale5_12Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -464,7 +464,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold12",
+                        "name": "NoHouseholdFemale5_12Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -474,7 +474,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold17",
+                        "name": "NoHouseholdMale13_17Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -484,7 +484,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold17",
+                        "name": "NoHouseholdFemale13_17Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -494,7 +494,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold18",
+                        "name": "NoHouseholdMale18_Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -504,7 +504,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold18",
+                        "name": "NoHouseholdFemale18_Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -514,7 +514,327 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "reasonChildrenNotInSchool",
+                        "name": "ReasonNoSchoolChildren5_17Year",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainSourceDrinkingWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainSourceOtherPurposeWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "TimeToWaterSourceGetReturn",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HouseholdFrequencyAtWaterSource",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "UsualHouseholdWaterFetcher",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ContainerCarryWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatmentBeforeDrinking",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainReasonNoWaterTreatmentBeforeDrinking",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatmentMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowLongUsingWaterTreatment",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "FrequencyWaterTreatment",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterStorageAtHome",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "TakingWaterFromStorage",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "RubbishDisposal",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HouseholdDefecationMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "SatisfactionHouseholdDefecationMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WasteDisposalYoungestChild",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WashedHandsIn24Hours",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WhenWashedHandsIn24Hours",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WhatUsedToWashYourHands",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn7days",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "DidSickChildrenGoToHospital",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "DidSickChildrenGoToHospitalYes",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "SickChildrenBreastfeeding",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "OutcomeMostRecentVomiting_DiarrheaAtHospital",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoDaysNoWorkBecauseOfOwnIllness",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoDaysNoWorkBecauseOfIllnessFamilyMembers",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MoneySpentMedicalTreatmentLast4weeks",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HealthChangeInAYear",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HealthChangeFamilyInAYear",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -531,7 +851,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelFamilyFilterInput",
+                                "name": "ModelInitialSurveyFilterInput",
                                 "ofType": null
                             }
                         },
@@ -545,7 +865,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelFamilyFilterInput",
+                                "name": "ModelInitialSurveyFilterInput",
                                 "ofType": null
                             }
                         },
@@ -556,7 +876,7 @@
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelFamilyFilterInput",
+                            "name": "ModelInitialSurveyFilterInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -1169,7 +1489,7 @@
             },
             {
                 "kind": "OBJECT",
-                "name": "ModelFamilyConnection",
+                "name": "ModelInitialSurveyConnection",
                 "description": null,
                 "fields": [
                     {
@@ -1181,7 +1501,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "OBJECT",
-                                "name": "Family",
+                                "name": "InitialSurvey",
                                 "ofType": null
                             }
                         },
@@ -1220,7 +1540,7 @@
             },
             {
                 "kind": "OBJECT",
-                "name": "Family",
+                "name": "InitialSurvey",
                 "description": null,
                 "fields": [
                     {
@@ -1240,7 +1560,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "namebwe",
+                        "name": "Namebwe",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1256,7 +1576,39 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "surveyId",
+                        "name": "Country",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "Community",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "SurveyId",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1265,38 +1617,6 @@
                             "ofType": {
                                 "kind": "SCALAR",
                                 "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "country",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "community",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
                                 "ofType": null
                             }
                         },
@@ -1316,7 +1636,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "headHouseholdName",
+                        "name": "HeadHouseholdName",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1332,7 +1652,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "headHouseholdSex",
+                        "name": "HeadHouseholdSex",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1348,7 +1668,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "headHouseholdMaritalStatus",
+                        "name": "HeadHouseholdMaritalStatus",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1364,7 +1684,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "headHouseholdAge",
+                        "name": "HeadHouseholdAge",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1380,7 +1700,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "headHouseholdOccupation",
+                        "name": "HeadHouseholdOccupation",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1396,7 +1716,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "headHouseholdEducationLevel",
+                        "name": "HeadHouseholdEducation",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1412,7 +1732,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "interviewee",
+                        "name": "PersonBeingInterviewed",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1428,7 +1748,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "numberPeopleHousehold",
+                        "name": "TotalNoPeopleHousehold",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1444,7 +1764,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "numberMaleHousehold1",
+                        "name": "NoHouseholdMale0_1Year",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1460,7 +1780,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "numberFemaleHousehold1",
+                        "name": "NoHouseholdFemale0_1Year",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1476,7 +1796,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "numberMaleHousehold5",
+                        "name": "NoHouseholdMale1_5Year",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1492,7 +1812,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "numberFemaleHousehold5",
+                        "name": "NoHouseholdFemale1_5Year",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1508,7 +1828,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "numberMaleHousehold12",
+                        "name": "NoHouseholdMale5_12Year",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1524,7 +1844,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "numberFemaleHousehold12",
+                        "name": "NoHouseholdFemale5_12Year",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1540,7 +1860,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "numberMaleHousehold17",
+                        "name": "NoHouseholdMale13_17Year",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1556,7 +1876,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "numberFemaleHousehold17",
+                        "name": "NoHouseholdFemale13_17Year",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1572,7 +1892,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "numberMaleHousehold18",
+                        "name": "NoHouseholdMale18_Year",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1588,7 +1908,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "numberFemaleHousehold18",
+                        "name": "NoHouseholdFemale18_Year",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1604,7 +1924,519 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "reasonChildrenNotInSchool",
+                        "name": "ReasonNoSchoolChildren5_17Year",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "MainSourceDrinkingWater",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "MainSourceOtherPurposeWater",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "TimeToWaterSourceGetReturn",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "HouseholdFrequencyAtWaterSource",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "UsualHouseholdWaterFetcher",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "ContainerCarryWater",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "WaterTreatmentBeforeDrinking",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "MainReasonNoWaterTreatmentBeforeDrinking",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "WaterTreatmentMethod",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "HowLongUsingWaterTreatment",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "FrequencyWaterTreatment",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "WaterStorageAtHome",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "TakingWaterFromStorage",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "RubbishDisposal",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "HouseholdDefecationMethod",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "SatisfactionHouseholdDefecationMethod",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "WasteDisposalYoungestChild",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "WashedHandsIn24Hours",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "WhenWashedHandsIn24Hours",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "WhatUsedToWashYourHands",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn7days",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "DidSickChildrenGoToHospital",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "DidSickChildrenGoToHospitalYes",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "SickChildrenBreastfeeding",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "OutcomeMostRecentVomiting_DiarrheaAtHospital",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "NoDaysNoWorkBecauseOfOwnIllness",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "NoDaysNoWorkBecauseOfIllnessFamilyMembers",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "MoneySpentMedicalTreatmentLast4weeks",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "HealthChangeInAYear",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "HealthChangeFamilyInAYear",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1723,7 +2555,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "ModelConfigDefFilterInput",
+                "name": "ModelConfigDefinitionsFilterInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -1738,7 +2570,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "Name",
+                        "name": "type",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -1748,7 +2580,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "Value",
+                        "name": "name",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -1758,7 +2590,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "Description",
+                        "name": "value",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -1768,7 +2600,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "ParentName",
+                        "name": "childname",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -1778,7 +2610,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "ParentValue",
+                        "name": "childvalue",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -1788,7 +2620,37 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "ParentDescription",
+                        "name": "childdesc",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "parentname",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "parentvalue",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "parentdesc",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -1805,7 +2667,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelConfigDefFilterInput",
+                                "name": "ModelConfigDefinitionsFilterInput",
                                 "ofType": null
                             }
                         },
@@ -1819,7 +2681,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelConfigDefFilterInput",
+                                "name": "ModelConfigDefinitionsFilterInput",
                                 "ofType": null
                             }
                         },
@@ -1830,7 +2692,7 @@
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelConfigDefFilterInput",
+                            "name": "ModelConfigDefinitionsFilterInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -1842,7 +2704,7 @@
             },
             {
                 "kind": "OBJECT",
-                "name": "ModelConfigDefConnection",
+                "name": "ModelConfigDefinitionsConnection",
                 "description": null,
                 "fields": [
                     {
@@ -1854,7 +2716,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "OBJECT",
-                                "name": "ConfigDef",
+                                "name": "ConfigDefinitions",
                                 "ofType": null
                             }
                         },
@@ -1893,7 +2755,7 @@
             },
             {
                 "kind": "OBJECT",
-                "name": "ConfigDef",
+                "name": "ConfigDefinitions",
                 "description": null,
                 "fields": [
                     {
@@ -1913,7 +2775,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "Name",
+                        "name": "type",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1929,7 +2791,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "Value",
+                        "name": "name",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1945,7 +2807,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "Description",
+                        "name": "value",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1961,7 +2823,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "ParentName",
+                        "name": "childname",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1977,7 +2839,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "ParentValue",
+                        "name": "childvalue",
                         "description": null,
                         "args": [],
                         "type": {
@@ -1993,7 +2855,55 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "ParentDescription",
+                        "name": "childdesc",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "parentname",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "parentvalue",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "parentdesc",
                         "description": null,
                         "args": [],
                         "type": {
@@ -2096,7 +3006,7 @@
                 "description": null,
                 "fields": [
                     {
-                        "name": "createFamily",
+                        "name": "createInitialSurvey",
                         "description": null,
                         "args": [
                             {
@@ -2107,7 +3017,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "CreateFamilyInput",
+                                        "name": "CreateInitialSurveyInput",
                                         "ofType": null
                                     }
                                 },
@@ -2118,7 +3028,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelFamilyConditionInput",
+                                    "name": "ModelInitialSurveyConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -2126,14 +3036,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Family",
+                            "name": "InitialSurvey",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "updateFamily",
+                        "name": "updateInitialSurvey",
                         "description": null,
                         "args": [
                             {
@@ -2144,7 +3054,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "UpdateFamilyInput",
+                                        "name": "UpdateInitialSurveyInput",
                                         "ofType": null
                                     }
                                 },
@@ -2155,7 +3065,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelFamilyConditionInput",
+                                    "name": "ModelInitialSurveyConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -2163,14 +3073,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Family",
+                            "name": "InitialSurvey",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "deleteFamily",
+                        "name": "deleteInitialSurvey",
                         "description": null,
                         "args": [
                             {
@@ -2181,7 +3091,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "DeleteFamilyInput",
+                                        "name": "DeleteInitialSurveyInput",
                                         "ofType": null
                                     }
                                 },
@@ -2192,7 +3102,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelFamilyConditionInput",
+                                    "name": "ModelInitialSurveyConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -2200,14 +3110,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Family",
+                            "name": "InitialSurvey",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "createConfigDef",
+                        "name": "createConfigDefinitions",
                         "description": null,
                         "args": [
                             {
@@ -2218,7 +3128,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "CreateConfigDefInput",
+                                        "name": "CreateConfigDefinitionsInput",
                                         "ofType": null
                                     }
                                 },
@@ -2229,7 +3139,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelConfigDefConditionInput",
+                                    "name": "ModelConfigDefinitionsConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -2237,14 +3147,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ConfigDef",
+                            "name": "ConfigDefinitions",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "updateConfigDef",
+                        "name": "updateConfigDefinitions",
                         "description": null,
                         "args": [
                             {
@@ -2255,7 +3165,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "UpdateConfigDefInput",
+                                        "name": "UpdateConfigDefinitionsInput",
                                         "ofType": null
                                     }
                                 },
@@ -2266,7 +3176,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelConfigDefConditionInput",
+                                    "name": "ModelConfigDefinitionsConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -2274,14 +3184,14 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ConfigDef",
+                            "name": "ConfigDefinitions",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "deleteConfigDef",
+                        "name": "deleteConfigDefinitions",
                         "description": null,
                         "args": [
                             {
@@ -2292,7 +3202,7 @@
                                     "name": null,
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "DeleteConfigDefInput",
+                                        "name": "DeleteConfigDefinitionsInput",
                                         "ofType": null
                                     }
                                 },
@@ -2303,7 +3213,7 @@
                                 "description": null,
                                 "type": {
                                     "kind": "INPUT_OBJECT",
-                                    "name": "ModelConfigDefConditionInput",
+                                    "name": "ModelConfigDefinitionsConditionInput",
                                     "ofType": null
                                 },
                                 "defaultValue": null
@@ -2311,7 +3221,7 @@
                         ],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ConfigDef",
+                            "name": "ConfigDefinitions",
                             "ofType": null
                         },
                         "isDeprecated": false,
@@ -2325,7 +3235,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "CreateFamilyInput",
+                "name": "CreateInitialSurveyInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -2340,7 +3250,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "namebwe",
+                        "name": "Namebwe",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2354,7 +3264,35 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "surveyId",
+                        "name": "Country",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "Community",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "SurveyId",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2362,34 +3300,6 @@
                             "ofType": {
                                 "kind": "SCALAR",
                                 "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "country",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "community",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
                                 "ofType": null
                             }
                         },
@@ -2406,7 +3316,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdName",
+                        "name": "HeadHouseholdName",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2420,7 +3330,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdSex",
+                        "name": "HeadHouseholdSex",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2434,7 +3344,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdMaritalStatus",
+                        "name": "HeadHouseholdMaritalStatus",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2448,7 +3358,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdAge",
+                        "name": "HeadHouseholdAge",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2462,7 +3372,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdOccupation",
+                        "name": "HeadHouseholdOccupation",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2476,7 +3386,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdEducationLevel",
+                        "name": "HeadHouseholdEducation",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2490,7 +3400,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "interviewee",
+                        "name": "PersonBeingInterviewed",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2504,7 +3414,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberPeopleHousehold",
+                        "name": "TotalNoPeopleHousehold",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2518,7 +3428,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold1",
+                        "name": "NoHouseholdMale0_1Year",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2532,7 +3442,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold1",
+                        "name": "NoHouseholdFemale0_1Year",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2546,7 +3456,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold5",
+                        "name": "NoHouseholdMale1_5Year",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2560,7 +3470,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold5",
+                        "name": "NoHouseholdFemale1_5Year",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2574,7 +3484,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold12",
+                        "name": "NoHouseholdMale5_12Year",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2588,7 +3498,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold12",
+                        "name": "NoHouseholdFemale5_12Year",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2602,7 +3512,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold17",
+                        "name": "NoHouseholdMale13_17Year",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2616,7 +3526,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold17",
+                        "name": "NoHouseholdFemale13_17Year",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2630,7 +3540,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold18",
+                        "name": "NoHouseholdMale18_Year",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2644,7 +3554,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold18",
+                        "name": "NoHouseholdFemale18_Year",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2658,7 +3568,455 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "reasonChildrenNotInSchool",
+                        "name": "ReasonNoSchoolChildren5_17Year",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainSourceDrinkingWater",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainSourceOtherPurposeWater",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "TimeToWaterSourceGetReturn",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HouseholdFrequencyAtWaterSource",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "UsualHouseholdWaterFetcher",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ContainerCarryWater",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatmentBeforeDrinking",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainReasonNoWaterTreatmentBeforeDrinking",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatmentMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowLongUsingWaterTreatment",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "FrequencyWaterTreatment",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterStorageAtHome",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "TakingWaterFromStorage",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "RubbishDisposal",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HouseholdDefecationMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "SatisfactionHouseholdDefecationMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WasteDisposalYoungestChild",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WashedHandsIn24Hours",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WhenWashedHandsIn24Hours",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WhatUsedToWashYourHands",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn7days",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "DidSickChildrenGoToHospital",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "DidSickChildrenGoToHospitalYes",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "SickChildrenBreastfeeding",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "OutcomeMostRecentVomiting_DiarrheaAtHospital",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoDaysNoWorkBecauseOfOwnIllness",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoDaysNoWorkBecauseOfIllnessFamilyMembers",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MoneySpentMedicalTreatmentLast4weeks",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HealthChangeInAYear",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HealthChangeFamilyInAYear",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -2688,12 +4046,12 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "ModelFamilyConditionInput",
+                "name": "ModelInitialSurveyConditionInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
                     {
-                        "name": "namebwe",
+                        "name": "Namebwe",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2703,31 +4061,31 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "surveyId",
+                        "name": "Country",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "Community",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "SurveyId",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "country",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "community",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -2743,7 +4101,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdName",
+                        "name": "HeadHouseholdName",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2753,7 +4111,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdSex",
+                        "name": "HeadHouseholdSex",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2763,7 +4121,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdMaritalStatus",
+                        "name": "HeadHouseholdMaritalStatus",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2773,7 +4131,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdAge",
+                        "name": "HeadHouseholdAge",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2783,7 +4141,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdOccupation",
+                        "name": "HeadHouseholdOccupation",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2793,7 +4151,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdEducationLevel",
+                        "name": "HeadHouseholdEducation",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2803,7 +4161,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "interviewee",
+                        "name": "PersonBeingInterviewed",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2813,7 +4171,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberPeopleHousehold",
+                        "name": "TotalNoPeopleHousehold",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2823,7 +4181,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold1",
+                        "name": "NoHouseholdMale0_1Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2833,7 +4191,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold1",
+                        "name": "NoHouseholdFemale0_1Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2843,7 +4201,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold5",
+                        "name": "NoHouseholdMale1_5Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2853,7 +4211,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold5",
+                        "name": "NoHouseholdFemale1_5Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2863,7 +4221,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold12",
+                        "name": "NoHouseholdMale5_12Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2873,7 +4231,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold12",
+                        "name": "NoHouseholdFemale5_12Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2883,7 +4241,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold17",
+                        "name": "NoHouseholdMale13_17Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2893,7 +4251,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold17",
+                        "name": "NoHouseholdFemale13_17Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2903,7 +4261,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold18",
+                        "name": "NoHouseholdMale18_Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2913,7 +4271,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold18",
+                        "name": "NoHouseholdFemale18_Year",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2923,7 +4281,327 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "reasonChildrenNotInSchool",
+                        "name": "ReasonNoSchoolChildren5_17Year",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainSourceDrinkingWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainSourceOtherPurposeWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "TimeToWaterSourceGetReturn",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HouseholdFrequencyAtWaterSource",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "UsualHouseholdWaterFetcher",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ContainerCarryWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatmentBeforeDrinking",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainReasonNoWaterTreatmentBeforeDrinking",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatmentMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowLongUsingWaterTreatment",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "FrequencyWaterTreatment",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterStorageAtHome",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "TakingWaterFromStorage",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "RubbishDisposal",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HouseholdDefecationMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "SatisfactionHouseholdDefecationMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WasteDisposalYoungestChild",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WashedHandsIn24Hours",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WhenWashedHandsIn24Hours",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WhatUsedToWashYourHands",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn7days",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "DidSickChildrenGoToHospital",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "DidSickChildrenGoToHospitalYes",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "SickChildrenBreastfeeding",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "OutcomeMostRecentVomiting_DiarrheaAtHospital",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoDaysNoWorkBecauseOfOwnIllness",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoDaysNoWorkBecauseOfIllnessFamilyMembers",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MoneySpentMedicalTreatmentLast4weeks",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HealthChangeInAYear",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HealthChangeFamilyInAYear",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2940,7 +4618,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelFamilyConditionInput",
+                                "name": "ModelInitialSurveyConditionInput",
                                 "ofType": null
                             }
                         },
@@ -2954,7 +4632,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelFamilyConditionInput",
+                                "name": "ModelInitialSurveyConditionInput",
                                 "ofType": null
                             }
                         },
@@ -2965,7 +4643,7 @@
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelFamilyConditionInput",
+                            "name": "ModelInitialSurveyConditionInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -2977,7 +4655,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "UpdateFamilyInput",
+                "name": "UpdateInitialSurveyInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -2996,7 +4674,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "namebwe",
+                        "name": "Namebwe",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3006,31 +4684,31 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "surveyId",
+                        "name": "Country",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "Community",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "SurveyId",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
                             "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "country",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "community",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -3046,7 +4724,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdName",
+                        "name": "HeadHouseholdName",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3056,7 +4734,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdSex",
+                        "name": "HeadHouseholdSex",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3066,7 +4744,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdMaritalStatus",
+                        "name": "HeadHouseholdMaritalStatus",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3076,7 +4754,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdAge",
+                        "name": "HeadHouseholdAge",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3086,7 +4764,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdOccupation",
+                        "name": "HeadHouseholdOccupation",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3096,7 +4774,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "headHouseholdEducationLevel",
+                        "name": "HeadHouseholdEducation",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3106,7 +4784,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "interviewee",
+                        "name": "PersonBeingInterviewed",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3116,7 +4794,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberPeopleHousehold",
+                        "name": "TotalNoPeopleHousehold",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3126,7 +4804,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold1",
+                        "name": "NoHouseholdMale0_1Year",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3136,7 +4814,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold1",
+                        "name": "NoHouseholdFemale0_1Year",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3146,7 +4824,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold5",
+                        "name": "NoHouseholdMale1_5Year",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3156,7 +4834,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold5",
+                        "name": "NoHouseholdFemale1_5Year",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3166,7 +4844,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold12",
+                        "name": "NoHouseholdMale5_12Year",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3176,7 +4854,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold12",
+                        "name": "NoHouseholdFemale5_12Year",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3186,7 +4864,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold17",
+                        "name": "NoHouseholdMale13_17Year",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3196,7 +4874,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold17",
+                        "name": "NoHouseholdFemale13_17Year",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3206,7 +4884,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberMaleHousehold18",
+                        "name": "NoHouseholdMale18_Year",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3216,7 +4894,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "numberFemaleHousehold18",
+                        "name": "NoHouseholdFemale18_Year",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3226,7 +4904,327 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "reasonChildrenNotInSchool",
+                        "name": "ReasonNoSchoolChildren5_17Year",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainSourceDrinkingWater",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainSourceOtherPurposeWater",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "TimeToWaterSourceGetReturn",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HouseholdFrequencyAtWaterSource",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "UsualHouseholdWaterFetcher",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ContainerCarryWater",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatmentBeforeDrinking",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainReasonNoWaterTreatmentBeforeDrinking",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatmentMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowLongUsingWaterTreatment",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "FrequencyWaterTreatment",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterStorageAtHome",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "TakingWaterFromStorage",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "RubbishDisposal",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HouseholdDefecationMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "SatisfactionHouseholdDefecationMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WasteDisposalYoungestChild",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WashedHandsIn24Hours",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WhenWashedHandsIn24Hours",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WhatUsedToWashYourHands",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn7days",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "DidSickChildrenGoToHospital",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "DidSickChildrenGoToHospitalYes",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "SickChildrenBreastfeeding",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "OutcomeMostRecentVomiting_DiarrheaAtHospital",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoDaysNoWorkBecauseOfOwnIllness",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoDaysNoWorkBecauseOfIllnessFamilyMembers",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MoneySpentMedicalTreatmentLast4weeks",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HealthChangeInAYear",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HealthChangeFamilyInAYear",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3252,7 +5250,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "DeleteFamilyInput",
+                "name": "DeleteInitialSurveyInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -3283,7 +5281,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "CreateConfigDefInput",
+                "name": "CreateConfigDefinitionsInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -3298,7 +5296,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "Name",
+                        "name": "type",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -3312,7 +5310,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "Value",
+                        "name": "name",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -3326,7 +5324,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "Description",
+                        "name": "value",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -3340,7 +5338,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "ParentName",
+                        "name": "childname",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -3354,7 +5352,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "ParentValue",
+                        "name": "childvalue",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -3368,7 +5366,49 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "ParentDescription",
+                        "name": "childdesc",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "parentname",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "parentvalue",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "parentdesc",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -3398,12 +5438,12 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "ModelConfigDefConditionInput",
+                "name": "ModelConfigDefinitionsConditionInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
                     {
-                        "name": "Name",
+                        "name": "type",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -3413,7 +5453,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "Value",
+                        "name": "name",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -3423,7 +5463,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "Description",
+                        "name": "value",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -3433,7 +5473,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "ParentName",
+                        "name": "childname",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -3443,7 +5483,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "ParentValue",
+                        "name": "childvalue",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -3453,7 +5493,37 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "ParentDescription",
+                        "name": "childdesc",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "parentname",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "parentvalue",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "parentdesc",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -3470,7 +5540,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelConfigDefConditionInput",
+                                "name": "ModelConfigDefinitionsConditionInput",
                                 "ofType": null
                             }
                         },
@@ -3484,7 +5554,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "INPUT_OBJECT",
-                                "name": "ModelConfigDefConditionInput",
+                                "name": "ModelConfigDefinitionsConditionInput",
                                 "ofType": null
                             }
                         },
@@ -3495,7 +5565,7 @@
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelConfigDefConditionInput",
+                            "name": "ModelConfigDefinitionsConditionInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -3507,7 +5577,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "UpdateConfigDefInput",
+                "name": "UpdateConfigDefinitionsInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -3526,7 +5596,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "Name",
+                        "name": "type",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3536,7 +5606,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "Value",
+                        "name": "name",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3546,7 +5616,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "Description",
+                        "name": "value",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3556,7 +5626,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "ParentName",
+                        "name": "childname",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3566,7 +5636,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "ParentValue",
+                        "name": "childvalue",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3576,7 +5646,37 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "ParentDescription",
+                        "name": "childdesc",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "parentname",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "parentvalue",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "parentdesc",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -3602,7 +5702,7 @@
             },
             {
                 "kind": "INPUT_OBJECT",
-                "name": "DeleteConfigDefInput",
+                "name": "DeleteConfigDefinitionsInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -3637,72 +5737,72 @@
                 "description": null,
                 "fields": [
                     {
-                        "name": "onCreateFamily",
+                        "name": "onCreateInitialSurvey",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Family",
+                            "name": "InitialSurvey",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "onUpdateFamily",
+                        "name": "onUpdateInitialSurvey",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Family",
+                            "name": "InitialSurvey",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "onDeleteFamily",
+                        "name": "onDeleteInitialSurvey",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "Family",
+                            "name": "InitialSurvey",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "onCreateConfigDef",
+                        "name": "onCreateConfigDefinitions",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ConfigDef",
+                            "name": "ConfigDefinitions",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "onUpdateConfigDef",
+                        "name": "onUpdateConfigDefinitions",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ConfigDef",
+                            "name": "ConfigDefinitions",
                             "ofType": null
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
                     },
                     {
-                        "name": "onDeleteConfigDef",
+                        "name": "onDeleteConfigDefinitions",
                         "description": null,
                         "args": [],
                         "type": {
                             "kind": "OBJECT",
-                            "name": "ConfigDef",
+                            "name": "ConfigDefinitions",
                             "ofType": null
                         },
                         "isDeprecated": false,

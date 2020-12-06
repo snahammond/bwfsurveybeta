@@ -15,10 +15,10 @@ import com.amplifyframework.core.model.query.predicate.QueryField;
 
 import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 
-/** This is an auto generated class representing the ConfigDef type in your schema. */
+/** This is an auto generated class representing the ConfigDefinitions type in your schema. */
 @SuppressWarnings("all")
-@ModelConfig(pluralName = "ConfigDefs")
-public final class ConfigDef implements Model {
+@ModelConfig(pluralName = "ConfigDefinitions")
+public final class ConfigDefinitions implements Model {
   public static final QueryField ID = field("id");
   public static final QueryField TYPE = field("type");
   public static final QueryField NAME = field("name");
@@ -79,7 +79,7 @@ public final class ConfigDef implements Model {
       return parentdesc;
   }
   
-  private ConfigDef(String id, String type, String name, String value, String childname, String childvalue, String childdesc, String parentname, String parentvalue, String parentdesc) {
+  private ConfigDefinitions(String id, String type, String name, String value, String childname, String childvalue, String childdesc, String parentname, String parentvalue, String parentdesc) {
     this.id = id;
     this.type = type;
     this.name = name;
@@ -99,17 +99,17 @@ public final class ConfigDef implements Model {
       } else if(obj == null || getClass() != obj.getClass()) {
         return false;
       } else {
-      ConfigDef configDef = (ConfigDef) obj;
-      return ObjectsCompat.equals(getId(), configDef.getId()) &&
-              ObjectsCompat.equals(getType(), configDef.getType()) &&
-              ObjectsCompat.equals(getName(), configDef.getName()) &&
-              ObjectsCompat.equals(getValue(), configDef.getValue()) &&
-              ObjectsCompat.equals(getChildname(), configDef.getChildname()) &&
-              ObjectsCompat.equals(getChildvalue(), configDef.getChildvalue()) &&
-              ObjectsCompat.equals(getChilddesc(), configDef.getChilddesc()) &&
-              ObjectsCompat.equals(getParentname(), configDef.getParentname()) &&
-              ObjectsCompat.equals(getParentvalue(), configDef.getParentvalue()) &&
-              ObjectsCompat.equals(getParentdesc(), configDef.getParentdesc());
+      ConfigDefinitions configDefinitions = (ConfigDefinitions) obj;
+      return ObjectsCompat.equals(getId(), configDefinitions.getId()) &&
+              ObjectsCompat.equals(getType(), configDefinitions.getType()) &&
+              ObjectsCompat.equals(getName(), configDefinitions.getName()) &&
+              ObjectsCompat.equals(getValue(), configDefinitions.getValue()) &&
+              ObjectsCompat.equals(getChildname(), configDefinitions.getChildname()) &&
+              ObjectsCompat.equals(getChildvalue(), configDefinitions.getChildvalue()) &&
+              ObjectsCompat.equals(getChilddesc(), configDefinitions.getChilddesc()) &&
+              ObjectsCompat.equals(getParentname(), configDefinitions.getParentname()) &&
+              ObjectsCompat.equals(getParentvalue(), configDefinitions.getParentvalue()) &&
+              ObjectsCompat.equals(getParentdesc(), configDefinitions.getParentdesc());
       }
   }
   
@@ -133,7 +133,7 @@ public final class ConfigDef implements Model {
   @Override
    public String toString() {
     return new StringBuilder()
-      .append("ConfigDef {")
+      .append("ConfigDefinitions {")
       .append("id=" + String.valueOf(getId()) + ", ")
       .append("type=" + String.valueOf(getType()) + ", ")
       .append("name=" + String.valueOf(getName()) + ", ")
@@ -161,7 +161,7 @@ public final class ConfigDef implements Model {
    * @return an instance of this model with only ID populated
    * @throws IllegalArgumentException Checks that ID is in the proper format
    */
-  public static ConfigDef justId(String id) {
+  public static ConfigDefinitions justId(String id) {
     try {
       UUID.fromString(id); // Check that ID is in the UUID format - if not an exception is thrown
     } catch (Exception exception) {
@@ -171,7 +171,7 @@ public final class ConfigDef implements Model {
               "creating a new object, use the standard builder method and leave the ID field blank."
       );
     }
-    return new ConfigDef(
+    return new ConfigDefinitions(
       id,
       null,
       null,
@@ -243,7 +243,7 @@ public final class ConfigDef implements Model {
   
 
   public interface BuildStep {
-    ConfigDef build();
+    ConfigDefinitions build();
     BuildStep id(String id) throws IllegalArgumentException;
   }
   
@@ -260,10 +260,10 @@ public final class ConfigDef implements Model {
     private String parentvalue;
     private String parentdesc;
     @Override
-     public ConfigDef build() {
+     public ConfigDefinitions build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
         
-        return new ConfigDef(
+        return new ConfigDefinitions(
           id,
           type,
           name,
