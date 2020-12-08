@@ -32,6 +32,16 @@
             android:label="Initial Survey">
         </activity>
 
+        <activity
+            android:name=".FamilyCardSelect"
+            android:label="Select household">
+        </activity>
+
+        <activity
+            android:name=".FollowUpSurveyActivity"
+            android:label="FollowUp Survey">
+        </activity>
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

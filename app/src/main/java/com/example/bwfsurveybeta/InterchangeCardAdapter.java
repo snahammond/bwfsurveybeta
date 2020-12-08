@@ -1,5 +1,6 @@
 package com.example.bwfsurveybeta;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -32,8 +33,10 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private static int ANSTYPE_NUMBER = 3;
     private static int ANSTYPE_ENUMDROPDOWN = 4;
 
-    public InterchangeCardAdapter(InitialSurveyActivity mainActivity, ArrayList<Interchange> interchanges) {
+    public InterchangeCardAdapter(Activity mainActivity, ArrayList<Interchange> interchanges) {
+        this.interchanges = new ArrayList<>();
         this.interchanges = interchanges;
+        this._retInterchangesWithAns = new ArrayList<>();
         this._retInterchangesWithAns = interchanges;
         this.context = mainActivity;
     }

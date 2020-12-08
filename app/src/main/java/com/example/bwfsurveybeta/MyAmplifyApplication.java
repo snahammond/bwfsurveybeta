@@ -12,6 +12,9 @@ import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.AmplifyConfiguration;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
+import com.amplifyframework.datastore.DataStoreConfiguration;
+import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
+import com.amplifyframework.datastore.generated.model.InitialSurvey;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -24,6 +27,7 @@ public class MyAmplifyApplication extends Application {
     private static Activity CurrentActivity;
     private static ArrayList<Config> configs;
     private static ArrayList<Interchange> interchangePool;
+    public static String namebwe = "";
 
 
     @Override
@@ -33,7 +37,17 @@ public class MyAmplifyApplication extends Application {
 
         try {
 
-            Amplify.addPlugin(new AWSDataStorePlugin());
+            //Amplify.addPlugin(new AWSDataStorePlugin());
+            Amplify.addPlugin(new AWSDataStorePlugin(DataStoreConfiguration.builder()
+                    .syncExpression(
+                            InitialSurvey.class,
+                            () -> InitialSurvey.NAMEBWE.eq(namebwe)
+                    )
+                    .syncExpression(
+                            FollowUpSurvey.class,
+                            () -> FollowUpSurvey.NAMEBWE.eq(namebwe)
+                    )
+                    .build()));
             Amplify.addPlugin(new AWSApiPlugin());
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
 
@@ -177,7 +191,7 @@ public class MyAmplifyApplication extends Application {
     private static Config searchConfigForSurvey(String nameOfSurvey){
         Config surveyConfig = null;
         for(Config config : MyAmplifyApplication.configs){
-            if(config.getName().contentEquals("INITAILSURVEY") && config.getType().contentEquals("S")){
+            if(config.getName().contentEquals(nameOfSurvey) && config.getType().contentEquals("S")){
                 return config;
             }
         }

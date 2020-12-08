@@ -33,7 +33,7 @@
         <value>FOLLOWUPSURVEY</value>
         <desc>FOLLOW UP SURVEY</desc>
         <childname>I</childname>
-        <childvalue>[1,2,3,4,10,11,38,39,40,41,54,55,56,41,42,43,44,45,46,47,48,49,50,51]</childvalue>
+        <childvalue>[11,30,31,32,33,34,35,36,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]</childvalue>
         <childdesc></childdesc>
     </config>
     <config>
@@ -4277,6 +4277,90 @@
         <name>HealthChangeFamilyInAYear</name>
         <value>DONTKNOW</value>
         <desc>Don’t know</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+        <parentname></parentname>
+        <parentvalue></parentvalue>
+        <parentdesc></parentdesc>
+    </config>
+    <config>
+        <type>I</type>
+        <name>BenefitSWP</name>
+        <value>56</value>
+        <desc>What level of benefit has taking part in the safe water education program been to you and your household?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>BenefitSWP</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>BenefitSWP</name>
+        <value>BenefitSWP</value>
+        <desc>What level of benefit has taking part in the safe water education program been to you and your household?</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>BenefitSWP</name>
+        <value>ENUMVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AV</type>
+        <name>BenefitSWP</name>
+        <value>GREATBENEFIT</value>
+        <desc>Great benefit</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+        <parentname></parentname>
+        <parentvalue></parentvalue>
+        <parentdesc></parentdesc>
+    </config>
+    <config>
+        <type>AV</type>
+        <name>BenefitSWP</name>
+        <value>GOODSIZEBENEFIT</value>
+        <desc>Good-size benefit</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+        <parentname></parentname>
+        <parentvalue></parentvalue>
+        <parentdesc></parentdesc>
+    </config>
+    <config>
+        <type>AV</type>
+        <name>BenefitSWP</name>
+        <value>SMALLBENEFIT</value>
+        <desc>Small benefit</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+        <parentname></parentname>
+        <parentvalue></parentvalue>
+        <parentdesc></parentdesc>
+    </config>
+    <config>
+        <type>AV</type>
+        <name>BenefitSWP</name>
+        <value>NOBENEFIT</value>
+        <desc>No benefit</desc>
         <childname></childname>
         <childvalue></childvalue>
         <childdesc></childdesc>

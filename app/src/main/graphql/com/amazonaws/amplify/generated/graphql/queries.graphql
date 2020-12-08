@@ -219,6 +219,148 @@ query ListInitialSurveys(
     startedAt
   }
 }
+query SyncFollowUpSurveys(
+  $filter: ModelFollowUpSurveyFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncFollowUpSurveys(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      Namebwe
+      Country
+      Community
+      SurveyId
+      date
+      HeadHouseholdName
+      PersonBeingInterviewed
+      WaterTreatmentBeforeDrinking
+      MainReasonNoWaterTreatmentBeforeDrinking
+      WaterTreatmentMethod
+      HowLongUsingWaterTreatment
+      FrequencyWaterTreatment
+      WaterStorageAtHome
+      TakingWaterFromStorage
+      WashedHandsIn24Hours
+      WhenWashedHandsIn24Hours
+      WhatUsedToWashYourHands
+      NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+      CommonIllnessAffectingChildrenUnder5
+      NoChildrenWithVomitingOrDiarrheaIn7days
+      DidSickChildrenGoToHospital
+      DidSickChildrenGoToHospitalYes
+      SickChildrenBreastfeeding
+      OutcomeMostRecentVomiting_DiarrheaAtHospital
+      NoDaysNoWorkBecauseOfOwnIllness
+      NoDaysNoWorkBecauseOfIllnessFamilyMembers
+      MoneySpentMedicalTreatmentLast4weeks
+      HealthChangeInAYear
+      HealthChangeFamilyInAYear
+      BenefitSWP
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetFollowUpSurvey($id: ID!) {
+  getFollowUpSurvey(id: $id) {
+    id
+    Namebwe
+    Country
+    Community
+    SurveyId
+    date
+    HeadHouseholdName
+    PersonBeingInterviewed
+    WaterTreatmentBeforeDrinking
+    MainReasonNoWaterTreatmentBeforeDrinking
+    WaterTreatmentMethod
+    HowLongUsingWaterTreatment
+    FrequencyWaterTreatment
+    WaterStorageAtHome
+    TakingWaterFromStorage
+    WashedHandsIn24Hours
+    WhenWashedHandsIn24Hours
+    WhatUsedToWashYourHands
+    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    CommonIllnessAffectingChildrenUnder5
+    NoChildrenWithVomitingOrDiarrheaIn7days
+    DidSickChildrenGoToHospital
+    DidSickChildrenGoToHospitalYes
+    SickChildrenBreastfeeding
+    OutcomeMostRecentVomiting_DiarrheaAtHospital
+    NoDaysNoWorkBecauseOfOwnIllness
+    NoDaysNoWorkBecauseOfIllnessFamilyMembers
+    MoneySpentMedicalTreatmentLast4weeks
+    HealthChangeInAYear
+    HealthChangeFamilyInAYear
+    BenefitSWP
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListFollowUpSurveys(
+  $filter: ModelFollowUpSurveyFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listFollowUpSurveys(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      Namebwe
+      Country
+      Community
+      SurveyId
+      date
+      HeadHouseholdName
+      PersonBeingInterviewed
+      WaterTreatmentBeforeDrinking
+      MainReasonNoWaterTreatmentBeforeDrinking
+      WaterTreatmentMethod
+      HowLongUsingWaterTreatment
+      FrequencyWaterTreatment
+      WaterStorageAtHome
+      TakingWaterFromStorage
+      WashedHandsIn24Hours
+      WhenWashedHandsIn24Hours
+      WhatUsedToWashYourHands
+      NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+      CommonIllnessAffectingChildrenUnder5
+      NoChildrenWithVomitingOrDiarrheaIn7days
+      DidSickChildrenGoToHospital
+      DidSickChildrenGoToHospitalYes
+      SickChildrenBreastfeeding
+      OutcomeMostRecentVomiting_DiarrheaAtHospital
+      NoDaysNoWorkBecauseOfOwnIllness
+      NoDaysNoWorkBecauseOfIllnessFamilyMembers
+      MoneySpentMedicalTreatmentLast4weeks
+      HealthChangeInAYear
+      HealthChangeFamilyInAYear
+      BenefitSWP
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
 query SyncConfigDefinitions(
   $filter: ModelConfigDefinitionsFilterInput
   $limit: Int

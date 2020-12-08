@@ -206,6 +206,135 @@ mutation DeleteInitialSurvey(
     updatedAt
   }
 }
+mutation CreateFollowUpSurvey(
+  $input: CreateFollowUpSurveyInput!
+  $condition: ModelFollowUpSurveyConditionInput
+) {
+  createFollowUpSurvey(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Country
+    Community
+    SurveyId
+    date
+    HeadHouseholdName
+    PersonBeingInterviewed
+    WaterTreatmentBeforeDrinking
+    MainReasonNoWaterTreatmentBeforeDrinking
+    WaterTreatmentMethod
+    HowLongUsingWaterTreatment
+    FrequencyWaterTreatment
+    WaterStorageAtHome
+    TakingWaterFromStorage
+    WashedHandsIn24Hours
+    WhenWashedHandsIn24Hours
+    WhatUsedToWashYourHands
+    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    CommonIllnessAffectingChildrenUnder5
+    NoChildrenWithVomitingOrDiarrheaIn7days
+    DidSickChildrenGoToHospital
+    DidSickChildrenGoToHospitalYes
+    SickChildrenBreastfeeding
+    OutcomeMostRecentVomiting_DiarrheaAtHospital
+    NoDaysNoWorkBecauseOfOwnIllness
+    NoDaysNoWorkBecauseOfIllnessFamilyMembers
+    MoneySpentMedicalTreatmentLast4weeks
+    HealthChangeInAYear
+    HealthChangeFamilyInAYear
+    BenefitSWP
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateFollowUpSurvey(
+  $input: UpdateFollowUpSurveyInput!
+  $condition: ModelFollowUpSurveyConditionInput
+) {
+  updateFollowUpSurvey(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Country
+    Community
+    SurveyId
+    date
+    HeadHouseholdName
+    PersonBeingInterviewed
+    WaterTreatmentBeforeDrinking
+    MainReasonNoWaterTreatmentBeforeDrinking
+    WaterTreatmentMethod
+    HowLongUsingWaterTreatment
+    FrequencyWaterTreatment
+    WaterStorageAtHome
+    TakingWaterFromStorage
+    WashedHandsIn24Hours
+    WhenWashedHandsIn24Hours
+    WhatUsedToWashYourHands
+    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    CommonIllnessAffectingChildrenUnder5
+    NoChildrenWithVomitingOrDiarrheaIn7days
+    DidSickChildrenGoToHospital
+    DidSickChildrenGoToHospitalYes
+    SickChildrenBreastfeeding
+    OutcomeMostRecentVomiting_DiarrheaAtHospital
+    NoDaysNoWorkBecauseOfOwnIllness
+    NoDaysNoWorkBecauseOfIllnessFamilyMembers
+    MoneySpentMedicalTreatmentLast4weeks
+    HealthChangeInAYear
+    HealthChangeFamilyInAYear
+    BenefitSWP
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteFollowUpSurvey(
+  $input: DeleteFollowUpSurveyInput!
+  $condition: ModelFollowUpSurveyConditionInput
+) {
+  deleteFollowUpSurvey(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Country
+    Community
+    SurveyId
+    date
+    HeadHouseholdName
+    PersonBeingInterviewed
+    WaterTreatmentBeforeDrinking
+    MainReasonNoWaterTreatmentBeforeDrinking
+    WaterTreatmentMethod
+    HowLongUsingWaterTreatment
+    FrequencyWaterTreatment
+    WaterStorageAtHome
+    TakingWaterFromStorage
+    WashedHandsIn24Hours
+    WhenWashedHandsIn24Hours
+    WhatUsedToWashYourHands
+    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    CommonIllnessAffectingChildrenUnder5
+    NoChildrenWithVomitingOrDiarrheaIn7days
+    DidSickChildrenGoToHospital
+    DidSickChildrenGoToHospitalYes
+    SickChildrenBreastfeeding
+    OutcomeMostRecentVomiting_DiarrheaAtHospital
+    NoDaysNoWorkBecauseOfOwnIllness
+    NoDaysNoWorkBecauseOfIllnessFamilyMembers
+    MoneySpentMedicalTreatmentLast4weeks
+    HealthChangeInAYear
+    HealthChangeFamilyInAYear
+    BenefitSWP
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
 mutation CreateConfigDefinitions(
   $input: CreateConfigDefinitionsInput!
   $condition: ModelConfigDefinitionsConditionInput

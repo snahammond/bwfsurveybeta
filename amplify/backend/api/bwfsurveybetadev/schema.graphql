@@ -71,6 +71,43 @@ HealthChangeFamilyInAYear: String!
 
 
 
+
+type FollowUpSurvey @model{
+id: ID!
+Namebwe: String!
+Country: String!
+Community: String!
+SurveyId: Int!
+date: AWSDate
+HeadHouseholdName: String!
+PersonBeingInterviewed: String!
+WaterTreatmentBeforeDrinking: String!
+MainReasonNoWaterTreatmentBeforeDrinking: String!
+WaterTreatmentMethod: String!
+HowLongUsingWaterTreatment: String!
+FrequencyWaterTreatment: String!
+WaterStorageAtHome: String!
+TakingWaterFromStorage: String!
+WashedHandsIn24Hours: String!
+WhenWashedHandsIn24Hours: String!
+WhatUsedToWashYourHands: String!
+NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek: Int!
+CommonIllnessAffectingChildrenUnder5: String!
+NoChildrenWithVomitingOrDiarrheaIn7days: Int!
+DidSickChildrenGoToHospital: String!
+DidSickChildrenGoToHospitalYes: String!
+SickChildrenBreastfeeding: String!
+OutcomeMostRecentVomiting_DiarrheaAtHospital: String!
+NoDaysNoWorkBecauseOfOwnIllness: Int!
+NoDaysNoWorkBecauseOfIllnessFamilyMembers: Int!
+MoneySpentMedicalTreatmentLast4weeks: Int!
+HealthChangeInAYear: String!
+HealthChangeFamilyInAYear: String!
+BenefitSWP: String!
+}
+
+
+
 type ConfigDefinitions @model{
 	id: ID!
 	type: String!

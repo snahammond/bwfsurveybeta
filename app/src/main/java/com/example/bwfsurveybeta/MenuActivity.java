@@ -10,10 +10,8 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.InitialSurvey;
 
 public class MenuActivity extends AppCompatActivity {
     String namebwe = null;
@@ -24,23 +22,22 @@ public class MenuActivity extends AppCompatActivity {
         if(getIntent().getStringExtra("NAME_BWE")!=null)
             namebwe = getIntent().getStringExtra("NAME_BWE");
         Log.i("Tutorials", "namebwe: " + namebwe);
-
-        //doProgress();
-        showMenu();
+        doProgress();
+        //showMenu();
     }
 
     public void doProgress(){
         setContentView(R.layout.activity_menu_progress);
         i = 0;
         ProgressBar determinateBar = (ProgressBar)findViewById(R.id.determinateBar);
+        determinateBar.setMax(100);
         determinateBar.setProgress(i);
-        CountDownTimer mCountDownTimer=new CountDownTimer(15000,1000) {
+        CountDownTimer mCountDownTimer=new CountDownTimer(10000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 Log.v("Log_tag", "Tick of Progress"+ i+ millisUntilFinished);
                 i++;
-                determinateBar.setProgress((int)i*100/(15000/1000));
-
+                determinateBar.setProgress((int)i*100/(10000/1000));
             }
             @Override
             public void onFinish() {
@@ -63,6 +60,45 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button followUpSurvey = (Button) findViewById(R.id.button_followUpSurvey);
+        followUpSurvey.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), FamilyCardSelect.class);
+                i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("SURVEY_TYPE","FOLLOWUP");
+                startActivity(i);
+            }
+        });
+
+    }
+
+    public void tryDownloadAgain(){
+        try{
+            Amplify.DataStore.query(
+                    InitialSurvey.class,
+                    allInitialSurveyFamilys -> {
+                        Log.i("Tutorials", "DataStore is queried.");
+                        while (allInitialSurveyFamilys.hasNext()) {
+                            InitialSurvey aFamily = allInitialSurveyFamilys.next();
+                            Log.i("Tutorials", "Title: " + aFamily.getHeadHouseholdName());
+                        }
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                showMenu();
+                            }
+                        });
+                    },
+                    failure ->{
+                        Log.e("Tutorials", "Query failed.", failure);
+                        showMenu();
+                    }
+            );
+        }catch (Exception x){
+            //show less menu
+            Log.i("Tutorials", "show less menu.");
+        }
+
     }
 
     @Override

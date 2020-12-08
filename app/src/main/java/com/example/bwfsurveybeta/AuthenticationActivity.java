@@ -3,6 +3,7 @@ package com.example.bwfsurveybeta;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -28,6 +29,9 @@ import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
 import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.AmplifyConfiguration;
+import com.amplifyframework.datastore.DataStoreChannelEventName;
+import com.amplifyframework.datastore.generated.model.InitialSurvey;
+import com.amplifyframework.hub.HubChannel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -79,28 +83,15 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                     Log.i("Tutorials", "user online uniqueBWEName: " + uniqueBWEName + " authenticatedName: " +authenticatedName);
 
                     try {
-                        Amplify.DataStore.start(
-                                ()->{
-                                    runOnUiThread(new Runnable() {
-                                        public void run() {
-                                            showAuthenticatedScreen(authenticatedName);
-                                        }
-                                    });
-                                },
-                                onError->{
-                                    runOnUiThread(new Runnable() {
-                                        public void run() {
-                                            showAuthenticatedScreen(authenticatedName);
-                                        }
-                                    });
-                                }
-                        );
+                        MyAmplifyApplication.namebwe=uniqueBWEName;
+                        //MyAmplifyApplication.namebwe="invalidUserName";
+                        //getFamilysAndStartAuthenticatedScreen(true);
+                        clearSyncStartDataStoreAndStartAuthenticatedScreen();
                     }catch (Exception c){
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                showAuthenticatedScreen(authenticatedName);
-                            }
-                        });
+                        MyAmplifyApplication.namebwe=uniqueBWEName;
+                        //MyAmplifyApplication.namebwe="invalidUserName";
+                        //getFamilysAndStartAuthenticatedScreen(true);
+                        clearSyncStartDataStoreAndStartAuthenticatedScreen();
                     }
 
                 },
@@ -110,31 +101,13 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                     Log.i("Tutorials", "user offline uniqueBWEName: " + uniqueBWEName + " authenticatedName: " +authenticatedName);
 
                     try {
-                        Amplify.DataStore.start(
-                                ()->{
-                                    runOnUiThread(new Runnable() {
-                                        public void run() {
-                                            Toast.makeText(AuthenticationActivity.this, "Please note that you are offline", Toast.LENGTH_SHORT).show();
-                                            showAuthenticatedScreen(authenticatedName);
-                                        }
-                                    });
-                                },
-                                onError->{
-                                    runOnUiThread(new Runnable() {
-                                        public void run() {
-                                            Toast.makeText(AuthenticationActivity.this, "Please note that you are offline", Toast.LENGTH_SHORT).show();
-                                            showAuthenticatedScreen(authenticatedName);
-                                        }
-                                    });
-                                }
-                        );
+                        MyAmplifyApplication.namebwe=uniqueBWEName;
+                        //MyAmplifyApplication.namebwe="invalidusername";
+                        startDataStoreAndStartAuthenticatedScreen();
                     }catch (Exception c){
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                Toast.makeText(AuthenticationActivity.this, "Please note that you are offline", Toast.LENGTH_SHORT).show();
-                                showAuthenticatedScreen(authenticatedName);
-                            }
-                        });
+                        MyAmplifyApplication.namebwe=uniqueBWEName;
+                        //MyAmplifyApplication.namebwe="invalidusername";
+                        startDataStoreAndStartAuthenticatedScreen();
                     }
                 });
         }else{
@@ -297,4 +270,41 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                 }
         );
     }
+
+
+    private void clearSyncStartDataStoreAndStartAuthenticatedScreen(){
+        Amplify.DataStore.clear(
+                ()->{
+                    Log.i("Tutorials", "Cleard DataStore.");
+                    startDataStoreAndStartAuthenticatedScreen();
+                },
+                error -> {
+                    Log.e("MyAmplifyApp", "Error clearing DataStore: ", error);
+                    startAuthenticatedScreen();
+                }
+        );
+    }
+
+    private void startDataStoreAndStartAuthenticatedScreen(){
+        Amplify.DataStore.start(
+                () -> {
+                    Log.i("Tutorials", " started DataStore.");
+                    startAuthenticatedScreen();
+                },
+                failure -> {
+                    Log.e("Tutorials", "Failed to start DataStore.");
+                    startAuthenticatedScreen();
+                }
+        );
+    }
+
+    private void startAuthenticatedScreen(){
+        AuthenticationActivity.this.runOnUiThread(new Runnable() {
+            public void run() {
+                showAuthenticatedScreen(authenticatedName);
+            }
+        });
+    }
+
+
 }
