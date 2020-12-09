@@ -84,31 +84,30 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
 
                     try {
                         MyAmplifyApplication.namebwe=uniqueBWEName;
-                        //MyAmplifyApplication.namebwe="invalidUserName";
-                        //getFamilysAndStartAuthenticatedScreen(true);
-                        clearSyncStartDataStoreAndStartAuthenticatedScreen();
+                        reevluateStartDataStoreSyncAndStartAuthenticatedScreen();
                     }catch (Exception c){
                         MyAmplifyApplication.namebwe=uniqueBWEName;
-                        //MyAmplifyApplication.namebwe="invalidUserName";
-                        //getFamilysAndStartAuthenticatedScreen(true);
-                        clearSyncStartDataStoreAndStartAuthenticatedScreen();
+                        reevluateStartDataStoreSyncAndStartAuthenticatedScreen();
                     }
-
                 },
                 error ->{
                     //the user is offline
                     authenticatedName = uniqueBWEName;
                     Log.i("Tutorials", "user offline uniqueBWEName: " + uniqueBWEName + " authenticatedName: " +authenticatedName);
-
+                    startAuthenticatedScreen(false);
+                    /*
                     try {
                         MyAmplifyApplication.namebwe=uniqueBWEName;
                         //MyAmplifyApplication.namebwe="invalidusername";
-                        startDataStoreAndStartAuthenticatedScreen();
+                        //startDataStoreAndStartAuthenticatedScreen();
+                        startAuthenticatedScreen();
                     }catch (Exception c){
                         MyAmplifyApplication.namebwe=uniqueBWEName;
                         //MyAmplifyApplication.namebwe="invalidusername";
-                        startDataStoreAndStartAuthenticatedScreen();
+                        //startDataStoreAndStartAuthenticatedScreen();
+                        startAuthenticatedScreen();
                     }
+                     */
                 });
         }else{
             //user is not sign-in
@@ -123,7 +122,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
 
     }
 
-    public void showAuthenticatedScreen(String authenticatedName){
+    public void showAuthenticatedScreen(String authenticatedName,Boolean calledAMPStart){
         setContentView(R.layout.activity_authenticated);
         TextView textAuthenticated = (TextView) findViewById(R.id.textAuthenticated);
         textAuthenticated.setText(authenticatedName);
@@ -134,6 +133,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                 //go to menu screen
                 Intent i = new Intent(getApplicationContext(),MenuActivity.class);
                 i.putExtra("NAME_BWE", uniqueBWEName);
+                i.putExtra("CALLED_AMPSTART", calledAMPStart);
                 startActivity(i);
             }
         });
@@ -271,16 +271,15 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
         );
     }
 
-
-    private void clearSyncStartDataStoreAndStartAuthenticatedScreen(){
-        Amplify.DataStore.clear(
-                ()->{
-                    Log.i("Tutorials", "Cleard DataStore.");
+    private void reevluateStartDataStoreSyncAndStartAuthenticatedScreen(){
+        Amplify.DataStore.stop(
+                () -> {
+                    Log.i("Tutorials", " started DataStore.");
                     startDataStoreAndStartAuthenticatedScreen();
                 },
-                error -> {
-                    Log.e("MyAmplifyApp", "Error clearing DataStore: ", error);
-                    startAuthenticatedScreen();
+                failure -> {
+                    Log.e("Tutorials", "Failed to start DataStore.");
+                    startAuthenticatedScreen(false);
                 }
         );
     }
@@ -289,22 +288,24 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
         Amplify.DataStore.start(
                 () -> {
                     Log.i("Tutorials", " started DataStore.");
-                    startAuthenticatedScreen();
+                    startAuthenticatedScreen(true);
                 },
                 failure -> {
                     Log.e("Tutorials", "Failed to start DataStore.");
-                    startAuthenticatedScreen();
+                    startAuthenticatedScreen(true);
                 }
         );
     }
 
-    private void startAuthenticatedScreen(){
+    private void startAuthenticatedScreen(boolean calledAMPStart){
         AuthenticationActivity.this.runOnUiThread(new Runnable() {
             public void run() {
-                showAuthenticatedScreen(authenticatedName);
+                showAuthenticatedScreen(authenticatedName,calledAMPStart);
             }
         });
     }
+
+
 
 
 }

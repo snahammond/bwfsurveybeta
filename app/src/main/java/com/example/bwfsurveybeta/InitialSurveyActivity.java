@@ -3,9 +3,13 @@ package com.example.bwfsurveybeta;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
@@ -37,15 +41,18 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
     private String namebwe;
     private static ArrayList<Interchange> interchanges;
 
+    private LinearLayout progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         namebwe = getIntent().getStringExtra("NAME_BWE");
-        setContentView(R.layout.activity_recycler);
         initView();
     }
 
     private void initView() {
+        setContentView(R.layout.activity_recycler);
+
         createInitialSurveyQuestionaire();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -116,7 +123,12 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         Amplify.DataStore.save(initialSurveyToSave,
                 update -> {
                     Log.i("Tutorial", "Saved Successfully ");
-                    showSavedSuccessfulAlert();
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            doSyncWaitAndShowSavedSuccessfulAlert();
+                        }
+                    });
                 },
                 failure -> {
                     Log.i("Tutorial", "Save Failed ");
@@ -125,28 +137,45 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         );
     }
 
-    private void showSavedSuccessfulAlert(){
-        runOnUiThread(new Runnable() {
-            public void run() {
-                new AlertDialog.Builder(InitialSurveyActivity.this)
-                        .setTitle("Saved Succussfully")
-                        .setMessage("Initial Survey Saved Succussfully \n" )
-                        // A null listener allows the button to dismiss the dialog and take no further action.
-                        .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //reset all the user answers
-                                for(Interchange interchange: InitialSurveyActivity.interchanges){
-                                    interchange.getAnswer().setAns(null);
-                                }
-                                InitialSurveyActivity.this.finish();
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_info)
-                        .show();
+    private void doSyncWaitAndShowSavedSuccessfulAlert(){
+        //show progress bar so that if user is offline, the save will go into pending to be shot into cloud
+        //this is for the progress bar
+        progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
+        TextView progressBarText = (TextView) findViewById(R.id.pbText);
+        progressBarText.setText("Please wait... Syncing Up!");
+        progressBar.setVisibility(View.VISIBLE);
+        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
             }
-        });
+
+            @Override
+            public void onFinish() {
+                progressBar.setVisibility(View.GONE);
+                showSavedSuccessfulAlert();
+            }
+        };
+        countDownTimer.start();
+    }
+
+    private void showSavedSuccessfulAlert(){
+        new AlertDialog.Builder(InitialSurveyActivity.this)
+                .setTitle("Saved Succussfully")
+                .setMessage("Initial Survey Saved Succussfully \n" )
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //reset all the user answers
+                        for(Interchange interchange: InitialSurveyActivity.interchanges){
+                            interchange.getAnswer().setAns(null);
+                        }
+                        InitialSurveyActivity.this.finish();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .show();
     }
 
     private void showSaveFailedAlert(){

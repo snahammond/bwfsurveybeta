@@ -23,9 +23,9 @@ public class FamilyCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private String surveyType;
     private Context context;
 
-    public FamilyCardAdapter(FamilyCardSelect familyCardSelect, ArrayList<InitialSurvey> listOfFamilys, String namebwe, String surveyType) {
+    public FamilyCardAdapter(FamilyCardSelectActivity familyCardSelectActivity, ArrayList<InitialSurvey> listOfFamilys, String namebwe, String surveyType) {
         this.listOfFamilys = listOfFamilys;
-        this.context = familyCardSelect;
+        this.context = familyCardSelectActivity;
         this.namebwe = namebwe;
         this.surveyType = surveyType;
     }
@@ -55,22 +55,26 @@ public class FamilyCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         public FamilyCardViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtCountry = (TextView)itemView.findViewById(R.id.txtCountry);
-            txtCommunity = (TextView)itemView.findViewById(R.id.txtCommunity);
-            txtHeadHousehold = (TextView)itemView.findViewById(R.id.txtHeadHousehold);
-            CardView card_view = (CardView) itemView.findViewById(R.id.familyCard); // creating a CardView and assigning a value.
+            txtCountry = (TextView) itemView.findViewById(R.id.txtCountry);
+            txtCommunity = (TextView) itemView.findViewById(R.id.txtCommunity);
+            txtHeadHousehold = (TextView) itemView.findViewById(R.id.txtHeadHousehold);
+            CardView familyCard = (CardView) itemView.findViewById(R.id.familyCard); // creating a CardView and assigning a value.
 
-            card_view.setOnClickListener(new View.OnClickListener() {
+            familyCard.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // do whatever you want to do on click (to launch any fragment or activity you need to put intent here.)
                     Log.i("Tutorials", "Selected family: " + txtHeadHousehold.getText());
-                    if(surveyType.contentEquals("FOLLOWUP")){
-                        startFollowUpActivity(txtCountry.getText().toString(),txtCommunity.getText().toString(),txtHeadHousehold.getText().toString());
+
+                    if (surveyType.contentEquals("FOLLOWUPSURVEY")) {
+                        startFollowUpSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString());
+                    }else if(surveyType.contentEquals("HEALTHCHECKSURVEY")){
+                        startHealthCheckSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString());
                     }
                 }
             });
         }
+
 
         void setFamilyCardDetails(InitialSurvey family,int position) {
             txtCountry.setText(family.getCountry());
@@ -79,7 +83,7 @@ public class FamilyCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    private void startFollowUpActivity(String country, String community, String householdName) {
+    private void startFollowUpSurveyActivity(String country, String community, String householdName) {
         Intent i = new Intent(this.context, FollowUpSurveyActivity.class);
         i.putExtra("NAME_BWE", namebwe);
         i.putExtra("SURVEY_TYPE",surveyType);
@@ -88,6 +92,16 @@ public class FamilyCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         i.putExtra("HHNAME",householdName);
         context.startActivity(i);
         ((Activity)context).finish();
+    }
 
+    private void startHealthCheckSurveyActivity(String country, String community, String householdName) {
+        Intent i = new Intent(this.context, HealthCheckSurveyActivity.class);
+        i.putExtra("NAME_BWE", namebwe);
+        i.putExtra("SURVEY_TYPE",surveyType);
+        i.putExtra("COUNTRY",country);
+        i.putExtra("COMMUNITY",community);
+        i.putExtra("HHNAME",householdName);
+        context.startActivity(i);
+        ((Activity)context).finish();
     }
 }

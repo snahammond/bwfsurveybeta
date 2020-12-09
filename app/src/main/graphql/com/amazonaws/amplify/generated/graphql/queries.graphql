@@ -361,6 +361,122 @@ query ListFollowUpSurveys(
     startedAt
   }
 }
+query SyncHealthCheckSurveys(
+  $filter: ModelHealthCheckSurveyFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncHealthCheckSurveys(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      Namebwe
+      Country
+      Community
+      SurveyId
+      date
+      HeadHouseholdName
+      PersonBeingInterviewed
+      WasteDisposalYoungestChild
+      WashedHandsIn24Hours
+      WhenWashedHandsIn24Hours
+      WhatUsedToWashYourHands
+      NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+      NoChildrenWithVomitingOrDiarrheaIn7days
+      DidSickChildrenGoToHospital
+      DidSickChildrenGoToHospitalYes
+      SickChildrenBreastfeeding
+      OutcomeMostRecentVomiting_DiarrheaAtHospital
+      NoDaysNoWorkBecauseOfOwnIllness
+      NoDaysNoWorkBecauseOfIllnessFamilyMembers
+      MoneySpentMedicalTreatmentLast4weeks
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetHealthCheckSurvey($id: ID!) {
+  getHealthCheckSurvey(id: $id) {
+    id
+    Namebwe
+    Country
+    Community
+    SurveyId
+    date
+    HeadHouseholdName
+    PersonBeingInterviewed
+    WasteDisposalYoungestChild
+    WashedHandsIn24Hours
+    WhenWashedHandsIn24Hours
+    WhatUsedToWashYourHands
+    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    NoChildrenWithVomitingOrDiarrheaIn7days
+    DidSickChildrenGoToHospital
+    DidSickChildrenGoToHospitalYes
+    SickChildrenBreastfeeding
+    OutcomeMostRecentVomiting_DiarrheaAtHospital
+    NoDaysNoWorkBecauseOfOwnIllness
+    NoDaysNoWorkBecauseOfIllnessFamilyMembers
+    MoneySpentMedicalTreatmentLast4weeks
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListHealthCheckSurveys(
+  $filter: ModelHealthCheckSurveyFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listHealthCheckSurveys(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      Namebwe
+      Country
+      Community
+      SurveyId
+      date
+      HeadHouseholdName
+      PersonBeingInterviewed
+      WasteDisposalYoungestChild
+      WashedHandsIn24Hours
+      WhenWashedHandsIn24Hours
+      WhatUsedToWashYourHands
+      NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+      NoChildrenWithVomitingOrDiarrheaIn7days
+      DidSickChildrenGoToHospital
+      DidSickChildrenGoToHospitalYes
+      SickChildrenBreastfeeding
+      OutcomeMostRecentVomiting_DiarrheaAtHospital
+      NoDaysNoWorkBecauseOfOwnIllness
+      NoDaysNoWorkBecauseOfIllnessFamilyMembers
+      MoneySpentMedicalTreatmentLast4weeks
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
 query SyncConfigDefinitions(
   $filter: ModelConfigDefinitionsFilterInput
   $limit: Int

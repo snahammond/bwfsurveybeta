@@ -13,6 +13,7 @@
         tools:layout_editor_absoluteX="183dp"
         tools:layout_editor_absoluteY="122dp">
 
+
         <LinearLayout
             android:layout_weight="1"
             android:layout_height="fill_parent"
@@ -74,6 +75,32 @@
                         app:backgroundTint="#FFFFFF"/>
 
                     <Button
+                        android:id="@+id/button_followUpSurvey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="start"
+                        android:shadowColor="#FFFFFF"
+                        android:text="@string/followUpSurvey"
+                        android:textColor="#3F51B5"
+                        app:backgroundTint="#FFFFFF" />
+
+                    <Button
+                        android:id="@+id/button_waterSurveyComm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="start"
+                        android:shadowColor="#FFFFFF"
+                        android:text="@string/waterSurveyComm"
+                        android:textColor="#3F51B5"
+                        app:backgroundTint="#FFFFFF"/>
+
+                    <Button
                         android:id="@+id/button_waterSurvey"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -100,7 +127,7 @@
                         app:backgroundTint="#FFFFFF"/>
 
                     <Button
-                        android:id="@+id/button_followUpSurvey"
+                        android:id="@+id/button_SWEMonthlySummary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -108,9 +135,11 @@
                         android:background="?android:attr/selectableItemBackground"
                         android:gravity="start"
                         android:shadowColor="#FFFFFF"
-                        android:text="@string/followUpSurvey"
+                        android:text="@string/SWEMonthlySummary"
                         android:textColor="#3F51B5"
-                        app:backgroundTint="#FFFFFF" />
+                        app:backgroundTint="#FFFFFF"/>
+
+
 
                 </LinearLayout>
 
@@ -224,4 +253,10 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </LinearLayout>
+
+    <include
+        android:id="@+id/llProgressBar"
+        layout="@layout/activity_cover_progress_bar"
+        android:visibility="gone" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

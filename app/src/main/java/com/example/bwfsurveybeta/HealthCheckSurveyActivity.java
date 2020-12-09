@@ -1,7 +1,6 @@
 package com.example.bwfsurveybeta;
 
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,13 +18,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
-import com.amplifyframework.datastore.generated.model.InitialSurvey;
+import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class FollowUpSurveyActivity extends AppCompatActivity {
+public class HealthCheckSurveyActivity extends AppCompatActivity {
+
     private String namebwe = null;
     private String surveyType = null;
     private String country = null;
@@ -53,27 +52,27 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
             householdName = getIntent().getStringExtra("HHNAME");
         Log.i("Tutorials", "Selected family follow up survey class: " + householdName);
         setContentView(R.layout.activity_recycler);
-        getSupportActionBar().setTitle((CharSequence) "FollowUp Survey "+householdName);
+        getSupportActionBar().setTitle((CharSequence) "Health Check Survey "+householdName);
         initView();
     }
 
     private void initView() {
-        createFollowUpSurveyQuestionaire();
+        createHealthCheckSurveyQuestionaire();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new InterchangeCardAdapter(FollowUpSurveyActivity.this, FollowUpSurveyActivity.interchanges);
+        adapter = new InterchangeCardAdapter(HealthCheckSurveyActivity.this, HealthCheckSurveyActivity.interchanges);
         recyclerView.setAdapter(adapter);
     }
 
-    private void createFollowUpSurveyQuestionaire() {
+    private void createHealthCheckSurveyQuestionaire() {
         try{
             ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges(surveyType);
             if(returnedInterchanges!=null){
-                FollowUpSurveyActivity.interchanges = new ArrayList<>();
+                HealthCheckSurveyActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;
                 for(Interchange interchange : returnedInterchanges){
                     interchange.setPositionOnRecyler(positionOnRecyler);
-                    FollowUpSurveyActivity.interchanges.add(interchange);
+                    HealthCheckSurveyActivity.interchanges.add(interchange);
                     positionOnRecyler += 1;
                 }
             }
@@ -105,20 +104,21 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
             if(invalideInterchanges.size()>0){
                 showInvalidSurveyAlert();
             }else{
+
                 //make an InitialSurvey object
-                FollowUpSurvey followUpSurveyToSave = makeFollowUpSurveyObject(interchangesWithUserAns);
+                HealthCheckSurvey HealthCheckSurveyToSave = makeHealthCheckSurveyObject(interchangesWithUserAns);
 
                 //save the initialSurvey object
-                saveFollowUpSurvey(followUpSurveyToSave);
+                saveHealthCheckSurvey(HealthCheckSurveyToSave);
 
             }
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void saveFollowUpSurvey(FollowUpSurvey followUpSurveyToSave){
+    private void saveHealthCheckSurvey(HealthCheckSurvey healthCheckSurveyToSave) {
         Amplify.DataStore.save(
-                followUpSurveyToSave,
+                healthCheckSurveyToSave,
                 update -> {
                     Log.i("Tutorial", "Saved Successfully ");
                     runOnUiThread(new Runnable() {
@@ -155,31 +155,12 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         countDownTimer.start();
     }
 
-    private void showSavedSuccessfulAlert(){
-        new AlertDialog.Builder(FollowUpSurveyActivity.this)
-                .setTitle("Saved Succussfully")
-                .setMessage("Follow Up Survey Saved Succussfully \n" )
-                // A null listener allows the button to dismiss the dialog and take no further action.
-                .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //reset all interchange answers
-                        for(Interchange interchange: FollowUpSurveyActivity.interchanges){
-                            interchange.getAnswer().setAns(null);
-                        }
-                        FollowUpSurveyActivity.this.finish();
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_info)
-                .show();
-    }
-
     private void showSaveFailedAlert(){
         runOnUiThread(new Runnable() {
             public void run() {
-                new AlertDialog.Builder(FollowUpSurveyActivity.this)
+                new AlertDialog.Builder(HealthCheckSurveyActivity.this)
                         .setTitle("Save Failed")
-                        .setMessage("Follow Up Survey Save Failed Please try again\n" )
+                        .setMessage("Health Check Survey Save Failed, Please try again\n" )
                         // A null listener allows the button to dismiss the dialog and take no further action.
                         .setNegativeButton(android.R.string.ok, null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
@@ -188,7 +169,28 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         });
     }
 
-    private FollowUpSurvey makeFollowUpSurveyObject(ArrayList<Interchange> validatedInterchangesWithAns){
+    private void showSavedSuccessfulAlert(){
+        new AlertDialog.Builder(HealthCheckSurveyActivity.this)
+                .setTitle("Saved Succussfully")
+                .setMessage("Health Check Survey Saved Succussfully \n" )
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //reset all interchange answers
+                        for(Interchange interchange: HealthCheckSurveyActivity.interchanges){
+                            interchange.getAnswer().setAns(null);
+                        }
+                        HealthCheckSurveyActivity.this.finish();
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .show();
+
+    }
+
+    private HealthCheckSurvey makeHealthCheckSurveyObject(ArrayList<Interchange> validatedInterchangesWithAns){
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_s = dateFormat.format(calendar.getTime());
@@ -200,18 +202,11 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         Temporal.Date date = new Temporal.Date(date_s);
         String HeadHouseholdName = (String) householdName;
         String PersonBeingInterviewed = (String) getInterchangeAns("PersonBeingInterviewed",validatedInterchangesWithAns);
-        String WaterTreatmentBeforeDrinking = (String) getInterchangeAns("WaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
-        String MainReasonNoWaterTreatmentBeforeDrinking = (String) getInterchangeAns("MainReasonNoWaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
-        String WaterTreatmentMethod = (String) getInterchangeAns("WaterTreatmentMethod",validatedInterchangesWithAns);
-        String HowLongUsingWaterTreatment = (String) getInterchangeAns("HowLongUsingWaterTreatment",validatedInterchangesWithAns);
-        String FrequencyWaterTreatment = (String) getInterchangeAns("FrequencyWaterTreatment",validatedInterchangesWithAns);
-        String WaterStorageAtHome = (String) getInterchangeAns("WaterStorageAtHome",validatedInterchangesWithAns);
-        String TakingWaterFromStorage = (String) getInterchangeAns("TakingWaterFromStorage",validatedInterchangesWithAns);
+        String WasteDisposalYoungestChild = (String) getInterchangeAns("WasteDisposalYoungestChild",validatedInterchangesWithAns);
         String WashedHandsIn24Hours = (String) getInterchangeAns("WashedHandsIn24Hours",validatedInterchangesWithAns);
         String WhenWashedHandsIn24Hours = (String) getInterchangeAns("WhenWashedHandsIn24Hours",validatedInterchangesWithAns);
         String WhatUsedToWashYourHands = (String) getInterchangeAns("WhatUsedToWashYourHands",validatedInterchangesWithAns);
         Integer NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek = (Integer) getInterchangeAns("NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",validatedInterchangesWithAns);
-        String CommonIllnessAffectingChildrenUnder5 = (String) getInterchangeAns("CommonIllnessAffectingChildrenUnder5",validatedInterchangesWithAns);
         Integer NoChildrenWithVomitingOrDiarrheaIn7days = (Integer) getInterchangeAns("NoChildrenWithVomitingOrDiarrheaIn7days",validatedInterchangesWithAns);
         String DidSickChildrenGoToHospital = (String) getInterchangeAns("DidSickChildrenGoToHospital",validatedInterchangesWithAns);
         String DidSickChildrenGoToHospitalYes = (String) getInterchangeAns("DidSickChildrenGoToHospitalYes",validatedInterchangesWithAns);
@@ -220,29 +215,19 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         Integer NoDaysNoWorkBecauseOfOwnIllness = (Integer) getInterchangeAns("NoDaysNoWorkBecauseOfOwnIllness",validatedInterchangesWithAns);
         Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers = (Integer) getInterchangeAns("NoDaysNoWorkBecauseOfIllnessFamilyMembers",validatedInterchangesWithAns);
         Integer MoneySpentMedicalTreatmentLast4weeks = (Integer) getInterchangeAns("MoneySpentMedicalTreatmentLast4weeks",validatedInterchangesWithAns);
-        String HealthChangeInAYear = (String) getInterchangeAns("HealthChangeInAYear",validatedInterchangesWithAns);
-        String HealthChangeFamilyInAYear = (String) getInterchangeAns("HealthChangeFamilyInAYear",validatedInterchangesWithAns);
-        String BenefitSWP = (String) getInterchangeAns("BenefitSWP",validatedInterchangesWithAns);
 
-        FollowUpSurvey followUpSurvey = FollowUpSurvey.builder()
+        HealthCheckSurvey healthCheckSurvey = HealthCheckSurvey.builder()
                 .namebwe(Namebwe)
                 .country(Country)
                 .community(Community)
                 .surveyId(SurveyId)
                 .headHouseholdName(HeadHouseholdName)
                 .personBeingInterviewed(PersonBeingInterviewed)
-                .waterTreatmentBeforeDrinking(WaterTreatmentBeforeDrinking)
-                .mainReasonNoWaterTreatmentBeforeDrinking(MainReasonNoWaterTreatmentBeforeDrinking)
-                .waterTreatmentMethod(WaterTreatmentMethod)
-                .howLongUsingWaterTreatment(HowLongUsingWaterTreatment)
-                .frequencyWaterTreatment(FrequencyWaterTreatment)
-                .waterStorageAtHome(WaterStorageAtHome)
-                .takingWaterFromStorage(TakingWaterFromStorage)
+                .wasteDisposalYoungestChild(WasteDisposalYoungestChild)
                 .washedHandsIn24Hours(WashedHandsIn24Hours)
                 .whenWashedHandsIn24Hours(WhenWashedHandsIn24Hours)
                 .whatUsedToWashYourHands(WhatUsedToWashYourHands)
                 .noTotalSchoolDaysMissedByAllChildrenIn2LastWeek(NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek)
-                .commonIllnessAffectingChildrenUnder5(CommonIllnessAffectingChildrenUnder5)
                 .noChildrenWithVomitingOrDiarrheaIn7days(NoChildrenWithVomitingOrDiarrheaIn7days)
                 .didSickChildrenGoToHospital(DidSickChildrenGoToHospital)
                 .didSickChildrenGoToHospitalYes(DidSickChildrenGoToHospitalYes)
@@ -251,12 +236,9 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                 .noDaysNoWorkBecauseOfOwnIllness(NoDaysNoWorkBecauseOfOwnIllness)
                 .noDaysNoWorkBecauseOfIllnessFamilyMembers(NoDaysNoWorkBecauseOfIllnessFamilyMembers)
                 .moneySpentMedicalTreatmentLast4weeks(MoneySpentMedicalTreatmentLast4weeks)
-                .healthChangeInAYear(HealthChangeInAYear)
-                .healthChangeFamilyInAYear(HealthChangeFamilyInAYear)
-                .benefitSwp(BenefitSWP)
                 .date(date)
                 .build();
-        return followUpSurvey;
+        return healthCheckSurvey;
 
     }
 
@@ -276,7 +258,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
     }
 
     private void showInvalidSurveyAlert(){
-        new AlertDialog.Builder(FollowUpSurveyActivity.this)
+        new AlertDialog.Builder(HealthCheckSurveyActivity.this)
                 .setTitle("Invalid Questions")
                 .setMessage("Some questions have not been correctly answered \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.

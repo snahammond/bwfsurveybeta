@@ -20,12 +20,14 @@
     <string name="collectData">collect data</string>
     <string name="viewCollectedData">view data</string>
     <string name="initialSurvey">Initial Survey</string>
-    <string name="waterSurvey">Water Survey</string>
-    <string name="healthCheck">health check</string>
+    <string name="waterSurvey">Household Water Test</string>
+    <string name="healthCheck">Health Check Survey</string>
     <string name="followUpSurvey">follow up survey</string>
     <string name="Surname">Surname</string>
     <string name="firstname">first name</string>
     <string name="saveData">save data</string>
     <string name="action_settings">setting</string>
     <string name="updateCollectedData">update data</string>
+    <string name="waterSurveyComm">Community Water Test</string>
+    <string name="SWEMonthlySummary">SWE summary</string>
 </resources>

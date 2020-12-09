@@ -34,9 +34,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private static int ANSTYPE_ENUMDROPDOWN = 4;
 
     public InterchangeCardAdapter(Activity mainActivity, ArrayList<Interchange> interchanges) {
-        this.interchanges = new ArrayList<>();
         this.interchanges = interchanges;
-        this._retInterchangesWithAns = new ArrayList<>();
         this._retInterchangesWithAns = interchanges;
         this.context = mainActivity;
     }

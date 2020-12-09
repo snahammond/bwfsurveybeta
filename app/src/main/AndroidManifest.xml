@@ -33,13 +33,18 @@
         </activity>
 
         <activity
-            android:name=".FamilyCardSelect"
+            android:name=".FamilyCardSelectActivity"
             android:label="Select household">
         </activity>
 
         <activity
             android:name=".FollowUpSurveyActivity"
             android:label="FollowUp Survey">
+        </activity>
+
+        <activity
+            android:name=".HealthCheckSurveyActivity"
+            android:label="Health Check Survey">
         </activity>
 
     </application>

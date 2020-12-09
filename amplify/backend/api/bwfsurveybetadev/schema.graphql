@@ -107,6 +107,30 @@ BenefitSWP: String!
 }
 
 
+type HealthCheckSurvey @model{
+id: ID!
+Namebwe: String!
+Country: String!
+Community: String!
+SurveyId: Int!
+date: AWSDate
+HeadHouseholdName: String!
+PersonBeingInterviewed: String!
+WasteDisposalYoungestChild: String!
+WashedHandsIn24Hours: String!
+WhenWashedHandsIn24Hours: String!
+WhatUsedToWashYourHands: String!
+NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek: Int!
+NoChildrenWithVomitingOrDiarrheaIn7days: Int!
+DidSickChildrenGoToHospital: String!
+DidSickChildrenGoToHospitalYes: String!
+SickChildrenBreastfeeding: String!
+OutcomeMostRecentVomiting_DiarrheaAtHospital: String!
+NoDaysNoWorkBecauseOfOwnIllness: Int!
+NoDaysNoWorkBecauseOfIllnessFamilyMembers: Int!
+MoneySpentMedicalTreatmentLast4weeks: Int!
+}
+
 
 type ConfigDefinitions @model{
 	id: ID!
