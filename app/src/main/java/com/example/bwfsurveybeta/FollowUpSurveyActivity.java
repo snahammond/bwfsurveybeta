@@ -42,7 +42,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getIntent().getStringExtra("NAME_BWE")!=null)
-            namebwe = getIntent().getStringExtra("SURVEY_TYPE");
+            namebwe = getIntent().getStringExtra("NAME_BWE");
         if(getIntent().getStringExtra("SURVEY_TYPE")!=null)
             surveyType = getIntent().getStringExtra("SURVEY_TYPE");
         if(getIntent().getStringExtra("COUNTRY")!=null)

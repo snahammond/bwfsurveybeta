@@ -11,11 +11,20 @@
     </config>
     <config>
         <type>S</type>
-        <name>WATERSURVEY</name>
-        <value>WATERSURVEY</value>
-        <desc>WATER SURVEY</desc>
+        <name>WATERSURVEYHOUSEHOLD</name>
+        <value>WATERSURVEYHOUSEHOLD</value>
+        <desc>WATER SURVEY HOUSEHOLD</desc>
         <childname>I</childname>
-        <childvalue>[57,58,59,60,61,62,63,64,65,66,68]</childvalue>
+        <childvalue>[60,61,62,63,64,65]</childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>S</type>
+        <name>WATERSURVEYCOMMUNITY</name>
+        <value>WATERSURVEYCOMMUNITY</value>
+        <desc>WATER SURVEY COMMUNITY</desc>
+        <childname>I</childname>
+        <childvalue>[60,61,62,63,64,65]</childvalue>
         <childdesc></childdesc>
     </config>
     <config>
@@ -34,6 +43,15 @@
         <desc>FOLLOW UP SURVEY</desc>
         <childname>I</childname>
         <childvalue>[11,30,31,32,33,34,35,36,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56]</childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>S</type>
+        <name>SWESUMMARY</name>
+        <value>SWESUMMARY</value>
+        <desc>SWE SUMMARY</desc>
+        <childname>I</childname>
+        <childvalue>[100,101,102,103,104,105,106,107]</childvalue>
         <childdesc></childdesc>
     </config>
     <config>
@@ -4369,4 +4387,597 @@
         <parentdesc></parentdesc>
     </config>
 
+    <config>
+        <type>I</type>
+        <name>NoWaterSampleTaken</name>
+        <value>100</value>
+        <desc>Number of water samples taken</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoWaterSampleTaken</name>
+        <value>0</value>
+        <desc>0</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>NoWaterSampleTaken</name>
+        <value>NoWaterSampleTaken</value>
+        <desc>Number of water samples taken</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>NoWaterSampleTaken</name>
+        <value>NUMBERVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+
+    <config>
+        <type>I</type>
+        <name>NoSurveysCompleted</name>
+        <value>101</value>
+        <desc>Number of surveys completed</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoSurveysCompleted</name>
+        <value>0</value>
+        <desc>0</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>NoSurveysCompleted</name>
+        <value>NoSurveysCompleted</value>
+        <desc>Number of surveys completed</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>NoSurveysCompleted</name>
+        <value>NUMBERVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+
+
+    <config>
+        <type>I</type>
+        <name>NoLsn1Taught</name>
+        <value>102</value>
+        <desc>Number of lesson 1 taught</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoLsn1Taught</name>
+        <value>0</value>
+        <desc>0</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>NoLsn1Taught</name>
+        <value>NoLsn1Taught</value>
+        <desc>Number of lesson 1 taught</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>NoLsn1Taught</name>
+        <value>NUMBERVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+
+
+    <config>
+        <type>I</type>
+        <name>NoLsn2Taught</name>
+        <value>103</value>
+        <desc>Number of lesson 2 taught</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoLsn2Taught</name>
+        <value>0</value>
+        <desc>0</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>NoLsn2Taught</name>
+        <value>NoLsn2Taught</value>
+        <desc>Number of surveys completed</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>NoLsn2Taught</name>
+        <value>NUMBERVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+
+    <config>
+        <type>I</type>
+        <name>NoLsn3Taught</name>
+        <value>104</value>
+        <desc>Number of lesson 3 taught</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoLsn3Taught</name>
+        <value>0</value>
+        <desc>0</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>NoLsn3Taught</name>
+        <value>NoLsn3Taught</value>
+        <desc>Number of lesson 3 taught</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>NoLsn3Taught</name>
+        <value>NUMBERVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+
+    <config>
+        <type>I</type>
+        <name>NoLsn4Taught</name>
+        <value>105</value>
+        <desc>Number of lesson 4 taught</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoLsn4Taught</name>
+        <value>0</value>
+        <desc>0</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>NoLsn4Taught</name>
+        <value>NoLsn4Taught</value>
+        <desc>Number of lesson 4 taught</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>NoLsn4Taught</name>
+        <value>NUMBERVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+
+    <config>
+        <type>I</type>
+        <name>NoPersonsTaught</name>
+        <value>106</value>
+        <desc>Total number of persons taught</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoPersonsTaught</name>
+        <value>0</value>
+        <desc>0</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>NoPersonsTaught</name>
+        <value>NoPersonsTaught</value>
+        <desc>Total number of persons taught</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>NoPersonsTaught</name>
+        <value>NUMBERVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+
+    <config>
+        <type>I</type>
+        <name>NoChlorineLiquid_TabsDistributed</name>
+        <value>107</value>
+        <desc>Number of chlorine liquid or tabs distributed</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>NoChlorineLiquid_TabsDistributed</name>
+        <value>0</value>
+        <desc>0</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>NoChlorineLiquid_TabsDistributed</name>
+        <value>NoChlorineLiquid_TabsDistributed</value>
+        <desc>Number of chlorine liquid or tablets distributed</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>NoChlorineLiquid_TabsDistributed</name>
+        <value>NUMBERVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+
+
+    <config>
+        <type>I</type>
+        <name>ColilertDateTested</name>
+        <value>60</value>
+        <desc>Colilert Date Tested</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>ColilertDateTested</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>ColilertDateTested</name>
+        <value>ColilertDateTested</value>
+        <desc>Colilert Date Tested</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>ColilertDateTested</name>
+        <value>DATEVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+
+    <config>
+        <type>I</type>
+        <name>ColilertDateRead</name>
+        <value>61</value>
+        <desc>Colilert Date Read</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>ColilertDateRead</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>ColilertDateRead</name>
+        <value>ColilertDateRead</value>
+        <desc>Colilert Date Read</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>ColilertDateRead</name>
+        <value>DATEVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+
+    <config>
+        <type>I</type>
+        <name>ColilertTestResult</name>
+        <value>62</value>
+        <desc>Colilert Test results</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>ColilertTestResult</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>ColilertTestResult</name>
+        <value>ColilertTestResult</value>
+        <desc>Colilert Test resul</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>ColilertTestResult</name>
+        <value>ENUMVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AV</type>
+        <name>ColilertTestResult</name>
+        <value>CLEAR</value>
+        <desc>Clear</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+        <parentname></parentname>
+        <parentvalue></parentvalue>
+        <parentdesc></parentdesc>
+    </config>
+    <config>
+        <type>AV</type>
+        <name>ColilertTestResult</name>
+        <value>YELLOW</value>
+        <desc>Yellow</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+        <parentname></parentname>
+        <parentvalue></parentvalue>
+        <parentdesc></parentdesc>
+    </config>
+    <config>
+        <type>AV</type>
+        <name>ColilertTestResult</name>
+        <value>FLUORESCESBLUE</value>
+        <desc>Fluoresces blue</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+        <parentname></parentname>
+        <parentvalue></parentvalue>
+        <parentdesc></parentdesc>
+    </config>
+
+
+    <config>
+        <type>I</type>
+        <name>PetrifilmDateTested</name>
+        <value>63</value>
+        <desc>Petrifilm Date Tested</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>PetrifilmDateTested</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>PetrifilmDateTested</name>
+        <value>PetrifilmDateTested</value>
+        <desc>Petrifilm Date Tested</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>PetrifilmDateTested</name>
+        <value>DATEVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+
+    <config>
+        <type>I</type>
+        <name>PetrifilmDateRead</name>
+        <value>64</value>
+        <desc>Petrifilm Date Read</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>PetrifilmDateRead</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>PetrifilmDateRead</name>
+        <value>PetrifilmDateRead</value>
+        <desc>Petrifilm Date Read</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>PetrifilmDateRead</name>
+        <value>DATEVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+
+    <config>
+        <type>I</type>
+        <name>PetrifilmTestResult</name>
+        <value>65</value>
+        <desc>Petrifilm Test results</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>V</type>
+        <name>PetrifilmTestResult</name>
+        <value>1</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>Q</type>
+        <name>PetrifilmTestResult</name>
+        <value>PetrifilmTestResult</value>
+        <desc>Petrifilm Test resul</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AD</type>
+        <name>PetrifilmTestResult</name>
+        <value>ENUMVALUE</value>
+        <desc></desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+    </config>
+    <config>
+        <type>AV</type>
+        <name>PetrifilmTestResult</name>
+        <value>NONE</value>
+        <desc>None</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+        <parentname></parentname>
+        <parentvalue></parentvalue>
+        <parentdesc></parentdesc>
+    </config>
+    <config>
+        <type>AV</type>
+        <name>PetrifilmTestResult</name>
+        <value>0_10BLUECOLONIES</value>
+        <desc>0 - 10 blue colonies</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+        <parentname></parentname>
+        <parentvalue></parentvalue>
+        <parentdesc></parentdesc>
+    </config>
+    <config>
+        <type>AV</type>
+        <name>PetrifilmTestResult</name>
+        <value>MORETHAN10BLUECOLONIES</value>
+        <desc>More than 10 blue colonies</desc>
+        <childname></childname>
+        <childvalue></childvalue>
+        <childdesc></childdesc>
+        <parentname></parentname>
+        <parentvalue></parentvalue>
+        <parentdesc></parentdesc>
+    </config>
 </configs>

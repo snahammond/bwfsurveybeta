@@ -47,6 +47,15 @@
             android:label="Health Check Survey">
         </activity>
 
+        <activity
+            android:name=".SWEMonthlySummaryActivity"
+            android:label="SWE Monthly Summary">
+        </activity>
+
+        <activity
+            android:name=".WaterSurveyHouseholdActivity"
+            android:label="Household Water Survey">
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

@@ -81,7 +81,8 @@ public class Interchange {
                         if(!this.getAnswer().getAns().toString().isEmpty())
                             return true;
                     }
-                }if(this.getAnswer().getAnswerDef().getType()== AnswerType.NUMBERVALUE){
+                }
+                if(this.getAnswer().getAnswerDef().getType()== AnswerType.NUMBERVALUE){
                     if(this.getAnswer().getAns()!=null ){
                         if(this.getValidation().getDefaultValue()!=null){
                             if(!this.getValidation().getDefaultValue().toString().isEmpty()){

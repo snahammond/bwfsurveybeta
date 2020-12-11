@@ -434,6 +434,150 @@ mutation DeleteHealthCheckSurvey(
     updatedAt
   }
 }
+mutation CreateSweMonthlySummary(
+  $input: CreateSWEMonthlySummaryInput!
+  $condition: ModelSWEMonthlySummaryConditionInput
+) {
+  createSWEMonthlySummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoLsn1Taught
+    NoLsn2Taught
+    NoLsn3Taught
+    NoLsn4Taught
+    NoPersonsTaught
+    NoChlorineLiquid_TabsDistributed
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateSweMonthlySummary(
+  $input: UpdateSWEMonthlySummaryInput!
+  $condition: ModelSWEMonthlySummaryConditionInput
+) {
+  updateSWEMonthlySummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoLsn1Taught
+    NoLsn2Taught
+    NoLsn3Taught
+    NoLsn4Taught
+    NoPersonsTaught
+    NoChlorineLiquid_TabsDistributed
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteSweMonthlySummary(
+  $input: DeleteSWEMonthlySummaryInput!
+  $condition: ModelSWEMonthlySummaryConditionInput
+) {
+  deleteSWEMonthlySummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoLsn1Taught
+    NoLsn2Taught
+    NoLsn3Taught
+    NoLsn4Taught
+    NoPersonsTaught
+    NoChlorineLiquid_TabsDistributed
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateHouseholdWaterTest(
+  $input: CreateHouseholdWaterTestInput!
+  $condition: ModelHouseholdWaterTestConditionInput
+) {
+  createHouseholdWaterTest(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    HeadHouseholdName
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateHouseholdWaterTest(
+  $input: UpdateHouseholdWaterTestInput!
+  $condition: ModelHouseholdWaterTestConditionInput
+) {
+  updateHouseholdWaterTest(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    HeadHouseholdName
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteHouseholdWaterTest(
+  $input: DeleteHouseholdWaterTestInput!
+  $condition: ModelHouseholdWaterTestConditionInput
+) {
+  deleteHouseholdWaterTest(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    HeadHouseholdName
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
 mutation CreateConfigDefinitions(
   $input: CreateConfigDefinitionsInput!
   $condition: ModelConfigDefinitionsConditionInput

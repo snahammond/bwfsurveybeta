@@ -477,6 +477,184 @@ query ListHealthCheckSurveys(
     startedAt
   }
 }
+query SyncSweMonthlySummaries(
+  $filter: ModelSWEMonthlySummaryFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncSWEMonthlySummaries(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      Namebwe
+      date
+      SWEPosition
+      NoWaterSampleTaken
+      NoSurveysCompleted
+      NoLsn1Taught
+      NoLsn2Taught
+      NoLsn3Taught
+      NoLsn4Taught
+      NoPersonsTaught
+      NoChlorineLiquid_TabsDistributed
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetSweMonthlySummary($id: ID!) {
+  getSWEMonthlySummary(id: $id) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoLsn1Taught
+    NoLsn2Taught
+    NoLsn3Taught
+    NoLsn4Taught
+    NoPersonsTaught
+    NoChlorineLiquid_TabsDistributed
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListSweMonthlySummarys(
+  $filter: ModelSWEMonthlySummaryFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listSWEMonthlySummarys(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      Namebwe
+      date
+      SWEPosition
+      NoWaterSampleTaken
+      NoSurveysCompleted
+      NoLsn1Taught
+      NoLsn2Taught
+      NoLsn3Taught
+      NoLsn4Taught
+      NoPersonsTaught
+      NoChlorineLiquid_TabsDistributed
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncHouseholdWaterTests(
+  $filter: ModelHouseholdWaterTestFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncHouseholdWaterTests(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      Namebwe
+      date
+      Country
+      Community
+      HeadHouseholdName
+      ColilertDateTested
+      ColilertDateRead
+      ColilertTestResult
+      PetrifilmDateTested
+      PetrifilmDateRead
+      PetrifilmTestResult
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetHouseholdWaterTest($id: ID!) {
+  getHouseholdWaterTest(id: $id) {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    HeadHouseholdName
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListHouseholdWaterTests(
+  $filter: ModelHouseholdWaterTestFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listHouseholdWaterTests(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      Namebwe
+      date
+      Country
+      Community
+      HeadHouseholdName
+      ColilertDateTested
+      ColilertDateRead
+      ColilertTestResult
+      PetrifilmDateTested
+      PetrifilmDateRead
+      PetrifilmTestResult
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
 query SyncConfigDefinitions(
   $filter: ModelConfigDefinitionsFilterInput
   $limit: Int

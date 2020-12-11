@@ -70,6 +70,8 @@ public class FamilyCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                         startFollowUpSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString());
                     }else if(surveyType.contentEquals("HEALTHCHECKSURVEY")){
                         startHealthCheckSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString());
+                    }else if(surveyType.contentEquals("WATERSURVEYHOUSEHOLD")){
+                        startHouseholdWaterSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString());
                     }
                 }
             });
@@ -81,6 +83,17 @@ public class FamilyCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             txtCommunity.setText(family.getCommunity());
             txtHeadHousehold.setText(family.getHeadHouseholdName());
         }
+    }
+
+    private void startHouseholdWaterSurveyActivity(String country, String community, String householdName) {
+        Intent i = new Intent(this.context, WaterSurveyHouseholdActivity.class);
+        i.putExtra("NAME_BWE", namebwe);
+        i.putExtra("SURVEY_TYPE",surveyType);
+        i.putExtra("COUNTRY",country);
+        i.putExtra("COMMUNITY",community);
+        i.putExtra("HHNAME",householdName);
+        context.startActivity(i);
+        ((Activity)context).finish();
     }
 
     private void startFollowUpSurveyActivity(String country, String community, String householdName) {

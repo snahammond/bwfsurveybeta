@@ -131,6 +131,35 @@ NoDaysNoWorkBecauseOfIllnessFamilyMembers: Int!
 MoneySpentMedicalTreatmentLast4weeks: Int!
 }
 
+type SWEMonthlySummary @model{
+id: ID!
+Namebwe: String!
+date: AWSDate
+SWEPosition: String!
+NoWaterSampleTaken: Int!
+NoSurveysCompleted: Int!
+NoLsn1Taught: Int!
+NoLsn2Taught: Int!
+NoLsn3Taught: Int!
+NoLsn4Taught: Int!
+NoPersonsTaught: Int!
+NoChlorineLiquid_TabsDistributed: Int!
+}
+
+type HouseholdWaterTest @model{
+id: ID!
+Namebwe: String!
+date: AWSDate
+Country: String!
+Community: String!
+HeadHouseholdName: String!
+ColilertDateTested: AWSDate!
+ColilertDateRead: AWSDate!
+ColilertTestResult: String!
+PetrifilmDateTested: AWSDate!
+PetrifilmDateRead: AWSDate!
+PetrifilmTestResult: String!
+}
 
 type ConfigDefinitions @model{
 	id: ID!

@@ -1,6 +1,7 @@
 package com.example.bwfsurveybeta;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -20,7 +22,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.AnswerType;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
@@ -32,6 +37,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private static int ANSTYPE_ENUM = 2;
     private static int ANSTYPE_NUMBER = 3;
     private static int ANSTYPE_ENUMDROPDOWN = 4;
+    private static int ANSTYPE_DATE = 5;
 
     public InterchangeCardAdapter(Activity mainActivity, ArrayList<Interchange> interchanges) {
         this.interchanges = interchanges;
@@ -55,6 +61,9 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }else if (viewType == ANSTYPE_ENUMDROPDOWN){ // for interchange card with spinner answer
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_card_spinner, parent, false);
             return new InterchangeSpinnerAnsViewHolder(view);
+        }else if (viewType == ANSTYPE_DATE){ // for interchange card with date answer
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_card_date, parent, false);
+            return new InterchangeDateAnsViewHolder(view);
         }else{
             return null;
         }
@@ -551,6 +560,86 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
     }
 
+    class InterchangeDateAnsViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView txtQuestion;
+        private TextView editAnswer;
+        private int interchangePosition;
+        final Calendar myCalendar = Calendar.getInstance();
+
+        public int getInterchangePosition() {
+            return interchangePosition;
+        }
+
+        public void setInterchangePosition(int interchangePosition) {
+            this.interchangePosition = interchangePosition;
+        }
+
+        InterchangeDateAnsViewHolder(@NonNull View itemView) {
+            super(itemView);
+            txtQuestion = itemView.findViewById(R.id.txtQuestion);
+            editAnswer = itemView.findViewById(R.id.editAnswer);
+            /*
+            editAnswer.addTextChangedListener(new TextWatcher() {
+
+                public void afterTextChanged(Editable s) {}
+
+                public void beforeTextChanged(CharSequence s, int start,
+                                              int count, int after) {
+                }
+
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)s.toString()); ;
+                }
+            });*/
+
+            DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                      int dayOfMonth) {
+                    // TODO Auto-generated method stub
+                    myCalendar.set(Calendar.YEAR, year);
+                    myCalendar.set(Calendar.MONTH, monthOfYear);
+                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    updateLabel();
+                }
+
+            };
+
+            editAnswer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
+                    new DatePickerDialog(context, date, myCalendar
+                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                }
+            });
+
+        }
+
+        private void updateLabel() {
+            String myFormat = "dd/MM/yyyy"; //In which you need put here
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+            editAnswer.setText(sdf.format(myCalendar.getTime()));
+            _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((Date)myCalendar.getTime());
+        }
+
+        void setQuestionDateAnsDetails(Interchange interchange,int position) {
+            this.setInterchangePosition(position);
+            txtQuestion.setText(interchange.getQuestion().getQuestionText());
+            if(interchange.getAnswer().getAns()!=null){
+                String myFormat = "dd/MM/yyyy"; //In which you need put here
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+                editAnswer.setText(sdf.format((Date)interchange.getAnswer().getAns()));
+            }else{
+                editAnswer.setText("");
+            }
+
+        }
+    }
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == ANSTYPE_TEXT) {
@@ -561,6 +650,8 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             ((InterchangeNumberAnsViewHolder) holder).setQuestionNumberAnsDetails(_retInterchangesWithAns.get(position),position);
         }else if(getItemViewType(position) == ANSTYPE_ENUMDROPDOWN){
             ((InterchangeSpinnerAnsViewHolder) holder).setQuestionSpinnerAnsDetails(_retInterchangesWithAns.get(position),position);
+        }else if(getItemViewType(position) == ANSTYPE_DATE){
+            ((InterchangeDateAnsViewHolder) holder).setQuestionDateAnsDetails(_retInterchangesWithAns.get(position),position);
         }
     }
 
@@ -580,6 +671,8 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             return ANSTYPE_NUMBER;
         }else if(interchanges.get(position).getAnswer().getAnswerDef().getType()==AnswerType.ENUMDROPDOWNVALUE){
             return ANSTYPE_ENUMDROPDOWN;
+        }else if(interchanges.get(position).getAnswer().getAnswerDef().getType()==AnswerType.DATEVALUE){
+            return ANSTYPE_DATE;
         }else{
             return 0;
         }

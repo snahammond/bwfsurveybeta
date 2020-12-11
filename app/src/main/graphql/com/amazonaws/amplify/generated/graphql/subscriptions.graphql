@@ -407,6 +407,132 @@ subscription OnDeleteHealthCheckSurvey {
     updatedAt
   }
 }
+subscription OnCreateSweMonthlySummary {
+  onCreateSWEMonthlySummary {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoLsn1Taught
+    NoLsn2Taught
+    NoLsn3Taught
+    NoLsn4Taught
+    NoPersonsTaught
+    NoChlorineLiquid_TabsDistributed
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateSweMonthlySummary {
+  onUpdateSWEMonthlySummary {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoLsn1Taught
+    NoLsn2Taught
+    NoLsn3Taught
+    NoLsn4Taught
+    NoPersonsTaught
+    NoChlorineLiquid_TabsDistributed
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteSweMonthlySummary {
+  onDeleteSWEMonthlySummary {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoLsn1Taught
+    NoLsn2Taught
+    NoLsn3Taught
+    NoLsn4Taught
+    NoPersonsTaught
+    NoChlorineLiquid_TabsDistributed
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateHouseholdWaterTest {
+  onCreateHouseholdWaterTest {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    HeadHouseholdName
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateHouseholdWaterTest {
+  onUpdateHouseholdWaterTest {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    HeadHouseholdName
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteHouseholdWaterTest {
+  onDeleteHouseholdWaterTest {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    HeadHouseholdName
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
 subscription OnCreateConfigDefinitions {
   onCreateConfigDefinitions {
     id

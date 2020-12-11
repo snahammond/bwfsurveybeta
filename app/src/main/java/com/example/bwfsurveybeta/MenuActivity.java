@@ -86,6 +86,26 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        Button sweMonthlySummary = (Button) findViewById(R.id.button_SWEMonthlySummary);
+        sweMonthlySummary.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SWEMonthlySummaryActivity.class);
+                i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("SURVEY_TYPE","SWESUMMARY");
+                startActivity(i);
+            }
+        });
+
+        Button waterSurvey = (Button) findViewById(R.id.button_waterSurvey);
+        waterSurvey.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), FamilyCardSelectActivity.class);
+                i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("SURVEY_TYPE","WATERSURVEYHOUSEHOLD");
+                startActivity(i);
+            }
+        });
     }
 
     @Override
