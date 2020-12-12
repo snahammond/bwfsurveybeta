@@ -4,6 +4,23 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
+    <TextView
+        android:id="@+id/textConfirmation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/confirmation"
+        android:textSize="30sp" />
+
+
+    <TextView
+        android:id="@+id/textConfirmationDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/confirmationDesc"
+        android:textSize="10sp" />
+
     <EditText
         android:id="@+id/confirmation_code"
         android:inputType="textEmailAddress"

@@ -18,7 +18,7 @@
     }
   },
   "auth": {
-    "bwfsurveybetadeva764992e": {
+    "bwfsurveybetadevb027108a": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],

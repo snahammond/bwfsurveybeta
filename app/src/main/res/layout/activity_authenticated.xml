@@ -59,5 +59,9 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+    <include
+        android:id="@+id/llProgressBar"
+        layout="@layout/activity_cover_progress_bar"
+        android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

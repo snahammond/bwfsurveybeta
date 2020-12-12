@@ -30,4 +30,6 @@
     <string name="updateCollectedData">view/update data</string>
     <string name="waterSurveyComm">Community Water Test</string>
     <string name="SWEMonthlySummary">SWE summary</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="confirmationDesc">We sent a security code to your email,, Please enter it here.</string>
 </resources>

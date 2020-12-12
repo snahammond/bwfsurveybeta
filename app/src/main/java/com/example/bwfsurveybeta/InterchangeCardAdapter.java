@@ -579,19 +579,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             super(itemView);
             txtQuestion = itemView.findViewById(R.id.txtQuestion);
             editAnswer = itemView.findViewById(R.id.editAnswer);
-            /*
-            editAnswer.addTextChangedListener(new TextWatcher() {
 
-                public void afterTextChanged(Editable s) {}
-
-                public void beforeTextChanged(CharSequence s, int start,
-                                              int count, int after) {
-                }
-
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)s.toString()); ;
-                }
-            });*/
 
             DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 

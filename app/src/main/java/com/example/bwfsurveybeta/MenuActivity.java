@@ -20,6 +20,7 @@ public class MenuActivity extends AppCompatActivity {
     boolean calledAMPStart = true;
 
     private LinearLayout progressBar;
+    private TextView progressBarText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,19 +29,17 @@ public class MenuActivity extends AppCompatActivity {
             namebwe = getIntent().getStringExtra("NAME_BWE");
 
         calledAMPStart = getIntent().getBooleanExtra("CALLED_AMPSTART",true);
-
         Log.i("Tutorials", "namebwe: " + namebwe);
+
+        setContentView(R.layout.activity_menu);
         showMenu();
     }
 
     public void showMenu(){
-        setContentView(R.layout.activity_menu);
+
         if(calledAMPStart){
             //wait for sync to finish, because Authenication called start
-            progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
-            TextView progressBarText = (TextView) findViewById(R.id.pbText);
-            progressBarText.setText("Please wait... Setting Up!");
-            progressBar.setVisibility(View.VISIBLE);
+            startProgress("Please wait... Setting Up!");
             CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
@@ -48,11 +47,12 @@ public class MenuActivity extends AppCompatActivity {
 
                 @Override
                 public void onFinish() {
-                    progressBar.setVisibility(View.GONE);
+                    endProgress();
                     initView();
                 }
             };
             countDownTimer.start();
+
         }else
             initView();
     }
@@ -112,5 +112,31 @@ public class MenuActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         //doProgress();
+    }
+
+    private void startProgress(String s) {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                if(progressBar==null)
+                    progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
+                if(progressBarText==null)
+                    progressBarText = (TextView) findViewById(R.id.pbText);
+
+                progressBarText.setText(s);
+                progressBar.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    private void endProgress() {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                if(progressBar==null)
+                    progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
+
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+
     }
 }

@@ -14,8 +14,7 @@
         android:theme="@style/Theme.BwfSurveyBeta">
 
         <activity
-            android:name=".AuthenticationActivity"
-            android:noHistory="true">
+            android:name=".AuthenticationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

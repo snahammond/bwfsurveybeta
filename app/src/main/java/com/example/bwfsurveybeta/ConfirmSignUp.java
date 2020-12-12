@@ -13,6 +13,7 @@ import androidx.fragment.app.DialogFragment;
 
 
 public class ConfirmSignUp extends DialogFragment {
+    public EditText confirmation_code;
 
     public interface ConfirmSignUpListener {
         public void onDialogPositiveClick(DialogFragment dialog,String confirmationCode);
@@ -46,7 +47,7 @@ public class ConfirmSignUp extends DialogFragment {
         builder.setView(layoutView)
                 .setPositiveButton(R.string.confirm_signup, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        EditText confirmation_code = (EditText)layoutView.findViewById(R.id.confirmation_code);
+                        confirmation_code = (EditText)layoutView.findViewById(R.id.confirmation_code);
                         // Send the positive button event back to the host activity
                         listener.onDialogPositiveClick(ConfirmSignUp.this,confirmation_code.getText().toString());
                     }
