@@ -153,9 +153,17 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                         if(attribute.getKey().getKeyString().contentEquals(AuthUserAttributeKey.familyName().getKeyString())){
                             surname = attribute.getValue();
                         }
+                        if(attribute.getKey().getKeyString().contentEquals("custom:Country")){
+                            SWECountry = attribute.getValue();
+                        }
+                        if(attribute.getKey().getKeyString().contentEquals("custom:Position")){
+                            SWEPosition = attribute.getValue();
+                        }
+
                     }
                     authenticatedName = firstname +" "+ surname;
                     Log.i("Tutorials", "user online uniqueBWEName: " + uniqueBWEName + " authenticatedName: " +authenticatedName);
+                    Log.i("Tutorials", "user online SWECountry: " + SWECountry + " SWEPosition: " +SWEPosition);
 
                     try {
                         MyAmplifyApplication.namebwe=uniqueBWEName;
@@ -201,6 +209,8 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                 //go to menu screen
                 Intent i = new Intent(getApplicationContext(),MenuActivity.class);
                 i.putExtra("NAME_BWE", uniqueBWEName);
+                i.putExtra("COUNTRY_BWE", SWECountry);
+                i.putExtra("POSITION_BWE", SWEPosition);
                 i.putExtra("CALLED_AMPSTART", calledAMPStart);
                 startActivity(i);
             }

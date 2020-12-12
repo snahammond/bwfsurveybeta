@@ -17,6 +17,8 @@ import com.amplifyframework.datastore.generated.model.InitialSurvey;
 
 public class MenuActivity extends AppCompatActivity {
     String namebwe = null;
+    String countrybwe = null;
+    String positionbwe = null;
     boolean calledAMPStart = true;
 
     private LinearLayout progressBar;
@@ -27,6 +29,10 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if(getIntent().getStringExtra("NAME_BWE")!=null)
             namebwe = getIntent().getStringExtra("NAME_BWE");
+        if(getIntent().getStringExtra("COUNTRY_BWE")!=null)
+            countrybwe = getIntent().getStringExtra("COUNTRY_BWE");
+        if(getIntent().getStringExtra("POSITION_BWE")!=null)
+            positionbwe = getIntent().getStringExtra("POSITION_BWE");
 
         calledAMPStart = getIntent().getBooleanExtra("CALLED_AMPSTART",true);
         Log.i("Tutorials", "namebwe: " + namebwe);
@@ -61,8 +67,11 @@ public class MenuActivity extends AppCompatActivity {
         Button initialFullSurvey = (Button) findViewById(R.id.button_initialFullSurvey);
         initialFullSurvey.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),InitialSurveyActivity.class);
+                Intent i = new Intent(getApplicationContext(),CommunityCardSelectActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("COUNTRY_BWE", countrybwe);
+                i.putExtra("POSITION_BWE", positionbwe);
+                i.putExtra("SURVEY_TYPE","INITIALSURVEY");
                 startActivity(i);
             }
         });

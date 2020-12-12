@@ -39,6 +39,10 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
     private RecyclerView recyclerView;
     private InterchangeCardAdapter adapter;
     private String namebwe;
+    String countrybwe = null;
+    String communitybwe = null;
+    String positionbwe = null;
+
     private static ArrayList<Interchange> interchanges;
 
     private LinearLayout progressBar;
@@ -46,7 +50,15 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        namebwe = getIntent().getStringExtra("NAME_BWE");
+
+        if(getIntent().getStringExtra("NAME_BWE")!=null)
+            namebwe = getIntent().getStringExtra("NAME_BWE");
+        if(getIntent().getStringExtra("COUNTRY")!=null)
+            countrybwe = getIntent().getStringExtra("COUNTRY");
+        if(getIntent().getStringExtra("COMMUNITY")!=null)
+            communitybwe = getIntent().getStringExtra("COMMUNITY");
+        if(getIntent().getStringExtra("POSITION_BWE")!=null)
+            positionbwe = getIntent().getStringExtra("POSITION_BWE");
         initView();
     }
 
@@ -228,8 +240,8 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         String date_s = dateFormat.format(calendar.getTime());
 
         String Namebwe = namebwe;
-        String Country = (String) getInterchangeAns("Country",validatedInterchangesWithAns);
-        String Community = (String) getInterchangeAns("Community",validatedInterchangesWithAns);
+        String Country = countrybwe;
+        String Community = communitybwe;
         Integer SurveyId = 0;
         Temporal.Date date = new Temporal.Date(date_s);
         String HeadHouseholdName = (String) getInterchangeAns("HeadHouseholdName",validatedInterchangesWithAns);

@@ -198,6 +198,50 @@ public class MyAmplifyApplication extends Application {
         return surveyConfig;
     }
 
+    //get list of required interchanges with name of Survey
+    public static ArrayList<Community> getCommunities(String nameOfCountry){
+        ArrayList<Community> communities = null;
+
+        //search fo the config with name nameOfSurvey
+        Config configOfCountryBeingRequested = searchConfigForCountry(nameOfCountry);
+        //make the community list
+        //this config "configOfCountryBeingRequestedon" contains all the communities, so get the communities out of int
+        communities = getCommunitiesFromCountryConfig(configOfCountryBeingRequested,nameOfCountry);
+
+        return communities;
+    }
+
+    private static ArrayList<Community> getCommunitiesFromCountryConfig(Config configOfCountryBeingRequested,String nameOfCountry) {
+        ArrayList<Community> communities = null;
+        if(configOfCountryBeingRequested!=null){
+            communities = new ArrayList<>();
+            String arrayOfCommunities = configOfCountryBeingRequested.getChildValue(); //enveloped in square brackets
+            //take off the square brackets
+            String arrayOfCommunitiesWithoutSquareBrackets = arrayOfCommunities.substring(1, arrayOfCommunities.length() - 1);
+            //they are seperated by "," so split them by ","
+            String[] arrayOfIndCommunities = arrayOfCommunitiesWithoutSquareBrackets.split(",");
+
+            for(int i=0; i<arrayOfIndCommunities.length;i++){
+                //each array element has \"\" around it, so take them off
+                String communityValue = arrayOfIndCommunities[i].substring(1, arrayOfIndCommunities[i].length() - 1);
+                //make new community object
+                Community community = new Community(nameOfCountry,communityValue);
+                communities.add(community);
+            }
+        }
+        return communities;
+    }
+
+    private static Config searchConfigForCountry(String country){
+        Config surveyConfig = null;
+        for(Config config : MyAmplifyApplication.configs){
+            if(config.getName().contentEquals(country.toUpperCase()) && config.getType().contentEquals("C")){
+                return config;
+            }
+        }
+        return surveyConfig;
+    }
+
     private static int[] getInterchangeNumbers(Config configOfSurveyBeingRequested){
         int[] interchangesRequired = null;
         if(configOfSurveyBeingRequested!=null){

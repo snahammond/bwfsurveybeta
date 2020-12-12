@@ -424,7 +424,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         private TextView txtQuestion;
         private Spinner spinnerAnswer;
         private int interchangePosition;
-        private Interchange interchange;
+        //private Interchange interchange;
         private ArrayAdapter<CharSequence> adapter;
 
         public int getInterchangePosition() {
@@ -443,13 +443,13 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             this.adapter = adapter;
         }
 
-        public Spinner getSpinnerAnswer() {
-            return spinnerAnswer;
-        }
+        //public Spinner getSpinnerAnswer() {
+          //  return spinnerAnswer;
+        //}
 
-        public void setSpinnerAnswer(Spinner spinnerAnswer) {
-            this.spinnerAnswer = spinnerAnswer;
-        }
+        //public void setSpinnerAnswer(Spinner spinnerAnswer) {
+            //this.spinnerAnswer = spinnerAnswer;
+        //}
 
         InterchangeSpinnerAnsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -461,7 +461,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     //get the item that was selected
                     String selectedAnswerValueDescStr = (String)parent.getItemAtPosition(position);
                     //Log.i("Tutorial", "selectedAnswerValueDescStr " +selectedAnswerValueDescStr);
-
+                    /*
                     AnswerValue answerValueSelected = null;
                     //look for the answer value object this selected str value and see if it has children
                     for(AnswerValue answerValue : interchange.getAnswer().getAnswerValArrayList()){
@@ -520,7 +520,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                                 }
                             }
                         }
-                    }
+                    }*/
 
                     _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedAnswerValueDescStr);
 
@@ -536,7 +536,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         void setQuestionSpinnerAnsDetails(Interchange interchange,int position) {
             this.setInterchangePosition(position);
-            this.interchange = interchange;
+            //this.interchange = interchange;
             txtQuestion.setText(interchange.getQuestion().getQuestionText());
 
             //make CharSequence for arrayadapter from possible answer
@@ -552,11 +552,6 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             }else{
                 spinnerAnswer.setSelection(0);
             }
-
-
-
-
-
         }
     }
 
