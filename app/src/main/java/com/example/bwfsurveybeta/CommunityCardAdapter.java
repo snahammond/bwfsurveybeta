@@ -13,8 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amplifyframework.datastore.generated.model.InitialSurvey;
-
 import java.util.ArrayList;
 
 public class CommunityCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
@@ -60,6 +58,8 @@ public class CommunityCardAdapter extends RecyclerView.Adapter<RecyclerView.View
 
                     if (surveyType.contentEquals("INITIALSURVEY")) {
                         startInitialSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString());
+                    }else if(surveyType.contentEquals("WATERSURVEYCOMMUNITY")) {
+                        startCommunityWaterSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString());
                     }
                 }
             });
@@ -72,12 +72,23 @@ public class CommunityCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
     }
 
+    private void startCommunityWaterSurveyActivity(String country, String community) {
+        Intent i = new Intent(this.context, CommunityWaterSurveyActivity.class);
+        i.putExtra("NAME_BWE", namebwe);
+        i.putExtra("POSITION_BWE", positionbwe);
+        i.putExtra("SURVEY_TYPE",surveyType);
+        i.putExtra("COUNTRY_BWE",country);
+        i.putExtra("COMMUNITY",community);
+        context.startActivity(i);
+        ((Activity)context).finish();
+    }
+
     private void startInitialSurveyActivity(String country, String community) {
         Intent i = new Intent(this.context, InitialSurveyActivity.class);
         i.putExtra("NAME_BWE", namebwe);
         i.putExtra("POSITION_BWE", positionbwe);
         i.putExtra("SURVEY_TYPE",surveyType);
-        i.putExtra("COUNTRY",country);
+        i.putExtra("COUNTRY_BWE",country);
         i.putExtra("COMMUNITY",community);
         context.startActivity(i);
         ((Activity)context).finish();

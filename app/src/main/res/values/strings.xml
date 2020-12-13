@@ -19,17 +19,17 @@
     <string name="authenticated">Authenticated</string>
     <string name="collectData">collect data</string>
     <string name="viewCollectedData">view data</string>
-    <string name="initialSurvey">Initial Survey</string>
+    <string name="initialSurvey">Initial Household Survey</string>
     <string name="waterSurvey">Household Water Test</string>
-    <string name="healthCheck">Health Check Survey</string>
-    <string name="followUpSurvey">follow up survey</string>
+    <string name="healthCheck">Monthly Health Check Survey</string>
+    <string name="followUpSurvey">6/12 month follow up Household survey</string>
     <string name="Surname">Surname</string>
     <string name="firstname">first name</string>
     <string name="saveData">save data</string>
     <string name="action_settings">setting</string>
     <string name="updateCollectedData">view/update data</string>
     <string name="waterSurveyComm">Community Water Test</string>
-    <string name="SWEMonthlySummary">SWE summary</string>
+    <string name="SWEMonthlySummary">Monthly SWE/Vol Activity summary</string>
     <string name="confirmation">Confirmation</string>
     <string name="confirmationDesc">We sent a security code to your email,, Please enter it here.</string>
 </resources>

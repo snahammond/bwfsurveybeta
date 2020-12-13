@@ -101,6 +101,7 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), SWEMonthlySummaryActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("POSITION_BWE", positionbwe);
                 i.putExtra("SURVEY_TYPE","SWESUMMARY");
                 startActivity(i);
             }
@@ -111,7 +112,21 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), FamilyCardSelectActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("COUNTRY_BWE", countrybwe);
+                i.putExtra("POSITION_BWE", positionbwe);
                 i.putExtra("SURVEY_TYPE","WATERSURVEYHOUSEHOLD");
+                startActivity(i);
+            }
+        });
+
+        Button waterSurveyComm = (Button) findViewById(R.id.button_waterSurveyComm);
+        waterSurveyComm.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),CommunityCardSelectActivity.class);
+                i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("COUNTRY_BWE", countrybwe);
+                i.putExtra("POSITION_BWE", positionbwe);
+                i.putExtra("SURVEY_TYPE","WATERSURVEYCOMMUNITY");
                 startActivity(i);
             }
         });

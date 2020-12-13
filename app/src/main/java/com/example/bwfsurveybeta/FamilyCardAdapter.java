@@ -20,13 +20,15 @@ import java.util.ArrayList;
 public class FamilyCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private ArrayList<InitialSurvey> listOfFamilys;
     private String namebwe;
+    private String countrybwe;
     private String surveyType;
     private Context context;
 
-    public FamilyCardAdapter(FamilyCardSelectActivity familyCardSelectActivity, ArrayList<InitialSurvey> listOfFamilys, String namebwe, String surveyType) {
+    public FamilyCardAdapter(FamilyCardSelectActivity familyCardSelectActivity, ArrayList<InitialSurvey> listOfFamilys, String namebwe,String countrybwe, String surveyType) {
         this.listOfFamilys = listOfFamilys;
         this.context = familyCardSelectActivity;
         this.namebwe = namebwe;
+        this.countrybwe = countrybwe;
         this.surveyType = surveyType;
     }
 
@@ -86,7 +88,7 @@ public class FamilyCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     private void startHouseholdWaterSurveyActivity(String country, String community, String householdName) {
-        Intent i = new Intent(this.context, WaterSurveyHouseholdActivity.class);
+        Intent i = new Intent(this.context, HouseholdWaterSurveyActivity.class);
         i.putExtra("NAME_BWE", namebwe);
         i.putExtra("SURVEY_TYPE",surveyType);
         i.putExtra("COUNTRY",country);

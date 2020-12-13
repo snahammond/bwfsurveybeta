@@ -27,6 +27,7 @@ import java.util.Calendar;
 
 public class SWEMonthlySummaryActivity extends AppCompatActivity {
     private String namebwe = null;
+    private String positionbwe = null;
     private static ArrayList<Interchange> interchanges;
     private RecyclerView recyclerView;
     private InterchangeCardAdapter adapter;
@@ -38,6 +39,8 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if(getIntent().getStringExtra("NAME_BWE")!=null)
             namebwe = getIntent().getStringExtra("NAME_BWE");
+        if(getIntent().getStringExtra("POSITION_BWE")!=null)
+            positionbwe = getIntent().getStringExtra("POSITION_BWE");
 
         initView();
     }
@@ -125,11 +128,12 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
             public void run() {
                 new AlertDialog.Builder(SWEMonthlySummaryActivity.this)
                         .setTitle("Save Failed")
-                        .setMessage("Initial Survey Save Failed Please try again\n" )
+                        .setMessage("Monthly Summary Save Failed! Please try again\n" )
                         // A null listener allows the button to dismiss the dialog and take no further action.
                         .setNegativeButton(android.R.string.ok, null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
+                        .show()
+                        .setCanceledOnTouchOutside(false);
             }
         });
     }
@@ -158,7 +162,7 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
     private void showSavedSuccessfulAlert(){
         new AlertDialog.Builder(SWEMonthlySummaryActivity.this)
                 .setTitle("Saved Succussfully")
-                .setMessage("Initial Survey Saved Succussfully \n" )
+                .setMessage("Monthly Summary Saved Succussfully \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
                 .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
@@ -172,7 +176,8 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
-                .show();
+                .show()
+                .setCanceledOnTouchOutside(false);
     }
     private SWEMonthlySummary makeSWEMonthlySummaryObject(ArrayList<Interchange> interchangesWithUserAns) {
         Calendar calendar = Calendar.getInstance();
@@ -180,15 +185,15 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
         String date_s = dateFormat.format(calendar.getTime());
 
         String Namebwe = namebwe;
-        String SwePosition = "";
-        Integer NoWaterSampleTaken = (Integer) getInterchangeAns("NoWaterSampleTaken",interchangesWithUserAns);
-        Integer NoSurveysCompleted = (Integer) getInterchangeAns("NoSurveysCompleted",interchangesWithUserAns);
-        Integer NoLsn1Taught = (Integer) getInterchangeAns("NoLsn1Taught",interchangesWithUserAns);
-        Integer NoLsn2Taught = (Integer) getInterchangeAns("NoLsn2Taught",interchangesWithUserAns);
-        Integer NoLsn3Taught = (Integer) getInterchangeAns("NoLsn3Taught",interchangesWithUserAns);
-        Integer NoLsn4Taught = (Integer) getInterchangeAns("NoLsn4Taught",interchangesWithUserAns);
-        Integer NoPersonsTaught = (Integer) getInterchangeAns("NoPersonsTaught",interchangesWithUserAns);
-        Integer NoChlorineLiquidTabsDistributed = (Integer) getInterchangeAns("NoChlorineLiquid_TabsDistributed",interchangesWithUserAns);
+        String SwePosition = positionbwe;
+        Integer NoWaterSampleTaken = parseIntegerWithDefault( getInterchangeAns("NoWaterSampleTaken",interchangesWithUserAns),0);
+        Integer NoSurveysCompleted = parseIntegerWithDefault( getInterchangeAns("NoSurveysCompleted",interchangesWithUserAns),0);
+        Integer NoLsn1Taught = parseIntegerWithDefault( getInterchangeAns("NoLsn1Taught",interchangesWithUserAns),0);
+        Integer NoLsn2Taught = parseIntegerWithDefault( getInterchangeAns("NoLsn2Taught",interchangesWithUserAns),0);
+        Integer NoLsn3Taught = parseIntegerWithDefault( getInterchangeAns("NoLsn3Taught",interchangesWithUserAns),0);
+        Integer NoLsn4Taught = parseIntegerWithDefault( getInterchangeAns("NoLsn4Taught",interchangesWithUserAns),0);
+        Integer NoPersonsTaught = parseIntegerWithDefault( getInterchangeAns("NoPersonsTaught",interchangesWithUserAns),0);
+        Integer NoChlorineLiquidTabsDistributed = parseIntegerWithDefault( getInterchangeAns("NoChlorineLiquid_TabsDistributed",interchangesWithUserAns),0);
         Temporal.Date date = new Temporal.Date(date_s);
 
         SWEMonthlySummary sweMonthlySummary = SWEMonthlySummary.builder()
@@ -243,9 +248,19 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
                 // A null listener allows the button to dismiss the dialog and take no further action.
                 .setNegativeButton(android.R.string.ok, null)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
+                .show()
+                .setCanceledOnTouchOutside(false);
     }
 
+    public static int parseIntegerWithDefault(Object s, int defaultVal) {
+        if (s instanceof Integer) {
+            return (Integer) s;
+        }else if (s instanceof String){
+            String str = (String) s;
+            return str.matches("-?\\d+") ? Integer.parseInt(str): defaultVal;
+        }else
+            return defaultVal;
 
+    }
 
 }

@@ -40,7 +40,7 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
     private InterchangeCardAdapter adapter;
     private String namebwe;
     String countrybwe = null;
-    String communitybwe = null;
+    String community = null;
     String positionbwe = null;
 
     private static ArrayList<Interchange> interchanges;
@@ -53,10 +53,10 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
 
         if(getIntent().getStringExtra("NAME_BWE")!=null)
             namebwe = getIntent().getStringExtra("NAME_BWE");
-        if(getIntent().getStringExtra("COUNTRY")!=null)
-            countrybwe = getIntent().getStringExtra("COUNTRY");
+        if(getIntent().getStringExtra("COUNTRY_BWE")!=null)
+            countrybwe = getIntent().getStringExtra("COUNTRY_BWE");
         if(getIntent().getStringExtra("COMMUNITY")!=null)
-            communitybwe = getIntent().getStringExtra("COMMUNITY");
+            community = getIntent().getStringExtra("COMMUNITY");
         if(getIntent().getStringExtra("POSITION_BWE")!=null)
             positionbwe = getIntent().getStringExtra("POSITION_BWE");
         initView();
@@ -128,7 +128,8 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                 // A null listener allows the button to dismiss the dialog and take no further action.
                 .setNegativeButton(android.R.string.ok, null)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
+                .show()
+                .setCanceledOnTouchOutside(false);
     }
 
     private void saveIntialSurvey(InitialSurvey initialSurveyToSave){
@@ -187,7 +188,8 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
-                .show();
+                .show()
+                .setCanceledOnTouchOutside(false);
     }
 
     private void showSaveFailedAlert(){
@@ -199,7 +201,8 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                         // A null listener allows the button to dismiss the dialog and take no further action.
                         .setNegativeButton(android.R.string.ok, null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
+                        .show()
+                        .setCanceledOnTouchOutside(false);
             }
         });
     }
@@ -241,31 +244,31 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
 
         String Namebwe = namebwe;
         String Country = countrybwe;
-        String Community = communitybwe;
+        String Community = community;
         Integer SurveyId = 0;
         Temporal.Date date = new Temporal.Date(date_s);
         String HeadHouseholdName = (String) getInterchangeAns("HeadHouseholdName",validatedInterchangesWithAns);
         String HeadHouseholdSex = (String) getInterchangeAns("HeadHouseholdSex",validatedInterchangesWithAns);
         String HeadHouseholdMaritalStatus = (String) getInterchangeAns("HeadHouseholdMaritalStatus",validatedInterchangesWithAns);
-        Integer HeadHouseholdAge = (Integer) getInterchangeAns("HeadHouseholdAge",validatedInterchangesWithAns);
+        Integer HeadHouseholdAge = parseIntegerWithDefault( getInterchangeAns("HeadHouseholdAge",validatedInterchangesWithAns),0);
         String HeadHouseholdOccupation = (String) getInterchangeAns("HeadHouseholdOccupation",validatedInterchangesWithAns);
         String HeadHouseholdEducation = (String) getInterchangeAns("HeadHouseholdEducation",validatedInterchangesWithAns);
         String PersonBeingInterviewed = (String) getInterchangeAns("PersonBeingInterviewed",validatedInterchangesWithAns);
-        Integer TotalNoPeopleHousehold = (Integer) getInterchangeAns("TotalNoPeopleHousehold",validatedInterchangesWithAns);
-        Integer NoHouseholdMale0_1Year = (Integer) getInterchangeAns("NoHouseholdMale0_1Year",validatedInterchangesWithAns);
-        Integer NoHouseholdFemale0_1Year = (Integer) getInterchangeAns("NoHouseholdMale1_5Year",validatedInterchangesWithAns);
-        Integer NoHouseholdMale1_5Year = (Integer) getInterchangeAns("NoHouseholdMale1_5Year",validatedInterchangesWithAns);
-        Integer NoHouseholdFemale1_5Year = (Integer) getInterchangeAns("NoHouseholdFemale1_5Year",validatedInterchangesWithAns);
-        Integer NoHouseholdMale5_12Year = (Integer) getInterchangeAns("NoHouseholdMale5_12Year",validatedInterchangesWithAns);
-        Integer NoHouseholdFemale5_12Year = (Integer) getInterchangeAns("NoHouseholdFemale5_12Year",validatedInterchangesWithAns);
-        Integer NoHouseholdMale13_17Year = (Integer) getInterchangeAns("NoHouseholdMale13_17Year",validatedInterchangesWithAns);
-        Integer NoHouseholdFemale13_17Year = (Integer) getInterchangeAns("NoHouseholdFemale13_17Year",validatedInterchangesWithAns);
-        Integer NoHouseholdMale18_Year = (Integer) getInterchangeAns("NoHouseholdMale18_Year",validatedInterchangesWithAns);
-        Integer NoHouseholdFemale18_Year = (Integer) getInterchangeAns("NoHouseholdFemale18_Year",validatedInterchangesWithAns);
+        Integer TotalNoPeopleHousehold = parseIntegerWithDefault(getInterchangeAns("TotalNoPeopleHousehold",validatedInterchangesWithAns),0);
+        Integer NoHouseholdMale0_1Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdMale0_1Year",validatedInterchangesWithAns),0);
+        Integer NoHouseholdFemale0_1Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdMale1_5Year",validatedInterchangesWithAns),0);
+        Integer NoHouseholdMale1_5Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdMale1_5Year",validatedInterchangesWithAns),0);
+        Integer NoHouseholdFemale1_5Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdFemale1_5Year",validatedInterchangesWithAns),0);
+        Integer NoHouseholdMale5_12Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdMale5_12Year",validatedInterchangesWithAns),0);
+        Integer NoHouseholdFemale5_12Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdFemale5_12Year",validatedInterchangesWithAns),0);
+        Integer NoHouseholdMale13_17Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdMale13_17Year",validatedInterchangesWithAns),0);
+        Integer NoHouseholdFemale13_17Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdFemale13_17Year",validatedInterchangesWithAns),0);
+        Integer NoHouseholdMale18_Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdMale18_Year",validatedInterchangesWithAns),0);
+        Integer NoHouseholdFemale18_Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdFemale18_Year",validatedInterchangesWithAns),0);
         String ReasonNoSchoolChildren5_17Year = (String) getInterchangeAns("ReasonNoSchoolChildren5_17Year",validatedInterchangesWithAns);
         String MainSourceDrinkingWater = (String) getInterchangeAns("MainSourceDrinkingWater",validatedInterchangesWithAns);
         String MainSourceOtherPurposeWater = (String) getInterchangeAns("MainSourceOtherPurposeWater",validatedInterchangesWithAns);
-        Integer TimeToWaterSourceGetReturn = (Integer) getInterchangeAns("TimeToWaterSourceGetReturn",validatedInterchangesWithAns);
+        Integer TimeToWaterSourceGetReturn = parseIntegerWithDefault(getInterchangeAns("TimeToWaterSourceGetReturn",validatedInterchangesWithAns),0);
         String HouseholdFrequencyAtWaterSource = (String) getInterchangeAns("HouseholdFrequencyAtWaterSource",validatedInterchangesWithAns);
         String UsualHouseholdWaterFetcher = (String) getInterchangeAns("UsualHouseholdWaterFetcher",validatedInterchangesWithAns);
         String ContainerCarryWater = (String) getInterchangeAns("ContainerCarryWater",validatedInterchangesWithAns);
@@ -283,16 +286,16 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         String WashedHandsIn24Hours = (String) getInterchangeAns("WashedHandsIn24Hours",validatedInterchangesWithAns);
         String WhenWashedHandsIn24Hours = (String) getInterchangeAns("WhenWashedHandsIn24Hours",validatedInterchangesWithAns);
         String WhatUsedToWashYourHands = (String) getInterchangeAns("WhatUsedToWashYourHands",validatedInterchangesWithAns);
-        Integer NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek = (Integer) getInterchangeAns("NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",validatedInterchangesWithAns);
+        Integer NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek = parseIntegerWithDefault(getInterchangeAns("NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",validatedInterchangesWithAns),0);
         String CommonIllnessAffectingChildrenUnder5 = (String) getInterchangeAns("CommonIllnessAffectingChildrenUnder5",validatedInterchangesWithAns);
-        Integer NoChildrenWithVomitingOrDiarrheaIn7days = (Integer) getInterchangeAns("NoChildrenWithVomitingOrDiarrheaIn7days",validatedInterchangesWithAns);
+        Integer NoChildrenWithVomitingOrDiarrheaIn7days = parseIntegerWithDefault(getInterchangeAns("NoChildrenWithVomitingOrDiarrheaIn7days",validatedInterchangesWithAns),0);
         String DidSickChildrenGoToHospital = (String) getInterchangeAns("DidSickChildrenGoToHospital",validatedInterchangesWithAns);
         String DidSickChildrenGoToHospitalYes = (String) getInterchangeAns("DidSickChildrenGoToHospitalYes",validatedInterchangesWithAns);
         String SickChildrenBreastfeeding = (String) getInterchangeAns("SickChildrenBreastfeeding",validatedInterchangesWithAns);
         String OutcomeMostRecentVomiting_DiarrheaAtHospital = (String) getInterchangeAns("OutcomeMostRecentVomiting_DiarrheaAtHospital",validatedInterchangesWithAns);
-        Integer NoDaysNoWorkBecauseOfOwnIllness = (Integer) getInterchangeAns("NoDaysNoWorkBecauseOfOwnIllness",validatedInterchangesWithAns);
-        Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers = (Integer) getInterchangeAns("NoDaysNoWorkBecauseOfIllnessFamilyMembers",validatedInterchangesWithAns);
-        Integer MoneySpentMedicalTreatmentLast4weeks = (Integer) getInterchangeAns("MoneySpentMedicalTreatmentLast4weeks",validatedInterchangesWithAns);
+        Integer NoDaysNoWorkBecauseOfOwnIllness = parseIntegerWithDefault(getInterchangeAns("NoDaysNoWorkBecauseOfOwnIllness",validatedInterchangesWithAns),0);
+        Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers = parseIntegerWithDefault(getInterchangeAns("NoDaysNoWorkBecauseOfIllnessFamilyMembers",validatedInterchangesWithAns),0);
+        Integer MoneySpentMedicalTreatmentLast4weeks = parseIntegerWithDefault(getInterchangeAns("MoneySpentMedicalTreatmentLast4weeks",validatedInterchangesWithAns),0);
         String HealthChangeInAYear = (String) getInterchangeAns("HealthChangeInAYear",validatedInterchangesWithAns);
         String HealthChangeFamilyInAYear = (String) getInterchangeAns("HealthChangeFamilyInAYear",validatedInterchangesWithAns);
 
@@ -356,6 +359,17 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                 .date(date)
                 .build();
         return initialSurvey;
+
+    }
+
+    public static int parseIntegerWithDefault(Object s, int defaultVal) {
+        if (s instanceof Integer) {
+            return (Integer) s;
+        }else if (s instanceof String){
+            String str = (String) s;
+            return str.matches("-?\\d+") ? Integer.parseInt(str): defaultVal;
+        }else
+            return defaultVal;
 
     }
 

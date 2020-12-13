@@ -17,18 +17,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
-import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
+import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
-import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class WaterSurveyHouseholdActivity extends AppCompatActivity {
+public class CommunityWaterSurveyActivity extends AppCompatActivity {
     private String namebwe = null;
     private String surveyType = null;
-    private String country = null;
+    private String countrybwe = null;
     private String community = null;
     private String householdName = null;
     private static ArrayList<Interchange> interchanges;
@@ -44,35 +43,33 @@ public class WaterSurveyHouseholdActivity extends AppCompatActivity {
             namebwe = getIntent().getStringExtra("NAME_BWE");
         if(getIntent().getStringExtra("SURVEY_TYPE")!=null)
             surveyType = getIntent().getStringExtra("SURVEY_TYPE");
-        if(getIntent().getStringExtra("COUNTRY")!=null)
-            country = getIntent().getStringExtra("COUNTRY");
+        if(getIntent().getStringExtra("COUNTRY_BWE")!=null)
+            countrybwe = getIntent().getStringExtra("COUNTRY_BWE");
         if(getIntent().getStringExtra("COMMUNITY")!=null)
             community = getIntent().getStringExtra("COMMUNITY");
-        if(getIntent().getStringExtra("HHNAME")!=null)
-            householdName = getIntent().getStringExtra("HHNAME");
-        Log.i("Tutorials", "Selected family water survey household class: " + householdName);
+
         setContentView(R.layout.activity_recycler);
-        getSupportActionBar().setTitle((CharSequence) "Water Survey; "+householdName);
+        getSupportActionBar().setTitle((CharSequence) "Community Water Test; "+community);
         initView();
     }
 
     private void initView() {
-        createWaterSurveyHouseholdQuestionaire();
+        createCommunityWaterSurveyQuestionaire();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new InterchangeCardAdapter(WaterSurveyHouseholdActivity.this, WaterSurveyHouseholdActivity.interchanges);
+        adapter = new InterchangeCardAdapter(CommunityWaterSurveyActivity.this, CommunityWaterSurveyActivity.interchanges);
         recyclerView.setAdapter(adapter);
     }
 
-    private void createWaterSurveyHouseholdQuestionaire() {
+    private void createCommunityWaterSurveyQuestionaire() {
         try{
             ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges(surveyType);
             if(returnedInterchanges!=null){
-                WaterSurveyHouseholdActivity.interchanges = new ArrayList<>();
+                CommunityWaterSurveyActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;
                 for(Interchange interchange : returnedInterchanges){
                     interchange.setPositionOnRecyler(positionOnRecyler);
-                    WaterSurveyHouseholdActivity.interchanges.add(interchange);
+                    CommunityWaterSurveyActivity.interchanges.add(interchange);
                     positionOnRecyler += 1;
                 }
             }
@@ -107,18 +104,19 @@ public class WaterSurveyHouseholdActivity extends AppCompatActivity {
                 Log.i("Tutorial", "we are going to save!");
 
                 //make an InitialSurvey object
-                HouseholdWaterTest householdWaterTestToSave = makeHouseholdWaterTestObject(interchangesWithUserAns);
+                CommunityWaterTest communityWaterTestToSave = makeCommunityWaterTestObject(interchangesWithUserAns);
 
                 //save the initialSurvey object
-                saveHouseholdWaterTestSurvey(householdWaterTestToSave);
+                saveCommunityWaterTestSurvey(communityWaterTestToSave);
 
             }
+
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void saveHouseholdWaterTestSurvey(HouseholdWaterTest householdWaterTestToSave) {
-        Amplify.DataStore.save(householdWaterTestToSave,
+    private void saveCommunityWaterTestSurvey(CommunityWaterTest communityWaterTestToSave) {
+        Amplify.DataStore.save(communityWaterTestToSave,
                 update -> {
                     Log.i("Tutorial", "Saved Successfully ");
 
@@ -133,6 +131,21 @@ public class WaterSurveyHouseholdActivity extends AppCompatActivity {
                     showSaveFailedAlert();
                 }
         );
+    }
+
+    private void showSaveFailedAlert(){
+        runOnUiThread(new Runnable() {
+            public void run() {
+                new AlertDialog.Builder(CommunityWaterSurveyActivity.this)
+                        .setTitle("Save Failed")
+                        .setMessage("Community Water Test Save Failed! Please try again\n" )
+                        // A null listener allows the button to dismiss the dialog and take no further action.
+                        .setNegativeButton(android.R.string.ok, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show()
+                        .setCanceledOnTouchOutside(false);
+            }
+        });
     }
 
     private void doSyncWaitAndShowSavedSuccessfulAlert(){
@@ -157,46 +170,33 @@ public class WaterSurveyHouseholdActivity extends AppCompatActivity {
     }
 
     private void showSavedSuccessfulAlert(){
-        new AlertDialog.Builder(WaterSurveyHouseholdActivity.this)
+        new AlertDialog.Builder(CommunityWaterSurveyActivity.this)
                 .setTitle("Saved Succussfully")
-                .setMessage("Initial Survey Saved Succussfully \n" )
+                .setMessage("Household Water Test Saved Succussfully \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
                 .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //reset all the user answers
-                        for(Interchange interchange: WaterSurveyHouseholdActivity.interchanges){
+                        for(Interchange interchange: CommunityWaterSurveyActivity.interchanges){
                             interchange.getAnswer().setAns(null);
                         }
-                        WaterSurveyHouseholdActivity.this.finish();
+                        CommunityWaterSurveyActivity.this.finish();
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
-                .show();
+                .show()
+                .setCanceledOnTouchOutside(false);
     }
 
-    private void showSaveFailedAlert(){
-        runOnUiThread(new Runnable() {
-            public void run() {
-                new AlertDialog.Builder(WaterSurveyHouseholdActivity.this)
-                        .setTitle("Save Failed")
-                        .setMessage("Initial Survey Save Failed Please try again\n" )
-                        // A null listener allows the button to dismiss the dialog and take no further action.
-                        .setNegativeButton(android.R.string.ok, null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
-            }
-        });
-    }
-
-    private HouseholdWaterTest makeHouseholdWaterTestObject(ArrayList<Interchange> interchangesWithUserAns) {
+    private CommunityWaterTest makeCommunityWaterTestObject(ArrayList<Interchange> interchangesWithUserAns) {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_s = dateFormat.format(calendar.getTime());
 
         String Namebwe = namebwe;
-        String Country = (String) country;
+        String Country = (String) countrybwe;
         String Community = (String) community;
         String HeadHouseholdName = (String) householdName;
         Temporal.Date  ColilertDateTested = new Temporal.Date(dateFormat.format(getInterchangeAns("ColilertDateTested",interchangesWithUserAns)));
@@ -207,11 +207,10 @@ public class WaterSurveyHouseholdActivity extends AppCompatActivity {
         String PetrifilmTestResult = (String) getInterchangeAns("PetrifilmTestResult",interchangesWithUserAns);
         Temporal.Date date = new Temporal.Date(date_s);
 
-        HouseholdWaterTest householdWaterTest = HouseholdWaterTest.builder()
+        CommunityWaterTest communityWaterTest = CommunityWaterTest.builder()
                 .namebwe(Namebwe)
                 .country(Country)
                 .community(Community)
-                .headHouseholdName(HeadHouseholdName)
                 .colilertDateTested(ColilertDateTested)
                 .colilertDateRead(ColilertDateRead)
                 .colilertTestResult(ColilertTestResult)
@@ -220,7 +219,7 @@ public class WaterSurveyHouseholdActivity extends AppCompatActivity {
                 .petrifilmTestResult(PetrifilmTestResult)
                 .date(date)
                 .build();
-        return householdWaterTest;
+        return communityWaterTest;
     }
 
     private Object getInterchangeAns(String interchangeName,ArrayList<Interchange> validatedInterchangesWithAns){
@@ -239,13 +238,14 @@ public class WaterSurveyHouseholdActivity extends AppCompatActivity {
     }
 
     private void showInvalidSurveyAlert(){
-        new AlertDialog.Builder(WaterSurveyHouseholdActivity.this)
+        new AlertDialog.Builder(CommunityWaterSurveyActivity.this)
                 .setTitle("Invalid Questions")
                 .setMessage("Some questions have not been correctly answered \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
                 .setNegativeButton(android.R.string.ok, null)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
+                .show()
+                .setCanceledOnTouchOutside(false);
     }
 
     private ArrayList<Interchange> validateUserAns(ArrayList<Interchange> interchangesWithUserAns) {
@@ -261,4 +261,6 @@ public class WaterSurveyHouseholdActivity extends AppCompatActivity {
         }
         return invalidinterchange;
     }
+
+
 }

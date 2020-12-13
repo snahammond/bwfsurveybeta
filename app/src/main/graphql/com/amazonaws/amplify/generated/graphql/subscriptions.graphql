@@ -533,6 +533,66 @@ subscription OnDeleteHouseholdWaterTest {
     updatedAt
   }
 }
+subscription OnCreateCommunityWaterTest {
+  onCreateCommunityWaterTest {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateCommunityWaterTest {
+  onUpdateCommunityWaterTest {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteCommunityWaterTest {
+  onDeleteCommunityWaterTest {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
 subscription OnCreateConfigDefinitions {
   onCreateConfigDefinitions {
     id

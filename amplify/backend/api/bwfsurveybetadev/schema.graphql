@@ -161,6 +161,20 @@ PetrifilmDateRead: AWSDate!
 PetrifilmTestResult: String!
 }
 
+type CommunityWaterTest @model{
+id: ID!
+Namebwe: String!
+date: AWSDate
+Country: String!
+Community: String!
+ColilertDateTested: AWSDate!
+ColilertDateRead: AWSDate!
+ColilertTestResult: String!
+PetrifilmDateTested: AWSDate!
+PetrifilmDateRead: AWSDate!
+PetrifilmTestResult: String!
+}
+
 type ConfigDefinitions @model{
 	id: ID!
 	type: String!

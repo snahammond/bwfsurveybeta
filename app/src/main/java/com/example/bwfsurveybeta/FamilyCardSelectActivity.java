@@ -22,6 +22,7 @@ public class FamilyCardSelectActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private FamilyCardAdapter adapter;
     private String namebwe = null;
+    private String countrybwe = null;
     private String surveyType = null;
 
     private LinearLayout progressBar;
@@ -32,6 +33,8 @@ public class FamilyCardSelectActivity extends AppCompatActivity {
         if(getIntent().getStringExtra("NAME_BWE")!=null)
             namebwe = getIntent().getStringExtra("NAME_BWE");
         Log.i("Tutorials", "namebwe: " + namebwe);
+        if(getIntent().getStringExtra("COUNTRY_BWE")!=null)
+            countrybwe = getIntent().getStringExtra("COUNTRY_BWE");
         if(getIntent().getStringExtra("SURVEY_TYPE")!=null)
             surveyType = getIntent().getStringExtra("SURVEY_TYPE");
         initView();
@@ -110,7 +113,7 @@ public class FamilyCardSelectActivity extends AppCompatActivity {
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new FamilyCardAdapter(FamilyCardSelectActivity.this, FamilyCardSelectActivity.listOfFamilys,namebwe,surveyType);
+        adapter = new FamilyCardAdapter(FamilyCardSelectActivity.this, FamilyCardSelectActivity.listOfFamilys,namebwe,countrybwe,surveyType);
         recyclerView.setAdapter(adapter);
     }
 

@@ -52,7 +52,7 @@
         </activity>
 
         <activity
-            android:name=".WaterSurveyHouseholdActivity"
+            android:name=".HouseholdWaterSurveyActivity"
             android:label="Household Water Survey">
         </activity>
 
@@ -61,6 +61,12 @@
             android:name=".CommunityCardSelectActivity"
             android:label="Select community">
         </activity>
+
+        <activity
+            android:name=".CommunityWaterSurveyActivity"
+            android:label="Community Water Test">
+        </activity>
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

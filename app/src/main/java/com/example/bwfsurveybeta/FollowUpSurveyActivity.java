@@ -53,7 +53,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
             householdName = getIntent().getStringExtra("HHNAME");
         Log.i("Tutorials", "Selected family follow up survey class: " + householdName);
         setContentView(R.layout.activity_recycler);
-        getSupportActionBar().setTitle((CharSequence) "FollowUp Survey "+householdName);
+        getSupportActionBar().setTitle((CharSequence) "FollowUp Survey; "+householdName);
         initView();
     }
 
@@ -171,7 +171,8 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
-                .show();
+                .show()
+                .setCanceledOnTouchOutside(false);
     }
 
     private void showSaveFailedAlert(){
@@ -183,7 +184,8 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                         // A null listener allows the button to dismiss the dialog and take no further action.
                         .setNegativeButton(android.R.string.ok, null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
+                        .show()
+                        .setCanceledOnTouchOutside(false);
             }
         });
     }
@@ -210,16 +212,16 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         String WashedHandsIn24Hours = (String) getInterchangeAns("WashedHandsIn24Hours",validatedInterchangesWithAns);
         String WhenWashedHandsIn24Hours = (String) getInterchangeAns("WhenWashedHandsIn24Hours",validatedInterchangesWithAns);
         String WhatUsedToWashYourHands = (String) getInterchangeAns("WhatUsedToWashYourHands",validatedInterchangesWithAns);
-        Integer NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek = (Integer) getInterchangeAns("NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",validatedInterchangesWithAns);
+        Integer NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek = parseIntegerWithDefault(getInterchangeAns("NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",validatedInterchangesWithAns),0);
         String CommonIllnessAffectingChildrenUnder5 = (String) getInterchangeAns("CommonIllnessAffectingChildrenUnder5",validatedInterchangesWithAns);
-        Integer NoChildrenWithVomitingOrDiarrheaIn7days = (Integer) getInterchangeAns("NoChildrenWithVomitingOrDiarrheaIn7days",validatedInterchangesWithAns);
+        Integer NoChildrenWithVomitingOrDiarrheaIn7days = parseIntegerWithDefault(getInterchangeAns("NoChildrenWithVomitingOrDiarrheaIn7days",validatedInterchangesWithAns),0);
         String DidSickChildrenGoToHospital = (String) getInterchangeAns("DidSickChildrenGoToHospital",validatedInterchangesWithAns);
         String DidSickChildrenGoToHospitalYes = (String) getInterchangeAns("DidSickChildrenGoToHospitalYes",validatedInterchangesWithAns);
         String SickChildrenBreastfeeding = (String) getInterchangeAns("SickChildrenBreastfeeding",validatedInterchangesWithAns);
         String OutcomeMostRecentVomiting_DiarrheaAtHospital = (String) getInterchangeAns("OutcomeMostRecentVomiting_DiarrheaAtHospital",validatedInterchangesWithAns);
-        Integer NoDaysNoWorkBecauseOfOwnIllness = (Integer) getInterchangeAns("NoDaysNoWorkBecauseOfOwnIllness",validatedInterchangesWithAns);
-        Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers = (Integer) getInterchangeAns("NoDaysNoWorkBecauseOfIllnessFamilyMembers",validatedInterchangesWithAns);
-        Integer MoneySpentMedicalTreatmentLast4weeks = (Integer) getInterchangeAns("MoneySpentMedicalTreatmentLast4weeks",validatedInterchangesWithAns);
+        Integer NoDaysNoWorkBecauseOfOwnIllness = parseIntegerWithDefault(getInterchangeAns("NoDaysNoWorkBecauseOfOwnIllness",validatedInterchangesWithAns),0);
+        Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers = parseIntegerWithDefault(getInterchangeAns("NoDaysNoWorkBecauseOfIllnessFamilyMembers",validatedInterchangesWithAns),0);
+        Integer MoneySpentMedicalTreatmentLast4weeks = parseIntegerWithDefault(getInterchangeAns("MoneySpentMedicalTreatmentLast4weeks",validatedInterchangesWithAns),0);
         String HealthChangeInAYear = (String) getInterchangeAns("HealthChangeInAYear",validatedInterchangesWithAns);
         String HealthChangeFamilyInAYear = (String) getInterchangeAns("HealthChangeFamilyInAYear",validatedInterchangesWithAns);
         String BenefitSWP = (String) getInterchangeAns("BenefitSWP",validatedInterchangesWithAns);
@@ -282,7 +284,8 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                 // A null listener allows the button to dismiss the dialog and take no further action.
                 .setNegativeButton(android.R.string.ok, null)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
+                .show()
+                .setCanceledOnTouchOutside(false);
     }
 
     //this function will return a list of invalid interchanges
@@ -298,5 +301,16 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
             }
         }
         return invalidinterchange;
+    }
+
+    public static int parseIntegerWithDefault(Object s, int defaultVal) {
+        if (s instanceof Integer) {
+            return (Integer) s;
+        }else if (s instanceof String){
+            String str = (String) s;
+            return str.matches("-?\\d+") ? Integer.parseInt(str): defaultVal;
+        }else
+            return defaultVal;
+
     }
 }

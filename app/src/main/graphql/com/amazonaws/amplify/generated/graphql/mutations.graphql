@@ -578,6 +578,75 @@ mutation DeleteHouseholdWaterTest(
     updatedAt
   }
 }
+mutation CreateCommunityWaterTest(
+  $input: CreateCommunityWaterTestInput!
+  $condition: ModelCommunityWaterTestConditionInput
+) {
+  createCommunityWaterTest(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateCommunityWaterTest(
+  $input: UpdateCommunityWaterTestInput!
+  $condition: ModelCommunityWaterTestConditionInput
+) {
+  updateCommunityWaterTest(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteCommunityWaterTest(
+  $input: DeleteCommunityWaterTestInput!
+  $condition: ModelCommunityWaterTestConditionInput
+) {
+  deleteCommunityWaterTest(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
 mutation CreateConfigDefinitions(
   $input: CreateConfigDefinitionsInput!
   $condition: ModelConfigDefinitionsConditionInput

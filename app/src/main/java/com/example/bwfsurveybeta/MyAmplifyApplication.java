@@ -13,8 +13,12 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.AmplifyConfiguration;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.DataStoreConfiguration;
+import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
+import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
+import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
+import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -46,6 +50,22 @@ public class MyAmplifyApplication extends Application {
                     .syncExpression(
                             FollowUpSurvey.class,
                             () -> FollowUpSurvey.NAMEBWE.eq(namebwe)
+                    )
+                    .syncExpression(
+                            CommunityWaterTest.class,
+                            () -> CommunityWaterTest.NAMEBWE.eq(namebwe)
+                    )
+                    .syncExpression(
+                            HouseholdWaterTest.class,
+                            () -> HouseholdWaterTest.NAMEBWE.eq(namebwe)
+                    )
+                    .syncExpression(
+                            HealthCheckSurvey.class,
+                            () -> HealthCheckSurvey.NAMEBWE.eq(namebwe)
+                    )
+                    .syncExpression(
+                            SWEMonthlySummary.class,
+                            () -> SWEMonthlySummary.NAMEBWE.eq(namebwe)
                     )
                     .build()));
             Amplify.addPlugin(new AWSApiPlugin());

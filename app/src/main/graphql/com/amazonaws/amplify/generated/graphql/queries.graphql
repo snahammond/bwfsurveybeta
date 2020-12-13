@@ -655,6 +655,92 @@ query ListHouseholdWaterTests(
     startedAt
   }
 }
+query SyncCommunityWaterTests(
+  $filter: ModelCommunityWaterTestFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncCommunityWaterTests(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      Namebwe
+      date
+      Country
+      Community
+      ColilertDateTested
+      ColilertDateRead
+      ColilertTestResult
+      PetrifilmDateTested
+      PetrifilmDateRead
+      PetrifilmTestResult
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetCommunityWaterTest($id: ID!) {
+  getCommunityWaterTest(id: $id) {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListCommunityWaterTests(
+  $filter: ModelCommunityWaterTestFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listCommunityWaterTests(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      Namebwe
+      date
+      Country
+      Community
+      ColilertDateTested
+      ColilertDateRead
+      ColilertTestResult
+      PetrifilmDateTested
+      PetrifilmDateRead
+      PetrifilmTestResult
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
 query SyncConfigDefinitions(
   $filter: ModelConfigDefinitionsFilterInput
   $limit: Int
