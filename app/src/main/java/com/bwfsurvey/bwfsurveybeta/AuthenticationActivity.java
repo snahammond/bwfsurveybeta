@@ -211,6 +211,9 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
         radioEducator = (RadioButton) findViewById(R.id.Educator);
         radioVolunteer = (RadioButton) findViewById(R.id.Volunteer);
 
+        progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
+        progressBarText = (TextView) findViewById(R.id.pbText);
+
         Button button_login = (Button) findViewById(R.id.button_login);
         Button button_signup = (Button) findViewById(R.id.button_signup);
 
@@ -269,6 +272,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
 
         button_login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 email = editTextEmailAddress.getText().toString();
                 password = editTextPassword.getText().toString();
                 if(AuthenticationState=="LOGIN"){
@@ -286,6 +290,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                         //showInvalidDataAlert();
                         showTitleMessageAlert("Validation Error", "Please fill in all details");
                 }
+
             }
         });
     }
@@ -397,9 +402,13 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
     }
 
     public void signin(String email,String password){
+        Log.e("Tutorials", "Please wait... signing in 1!");
+
         runOnUiThread(new Runnable() {
             public void run() {
+                Log.e("Tutorials", "Please wait... signing in 2!");
                 startProgress("Please wait... signing in!");
+                Log.e("Tutorials", "Please wait... signing in 3!");
             }
         });
         Amplify.Auth.signIn(
@@ -498,10 +507,13 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
 
     private void startProgress(String s) {
         Log.i("Tutorials", "Going to show progress " + s );
-        if(progressBar==null)
+        if(progressBar==null){
             progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
-        if(progressBarText==null)
+            Log.i("Tutorials", "Progress bar was null " + s );
+        }
+        if(progressBarText==null){
             progressBarText = (TextView) findViewById(R.id.pbText);
+        }
 
         progressBarText.setText(s);
         progressBar.setVisibility(View.VISIBLE);
