@@ -41,16 +41,17 @@ mutation CreateInitialSurvey(
     HowLongUsingWaterTreatment
     FrequencyWaterTreatment
     WaterStorageAtHome
+    WaterStorageContainerHaveLid
     TakingWaterFromStorage
     RubbishDisposal
     HouseholdDefecationMethod
-    SatisfactionHouseholdDefecationMethod
     WasteDisposalYoungestChild
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-    CommonIllnessAffectingChildrenUnder5
+    CommonIllnessAffectingAllChildrenInHousehold
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -110,16 +111,17 @@ mutation UpdateInitialSurvey(
     HowLongUsingWaterTreatment
     FrequencyWaterTreatment
     WaterStorageAtHome
+    WaterStorageContainerHaveLid
     TakingWaterFromStorage
     RubbishDisposal
     HouseholdDefecationMethod
-    SatisfactionHouseholdDefecationMethod
     WasteDisposalYoungestChild
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-    CommonIllnessAffectingChildrenUnder5
+    CommonIllnessAffectingAllChildrenInHousehold
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -179,16 +181,17 @@ mutation DeleteInitialSurvey(
     HowLongUsingWaterTreatment
     FrequencyWaterTreatment
     WaterStorageAtHome
+    WaterStorageContainerHaveLid
     TakingWaterFromStorage
     RubbishDisposal
     HouseholdDefecationMethod
-    SatisfactionHouseholdDefecationMethod
     WasteDisposalYoungestChild
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-    CommonIllnessAffectingChildrenUnder5
+    CommonIllnessAffectingAllChildrenInHousehold
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -225,12 +228,14 @@ mutation CreateFollowUpSurvey(
     HowLongUsingWaterTreatment
     FrequencyWaterTreatment
     WaterStorageAtHome
+    WaterStorageContainerHaveLid
     TakingWaterFromStorage
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-    CommonIllnessAffectingChildrenUnder5
+    CommonIllnessAffectingAllChildrenInHousehold
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -268,12 +273,14 @@ mutation UpdateFollowUpSurvey(
     HowLongUsingWaterTreatment
     FrequencyWaterTreatment
     WaterStorageAtHome
+    WaterStorageContainerHaveLid
     TakingWaterFromStorage
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-    CommonIllnessAffectingChildrenUnder5
+    CommonIllnessAffectingAllChildrenInHousehold
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -311,12 +318,14 @@ mutation DeleteFollowUpSurvey(
     HowLongUsingWaterTreatment
     FrequencyWaterTreatment
     WaterStorageAtHome
+    WaterStorageContainerHaveLid
     TakingWaterFromStorage
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-    CommonIllnessAffectingChildrenUnder5
+    CommonIllnessAffectingAllChildrenInHousehold
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -352,7 +361,8 @@ mutation CreateHealthCheckSurvey(
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -361,6 +371,9 @@ mutation CreateHealthCheckSurvey(
     NoDaysNoWorkBecauseOfOwnIllness
     NoDaysNoWorkBecauseOfIllnessFamilyMembers
     MoneySpentMedicalTreatmentLast4weeks
+    WaterTreatment24Hours
+    MainReasonNoWaterTreatment24Hour
+    WaterTreatment24HourMethod
     _version
     _deleted
     _lastChangedAt
@@ -385,7 +398,8 @@ mutation UpdateHealthCheckSurvey(
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -394,6 +408,9 @@ mutation UpdateHealthCheckSurvey(
     NoDaysNoWorkBecauseOfOwnIllness
     NoDaysNoWorkBecauseOfIllnessFamilyMembers
     MoneySpentMedicalTreatmentLast4weeks
+    WaterTreatment24Hours
+    MainReasonNoWaterTreatment24Hour
+    WaterTreatment24HourMethod
     _version
     _deleted
     _lastChangedAt
@@ -418,7 +435,8 @@ mutation DeleteHealthCheckSurvey(
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -427,6 +445,9 @@ mutation DeleteHealthCheckSurvey(
     NoDaysNoWorkBecauseOfOwnIllness
     NoDaysNoWorkBecauseOfIllnessFamilyMembers
     MoneySpentMedicalTreatmentLast4weeks
+    WaterTreatment24Hours
+    MainReasonNoWaterTreatment24Hour
+    WaterTreatment24HourMethod
     _version
     _deleted
     _lastChangedAt
@@ -656,6 +677,7 @@ mutation CreateConfigDefinitions(
     type
     name
     value
+    desc
     childname
     childvalue
     childdesc
@@ -678,6 +700,7 @@ mutation UpdateConfigDefinitions(
     type
     name
     value
+    desc
     childname
     childvalue
     childdesc
@@ -700,12 +723,58 @@ mutation DeleteConfigDefinitions(
     type
     name
     value
+    desc
     childname
     childvalue
     childdesc
     parentname
     parentvalue
     parentdesc
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateBwfsurveytotals(
+  $input: CreateBWFSURVEYTOTALSInput!
+  $condition: ModelBWFSURVEYTOTALSConditionInput
+) {
+  createBWFSURVEYTOTALS(input: $input, condition: $condition) {
+    id
+    surveyName
+    total
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateBwfsurveytotals(
+  $input: UpdateBWFSURVEYTOTALSInput!
+  $condition: ModelBWFSURVEYTOTALSConditionInput
+) {
+  updateBWFSURVEYTOTALS(input: $input, condition: $condition) {
+    id
+    surveyName
+    total
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteBwfsurveytotals(
+  $input: DeleteBWFSURVEYTOTALSInput!
+  $condition: ModelBWFSURVEYTOTALSConditionInput
+) {
+  deleteBWFSURVEYTOTALS(input: $input, condition: $condition) {
+    id
+    surveyName
+    total
     _version
     _deleted
     _lastChangedAt

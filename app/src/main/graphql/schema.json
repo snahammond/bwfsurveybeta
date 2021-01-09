@@ -875,6 +875,129 @@
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
+                    },
+                    {
+                        "name": "syncBWFSURVEYTOTALS",
+                        "description": null,
+                        "args": [
+                            {
+                                "name": "filter",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "ModelBWFSURVEYTOTALSFilterInput",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "limit",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "Int",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "nextToken",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "lastSync",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "AWSTimestamp",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "ModelBWFSURVEYTOTALSConnection",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "getBWFSURVEYTOTALS",
+                        "description": null,
+                        "args": [
+                            {
+                                "name": "id",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "ID",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "BWFSURVEYTOTALS",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "listBWFSURVEYTOTALSs",
+                        "description": null,
+                        "args": [
+                            {
+                                "name": "filter",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "ModelBWFSURVEYTOTALSFilterInput",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "limit",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "Int",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "nextToken",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "ModelBWFSURVEYTOTALSConnection",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
                     }
                 ],
                 "inputFields": null,
@@ -1259,6 +1382,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "WaterStorageContainerHaveLid",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "TakingWaterFromStorage",
                         "description": null,
                         "type": {
@@ -1280,16 +1413,6 @@
                     },
                     {
                         "name": "HouseholdDefecationMethod",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "SatisfactionHouseholdDefecationMethod",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -1339,7 +1462,17 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "CommonIllnessAffectingAllChildrenInHousehold",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -1349,11 +1482,11 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
+                            "name": "ModelIntInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -2747,6 +2880,22 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "WaterStorageContainerHaveLid",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "TakingWaterFromStorage",
                         "description": null,
                         "args": [],
@@ -2780,22 +2929,6 @@
                     },
                     {
                         "name": "HouseholdDefecationMethod",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "SatisfactionHouseholdDefecationMethod",
                         "description": null,
                         "args": [],
                         "type": {
@@ -2875,7 +3008,23 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "CommonIllnessAffectingAllChildrenInHousehold",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
                         "description": null,
                         "args": [],
                         "type": {
@@ -2891,7 +3040,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "args": [],
                         "type": {
@@ -2899,7 +3048,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "SCALAR",
-                                "name": "String",
+                                "name": "Int",
                                 "ofType": null
                             }
                         },
@@ -3315,6 +3464,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "WaterStorageContainerHaveLid",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "TakingWaterFromStorage",
                         "description": null,
                         "type": {
@@ -3355,7 +3514,17 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "CommonIllnessAffectingAllChildrenInHousehold",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -3365,11 +3534,11 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
+                            "name": "ModelIntInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -3804,6 +3973,22 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "WaterStorageContainerHaveLid",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "TakingWaterFromStorage",
                         "description": null,
                         "args": [],
@@ -3868,7 +4053,23 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "CommonIllnessAffectingAllChildrenInHousehold",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
                         "description": null,
                         "args": [],
                         "type": {
@@ -3884,7 +4085,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "args": [],
                         "type": {
@@ -3892,7 +4093,7 @@
                             "name": null,
                             "ofType": {
                                 "kind": "SCALAR",
-                                "name": "String",
+                                "name": "Int",
                                 "ofType": null
                             }
                         },
@@ -4284,7 +4485,17 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -4369,6 +4580,36 @@
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatment24Hours",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainReasonNoWaterTreatment24Hour",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatment24HourMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -4661,7 +4902,23 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "args": [],
                         "type": {
@@ -4798,6 +5055,54 @@
                             "ofType": {
                                 "kind": "SCALAR",
                                 "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "WaterTreatment24Hours",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "MainReasonNoWaterTreatment24Hour",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "WaterTreatment24HourMethod",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
                                 "ofType": null
                             }
                         },
@@ -6392,6 +6697,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "desc",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "childname",
                         "description": null,
                         "type": {
@@ -6615,6 +6930,22 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "desc",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "childname",
                         "description": null,
                         "args": [],
@@ -6704,6 +7035,261 @@
                             "ofType": {
                                 "kind": "SCALAR",
                                 "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "_version",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "_deleted",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Boolean",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "_lastChangedAt",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "AWSTimestamp",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "createdAt",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "AWSDateTime",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "updatedAt",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "AWSDateTime",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelBWFSURVEYTOTALSFilterInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "surveyName",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "total",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "and",
+                        "description": null,
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "ModelBWFSURVEYTOTALSFilterInput",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "or",
+                        "description": null,
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "ModelBWFSURVEYTOTALSFilterInput",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "not",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelBWFSURVEYTOTALSFilterInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "ModelBWFSURVEYTOTALSConnection",
+                "description": null,
+                "fields": [
+                    {
+                        "name": "items",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "BWFSURVEYTOTALS",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "nextToken",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "startedAt",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "AWSTimestamp",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "BWFSURVEYTOTALS",
+                "description": null,
+                "fields": [
+                    {
+                        "name": "id",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "surveyName",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "total",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
                                 "ofType": null
                             }
                         },
@@ -7573,6 +8159,117 @@
                         },
                         "isDeprecated": false,
                         "deprecationReason": null
+                    },
+                    {
+                        "name": "createBWFSURVEYTOTALS",
+                        "description": null,
+                        "args": [
+                            {
+                                "name": "input",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "CreateBWFSURVEYTOTALSInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "condition",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "ModelBWFSURVEYTOTALSConditionInput",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "BWFSURVEYTOTALS",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "updateBWFSURVEYTOTALS",
+                        "description": null,
+                        "args": [
+                            {
+                                "name": "input",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "UpdateBWFSURVEYTOTALSInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "condition",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "ModelBWFSURVEYTOTALSConditionInput",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "BWFSURVEYTOTALS",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "deleteBWFSURVEYTOTALS",
+                        "description": null,
+                        "args": [
+                            {
+                                "name": "input",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "DeleteBWFSURVEYTOTALSInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "condition",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "ModelBWFSURVEYTOTALSConditionInput",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "BWFSURVEYTOTALS",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
                     }
                 ],
                 "inputFields": null,
@@ -8097,6 +8794,20 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "WaterStorageContainerHaveLid",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "TakingWaterFromStorage",
                         "description": null,
                         "type": {
@@ -8126,20 +8837,6 @@
                     },
                     {
                         "name": "HouseholdDefecationMethod",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "SatisfactionHouseholdDefecationMethod",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -8209,7 +8906,21 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "CommonIllnessAffectingAllChildrenInHousehold",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -8223,14 +8934,14 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
                                 "kind": "SCALAR",
-                                "name": "String",
+                                "name": "Int",
                                 "ofType": null
                             }
                         },
@@ -8758,6 +9469,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "WaterStorageContainerHaveLid",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "TakingWaterFromStorage",
                         "description": null,
                         "type": {
@@ -8779,16 +9500,6 @@
                     },
                     {
                         "name": "HouseholdDefecationMethod",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "SatisfactionHouseholdDefecationMethod",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -8838,7 +9549,17 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "CommonIllnessAffectingAllChildrenInHousehold",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -8848,11 +9569,11 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
+                            "name": "ModelIntInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -9381,6 +10102,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "WaterStorageContainerHaveLid",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "TakingWaterFromStorage",
                         "description": null,
                         "type": {
@@ -9402,16 +10133,6 @@
                     },
                     {
                         "name": "HouseholdDefecationMethod",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "SatisfactionHouseholdDefecationMethod",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -9461,7 +10182,17 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "CommonIllnessAffectingAllChildrenInHousehold",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -9471,11 +10202,11 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
-                            "name": "String",
+                            "name": "Int",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -9821,6 +10552,20 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "WaterStorageContainerHaveLid",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "TakingWaterFromStorage",
                         "description": null,
                         "type": {
@@ -9877,7 +10622,21 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "CommonIllnessAffectingAllChildrenInHousehold",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -9891,14 +10650,14 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
                                 "kind": "SCALAR",
-                                "name": "String",
+                                "name": "Int",
                                 "ofType": null
                             }
                         },
@@ -10210,6 +10969,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "WaterStorageContainerHaveLid",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "TakingWaterFromStorage",
                         "description": null,
                         "type": {
@@ -10250,7 +11019,17 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "CommonIllnessAffectingAllChildrenInHousehold",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10260,11 +11039,11 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
+                            "name": "ModelIntInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -10573,6 +11352,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "WaterStorageContainerHaveLid",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "TakingWaterFromStorage",
                         "description": null,
                         "type": {
@@ -10613,7 +11402,17 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "CommonIllnessAffectingAllChildrenInHousehold",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -10623,11 +11422,11 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "CommonIllnessAffectingChildrenUnder5",
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
-                            "name": "String",
+                            "name": "Int",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -10955,7 +11754,21 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -11075,6 +11888,48 @@
                             "ofType": {
                                 "kind": "SCALAR",
                                 "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatment24Hours",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainReasonNoWaterTreatment24Hour",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatment24HourMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
                                 "ofType": null
                             }
                         },
@@ -11212,7 +12067,17 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -11297,6 +12162,36 @@
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatment24Hours",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainReasonNoWaterTreatment24Hour",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatment24HourMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -11475,7 +12370,17 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek",
+                        "name": "NoChildrenWithVomitingOrDiarrheaIn14days",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -11560,6 +12465,36 @@
                         "type": {
                             "kind": "SCALAR",
                             "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatment24Hours",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "MainReasonNoWaterTreatment24Hour",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WaterTreatment24HourMethod",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -13183,6 +14118,20 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "desc",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "childname",
                         "description": null,
                         "type": {
@@ -13309,6 +14258,16 @@
                     },
                     {
                         "name": "value",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "desc",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -13471,6 +14430,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "desc",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "childname",
                         "description": null,
                         "type": {
@@ -13548,6 +14517,206 @@
             {
                 "kind": "INPUT_OBJECT",
                 "name": "DeleteConfigDefinitionsInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "id",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "_version",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "CreateBWFSURVEYTOTALSInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "id",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "surveyName",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "total",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "_version",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelBWFSURVEYTOTALSConditionInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "surveyName",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "total",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "and",
+                        "description": null,
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "ModelBWFSURVEYTOTALSConditionInput",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "or",
+                        "description": null,
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "ModelBWFSURVEYTOTALSConditionInput",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "not",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelBWFSURVEYTOTALSConditionInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "UpdateBWFSURVEYTOTALSInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "surveyName",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "total",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "_version",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "DeleteBWFSURVEYTOTALSInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
@@ -13828,6 +14997,42 @@
                         "type": {
                             "kind": "OBJECT",
                             "name": "ConfigDefinitions",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "onCreateBWFSURVEYTOTALS",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "BWFSURVEYTOTALS",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "onUpdateBWFSURVEYTOTALS",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "BWFSURVEYTOTALS",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "onDeleteBWFSURVEYTOTALS",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "BWFSURVEYTOTALS",
                             "ofType": null
                         },
                         "isDeprecated": false,

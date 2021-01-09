@@ -7,7 +7,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.example.bwfsurveybeta"
+        applicationId "com.bwfsurvey.bwfsurveybeta"
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
@@ -42,8 +42,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // Amplify plugins
-    implementation 'com.amplifyframework:aws-api:1.6.6'
-    implementation 'com.amplifyframework:aws-datastore:1.6.6'
+    implementation 'com.amplifyframework:aws-api:1.6.8'
+    implementation 'com.amplifyframework:aws-datastore:1.6.8'
 
     // Support for Java 8 features
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.10'

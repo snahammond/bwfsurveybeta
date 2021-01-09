@@ -49,16 +49,17 @@ query SyncInitialSurveys(
       HowLongUsingWaterTreatment
       FrequencyWaterTreatment
       WaterStorageAtHome
+      WaterStorageContainerHaveLid
       TakingWaterFromStorage
       RubbishDisposal
       HouseholdDefecationMethod
-      SatisfactionHouseholdDefecationMethod
       WasteDisposalYoungestChild
       WashedHandsIn24Hours
       WhenWashedHandsIn24Hours
       WhatUsedToWashYourHands
-      NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-      CommonIllnessAffectingChildrenUnder5
+      CommonIllnessAffectingAllChildrenInHousehold
+      NoChildrenWithVomitingOrDiarrheaIn14days
+      NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
       NoChildrenWithVomitingOrDiarrheaIn7days
       DidSickChildrenGoToHospital
       DidSickChildrenGoToHospitalYes
@@ -118,16 +119,17 @@ query GetInitialSurvey($id: ID!) {
     HowLongUsingWaterTreatment
     FrequencyWaterTreatment
     WaterStorageAtHome
+    WaterStorageContainerHaveLid
     TakingWaterFromStorage
     RubbishDisposal
     HouseholdDefecationMethod
-    SatisfactionHouseholdDefecationMethod
     WasteDisposalYoungestChild
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-    CommonIllnessAffectingChildrenUnder5
+    CommonIllnessAffectingAllChildrenInHousehold
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -189,16 +191,17 @@ query ListInitialSurveys(
       HowLongUsingWaterTreatment
       FrequencyWaterTreatment
       WaterStorageAtHome
+      WaterStorageContainerHaveLid
       TakingWaterFromStorage
       RubbishDisposal
       HouseholdDefecationMethod
-      SatisfactionHouseholdDefecationMethod
       WasteDisposalYoungestChild
       WashedHandsIn24Hours
       WhenWashedHandsIn24Hours
       WhatUsedToWashYourHands
-      NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-      CommonIllnessAffectingChildrenUnder5
+      CommonIllnessAffectingAllChildrenInHousehold
+      NoChildrenWithVomitingOrDiarrheaIn14days
+      NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
       NoChildrenWithVomitingOrDiarrheaIn7days
       DidSickChildrenGoToHospital
       DidSickChildrenGoToHospitalYes
@@ -246,12 +249,14 @@ query SyncFollowUpSurveys(
       HowLongUsingWaterTreatment
       FrequencyWaterTreatment
       WaterStorageAtHome
+      WaterStorageContainerHaveLid
       TakingWaterFromStorage
       WashedHandsIn24Hours
       WhenWashedHandsIn24Hours
       WhatUsedToWashYourHands
-      NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-      CommonIllnessAffectingChildrenUnder5
+      CommonIllnessAffectingAllChildrenInHousehold
+      NoChildrenWithVomitingOrDiarrheaIn14days
+      NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
       NoChildrenWithVomitingOrDiarrheaIn7days
       DidSickChildrenGoToHospital
       DidSickChildrenGoToHospitalYes
@@ -289,12 +294,14 @@ query GetFollowUpSurvey($id: ID!) {
     HowLongUsingWaterTreatment
     FrequencyWaterTreatment
     WaterStorageAtHome
+    WaterStorageContainerHaveLid
     TakingWaterFromStorage
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-    CommonIllnessAffectingChildrenUnder5
+    CommonIllnessAffectingAllChildrenInHousehold
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -334,12 +341,14 @@ query ListFollowUpSurveys(
       HowLongUsingWaterTreatment
       FrequencyWaterTreatment
       WaterStorageAtHome
+      WaterStorageContainerHaveLid
       TakingWaterFromStorage
       WashedHandsIn24Hours
       WhenWashedHandsIn24Hours
       WhatUsedToWashYourHands
-      NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-      CommonIllnessAffectingChildrenUnder5
+      CommonIllnessAffectingAllChildrenInHousehold
+      NoChildrenWithVomitingOrDiarrheaIn14days
+      NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
       NoChildrenWithVomitingOrDiarrheaIn7days
       DidSickChildrenGoToHospital
       DidSickChildrenGoToHospitalYes
@@ -386,7 +395,8 @@ query SyncHealthCheckSurveys(
       WashedHandsIn24Hours
       WhenWashedHandsIn24Hours
       WhatUsedToWashYourHands
-      NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+      NoChildrenWithVomitingOrDiarrheaIn14days
+      NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
       NoChildrenWithVomitingOrDiarrheaIn7days
       DidSickChildrenGoToHospital
       DidSickChildrenGoToHospitalYes
@@ -395,6 +405,9 @@ query SyncHealthCheckSurveys(
       NoDaysNoWorkBecauseOfOwnIllness
       NoDaysNoWorkBecauseOfIllnessFamilyMembers
       MoneySpentMedicalTreatmentLast4weeks
+      WaterTreatment24Hours
+      MainReasonNoWaterTreatment24Hour
+      WaterTreatment24HourMethod
       _version
       _deleted
       _lastChangedAt
@@ -419,7 +432,8 @@ query GetHealthCheckSurvey($id: ID!) {
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -428,6 +442,9 @@ query GetHealthCheckSurvey($id: ID!) {
     NoDaysNoWorkBecauseOfOwnIllness
     NoDaysNoWorkBecauseOfIllnessFamilyMembers
     MoneySpentMedicalTreatmentLast4weeks
+    WaterTreatment24Hours
+    MainReasonNoWaterTreatment24Hour
+    WaterTreatment24HourMethod
     _version
     _deleted
     _lastChangedAt
@@ -458,7 +475,8 @@ query ListHealthCheckSurveys(
       WashedHandsIn24Hours
       WhenWashedHandsIn24Hours
       WhatUsedToWashYourHands
-      NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+      NoChildrenWithVomitingOrDiarrheaIn14days
+      NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
       NoChildrenWithVomitingOrDiarrheaIn7days
       DidSickChildrenGoToHospital
       DidSickChildrenGoToHospitalYes
@@ -467,6 +485,9 @@ query ListHealthCheckSurveys(
       NoDaysNoWorkBecauseOfOwnIllness
       NoDaysNoWorkBecauseOfIllnessFamilyMembers
       MoneySpentMedicalTreatmentLast4weeks
+      WaterTreatment24Hours
+      MainReasonNoWaterTreatment24Hour
+      WaterTreatment24HourMethod
       _version
       _deleted
       _lastChangedAt
@@ -758,6 +779,7 @@ query SyncConfigDefinitions(
       type
       name
       value
+      desc
       childname
       childvalue
       childdesc
@@ -780,6 +802,7 @@ query GetConfigDefinitions($id: ID!) {
     type
     name
     value
+    desc
     childname
     childvalue
     childdesc
@@ -808,12 +831,71 @@ query ListConfigDefinitionss(
       type
       name
       value
+      desc
       childname
       childvalue
       childdesc
       parentname
       parentvalue
       parentdesc
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncBwfsurveytotals(
+  $filter: ModelBWFSURVEYTOTALSFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncBWFSURVEYTOTALS(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      surveyName
+      total
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetBwfsurveytotals($id: ID!) {
+  getBWFSURVEYTOTALS(id: $id) {
+    id
+    surveyName
+    total
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListBwfsurveytotalSs(
+  $filter: ModelBWFSURVEYTOTALSFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listBWFSURVEYTOTALSs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      surveyName
+      total
       _version
       _deleted
       _lastChangedAt

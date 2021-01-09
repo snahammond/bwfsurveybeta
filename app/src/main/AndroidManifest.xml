@@ -4,7 +4,7 @@
     package="com.example.bwfsurveybeta">
 
     <application
-        android:name=".MyAmplifyApplication"
+        android:name="com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication"
         tools:replace="android:name"
         android:allowBackup="true"
         android:icon="@mipmap/ic_logo"
@@ -14,7 +14,9 @@
         android:theme="@style/Theme.BwfSurveyBeta">
 
         <activity
-            android:name=".AuthenticationActivity">
+            android:name="com.bwfsurvey.bwfsurveybeta.AuthenticationActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -22,49 +24,67 @@
         </activity>
 
         <activity
-            android:name=".MenuActivity"
-            android:label="Menu">
+            android:name="com.bwfsurvey.bwfsurveybeta.MenuActivity"
+            android:label="Menu"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".InitialSurveyActivity"
-            android:label="Initial Survey">
+            android:name="com.bwfsurvey.bwfsurveybeta.InitialSurveyActivity"
+            android:label="Initial Survey"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".FamilyCardSelectActivity"
-            android:label="Select household">
+            android:name="com.bwfsurvey.bwfsurveybeta.FamilyCardSelectActivity"
+            android:label="Select household"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".FollowUpSurveyActivity"
-            android:label="FollowUp Survey">
+            android:name="com.bwfsurvey.bwfsurveybeta.FollowUpSurveyActivity"
+            android:label="FollowUp Survey"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".HealthCheckSurveyActivity"
-            android:label="Health Check Survey">
+            android:name="com.bwfsurvey.bwfsurveybeta.HealthCheckSurveyActivity"
+            android:label="Health Check Survey"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".SWEMonthlySummaryActivity"
-            android:label="SWE Monthly Summary">
+            android:name="com.bwfsurvey.bwfsurveybeta.SWEMonthlySummaryActivity"
+            android:label="SWE Monthly Summary"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".HouseholdWaterSurveyActivity"
-            android:label="Household Water Survey">
+            android:name="com.bwfsurvey.bwfsurveybeta.HouseholdWaterSurveyActivity"
+            android:label="Household Water Survey"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
 
 
         <activity
-            android:name=".CommunityCardSelectActivity"
-            android:label="Select community">
+            android:name="com.bwfsurvey.bwfsurveybeta.CommunityCardSelectActivity"
+            android:label="Select community"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".CommunityWaterSurveyActivity"
-            android:label="Community Water Test">
+            android:name="com.bwfsurvey.bwfsurveybeta.CommunityWaterSurveyActivity"
+            android:label="Community Water Test"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
         </activity>
 
     </application>

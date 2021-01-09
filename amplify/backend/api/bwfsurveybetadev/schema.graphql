@@ -9,7 +9,7 @@ enum AnswerType {
 
 
 
-type InitialSurvey @model{
+type InitialSurvey @model @auth(rules: [{ allow: public,provider: apiKey }]){
 id: ID!
 Namebwe: String!
 Country: String!
@@ -47,16 +47,17 @@ WaterTreatmentMethod: String!
 HowLongUsingWaterTreatment: String!
 FrequencyWaterTreatment: String!
 WaterStorageAtHome: String!
+WaterStorageContainerHaveLid: String!
 TakingWaterFromStorage: String!
 RubbishDisposal: String!
 HouseholdDefecationMethod: String!
-SatisfactionHouseholdDefecationMethod: String!
 WasteDisposalYoungestChild: String!
 WashedHandsIn24Hours: String!
 WhenWashedHandsIn24Hours: String!
 WhatUsedToWashYourHands: String!
-NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek: Int!
-CommonIllnessAffectingChildrenUnder5: String!
+CommonIllnessAffectingAllChildrenInHousehold: String!
+NoChildrenWithVomitingOrDiarrheaIn14days: Int!
+NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek: Int!
 NoChildrenWithVomitingOrDiarrheaIn7days: Int!
 DidSickChildrenGoToHospital: String!
 DidSickChildrenGoToHospitalYes: String!
@@ -72,7 +73,7 @@ HealthChangeFamilyInAYear: String!
 
 
 
-type FollowUpSurvey @model{
+type FollowUpSurvey @model @auth(rules: [{ allow: public,provider: apiKey }]){
 id: ID!
 Namebwe: String!
 Country: String!
@@ -87,12 +88,14 @@ WaterTreatmentMethod: String!
 HowLongUsingWaterTreatment: String!
 FrequencyWaterTreatment: String!
 WaterStorageAtHome: String!
+WaterStorageContainerHaveLid: String!
 TakingWaterFromStorage: String!
 WashedHandsIn24Hours: String!
 WhenWashedHandsIn24Hours: String!
 WhatUsedToWashYourHands: String!
-NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek: Int!
-CommonIllnessAffectingChildrenUnder5: String!
+CommonIllnessAffectingAllChildrenInHousehold: String!
+NoChildrenWithVomitingOrDiarrheaIn14days: Int!
+NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek: Int!
 NoChildrenWithVomitingOrDiarrheaIn7days: Int!
 DidSickChildrenGoToHospital: String!
 DidSickChildrenGoToHospitalYes: String!
@@ -107,7 +110,7 @@ BenefitSWP: String!
 }
 
 
-type HealthCheckSurvey @model{
+type HealthCheckSurvey @model @auth(rules: [{ allow: public,provider: apiKey }]){
 id: ID!
 Namebwe: String!
 Country: String!
@@ -120,7 +123,8 @@ WasteDisposalYoungestChild: String!
 WashedHandsIn24Hours: String!
 WhenWashedHandsIn24Hours: String!
 WhatUsedToWashYourHands: String!
-NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek: Int!
+NoChildrenWithVomitingOrDiarrheaIn14days: Int!
+NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek: Int!
 NoChildrenWithVomitingOrDiarrheaIn7days: Int!
 DidSickChildrenGoToHospital: String!
 DidSickChildrenGoToHospitalYes: String!
@@ -129,9 +133,12 @@ OutcomeMostRecentVomiting_DiarrheaAtHospital: String!
 NoDaysNoWorkBecauseOfOwnIllness: Int!
 NoDaysNoWorkBecauseOfIllnessFamilyMembers: Int!
 MoneySpentMedicalTreatmentLast4weeks: Int!
+WaterTreatment24Hours: String!
+MainReasonNoWaterTreatment24Hour: String!
+WaterTreatment24HourMethod: String!
 }
 
-type SWEMonthlySummary @model{
+type SWEMonthlySummary @model @auth(rules: [{ allow: public,provider: apiKey }]){
 id: ID!
 Namebwe: String!
 date: AWSDate
@@ -146,7 +153,7 @@ NoPersonsTaught: Int!
 NoChlorineLiquid_TabsDistributed: Int!
 }
 
-type HouseholdWaterTest @model{
+type HouseholdWaterTest @model @auth(rules: [{ allow: public,provider: apiKey }]){
 id: ID!
 Namebwe: String!
 date: AWSDate
@@ -161,7 +168,7 @@ PetrifilmDateRead: AWSDate!
 PetrifilmTestResult: String!
 }
 
-type CommunityWaterTest @model{
+type CommunityWaterTest @model @auth(rules: [{ allow: public,provider: apiKey }]){
 id: ID!
 Namebwe: String!
 date: AWSDate
@@ -175,24 +182,22 @@ PetrifilmDateRead: AWSDate!
 PetrifilmTestResult: String!
 }
 
-type ConfigDefinitions @model{
+type ConfigDefinitions @model @auth(rules: [{ allow: public,provider: apiKey }]){
 	id: ID!
 	type: String!
-
 	name: String!
-
     value: String!
-
+    desc: String!
     childname: String!
-
     childvalue: String!
-
     childdesc: String!
-
     parentname: String!
-
     parentvalue: String!
-
     parentdesc: String!
 }
 
+
+type BWFSURVEYTOTALS @model @auth(rules: [{ allow: public,provider: apiKey }]){
+	surveyName: String!
+	total: Int!
+}

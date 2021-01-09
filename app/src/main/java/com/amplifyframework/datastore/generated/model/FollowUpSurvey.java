@@ -8,7 +8,10 @@ import java.util.Objects;
 
 import androidx.core.util.ObjectsCompat;
 
+import com.amplifyframework.core.model.AuthStrategy;
 import com.amplifyframework.core.model.Model;
+import com.amplifyframework.core.model.ModelOperation;
+import com.amplifyframework.core.model.annotations.AuthRule;
 import com.amplifyframework.core.model.annotations.Index;
 import com.amplifyframework.core.model.annotations.ModelConfig;
 import com.amplifyframework.core.model.annotations.ModelField;
@@ -18,7 +21,9 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 
 /** This is an auto generated class representing the FollowUpSurvey type in your schema. */
 @SuppressWarnings("all")
-@ModelConfig(pluralName = "FollowUpSurveys")
+@ModelConfig(pluralName = "FollowUpSurveys", authRules = {
+  @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
+})
 public final class FollowUpSurvey implements Model {
   public static final QueryField ID = field("id");
   public static final QueryField NAMEBWE = field("Namebwe");
@@ -34,12 +39,14 @@ public final class FollowUpSurvey implements Model {
   public static final QueryField HOW_LONG_USING_WATER_TREATMENT = field("HowLongUsingWaterTreatment");
   public static final QueryField FREQUENCY_WATER_TREATMENT = field("FrequencyWaterTreatment");
   public static final QueryField WATER_STORAGE_AT_HOME = field("WaterStorageAtHome");
+  public static final QueryField WATER_STORAGE_CONTAINER_HAVE_LID = field("WaterStorageContainerHaveLid");
   public static final QueryField TAKING_WATER_FROM_STORAGE = field("TakingWaterFromStorage");
   public static final QueryField WASHED_HANDS_IN24_HOURS = field("WashedHandsIn24Hours");
   public static final QueryField WHEN_WASHED_HANDS_IN24_HOURS = field("WhenWashedHandsIn24Hours");
   public static final QueryField WHAT_USED_TO_WASH_YOUR_HANDS = field("WhatUsedToWashYourHands");
-  public static final QueryField NO_TOTAL_SCHOOL_DAYS_MISSED_BY_ALL_CHILDREN_IN2_LAST_WEEK = field("NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek");
-  public static final QueryField COMMON_ILLNESS_AFFECTING_CHILDREN_UNDER5 = field("CommonIllnessAffectingChildrenUnder5");
+  public static final QueryField COMMON_ILLNESS_AFFECTING_ALL_CHILDREN_IN_HOUSEHOLD = field("CommonIllnessAffectingAllChildrenInHousehold");
+  public static final QueryField NO_CHILDREN_WITH_VOMITING_OR_DIARRHEA_IN14DAYS = field("NoChildrenWithVomitingOrDiarrheaIn14days");
+  public static final QueryField NO_TOTAL_SCHOOL_DAYS_MISSED_BY_SCHOOL_AGE_CHILDREN_IN2_LAST_WEEK = field("NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek");
   public static final QueryField NO_CHILDREN_WITH_VOMITING_OR_DIARRHEA_IN7DAYS = field("NoChildrenWithVomitingOrDiarrheaIn7days");
   public static final QueryField DID_SICK_CHILDREN_GO_TO_HOSPITAL = field("DidSickChildrenGoToHospital");
   public static final QueryField DID_SICK_CHILDREN_GO_TO_HOSPITAL_YES = field("DidSickChildrenGoToHospitalYes");
@@ -65,12 +72,14 @@ public final class FollowUpSurvey implements Model {
   private final @ModelField(targetType="String", isRequired = true) String HowLongUsingWaterTreatment;
   private final @ModelField(targetType="String", isRequired = true) String FrequencyWaterTreatment;
   private final @ModelField(targetType="String", isRequired = true) String WaterStorageAtHome;
+  private final @ModelField(targetType="String", isRequired = true) String WaterStorageContainerHaveLid;
   private final @ModelField(targetType="String", isRequired = true) String TakingWaterFromStorage;
   private final @ModelField(targetType="String", isRequired = true) String WashedHandsIn24Hours;
   private final @ModelField(targetType="String", isRequired = true) String WhenWashedHandsIn24Hours;
   private final @ModelField(targetType="String", isRequired = true) String WhatUsedToWashYourHands;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek;
-  private final @ModelField(targetType="String", isRequired = true) String CommonIllnessAffectingChildrenUnder5;
+  private final @ModelField(targetType="String", isRequired = true) String CommonIllnessAffectingAllChildrenInHousehold;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoChildrenWithVomitingOrDiarrheaIn14days;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek;
   private final @ModelField(targetType="Int", isRequired = true) Integer NoChildrenWithVomitingOrDiarrheaIn7days;
   private final @ModelField(targetType="String", isRequired = true) String DidSickChildrenGoToHospital;
   private final @ModelField(targetType="String", isRequired = true) String DidSickChildrenGoToHospitalYes;
@@ -138,6 +147,10 @@ public final class FollowUpSurvey implements Model {
       return WaterStorageAtHome;
   }
   
+  public String getWaterStorageContainerHaveLid() {
+      return WaterStorageContainerHaveLid;
+  }
+  
   public String getTakingWaterFromStorage() {
       return TakingWaterFromStorage;
   }
@@ -154,12 +167,16 @@ public final class FollowUpSurvey implements Model {
       return WhatUsedToWashYourHands;
   }
   
-  public Integer getNoTotalSchoolDaysMissedByAllChildrenIn2LastWeek() {
-      return NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek;
+  public String getCommonIllnessAffectingAllChildrenInHousehold() {
+      return CommonIllnessAffectingAllChildrenInHousehold;
   }
   
-  public String getCommonIllnessAffectingChildrenUnder5() {
-      return CommonIllnessAffectingChildrenUnder5;
+  public Integer getNoChildrenWithVomitingOrDiarrheaIn14days() {
+      return NoChildrenWithVomitingOrDiarrheaIn14days;
+  }
+  
+  public Integer getNoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek() {
+      return NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek;
   }
   
   public Integer getNoChildrenWithVomitingOrDiarrheaIn7days() {
@@ -206,7 +223,7 @@ public final class FollowUpSurvey implements Model {
       return BenefitSWP;
   }
   
-  private FollowUpSurvey(String id, String Namebwe, String Country, String Community, Integer SurveyId, Temporal.Date date, String HeadHouseholdName, String PersonBeingInterviewed, String WaterTreatmentBeforeDrinking, String MainReasonNoWaterTreatmentBeforeDrinking, String WaterTreatmentMethod, String HowLongUsingWaterTreatment, String FrequencyWaterTreatment, String WaterStorageAtHome, String TakingWaterFromStorage, String WashedHandsIn24Hours, String WhenWashedHandsIn24Hours, String WhatUsedToWashYourHands, Integer NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek, String CommonIllnessAffectingChildrenUnder5, Integer NoChildrenWithVomitingOrDiarrheaIn7days, String DidSickChildrenGoToHospital, String DidSickChildrenGoToHospitalYes, String SickChildrenBreastfeeding, String OutcomeMostRecentVomiting_DiarrheaAtHospital, Integer NoDaysNoWorkBecauseOfOwnIllness, Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers, Integer MoneySpentMedicalTreatmentLast4weeks, String HealthChangeInAYear, String HealthChangeFamilyInAYear, String BenefitSWP) {
+  private FollowUpSurvey(String id, String Namebwe, String Country, String Community, Integer SurveyId, Temporal.Date date, String HeadHouseholdName, String PersonBeingInterviewed, String WaterTreatmentBeforeDrinking, String MainReasonNoWaterTreatmentBeforeDrinking, String WaterTreatmentMethod, String HowLongUsingWaterTreatment, String FrequencyWaterTreatment, String WaterStorageAtHome, String WaterStorageContainerHaveLid, String TakingWaterFromStorage, String WashedHandsIn24Hours, String WhenWashedHandsIn24Hours, String WhatUsedToWashYourHands, String CommonIllnessAffectingAllChildrenInHousehold, Integer NoChildrenWithVomitingOrDiarrheaIn14days, Integer NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer NoChildrenWithVomitingOrDiarrheaIn7days, String DidSickChildrenGoToHospital, String DidSickChildrenGoToHospitalYes, String SickChildrenBreastfeeding, String OutcomeMostRecentVomiting_DiarrheaAtHospital, Integer NoDaysNoWorkBecauseOfOwnIllness, Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers, Integer MoneySpentMedicalTreatmentLast4weeks, String HealthChangeInAYear, String HealthChangeFamilyInAYear, String BenefitSWP) {
     this.id = id;
     this.Namebwe = Namebwe;
     this.Country = Country;
@@ -221,12 +238,14 @@ public final class FollowUpSurvey implements Model {
     this.HowLongUsingWaterTreatment = HowLongUsingWaterTreatment;
     this.FrequencyWaterTreatment = FrequencyWaterTreatment;
     this.WaterStorageAtHome = WaterStorageAtHome;
+    this.WaterStorageContainerHaveLid = WaterStorageContainerHaveLid;
     this.TakingWaterFromStorage = TakingWaterFromStorage;
     this.WashedHandsIn24Hours = WashedHandsIn24Hours;
     this.WhenWashedHandsIn24Hours = WhenWashedHandsIn24Hours;
     this.WhatUsedToWashYourHands = WhatUsedToWashYourHands;
-    this.NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek = NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek;
-    this.CommonIllnessAffectingChildrenUnder5 = CommonIllnessAffectingChildrenUnder5;
+    this.CommonIllnessAffectingAllChildrenInHousehold = CommonIllnessAffectingAllChildrenInHousehold;
+    this.NoChildrenWithVomitingOrDiarrheaIn14days = NoChildrenWithVomitingOrDiarrheaIn14days;
+    this.NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek = NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek;
     this.NoChildrenWithVomitingOrDiarrheaIn7days = NoChildrenWithVomitingOrDiarrheaIn7days;
     this.DidSickChildrenGoToHospital = DidSickChildrenGoToHospital;
     this.DidSickChildrenGoToHospitalYes = DidSickChildrenGoToHospitalYes;
@@ -262,12 +281,14 @@ public final class FollowUpSurvey implements Model {
               ObjectsCompat.equals(getHowLongUsingWaterTreatment(), followUpSurvey.getHowLongUsingWaterTreatment()) &&
               ObjectsCompat.equals(getFrequencyWaterTreatment(), followUpSurvey.getFrequencyWaterTreatment()) &&
               ObjectsCompat.equals(getWaterStorageAtHome(), followUpSurvey.getWaterStorageAtHome()) &&
+              ObjectsCompat.equals(getWaterStorageContainerHaveLid(), followUpSurvey.getWaterStorageContainerHaveLid()) &&
               ObjectsCompat.equals(getTakingWaterFromStorage(), followUpSurvey.getTakingWaterFromStorage()) &&
               ObjectsCompat.equals(getWashedHandsIn24Hours(), followUpSurvey.getWashedHandsIn24Hours()) &&
               ObjectsCompat.equals(getWhenWashedHandsIn24Hours(), followUpSurvey.getWhenWashedHandsIn24Hours()) &&
               ObjectsCompat.equals(getWhatUsedToWashYourHands(), followUpSurvey.getWhatUsedToWashYourHands()) &&
-              ObjectsCompat.equals(getNoTotalSchoolDaysMissedByAllChildrenIn2LastWeek(), followUpSurvey.getNoTotalSchoolDaysMissedByAllChildrenIn2LastWeek()) &&
-              ObjectsCompat.equals(getCommonIllnessAffectingChildrenUnder5(), followUpSurvey.getCommonIllnessAffectingChildrenUnder5()) &&
+              ObjectsCompat.equals(getCommonIllnessAffectingAllChildrenInHousehold(), followUpSurvey.getCommonIllnessAffectingAllChildrenInHousehold()) &&
+              ObjectsCompat.equals(getNoChildrenWithVomitingOrDiarrheaIn14days(), followUpSurvey.getNoChildrenWithVomitingOrDiarrheaIn14days()) &&
+              ObjectsCompat.equals(getNoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(), followUpSurvey.getNoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek()) &&
               ObjectsCompat.equals(getNoChildrenWithVomitingOrDiarrheaIn7days(), followUpSurvey.getNoChildrenWithVomitingOrDiarrheaIn7days()) &&
               ObjectsCompat.equals(getDidSickChildrenGoToHospital(), followUpSurvey.getDidSickChildrenGoToHospital()) &&
               ObjectsCompat.equals(getDidSickChildrenGoToHospitalYes(), followUpSurvey.getDidSickChildrenGoToHospitalYes()) &&
@@ -299,12 +320,14 @@ public final class FollowUpSurvey implements Model {
       .append(getHowLongUsingWaterTreatment())
       .append(getFrequencyWaterTreatment())
       .append(getWaterStorageAtHome())
+      .append(getWaterStorageContainerHaveLid())
       .append(getTakingWaterFromStorage())
       .append(getWashedHandsIn24Hours())
       .append(getWhenWashedHandsIn24Hours())
       .append(getWhatUsedToWashYourHands())
-      .append(getNoTotalSchoolDaysMissedByAllChildrenIn2LastWeek())
-      .append(getCommonIllnessAffectingChildrenUnder5())
+      .append(getCommonIllnessAffectingAllChildrenInHousehold())
+      .append(getNoChildrenWithVomitingOrDiarrheaIn14days())
+      .append(getNoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek())
       .append(getNoChildrenWithVomitingOrDiarrheaIn7days())
       .append(getDidSickChildrenGoToHospital())
       .append(getDidSickChildrenGoToHospitalYes())
@@ -338,12 +361,14 @@ public final class FollowUpSurvey implements Model {
       .append("HowLongUsingWaterTreatment=" + String.valueOf(getHowLongUsingWaterTreatment()) + ", ")
       .append("FrequencyWaterTreatment=" + String.valueOf(getFrequencyWaterTreatment()) + ", ")
       .append("WaterStorageAtHome=" + String.valueOf(getWaterStorageAtHome()) + ", ")
+      .append("WaterStorageContainerHaveLid=" + String.valueOf(getWaterStorageContainerHaveLid()) + ", ")
       .append("TakingWaterFromStorage=" + String.valueOf(getTakingWaterFromStorage()) + ", ")
       .append("WashedHandsIn24Hours=" + String.valueOf(getWashedHandsIn24Hours()) + ", ")
       .append("WhenWashedHandsIn24Hours=" + String.valueOf(getWhenWashedHandsIn24Hours()) + ", ")
       .append("WhatUsedToWashYourHands=" + String.valueOf(getWhatUsedToWashYourHands()) + ", ")
-      .append("NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek=" + String.valueOf(getNoTotalSchoolDaysMissedByAllChildrenIn2LastWeek()) + ", ")
-      .append("CommonIllnessAffectingChildrenUnder5=" + String.valueOf(getCommonIllnessAffectingChildrenUnder5()) + ", ")
+      .append("CommonIllnessAffectingAllChildrenInHousehold=" + String.valueOf(getCommonIllnessAffectingAllChildrenInHousehold()) + ", ")
+      .append("NoChildrenWithVomitingOrDiarrheaIn14days=" + String.valueOf(getNoChildrenWithVomitingOrDiarrheaIn14days()) + ", ")
+      .append("NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek=" + String.valueOf(getNoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek()) + ", ")
       .append("NoChildrenWithVomitingOrDiarrheaIn7days=" + String.valueOf(getNoChildrenWithVomitingOrDiarrheaIn7days()) + ", ")
       .append("DidSickChildrenGoToHospital=" + String.valueOf(getDidSickChildrenGoToHospital()) + ", ")
       .append("DidSickChildrenGoToHospitalYes=" + String.valueOf(getDidSickChildrenGoToHospitalYes()) + ", ")
@@ -413,6 +438,8 @@ public final class FollowUpSurvey implements Model {
       null,
       null,
       null,
+      null,
+      null,
       null
     );
   }
@@ -432,12 +459,14 @@ public final class FollowUpSurvey implements Model {
       HowLongUsingWaterTreatment,
       FrequencyWaterTreatment,
       WaterStorageAtHome,
+      WaterStorageContainerHaveLid,
       TakingWaterFromStorage,
       WashedHandsIn24Hours,
       WhenWashedHandsIn24Hours,
       WhatUsedToWashYourHands,
-      NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek,
-      CommonIllnessAffectingChildrenUnder5,
+      CommonIllnessAffectingAllChildrenInHousehold,
+      NoChildrenWithVomitingOrDiarrheaIn14days,
+      NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek,
       NoChildrenWithVomitingOrDiarrheaIn7days,
       DidSickChildrenGoToHospital,
       DidSickChildrenGoToHospitalYes,
@@ -506,7 +535,12 @@ public final class FollowUpSurvey implements Model {
   
 
   public interface WaterStorageAtHomeStep {
-    TakingWaterFromStorageStep waterStorageAtHome(String waterStorageAtHome);
+    WaterStorageContainerHaveLidStep waterStorageAtHome(String waterStorageAtHome);
+  }
+  
+
+  public interface WaterStorageContainerHaveLidStep {
+    TakingWaterFromStorageStep waterStorageContainerHaveLid(String waterStorageContainerHaveLid);
   }
   
 
@@ -526,17 +560,22 @@ public final class FollowUpSurvey implements Model {
   
 
   public interface WhatUsedToWashYourHandsStep {
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeekStep whatUsedToWashYourHands(String whatUsedToWashYourHands);
+    CommonIllnessAffectingAllChildrenInHouseholdStep whatUsedToWashYourHands(String whatUsedToWashYourHands);
   }
   
 
-  public interface NoTotalSchoolDaysMissedByAllChildrenIn2LastWeekStep {
-    CommonIllnessAffectingChildrenUnder5Step noTotalSchoolDaysMissedByAllChildrenIn2LastWeek(Integer noTotalSchoolDaysMissedByAllChildrenIn2LastWeek);
+  public interface CommonIllnessAffectingAllChildrenInHouseholdStep {
+    NoChildrenWithVomitingOrDiarrheaIn14daysStep commonIllnessAffectingAllChildrenInHousehold(String commonIllnessAffectingAllChildrenInHousehold);
   }
   
 
-  public interface CommonIllnessAffectingChildrenUnder5Step {
-    NoChildrenWithVomitingOrDiarrheaIn7daysStep commonIllnessAffectingChildrenUnder5(String commonIllnessAffectingChildrenUnder5);
+  public interface NoChildrenWithVomitingOrDiarrheaIn14daysStep {
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep noChildrenWithVomitingOrDiarrheaIn14days(Integer noChildrenWithVomitingOrDiarrheaIn14days);
+  }
+  
+
+  public interface NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep {
+    NoChildrenWithVomitingOrDiarrheaIn7daysStep noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek);
   }
   
 
@@ -602,7 +641,7 @@ public final class FollowUpSurvey implements Model {
   }
   
 
-  public static class Builder implements NamebweStep, CountryStep, CommunityStep, SurveyIdStep, HeadHouseholdNameStep, PersonBeingInterviewedStep, WaterTreatmentBeforeDrinkingStep, MainReasonNoWaterTreatmentBeforeDrinkingStep, WaterTreatmentMethodStep, HowLongUsingWaterTreatmentStep, FrequencyWaterTreatmentStep, WaterStorageAtHomeStep, TakingWaterFromStorageStep, WashedHandsIn24HoursStep, WhenWashedHandsIn24HoursStep, WhatUsedToWashYourHandsStep, NoTotalSchoolDaysMissedByAllChildrenIn2LastWeekStep, CommonIllnessAffectingChildrenUnder5Step, NoChildrenWithVomitingOrDiarrheaIn7daysStep, DidSickChildrenGoToHospitalStep, DidSickChildrenGoToHospitalYesStep, SickChildrenBreastfeedingStep, OutcomeMostRecentVomitingDiarrheaAtHospitalStep, NoDaysNoWorkBecauseOfOwnIllnessStep, NoDaysNoWorkBecauseOfIllnessFamilyMembersStep, MoneySpentMedicalTreatmentLast4weeksStep, HealthChangeInAYearStep, HealthChangeFamilyInAYearStep, BenefitSwpStep, BuildStep {
+  public static class Builder implements NamebweStep, CountryStep, CommunityStep, SurveyIdStep, HeadHouseholdNameStep, PersonBeingInterviewedStep, WaterTreatmentBeforeDrinkingStep, MainReasonNoWaterTreatmentBeforeDrinkingStep, WaterTreatmentMethodStep, HowLongUsingWaterTreatmentStep, FrequencyWaterTreatmentStep, WaterStorageAtHomeStep, WaterStorageContainerHaveLidStep, TakingWaterFromStorageStep, WashedHandsIn24HoursStep, WhenWashedHandsIn24HoursStep, WhatUsedToWashYourHandsStep, CommonIllnessAffectingAllChildrenInHouseholdStep, NoChildrenWithVomitingOrDiarrheaIn14daysStep, NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep, NoChildrenWithVomitingOrDiarrheaIn7daysStep, DidSickChildrenGoToHospitalStep, DidSickChildrenGoToHospitalYesStep, SickChildrenBreastfeedingStep, OutcomeMostRecentVomitingDiarrheaAtHospitalStep, NoDaysNoWorkBecauseOfOwnIllnessStep, NoDaysNoWorkBecauseOfIllnessFamilyMembersStep, MoneySpentMedicalTreatmentLast4weeksStep, HealthChangeInAYearStep, HealthChangeFamilyInAYearStep, BenefitSwpStep, BuildStep {
     private String id;
     private String Namebwe;
     private String Country;
@@ -616,12 +655,14 @@ public final class FollowUpSurvey implements Model {
     private String HowLongUsingWaterTreatment;
     private String FrequencyWaterTreatment;
     private String WaterStorageAtHome;
+    private String WaterStorageContainerHaveLid;
     private String TakingWaterFromStorage;
     private String WashedHandsIn24Hours;
     private String WhenWashedHandsIn24Hours;
     private String WhatUsedToWashYourHands;
-    private Integer NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek;
-    private String CommonIllnessAffectingChildrenUnder5;
+    private String CommonIllnessAffectingAllChildrenInHousehold;
+    private Integer NoChildrenWithVomitingOrDiarrheaIn14days;
+    private Integer NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek;
     private Integer NoChildrenWithVomitingOrDiarrheaIn7days;
     private String DidSickChildrenGoToHospital;
     private String DidSickChildrenGoToHospitalYes;
@@ -653,12 +694,14 @@ public final class FollowUpSurvey implements Model {
           HowLongUsingWaterTreatment,
           FrequencyWaterTreatment,
           WaterStorageAtHome,
+          WaterStorageContainerHaveLid,
           TakingWaterFromStorage,
           WashedHandsIn24Hours,
           WhenWashedHandsIn24Hours,
           WhatUsedToWashYourHands,
-          NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek,
-          CommonIllnessAffectingChildrenUnder5,
+          CommonIllnessAffectingAllChildrenInHousehold,
+          NoChildrenWithVomitingOrDiarrheaIn14days,
+          NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek,
           NoChildrenWithVomitingOrDiarrheaIn7days,
           DidSickChildrenGoToHospital,
           DidSickChildrenGoToHospitalYes,
@@ -750,9 +793,16 @@ public final class FollowUpSurvey implements Model {
     }
     
     @Override
-     public TakingWaterFromStorageStep waterStorageAtHome(String waterStorageAtHome) {
+     public WaterStorageContainerHaveLidStep waterStorageAtHome(String waterStorageAtHome) {
         Objects.requireNonNull(waterStorageAtHome);
         this.WaterStorageAtHome = waterStorageAtHome;
+        return this;
+    }
+    
+    @Override
+     public TakingWaterFromStorageStep waterStorageContainerHaveLid(String waterStorageContainerHaveLid) {
+        Objects.requireNonNull(waterStorageContainerHaveLid);
+        this.WaterStorageContainerHaveLid = waterStorageContainerHaveLid;
         return this;
     }
     
@@ -778,23 +828,30 @@ public final class FollowUpSurvey implements Model {
     }
     
     @Override
-     public NoTotalSchoolDaysMissedByAllChildrenIn2LastWeekStep whatUsedToWashYourHands(String whatUsedToWashYourHands) {
+     public CommonIllnessAffectingAllChildrenInHouseholdStep whatUsedToWashYourHands(String whatUsedToWashYourHands) {
         Objects.requireNonNull(whatUsedToWashYourHands);
         this.WhatUsedToWashYourHands = whatUsedToWashYourHands;
         return this;
     }
     
     @Override
-     public CommonIllnessAffectingChildrenUnder5Step noTotalSchoolDaysMissedByAllChildrenIn2LastWeek(Integer noTotalSchoolDaysMissedByAllChildrenIn2LastWeek) {
-        Objects.requireNonNull(noTotalSchoolDaysMissedByAllChildrenIn2LastWeek);
-        this.NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek = noTotalSchoolDaysMissedByAllChildrenIn2LastWeek;
+     public NoChildrenWithVomitingOrDiarrheaIn14daysStep commonIllnessAffectingAllChildrenInHousehold(String commonIllnessAffectingAllChildrenInHousehold) {
+        Objects.requireNonNull(commonIllnessAffectingAllChildrenInHousehold);
+        this.CommonIllnessAffectingAllChildrenInHousehold = commonIllnessAffectingAllChildrenInHousehold;
         return this;
     }
     
     @Override
-     public NoChildrenWithVomitingOrDiarrheaIn7daysStep commonIllnessAffectingChildrenUnder5(String commonIllnessAffectingChildrenUnder5) {
-        Objects.requireNonNull(commonIllnessAffectingChildrenUnder5);
-        this.CommonIllnessAffectingChildrenUnder5 = commonIllnessAffectingChildrenUnder5;
+     public NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep noChildrenWithVomitingOrDiarrheaIn14days(Integer noChildrenWithVomitingOrDiarrheaIn14days) {
+        Objects.requireNonNull(noChildrenWithVomitingOrDiarrheaIn14days);
+        this.NoChildrenWithVomitingOrDiarrheaIn14days = noChildrenWithVomitingOrDiarrheaIn14days;
+        return this;
+    }
+    
+    @Override
+     public NoChildrenWithVomitingOrDiarrheaIn7daysStep noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek) {
+        Objects.requireNonNull(noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek);
+        this.NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek = noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek;
         return this;
     }
     
@@ -904,7 +961,7 @@ public final class FollowUpSurvey implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String namebwe, String country, String community, Integer surveyId, Temporal.Date date, String headHouseholdName, String personBeingInterviewed, String waterTreatmentBeforeDrinking, String mainReasonNoWaterTreatmentBeforeDrinking, String waterTreatmentMethod, String howLongUsingWaterTreatment, String frequencyWaterTreatment, String waterStorageAtHome, String takingWaterFromStorage, String washedHandsIn24Hours, String whenWashedHandsIn24Hours, String whatUsedToWashYourHands, Integer noTotalSchoolDaysMissedByAllChildrenIn2LastWeek, String commonIllnessAffectingChildrenUnder5, Integer noChildrenWithVomitingOrDiarrheaIn7days, String didSickChildrenGoToHospital, String didSickChildrenGoToHospitalYes, String sickChildrenBreastfeeding, String outcomeMostRecentVomitingDiarrheaAtHospital, Integer noDaysNoWorkBecauseOfOwnIllness, Integer noDaysNoWorkBecauseOfIllnessFamilyMembers, Integer moneySpentMedicalTreatmentLast4weeks, String healthChangeInAYear, String healthChangeFamilyInAYear, String benefitSwp) {
+    private CopyOfBuilder(String id, String namebwe, String country, String community, Integer surveyId, Temporal.Date date, String headHouseholdName, String personBeingInterviewed, String waterTreatmentBeforeDrinking, String mainReasonNoWaterTreatmentBeforeDrinking, String waterTreatmentMethod, String howLongUsingWaterTreatment, String frequencyWaterTreatment, String waterStorageAtHome, String waterStorageContainerHaveLid, String takingWaterFromStorage, String washedHandsIn24Hours, String whenWashedHandsIn24Hours, String whatUsedToWashYourHands, String commonIllnessAffectingAllChildrenInHousehold, Integer noChildrenWithVomitingOrDiarrheaIn14days, Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer noChildrenWithVomitingOrDiarrheaIn7days, String didSickChildrenGoToHospital, String didSickChildrenGoToHospitalYes, String sickChildrenBreastfeeding, String outcomeMostRecentVomitingDiarrheaAtHospital, Integer noDaysNoWorkBecauseOfOwnIllness, Integer noDaysNoWorkBecauseOfIllnessFamilyMembers, Integer moneySpentMedicalTreatmentLast4weeks, String healthChangeInAYear, String healthChangeFamilyInAYear, String benefitSwp) {
       super.id(id);
       super.namebwe(namebwe)
         .country(country)
@@ -918,12 +975,14 @@ public final class FollowUpSurvey implements Model {
         .howLongUsingWaterTreatment(howLongUsingWaterTreatment)
         .frequencyWaterTreatment(frequencyWaterTreatment)
         .waterStorageAtHome(waterStorageAtHome)
+        .waterStorageContainerHaveLid(waterStorageContainerHaveLid)
         .takingWaterFromStorage(takingWaterFromStorage)
         .washedHandsIn24Hours(washedHandsIn24Hours)
         .whenWashedHandsIn24Hours(whenWashedHandsIn24Hours)
         .whatUsedToWashYourHands(whatUsedToWashYourHands)
-        .noTotalSchoolDaysMissedByAllChildrenIn2LastWeek(noTotalSchoolDaysMissedByAllChildrenIn2LastWeek)
-        .commonIllnessAffectingChildrenUnder5(commonIllnessAffectingChildrenUnder5)
+        .commonIllnessAffectingAllChildrenInHousehold(commonIllnessAffectingAllChildrenInHousehold)
+        .noChildrenWithVomitingOrDiarrheaIn14days(noChildrenWithVomitingOrDiarrheaIn14days)
+        .noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek)
         .noChildrenWithVomitingOrDiarrheaIn7days(noChildrenWithVomitingOrDiarrheaIn7days)
         .didSickChildrenGoToHospital(didSickChildrenGoToHospital)
         .didSickChildrenGoToHospitalYes(didSickChildrenGoToHospitalYes)
@@ -999,6 +1058,11 @@ public final class FollowUpSurvey implements Model {
     }
     
     @Override
+     public CopyOfBuilder waterStorageContainerHaveLid(String waterStorageContainerHaveLid) {
+      return (CopyOfBuilder) super.waterStorageContainerHaveLid(waterStorageContainerHaveLid);
+    }
+    
+    @Override
      public CopyOfBuilder takingWaterFromStorage(String takingWaterFromStorage) {
       return (CopyOfBuilder) super.takingWaterFromStorage(takingWaterFromStorage);
     }
@@ -1019,13 +1083,18 @@ public final class FollowUpSurvey implements Model {
     }
     
     @Override
-     public CopyOfBuilder noTotalSchoolDaysMissedByAllChildrenIn2LastWeek(Integer noTotalSchoolDaysMissedByAllChildrenIn2LastWeek) {
-      return (CopyOfBuilder) super.noTotalSchoolDaysMissedByAllChildrenIn2LastWeek(noTotalSchoolDaysMissedByAllChildrenIn2LastWeek);
+     public CopyOfBuilder commonIllnessAffectingAllChildrenInHousehold(String commonIllnessAffectingAllChildrenInHousehold) {
+      return (CopyOfBuilder) super.commonIllnessAffectingAllChildrenInHousehold(commonIllnessAffectingAllChildrenInHousehold);
     }
     
     @Override
-     public CopyOfBuilder commonIllnessAffectingChildrenUnder5(String commonIllnessAffectingChildrenUnder5) {
-      return (CopyOfBuilder) super.commonIllnessAffectingChildrenUnder5(commonIllnessAffectingChildrenUnder5);
+     public CopyOfBuilder noChildrenWithVomitingOrDiarrheaIn14days(Integer noChildrenWithVomitingOrDiarrheaIn14days) {
+      return (CopyOfBuilder) super.noChildrenWithVomitingOrDiarrheaIn14days(noChildrenWithVomitingOrDiarrheaIn14days);
+    }
+    
+    @Override
+     public CopyOfBuilder noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek) {
+      return (CopyOfBuilder) super.noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek);
     }
     
     @Override

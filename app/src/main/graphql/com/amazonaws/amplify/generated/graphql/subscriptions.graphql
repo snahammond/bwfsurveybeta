@@ -38,16 +38,17 @@ subscription OnCreateInitialSurvey {
     HowLongUsingWaterTreatment
     FrequencyWaterTreatment
     WaterStorageAtHome
+    WaterStorageContainerHaveLid
     TakingWaterFromStorage
     RubbishDisposal
     HouseholdDefecationMethod
-    SatisfactionHouseholdDefecationMethod
     WasteDisposalYoungestChild
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-    CommonIllnessAffectingChildrenUnder5
+    CommonIllnessAffectingAllChildrenInHousehold
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -104,16 +105,17 @@ subscription OnUpdateInitialSurvey {
     HowLongUsingWaterTreatment
     FrequencyWaterTreatment
     WaterStorageAtHome
+    WaterStorageContainerHaveLid
     TakingWaterFromStorage
     RubbishDisposal
     HouseholdDefecationMethod
-    SatisfactionHouseholdDefecationMethod
     WasteDisposalYoungestChild
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-    CommonIllnessAffectingChildrenUnder5
+    CommonIllnessAffectingAllChildrenInHousehold
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -170,16 +172,17 @@ subscription OnDeleteInitialSurvey {
     HowLongUsingWaterTreatment
     FrequencyWaterTreatment
     WaterStorageAtHome
+    WaterStorageContainerHaveLid
     TakingWaterFromStorage
     RubbishDisposal
     HouseholdDefecationMethod
-    SatisfactionHouseholdDefecationMethod
     WasteDisposalYoungestChild
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-    CommonIllnessAffectingChildrenUnder5
+    CommonIllnessAffectingAllChildrenInHousehold
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -213,12 +216,14 @@ subscription OnCreateFollowUpSurvey {
     HowLongUsingWaterTreatment
     FrequencyWaterTreatment
     WaterStorageAtHome
+    WaterStorageContainerHaveLid
     TakingWaterFromStorage
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-    CommonIllnessAffectingChildrenUnder5
+    CommonIllnessAffectingAllChildrenInHousehold
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -253,12 +258,14 @@ subscription OnUpdateFollowUpSurvey {
     HowLongUsingWaterTreatment
     FrequencyWaterTreatment
     WaterStorageAtHome
+    WaterStorageContainerHaveLid
     TakingWaterFromStorage
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-    CommonIllnessAffectingChildrenUnder5
+    CommonIllnessAffectingAllChildrenInHousehold
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -293,12 +300,14 @@ subscription OnDeleteFollowUpSurvey {
     HowLongUsingWaterTreatment
     FrequencyWaterTreatment
     WaterStorageAtHome
+    WaterStorageContainerHaveLid
     TakingWaterFromStorage
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
-    CommonIllnessAffectingChildrenUnder5
+    CommonIllnessAffectingAllChildrenInHousehold
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -331,7 +340,8 @@ subscription OnCreateHealthCheckSurvey {
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -340,6 +350,9 @@ subscription OnCreateHealthCheckSurvey {
     NoDaysNoWorkBecauseOfOwnIllness
     NoDaysNoWorkBecauseOfIllnessFamilyMembers
     MoneySpentMedicalTreatmentLast4weeks
+    WaterTreatment24Hours
+    MainReasonNoWaterTreatment24Hour
+    WaterTreatment24HourMethod
     _version
     _deleted
     _lastChangedAt
@@ -361,7 +374,8 @@ subscription OnUpdateHealthCheckSurvey {
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -370,6 +384,9 @@ subscription OnUpdateHealthCheckSurvey {
     NoDaysNoWorkBecauseOfOwnIllness
     NoDaysNoWorkBecauseOfIllnessFamilyMembers
     MoneySpentMedicalTreatmentLast4weeks
+    WaterTreatment24Hours
+    MainReasonNoWaterTreatment24Hour
+    WaterTreatment24HourMethod
     _version
     _deleted
     _lastChangedAt
@@ -391,7 +408,8 @@ subscription OnDeleteHealthCheckSurvey {
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
-    NoTotalSchoolDaysMissedByAllChildrenIn2LastWeek
+    NoChildrenWithVomitingOrDiarrheaIn14days
+    NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek
     NoChildrenWithVomitingOrDiarrheaIn7days
     DidSickChildrenGoToHospital
     DidSickChildrenGoToHospitalYes
@@ -400,6 +418,9 @@ subscription OnDeleteHealthCheckSurvey {
     NoDaysNoWorkBecauseOfOwnIllness
     NoDaysNoWorkBecauseOfIllnessFamilyMembers
     MoneySpentMedicalTreatmentLast4weeks
+    WaterTreatment24Hours
+    MainReasonNoWaterTreatment24Hour
+    WaterTreatment24HourMethod
     _version
     _deleted
     _lastChangedAt
@@ -599,6 +620,7 @@ subscription OnCreateConfigDefinitions {
     type
     name
     value
+    desc
     childname
     childvalue
     childdesc
@@ -618,6 +640,7 @@ subscription OnUpdateConfigDefinitions {
     type
     name
     value
+    desc
     childname
     childvalue
     childdesc
@@ -637,12 +660,49 @@ subscription OnDeleteConfigDefinitions {
     type
     name
     value
+    desc
     childname
     childvalue
     childdesc
     parentname
     parentvalue
     parentdesc
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateBwfsurveytotals {
+  onCreateBWFSURVEYTOTALS {
+    id
+    surveyName
+    total
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateBwfsurveytotals {
+  onUpdateBWFSURVEYTOTALS {
+    id
+    surveyName
+    total
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteBwfsurveytotals {
+  onDeleteBWFSURVEYTOTALS {
+    id
+    surveyName
+    total
     _version
     _deleted
     _lastChangedAt

@@ -7,7 +7,10 @@ import java.util.Objects;
 
 import androidx.core.util.ObjectsCompat;
 
+import com.amplifyframework.core.model.AuthStrategy;
 import com.amplifyframework.core.model.Model;
+import com.amplifyframework.core.model.ModelOperation;
+import com.amplifyframework.core.model.annotations.AuthRule;
 import com.amplifyframework.core.model.annotations.Index;
 import com.amplifyframework.core.model.annotations.ModelConfig;
 import com.amplifyframework.core.model.annotations.ModelField;
@@ -17,12 +20,15 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 
 /** This is an auto generated class representing the ConfigDefinitions type in your schema. */
 @SuppressWarnings("all")
-@ModelConfig(pluralName = "ConfigDefinitions")
+@ModelConfig(pluralName = "ConfigDefinitions", authRules = {
+  @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
+})
 public final class ConfigDefinitions implements Model {
   public static final QueryField ID = field("id");
   public static final QueryField TYPE = field("type");
   public static final QueryField NAME = field("name");
   public static final QueryField VALUE = field("value");
+  public static final QueryField DESC = field("desc");
   public static final QueryField CHILDNAME = field("childname");
   public static final QueryField CHILDVALUE = field("childvalue");
   public static final QueryField CHILDDESC = field("childdesc");
@@ -33,6 +39,7 @@ public final class ConfigDefinitions implements Model {
   private final @ModelField(targetType="String", isRequired = true) String type;
   private final @ModelField(targetType="String", isRequired = true) String name;
   private final @ModelField(targetType="String", isRequired = true) String value;
+  private final @ModelField(targetType="String", isRequired = true) String desc;
   private final @ModelField(targetType="String", isRequired = true) String childname;
   private final @ModelField(targetType="String", isRequired = true) String childvalue;
   private final @ModelField(targetType="String", isRequired = true) String childdesc;
@@ -53,6 +60,10 @@ public final class ConfigDefinitions implements Model {
   
   public String getValue() {
       return value;
+  }
+  
+  public String getDesc() {
+      return desc;
   }
   
   public String getChildname() {
@@ -79,11 +90,12 @@ public final class ConfigDefinitions implements Model {
       return parentdesc;
   }
   
-  private ConfigDefinitions(String id, String type, String name, String value, String childname, String childvalue, String childdesc, String parentname, String parentvalue, String parentdesc) {
+  private ConfigDefinitions(String id, String type, String name, String value, String desc, String childname, String childvalue, String childdesc, String parentname, String parentvalue, String parentdesc) {
     this.id = id;
     this.type = type;
     this.name = name;
     this.value = value;
+    this.desc = desc;
     this.childname = childname;
     this.childvalue = childvalue;
     this.childdesc = childdesc;
@@ -104,6 +116,7 @@ public final class ConfigDefinitions implements Model {
               ObjectsCompat.equals(getType(), configDefinitions.getType()) &&
               ObjectsCompat.equals(getName(), configDefinitions.getName()) &&
               ObjectsCompat.equals(getValue(), configDefinitions.getValue()) &&
+              ObjectsCompat.equals(getDesc(), configDefinitions.getDesc()) &&
               ObjectsCompat.equals(getChildname(), configDefinitions.getChildname()) &&
               ObjectsCompat.equals(getChildvalue(), configDefinitions.getChildvalue()) &&
               ObjectsCompat.equals(getChilddesc(), configDefinitions.getChilddesc()) &&
@@ -120,6 +133,7 @@ public final class ConfigDefinitions implements Model {
       .append(getType())
       .append(getName())
       .append(getValue())
+      .append(getDesc())
       .append(getChildname())
       .append(getChildvalue())
       .append(getChilddesc())
@@ -138,6 +152,7 @@ public final class ConfigDefinitions implements Model {
       .append("type=" + String.valueOf(getType()) + ", ")
       .append("name=" + String.valueOf(getName()) + ", ")
       .append("value=" + String.valueOf(getValue()) + ", ")
+      .append("desc=" + String.valueOf(getDesc()) + ", ")
       .append("childname=" + String.valueOf(getChildname()) + ", ")
       .append("childvalue=" + String.valueOf(getChildvalue()) + ", ")
       .append("childdesc=" + String.valueOf(getChilddesc()) + ", ")
@@ -181,6 +196,7 @@ public final class ConfigDefinitions implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
@@ -190,6 +206,7 @@ public final class ConfigDefinitions implements Model {
       type,
       name,
       value,
+      desc,
       childname,
       childvalue,
       childdesc,
@@ -208,7 +225,12 @@ public final class ConfigDefinitions implements Model {
   
 
   public interface ValueStep {
-    ChildnameStep value(String value);
+    DescStep value(String value);
+  }
+  
+
+  public interface DescStep {
+    ChildnameStep desc(String desc);
   }
   
 
@@ -248,11 +270,12 @@ public final class ConfigDefinitions implements Model {
   }
   
 
-  public static class Builder implements TypeStep, NameStep, ValueStep, ChildnameStep, ChildvalueStep, ChilddescStep, ParentnameStep, ParentvalueStep, ParentdescStep, BuildStep {
+  public static class Builder implements TypeStep, NameStep, ValueStep, DescStep, ChildnameStep, ChildvalueStep, ChilddescStep, ParentnameStep, ParentvalueStep, ParentdescStep, BuildStep {
     private String id;
     private String type;
     private String name;
     private String value;
+    private String desc;
     private String childname;
     private String childvalue;
     private String childdesc;
@@ -268,6 +291,7 @@ public final class ConfigDefinitions implements Model {
           type,
           name,
           value,
+          desc,
           childname,
           childvalue,
           childdesc,
@@ -291,9 +315,16 @@ public final class ConfigDefinitions implements Model {
     }
     
     @Override
-     public ChildnameStep value(String value) {
+     public DescStep value(String value) {
         Objects.requireNonNull(value);
         this.value = value;
+        return this;
+    }
+    
+    @Override
+     public ChildnameStep desc(String desc) {
+        Objects.requireNonNull(desc);
+        this.desc = desc;
         return this;
     }
     
@@ -362,11 +393,12 @@ public final class ConfigDefinitions implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String type, String name, String value, String childname, String childvalue, String childdesc, String parentname, String parentvalue, String parentdesc) {
+    private CopyOfBuilder(String id, String type, String name, String value, String desc, String childname, String childvalue, String childdesc, String parentname, String parentvalue, String parentdesc) {
       super.id(id);
       super.type(type)
         .name(name)
         .value(value)
+        .desc(desc)
         .childname(childname)
         .childvalue(childvalue)
         .childdesc(childdesc)
@@ -388,6 +420,11 @@ public final class ConfigDefinitions implements Model {
     @Override
      public CopyOfBuilder value(String value) {
       return (CopyOfBuilder) super.value(value);
+    }
+    
+    @Override
+     public CopyOfBuilder desc(String desc) {
+      return (CopyOfBuilder) super.desc(desc);
     }
     
     @Override

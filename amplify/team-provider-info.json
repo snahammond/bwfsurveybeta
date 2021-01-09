@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "bwfsurveybetadevb027108a": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d359f9rv2w9w2o",
+          "type": "manual"
+        }
       }
     }
   }
