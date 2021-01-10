@@ -3,6 +3,7 @@ package com.bwfsurvey.bwfsurveybeta;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.os.Build;
 import android.util.Log;
 
 import com.amplifyframework.AmplifyException;
@@ -13,6 +14,7 @@ import com.amplifyframework.core.AmplifyConfiguration;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.DataStoreConfiguration;
 import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
+import com.amplifyframework.datastore.generated.model.ConfigDefinitions;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
@@ -26,12 +28,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class MyAmplifyApplication extends Application {
     private static Context context;
     private static Activity CurrentActivity;
-    private static ArrayList<Config> configs;
-    private static ArrayList<Interchange> interchangePool;
+    public static ArrayList<Config> configs;
+    public static ArrayList<Interchange> interchangePool;
     public static String namebwe = "";
 
 
@@ -104,7 +107,7 @@ public class MyAmplifyApplication extends Application {
 
 
     //make all interchanges possible
-    private static ArrayList<Interchange> makeAllInterchanges(){
+    public static ArrayList<Interchange> makeAllInterchanges(){
         ArrayList<Interchange> allInterchangesFromConfig = new ArrayList<>();
 
         if(MyAmplifyApplication.configs!=null){

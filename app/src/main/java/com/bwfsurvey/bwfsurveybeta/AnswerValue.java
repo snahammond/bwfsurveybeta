@@ -22,8 +22,13 @@ public class AnswerValue implements Comparable<AnswerValue>{
         this.parentname = parentname;
         this.parentvalue = parentvalue;
         this.parentdesc = parentdesc;
-        if(this.childvalue!=null||this.childvalue!=null)
-            this.ansValueOrder = Integer.parseInt(this.childvalue);
+        if(this.childvalue!=null&&this.childvalue!=""){
+            try{
+                this.ansValueOrder = Integer.parseInt(this.childvalue);
+            }catch (Exception c){
+                this.ansValueOrder = 0;
+            }
+        }
     }
 
     public AnswerValue(Config config){
@@ -36,8 +41,15 @@ public class AnswerValue implements Comparable<AnswerValue>{
         this.parentname = config.getParentName();
         this.parentvalue = config.getParentValue();
         this.parentdesc = config.getParentDescription();
-        if(this.childvalue!=null&&this.childvalue!="")
-            this.ansValueOrder = Integer.parseInt(this.childvalue);
+        if(this.childvalue!=null&&this.childvalue!=""){
+            try{
+                this.ansValueOrder = Integer.parseInt(this.childvalue);
+            }catch (Exception c){
+                this.ansValueOrder = 0;
+            }
+        }
+
+
     }
 
     public String getName() {

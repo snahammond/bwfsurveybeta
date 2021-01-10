@@ -11,7 +11,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.BWFSURVEYTOTALS;
+import com.amplifyframework.datastore.generated.model.ConfigDefinitions;
 import com.example.bwfsurveybeta.R;
+
+import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity {
     String namebwe = null;
@@ -36,7 +41,87 @@ public class MenuActivity extends AppCompatActivity {
         Log.i("Tutorials", "namebwe: " + namebwe);
 
         setContentView(R.layout.activity_menu);
-        showMenu();
+        progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
+        progressBarText = (TextView) findViewById(R.id.pbText);
+
+        //do a fake query just for sync to be done
+        Amplify.DataStore.query(
+                BWFSURVEYTOTALS.class,
+                allBwfSurveyTotals -> {
+                    Log.i("Tutorials", "DataStore is queried fake query.");
+                    while (allBwfSurveyTotals.hasNext()) {
+                        allBwfSurveyTotals.next();
+                    }
+                    runOnUiThread(new Runnable() {
+                          public void run() {
+                              progressBarText.setText("Please wait... Setting Up fake query!");
+                              progressBar.setVisibility(View.VISIBLE);
+                              CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
+                                  @Override
+                                  public void onTick(long millisUntilFinished) {
+                                  }
+
+                                  @Override
+                                  public void onFinish() {
+                                      progressBar.setVisibility(View.GONE);
+                                      ArrayList<Config> configsInner = new ArrayList<Config>();
+                                      Amplify.DataStore.query(
+                                              ConfigDefinitions.class,
+                                              allConfigDefinitions -> {
+                                                  Log.i("Tutorials", "DataStore is queried config query.");
+                                                  while (allConfigDefinitions.hasNext()) {
+                                                      ConfigDefinitions configDef = allConfigDefinitions.next();
+                                                      configsInner.add(new Config(configDef.getType(), configDef.getName(), configDef.getValue(),configDef.getDesc(), configDef.getChildname(), configDef.getChildvalue(), configDef.getChilddesc(),configDef.getParentname(), configDef.getParentvalue(), configDef.getParentdesc()));
+                                                  }
+                                                  Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+configsInner.size() );
+                                                  MyAmplifyApplication.configs = configsInner;
+                                                  MyAmplifyApplication.interchangePool = MyAmplifyApplication.makeAllInterchanges();
+                                                  Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+MyAmplifyApplication.configs.size() );
+
+                                                  runOnUiThread(new Runnable() {
+                                                        public void run() {
+                                                            progressBarText.setText("Please wait... Setting Up config query!");
+                                                            progressBar.setVisibility(View.VISIBLE);
+                                                            CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
+                                                                @Override
+                                                                public void onTick(long millisUntilFinished) {
+                                                                }
+
+                                                                @Override
+                                                                public void onFinish() {
+                                                                    progressBar.setVisibility(View.GONE);
+                                                                    showMenu();
+                                                                }
+                                                            };
+                                                            countDownTimer.start();
+                                                        }
+                                                    });
+
+                                              },
+                                              failure ->{
+                                                  Log.i("Tutorials", "Query failed, going to use file " );
+                                                  Log.e("Tutorials", "Query failed.", failure);
+                                              }
+                                      );
+                                  }
+                              };
+                              countDownTimer.start();
+                          }
+                      });
+
+                    Log.i("Tutorials", "DataStore is queried for configs. No of configs is ");
+                },
+                failure ->{
+                    Log.i("Tutorials", "Query failed BWFSURVEYTOTALS, going to use file " );
+                    Log.e("Tutorials", "Query failed BWFSURVEYTOTALS.", failure);
+                }
+        );
+
+
+
+
+
+
     }
 
     public void showMenu(){
@@ -62,6 +147,8 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void initView() {
+
+
         Button initialFullSurvey = (Button) findViewById(R.id.button_initialFullSurvey);
         initialFullSurvey.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

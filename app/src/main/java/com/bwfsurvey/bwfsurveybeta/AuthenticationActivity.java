@@ -402,13 +402,11 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
     }
 
     public void signin(String email,String password){
-        Log.e("Tutorials", "Please wait... signing in 1!");
+
 
         runOnUiThread(new Runnable() {
             public void run() {
-                Log.e("Tutorials", "Please wait... signing in 2!");
                 startProgress("Please wait... signing in!");
-                Log.e("Tutorials", "Please wait... signing in 3!");
             }
         });
         Amplify.Auth.signIn(

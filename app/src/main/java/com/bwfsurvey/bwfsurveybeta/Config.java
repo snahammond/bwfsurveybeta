@@ -3,16 +3,16 @@ package com.bwfsurvey.bwfsurveybeta;
 import com.amplifyframework.core.model.annotations.ModelField;
 
 public class Config {
-    private String Type;
-    private String Name;
-    private String Value;
-    private String Description;
-    private String ChildName;
-    private String ChildValue;
-    private String ChildDescription;
-    private String ParentName;
-    private String ParentValue;
-    private String ParentDescription;
+    private String Type =null;
+    private String Name =null;
+    private String Value =null;
+    private String Description =null;
+    private String ChildName =null;
+    private String ChildValue =null;
+    private String ChildDescription =null;
+    private String ParentName =null;
+    private String ParentValue =null;
+    private String ParentDescription =null;
 
     public Config() {
     }
