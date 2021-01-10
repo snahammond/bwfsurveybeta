@@ -54,7 +54,7 @@ public class MenuActivity extends AppCompatActivity {
                     }
                     runOnUiThread(new Runnable() {
                           public void run() {
-                              progressBarText.setText("Please wait... Setting Up fake query!");
+                              progressBarText.setText("Please wait... Setting Up!");
                               progressBar.setVisibility(View.VISIBLE);
                               CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
                                   @Override
@@ -74,13 +74,15 @@ public class MenuActivity extends AppCompatActivity {
                                                       configsInner.add(new Config(configDef.getType(), configDef.getName(), configDef.getValue(),configDef.getDesc(), configDef.getChildname(), configDef.getChildvalue(), configDef.getChilddesc(),configDef.getParentname(), configDef.getParentvalue(), configDef.getParentdesc()));
                                                   }
                                                   Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+configsInner.size() );
-                                                  MyAmplifyApplication.configs = configsInner;
-                                                  MyAmplifyApplication.interchangePool = MyAmplifyApplication.makeAllInterchanges();
-                                                  Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+MyAmplifyApplication.configs.size() );
+                                                  if(configsInner.size()>0){
+                                                      MyAmplifyApplication.configs = configsInner;
+                                                      MyAmplifyApplication.interchangePool = MyAmplifyApplication.makeAllInterchanges();
+                                                      Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+MyAmplifyApplication.configs.size() );
+                                                  }
 
                                                   runOnUiThread(new Runnable() {
                                                         public void run() {
-                                                            progressBarText.setText("Please wait... Setting Up config query!");
+                                                            progressBarText.setText("Please wait... Setting Up!");
                                                             progressBar.setVisibility(View.VISIBLE);
                                                             CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
                                                                 @Override
