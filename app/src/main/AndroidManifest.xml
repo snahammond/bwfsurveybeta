@@ -87,6 +87,21 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.ViewInitialSurveySelectActivity"
+            android:label="List of saved Initial Survey"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.ViewInitialSurveyActivity"
+            android:label="View Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

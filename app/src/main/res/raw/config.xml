@@ -746,7 +746,7 @@
   <config>
     <childdesc></childdesc>
     <childname>Community</childname>
-    <childvalue></childvalue>
+    <childvalue>["comm1"]</childvalue>
     <desc>Jamaica</desc>
     <name>JAMAICA</name>
     <parentdesc></parentdesc>
@@ -1850,7 +1850,7 @@
   <config>
     <childdesc></childdesc>
     <childname>Community</childname>
-    <childvalue></childvalue>
+    <childvalue>["comm1"]</childvalue>
     <desc>Gambia</desc>
     <name>GAMBIA</name>
     <parentdesc></parentdesc>

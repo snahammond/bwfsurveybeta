@@ -198,6 +198,15 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                 startActivity(i);
             }
         });
+
+        Button button_signOut = (Button) findViewById(R.id.button_signOut);
+        button_signOut.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //sign out of cognito, move back to authentication screen
+                Log.i("Tutorials", "sign out of cognito, move back to authentication screen" );
+                signout();
+            }
+        });
     }
 
     private void showAuthenticationScreen() {
@@ -214,6 +223,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
         progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
         progressBarText = (TextView) findViewById(R.id.pbText);
 
+        TextView newUserOrAlreadySignUpPrompt = (TextView) findViewById(R.id.newUserOrAlreadySignUpPrompt);
         Button button_login = (Button) findViewById(R.id.button_login);
         Button button_signup = (Button) findViewById(R.id.button_signup);
 
@@ -256,6 +266,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
 
                     button_login.setText(R.string.signup);
                     button_signup.setText(R.string.Login);
+                    newUserOrAlreadySignUpPrompt.setText("Already Signed Up?");
                 }else if(AuthenticationState=="SIGNUP"){
                     AuthenticationState = "LOGIN";
 
@@ -266,6 +277,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
 
                     button_login.setText(R.string.Login);
                     button_signup.setText(R.string.signup);
+                    newUserOrAlreadySignUpPrompt.setText("New User?");
                 }
             }
         });
@@ -402,8 +414,6 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
     }
 
     public void signin(String email,String password){
-
-
         runOnUiThread(new Runnable() {
             public void run() {
                 startProgress("Please wait... signing in!");
@@ -501,6 +511,29 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
             showTitleMessageAlert("Sign Up Error", x.getMessage());
         }
 
+    }
+
+    public void signout(){
+        runOnUiThread(new Runnable() {
+            public void run() {
+                startProgress("Signing out!");
+            }
+        });
+
+        Amplify.Auth.signOut(
+            () -> {
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        endProgress();
+                    }
+                });
+                doAuthentication();
+                Log.i("Tutorials", "Signed out successfully");
+            },
+            error -> {
+                Log.e("Tutorials", error.toString());
+            }
+        );
     }
 
     private void startProgress(String s) {

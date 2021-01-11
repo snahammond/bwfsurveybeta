@@ -27,9 +27,9 @@
     <string name="firstname">first name</string>
     <string name="saveData">save data</string>
     <string name="action_settings">setting</string>
-    <string name="updateCollectedData">view/update data</string>
     <string name="waterSurveyComm">Community Water Test</string>
     <string name="SWEMonthlySummary">Monthly SWE/Vol Activity summary</string>
     <string name="confirmation">Confirmation</string>
     <string name="confirmationDesc">We sent a security code to your email,, Please enter it here.</string>
+    <string name="signOut">Sign Out</string>
 </resources>

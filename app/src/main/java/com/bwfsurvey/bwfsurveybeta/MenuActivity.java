@@ -4,16 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.BWFSURVEYTOTALS;
 import com.amplifyframework.datastore.generated.model.ConfigDefinitions;
+import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
@@ -26,6 +30,8 @@ public class MenuActivity extends AppCompatActivity {
 
     private LinearLayout progressBar;
     private TextView progressBarText;
+
+    boolean adviceUser = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,86 +50,84 @@ public class MenuActivity extends AppCompatActivity {
         progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
         progressBarText = (TextView) findViewById(R.id.pbText);
 
-        //do a fake query just for sync to be done
-        Amplify.DataStore.query(
-                BWFSURVEYTOTALS.class,
-                allBwfSurveyTotals -> {
-                    Log.i("Tutorials", "DataStore is queried fake query.");
-                    while (allBwfSurveyTotals.hasNext()) {
-                        allBwfSurveyTotals.next();
-                    }
+        progressBarText.setText("Please wait... Synchronizing with cloud!");
+        progressBar.setVisibility(View.VISIBLE);
+        Amplify.DataStore.start(
+                () -> {
+                    Log.i("Tutorials", "DataStore started");
                     runOnUiThread(new Runnable() {
-                          public void run() {
-                              progressBarText.setText("Please wait... Setting Up!");
-                              progressBar.setVisibility(View.VISIBLE);
-                              CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-                                  @Override
-                                  public void onTick(long millisUntilFinished) {
-                                  }
+                        public void run() {
+                            CountDownTimer countDownTimer = new CountDownTimer(30000,1000) {
+                                @Override
+                                public void onTick(long millisUntilFinished) {
+                                }
 
-                                  @Override
-                                  public void onFinish() {
-                                      progressBar.setVisibility(View.GONE);
-                                      ArrayList<Config> configsInner = new ArrayList<Config>();
-                                      Amplify.DataStore.query(
-                                              ConfigDefinitions.class,
-                                              allConfigDefinitions -> {
-                                                  Log.i("Tutorials", "DataStore is queried config query.");
-                                                  while (allConfigDefinitions.hasNext()) {
-                                                      ConfigDefinitions configDef = allConfigDefinitions.next();
-                                                      configsInner.add(new Config(configDef.getType(), configDef.getName(), configDef.getValue(),configDef.getDesc(), configDef.getChildname(), configDef.getChildvalue(), configDef.getChilddesc(),configDef.getParentname(), configDef.getParentvalue(), configDef.getParentdesc()));
-                                                  }
-                                                  Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+configsInner.size() );
-                                                  if(configsInner.size()>0){
-                                                      MyAmplifyApplication.configs = configsInner;
-                                                      MyAmplifyApplication.interchangePool = MyAmplifyApplication.makeAllInterchanges();
-                                                      Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+MyAmplifyApplication.configs.size() );
-                                                  }
+                                @Override
+                                public void onFinish() {
+                                    ArrayList<Config> configsInner = new ArrayList<Config>();
+                                    Amplify.DataStore.query(
+                                            ConfigDefinitions.class,
+                                            allConfigDefinitions -> {
+                                                Log.i("Tutorials", "DataStore is queried config query.");
+                                                while (allConfigDefinitions.hasNext()) {
+                                                    ConfigDefinitions configDef = allConfigDefinitions.next();
+                                                    if(configDef.getType().contentEquals("C")){
+                                                        Log.i("Tutorials", "country config. "+ configDef.getChildvalue());
+                                                    }
+                                                    configsInner.add(new Config(configDef.getType(), configDef.getName(), configDef.getValue(),configDef.getDesc(), configDef.getChildname(), configDef.getChildvalue(), configDef.getChilddesc(),configDef.getParentname(), configDef.getParentvalue(), configDef.getParentdesc()));
+                                                }
+                                                Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+configsInner.size() );
+                                                if(configsInner.size()>0){
+                                                    MyAmplifyApplication.configs = configsInner;
+                                                    MyAmplifyApplication.interchangePool = MyAmplifyApplication.makeAllInterchanges();
+                                                    Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+MyAmplifyApplication.configs.size() );
+                                                }
 
-                                                  runOnUiThread(new Runnable() {
-                                                        public void run() {
-                                                            progressBarText.setText("Please wait... Setting Up!");
-                                                            progressBar.setVisibility(View.VISIBLE);
-                                                            CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-                                                                @Override
-                                                                public void onTick(long millisUntilFinished) {
-                                                                }
+                                                runOnUiThread(new Runnable() {
+                                                    public void run() {
+                                                        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
+                                                            @Override
+                                                            public void onTick(long millisUntilFinished) {
+                                                            }
 
-                                                                @Override
-                                                                public void onFinish() {
-                                                                    progressBar.setVisibility(View.GONE);
-                                                                    showMenu();
-                                                                }
-                                                            };
-                                                            countDownTimer.start();
-                                                        }
-                                                    });
+                                                            @Override
+                                                            public void onFinish() {
+                                                                progressBar.setVisibility(View.GONE);
+                                                                showMenu();
+                                                            }
+                                                        };
+                                                        countDownTimer.start();
+                                                    }
+                                                });
 
-                                              },
-                                              failure ->{
-                                                  Log.i("Tutorials", "Query failed, going to use file " );
-                                                  Log.e("Tutorials", "Query failed.", failure);
-                                              }
-                                      );
-                                  }
-                              };
-                              countDownTimer.start();
-                          }
-                      });
-
-                    Log.i("Tutorials", "DataStore is queried for configs. No of configs is ");
+                                            },
+                                            failure ->{
+                                                Log.i("Tutorials", "Query failed, going to use file " );
+                                                Log.e("Tutorials", "Query failed.", failure);
+                                                runOnUiThread(new Runnable() {
+                                                    public void run() {
+                                                        progressBar.setVisibility(View.GONE);
+                                                        showMenu();
+                                                    }
+                                                });
+                                            }
+                                    );
+                                }
+                            };
+                            countDownTimer.start();
+                        }
+                    });
                 },
-                failure ->{
-                    Log.i("Tutorials", "Query failed BWFSURVEYTOTALS, going to use file " );
-                    Log.e("Tutorials", "Query failed BWFSURVEYTOTALS.", failure);
+                error -> {
+                    Log.e("Tutorials", "Error starting DataStore", error);
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            progressBar.setVisibility(View.GONE);
+                            showMenu();
+                        }
+                    });
                 }
         );
-
-
-
-
-
-
     }
 
     public void showMenu(){
@@ -150,7 +154,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private void initView() {
 
-
+        //create menu items
         Button initialFullSurvey = (Button) findViewById(R.id.button_initialFullSurvey);
         initialFullSurvey.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -217,6 +221,15 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        //view menu items
+        Button initialFullSurveyView = (Button) findViewById(R.id.button_initialFullSurveyView);
+        initialFullSurveyView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),ViewInitialSurveySelectActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -249,5 +262,140 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // R.menu.mymenu is a reference to an xml file named mymenu.xml which should be inside your res/menu directory.
+        // If you don't have res/menu, just create a directory named "menu" inside res
+        getMenuInflater().inflate(R.menu.menu_settings, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.changeSurveyCountry) {
+            Log.i("Tutorials", "going to change survey country" );
+            ArrayList<String> listOfCountries = MyAmplifyApplication.getCountries();
+            DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
+                @Override
+                public void onSelectedCountry(String countryName) {
+                    countrybwe = countryName;
+                    Log.i("Tutorials", "country selected is " + countrybwe );
+                }
+            });
+            dialog.show(getSupportFragmentManager(), "countries");
+        }
+
+        if (id == R.id.syncCloud) {
+            Log.i("Tutorials", "going to sync with cloud" );
+            progressBarText.setText("Please wait... Synchronizing with cloud!");
+            progressBar.setVisibility(View.VISIBLE);
+            Amplify.DataStore.clear(
+                    () -> {
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                            CountDownTimer countDownTimer = new CountDownTimer(10000,1000) {
+                                @Override
+                                public void onTick(long millisUntilFinished) {
+                                }
+
+                                @Override
+                                public void onFinish() {
+                                    Log.i("Tutorials", "Done clearing datastore under synchronize");
+                                    Amplify.DataStore.start(
+                                            () -> {
+                                                Log.i("Tutorials", "DataStore started");
+                                                runOnUiThread(new Runnable() {
+                                                    public void run() {
+                                                        CountDownTimer countDownTimer = new CountDownTimer(30000,1000) {
+                                                            @Override
+                                                            public void onTick(long millisUntilFinished) {
+                                                            }
+
+                                                            @Override
+                                                            public void onFinish() {
+                                                                ArrayList<Config> configsInner = new ArrayList<Config>();
+                                                                Amplify.DataStore.query(
+                                                                        ConfigDefinitions.class,
+                                                                        allConfigDefinitions -> {
+                                                                            Log.i("Tutorials", "DataStore is queried config query.");
+                                                                            while (allConfigDefinitions.hasNext()) {
+                                                                                ConfigDefinitions configDef = allConfigDefinitions.next();
+                                                                                if(configDef.getType().contentEquals("C")){
+                                                                                    Log.i("Tutorials", "country config. "+ configDef.getChildvalue());
+                                                                                }
+                                                                                configsInner.add(new Config(configDef.getType(), configDef.getName(), configDef.getValue(),configDef.getDesc(), configDef.getChildname(), configDef.getChildvalue(), configDef.getChilddesc(),configDef.getParentname(), configDef.getParentvalue(), configDef.getParentdesc()));
+                                                                            }
+                                                                            Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+configsInner.size() );
+                                                                            if(configsInner.size()>0){
+                                                                                MyAmplifyApplication.configs = configsInner;
+                                                                                MyAmplifyApplication.interchangePool = MyAmplifyApplication.makeAllInterchanges();
+                                                                                Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+MyAmplifyApplication.configs.size() );
+                                                                            }
+
+                                                                            runOnUiThread(new Runnable() {
+                                                                                public void run() {
+                                                                                    CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
+                                                                                        @Override
+                                                                                        public void onTick(long millisUntilFinished) {
+                                                                                        }
+
+                                                                                        @Override
+                                                                                        public void onFinish() {
+                                                                                            progressBar.setVisibility(View.GONE);
+                                                                                        }
+                                                                                    };
+                                                                                    countDownTimer.start();
+                                                                                }
+                                                                            });
+
+                                                                        },
+                                                                        failure ->{
+                                                                            Log.i("Tutorials", "Query failed, going to use file " );
+                                                                            Log.e("Tutorials", "Query failed.", failure);
+                                                                            runOnUiThread(new Runnable() {
+                                                                                public void run() {
+                                                                                    progressBar.setVisibility(View.GONE);
+                                                                                }
+                                                                            });
+                                                                        }
+                                                                );
+                                                            }
+                                                        };
+                                                        countDownTimer.start();
+                                                    }
+                                                });
+                                            },
+                                            error -> {
+                                                Log.e("Tutorials", "Error starting DataStore", error);
+                                                runOnUiThread(new Runnable() {
+                                                    public void run() {
+                                                        progressBar.setVisibility(View.GONE);
+                                                    }
+                                                });
+                                            }
+                                    );
+                                }
+                            };
+                            countDownTimer.start();
+                            }
+                        });
+                    },
+                    error ->{
+                        Log.e("Tutorials", "Error clearing DataStore", error);
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        });
+                    });
+
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

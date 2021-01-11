@@ -13,7 +13,6 @@
         tools:layout_editor_absoluteX="183dp"
         tools:layout_editor_absoluteY="122dp">
 
-
         <LinearLayout
             android:layout_weight="1"
             android:layout_height="fill_parent"
@@ -188,13 +187,13 @@
                     android:orientation="vertical">
 
                     <Button
-                        android:id="@+id/button_updateCollectedData"
+                        android:id="@+id/button_viewCollectedData"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="?android:attr/selectableItemBackground"
                         android:gravity="start"
                         android:shadowColor="#FFFFFF"
-                        android:text="@string/updateCollectedData"
+                        android:text="@string/viewCollectedData"
                         android:textColor="#3F51B5"
                         app:backgroundTint="#FFFFFF" />
 
@@ -212,7 +211,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <Button
-                                android:id="@+id/button_initialFullSurveyUpdate"
+                                android:id="@+id/button_initialFullSurveyView"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
@@ -294,6 +293,7 @@
 
             </androidx.cardview.widget.CardView>
         </LinearLayout>
+
     </LinearLayout>
 
     <include
