@@ -68,6 +68,9 @@ NoDaysNoWorkBecauseOfIllnessFamilyMembers: Int!
 MoneySpentMedicalTreatmentLast4weeks: Int!
 HealthChangeInAYear: String!
 HealthChangeFamilyInAYear: String!
+Completed: Int!
+Lat: String!
+Lng: String!
 }
 
 
@@ -107,6 +110,9 @@ MoneySpentMedicalTreatmentLast4weeks: Int!
 HealthChangeInAYear: String!
 HealthChangeFamilyInAYear: String!
 BenefitSWP: String!
+Completed: Int!
+Lat: String!
+Lng: String!
 }
 
 
@@ -136,6 +142,9 @@ MoneySpentMedicalTreatmentLast4weeks: Int!
 WaterTreatment24Hours: String!
 MainReasonNoWaterTreatment24Hour: String!
 WaterTreatment24HourMethod: String!
+Completed: Int!
+Lat: String!
+Lng: String!
 }
 
 type SWEMonthlySummary @model @auth(rules: [{ allow: public,provider: apiKey }]){
@@ -151,6 +160,9 @@ NoLsn3Taught: Int!
 NoLsn4Taught: Int!
 NoPersonsTaught: Int!
 NoChlorineLiquid_TabsDistributed: Int!
+Completed: Int!
+Lat: String!
+Lng: String!
 }
 
 type HouseholdWaterTest @model @auth(rules: [{ allow: public,provider: apiKey }]){
@@ -166,6 +178,9 @@ ColilertTestResult: String!
 PetrifilmDateTested: AWSDate!
 PetrifilmDateRead: AWSDate!
 PetrifilmTestResult: String!
+Completed: Int!
+Lat: String!
+Lng: String!
 }
 
 type CommunityWaterTest @model @auth(rules: [{ allow: public,provider: apiKey }]){
@@ -180,6 +195,9 @@ ColilertTestResult: String!
 PetrifilmDateTested: AWSDate!
 PetrifilmDateRead: AWSDate!
 PetrifilmTestResult: String!
+Completed: Int!
+Lat: String!
+Lng: String!
 }
 
 type ConfigDefinitions @model @auth(rules: [{ allow: public,provider: apiKey }]){

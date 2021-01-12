@@ -6,295 +6,438 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="183dp"
-        tools:layout_editor_absoluteY="122dp">
-
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
         <LinearLayout
-            android:layout_weight="1"
-            android:layout_height="fill_parent"
             android:layout_width="match_parent"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="20dp" >
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="183dp"
+            tools:layout_editor_absoluteY="122dp">
 
-            <androidx.cardview.widget.CardView
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="10dp"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp"
-                app:cardBackgroundColor="@android:color/white">
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="20dp" >
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:cardBackgroundColor="@android:color/white">
 
-                    <Button
-                        android:id="@+id/button_collectDate"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:gravity="start"
-                        android:shadowColor="#FFFFFF"
-                        android:text="@string/collectData"
-                        android:textColor="#3F51B5"
-                        app:backgroundTint="#FFFFFF" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                    <View
-                        android:id="@+id/divider"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="?android:attr/listDivider" />
-
-                    <ScrollView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/button_collectDate"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:background="?android:attr/selectableItemBackground"
+                            android:gravity="start"
+                            android:shadowColor="#FFFFFF"
+                            android:text="@string/collectData"
+                            android:textColor="#3F51B5"
+                            app:backgroundTint="#FFFFFF" />
 
-                            <Button
-                                android:id="@+id/button_initialFullSurvey"
-                                android:layout_width="match_parent"
+                        <View
+                            android:id="@+id/divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider" />
+
+                        <ScrollView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:background="?android:attr/selectableItemBackground"
-                                android:gravity="start"
-                                android:shadowColor="#FFFFFF"
-                                android:text="@string/initialSurvey"
-                                android:textColor="#3F51B5"
-                                app:backgroundTint="#FFFFFF"/>
+                                android:orientation="vertical">
 
-                            <Button
-                                android:id="@+id/button_followUpSurvey"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:background="?android:attr/selectableItemBackground"
-                                android:gravity="start"
-                                android:shadowColor="#FFFFFF"
-                                android:text="@string/followUpSurvey"
-                                android:textColor="#3F51B5"
-                                app:backgroundTint="#FFFFFF" />
+                                <Button
+                                    android:id="@+id/button_initialFullSurvey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/initialSurvey"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
 
-                            <Button
-                                android:id="@+id/button_waterSurveyComm"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:background="?android:attr/selectableItemBackground"
-                                android:gravity="start"
-                                android:shadowColor="#FFFFFF"
-                                android:text="@string/waterSurveyComm"
-                                android:textColor="#3F51B5"
-                                app:backgroundTint="#FFFFFF"/>
+                                <Button
+                                    android:id="@+id/button_followUpSurvey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/followUpSurvey"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF" />
 
-                            <Button
-                                android:id="@+id/button_waterSurvey"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:background="?android:attr/selectableItemBackground"
-                                android:gravity="start"
-                                android:shadowColor="#FFFFFF"
-                                android:text="@string/waterSurvey"
-                                android:textColor="#3F51B5"
-                                app:backgroundTint="#FFFFFF"/>
+                                <Button
+                                    android:id="@+id/button_waterSurveyComm"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/waterSurveyComm"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
 
-                            <Button
-                                android:id="@+id/button_healthCheck"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:background="?android:attr/selectableItemBackground"
-                                android:gravity="start"
-                                android:shadowColor="#FFFFFF"
-                                android:text="@string/healthCheck"
-                                android:textColor="#3F51B5"
-                                app:backgroundTint="#FFFFFF"/>
+                                <Button
+                                    android:id="@+id/button_waterSurvey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/waterSurvey"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
 
-                            <Button
-                                android:id="@+id/button_SWEMonthlySummary"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:background="?android:attr/selectableItemBackground"
-                                android:gravity="start"
-                                android:shadowColor="#FFFFFF"
-                                android:text="@string/SWEMonthlySummary"
-                                android:textColor="#3F51B5"
-                                app:backgroundTint="#FFFFFF"/>
+                                <Button
+                                    android:id="@+id/button_healthCheck"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/healthCheck"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
 
-                        </LinearLayout>
-                    </ScrollView>
-                </LinearLayout>
+                                <Button
+                                    android:id="@+id/button_SWEMonthlySummary"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/SWEMonthlySummary"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
+
+                            </LinearLayout>
+                        </ScrollView>
+                    </LinearLayout>
 
 
 
-            </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-        </LinearLayout>
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_height="fill_parent"
-            android:layout_width="match_parent"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="20dp">
-
-            <androidx.cardview.widget.CardView
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="10dp"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp"
-                app:cardBackgroundColor="@android:color/white"
-                >
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="20dp">
 
-
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    >
 
-                    <Button
-                        android:id="@+id/button_viewCollectedData"
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:gravity="start"
-                        android:shadowColor="#FFFFFF"
-                        android:text="@string/viewCollectedData"
-                        android:textColor="#3F51B5"
-                        app:backgroundTint="#FFFFFF" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                    <View
-                        android:id="@+id/divider2"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="?android:attr/listDivider" />
-
-                    <ScrollView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/button_viewCollectedData"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
-                            <Button
-                                android:id="@+id/button_initialFullSurveyView"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:background="?android:attr/selectableItemBackground"
-                                android:gravity="start"
-                                android:shadowColor="#FFFFFF"
-                                android:text="@string/initialSurvey"
-                                android:textColor="#3F51B5"
-                                app:backgroundTint="#FFFFFF"/>
+                            android:background="?android:attr/selectableItemBackground"
+                            android:gravity="start"
+                            android:shadowColor="#FFFFFF"
+                            android:text="@string/viewCollectedData"
+                            android:textColor="#3F51B5"
+                            app:backgroundTint="#FFFFFF" />
 
-                            <Button
-                                android:id="@+id/button_followUpSurveyUpdate"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:background="?android:attr/selectableItemBackground"
-                                android:gravity="start"
-                                android:shadowColor="#FFFFFF"
-                                android:text="@string/followUpSurvey"
-                                android:textColor="#3F51B5"
-                                app:backgroundTint="#FFFFFF" />
+                        <View
+                            android:id="@+id/divider2"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider" />
 
-                            <Button
-                                android:id="@+id/button_waterSurveyCommUpdate"
-                                android:layout_width="match_parent"
+                        <ScrollView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:background="?android:attr/selectableItemBackground"
-                                android:gravity="start"
-                                android:shadowColor="#FFFFFF"
-                                android:text="@string/waterSurveyComm"
-                                android:textColor="#3F51B5"
-                                app:backgroundTint="#FFFFFF"/>
+                                android:orientation="vertical">
+                                <Button
+                                    android:id="@+id/button_initialFullSurveyView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/initialSurvey"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
 
-                            <Button
-                                android:id="@+id/button_waterSurveyUpdate"
-                                android:layout_width="match_parent"
+                                <Button
+                                    android:id="@+id/button_followUpSurveyUpdate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/followUpSurvey"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF" />
+
+                                <Button
+                                    android:id="@+id/button_waterSurveyCommUpdate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/waterSurveyComm"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
+
+                                <Button
+                                    android:id="@+id/button_waterSurveyUpdate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/waterSurvey"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
+
+                                <Button
+                                    android:id="@+id/button_healthCheckUpdate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/healthCheck"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
+
+                                <Button
+                                    android:id="@+id/button_SWEMonthlySummaryUpdate"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/SWEMonthlySummary"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
+                            </LinearLayout>
+                        </ScrollView>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="20dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/button_updateUncompletedData"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:gravity="start"
+                            android:shadowColor="#FFFFFF"
+                            android:text="update incompleted data"
+                            android:textColor="#3F51B5"
+                            app:backgroundTint="#FFFFFF" />
+
+                        <View
+                            android:id="@+id/divider3"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider" />
+
+                        <ScrollView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:background="?android:attr/selectableItemBackground"
-                                android:gravity="start"
-                                android:shadowColor="#FFFFFF"
-                                android:text="@string/waterSurvey"
-                                android:textColor="#3F51B5"
-                                app:backgroundTint="#FFFFFF"/>
+                                android:orientation="vertical">
+                                <Button
+                                    android:id="@+id/button_initialFullSurveyUC"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/initialSurvey"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
 
-                            <Button
-                                android:id="@+id/button_healthCheckUpdate"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:background="?android:attr/selectableItemBackground"
-                                android:gravity="start"
-                                android:shadowColor="#FFFFFF"
-                                android:text="@string/healthCheck"
-                                android:textColor="#3F51B5"
-                                app:backgroundTint="#FFFFFF"/>
+                                <Button
+                                    android:id="@+id/button_followUpSurveyUC"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/followUpSurvey"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF" />
 
-                            <Button
-                                android:id="@+id/button_SWEMonthlySummaryUpdate"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:background="?android:attr/selectableItemBackground"
-                                android:gravity="start"
-                                android:shadowColor="#FFFFFF"
-                                android:text="@string/SWEMonthlySummary"
-                                android:textColor="#3F51B5"
-                                app:backgroundTint="#FFFFFF"/>
-                        </LinearLayout>
-                    </ScrollView>
-                </LinearLayout>
+                                <Button
+                                    android:id="@+id/button_waterSurveyCommUC"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/waterSurveyComm"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
 
-            </androidx.cardview.widget.CardView>
+                                <Button
+                                    android:id="@+id/button_waterSurveyUC"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/waterSurvey"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
+
+                                <Button
+                                    android:id="@+id/button_healthCheckUC"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/healthCheck"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
+
+                                <Button
+                                    android:id="@+id/button_SWEMonthlySummaryUC"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="@string/SWEMonthlySummary"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
+                            </LinearLayout>
+                        </ScrollView>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
         </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
     <include
         android:id="@+id/llProgressBar"

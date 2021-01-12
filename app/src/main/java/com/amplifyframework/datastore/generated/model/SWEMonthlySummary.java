@@ -37,6 +37,9 @@ public final class SWEMonthlySummary implements Model {
   public static final QueryField NO_LSN4_TAUGHT = field("NoLsn4Taught");
   public static final QueryField NO_PERSONS_TAUGHT = field("NoPersonsTaught");
   public static final QueryField NO_CHLORINE_LIQUID_TABS_DISTRIBUTED = field("NoChlorineLiquid_TabsDistributed");
+  public static final QueryField COMPLETED = field("Completed");
+  public static final QueryField LAT = field("Lat");
+  public static final QueryField LNG = field("Lng");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String Namebwe;
   private final @ModelField(targetType="AWSDate") Temporal.Date date;
@@ -49,6 +52,9 @@ public final class SWEMonthlySummary implements Model {
   private final @ModelField(targetType="Int", isRequired = true) Integer NoLsn4Taught;
   private final @ModelField(targetType="Int", isRequired = true) Integer NoPersonsTaught;
   private final @ModelField(targetType="Int", isRequired = true) Integer NoChlorineLiquid_TabsDistributed;
+  private final @ModelField(targetType="Int", isRequired = true) Integer Completed;
+  private final @ModelField(targetType="String", isRequired = true) String Lat;
+  private final @ModelField(targetType="String", isRequired = true) String Lng;
   public String getId() {
       return id;
   }
@@ -97,7 +103,19 @@ public final class SWEMonthlySummary implements Model {
       return NoChlorineLiquid_TabsDistributed;
   }
   
-  private SWEMonthlySummary(String id, String Namebwe, Temporal.Date date, String SWEPosition, Integer NoWaterSampleTaken, Integer NoSurveysCompleted, Integer NoLsn1Taught, Integer NoLsn2Taught, Integer NoLsn3Taught, Integer NoLsn4Taught, Integer NoPersonsTaught, Integer NoChlorineLiquid_TabsDistributed) {
+  public Integer getCompleted() {
+      return Completed;
+  }
+  
+  public String getLat() {
+      return Lat;
+  }
+  
+  public String getLng() {
+      return Lng;
+  }
+  
+  private SWEMonthlySummary(String id, String Namebwe, Temporal.Date date, String SWEPosition, Integer NoWaterSampleTaken, Integer NoSurveysCompleted, Integer NoLsn1Taught, Integer NoLsn2Taught, Integer NoLsn3Taught, Integer NoLsn4Taught, Integer NoPersonsTaught, Integer NoChlorineLiquid_TabsDistributed, Integer Completed, String Lat, String Lng) {
     this.id = id;
     this.Namebwe = Namebwe;
     this.date = date;
@@ -110,6 +128,9 @@ public final class SWEMonthlySummary implements Model {
     this.NoLsn4Taught = NoLsn4Taught;
     this.NoPersonsTaught = NoPersonsTaught;
     this.NoChlorineLiquid_TabsDistributed = NoChlorineLiquid_TabsDistributed;
+    this.Completed = Completed;
+    this.Lat = Lat;
+    this.Lng = Lng;
   }
   
   @Override
@@ -131,7 +152,10 @@ public final class SWEMonthlySummary implements Model {
               ObjectsCompat.equals(getNoLsn3Taught(), sweMonthlySummary.getNoLsn3Taught()) &&
               ObjectsCompat.equals(getNoLsn4Taught(), sweMonthlySummary.getNoLsn4Taught()) &&
               ObjectsCompat.equals(getNoPersonsTaught(), sweMonthlySummary.getNoPersonsTaught()) &&
-              ObjectsCompat.equals(getNoChlorineLiquidTabsDistributed(), sweMonthlySummary.getNoChlorineLiquidTabsDistributed());
+              ObjectsCompat.equals(getNoChlorineLiquidTabsDistributed(), sweMonthlySummary.getNoChlorineLiquidTabsDistributed()) &&
+              ObjectsCompat.equals(getCompleted(), sweMonthlySummary.getCompleted()) &&
+              ObjectsCompat.equals(getLat(), sweMonthlySummary.getLat()) &&
+              ObjectsCompat.equals(getLng(), sweMonthlySummary.getLng());
       }
   }
   
@@ -150,6 +174,9 @@ public final class SWEMonthlySummary implements Model {
       .append(getNoLsn4Taught())
       .append(getNoPersonsTaught())
       .append(getNoChlorineLiquidTabsDistributed())
+      .append(getCompleted())
+      .append(getLat())
+      .append(getLng())
       .toString()
       .hashCode();
   }
@@ -169,7 +196,10 @@ public final class SWEMonthlySummary implements Model {
       .append("NoLsn3Taught=" + String.valueOf(getNoLsn3Taught()) + ", ")
       .append("NoLsn4Taught=" + String.valueOf(getNoLsn4Taught()) + ", ")
       .append("NoPersonsTaught=" + String.valueOf(getNoPersonsTaught()) + ", ")
-      .append("NoChlorineLiquid_TabsDistributed=" + String.valueOf(getNoChlorineLiquidTabsDistributed()))
+      .append("NoChlorineLiquid_TabsDistributed=" + String.valueOf(getNoChlorineLiquidTabsDistributed()) + ", ")
+      .append("Completed=" + String.valueOf(getCompleted()) + ", ")
+      .append("Lat=" + String.valueOf(getLat()) + ", ")
+      .append("Lng=" + String.valueOf(getLng()))
       .append("}")
       .toString();
   }
@@ -209,6 +239,9 @@ public final class SWEMonthlySummary implements Model {
       null,
       null,
       null,
+      null,
+      null,
+      null,
       null
     );
   }
@@ -225,7 +258,10 @@ public final class SWEMonthlySummary implements Model {
       NoLsn3Taught,
       NoLsn4Taught,
       NoPersonsTaught,
-      NoChlorineLiquid_TabsDistributed);
+      NoChlorineLiquid_TabsDistributed,
+      Completed,
+      Lat,
+      Lng);
   }
   public interface NamebweStep {
     SwePositionStep namebwe(String namebwe);
@@ -273,7 +309,22 @@ public final class SWEMonthlySummary implements Model {
   
 
   public interface NoChlorineLiquidTabsDistributedStep {
-    BuildStep noChlorineLiquidTabsDistributed(Integer noChlorineLiquidTabsDistributed);
+    CompletedStep noChlorineLiquidTabsDistributed(Integer noChlorineLiquidTabsDistributed);
+  }
+  
+
+  public interface CompletedStep {
+    LatStep completed(Integer completed);
+  }
+  
+
+  public interface LatStep {
+    LngStep lat(String lat);
+  }
+  
+
+  public interface LngStep {
+    BuildStep lng(String lng);
   }
   
 
@@ -284,7 +335,7 @@ public final class SWEMonthlySummary implements Model {
   }
   
 
-  public static class Builder implements NamebweStep, SwePositionStep, NoWaterSampleTakenStep, NoSurveysCompletedStep, NoLsn1TaughtStep, NoLsn2TaughtStep, NoLsn3TaughtStep, NoLsn4TaughtStep, NoPersonsTaughtStep, NoChlorineLiquidTabsDistributedStep, BuildStep {
+  public static class Builder implements NamebweStep, SwePositionStep, NoWaterSampleTakenStep, NoSurveysCompletedStep, NoLsn1TaughtStep, NoLsn2TaughtStep, NoLsn3TaughtStep, NoLsn4TaughtStep, NoPersonsTaughtStep, NoChlorineLiquidTabsDistributedStep, CompletedStep, LatStep, LngStep, BuildStep {
     private String id;
     private String Namebwe;
     private String SWEPosition;
@@ -296,6 +347,9 @@ public final class SWEMonthlySummary implements Model {
     private Integer NoLsn4Taught;
     private Integer NoPersonsTaught;
     private Integer NoChlorineLiquid_TabsDistributed;
+    private Integer Completed;
+    private String Lat;
+    private String Lng;
     private Temporal.Date date;
     @Override
      public SWEMonthlySummary build() {
@@ -313,7 +367,10 @@ public final class SWEMonthlySummary implements Model {
           NoLsn3Taught,
           NoLsn4Taught,
           NoPersonsTaught,
-          NoChlorineLiquid_TabsDistributed);
+          NoChlorineLiquid_TabsDistributed,
+          Completed,
+          Lat,
+          Lng);
     }
     
     @Override
@@ -380,9 +437,30 @@ public final class SWEMonthlySummary implements Model {
     }
     
     @Override
-     public BuildStep noChlorineLiquidTabsDistributed(Integer noChlorineLiquidTabsDistributed) {
+     public CompletedStep noChlorineLiquidTabsDistributed(Integer noChlorineLiquidTabsDistributed) {
         Objects.requireNonNull(noChlorineLiquidTabsDistributed);
         this.NoChlorineLiquid_TabsDistributed = noChlorineLiquidTabsDistributed;
+        return this;
+    }
+    
+    @Override
+     public LatStep completed(Integer completed) {
+        Objects.requireNonNull(completed);
+        this.Completed = completed;
+        return this;
+    }
+    
+    @Override
+     public LngStep lat(String lat) {
+        Objects.requireNonNull(lat);
+        this.Lat = lat;
+        return this;
+    }
+    
+    @Override
+     public BuildStep lng(String lng) {
+        Objects.requireNonNull(lng);
+        this.Lng = lng;
         return this;
     }
     
@@ -415,7 +493,7 @@ public final class SWEMonthlySummary implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String namebwe, Temporal.Date date, String swePosition, Integer noWaterSampleTaken, Integer noSurveysCompleted, Integer noLsn1Taught, Integer noLsn2Taught, Integer noLsn3Taught, Integer noLsn4Taught, Integer noPersonsTaught, Integer noChlorineLiquidTabsDistributed) {
+    private CopyOfBuilder(String id, String namebwe, Temporal.Date date, String swePosition, Integer noWaterSampleTaken, Integer noSurveysCompleted, Integer noLsn1Taught, Integer noLsn2Taught, Integer noLsn3Taught, Integer noLsn4Taught, Integer noPersonsTaught, Integer noChlorineLiquidTabsDistributed, Integer completed, String lat, String lng) {
       super.id(id);
       super.namebwe(namebwe)
         .swePosition(swePosition)
@@ -427,6 +505,9 @@ public final class SWEMonthlySummary implements Model {
         .noLsn4Taught(noLsn4Taught)
         .noPersonsTaught(noPersonsTaught)
         .noChlorineLiquidTabsDistributed(noChlorineLiquidTabsDistributed)
+        .completed(completed)
+        .lat(lat)
+        .lng(lng)
         .date(date);
     }
     
@@ -478,6 +559,21 @@ public final class SWEMonthlySummary implements Model {
     @Override
      public CopyOfBuilder noChlorineLiquidTabsDistributed(Integer noChlorineLiquidTabsDistributed) {
       return (CopyOfBuilder) super.noChlorineLiquidTabsDistributed(noChlorineLiquidTabsDistributed);
+    }
+    
+    @Override
+     public CopyOfBuilder completed(Integer completed) {
+      return (CopyOfBuilder) super.completed(completed);
+    }
+    
+    @Override
+     public CopyOfBuilder lat(String lat) {
+      return (CopyOfBuilder) super.lat(lat);
+    }
+    
+    @Override
+     public CopyOfBuilder lng(String lng) {
+      return (CopyOfBuilder) super.lng(lng);
     }
     
     @Override

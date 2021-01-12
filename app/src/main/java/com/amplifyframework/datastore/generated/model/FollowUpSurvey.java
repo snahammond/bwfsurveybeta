@@ -58,6 +58,9 @@ public final class FollowUpSurvey implements Model {
   public static final QueryField HEALTH_CHANGE_IN_A_YEAR = field("HealthChangeInAYear");
   public static final QueryField HEALTH_CHANGE_FAMILY_IN_A_YEAR = field("HealthChangeFamilyInAYear");
   public static final QueryField BENEFIT_SWP = field("BenefitSWP");
+  public static final QueryField COMPLETED = field("Completed");
+  public static final QueryField LAT = field("Lat");
+  public static final QueryField LNG = field("Lng");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String Namebwe;
   private final @ModelField(targetType="String", isRequired = true) String Country;
@@ -91,6 +94,9 @@ public final class FollowUpSurvey implements Model {
   private final @ModelField(targetType="String", isRequired = true) String HealthChangeInAYear;
   private final @ModelField(targetType="String", isRequired = true) String HealthChangeFamilyInAYear;
   private final @ModelField(targetType="String", isRequired = true) String BenefitSWP;
+  private final @ModelField(targetType="Int", isRequired = true) Integer Completed;
+  private final @ModelField(targetType="String", isRequired = true) String Lat;
+  private final @ModelField(targetType="String", isRequired = true) String Lng;
   public String getId() {
       return id;
   }
@@ -223,7 +229,19 @@ public final class FollowUpSurvey implements Model {
       return BenefitSWP;
   }
   
-  private FollowUpSurvey(String id, String Namebwe, String Country, String Community, Integer SurveyId, Temporal.Date date, String HeadHouseholdName, String PersonBeingInterviewed, String WaterTreatmentBeforeDrinking, String MainReasonNoWaterTreatmentBeforeDrinking, String WaterTreatmentMethod, String HowLongUsingWaterTreatment, String FrequencyWaterTreatment, String WaterStorageAtHome, String WaterStorageContainerHaveLid, String TakingWaterFromStorage, String WashedHandsIn24Hours, String WhenWashedHandsIn24Hours, String WhatUsedToWashYourHands, String CommonIllnessAffectingAllChildrenInHousehold, Integer NoChildrenWithVomitingOrDiarrheaIn14days, Integer NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer NoChildrenWithVomitingOrDiarrheaIn7days, String DidSickChildrenGoToHospital, String DidSickChildrenGoToHospitalYes, String SickChildrenBreastfeeding, String OutcomeMostRecentVomiting_DiarrheaAtHospital, Integer NoDaysNoWorkBecauseOfOwnIllness, Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers, Integer MoneySpentMedicalTreatmentLast4weeks, String HealthChangeInAYear, String HealthChangeFamilyInAYear, String BenefitSWP) {
+  public Integer getCompleted() {
+      return Completed;
+  }
+  
+  public String getLat() {
+      return Lat;
+  }
+  
+  public String getLng() {
+      return Lng;
+  }
+  
+  private FollowUpSurvey(String id, String Namebwe, String Country, String Community, Integer SurveyId, Temporal.Date date, String HeadHouseholdName, String PersonBeingInterviewed, String WaterTreatmentBeforeDrinking, String MainReasonNoWaterTreatmentBeforeDrinking, String WaterTreatmentMethod, String HowLongUsingWaterTreatment, String FrequencyWaterTreatment, String WaterStorageAtHome, String WaterStorageContainerHaveLid, String TakingWaterFromStorage, String WashedHandsIn24Hours, String WhenWashedHandsIn24Hours, String WhatUsedToWashYourHands, String CommonIllnessAffectingAllChildrenInHousehold, Integer NoChildrenWithVomitingOrDiarrheaIn14days, Integer NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer NoChildrenWithVomitingOrDiarrheaIn7days, String DidSickChildrenGoToHospital, String DidSickChildrenGoToHospitalYes, String SickChildrenBreastfeeding, String OutcomeMostRecentVomiting_DiarrheaAtHospital, Integer NoDaysNoWorkBecauseOfOwnIllness, Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers, Integer MoneySpentMedicalTreatmentLast4weeks, String HealthChangeInAYear, String HealthChangeFamilyInAYear, String BenefitSWP, Integer Completed, String Lat, String Lng) {
     this.id = id;
     this.Namebwe = Namebwe;
     this.Country = Country;
@@ -257,6 +275,9 @@ public final class FollowUpSurvey implements Model {
     this.HealthChangeInAYear = HealthChangeInAYear;
     this.HealthChangeFamilyInAYear = HealthChangeFamilyInAYear;
     this.BenefitSWP = BenefitSWP;
+    this.Completed = Completed;
+    this.Lat = Lat;
+    this.Lng = Lng;
   }
   
   @Override
@@ -299,7 +320,10 @@ public final class FollowUpSurvey implements Model {
               ObjectsCompat.equals(getMoneySpentMedicalTreatmentLast4weeks(), followUpSurvey.getMoneySpentMedicalTreatmentLast4weeks()) &&
               ObjectsCompat.equals(getHealthChangeInAYear(), followUpSurvey.getHealthChangeInAYear()) &&
               ObjectsCompat.equals(getHealthChangeFamilyInAYear(), followUpSurvey.getHealthChangeFamilyInAYear()) &&
-              ObjectsCompat.equals(getBenefitSwp(), followUpSurvey.getBenefitSwp());
+              ObjectsCompat.equals(getBenefitSwp(), followUpSurvey.getBenefitSwp()) &&
+              ObjectsCompat.equals(getCompleted(), followUpSurvey.getCompleted()) &&
+              ObjectsCompat.equals(getLat(), followUpSurvey.getLat()) &&
+              ObjectsCompat.equals(getLng(), followUpSurvey.getLng());
       }
   }
   
@@ -339,6 +363,9 @@ public final class FollowUpSurvey implements Model {
       .append(getHealthChangeInAYear())
       .append(getHealthChangeFamilyInAYear())
       .append(getBenefitSwp())
+      .append(getCompleted())
+      .append(getLat())
+      .append(getLng())
       .toString()
       .hashCode();
   }
@@ -379,7 +406,10 @@ public final class FollowUpSurvey implements Model {
       .append("MoneySpentMedicalTreatmentLast4weeks=" + String.valueOf(getMoneySpentMedicalTreatmentLast4weeks()) + ", ")
       .append("HealthChangeInAYear=" + String.valueOf(getHealthChangeInAYear()) + ", ")
       .append("HealthChangeFamilyInAYear=" + String.valueOf(getHealthChangeFamilyInAYear()) + ", ")
-      .append("BenefitSWP=" + String.valueOf(getBenefitSwp()))
+      .append("BenefitSWP=" + String.valueOf(getBenefitSwp()) + ", ")
+      .append("Completed=" + String.valueOf(getCompleted()) + ", ")
+      .append("Lat=" + String.valueOf(getLat()) + ", ")
+      .append("Lng=" + String.valueOf(getLng()))
       .append("}")
       .toString();
   }
@@ -409,6 +439,9 @@ public final class FollowUpSurvey implements Model {
     }
     return new FollowUpSurvey(
       id,
+      null,
+      null,
+      null,
       null,
       null,
       null,
@@ -477,7 +510,10 @@ public final class FollowUpSurvey implements Model {
       MoneySpentMedicalTreatmentLast4weeks,
       HealthChangeInAYear,
       HealthChangeFamilyInAYear,
-      BenefitSWP);
+      BenefitSWP,
+      Completed,
+      Lat,
+      Lng);
   }
   public interface NamebweStep {
     CountryStep namebwe(String namebwe);
@@ -630,7 +666,22 @@ public final class FollowUpSurvey implements Model {
   
 
   public interface BenefitSwpStep {
-    BuildStep benefitSwp(String benefitSwp);
+    CompletedStep benefitSwp(String benefitSwp);
+  }
+  
+
+  public interface CompletedStep {
+    LatStep completed(Integer completed);
+  }
+  
+
+  public interface LatStep {
+    LngStep lat(String lat);
+  }
+  
+
+  public interface LngStep {
+    BuildStep lng(String lng);
   }
   
 
@@ -641,7 +692,7 @@ public final class FollowUpSurvey implements Model {
   }
   
 
-  public static class Builder implements NamebweStep, CountryStep, CommunityStep, SurveyIdStep, HeadHouseholdNameStep, PersonBeingInterviewedStep, WaterTreatmentBeforeDrinkingStep, MainReasonNoWaterTreatmentBeforeDrinkingStep, WaterTreatmentMethodStep, HowLongUsingWaterTreatmentStep, FrequencyWaterTreatmentStep, WaterStorageAtHomeStep, WaterStorageContainerHaveLidStep, TakingWaterFromStorageStep, WashedHandsIn24HoursStep, WhenWashedHandsIn24HoursStep, WhatUsedToWashYourHandsStep, CommonIllnessAffectingAllChildrenInHouseholdStep, NoChildrenWithVomitingOrDiarrheaIn14daysStep, NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep, NoChildrenWithVomitingOrDiarrheaIn7daysStep, DidSickChildrenGoToHospitalStep, DidSickChildrenGoToHospitalYesStep, SickChildrenBreastfeedingStep, OutcomeMostRecentVomitingDiarrheaAtHospitalStep, NoDaysNoWorkBecauseOfOwnIllnessStep, NoDaysNoWorkBecauseOfIllnessFamilyMembersStep, MoneySpentMedicalTreatmentLast4weeksStep, HealthChangeInAYearStep, HealthChangeFamilyInAYearStep, BenefitSwpStep, BuildStep {
+  public static class Builder implements NamebweStep, CountryStep, CommunityStep, SurveyIdStep, HeadHouseholdNameStep, PersonBeingInterviewedStep, WaterTreatmentBeforeDrinkingStep, MainReasonNoWaterTreatmentBeforeDrinkingStep, WaterTreatmentMethodStep, HowLongUsingWaterTreatmentStep, FrequencyWaterTreatmentStep, WaterStorageAtHomeStep, WaterStorageContainerHaveLidStep, TakingWaterFromStorageStep, WashedHandsIn24HoursStep, WhenWashedHandsIn24HoursStep, WhatUsedToWashYourHandsStep, CommonIllnessAffectingAllChildrenInHouseholdStep, NoChildrenWithVomitingOrDiarrheaIn14daysStep, NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep, NoChildrenWithVomitingOrDiarrheaIn7daysStep, DidSickChildrenGoToHospitalStep, DidSickChildrenGoToHospitalYesStep, SickChildrenBreastfeedingStep, OutcomeMostRecentVomitingDiarrheaAtHospitalStep, NoDaysNoWorkBecauseOfOwnIllnessStep, NoDaysNoWorkBecauseOfIllnessFamilyMembersStep, MoneySpentMedicalTreatmentLast4weeksStep, HealthChangeInAYearStep, HealthChangeFamilyInAYearStep, BenefitSwpStep, CompletedStep, LatStep, LngStep, BuildStep {
     private String id;
     private String Namebwe;
     private String Country;
@@ -674,6 +725,9 @@ public final class FollowUpSurvey implements Model {
     private String HealthChangeInAYear;
     private String HealthChangeFamilyInAYear;
     private String BenefitSWP;
+    private Integer Completed;
+    private String Lat;
+    private String Lng;
     private Temporal.Date date;
     @Override
      public FollowUpSurvey build() {
@@ -712,7 +766,10 @@ public final class FollowUpSurvey implements Model {
           MoneySpentMedicalTreatmentLast4weeks,
           HealthChangeInAYear,
           HealthChangeFamilyInAYear,
-          BenefitSWP);
+          BenefitSWP,
+          Completed,
+          Lat,
+          Lng);
     }
     
     @Override
@@ -926,9 +983,30 @@ public final class FollowUpSurvey implements Model {
     }
     
     @Override
-     public BuildStep benefitSwp(String benefitSwp) {
+     public CompletedStep benefitSwp(String benefitSwp) {
         Objects.requireNonNull(benefitSwp);
         this.BenefitSWP = benefitSwp;
+        return this;
+    }
+    
+    @Override
+     public LatStep completed(Integer completed) {
+        Objects.requireNonNull(completed);
+        this.Completed = completed;
+        return this;
+    }
+    
+    @Override
+     public LngStep lat(String lat) {
+        Objects.requireNonNull(lat);
+        this.Lat = lat;
+        return this;
+    }
+    
+    @Override
+     public BuildStep lng(String lng) {
+        Objects.requireNonNull(lng);
+        this.Lng = lng;
         return this;
     }
     
@@ -961,7 +1039,7 @@ public final class FollowUpSurvey implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String namebwe, String country, String community, Integer surveyId, Temporal.Date date, String headHouseholdName, String personBeingInterviewed, String waterTreatmentBeforeDrinking, String mainReasonNoWaterTreatmentBeforeDrinking, String waterTreatmentMethod, String howLongUsingWaterTreatment, String frequencyWaterTreatment, String waterStorageAtHome, String waterStorageContainerHaveLid, String takingWaterFromStorage, String washedHandsIn24Hours, String whenWashedHandsIn24Hours, String whatUsedToWashYourHands, String commonIllnessAffectingAllChildrenInHousehold, Integer noChildrenWithVomitingOrDiarrheaIn14days, Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer noChildrenWithVomitingOrDiarrheaIn7days, String didSickChildrenGoToHospital, String didSickChildrenGoToHospitalYes, String sickChildrenBreastfeeding, String outcomeMostRecentVomitingDiarrheaAtHospital, Integer noDaysNoWorkBecauseOfOwnIllness, Integer noDaysNoWorkBecauseOfIllnessFamilyMembers, Integer moneySpentMedicalTreatmentLast4weeks, String healthChangeInAYear, String healthChangeFamilyInAYear, String benefitSwp) {
+    private CopyOfBuilder(String id, String namebwe, String country, String community, Integer surveyId, Temporal.Date date, String headHouseholdName, String personBeingInterviewed, String waterTreatmentBeforeDrinking, String mainReasonNoWaterTreatmentBeforeDrinking, String waterTreatmentMethod, String howLongUsingWaterTreatment, String frequencyWaterTreatment, String waterStorageAtHome, String waterStorageContainerHaveLid, String takingWaterFromStorage, String washedHandsIn24Hours, String whenWashedHandsIn24Hours, String whatUsedToWashYourHands, String commonIllnessAffectingAllChildrenInHousehold, Integer noChildrenWithVomitingOrDiarrheaIn14days, Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer noChildrenWithVomitingOrDiarrheaIn7days, String didSickChildrenGoToHospital, String didSickChildrenGoToHospitalYes, String sickChildrenBreastfeeding, String outcomeMostRecentVomitingDiarrheaAtHospital, Integer noDaysNoWorkBecauseOfOwnIllness, Integer noDaysNoWorkBecauseOfIllnessFamilyMembers, Integer moneySpentMedicalTreatmentLast4weeks, String healthChangeInAYear, String healthChangeFamilyInAYear, String benefitSwp, Integer completed, String lat, String lng) {
       super.id(id);
       super.namebwe(namebwe)
         .country(country)
@@ -994,6 +1072,9 @@ public final class FollowUpSurvey implements Model {
         .healthChangeInAYear(healthChangeInAYear)
         .healthChangeFamilyInAYear(healthChangeFamilyInAYear)
         .benefitSwp(benefitSwp)
+        .completed(completed)
+        .lat(lat)
+        .lng(lng)
         .date(date);
     }
     
@@ -1150,6 +1231,21 @@ public final class FollowUpSurvey implements Model {
     @Override
      public CopyOfBuilder benefitSwp(String benefitSwp) {
       return (CopyOfBuilder) super.benefitSwp(benefitSwp);
+    }
+    
+    @Override
+     public CopyOfBuilder completed(Integer completed) {
+      return (CopyOfBuilder) super.completed(completed);
+    }
+    
+    @Override
+     public CopyOfBuilder lat(String lat) {
+      return (CopyOfBuilder) super.lat(lat);
+    }
+    
+    @Override
+     public CopyOfBuilder lng(String lng) {
+      return (CopyOfBuilder) super.lng(lng);
     }
     
     @Override

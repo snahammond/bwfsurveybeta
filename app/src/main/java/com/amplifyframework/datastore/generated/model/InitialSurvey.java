@@ -83,6 +83,9 @@ public final class InitialSurvey implements Model {
   public static final QueryField MONEY_SPENT_MEDICAL_TREATMENT_LAST4WEEKS = field("MoneySpentMedicalTreatmentLast4weeks");
   public static final QueryField HEALTH_CHANGE_IN_A_YEAR = field("HealthChangeInAYear");
   public static final QueryField HEALTH_CHANGE_FAMILY_IN_A_YEAR = field("HealthChangeFamilyInAYear");
+  public static final QueryField COMPLETED = field("Completed");
+  public static final QueryField LAT = field("Lat");
+  public static final QueryField LNG = field("Lng");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String Namebwe;
   private final @ModelField(targetType="String", isRequired = true) String Country;
@@ -141,6 +144,9 @@ public final class InitialSurvey implements Model {
   private final @ModelField(targetType="Int", isRequired = true) Integer MoneySpentMedicalTreatmentLast4weeks;
   private final @ModelField(targetType="String", isRequired = true) String HealthChangeInAYear;
   private final @ModelField(targetType="String", isRequired = true) String HealthChangeFamilyInAYear;
+  private final @ModelField(targetType="Int", isRequired = true) Integer Completed;
+  private final @ModelField(targetType="String", isRequired = true) String Lat;
+  private final @ModelField(targetType="String", isRequired = true) String Lng;
   public String getId() {
       return id;
   }
@@ -373,7 +379,19 @@ public final class InitialSurvey implements Model {
       return HealthChangeFamilyInAYear;
   }
   
-  private InitialSurvey(String id, String Namebwe, String Country, String Community, Integer SurveyId, Temporal.Date date, String HeadHouseholdName, String HeadHouseholdSex, String HeadHouseholdMaritalStatus, Integer HeadHouseholdAge, String HeadHouseholdOccupation, String HeadHouseholdEducation, String PersonBeingInterviewed, Integer TotalNoPeopleHousehold, Integer NoHouseholdMale0_1Year, Integer NoHouseholdFemale0_1Year, Integer NoHouseholdMale1_5Year, Integer NoHouseholdFemale1_5Year, Integer NoHouseholdMale5_12Year, Integer NoHouseholdFemale5_12Year, Integer NoHouseholdMale13_17Year, Integer NoHouseholdFemale13_17Year, Integer NoHouseholdMale18_Year, Integer NoHouseholdFemale18_Year, String ReasonNoSchoolChildren5_17Year, String MainSourceDrinkingWater, String MainSourceOtherPurposeWater, Integer TimeToWaterSourceGetReturn, String HouseholdFrequencyAtWaterSource, String UsualHouseholdWaterFetcher, String ContainerCarryWater, String WaterTreatmentBeforeDrinking, String MainReasonNoWaterTreatmentBeforeDrinking, String WaterTreatmentMethod, String HowLongUsingWaterTreatment, String FrequencyWaterTreatment, String WaterStorageAtHome, String WaterStorageContainerHaveLid, String TakingWaterFromStorage, String RubbishDisposal, String HouseholdDefecationMethod, String WasteDisposalYoungestChild, String WashedHandsIn24Hours, String WhenWashedHandsIn24Hours, String WhatUsedToWashYourHands, String CommonIllnessAffectingAllChildrenInHousehold, Integer NoChildrenWithVomitingOrDiarrheaIn14days, Integer NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer NoChildrenWithVomitingOrDiarrheaIn7days, String DidSickChildrenGoToHospital, String DidSickChildrenGoToHospitalYes, String SickChildrenBreastfeeding, String OutcomeMostRecentVomiting_DiarrheaAtHospital, Integer NoDaysNoWorkBecauseOfOwnIllness, Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers, Integer MoneySpentMedicalTreatmentLast4weeks, String HealthChangeInAYear, String HealthChangeFamilyInAYear) {
+  public Integer getCompleted() {
+      return Completed;
+  }
+  
+  public String getLat() {
+      return Lat;
+  }
+  
+  public String getLng() {
+      return Lng;
+  }
+  
+  private InitialSurvey(String id, String Namebwe, String Country, String Community, Integer SurveyId, Temporal.Date date, String HeadHouseholdName, String HeadHouseholdSex, String HeadHouseholdMaritalStatus, Integer HeadHouseholdAge, String HeadHouseholdOccupation, String HeadHouseholdEducation, String PersonBeingInterviewed, Integer TotalNoPeopleHousehold, Integer NoHouseholdMale0_1Year, Integer NoHouseholdFemale0_1Year, Integer NoHouseholdMale1_5Year, Integer NoHouseholdFemale1_5Year, Integer NoHouseholdMale5_12Year, Integer NoHouseholdFemale5_12Year, Integer NoHouseholdMale13_17Year, Integer NoHouseholdFemale13_17Year, Integer NoHouseholdMale18_Year, Integer NoHouseholdFemale18_Year, String ReasonNoSchoolChildren5_17Year, String MainSourceDrinkingWater, String MainSourceOtherPurposeWater, Integer TimeToWaterSourceGetReturn, String HouseholdFrequencyAtWaterSource, String UsualHouseholdWaterFetcher, String ContainerCarryWater, String WaterTreatmentBeforeDrinking, String MainReasonNoWaterTreatmentBeforeDrinking, String WaterTreatmentMethod, String HowLongUsingWaterTreatment, String FrequencyWaterTreatment, String WaterStorageAtHome, String WaterStorageContainerHaveLid, String TakingWaterFromStorage, String RubbishDisposal, String HouseholdDefecationMethod, String WasteDisposalYoungestChild, String WashedHandsIn24Hours, String WhenWashedHandsIn24Hours, String WhatUsedToWashYourHands, String CommonIllnessAffectingAllChildrenInHousehold, Integer NoChildrenWithVomitingOrDiarrheaIn14days, Integer NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer NoChildrenWithVomitingOrDiarrheaIn7days, String DidSickChildrenGoToHospital, String DidSickChildrenGoToHospitalYes, String SickChildrenBreastfeeding, String OutcomeMostRecentVomiting_DiarrheaAtHospital, Integer NoDaysNoWorkBecauseOfOwnIllness, Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers, Integer MoneySpentMedicalTreatmentLast4weeks, String HealthChangeInAYear, String HealthChangeFamilyInAYear, Integer Completed, String Lat, String Lng) {
     this.id = id;
     this.Namebwe = Namebwe;
     this.Country = Country;
@@ -432,6 +450,9 @@ public final class InitialSurvey implements Model {
     this.MoneySpentMedicalTreatmentLast4weeks = MoneySpentMedicalTreatmentLast4weeks;
     this.HealthChangeInAYear = HealthChangeInAYear;
     this.HealthChangeFamilyInAYear = HealthChangeFamilyInAYear;
+    this.Completed = Completed;
+    this.Lat = Lat;
+    this.Lng = Lng;
   }
   
   @Override
@@ -499,7 +520,10 @@ public final class InitialSurvey implements Model {
               ObjectsCompat.equals(getNoDaysNoWorkBecauseOfIllnessFamilyMembers(), initialSurvey.getNoDaysNoWorkBecauseOfIllnessFamilyMembers()) &&
               ObjectsCompat.equals(getMoneySpentMedicalTreatmentLast4weeks(), initialSurvey.getMoneySpentMedicalTreatmentLast4weeks()) &&
               ObjectsCompat.equals(getHealthChangeInAYear(), initialSurvey.getHealthChangeInAYear()) &&
-              ObjectsCompat.equals(getHealthChangeFamilyInAYear(), initialSurvey.getHealthChangeFamilyInAYear());
+              ObjectsCompat.equals(getHealthChangeFamilyInAYear(), initialSurvey.getHealthChangeFamilyInAYear()) &&
+              ObjectsCompat.equals(getCompleted(), initialSurvey.getCompleted()) &&
+              ObjectsCompat.equals(getLat(), initialSurvey.getLat()) &&
+              ObjectsCompat.equals(getLng(), initialSurvey.getLng());
       }
   }
   
@@ -564,6 +588,9 @@ public final class InitialSurvey implements Model {
       .append(getMoneySpentMedicalTreatmentLast4weeks())
       .append(getHealthChangeInAYear())
       .append(getHealthChangeFamilyInAYear())
+      .append(getCompleted())
+      .append(getLat())
+      .append(getLng())
       .toString()
       .hashCode();
   }
@@ -629,7 +656,10 @@ public final class InitialSurvey implements Model {
       .append("NoDaysNoWorkBecauseOfIllnessFamilyMembers=" + String.valueOf(getNoDaysNoWorkBecauseOfIllnessFamilyMembers()) + ", ")
       .append("MoneySpentMedicalTreatmentLast4weeks=" + String.valueOf(getMoneySpentMedicalTreatmentLast4weeks()) + ", ")
       .append("HealthChangeInAYear=" + String.valueOf(getHealthChangeInAYear()) + ", ")
-      .append("HealthChangeFamilyInAYear=" + String.valueOf(getHealthChangeFamilyInAYear()))
+      .append("HealthChangeFamilyInAYear=" + String.valueOf(getHealthChangeFamilyInAYear()) + ", ")
+      .append("Completed=" + String.valueOf(getCompleted()) + ", ")
+      .append("Lat=" + String.valueOf(getLat()) + ", ")
+      .append("Lng=" + String.valueOf(getLng()))
       .append("}")
       .toString();
   }
@@ -659,6 +689,9 @@ public final class InitialSurvey implements Model {
     }
     return new InitialSurvey(
       id,
+      null,
+      null,
+      null,
       null,
       null,
       null,
@@ -777,7 +810,10 @@ public final class InitialSurvey implements Model {
       NoDaysNoWorkBecauseOfIllnessFamilyMembers,
       MoneySpentMedicalTreatmentLast4weeks,
       HealthChangeInAYear,
-      HealthChangeFamilyInAYear);
+      HealthChangeFamilyInAYear,
+      Completed,
+      Lat,
+      Lng);
   }
   public interface NamebweStep {
     CountryStep namebwe(String namebwe);
@@ -1055,7 +1091,22 @@ public final class InitialSurvey implements Model {
   
 
   public interface HealthChangeFamilyInAYearStep {
-    BuildStep healthChangeFamilyInAYear(String healthChangeFamilyInAYear);
+    CompletedStep healthChangeFamilyInAYear(String healthChangeFamilyInAYear);
+  }
+  
+
+  public interface CompletedStep {
+    LatStep completed(Integer completed);
+  }
+  
+
+  public interface LatStep {
+    LngStep lat(String lat);
+  }
+  
+
+  public interface LngStep {
+    BuildStep lng(String lng);
   }
   
 
@@ -1066,7 +1117,7 @@ public final class InitialSurvey implements Model {
   }
   
 
-  public static class Builder implements NamebweStep, CountryStep, CommunityStep, SurveyIdStep, HeadHouseholdNameStep, HeadHouseholdSexStep, HeadHouseholdMaritalStatusStep, HeadHouseholdAgeStep, HeadHouseholdOccupationStep, HeadHouseholdEducationStep, PersonBeingInterviewedStep, TotalNoPeopleHouseholdStep, NoHouseholdMale0_1YearStep, NoHouseholdFemale0_1YearStep, NoHouseholdMale1_5YearStep, NoHouseholdFemale1_5YearStep, NoHouseholdMale5_12YearStep, NoHouseholdFemale5_12YearStep, NoHouseholdMale13_17YearStep, NoHouseholdFemale13_17YearStep, NoHouseholdMale18YearStep, NoHouseholdFemale18YearStep, ReasonNoSchoolChildren5_17YearStep, MainSourceDrinkingWaterStep, MainSourceOtherPurposeWaterStep, TimeToWaterSourceGetReturnStep, HouseholdFrequencyAtWaterSourceStep, UsualHouseholdWaterFetcherStep, ContainerCarryWaterStep, WaterTreatmentBeforeDrinkingStep, MainReasonNoWaterTreatmentBeforeDrinkingStep, WaterTreatmentMethodStep, HowLongUsingWaterTreatmentStep, FrequencyWaterTreatmentStep, WaterStorageAtHomeStep, WaterStorageContainerHaveLidStep, TakingWaterFromStorageStep, RubbishDisposalStep, HouseholdDefecationMethodStep, WasteDisposalYoungestChildStep, WashedHandsIn24HoursStep, WhenWashedHandsIn24HoursStep, WhatUsedToWashYourHandsStep, CommonIllnessAffectingAllChildrenInHouseholdStep, NoChildrenWithVomitingOrDiarrheaIn14daysStep, NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep, NoChildrenWithVomitingOrDiarrheaIn7daysStep, DidSickChildrenGoToHospitalStep, DidSickChildrenGoToHospitalYesStep, SickChildrenBreastfeedingStep, OutcomeMostRecentVomitingDiarrheaAtHospitalStep, NoDaysNoWorkBecauseOfOwnIllnessStep, NoDaysNoWorkBecauseOfIllnessFamilyMembersStep, MoneySpentMedicalTreatmentLast4weeksStep, HealthChangeInAYearStep, HealthChangeFamilyInAYearStep, BuildStep {
+  public static class Builder implements NamebweStep, CountryStep, CommunityStep, SurveyIdStep, HeadHouseholdNameStep, HeadHouseholdSexStep, HeadHouseholdMaritalStatusStep, HeadHouseholdAgeStep, HeadHouseholdOccupationStep, HeadHouseholdEducationStep, PersonBeingInterviewedStep, TotalNoPeopleHouseholdStep, NoHouseholdMale0_1YearStep, NoHouseholdFemale0_1YearStep, NoHouseholdMale1_5YearStep, NoHouseholdFemale1_5YearStep, NoHouseholdMale5_12YearStep, NoHouseholdFemale5_12YearStep, NoHouseholdMale13_17YearStep, NoHouseholdFemale13_17YearStep, NoHouseholdMale18YearStep, NoHouseholdFemale18YearStep, ReasonNoSchoolChildren5_17YearStep, MainSourceDrinkingWaterStep, MainSourceOtherPurposeWaterStep, TimeToWaterSourceGetReturnStep, HouseholdFrequencyAtWaterSourceStep, UsualHouseholdWaterFetcherStep, ContainerCarryWaterStep, WaterTreatmentBeforeDrinkingStep, MainReasonNoWaterTreatmentBeforeDrinkingStep, WaterTreatmentMethodStep, HowLongUsingWaterTreatmentStep, FrequencyWaterTreatmentStep, WaterStorageAtHomeStep, WaterStorageContainerHaveLidStep, TakingWaterFromStorageStep, RubbishDisposalStep, HouseholdDefecationMethodStep, WasteDisposalYoungestChildStep, WashedHandsIn24HoursStep, WhenWashedHandsIn24HoursStep, WhatUsedToWashYourHandsStep, CommonIllnessAffectingAllChildrenInHouseholdStep, NoChildrenWithVomitingOrDiarrheaIn14daysStep, NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep, NoChildrenWithVomitingOrDiarrheaIn7daysStep, DidSickChildrenGoToHospitalStep, DidSickChildrenGoToHospitalYesStep, SickChildrenBreastfeedingStep, OutcomeMostRecentVomitingDiarrheaAtHospitalStep, NoDaysNoWorkBecauseOfOwnIllnessStep, NoDaysNoWorkBecauseOfIllnessFamilyMembersStep, MoneySpentMedicalTreatmentLast4weeksStep, HealthChangeInAYearStep, HealthChangeFamilyInAYearStep, CompletedStep, LatStep, LngStep, BuildStep {
     private String id;
     private String Namebwe;
     private String Country;
@@ -1124,6 +1175,9 @@ public final class InitialSurvey implements Model {
     private Integer MoneySpentMedicalTreatmentLast4weeks;
     private String HealthChangeInAYear;
     private String HealthChangeFamilyInAYear;
+    private Integer Completed;
+    private String Lat;
+    private String Lng;
     private Temporal.Date date;
     @Override
      public InitialSurvey build() {
@@ -1187,7 +1241,10 @@ public final class InitialSurvey implements Model {
           NoDaysNoWorkBecauseOfIllnessFamilyMembers,
           MoneySpentMedicalTreatmentLast4weeks,
           HealthChangeInAYear,
-          HealthChangeFamilyInAYear);
+          HealthChangeFamilyInAYear,
+          Completed,
+          Lat,
+          Lng);
     }
     
     @Override
@@ -1576,9 +1633,30 @@ public final class InitialSurvey implements Model {
     }
     
     @Override
-     public BuildStep healthChangeFamilyInAYear(String healthChangeFamilyInAYear) {
+     public CompletedStep healthChangeFamilyInAYear(String healthChangeFamilyInAYear) {
         Objects.requireNonNull(healthChangeFamilyInAYear);
         this.HealthChangeFamilyInAYear = healthChangeFamilyInAYear;
+        return this;
+    }
+    
+    @Override
+     public LatStep completed(Integer completed) {
+        Objects.requireNonNull(completed);
+        this.Completed = completed;
+        return this;
+    }
+    
+    @Override
+     public LngStep lat(String lat) {
+        Objects.requireNonNull(lat);
+        this.Lat = lat;
+        return this;
+    }
+    
+    @Override
+     public BuildStep lng(String lng) {
+        Objects.requireNonNull(lng);
+        this.Lng = lng;
         return this;
     }
     
@@ -1611,7 +1689,7 @@ public final class InitialSurvey implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String namebwe, String country, String community, Integer surveyId, Temporal.Date date, String headHouseholdName, String headHouseholdSex, String headHouseholdMaritalStatus, Integer headHouseholdAge, String headHouseholdOccupation, String headHouseholdEducation, String personBeingInterviewed, Integer totalNoPeopleHousehold, Integer noHouseholdMale0_1Year, Integer noHouseholdFemale0_1Year, Integer noHouseholdMale1_5Year, Integer noHouseholdFemale1_5Year, Integer noHouseholdMale5_12Year, Integer noHouseholdFemale5_12Year, Integer noHouseholdMale13_17Year, Integer noHouseholdFemale13_17Year, Integer noHouseholdMale18Year, Integer noHouseholdFemale18Year, String reasonNoSchoolChildren5_17Year, String mainSourceDrinkingWater, String mainSourceOtherPurposeWater, Integer timeToWaterSourceGetReturn, String householdFrequencyAtWaterSource, String usualHouseholdWaterFetcher, String containerCarryWater, String waterTreatmentBeforeDrinking, String mainReasonNoWaterTreatmentBeforeDrinking, String waterTreatmentMethod, String howLongUsingWaterTreatment, String frequencyWaterTreatment, String waterStorageAtHome, String waterStorageContainerHaveLid, String takingWaterFromStorage, String rubbishDisposal, String householdDefecationMethod, String wasteDisposalYoungestChild, String washedHandsIn24Hours, String whenWashedHandsIn24Hours, String whatUsedToWashYourHands, String commonIllnessAffectingAllChildrenInHousehold, Integer noChildrenWithVomitingOrDiarrheaIn14days, Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer noChildrenWithVomitingOrDiarrheaIn7days, String didSickChildrenGoToHospital, String didSickChildrenGoToHospitalYes, String sickChildrenBreastfeeding, String outcomeMostRecentVomitingDiarrheaAtHospital, Integer noDaysNoWorkBecauseOfOwnIllness, Integer noDaysNoWorkBecauseOfIllnessFamilyMembers, Integer moneySpentMedicalTreatmentLast4weeks, String healthChangeInAYear, String healthChangeFamilyInAYear) {
+    private CopyOfBuilder(String id, String namebwe, String country, String community, Integer surveyId, Temporal.Date date, String headHouseholdName, String headHouseholdSex, String headHouseholdMaritalStatus, Integer headHouseholdAge, String headHouseholdOccupation, String headHouseholdEducation, String personBeingInterviewed, Integer totalNoPeopleHousehold, Integer noHouseholdMale0_1Year, Integer noHouseholdFemale0_1Year, Integer noHouseholdMale1_5Year, Integer noHouseholdFemale1_5Year, Integer noHouseholdMale5_12Year, Integer noHouseholdFemale5_12Year, Integer noHouseholdMale13_17Year, Integer noHouseholdFemale13_17Year, Integer noHouseholdMale18Year, Integer noHouseholdFemale18Year, String reasonNoSchoolChildren5_17Year, String mainSourceDrinkingWater, String mainSourceOtherPurposeWater, Integer timeToWaterSourceGetReturn, String householdFrequencyAtWaterSource, String usualHouseholdWaterFetcher, String containerCarryWater, String waterTreatmentBeforeDrinking, String mainReasonNoWaterTreatmentBeforeDrinking, String waterTreatmentMethod, String howLongUsingWaterTreatment, String frequencyWaterTreatment, String waterStorageAtHome, String waterStorageContainerHaveLid, String takingWaterFromStorage, String rubbishDisposal, String householdDefecationMethod, String wasteDisposalYoungestChild, String washedHandsIn24Hours, String whenWashedHandsIn24Hours, String whatUsedToWashYourHands, String commonIllnessAffectingAllChildrenInHousehold, Integer noChildrenWithVomitingOrDiarrheaIn14days, Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer noChildrenWithVomitingOrDiarrheaIn7days, String didSickChildrenGoToHospital, String didSickChildrenGoToHospitalYes, String sickChildrenBreastfeeding, String outcomeMostRecentVomitingDiarrheaAtHospital, Integer noDaysNoWorkBecauseOfOwnIllness, Integer noDaysNoWorkBecauseOfIllnessFamilyMembers, Integer moneySpentMedicalTreatmentLast4weeks, String healthChangeInAYear, String healthChangeFamilyInAYear, Integer completed, String lat, String lng) {
       super.id(id);
       super.namebwe(namebwe)
         .country(country)
@@ -1669,6 +1747,9 @@ public final class InitialSurvey implements Model {
         .moneySpentMedicalTreatmentLast4weeks(moneySpentMedicalTreatmentLast4weeks)
         .healthChangeInAYear(healthChangeInAYear)
         .healthChangeFamilyInAYear(healthChangeFamilyInAYear)
+        .completed(completed)
+        .lat(lat)
+        .lng(lng)
         .date(date);
     }
     
@@ -1950,6 +2031,21 @@ public final class InitialSurvey implements Model {
     @Override
      public CopyOfBuilder healthChangeFamilyInAYear(String healthChangeFamilyInAYear) {
       return (CopyOfBuilder) super.healthChangeFamilyInAYear(healthChangeFamilyInAYear);
+    }
+    
+    @Override
+     public CopyOfBuilder completed(Integer completed) {
+      return (CopyOfBuilder) super.completed(completed);
+    }
+    
+    @Override
+     public CopyOfBuilder lat(String lat) {
+      return (CopyOfBuilder) super.lat(lat);
+    }
+    
+    @Override
+     public CopyOfBuilder lng(String lng) {
+      return (CopyOfBuilder) super.lng(lng);
     }
     
     @Override

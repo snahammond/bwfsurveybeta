@@ -105,7 +105,7 @@ public class HealthCheckSurveyActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.menu_save) {
+        if (id == R.id.save) {
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
             //we have to validate now
@@ -118,7 +118,7 @@ public class HealthCheckSurveyActivity extends AppCompatActivity {
             }else{
 
                 //make an InitialSurvey object
-                HealthCheckSurvey HealthCheckSurveyToSave = makeHealthCheckSurveyObject(interchangesWithUserAns);
+                HealthCheckSurvey HealthCheckSurveyToSave = makeHealthCheckSurveyObject(interchangesWithUserAns,0,"","");
 
                 //save the initialSurvey object
                 saveHealthCheckSurvey(HealthCheckSurveyToSave);
@@ -204,7 +204,7 @@ public class HealthCheckSurveyActivity extends AppCompatActivity {
 
     }
 
-    private HealthCheckSurvey makeHealthCheckSurveyObject(ArrayList<Interchange> validatedInterchangesWithAns){
+    private HealthCheckSurvey makeHealthCheckSurveyObject(ArrayList<Interchange> validatedInterchangesWithAns,int completed, String lat, String lng){
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_s = dateFormat.format(calendar.getTime());
@@ -258,6 +258,9 @@ public class HealthCheckSurveyActivity extends AppCompatActivity {
                 .waterTreatment24Hours(WaterTreatment24Hours)
                 .mainReasonNoWaterTreatment24Hour(MainReasonNoWaterTreatment24Hour)
                 .waterTreatment24HourMethod(WaterTreatment24HourMethod)
+                .completed(completed)
+                .lat(lat)
+                .lng(lng)
                 .date(date)
                 .build();
         return healthCheckSurvey;

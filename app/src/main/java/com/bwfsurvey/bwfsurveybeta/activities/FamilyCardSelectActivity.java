@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.bwfsurvey.bwfsurveybeta.adapters.FamilyCardAdapter;
 import com.example.bwfsurveybeta.R;
@@ -59,6 +60,7 @@ public class FamilyCardSelectActivity extends AppCompatActivity {
         try{
             Amplify.DataStore.query(
                     InitialSurvey.class,
+                    Where.matches(InitialSurvey.COMPLETED.eq(1)),
                     allInitialSurveyFamilys -> {
                         Log.i("Tutorials", "DataStore is queried.");
                         while (allInitialSurveyFamilys.hasNext()) {

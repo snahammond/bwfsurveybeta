@@ -106,7 +106,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.menu_save) {
+        if (id == R.id.save) {
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
             //we have to validate now
@@ -118,7 +118,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                 showInvalidSurveyAlert();
             }else{
                 //make an InitialSurvey object
-                FollowUpSurvey followUpSurveyToSave = makeFollowUpSurveyObject(interchangesWithUserAns);
+                FollowUpSurvey followUpSurveyToSave = makeFollowUpSurveyObject(interchangesWithUserAns,1,"","");
 
                 //save the initialSurvey object
                 saveFollowUpSurvey(followUpSurveyToSave);
@@ -202,7 +202,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         });
     }
 
-    private FollowUpSurvey makeFollowUpSurveyObject(ArrayList<Interchange> validatedInterchangesWithAns){
+    private FollowUpSurvey makeFollowUpSurveyObject(ArrayList<Interchange> validatedInterchangesWithAns,int completed, String lat, String lng){
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_s = dateFormat.format(calendar.getTime());
@@ -272,6 +272,9 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                 .healthChangeInAYear(HealthChangeInAYear)
                 .healthChangeFamilyInAYear(HealthChangeFamilyInAYear)
                 .benefitSwp(BenefitSWP)
+                .completed(completed)
+                .lat(lat)
+                .lng(lng)
                 .date(date)
                 .build();
         return followUpSurvey;

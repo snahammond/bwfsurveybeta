@@ -70,6 +70,9 @@ query SyncInitialSurveys(
       MoneySpentMedicalTreatmentLast4weeks
       HealthChangeInAYear
       HealthChangeFamilyInAYear
+      Completed
+      Lat
+      Lng
       _version
       _deleted
       _lastChangedAt
@@ -140,6 +143,9 @@ query GetInitialSurvey($id: ID!) {
     MoneySpentMedicalTreatmentLast4weeks
     HealthChangeInAYear
     HealthChangeFamilyInAYear
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -212,6 +218,9 @@ query ListInitialSurveys(
       MoneySpentMedicalTreatmentLast4weeks
       HealthChangeInAYear
       HealthChangeFamilyInAYear
+      Completed
+      Lat
+      Lng
       _version
       _deleted
       _lastChangedAt
@@ -268,6 +277,9 @@ query SyncFollowUpSurveys(
       HealthChangeInAYear
       HealthChangeFamilyInAYear
       BenefitSWP
+      Completed
+      Lat
+      Lng
       _version
       _deleted
       _lastChangedAt
@@ -313,6 +325,9 @@ query GetFollowUpSurvey($id: ID!) {
     HealthChangeInAYear
     HealthChangeFamilyInAYear
     BenefitSWP
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -360,6 +375,9 @@ query ListFollowUpSurveys(
       HealthChangeInAYear
       HealthChangeFamilyInAYear
       BenefitSWP
+      Completed
+      Lat
+      Lng
       _version
       _deleted
       _lastChangedAt
@@ -408,6 +426,9 @@ query SyncHealthCheckSurveys(
       WaterTreatment24Hours
       MainReasonNoWaterTreatment24Hour
       WaterTreatment24HourMethod
+      Completed
+      Lat
+      Lng
       _version
       _deleted
       _lastChangedAt
@@ -445,6 +466,9 @@ query GetHealthCheckSurvey($id: ID!) {
     WaterTreatment24Hours
     MainReasonNoWaterTreatment24Hour
     WaterTreatment24HourMethod
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -488,6 +512,9 @@ query ListHealthCheckSurveys(
       WaterTreatment24Hours
       MainReasonNoWaterTreatment24Hour
       WaterTreatment24HourMethod
+      Completed
+      Lat
+      Lng
       _version
       _deleted
       _lastChangedAt
@@ -523,6 +550,9 @@ query SyncSweMonthlySummaries(
       NoLsn4Taught
       NoPersonsTaught
       NoChlorineLiquid_TabsDistributed
+      Completed
+      Lat
+      Lng
       _version
       _deleted
       _lastChangedAt
@@ -547,6 +577,9 @@ query GetSweMonthlySummary($id: ID!) {
     NoLsn4Taught
     NoPersonsTaught
     NoChlorineLiquid_TabsDistributed
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -577,6 +610,9 @@ query ListSweMonthlySummarys(
       NoLsn4Taught
       NoPersonsTaught
       NoChlorineLiquid_TabsDistributed
+      Completed
+      Lat
+      Lng
       _version
       _deleted
       _lastChangedAt
@@ -612,6 +648,9 @@ query SyncHouseholdWaterTests(
       PetrifilmDateTested
       PetrifilmDateRead
       PetrifilmTestResult
+      Completed
+      Lat
+      Lng
       _version
       _deleted
       _lastChangedAt
@@ -636,6 +675,9 @@ query GetHouseholdWaterTest($id: ID!) {
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -666,6 +708,9 @@ query ListHouseholdWaterTests(
       PetrifilmDateTested
       PetrifilmDateRead
       PetrifilmTestResult
+      Completed
+      Lat
+      Lng
       _version
       _deleted
       _lastChangedAt
@@ -700,6 +745,9 @@ query SyncCommunityWaterTests(
       PetrifilmDateTested
       PetrifilmDateRead
       PetrifilmTestResult
+      Completed
+      Lat
+      Lng
       _version
       _deleted
       _lastChangedAt
@@ -723,6 +771,9 @@ query GetCommunityWaterTest($id: ID!) {
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -752,6 +803,9 @@ query ListCommunityWaterTests(
       PetrifilmDateTested
       PetrifilmDateRead
       PetrifilmTestResult
+      Completed
+      Lat
+      Lng
       _version
       _deleted
       _lastChangedAt

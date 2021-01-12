@@ -105,7 +105,7 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.menu_save) {
+        if (id == R.id.save) {
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
             //we have to validate now
@@ -119,7 +119,7 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
                 Log.i("Tutorial", "we are going to save!");
 
                 //make an InitialSurvey object
-                HouseholdWaterTest householdWaterTestToSave = makeHouseholdWaterTestObject(interchangesWithUserAns);
+                HouseholdWaterTest householdWaterTestToSave = makeHouseholdWaterTestObject(interchangesWithUserAns,1,"","");
 
                 //save the initialSurvey object
                 saveHouseholdWaterTestSurvey(householdWaterTestToSave);
@@ -204,7 +204,7 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
         });
     }
 
-    private HouseholdWaterTest makeHouseholdWaterTestObject(ArrayList<Interchange> interchangesWithUserAns) {
+    private HouseholdWaterTest makeHouseholdWaterTestObject(ArrayList<Interchange> interchangesWithUserAns,int completed, String lat, String lng) {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_s = dateFormat.format(calendar.getTime());
@@ -232,6 +232,9 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
                 .petrifilmDateTested(PetrifilmDateTested)
                 .petrifilmDateRead(PetrifilmDateRead)
                 .petrifilmTestResult(PetrifilmTestResult)
+                .completed(completed)
+                .lat(lat)
+                .lng(lng)
                 .date(date)
                 .build();
         return householdWaterTest;

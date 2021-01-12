@@ -59,6 +59,9 @@ subscription OnCreateInitialSurvey {
     MoneySpentMedicalTreatmentLast4weeks
     HealthChangeInAYear
     HealthChangeFamilyInAYear
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -126,6 +129,9 @@ subscription OnUpdateInitialSurvey {
     MoneySpentMedicalTreatmentLast4weeks
     HealthChangeInAYear
     HealthChangeFamilyInAYear
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -193,6 +199,9 @@ subscription OnDeleteInitialSurvey {
     MoneySpentMedicalTreatmentLast4weeks
     HealthChangeInAYear
     HealthChangeFamilyInAYear
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -235,6 +244,9 @@ subscription OnCreateFollowUpSurvey {
     HealthChangeInAYear
     HealthChangeFamilyInAYear
     BenefitSWP
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -277,6 +289,9 @@ subscription OnUpdateFollowUpSurvey {
     HealthChangeInAYear
     HealthChangeFamilyInAYear
     BenefitSWP
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -319,6 +334,9 @@ subscription OnDeleteFollowUpSurvey {
     HealthChangeInAYear
     HealthChangeFamilyInAYear
     BenefitSWP
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -353,6 +371,9 @@ subscription OnCreateHealthCheckSurvey {
     WaterTreatment24Hours
     MainReasonNoWaterTreatment24Hour
     WaterTreatment24HourMethod
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -387,6 +408,9 @@ subscription OnUpdateHealthCheckSurvey {
     WaterTreatment24Hours
     MainReasonNoWaterTreatment24Hour
     WaterTreatment24HourMethod
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -421,6 +445,9 @@ subscription OnDeleteHealthCheckSurvey {
     WaterTreatment24Hours
     MainReasonNoWaterTreatment24Hour
     WaterTreatment24HourMethod
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -442,6 +469,9 @@ subscription OnCreateSweMonthlySummary {
     NoLsn4Taught
     NoPersonsTaught
     NoChlorineLiquid_TabsDistributed
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -463,6 +493,9 @@ subscription OnUpdateSweMonthlySummary {
     NoLsn4Taught
     NoPersonsTaught
     NoChlorineLiquid_TabsDistributed
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -484,6 +517,9 @@ subscription OnDeleteSweMonthlySummary {
     NoLsn4Taught
     NoPersonsTaught
     NoChlorineLiquid_TabsDistributed
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -505,6 +541,9 @@ subscription OnCreateHouseholdWaterTest {
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -526,6 +565,9 @@ subscription OnUpdateHouseholdWaterTest {
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -547,6 +589,9 @@ subscription OnDeleteHouseholdWaterTest {
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -567,6 +612,9 @@ subscription OnCreateCommunityWaterTest {
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -587,6 +635,9 @@ subscription OnUpdateCommunityWaterTest {
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -607,6 +658,9 @@ subscription OnDeleteCommunityWaterTest {
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt

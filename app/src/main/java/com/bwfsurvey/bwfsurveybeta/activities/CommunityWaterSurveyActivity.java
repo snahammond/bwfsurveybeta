@@ -95,7 +95,7 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.menu_save) {
+        if (id == R.id.save) {
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
             //we have to validate now
@@ -109,7 +109,7 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                 Log.i("Tutorial", "we are going to save!");
 
                 //make an InitialSurvey object
-                CommunityWaterTest communityWaterTestToSave = makeCommunityWaterTestObject(interchangesWithUserAns);
+                CommunityWaterTest communityWaterTestToSave = makeCommunityWaterTestObject(interchangesWithUserAns,1,"","");
 
                 //save the initialSurvey object
                 saveCommunityWaterTestSurvey(communityWaterTestToSave);
@@ -195,7 +195,7 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                 .setCanceledOnTouchOutside(false);
     }
 
-    private CommunityWaterTest makeCommunityWaterTestObject(ArrayList<Interchange> interchangesWithUserAns) {
+    private CommunityWaterTest makeCommunityWaterTestObject(ArrayList<Interchange> interchangesWithUserAns,int completed, String lat, String lng) {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_s = dateFormat.format(calendar.getTime());
@@ -222,6 +222,9 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                 .petrifilmDateTested(PetrifilmDateTested)
                 .petrifilmDateRead(PetrifilmDateRead)
                 .petrifilmTestResult(PetrifilmTestResult)
+                .completed(completed)
+                .lat(lat)
+                .lng(lng)
                 .date(date)
                 .build();
         return communityWaterTest;

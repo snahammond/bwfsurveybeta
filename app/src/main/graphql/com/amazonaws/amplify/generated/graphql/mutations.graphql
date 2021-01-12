@@ -62,6 +62,9 @@ mutation CreateInitialSurvey(
     MoneySpentMedicalTreatmentLast4weeks
     HealthChangeInAYear
     HealthChangeFamilyInAYear
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -132,6 +135,9 @@ mutation UpdateInitialSurvey(
     MoneySpentMedicalTreatmentLast4weeks
     HealthChangeInAYear
     HealthChangeFamilyInAYear
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -202,6 +208,9 @@ mutation DeleteInitialSurvey(
     MoneySpentMedicalTreatmentLast4weeks
     HealthChangeInAYear
     HealthChangeFamilyInAYear
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -247,6 +256,9 @@ mutation CreateFollowUpSurvey(
     HealthChangeInAYear
     HealthChangeFamilyInAYear
     BenefitSWP
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -292,6 +304,9 @@ mutation UpdateFollowUpSurvey(
     HealthChangeInAYear
     HealthChangeFamilyInAYear
     BenefitSWP
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -337,6 +352,9 @@ mutation DeleteFollowUpSurvey(
     HealthChangeInAYear
     HealthChangeFamilyInAYear
     BenefitSWP
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -374,6 +392,9 @@ mutation CreateHealthCheckSurvey(
     WaterTreatment24Hours
     MainReasonNoWaterTreatment24Hour
     WaterTreatment24HourMethod
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -411,6 +432,9 @@ mutation UpdateHealthCheckSurvey(
     WaterTreatment24Hours
     MainReasonNoWaterTreatment24Hour
     WaterTreatment24HourMethod
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -448,6 +472,9 @@ mutation DeleteHealthCheckSurvey(
     WaterTreatment24Hours
     MainReasonNoWaterTreatment24Hour
     WaterTreatment24HourMethod
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -472,6 +499,9 @@ mutation CreateSweMonthlySummary(
     NoLsn4Taught
     NoPersonsTaught
     NoChlorineLiquid_TabsDistributed
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -496,6 +526,9 @@ mutation UpdateSweMonthlySummary(
     NoLsn4Taught
     NoPersonsTaught
     NoChlorineLiquid_TabsDistributed
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -520,6 +553,9 @@ mutation DeleteSweMonthlySummary(
     NoLsn4Taught
     NoPersonsTaught
     NoChlorineLiquid_TabsDistributed
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -544,6 +580,9 @@ mutation CreateHouseholdWaterTest(
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -568,6 +607,9 @@ mutation UpdateHouseholdWaterTest(
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -592,6 +634,9 @@ mutation DeleteHouseholdWaterTest(
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -615,6 +660,9 @@ mutation CreateCommunityWaterTest(
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -638,6 +686,9 @@ mutation UpdateCommunityWaterTest(
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt
@@ -661,6 +712,9 @@ mutation DeleteCommunityWaterTest(
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt

@@ -102,7 +102,7 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.menu_save) {
+        if (id == R.id.save) {
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
             //we have to validate now
@@ -113,9 +113,18 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                 showInvalidSurveyAlert();
             }else{
                 //make an InitialSurvey object
-                InitialSurvey initialSurveyToSave = makeInitialSurveyObject(interchangesWithUserAns);
+                InitialSurvey initialSurveyToSave = makeInitialSurveyObject(interchangesWithUserAns,1,"","");
                 saveIntialSurvey(initialSurveyToSave);
             }
+        }
+
+        if(id== R.id.suspend){
+            ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
+
+            //make an InitialSurvey object to save
+            InitialSurvey initialSurveyToSave = makeInitialSurveyObject(interchangesWithUserAns,0,"","");
+            saveIntialSurvey(initialSurveyToSave);
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -236,7 +245,7 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         return ans;
     }
 
-    private InitialSurvey makeInitialSurveyObject(ArrayList<Interchange> validatedInterchangesWithAns){
+    private InitialSurvey makeInitialSurveyObject(ArrayList<Interchange> validatedInterchangesWithAns,int completed, String lat, String lng){
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_s = dateFormat.format(calendar.getTime());
@@ -357,6 +366,9 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                 .moneySpentMedicalTreatmentLast4weeks(MoneySpentMedicalTreatmentLast4weeks)
                 .healthChangeInAYear(HealthChangeInAYear)
                 .healthChangeFamilyInAYear(HealthChangeFamilyInAYear)
+                .completed(completed)
+                .lat(lat)
+                .lng(lng)
                 .date(date)
                 .build();
         return initialSurvey;

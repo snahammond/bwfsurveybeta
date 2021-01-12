@@ -89,7 +89,7 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.menu_save) {
+        if (id == R.id.save) {
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
             //we have to validate now
@@ -101,7 +101,7 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
             }else{
 
                 //make an InitialSurvey object
-                SWEMonthlySummary sweMonthlySummary = makeSWEMonthlySummaryObject(interchangesWithUserAns);
+                SWEMonthlySummary sweMonthlySummary = makeSWEMonthlySummaryObject(interchangesWithUserAns,1,"","");
                 //save the initialSurvey object
                 saveSWEMonthlySummary(sweMonthlySummary);
 
@@ -184,7 +184,7 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
                 .show()
                 .setCanceledOnTouchOutside(false);
     }
-    private SWEMonthlySummary makeSWEMonthlySummaryObject(ArrayList<Interchange> interchangesWithUserAns) {
+    private SWEMonthlySummary makeSWEMonthlySummaryObject(ArrayList<Interchange> interchangesWithUserAns,int completed, String lat, String lng) {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_s = dateFormat.format(calendar.getTime());
@@ -212,6 +212,9 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
                 .noLsn4Taught(NoLsn4Taught)
                 .noPersonsTaught(NoPersonsTaught)
                 .noChlorineLiquidTabsDistributed(NoChlorineLiquidTabsDistributed)
+                .completed(completed)
+                .lat(lat)
+                .lng(lng)
                 .date(date)
                 .build();
         return sweMonthlySummary;
