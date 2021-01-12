@@ -3,7 +3,6 @@ package com.bwfsurvey.bwfsurveybeta;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
-import android.os.Build;
 import android.util.Log;
 
 import com.amplifyframework.AmplifyException;
@@ -14,12 +13,20 @@ import com.amplifyframework.core.AmplifyConfiguration;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.DataStoreConfiguration;
 import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
-import com.amplifyframework.datastore.generated.model.ConfigDefinitions;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
+import com.bwfsurvey.bwfsurveybeta.types.Answer;
+import com.bwfsurvey.bwfsurveybeta.types.AnswerDef;
+import com.bwfsurvey.bwfsurveybeta.types.AnswerValue;
+import com.bwfsurvey.bwfsurveybeta.types.Community;
+import com.bwfsurvey.bwfsurveybeta.types.Config;
+import com.bwfsurvey.bwfsurveybeta.types.Interchange;
+import com.bwfsurvey.bwfsurveybeta.types.Question;
+import com.bwfsurvey.bwfsurveybeta.types.Validation;
+import com.bwfsurvey.bwfsurveybeta.utils.ConfigXmlParser;
 import com.example.bwfsurveybeta.R;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -28,7 +35,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class MyAmplifyApplication extends Application {
     private static Context context;

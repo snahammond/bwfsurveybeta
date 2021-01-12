@@ -14,7 +14,7 @@
         android:theme="@style/Theme.BwfSurveyBeta">
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.AuthenticationActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.AuthenticationActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -24,49 +24,49 @@
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.MenuActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.MenuActivity"
             android:label="Menu"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.InitialSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.InitialSurveyActivity"
             android:label="Initial Survey"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.FamilyCardSelectActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.FamilyCardSelectActivity"
             android:label="Select household"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.FollowUpSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.FollowUpSurveyActivity"
             android:label="FollowUp Survey"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.HealthCheckSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.HealthCheckSurveyActivity"
             android:label="Health Check Survey"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.SWEMonthlySummaryActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.SWEMonthlySummaryActivity"
             android:label="SWE Monthly Summary"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.HouseholdWaterSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.HouseholdWaterSurveyActivity"
             android:label="Household Water Survey"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
@@ -74,28 +74,28 @@
 
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.CommunityCardSelectActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.CommunityCardSelectActivity"
             android:label="Select community"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.CommunityWaterSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.CommunityWaterSurveyActivity"
             android:label="Community Water Test"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.ViewInitialSurveySelectActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.ViewInitialSurveySelectActivity"
             android:label="List of saved Initial Survey"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.ViewInitialSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.ViewInitialSurveyActivity"
             android:label="View Details"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
