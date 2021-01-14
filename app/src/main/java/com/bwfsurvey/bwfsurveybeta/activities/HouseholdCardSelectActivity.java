@@ -16,19 +16,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
-import com.bwfsurvey.bwfsurveybeta.adapters.FamilyCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.adapters.HouseholdCardAdapter;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class FamilyCardSelectActivity extends AppCompatActivity {
+public class HouseholdCardSelectActivity extends AppCompatActivity {
     private static ArrayList<InitialSurvey> listOfFamilys;
     private RecyclerView recyclerView;
-    private FamilyCardAdapter adapter;
+    private HouseholdCardAdapter adapter;
     private String namebwe = null;
     private String countrybwe = null;
     private String surveyType = null;
+    private String operation = null;
 
     private LinearLayout progressBar;
 
@@ -42,6 +43,8 @@ public class FamilyCardSelectActivity extends AppCompatActivity {
             countrybwe = getIntent().getStringExtra("COUNTRY_BWE");
         if(getIntent().getStringExtra("SURVEY_TYPE")!=null)
             surveyType = getIntent().getStringExtra("SURVEY_TYPE");
+        if(getIntent().getStringExtra("OPERATION")!=null)
+            operation = getIntent().getStringExtra("OPERATION");
         initView();
     }
 
@@ -58,9 +61,21 @@ public class FamilyCardSelectActivity extends AppCompatActivity {
 
     public void downloadInitialSurveyListAndShowOnRecyclerView(){
         try{
+            int completedL = 0;
+            int completedR = 1;
+            if(operation.contentEquals("CREATE")){
+                completedL = 1;
+                completedR = 1;
+            }else if(operation.contentEquals("UPDATE")){
+                completedL = 0;
+                completedR = 0;
+            }else if(operation.contentEquals("VIEW")){
+                completedL = 0;
+                completedR = 1;
+            }
             Amplify.DataStore.query(
                     InitialSurvey.class,
-                    Where.matches(InitialSurvey.COMPLETED.eq(1)),
+                    Where.matches(InitialSurvey.COMPLETED.eq(completedL).or(InitialSurvey.COMPLETED.eq(completedR))),
                     allInitialSurveyFamilys -> {
                         Log.i("Tutorials", "DataStore is queried.");
                         while (allInitialSurveyFamilys.hasNext()) {
@@ -127,7 +142,7 @@ public class FamilyCardSelectActivity extends AppCompatActivity {
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new FamilyCardAdapter(FamilyCardSelectActivity.this, FamilyCardSelectActivity.listOfFamilys,namebwe,countrybwe,surveyType);
+        adapter = new HouseholdCardAdapter(HouseholdCardSelectActivity.this, HouseholdCardSelectActivity.listOfFamilys,namebwe,countrybwe,surveyType,operation);
         recyclerView.setAdapter(adapter);
     }
 
@@ -135,7 +150,7 @@ public class FamilyCardSelectActivity extends AppCompatActivity {
         if(progressBar!=null)
             progressBar.setVisibility(View.GONE);
 
-        new AlertDialog.Builder(FamilyCardSelectActivity.this)
+        new AlertDialog.Builder(HouseholdCardSelectActivity.this)
                 .setTitle("Loading List Failed")
                 .setMessage("Loading List Failed, Please press the back button and try again\n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.

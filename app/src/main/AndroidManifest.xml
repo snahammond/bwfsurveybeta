@@ -38,7 +38,7 @@
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.FamilyCardSelectActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.HouseholdCardSelectActivity"
             android:label="Select household"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
@@ -88,19 +88,18 @@
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.ViewInitialSurveySelectActivity"
-            android:label="List of saved Initial Survey"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.ViewInitialSurveyActivity"
             android:label="View Details"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.UpdateInitialSurveyActivity"
+            android:label="Update Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 

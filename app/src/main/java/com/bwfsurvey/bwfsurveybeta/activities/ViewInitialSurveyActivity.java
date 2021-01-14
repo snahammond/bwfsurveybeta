@@ -97,8 +97,6 @@ public class ViewInitialSurveyActivity extends AppCompatActivity {
 
                 showViewOnlyInterchanges();
             }
-
-
         }
     }
 

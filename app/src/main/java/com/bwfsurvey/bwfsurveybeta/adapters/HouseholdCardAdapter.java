@@ -14,39 +14,43 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
-import com.bwfsurvey.bwfsurveybeta.activities.FamilyCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.HouseholdCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.FollowUpSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.HealthCheckSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.HouseholdWaterSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.UpdateInitialSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.ViewInitialSurveyActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
 
-public class FamilyCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class HouseholdCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private ArrayList<InitialSurvey> listOfFamilys;
     private String namebwe;
     private String countrybwe;
     private String surveyType;
+    private String operation;
     private Context context;
 
-    public FamilyCardAdapter(FamilyCardSelectActivity familyCardSelectActivity, ArrayList<InitialSurvey> listOfFamilys, String namebwe, String countrybwe, String surveyType) {
+    public HouseholdCardAdapter(HouseholdCardSelectActivity familyCardSelectActivity, ArrayList<InitialSurvey> listOfFamilys, String namebwe, String countrybwe, String surveyType, String operation) {
         this.listOfFamilys = listOfFamilys;
         this.context = familyCardSelectActivity;
         this.namebwe = namebwe;
         this.countrybwe = countrybwe;
         this.surveyType = surveyType;
+        this.operation = operation;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.family_card, parent, false);
-        return new FamilyCardViewHolder(view);
+        return new HouseholdCardViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((FamilyCardAdapter.FamilyCardViewHolder) holder).setFamilyCardDetails(listOfFamilys.get(position),position);
+        ((HouseholdCardAdapter.HouseholdCardViewHolder) holder).setFamilyCardDetails(listOfFamilys.get(position),position);
     }
 
     @Override
@@ -54,14 +58,15 @@ public class FamilyCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         return listOfFamilys.size();
     }
 
-    class FamilyCardViewHolder extends RecyclerView.ViewHolder{
+    class HouseholdCardViewHolder extends RecyclerView.ViewHolder{
 
         private TextView txtFamilySurveyId;
         private TextView txtCountry;
         private TextView txtCommunity;
         private TextView txtHeadHousehold;
+        private String uuidInitialSurvey;
 
-        public FamilyCardViewHolder(@NonNull View itemView) {
+        public HouseholdCardViewHolder(@NonNull View itemView) {
             super(itemView);
             txtFamilySurveyId = (TextView) itemView.findViewById(R.id.txtFamilySurveyId);
             txtCountry = (TextView) itemView.findViewById(R.id.txtCountry);
@@ -74,24 +79,31 @@ public class FamilyCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 public void onClick(View v) {
                     // do whatever you want to do on click (to launch any fragment or activity you need to put intent here.)
                     Log.i("Tutorials", "Selected family: " + txtHeadHousehold.getText());
-
-                    if (surveyType.contentEquals("FOLLOWUPSURVEY")) {
-                        startFollowUpSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString(), txtFamilySurveyId.getText().toString());
-                    }else if(surveyType.contentEquals("HEALTHCHECKSURVEY")){
-                        startHealthCheckSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString(), txtFamilySurveyId.getText().toString());
-                    }else if(surveyType.contentEquals("WATERSURVEYHOUSEHOLD")){
-                        startHouseholdWaterSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString(), txtFamilySurveyId.getText().toString());
+                    if(operation.contentEquals("CREATE")){
+                        if (surveyType.contentEquals("FOLLOWUPSURVEY")) {
+                            startFollowUpSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString(), txtFamilySurveyId.getText().toString());
+                        }else if(surveyType.contentEquals("HEALTHCHECKSURVEY")){
+                            startHealthCheckSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString(), txtFamilySurveyId.getText().toString());
+                        }else if(surveyType.contentEquals("WATERSURVEYHOUSEHOLD")){
+                            startHouseholdWaterSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString(), txtFamilySurveyId.getText().toString());
+                        }
+                    }else if(operation.contentEquals("VIEW")){
+                        startViewInitialSurveyActivity(uuidInitialSurvey);
+                    }else if(operation.contentEquals("UPDATE")){
+                        startUpdateInitialSurveyActivity(uuidInitialSurvey);
                     }
+
                 }
             });
         }
 
 
-        void setFamilyCardDetails(InitialSurvey family,int position) {
-            txtFamilySurveyId.setText(Integer.toString(family.getSurveyId()));
-            txtCountry.setText(family.getCountry());
-            txtCommunity.setText(family.getCommunity());
-            txtHeadHousehold.setText(family.getHeadHouseholdName());
+        void setFamilyCardDetails(InitialSurvey initialSurvey,int position) {
+            txtFamilySurveyId.setText(Integer.toString(initialSurvey.getSurveyId()));
+            txtCountry.setText(initialSurvey.getCountry());
+            txtCommunity.setText(initialSurvey.getCommunity());
+            txtHeadHousehold.setText(initialSurvey.getHeadHouseholdName());
+            uuidInitialSurvey = initialSurvey.getId();
         }
     }
 
@@ -127,6 +139,20 @@ public class FamilyCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         i.putExtra("COMMUNITY",community);
         i.putExtra("HHNAME",householdName);
         i.putExtra("SURVEY_ID",familySurveyId);
+        context.startActivity(i);
+        ((Activity)context).finish();
+    }
+
+    private void startViewInitialSurveyActivity(String uuidInitialSurvey){
+        Intent i = new Intent(context, ViewInitialSurveyActivity.class);
+        i.putExtra("UUID", uuidInitialSurvey);
+        context.startActivity(i);
+        ((Activity)context).finish();
+    }
+
+    private void startUpdateInitialSurveyActivity(String uuidInitialSurvey){
+        Intent i = new Intent(context, UpdateInitialSurveyActivity.class);
+        i.putExtra("UUID", uuidInitialSurvey);
         context.startActivity(i);
         ((Activity)context).finish();
     }

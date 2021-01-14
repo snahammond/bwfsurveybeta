@@ -171,9 +171,10 @@ public class MenuActivity extends AppCompatActivity {
         Button followUpSurvey = (Button) findViewById(R.id.button_followUpSurvey);
         followUpSurvey.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), FamilyCardSelectActivity.class);
+                Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
                 i.putExtra("SURVEY_TYPE","FOLLOWUPSURVEY");
+                i.putExtra("OPERATION","CREATE");
                 startActivity(i);
             }
         });
@@ -181,9 +182,10 @@ public class MenuActivity extends AppCompatActivity {
         Button healthCheckSurvey = (Button) findViewById(R.id.button_healthCheck);
         healthCheckSurvey.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), FamilyCardSelectActivity.class);
+                Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
                 i.putExtra("SURVEY_TYPE","HEALTHCHECKSURVEY");
+                i.putExtra("OPERATION","CREATE");
                 startActivity(i);
             }
         });
@@ -202,11 +204,12 @@ public class MenuActivity extends AppCompatActivity {
         Button waterSurvey = (Button) findViewById(R.id.button_waterSurvey);
         waterSurvey.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), FamilyCardSelectActivity.class);
+                Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
                 i.putExtra("COUNTRY_BWE", countrybwe);
                 i.putExtra("POSITION_BWE", positionbwe);
                 i.putExtra("SURVEY_TYPE","WATERSURVEYHOUSEHOLD");
+                i.putExtra("OPERATION","CREATE");
                 startActivity(i);
             }
         });
@@ -227,10 +230,22 @@ public class MenuActivity extends AppCompatActivity {
         Button initialFullSurveyView = (Button) findViewById(R.id.button_initialFullSurveyView);
         initialFullSurveyView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ViewInitialSurveySelectActivity.class);
+                Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
+                i.putExtra("OPERATION","VIEW");
                 startActivity(i);
             }
         });
+
+        //update incompleted menu items
+        Button initialFullSurveyUC = (Button) findViewById(R.id.button_initialFullSurveyUC);
+        initialFullSurveyUC.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
+                i.putExtra("OPERATION","UPDATE");
+                startActivity(i);
+            }
+        });
+
     }
 
     @Override

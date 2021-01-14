@@ -16,11 +16,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
-import com.bwfsurvey.bwfsurveybeta.types.Interchange;
-import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.adapters.ViewOnlyInterchangeCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.types.Interchange;
+import com.bwfsurvey.bwfsurveybeta.types.ViewOnlyInterchange;
 import com.example.bwfsurveybeta.R;
 
 import java.text.SimpleDateFormat;
@@ -28,68 +31,126 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 
-public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSurveyDialog.SaveQuestionaireDialogListener*/ {
+public class UpdateInitialSurveyActivity extends AppCompatActivity {
+    InitialSurvey theInitialSurvey;
+    private String uuidInitialSurvey;
     private RecyclerView recyclerView;
     private InterchangeCardAdapter adapter;
-    private String namebwe;
-    String countrybwe = null;
-    String community = null;
-    String positionbwe = null;
-    int surveyId = 0;
 
     private static ArrayList<Interchange> interchanges;
-
     private LinearLayout progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(getIntent().getStringExtra("NAME_BWE")!=null)
-            namebwe = getIntent().getStringExtra("NAME_BWE");
-        if(getIntent().getStringExtra("COUNTRY_BWE")!=null)
-            countrybwe = getIntent().getStringExtra("COUNTRY_BWE");
-        if(getIntent().getStringExtra("COMMUNITY")!=null)
-            community = getIntent().getStringExtra("COMMUNITY");
-        if(getIntent().getStringExtra("POSITION_BWE")!=null)
-            positionbwe = getIntent().getStringExtra("POSITION_BWE");
-
-        surveyId = getIntent().getIntExtra("SURVEY_ID",0);
+        if(getIntent().getStringExtra("UUID")!=null)
+            uuidInitialSurvey = getIntent().getStringExtra("UUID");
 
         initView();
     }
 
     private void initView() {
         setContentView(R.layout.activity_recycler);
-
-        createInitialSurveyQuestionaire();
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new InterchangeCardAdapter(InitialSurveyActivity.this, InitialSurveyActivity.interchanges);
-        recyclerView.setAdapter(adapter);
+        createInitialSurveyUpdateInterchanges();
     }
 
-    private void createInitialSurveyQuestionaire(){
-        try{
+    private void createInitialSurveyUpdateInterchanges() {
+        interchanges = new ArrayList<>();
+        createInterchangesAndShowOnRecyclerView();
+    }
+
+    private void createInterchangesAndShowOnRecyclerView() {
+        Amplify.DataStore.query(
+                InitialSurvey.class,
+                Where.matches(InitialSurvey.ID.eq(uuidInitialSurvey)),
+                initialSurvey -> {
+                    Log.i("Tutorials", "DataStore is queried.");
+                    while (initialSurvey.hasNext()) {
+                        theInitialSurvey = initialSurvey.next();
+                        Log.i("Tutorials", "DataStore is queried. theInitialSurvey " +theInitialSurvey.getId());
+                    }
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            createInterchangesAndShow();
+                        }
+                    });
+                },
+                failure ->{
+                    Log.e("Tutorials", "Query failed.", failure);
+                }
+        );
+    }
+
+    private void createInterchangesAndShow() {
+        if(theInitialSurvey!=null){
             ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("INITAILSURVEY");
             if(returnedInterchanges!=null){
-                InitialSurveyActivity.interchanges = new ArrayList<>();
+                UpdateInitialSurveyActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;
                 for(Interchange interchange : returnedInterchanges){
+                    //set answers
+                    String answer = "";
+                    String nameOfAns = interchange.getAnswer().getAnswerDef().getName();
+                    String methodName = "get"+nameOfAns;
+                    java.lang.reflect.Method method;
+                    try {
+                        method = theInitialSurvey.getClass().getMethod(methodName);
+                        Object ansObject = method.invoke(theInitialSurvey);
+                        answer = ansObject.toString();
+                    } catch (Exception e) {
+                        Log.e("Tutorials", "Could not get answer");
+                    }
+                    interchange.getAnswer().setAns(answer);
+
                     interchange.setPositionOnRecyler(positionOnRecyler);
-                    InitialSurveyActivity.interchanges.add(interchange);
+                    UpdateInitialSurveyActivity.interchanges.add(interchange);
                     positionOnRecyler += 1;
                 }
                 //sort the interchanges
-                Collections.sort(InitialSurveyActivity.interchanges);
-
-
+                Collections.sort(UpdateInitialSurveyActivity.interchanges);
+                showViewOnlyInterchanges();
             }
-        }catch (Exception c){
-            Log.i("Tutorial", "we cannot get list of interchanges " );
         }
     }
 
+    private void showViewOnlyInterchanges() {
+        //wait a lil bit so that if we are offline things will settle
+        //this is for the progress bar
+        progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
+        TextView progressBarText = (TextView) findViewById(R.id.pbText);
+        progressBarText.setText("Please wait... Getting records!");
+        progressBar.setVisibility(View.VISIBLE);
+        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+            }
+
+            @Override
+            public void onFinish() {
+                progressBar.setVisibility(View.GONE);
+                initViewElements();
+            }
+        };
+        countDownTimer.start();
+    }
+
+    private void initViewElements() {
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new InterchangeCardAdapter(UpdateInitialSurveyActivity.this, UpdateInitialSurveyActivity.interchanges);
+        recyclerView.setAdapter(adapter);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        for(Interchange interchange: UpdateInitialSurveyActivity.interchanges){
+            interchange.getAnswer().setAns(null);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -114,7 +175,7 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                 showInvalidSurveyAlert();
             }else{
                 //make an InitialSurvey object
-                InitialSurvey initialSurveyToSave = makeInitialSurveyObject(interchangesWithUserAns,1,"","");
+                InitialSurvey initialSurveyToSave = makeInitialSurveyObjectWithId(interchangesWithUserAns,1,"","");
                 saveIntialSurvey(initialSurveyToSave);
             }
         }
@@ -123,97 +184,11 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
             //make an InitialSurvey object to save
-            InitialSurvey initialSurveyToSave = makeInitialSurveyObject(interchangesWithUserAns,0,"","");
+            InitialSurvey initialSurveyToSave = makeInitialSurveyObjectWithId(interchangesWithUserAns,0,"","");
             saveIntialSurvey(initialSurveyToSave);
 
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void showInvalidSurveyAlert(){
-        new AlertDialog.Builder(InitialSurveyActivity.this)
-                .setTitle("Invalid Questions")
-                .setMessage("Some questions have not been correctly answered \n" )
-                // A null listener allows the button to dismiss the dialog and take no further action.
-                .setNegativeButton(android.R.string.ok, null)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show()
-                .setCanceledOnTouchOutside(false);
-    }
-
-    private void saveIntialSurvey(InitialSurvey initialSurveyToSave){
-        Amplify.DataStore.save(initialSurveyToSave,
-                update -> {
-                    Log.i("Tutorial", "Saved Successfully ");
-
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            doSyncWaitAndShowSavedSuccessfulAlert();
-                        }
-                    });
-                },
-                failure -> {
-                    Log.i("Tutorial", "Save Failed ");
-                    showSaveFailedAlert();
-                }
-        );
-    }
-
-    private void doSyncWaitAndShowSavedSuccessfulAlert(){
-        //show progress bar so that if user is offline, the save will go into pending to be shot into cloud
-        //this is for the progress bar
-        progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
-        TextView progressBarText = (TextView) findViewById(R.id.pbText);
-        progressBarText.setText("Please wait... Syncing Up!");
-        progressBar.setVisibility(View.VISIBLE);
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
-
-            @Override
-            public void onFinish() {
-                progressBar.setVisibility(View.GONE);
-                showSavedSuccessfulAlert();
-            }
-        };
-        countDownTimer.start();
-    }
-
-    private void showSavedSuccessfulAlert(){
-        new AlertDialog.Builder(InitialSurveyActivity.this)
-                .setTitle("Saved Succussfully")
-                .setMessage("Initial Survey Saved Succussfully \n" )
-                // A null listener allows the button to dismiss the dialog and take no further action.
-                .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //reset all the user answers
-                        for(Interchange interchange: InitialSurveyActivity.interchanges){
-                            interchange.getAnswer().setAns(null);
-                        }
-                        InitialSurveyActivity.this.finish();
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_info)
-                .show()
-                .setCanceledOnTouchOutside(false);
-    }
-
-    private void showSaveFailedAlert(){
-        runOnUiThread(new Runnable() {
-            public void run() {
-                new AlertDialog.Builder(InitialSurveyActivity.this)
-                        .setTitle("Save Failed")
-                        .setMessage("Initial Survey Save Failed Please try again\n" )
-                        // A null listener allows the button to dismiss the dialog and take no further action.
-                        .setNegativeButton(android.R.string.ok, null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show()
-                        .setCanceledOnTouchOutside(false);
-            }
-        });
     }
 
     //this function will return a list of invalid interchanges
@@ -231,30 +206,26 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         return invalidinterchange;
     }
 
-    private Object getInterchangeAns(String interchangeName,ArrayList<Interchange> validatedInterchangesWithAns){
-        Object ans = null;
-        Interchange foundInterchange = null;
-        for(Interchange interchange : validatedInterchangesWithAns){
-            if(interchange.getName().contentEquals(interchangeName)){
-                ans = interchange.getAnswer().getAns();
-                foundInterchange = interchange;
-            }
-        }
-        if(ans==null){
-            ans = foundInterchange.getValidation().getDefaultValue();
-        }
-        return ans;
+    private void showInvalidSurveyAlert(){
+        new AlertDialog.Builder(UpdateInitialSurveyActivity.this)
+                .setTitle("Invalid Questions")
+                .setMessage("Some questions have not been correctly answered \n" )
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.ok, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show()
+                .setCanceledOnTouchOutside(false);
     }
 
-    private InitialSurvey makeInitialSurveyObject(ArrayList<Interchange> validatedInterchangesWithAns,int completed, String lat, String lng){
+    private InitialSurvey makeInitialSurveyObjectWithId(ArrayList<Interchange> validatedInterchangesWithAns,int completed, String lat, String lng){
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_s = dateFormat.format(calendar.getTime());
 
-        String Namebwe = namebwe;
-        String Country = countrybwe;
-        String Community = community;
-        Integer SurveyId = surveyId;
+        String Namebwe = theInitialSurvey.getNamebwe();
+        String Country = theInitialSurvey.getCountry();
+        String Community = theInitialSurvey.getCommunity();
+        Integer SurveyId = theInitialSurvey.getSurveyId();
         Temporal.Date date = new Temporal.Date(date_s);
         String HeadHouseholdName = (String) getInterchangeAns("HeadHouseholdName",validatedInterchangesWithAns);
         String HeadHouseholdSex = (String) getInterchangeAns("HeadHouseholdSex",validatedInterchangesWithAns);
@@ -371,9 +342,24 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                 .lat(lat)
                 .lng(lng)
                 .date(date)
+                .id(theInitialSurvey.getId())
                 .build();
         return initialSurvey;
+    }
 
+    private Object getInterchangeAns(String interchangeName,ArrayList<Interchange> validatedInterchangesWithAns){
+        Object ans = null;
+        Interchange foundInterchange = null;
+        for(Interchange interchange : validatedInterchangesWithAns){
+            if(interchange.getName().contentEquals(interchangeName)){
+                ans = interchange.getAnswer().getAns();
+                foundInterchange = interchange;
+            }
+        }
+        if(ans==null){
+            ans = foundInterchange.getValidation().getDefaultValue();
+        }
+        return ans;
     }
 
     public static int parseIntegerWithDefault(Object s, int defaultVal) {
@@ -385,6 +371,81 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         }else
             return defaultVal;
 
+    }
+
+    private void saveIntialSurvey(InitialSurvey initialSurveyToSave){
+        Amplify.DataStore.save(initialSurveyToSave,
+                update -> {
+                    Log.i("Tutorial", "Saved Successfully ");
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            doSyncWaitAndShowSavedSuccessfulAlert();
+                        }
+                    });
+                },
+                failure -> {
+                    Log.i("Tutorial", "Save Failed ");
+                    showSaveFailedAlert();
+                }
+        );
+    }
+
+    private void doSyncWaitAndShowSavedSuccessfulAlert(){
+        //show progress bar so that if user is offline, the save will go into pending to be shot into cloud
+        //this is for the progress bar
+        progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
+        TextView progressBarText = (TextView) findViewById(R.id.pbText);
+        progressBarText.setText("Please wait... Syncing Up!");
+        progressBar.setVisibility(View.VISIBLE);
+        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+            }
+
+            @Override
+            public void onFinish() {
+                progressBar.setVisibility(View.GONE);
+                showSavedSuccessfulAlert();
+            }
+        };
+        countDownTimer.start();
+    }
+
+    private void showSaveFailedAlert(){
+        runOnUiThread(new Runnable() {
+            public void run() {
+                new AlertDialog.Builder(UpdateInitialSurveyActivity.this)
+                        .setTitle("Save Failed")
+                        .setMessage("Initial Survey Save Failed Please try again\n" )
+                        // A null listener allows the button to dismiss the dialog and take no further action.
+                        .setNegativeButton(android.R.string.ok, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show()
+                        .setCanceledOnTouchOutside(false);
+            }
+        });
+    }
+
+    private void showSavedSuccessfulAlert(){
+        new AlertDialog.Builder(UpdateInitialSurveyActivity.this)
+                .setTitle("Saved Succussfully")
+                .setMessage("Initial Survey Saved Succussfully \n" )
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //reset all the user answers
+                        for(Interchange interchange: UpdateInitialSurveyActivity.interchanges){
+                            interchange.getAnswer().setAns(null);
+                        }
+                        UpdateInitialSurveyActivity.this.finish();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .show()
+                .setCanceledOnTouchOutside(false);
     }
 
 }
