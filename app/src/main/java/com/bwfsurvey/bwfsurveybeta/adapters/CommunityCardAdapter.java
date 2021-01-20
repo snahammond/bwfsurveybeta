@@ -26,16 +26,20 @@ public class CommunityCardAdapter extends RecyclerView.Adapter<RecyclerView.View
     private String namebwe;
     private String positionbwe = null;
     private String surveyType;
+    private String lat = null;
+    private String lng = null;
     private Context context;
     private int surveyIdForInitialSurvey = 0;
 
-    public CommunityCardAdapter(CommunityCardSelectActivity communityCardSelectActivity, ArrayList<Community> listOfCommunities, String namebwe, String positionbwe, String surveyType, int surveyIdForInitialSurvey) {
+    public CommunityCardAdapter(CommunityCardSelectActivity communityCardSelectActivity, ArrayList<Community> listOfCommunities, String namebwe, String positionbwe, String surveyType, int surveyIdForInitialSurvey, String lat, String lng) {
         this.listOfCommunities = listOfCommunities;
         this.context = communityCardSelectActivity;
         this.namebwe = namebwe;
         this.positionbwe = positionbwe;
         this.surveyType = surveyType;
         this.surveyIdForInitialSurvey = surveyIdForInitialSurvey;
+        this.lat = lat;
+        this.lng = lng;
     }
 
     @NonNull
@@ -87,6 +91,8 @@ public class CommunityCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         i.putExtra("SURVEY_TYPE",surveyType);
         i.putExtra("COUNTRY_BWE",country);
         i.putExtra("COMMUNITY",community);
+        i.putExtra("LAT",lat);
+        i.putExtra("LNG",lng);
         context.startActivity(i);
         ((Activity)context).finish();
     }
@@ -99,6 +105,8 @@ public class CommunityCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         i.putExtra("COUNTRY_BWE",country);
         i.putExtra("COMMUNITY",community);
         i.putExtra("SURVEY_ID",surveyIdForInitialSurvey);
+        i.putExtra("LAT",lat);
+        i.putExtra("LNG",lng);
         context.startActivity(i);
         ((Activity)context).finish();
     }

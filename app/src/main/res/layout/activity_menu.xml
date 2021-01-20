@@ -123,6 +123,19 @@
                                     app:backgroundTint="#FFFFFF"/>
 
                                 <Button
+                                    android:id="@+id/button_waterSurveyFromVol"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:background="?android:attr/selectableItemBackground"
+                                    android:gravity="start"
+                                    android:shadowColor="#FFFFFF"
+                                    android:text="Water test from volunteers"
+                                    android:textColor="#3F51B5"
+                                    app:backgroundTint="#FFFFFF"/>
+
+                                <Button
                                     android:id="@+id/button_healthCheck"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"

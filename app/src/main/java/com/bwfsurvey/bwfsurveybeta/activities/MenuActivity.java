@@ -19,6 +19,7 @@ import com.amplifyframework.datastore.generated.model.ConfigDefinitions;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
 import com.bwfsurvey.bwfsurveybeta.types.Config;
+import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
@@ -28,6 +29,8 @@ public class MenuActivity extends AppCompatActivity {
     String countrybwe = null;
     String positionbwe = null;
     boolean calledAMPStart = true;
+    String lat = null;
+    String lng = null;
 
     private LinearLayout progressBar;
     private TextView progressBarText;
@@ -46,6 +49,15 @@ public class MenuActivity extends AppCompatActivity {
 
         calledAMPStart = getIntent().getBooleanExtra("CALLED_AMPSTART",true);
         Log.i("Tutorials", "namebwe: " + namebwe);
+
+        PhoneLocation phoneLocation = new PhoneLocation(MenuActivity.this);
+        String[] arraylatlng = phoneLocation.getLocation();
+        if(arraylatlng!=null){
+            this.lat = arraylatlng[0];
+            this.lng = arraylatlng[1];
+        }
+        Log.i("Tutorials", "lat " +this.lat );
+        Log.i("Tutorials", "lat " +this.lng );
 
         setContentView(R.layout.activity_menu);
         progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
@@ -164,6 +176,8 @@ public class MenuActivity extends AppCompatActivity {
                 i.putExtra("COUNTRY_BWE", countrybwe);
                 i.putExtra("POSITION_BWE", positionbwe);
                 i.putExtra("SURVEY_TYPE","INITIALSURVEY");
+                i.putExtra("LAT",lat);
+                i.putExtra("LNG",lng);
                 startActivity(i);
             }
         });
@@ -175,6 +189,8 @@ public class MenuActivity extends AppCompatActivity {
                 i.putExtra("NAME_BWE", namebwe);
                 i.putExtra("SURVEY_TYPE","FOLLOWUPSURVEY");
                 i.putExtra("OPERATION","CREATE");
+                i.putExtra("LAT",lat);
+                i.putExtra("LNG",lng);
                 startActivity(i);
             }
         });
@@ -186,6 +202,8 @@ public class MenuActivity extends AppCompatActivity {
                 i.putExtra("NAME_BWE", namebwe);
                 i.putExtra("SURVEY_TYPE","HEALTHCHECKSURVEY");
                 i.putExtra("OPERATION","CREATE");
+                i.putExtra("LAT",lat);
+                i.putExtra("LNG",lng);
                 startActivity(i);
             }
         });
@@ -197,6 +215,8 @@ public class MenuActivity extends AppCompatActivity {
                 i.putExtra("NAME_BWE", namebwe);
                 i.putExtra("POSITION_BWE", positionbwe);
                 i.putExtra("SURVEY_TYPE","SWESUMMARY");
+                i.putExtra("LAT",lat);
+                i.putExtra("LNG",lng);
                 startActivity(i);
             }
         });
@@ -210,6 +230,8 @@ public class MenuActivity extends AppCompatActivity {
                 i.putExtra("POSITION_BWE", positionbwe);
                 i.putExtra("SURVEY_TYPE","WATERSURVEYHOUSEHOLD");
                 i.putExtra("OPERATION","CREATE");
+                i.putExtra("LAT",lat);
+                i.putExtra("LNG",lng);
                 startActivity(i);
             }
         });
@@ -222,6 +244,24 @@ public class MenuActivity extends AppCompatActivity {
                 i.putExtra("COUNTRY_BWE", countrybwe);
                 i.putExtra("POSITION_BWE", positionbwe);
                 i.putExtra("SURVEY_TYPE","WATERSURVEYCOMMUNITY");
+                i.putExtra("LAT",lat);
+                i.putExtra("LNG",lng);
+                startActivity(i);
+            }
+        });
+
+
+        Button waterSurveyFromVol = (Button) findViewById(R.id.button_waterSurveyFromVol);
+        waterSurveyFromVol.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),VolHouseholdCardSelectActivity.class);
+                i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("COUNTRY_BWE", countrybwe);
+                i.putExtra("POSITION_BWE", positionbwe);
+                i.putExtra("SURVEY_TYPE","VOLWATERSURVEYHOUSEHOLD");
+                i.putExtra("OPERATION","CREATE");
+                i.putExtra("LAT",lat);
+                i.putExtra("LNG",lng);
                 startActivity(i);
             }
         });

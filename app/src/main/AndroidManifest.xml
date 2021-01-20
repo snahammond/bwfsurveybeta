@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.bwfsurveybeta">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
     <application
         android:name="com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication"
         tools:replace="android:name"
@@ -97,6 +100,13 @@
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.UpdateInitialSurveyActivity"
             android:label="Update Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.VolHouseholdCardSelectActivity"
+            android:label="Select or create new household"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>

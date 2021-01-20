@@ -31,6 +31,8 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
     private String countrybwe = null;
     private String positionbwe = null;
     private String surveyType = null;
+    private String lat = null;
+    private String lng = null;
     private int surveyIdForInitialSurvey = 0;
 
     private LinearLayout progressBar;
@@ -47,6 +49,11 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
         Log.i("Tutorials", "namebwe: " + namebwe);
         if(getIntent().getStringExtra("SURVEY_TYPE")!=null)
             surveyType = getIntent().getStringExtra("SURVEY_TYPE");
+        if(getIntent().getStringExtra("LAT")!=null)
+            lat = getIntent().getStringExtra("LAT");
+        if(getIntent().getStringExtra("LNG")!=null)
+            lng = getIntent().getStringExtra("LNG");
+
         initView();
     }
 
@@ -133,7 +140,7 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CommunityCardAdapter(CommunityCardSelectActivity.this, CommunityCardSelectActivity.listOfCommunities,namebwe,positionbwe,surveyType,surveyIdForInitialSurvey);
+        adapter = new CommunityCardAdapter(CommunityCardSelectActivity.this, CommunityCardSelectActivity.listOfCommunities,namebwe,positionbwe,surveyType,surveyIdForInitialSurvey,lat,lng);
         recyclerView.setAdapter(adapter);
     }
 }

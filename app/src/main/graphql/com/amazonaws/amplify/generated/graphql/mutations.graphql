@@ -836,3 +836,90 @@ mutation DeleteBwfsurveytotals(
     updatedAt
   }
 }
+mutation CreateVolunteerHouseholdWaterTest(
+  $input: CreateVolunteerHouseholdWaterTestInput!
+  $condition: ModelVolunteerHouseholdWaterTestConditionInput
+) {
+  createVolunteerHouseholdWaterTest(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    date
+    Country
+    Community
+    HeadHouseholdName
+    HouseholdLocation
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateVolunteerHouseholdWaterTest(
+  $input: UpdateVolunteerHouseholdWaterTestInput!
+  $condition: ModelVolunteerHouseholdWaterTestConditionInput
+) {
+  updateVolunteerHouseholdWaterTest(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    date
+    Country
+    Community
+    HeadHouseholdName
+    HouseholdLocation
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteVolunteerHouseholdWaterTest(
+  $input: DeleteVolunteerHouseholdWaterTestInput!
+  $condition: ModelVolunteerHouseholdWaterTestConditionInput
+) {
+  deleteVolunteerHouseholdWaterTest(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    date
+    Country
+    Community
+    HeadHouseholdName
+    HouseholdLocation
+    ColilertDateTested
+    ColilertDateRead
+    ColilertTestResult
+    PetrifilmDateTested
+    PetrifilmDateRead
+    PetrifilmTestResult
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

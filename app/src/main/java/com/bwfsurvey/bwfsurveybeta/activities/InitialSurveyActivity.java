@@ -21,6 +21,7 @@ import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
 import com.example.bwfsurveybeta.R;
 
 import java.text.SimpleDateFormat;
@@ -35,6 +36,8 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
     String countrybwe = null;
     String community = null;
     String positionbwe = null;
+    private String lat = null;
+    private String lng = null;
     int surveyId = 0;
 
     private static ArrayList<Interchange> interchanges;
@@ -55,6 +58,10 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
             positionbwe = getIntent().getStringExtra("POSITION_BWE");
 
         surveyId = getIntent().getIntExtra("SURVEY_ID",0);
+        if(getIntent().getStringExtra("LAT")!=null)
+            lat = getIntent().getStringExtra("LAT");
+        if(getIntent().getStringExtra("LNG")!=null)
+            lng = getIntent().getStringExtra("LNG");
 
         initView();
     }
@@ -113,17 +120,45 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
             if(invalideInterchanges.size()>0){
                 showInvalidSurveyAlert();
             }else{
+                String lat_ = "";
+                String lng_ = "";
+                if(lat!=null&&lng!=null){
+                    lat_= lat;
+                    lng_ = lng;
+                }else{
+                    //try and get it again
+                    PhoneLocation phoneLocation = new PhoneLocation(InitialSurveyActivity.this);
+                    String[] arraylatlng = phoneLocation.getLocation();
+                    if(arraylatlng!=null){
+                        lat_ = arraylatlng[0];
+                        lng_ = arraylatlng[1];
+                    }
+                }
+
                 //make an InitialSurvey object
-                InitialSurvey initialSurveyToSave = makeInitialSurveyObject(interchangesWithUserAns,1,"","");
+                InitialSurvey initialSurveyToSave = makeInitialSurveyObject(interchangesWithUserAns,1,lat_,lng_);
                 saveIntialSurvey(initialSurveyToSave);
             }
         }
 
         if(id== R.id.suspend){
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
-
+            String lat_ = "";
+            String lng_ = "";
+            if(lat!=null&&lng!=null){
+                lat_= lat;
+                lng_ = lng;
+            }else{
+                //try and get it again
+                PhoneLocation phoneLocation = new PhoneLocation(InitialSurveyActivity.this);
+                String[] arraylatlng = phoneLocation.getLocation();
+                if(arraylatlng!=null){
+                    lat_ = arraylatlng[0];
+                    lng_ = arraylatlng[1];
+                }
+            }
             //make an InitialSurvey object to save
-            InitialSurvey initialSurveyToSave = makeInitialSurveyObject(interchangesWithUserAns,0,"","");
+            InitialSurvey initialSurveyToSave = makeInitialSurveyObject(interchangesWithUserAns,0,lat_,lng_);
             saveIntialSurvey(initialSurveyToSave);
 
         }
