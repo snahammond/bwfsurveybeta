@@ -80,8 +80,8 @@ public class VolHouseholdCardSelectActivity extends AppCompatActivity implements
                 completedL = 0;
                 completedR = 0;
             }else if(operation.contentEquals("UPDATE")){
-                completedL = 0;
-                completedR = 0;
+                completedL = 1;
+                completedR = 1;
             }else if(operation.contentEquals("VIEW")){
                 completedL = 0;
                 completedR = 0;
