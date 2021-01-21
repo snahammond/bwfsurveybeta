@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import androidx.fragment.app.DialogFragment;
 
 import com.amplifyframework.core.model.temporal.Temporal;
+import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
 import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
 import com.bwfsurvey.bwfsurveybeta.activities.AuthenticationActivity;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
@@ -22,6 +23,7 @@ import com.example.bwfsurveybeta.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class CreateNewVolunteerHousehold extends DialogFragment {
 
@@ -37,7 +39,7 @@ public class CreateNewVolunteerHousehold extends DialogFragment {
     }
 
     public interface CreateNewVolunteerHouseholdListener {
-        public void onDialogPositiveClick(DialogFragment dialog,VolunteerHouseholdWaterTest newVolunteerHouseholdWaterTest);
+        public void onDialogPositiveClick(DialogFragment dialog,VolunteerHousehold newVolunteerHousehold);
         public void onDialogNegativeClick(DialogFragment dialog);
     }
 
@@ -94,25 +96,24 @@ public class CreateNewVolunteerHousehold extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         EditText nameNewHouseholdEditText = (EditText)layoutView.findViewById(R.id.nameNewHousehold);
                         EditText locationNewHouseholdEditText = (EditText)layoutView.findViewById(R.id.locationNewHousehold);
-                        VolunteerHouseholdWaterTest newVolunteerHouseholdWaterTest = VolunteerHouseholdWaterTest.builder()
+
+                        Calendar calendar = Calendar.getInstance();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        String date_s = dateFormat.format(calendar.getTime());
+
+                        VolunteerHousehold newVolunteerHousehold = VolunteerHousehold.builder()
                                 .namebwe(namebwe)
                                 .namevol("")
                                 .country(country)
                                 .community(selectedCommunity)
                                 .headHouseholdName(nameNewHouseholdEditText.getText().toString())
                                 .householdLocation(locationNewHouseholdEditText.getText().toString())
-                                .colilertDateTested(new Temporal.Date( "1900-01-01"))
-                                .colilertDateRead(new Temporal.Date( "1900-01-01"))
-                                .colilertTestResult("")
-                                .petrifilmDateTested(new Temporal.Date( "1900-01-01"))
-                                .petrifilmDateRead(new Temporal.Date( "1900-01-01"))
-                                .petrifilmTestResult("")
-                                .completed(0)
+                                .completed(1)
                                 .lat("")
                                 .lng("")
-                                .date(new Temporal.Date( "1900-01-01"))
+                                .date(new Temporal.Date(date_s))
                                 .build();
-                        listener.onDialogPositiveClick(CreateNewVolunteerHousehold.this,newVolunteerHouseholdWaterTest);
+                        listener.onDialogPositiveClick(CreateNewVolunteerHousehold.this,newVolunteerHousehold);
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

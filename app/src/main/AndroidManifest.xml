@@ -110,6 +110,13 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.VolHouseholdWaterSurveyActivity"
+            android:label="Volunteer household"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
 
     </application>
 

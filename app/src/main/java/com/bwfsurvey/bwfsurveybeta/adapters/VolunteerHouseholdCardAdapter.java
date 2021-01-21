@@ -1,6 +1,8 @@
 package com.bwfsurvey.bwfsurveybeta.adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,23 +14,26 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
+import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
 import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
+import com.bwfsurvey.bwfsurveybeta.activities.FollowUpSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.HouseholdCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.VolHouseholdCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.VolHouseholdWaterSurveyActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
 
 public class VolunteerHouseholdCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-    private ArrayList<VolunteerHouseholdWaterTest> listOfVolHouseholds;
+    private ArrayList<VolunteerHousehold> listOfVolHouseholds;
     private String namebwe;
     private String countrybwe;
     private String surveyType;
     private String operation;
     private Context context;
 
-    public VolunteerHouseholdCardAdapter(VolHouseholdCardSelectActivity volHouseholdCardSelectActivity, ArrayList<VolunteerHouseholdWaterTest> listOfVolHouseholds, String namebwe, String countrybwe, String surveyType, String operation) {
+    public VolunteerHouseholdCardAdapter(VolHouseholdCardSelectActivity volHouseholdCardSelectActivity, ArrayList<VolunteerHousehold> listOfVolHouseholds, String namebwe, String countrybwe, String surveyType, String operation) {
         this.listOfVolHouseholds = listOfVolHouseholds;
         this.context = volHouseholdCardSelectActivity;
         this.namebwe = namebwe;
@@ -59,7 +64,7 @@ public class VolunteerHouseholdCardAdapter extends RecyclerView.Adapter<Recycler
         private TextView txtCountry;
         private TextView txtCommunity;
         private TextView txtHeadHousehold;
-        private String uuidVolHousehold;
+        private String txtHouseholdLoc;
 
         public VolHouseholdCardViewHolder(View view) {
             super(view);
@@ -74,25 +79,39 @@ public class VolunteerHouseholdCardAdapter extends RecyclerView.Adapter<Recycler
                 public void onClick(View v) {
                     // do whatever you want to do on click (to launch any fragment or activity you need to put intent here.)
                     Log.i("Tutorials", "Selected family: " + txtHeadHousehold.getText());
+
                     if(operation.contentEquals("CREATE")){
-                       // startFollowUpSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString(), txtFamilySurveyId.getText().toString());
+                       startVolHouseholdWaterSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString(), txtHouseholdLoc );
                     }else if(operation.contentEquals("VIEW")){
-                        //startViewInitialSurveyActivity(uuidInitialSurvey);
+                       //startViewInitialSurveyActivity(uuidInitialSurvey);
                     }else if(operation.contentEquals("UPDATE")){
                         //startUpdateInitialSurveyActivity(uuidInitialSurvey);
                     }
+
 
                 }
             });
         }
 
-        void setVolHouseholCardDetails(VolunteerHouseholdWaterTest volunteerHouseholdWaterTest,int position) {
+        void setVolHouseholCardDetails(VolunteerHousehold volunteerHousehold,int position) {
             //txtFamilySurveyId.setText(Integer.toString(initialSurvey.getSurveyId()));
-            txtCountry.setText(volunteerHouseholdWaterTest.getCountry());
-            txtCommunity.setText(volunteerHouseholdWaterTest.getCommunity());
-            txtHeadHousehold.setText(volunteerHouseholdWaterTest.getHeadHouseholdName());
-            uuidVolHousehold = volunteerHouseholdWaterTest.getId();
+            txtCountry.setText(volunteerHousehold.getCountry());
+            txtCommunity.setText(volunteerHousehold.getCommunity());
+            txtHeadHousehold.setText(volunteerHousehold.getHeadHouseholdName());
+            txtHouseholdLoc = volunteerHousehold.getHouseholdLocation();
         }
 
+    }
+
+    private void startVolHouseholdWaterSurveyActivity(String country, String community, String householdName, String householdLoc) {
+        Intent i = new Intent(this.context, VolHouseholdWaterSurveyActivity.class);
+        i.putExtra("NAME_BWE", namebwe);
+        i.putExtra("SURVEY_TYPE",surveyType);
+        i.putExtra("COUNTRY",country);
+        i.putExtra("COMMUNITY",community);
+        i.putExtra("HHNAME",householdName);
+        i.putExtra("HHLOC",householdLoc);
+        context.startActivity(i);
+        ((Activity)context).finish();
     }
 }

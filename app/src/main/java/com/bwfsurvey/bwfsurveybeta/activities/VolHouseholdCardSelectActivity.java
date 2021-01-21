@@ -21,6 +21,7 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.ConfigDefinitions;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
+import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
 import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.HouseholdCardAdapter;
@@ -37,7 +38,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class VolHouseholdCardSelectActivity extends AppCompatActivity implements CreateNewVolunteerHousehold.CreateNewVolunteerHouseholdListener{
-    private static ArrayList<VolunteerHouseholdWaterTest> listOfVolHouseholds;
+    private static ArrayList<VolunteerHousehold> listOfVolHouseholds;
     private RecyclerView recyclerView;
     private VolunteerHouseholdCardAdapter adapter;
     private String namebwe = null;
@@ -74,26 +75,14 @@ public class VolHouseholdCardSelectActivity extends AppCompatActivity implements
     private void downloadVolunteerHouseholdListAndShowOnRecyclerView() {
         Log.i("Tutorials", "going to downloadVolunteerHouseholdListAndShowOnRecyclerView");
         try{
-            int completedL = 0;
-            int completedR = 1;
-            if(operation.contentEquals("CREATE")){
-                completedL = 0;
-                completedR = 0;
-            }else if(operation.contentEquals("UPDATE")){
-                completedL = 1;
-                completedR = 1;
-            }else if(operation.contentEquals("VIEW")){
-                completedL = 0;
-                completedR = 0;
-            }
+
             listOfVolHouseholds = new ArrayList<>();
             Amplify.DataStore.query(
-                    VolunteerHouseholdWaterTest.class,
-                    Where.matches(VolunteerHouseholdWaterTest.COMPLETED.eq(completedL).or(VolunteerHouseholdWaterTest.COMPLETED.eq(completedR))),
-                    allInitialSurveyFamilys -> {
+                    VolunteerHousehold.class,
+                    allVolunteerHouseholds -> {
                         Log.i("Tutorials", "DataStore is queried.");
-                        while (allInitialSurveyFamilys.hasNext()) {
-                            VolunteerHouseholdWaterTest aVolHousehold = allInitialSurveyFamilys.next();
+                        while (allVolunteerHouseholds.hasNext()) {
+                            VolunteerHousehold aVolHousehold = allVolunteerHouseholds.next();
                             listOfVolHouseholds.add(aVolHousehold);
                             Log.i("Tutorials", "Title: " + aVolHousehold.getHeadHouseholdName());
                         }
@@ -192,12 +181,12 @@ public class VolHouseholdCardSelectActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onDialogPositiveClick(DialogFragment dialog, VolunteerHouseholdWaterTest newVolunteerHouseholdWaterTest) {
-        Log.i("Tutorials", "newVolunteerHouseholdWaterTest " + newVolunteerHouseholdWaterTest.getCommunity() + " " +newVolunteerHouseholdWaterTest.getHeadHouseholdName() + " " + newVolunteerHouseholdWaterTest.getHouseholdLocation() );
+    public void onDialogPositiveClick(DialogFragment dialog, VolunteerHousehold newVolunteerHousehold) {
+        Log.i("Tutorials", "newVolunteerHousehold " + newVolunteerHousehold.getCommunity() + " " +newVolunteerHousehold.getHeadHouseholdName() + " " + newVolunteerHousehold.getHouseholdLocation() );
 
-        if (newVolunteerHouseholdWaterTest.getHeadHouseholdName()!=null&&newVolunteerHouseholdWaterTest.getHeadHouseholdName()!=""){
+        if (newVolunteerHousehold.getHeadHouseholdName()!=null&&newVolunteerHousehold.getHeadHouseholdName()!=""){
 
-            Amplify.DataStore.save(newVolunteerHouseholdWaterTest,
+            Amplify.DataStore.save(newVolunteerHousehold,
                     update -> {
                         Log.i("Tutorial", "Saved Successfully ");
 
@@ -212,6 +201,8 @@ public class VolHouseholdCardSelectActivity extends AppCompatActivity implements
                         showSaveFailedAlert();
                     }
             );
+        }else{
+            Log.i("Tutorials", "newVolunteerHousehold data not valid" );
         }
 
     }

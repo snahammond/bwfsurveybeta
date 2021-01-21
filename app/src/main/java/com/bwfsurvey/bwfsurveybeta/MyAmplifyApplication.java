@@ -18,6 +18,7 @@ import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
+import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
 import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
 import com.bwfsurvey.bwfsurveybeta.types.Answer;
 import com.bwfsurvey.bwfsurveybeta.types.AnswerDef;
@@ -69,6 +70,10 @@ public class MyAmplifyApplication extends Application {
                     .syncExpression(
                             VolunteerHouseholdWaterTest.class,
                             () -> VolunteerHouseholdWaterTest.NAMEBWE.eq(namebwe)
+                    )
+                    .syncExpression(
+                            VolunteerHousehold.class,
+                            () -> VolunteerHousehold.NAMEBWE.eq(namebwe)
                     )
                     .syncExpression(
                             HouseholdWaterTest.class,

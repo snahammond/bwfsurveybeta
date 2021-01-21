@@ -842,3 +842,63 @@ subscription OnDeleteVolunteerHouseholdWaterTest {
     updatedAt
   }
 }
+subscription OnCreateVolunteerHousehold {
+  onCreateVolunteerHousehold {
+    id
+    Namebwe
+    Namevol
+    date
+    Country
+    Community
+    HeadHouseholdName
+    HouseholdLocation
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateVolunteerHousehold {
+  onUpdateVolunteerHousehold {
+    id
+    Namebwe
+    Namevol
+    date
+    Country
+    Community
+    HeadHouseholdName
+    HouseholdLocation
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteVolunteerHousehold {
+  onDeleteVolunteerHousehold {
+    id
+    Namebwe
+    Namevol
+    date
+    Country
+    Community
+    HeadHouseholdName
+    HouseholdLocation
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

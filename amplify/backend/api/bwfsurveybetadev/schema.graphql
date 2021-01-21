@@ -239,3 +239,17 @@ Completed: Int!
 Lat: String!
 Lng: String!
 }
+
+type VolunteerHousehold @model @auth(rules: [{ allow: public,provider: apiKey }]){
+id: ID!
+Namebwe: String!
+Namevol: String!
+date: AWSDate
+Country: String!
+Community: String!
+HeadHouseholdName: String!
+HouseholdLocation: String!
+Completed: Int!
+Lat: String!
+Lng: String!
+}

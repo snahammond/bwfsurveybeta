@@ -258,7 +258,7 @@ public class MenuActivity extends AppCompatActivity {
                 i.putExtra("NAME_BWE", namebwe);
                 i.putExtra("COUNTRY_BWE", countrybwe);
                 i.putExtra("POSITION_BWE", positionbwe);
-                i.putExtra("SURVEY_TYPE","VOLWATERSURVEYHOUSEHOLD");
+                i.putExtra("SURVEY_TYPE","WATERSURVEYHOUSEHOLD");
                 i.putExtra("OPERATION","CREATE");
                 i.putExtra("LAT",lat);
                 i.putExtra("LNG",lng);

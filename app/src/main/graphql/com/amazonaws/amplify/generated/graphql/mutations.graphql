@@ -923,3 +923,72 @@ mutation DeleteVolunteerHouseholdWaterTest(
     updatedAt
   }
 }
+mutation CreateVolunteerHousehold(
+  $input: CreateVolunteerHouseholdInput!
+  $condition: ModelVolunteerHouseholdConditionInput
+) {
+  createVolunteerHousehold(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    date
+    Country
+    Community
+    HeadHouseholdName
+    HouseholdLocation
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateVolunteerHousehold(
+  $input: UpdateVolunteerHouseholdInput!
+  $condition: ModelVolunteerHouseholdConditionInput
+) {
+  updateVolunteerHousehold(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    date
+    Country
+    Community
+    HeadHouseholdName
+    HouseholdLocation
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteVolunteerHousehold(
+  $input: DeleteVolunteerHouseholdInput!
+  $condition: ModelVolunteerHouseholdConditionInput
+) {
+  deleteVolunteerHousehold(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    date
+    Country
+    Community
+    HeadHouseholdName
+    HouseholdLocation
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
