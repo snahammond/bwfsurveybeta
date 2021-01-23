@@ -177,7 +177,7 @@ public class VolHouseholdWaterSurveyActivity extends AppCompatActivity {
     private void showSavedSuccessfulAlert(){
         new AlertDialog.Builder(VolHouseholdWaterSurveyActivity.this)
                 .setTitle("Saved Succussfully")
-                .setMessage("Household Water Test Saved Succussfully \n" )
+                .setMessage("Volunteer Household Water Test Saved Succussfully \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
                 .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 

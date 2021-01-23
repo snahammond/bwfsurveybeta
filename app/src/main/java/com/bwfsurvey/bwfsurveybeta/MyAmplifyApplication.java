@@ -12,6 +12,7 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.AmplifyConfiguration;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.DataStoreConfiguration;
+import com.amplifyframework.datastore.generated.model.CommunityWater;
 import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
@@ -62,6 +63,10 @@ public class MyAmplifyApplication extends Application {
                     .syncExpression(
                             FollowUpSurvey.class,
                             () -> FollowUpSurvey.NAMEBWE.eq(namebwe)
+                    )
+                    .syncExpression(
+                            CommunityWater.class,
+                            () -> CommunityWater.NAMEBWE.eq(namebwe)
                     )
                     .syncExpression(
                             CommunityWaterTest.class,
@@ -204,7 +209,7 @@ public class MyAmplifyApplication extends Application {
         ArrayList<Config> configs = null;
         //load from file
         ConfigXmlParser configXmlParser = new ConfigXmlParser();
-        InputStream is = getResources().openRawResource(R.raw.config);
+        InputStream is = getResources().openRawResource(R.raw.config_old);
 
         try {
             configs = (ArrayList<Config>) configXmlParser.parse(is);

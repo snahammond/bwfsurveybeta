@@ -17,13 +17,26 @@
         android:theme="@style/Theme.BwfSurveyBeta">
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.AuthenticationActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.SplashActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.AuthenticationActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+
         </activity>
 
         <activity
