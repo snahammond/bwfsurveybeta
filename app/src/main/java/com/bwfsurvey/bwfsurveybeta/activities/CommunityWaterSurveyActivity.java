@@ -33,6 +33,7 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
     private String surveyType = null;
     private String countrybwe = null;
     private String community = null;
+    private String communityWaterLoc = null;
     private String householdName = null;
     private static ArrayList<Interchange> interchanges;
     private RecyclerView recyclerView;
@@ -51,6 +52,8 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
             countrybwe = getIntent().getStringExtra("COUNTRY_BWE");
         if(getIntent().getStringExtra("COMMUNITY")!=null)
             community = getIntent().getStringExtra("COMMUNITY");
+        if(getIntent().getStringExtra("COMMUNITY_WATER_LOC")!=null)
+            communityWaterLoc = getIntent().getStringExtra("COMMUNITY_WATER_LOC");
 
         setContentView(R.layout.activity_recycler);
         getSupportActionBar().setTitle((CharSequence) "Community Water Test; "+community);
@@ -203,7 +206,7 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
         String Namebwe = namebwe;
         String Country = (String) countrybwe;
         String Community = (String) community;
-        String HeadHouseholdName = (String) householdName;
+        String CommunityWaterLoc = (String) communityWaterLoc;
         Temporal.Date  ColilertDateTested = new Temporal.Date(dateFormat.format(getInterchangeAns("ColilertDateTested",interchangesWithUserAns)));
         Temporal.Date ColilertDateRead = new Temporal.Date(dateFormat.format(getInterchangeAns("ColilertDateRead",interchangesWithUserAns)));
         String ColilertTestResult = (String) getInterchangeAns("ColilertTestResult",interchangesWithUserAns);
@@ -216,6 +219,7 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                 .namebwe(Namebwe)
                 .country(Country)
                 .community(Community)
+                .communityWaterLocation(CommunityWaterLoc)
                 .colilertDateTested(ColilertDateTested)
                 .colilertDateRead(ColilertDateRead)
                 .colilertTestResult(ColilertTestResult)

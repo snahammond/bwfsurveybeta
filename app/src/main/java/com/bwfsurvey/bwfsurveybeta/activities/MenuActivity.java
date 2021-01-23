@@ -239,10 +239,11 @@ public class MenuActivity extends AppCompatActivity {
         Button waterSurveyComm = (Button) findViewById(R.id.button_waterSurveyComm);
         waterSurveyComm.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),CommunityCardSelectActivity.class);
+                Intent i = new Intent(getApplicationContext(),CommunityWaterCardSelectActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
                 i.putExtra("COUNTRY_BWE", countrybwe);
                 i.putExtra("POSITION_BWE", positionbwe);
+                i.putExtra("OPERATION", "CREATE");
                 i.putExtra("SURVEY_TYPE","WATERSURVEYCOMMUNITY");
                 i.putExtra("LAT",lat);
                 i.putExtra("LNG",lng);

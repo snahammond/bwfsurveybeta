@@ -739,6 +739,7 @@ query SyncCommunityWaterTests(
       date
       Country
       Community
+      CommunityWaterLocation
       ColilertDateTested
       ColilertDateRead
       ColilertTestResult
@@ -765,6 +766,7 @@ query GetCommunityWaterTest($id: ID!) {
     date
     Country
     Community
+    CommunityWaterLocation
     ColilertDateTested
     ColilertDateRead
     ColilertTestResult
@@ -797,12 +799,89 @@ query ListCommunityWaterTests(
       date
       Country
       Community
+      CommunityWaterLocation
       ColilertDateTested
       ColilertDateRead
       ColilertTestResult
       PetrifilmDateTested
       PetrifilmDateRead
       PetrifilmTestResult
+      Completed
+      Lat
+      Lng
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncCommunityWaters(
+  $filter: ModelCommunityWaterFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncCommunityWaters(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      Namebwe
+      date
+      Country
+      Community
+      CommunityWaterLocation
+      Completed
+      Lat
+      Lng
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetCommunityWater($id: ID!) {
+  getCommunityWater(id: $id) {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    CommunityWaterLocation
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListCommunityWaters(
+  $filter: ModelCommunityWaterFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listCommunityWaters(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      Namebwe
+      date
+      Country
+      Community
+      CommunityWaterLocation
       Completed
       Lat
       Lng

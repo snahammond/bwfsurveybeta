@@ -654,6 +654,7 @@ mutation CreateCommunityWaterTest(
     date
     Country
     Community
+    CommunityWaterLocation
     ColilertDateTested
     ColilertDateRead
     ColilertTestResult
@@ -680,6 +681,7 @@ mutation UpdateCommunityWaterTest(
     date
     Country
     Community
+    CommunityWaterLocation
     ColilertDateTested
     ColilertDateRead
     ColilertTestResult
@@ -706,12 +708,76 @@ mutation DeleteCommunityWaterTest(
     date
     Country
     Community
+    CommunityWaterLocation
     ColilertDateTested
     ColilertDateRead
     ColilertTestResult
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateCommunityWater(
+  $input: CreateCommunityWaterInput!
+  $condition: ModelCommunityWaterConditionInput
+) {
+  createCommunityWater(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    CommunityWaterLocation
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateCommunityWater(
+  $input: UpdateCommunityWaterInput!
+  $condition: ModelCommunityWaterConditionInput
+) {
+  updateCommunityWater(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    CommunityWaterLocation
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteCommunityWater(
+  $input: DeleteCommunityWaterInput!
+  $condition: ModelCommunityWaterConditionInput
+) {
+  deleteCommunityWater(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    CommunityWaterLocation
     Completed
     Lat
     Lng

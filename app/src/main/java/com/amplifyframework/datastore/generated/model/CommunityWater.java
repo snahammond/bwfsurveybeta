@@ -19,24 +19,18 @@ import com.amplifyframework.core.model.query.predicate.QueryField;
 
 import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 
-/** This is an auto generated class representing the CommunityWaterTest type in your schema. */
+/** This is an auto generated class representing the CommunityWater type in your schema. */
 @SuppressWarnings("all")
-@ModelConfig(pluralName = "CommunityWaterTests", authRules = {
+@ModelConfig(pluralName = "CommunityWaters", authRules = {
   @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
 })
-public final class CommunityWaterTest implements Model {
+public final class CommunityWater implements Model {
   public static final QueryField ID = field("id");
   public static final QueryField NAMEBWE = field("Namebwe");
   public static final QueryField DATE = field("date");
   public static final QueryField COUNTRY = field("Country");
   public static final QueryField COMMUNITY = field("Community");
   public static final QueryField COMMUNITY_WATER_LOCATION = field("CommunityWaterLocation");
-  public static final QueryField COLILERT_DATE_TESTED = field("ColilertDateTested");
-  public static final QueryField COLILERT_DATE_READ = field("ColilertDateRead");
-  public static final QueryField COLILERT_TEST_RESULT = field("ColilertTestResult");
-  public static final QueryField PETRIFILM_DATE_TESTED = field("PetrifilmDateTested");
-  public static final QueryField PETRIFILM_DATE_READ = field("PetrifilmDateRead");
-  public static final QueryField PETRIFILM_TEST_RESULT = field("PetrifilmTestResult");
   public static final QueryField COMPLETED = field("Completed");
   public static final QueryField LAT = field("Lat");
   public static final QueryField LNG = field("Lng");
@@ -46,12 +40,6 @@ public final class CommunityWaterTest implements Model {
   private final @ModelField(targetType="String", isRequired = true) String Country;
   private final @ModelField(targetType="String", isRequired = true) String Community;
   private final @ModelField(targetType="String", isRequired = true) String CommunityWaterLocation;
-  private final @ModelField(targetType="AWSDate", isRequired = true) Temporal.Date ColilertDateTested;
-  private final @ModelField(targetType="AWSDate", isRequired = true) Temporal.Date ColilertDateRead;
-  private final @ModelField(targetType="String", isRequired = true) String ColilertTestResult;
-  private final @ModelField(targetType="AWSDate", isRequired = true) Temporal.Date PetrifilmDateTested;
-  private final @ModelField(targetType="AWSDate", isRequired = true) Temporal.Date PetrifilmDateRead;
-  private final @ModelField(targetType="String", isRequired = true) String PetrifilmTestResult;
   private final @ModelField(targetType="Int", isRequired = true) Integer Completed;
   private final @ModelField(targetType="String", isRequired = true) String Lat;
   private final @ModelField(targetType="String", isRequired = true) String Lng;
@@ -79,30 +67,6 @@ public final class CommunityWaterTest implements Model {
       return CommunityWaterLocation;
   }
   
-  public Temporal.Date getColilertDateTested() {
-      return ColilertDateTested;
-  }
-  
-  public Temporal.Date getColilertDateRead() {
-      return ColilertDateRead;
-  }
-  
-  public String getColilertTestResult() {
-      return ColilertTestResult;
-  }
-  
-  public Temporal.Date getPetrifilmDateTested() {
-      return PetrifilmDateTested;
-  }
-  
-  public Temporal.Date getPetrifilmDateRead() {
-      return PetrifilmDateRead;
-  }
-  
-  public String getPetrifilmTestResult() {
-      return PetrifilmTestResult;
-  }
-  
   public Integer getCompleted() {
       return Completed;
   }
@@ -115,19 +79,13 @@ public final class CommunityWaterTest implements Model {
       return Lng;
   }
   
-  private CommunityWaterTest(String id, String Namebwe, Temporal.Date date, String Country, String Community, String CommunityWaterLocation, Temporal.Date ColilertDateTested, Temporal.Date ColilertDateRead, String ColilertTestResult, Temporal.Date PetrifilmDateTested, Temporal.Date PetrifilmDateRead, String PetrifilmTestResult, Integer Completed, String Lat, String Lng) {
+  private CommunityWater(String id, String Namebwe, Temporal.Date date, String Country, String Community, String CommunityWaterLocation, Integer Completed, String Lat, String Lng) {
     this.id = id;
     this.Namebwe = Namebwe;
     this.date = date;
     this.Country = Country;
     this.Community = Community;
     this.CommunityWaterLocation = CommunityWaterLocation;
-    this.ColilertDateTested = ColilertDateTested;
-    this.ColilertDateRead = ColilertDateRead;
-    this.ColilertTestResult = ColilertTestResult;
-    this.PetrifilmDateTested = PetrifilmDateTested;
-    this.PetrifilmDateRead = PetrifilmDateRead;
-    this.PetrifilmTestResult = PetrifilmTestResult;
     this.Completed = Completed;
     this.Lat = Lat;
     this.Lng = Lng;
@@ -140,22 +98,16 @@ public final class CommunityWaterTest implements Model {
       } else if(obj == null || getClass() != obj.getClass()) {
         return false;
       } else {
-      CommunityWaterTest communityWaterTest = (CommunityWaterTest) obj;
-      return ObjectsCompat.equals(getId(), communityWaterTest.getId()) &&
-              ObjectsCompat.equals(getNamebwe(), communityWaterTest.getNamebwe()) &&
-              ObjectsCompat.equals(getDate(), communityWaterTest.getDate()) &&
-              ObjectsCompat.equals(getCountry(), communityWaterTest.getCountry()) &&
-              ObjectsCompat.equals(getCommunity(), communityWaterTest.getCommunity()) &&
-              ObjectsCompat.equals(getCommunityWaterLocation(), communityWaterTest.getCommunityWaterLocation()) &&
-              ObjectsCompat.equals(getColilertDateTested(), communityWaterTest.getColilertDateTested()) &&
-              ObjectsCompat.equals(getColilertDateRead(), communityWaterTest.getColilertDateRead()) &&
-              ObjectsCompat.equals(getColilertTestResult(), communityWaterTest.getColilertTestResult()) &&
-              ObjectsCompat.equals(getPetrifilmDateTested(), communityWaterTest.getPetrifilmDateTested()) &&
-              ObjectsCompat.equals(getPetrifilmDateRead(), communityWaterTest.getPetrifilmDateRead()) &&
-              ObjectsCompat.equals(getPetrifilmTestResult(), communityWaterTest.getPetrifilmTestResult()) &&
-              ObjectsCompat.equals(getCompleted(), communityWaterTest.getCompleted()) &&
-              ObjectsCompat.equals(getLat(), communityWaterTest.getLat()) &&
-              ObjectsCompat.equals(getLng(), communityWaterTest.getLng());
+      CommunityWater communityWater = (CommunityWater) obj;
+      return ObjectsCompat.equals(getId(), communityWater.getId()) &&
+              ObjectsCompat.equals(getNamebwe(), communityWater.getNamebwe()) &&
+              ObjectsCompat.equals(getDate(), communityWater.getDate()) &&
+              ObjectsCompat.equals(getCountry(), communityWater.getCountry()) &&
+              ObjectsCompat.equals(getCommunity(), communityWater.getCommunity()) &&
+              ObjectsCompat.equals(getCommunityWaterLocation(), communityWater.getCommunityWaterLocation()) &&
+              ObjectsCompat.equals(getCompleted(), communityWater.getCompleted()) &&
+              ObjectsCompat.equals(getLat(), communityWater.getLat()) &&
+              ObjectsCompat.equals(getLng(), communityWater.getLng());
       }
   }
   
@@ -168,12 +120,6 @@ public final class CommunityWaterTest implements Model {
       .append(getCountry())
       .append(getCommunity())
       .append(getCommunityWaterLocation())
-      .append(getColilertDateTested())
-      .append(getColilertDateRead())
-      .append(getColilertTestResult())
-      .append(getPetrifilmDateTested())
-      .append(getPetrifilmDateRead())
-      .append(getPetrifilmTestResult())
       .append(getCompleted())
       .append(getLat())
       .append(getLng())
@@ -184,19 +130,13 @@ public final class CommunityWaterTest implements Model {
   @Override
    public String toString() {
     return new StringBuilder()
-      .append("CommunityWaterTest {")
+      .append("CommunityWater {")
       .append("id=" + String.valueOf(getId()) + ", ")
       .append("Namebwe=" + String.valueOf(getNamebwe()) + ", ")
       .append("date=" + String.valueOf(getDate()) + ", ")
       .append("Country=" + String.valueOf(getCountry()) + ", ")
       .append("Community=" + String.valueOf(getCommunity()) + ", ")
       .append("CommunityWaterLocation=" + String.valueOf(getCommunityWaterLocation()) + ", ")
-      .append("ColilertDateTested=" + String.valueOf(getColilertDateTested()) + ", ")
-      .append("ColilertDateRead=" + String.valueOf(getColilertDateRead()) + ", ")
-      .append("ColilertTestResult=" + String.valueOf(getColilertTestResult()) + ", ")
-      .append("PetrifilmDateTested=" + String.valueOf(getPetrifilmDateTested()) + ", ")
-      .append("PetrifilmDateRead=" + String.valueOf(getPetrifilmDateRead()) + ", ")
-      .append("PetrifilmTestResult=" + String.valueOf(getPetrifilmTestResult()) + ", ")
       .append("Completed=" + String.valueOf(getCompleted()) + ", ")
       .append("Lat=" + String.valueOf(getLat()) + ", ")
       .append("Lng=" + String.valueOf(getLng()))
@@ -217,7 +157,7 @@ public final class CommunityWaterTest implements Model {
    * @return an instance of this model with only ID populated
    * @throws IllegalArgumentException Checks that ID is in the proper format
    */
-  public static CommunityWaterTest justId(String id) {
+  public static CommunityWater justId(String id) {
     try {
       UUID.fromString(id); // Check that ID is in the UUID format - if not an exception is thrown
     } catch (Exception exception) {
@@ -227,14 +167,8 @@ public final class CommunityWaterTest implements Model {
               "creating a new object, use the standard builder method and leave the ID field blank."
       );
     }
-    return new CommunityWaterTest(
+    return new CommunityWater(
       id,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -253,12 +187,6 @@ public final class CommunityWaterTest implements Model {
       Country,
       Community,
       CommunityWaterLocation,
-      ColilertDateTested,
-      ColilertDateRead,
-      ColilertTestResult,
-      PetrifilmDateTested,
-      PetrifilmDateRead,
-      PetrifilmTestResult,
       Completed,
       Lat,
       Lng);
@@ -279,37 +207,7 @@ public final class CommunityWaterTest implements Model {
   
 
   public interface CommunityWaterLocationStep {
-    ColilertDateTestedStep communityWaterLocation(String communityWaterLocation);
-  }
-  
-
-  public interface ColilertDateTestedStep {
-    ColilertDateReadStep colilertDateTested(Temporal.Date colilertDateTested);
-  }
-  
-
-  public interface ColilertDateReadStep {
-    ColilertTestResultStep colilertDateRead(Temporal.Date colilertDateRead);
-  }
-  
-
-  public interface ColilertTestResultStep {
-    PetrifilmDateTestedStep colilertTestResult(String colilertTestResult);
-  }
-  
-
-  public interface PetrifilmDateTestedStep {
-    PetrifilmDateReadStep petrifilmDateTested(Temporal.Date petrifilmDateTested);
-  }
-  
-
-  public interface PetrifilmDateReadStep {
-    PetrifilmTestResultStep petrifilmDateRead(Temporal.Date petrifilmDateRead);
-  }
-  
-
-  public interface PetrifilmTestResultStep {
-    CompletedStep petrifilmTestResult(String petrifilmTestResult);
+    CompletedStep communityWaterLocation(String communityWaterLocation);
   }
   
 
@@ -329,45 +227,33 @@ public final class CommunityWaterTest implements Model {
   
 
   public interface BuildStep {
-    CommunityWaterTest build();
+    CommunityWater build();
     BuildStep id(String id) throws IllegalArgumentException;
     BuildStep date(Temporal.Date date);
   }
   
 
-  public static class Builder implements NamebweStep, CountryStep, CommunityStep, CommunityWaterLocationStep, ColilertDateTestedStep, ColilertDateReadStep, ColilertTestResultStep, PetrifilmDateTestedStep, PetrifilmDateReadStep, PetrifilmTestResultStep, CompletedStep, LatStep, LngStep, BuildStep {
+  public static class Builder implements NamebweStep, CountryStep, CommunityStep, CommunityWaterLocationStep, CompletedStep, LatStep, LngStep, BuildStep {
     private String id;
     private String Namebwe;
     private String Country;
     private String Community;
     private String CommunityWaterLocation;
-    private Temporal.Date ColilertDateTested;
-    private Temporal.Date ColilertDateRead;
-    private String ColilertTestResult;
-    private Temporal.Date PetrifilmDateTested;
-    private Temporal.Date PetrifilmDateRead;
-    private String PetrifilmTestResult;
     private Integer Completed;
     private String Lat;
     private String Lng;
     private Temporal.Date date;
     @Override
-     public CommunityWaterTest build() {
+     public CommunityWater build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
         
-        return new CommunityWaterTest(
+        return new CommunityWater(
           id,
           Namebwe,
           date,
           Country,
           Community,
           CommunityWaterLocation,
-          ColilertDateTested,
-          ColilertDateRead,
-          ColilertTestResult,
-          PetrifilmDateTested,
-          PetrifilmDateRead,
-          PetrifilmTestResult,
           Completed,
           Lat,
           Lng);
@@ -395,51 +281,9 @@ public final class CommunityWaterTest implements Model {
     }
     
     @Override
-     public ColilertDateTestedStep communityWaterLocation(String communityWaterLocation) {
+     public CompletedStep communityWaterLocation(String communityWaterLocation) {
         Objects.requireNonNull(communityWaterLocation);
         this.CommunityWaterLocation = communityWaterLocation;
-        return this;
-    }
-    
-    @Override
-     public ColilertDateReadStep colilertDateTested(Temporal.Date colilertDateTested) {
-        Objects.requireNonNull(colilertDateTested);
-        this.ColilertDateTested = colilertDateTested;
-        return this;
-    }
-    
-    @Override
-     public ColilertTestResultStep colilertDateRead(Temporal.Date colilertDateRead) {
-        Objects.requireNonNull(colilertDateRead);
-        this.ColilertDateRead = colilertDateRead;
-        return this;
-    }
-    
-    @Override
-     public PetrifilmDateTestedStep colilertTestResult(String colilertTestResult) {
-        Objects.requireNonNull(colilertTestResult);
-        this.ColilertTestResult = colilertTestResult;
-        return this;
-    }
-    
-    @Override
-     public PetrifilmDateReadStep petrifilmDateTested(Temporal.Date petrifilmDateTested) {
-        Objects.requireNonNull(petrifilmDateTested);
-        this.PetrifilmDateTested = petrifilmDateTested;
-        return this;
-    }
-    
-    @Override
-     public PetrifilmTestResultStep petrifilmDateRead(Temporal.Date petrifilmDateRead) {
-        Objects.requireNonNull(petrifilmDateRead);
-        this.PetrifilmDateRead = petrifilmDateRead;
-        return this;
-    }
-    
-    @Override
-     public CompletedStep petrifilmTestResult(String petrifilmTestResult) {
-        Objects.requireNonNull(petrifilmTestResult);
-        this.PetrifilmTestResult = petrifilmTestResult;
         return this;
     }
     
@@ -493,18 +337,12 @@ public final class CommunityWaterTest implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String namebwe, Temporal.Date date, String country, String community, String communityWaterLocation, Temporal.Date colilertDateTested, Temporal.Date colilertDateRead, String colilertTestResult, Temporal.Date petrifilmDateTested, Temporal.Date petrifilmDateRead, String petrifilmTestResult, Integer completed, String lat, String lng) {
+    private CopyOfBuilder(String id, String namebwe, Temporal.Date date, String country, String community, String communityWaterLocation, Integer completed, String lat, String lng) {
       super.id(id);
       super.namebwe(namebwe)
         .country(country)
         .community(community)
         .communityWaterLocation(communityWaterLocation)
-        .colilertDateTested(colilertDateTested)
-        .colilertDateRead(colilertDateRead)
-        .colilertTestResult(colilertTestResult)
-        .petrifilmDateTested(petrifilmDateTested)
-        .petrifilmDateRead(petrifilmDateRead)
-        .petrifilmTestResult(petrifilmTestResult)
         .completed(completed)
         .lat(lat)
         .lng(lng)
@@ -529,36 +367,6 @@ public final class CommunityWaterTest implements Model {
     @Override
      public CopyOfBuilder communityWaterLocation(String communityWaterLocation) {
       return (CopyOfBuilder) super.communityWaterLocation(communityWaterLocation);
-    }
-    
-    @Override
-     public CopyOfBuilder colilertDateTested(Temporal.Date colilertDateTested) {
-      return (CopyOfBuilder) super.colilertDateTested(colilertDateTested);
-    }
-    
-    @Override
-     public CopyOfBuilder colilertDateRead(Temporal.Date colilertDateRead) {
-      return (CopyOfBuilder) super.colilertDateRead(colilertDateRead);
-    }
-    
-    @Override
-     public CopyOfBuilder colilertTestResult(String colilertTestResult) {
-      return (CopyOfBuilder) super.colilertTestResult(colilertTestResult);
-    }
-    
-    @Override
-     public CopyOfBuilder petrifilmDateTested(Temporal.Date petrifilmDateTested) {
-      return (CopyOfBuilder) super.petrifilmDateTested(petrifilmDateTested);
-    }
-    
-    @Override
-     public CopyOfBuilder petrifilmDateRead(Temporal.Date petrifilmDateRead) {
-      return (CopyOfBuilder) super.petrifilmDateRead(petrifilmDateRead);
-    }
-    
-    @Override
-     public CopyOfBuilder petrifilmTestResult(String petrifilmTestResult) {
-      return (CopyOfBuilder) super.petrifilmTestResult(petrifilmTestResult);
     }
     
     @Override

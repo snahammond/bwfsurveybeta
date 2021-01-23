@@ -189,12 +189,25 @@ Namebwe: String!
 date: AWSDate
 Country: String!
 Community: String!
+CommunityWaterLocation: String!
 ColilertDateTested: AWSDate!
 ColilertDateRead: AWSDate!
 ColilertTestResult: String!
 PetrifilmDateTested: AWSDate!
 PetrifilmDateRead: AWSDate!
 PetrifilmTestResult: String!
+Completed: Int!
+Lat: String!
+Lng: String!
+}
+
+type CommunityWater @model @auth(rules: [{ allow: public,provider: apiKey }]){
+id: ID!
+Namebwe: String!
+date: AWSDate
+Country: String!
+Community: String!
+CommunityWaterLocation: String!
 Completed: Int!
 Lat: String!
 Lng: String!
@@ -253,3 +266,5 @@ Completed: Int!
 Lat: String!
 Lng: String!
 }
+
+

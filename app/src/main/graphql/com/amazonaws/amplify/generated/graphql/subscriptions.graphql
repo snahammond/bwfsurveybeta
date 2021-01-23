@@ -606,6 +606,7 @@ subscription OnCreateCommunityWaterTest {
     date
     Country
     Community
+    CommunityWaterLocation
     ColilertDateTested
     ColilertDateRead
     ColilertTestResult
@@ -629,6 +630,7 @@ subscription OnUpdateCommunityWaterTest {
     date
     Country
     Community
+    CommunityWaterLocation
     ColilertDateTested
     ColilertDateRead
     ColilertTestResult
@@ -652,12 +654,67 @@ subscription OnDeleteCommunityWaterTest {
     date
     Country
     Community
+    CommunityWaterLocation
     ColilertDateTested
     ColilertDateRead
     ColilertTestResult
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateCommunityWater {
+  onCreateCommunityWater {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    CommunityWaterLocation
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateCommunityWater {
+  onUpdateCommunityWater {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    CommunityWaterLocation
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteCommunityWater {
+  onDeleteCommunityWater {
+    id
+    Namebwe
+    date
+    Country
+    Community
+    CommunityWaterLocation
     Completed
     Lat
     Lng
