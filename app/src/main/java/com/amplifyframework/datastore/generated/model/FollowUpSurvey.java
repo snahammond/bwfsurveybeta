@@ -201,7 +201,7 @@ public final class FollowUpSurvey implements Model {
       return SickChildrenBreastfeeding;
   }
   
-  public String getOutcomeMostRecentVomitingDiarrheaAtHospital() {
+  public String getOutcomeMostRecentVomiting_DiarrheaAtHospital() {
       return OutcomeMostRecentVomiting_DiarrheaAtHospital;
   }
   
@@ -225,7 +225,7 @@ public final class FollowUpSurvey implements Model {
       return HealthChangeFamilyInAYear;
   }
   
-  public String getBenefitSwp() {
+  public String getBenefitSWP() {
       return BenefitSWP;
   }
   
@@ -314,13 +314,13 @@ public final class FollowUpSurvey implements Model {
               ObjectsCompat.equals(getDidSickChildrenGoToHospital(), followUpSurvey.getDidSickChildrenGoToHospital()) &&
               ObjectsCompat.equals(getDidSickChildrenGoToHospitalYes(), followUpSurvey.getDidSickChildrenGoToHospitalYes()) &&
               ObjectsCompat.equals(getSickChildrenBreastfeeding(), followUpSurvey.getSickChildrenBreastfeeding()) &&
-              ObjectsCompat.equals(getOutcomeMostRecentVomitingDiarrheaAtHospital(), followUpSurvey.getOutcomeMostRecentVomitingDiarrheaAtHospital()) &&
+              ObjectsCompat.equals(getOutcomeMostRecentVomiting_DiarrheaAtHospital(), followUpSurvey.getOutcomeMostRecentVomiting_DiarrheaAtHospital()) &&
               ObjectsCompat.equals(getNoDaysNoWorkBecauseOfOwnIllness(), followUpSurvey.getNoDaysNoWorkBecauseOfOwnIllness()) &&
               ObjectsCompat.equals(getNoDaysNoWorkBecauseOfIllnessFamilyMembers(), followUpSurvey.getNoDaysNoWorkBecauseOfIllnessFamilyMembers()) &&
               ObjectsCompat.equals(getMoneySpentMedicalTreatmentLast4weeks(), followUpSurvey.getMoneySpentMedicalTreatmentLast4weeks()) &&
               ObjectsCompat.equals(getHealthChangeInAYear(), followUpSurvey.getHealthChangeInAYear()) &&
               ObjectsCompat.equals(getHealthChangeFamilyInAYear(), followUpSurvey.getHealthChangeFamilyInAYear()) &&
-              ObjectsCompat.equals(getBenefitSwp(), followUpSurvey.getBenefitSwp()) &&
+              ObjectsCompat.equals(getBenefitSWP(), followUpSurvey.getBenefitSWP()) &&
               ObjectsCompat.equals(getCompleted(), followUpSurvey.getCompleted()) &&
               ObjectsCompat.equals(getLat(), followUpSurvey.getLat()) &&
               ObjectsCompat.equals(getLng(), followUpSurvey.getLng());
@@ -356,13 +356,13 @@ public final class FollowUpSurvey implements Model {
       .append(getDidSickChildrenGoToHospital())
       .append(getDidSickChildrenGoToHospitalYes())
       .append(getSickChildrenBreastfeeding())
-      .append(getOutcomeMostRecentVomitingDiarrheaAtHospital())
+      .append(getOutcomeMostRecentVomiting_DiarrheaAtHospital())
       .append(getNoDaysNoWorkBecauseOfOwnIllness())
       .append(getNoDaysNoWorkBecauseOfIllnessFamilyMembers())
       .append(getMoneySpentMedicalTreatmentLast4weeks())
       .append(getHealthChangeInAYear())
       .append(getHealthChangeFamilyInAYear())
-      .append(getBenefitSwp())
+      .append(getBenefitSWP())
       .append(getCompleted())
       .append(getLat())
       .append(getLng())
@@ -400,13 +400,13 @@ public final class FollowUpSurvey implements Model {
       .append("DidSickChildrenGoToHospital=" + String.valueOf(getDidSickChildrenGoToHospital()) + ", ")
       .append("DidSickChildrenGoToHospitalYes=" + String.valueOf(getDidSickChildrenGoToHospitalYes()) + ", ")
       .append("SickChildrenBreastfeeding=" + String.valueOf(getSickChildrenBreastfeeding()) + ", ")
-      .append("OutcomeMostRecentVomiting_DiarrheaAtHospital=" + String.valueOf(getOutcomeMostRecentVomitingDiarrheaAtHospital()) + ", ")
+      .append("OutcomeMostRecentVomiting_DiarrheaAtHospital=" + String.valueOf(getOutcomeMostRecentVomiting_DiarrheaAtHospital()) + ", ")
       .append("NoDaysNoWorkBecauseOfOwnIllness=" + String.valueOf(getNoDaysNoWorkBecauseOfOwnIllness()) + ", ")
       .append("NoDaysNoWorkBecauseOfIllnessFamilyMembers=" + String.valueOf(getNoDaysNoWorkBecauseOfIllnessFamilyMembers()) + ", ")
       .append("MoneySpentMedicalTreatmentLast4weeks=" + String.valueOf(getMoneySpentMedicalTreatmentLast4weeks()) + ", ")
       .append("HealthChangeInAYear=" + String.valueOf(getHealthChangeInAYear()) + ", ")
       .append("HealthChangeFamilyInAYear=" + String.valueOf(getHealthChangeFamilyInAYear()) + ", ")
-      .append("BenefitSWP=" + String.valueOf(getBenefitSwp()) + ", ")
+      .append("BenefitSWP=" + String.valueOf(getBenefitSWP()) + ", ")
       .append("Completed=" + String.valueOf(getCompleted()) + ", ")
       .append("Lat=" + String.valueOf(getLat()) + ", ")
       .append("Lng=" + String.valueOf(getLng()))

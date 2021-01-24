@@ -30,7 +30,8 @@ public class HouseholdCardSelectActivity extends AppCompatActivity {
     private String countrybwe = null;
     private String surveyType = null;
     private String operation = null;
-
+    private String lat = null;
+    private String lng = null;
     private LinearLayout progressBar;
 
     @Override
@@ -45,6 +46,11 @@ public class HouseholdCardSelectActivity extends AppCompatActivity {
             surveyType = getIntent().getStringExtra("SURVEY_TYPE");
         if(getIntent().getStringExtra("OPERATION")!=null)
             operation = getIntent().getStringExtra("OPERATION");
+
+        if(getIntent().getStringExtra("LAT")!=null)
+            lat = getIntent().getStringExtra("LAT");
+        if(getIntent().getStringExtra("LNG")!=null)
+            lng = getIntent().getStringExtra("LNG");
         initView();
     }
 
@@ -142,7 +148,7 @@ public class HouseholdCardSelectActivity extends AppCompatActivity {
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new HouseholdCardAdapter(HouseholdCardSelectActivity.this, HouseholdCardSelectActivity.listOfFamilys,namebwe,countrybwe,surveyType,operation);
+        adapter = new HouseholdCardAdapter(HouseholdCardSelectActivity.this, HouseholdCardSelectActivity.listOfFamilys,namebwe,countrybwe,surveyType,operation,lat,lng);
         recyclerView.setAdapter(adapter);
     }
 

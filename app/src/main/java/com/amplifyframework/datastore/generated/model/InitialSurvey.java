@@ -235,11 +235,11 @@ public final class InitialSurvey implements Model {
       return NoHouseholdFemale13_17Year;
   }
   
-  public Integer getNoHouseholdMale18Year() {
+  public Integer getNoHouseholdMale18_Year() {
       return NoHouseholdMale18_Year;
   }
   
-  public Integer getNoHouseholdFemale18Year() {
+  public Integer getNoHouseholdFemale18_Year() {
       return NoHouseholdFemale18_Year;
   }
   
@@ -355,7 +355,7 @@ public final class InitialSurvey implements Model {
       return SickChildrenBreastfeeding;
   }
   
-  public String getOutcomeMostRecentVomitingDiarrheaAtHospital() {
+  public String getOutcomeMostRecentVomiting_DiarrheaAtHospital() {
       return OutcomeMostRecentVomiting_DiarrheaAtHospital;
   }
   
@@ -485,8 +485,8 @@ public final class InitialSurvey implements Model {
               ObjectsCompat.equals(getNoHouseholdFemale5_12Year(), initialSurvey.getNoHouseholdFemale5_12Year()) &&
               ObjectsCompat.equals(getNoHouseholdMale13_17Year(), initialSurvey.getNoHouseholdMale13_17Year()) &&
               ObjectsCompat.equals(getNoHouseholdFemale13_17Year(), initialSurvey.getNoHouseholdFemale13_17Year()) &&
-              ObjectsCompat.equals(getNoHouseholdMale18Year(), initialSurvey.getNoHouseholdMale18Year()) &&
-              ObjectsCompat.equals(getNoHouseholdFemale18Year(), initialSurvey.getNoHouseholdFemale18Year()) &&
+              ObjectsCompat.equals(getNoHouseholdMale18_Year(), initialSurvey.getNoHouseholdMale18_Year()) &&
+              ObjectsCompat.equals(getNoHouseholdFemale18_Year(), initialSurvey.getNoHouseholdFemale18_Year()) &&
               ObjectsCompat.equals(getReasonNoSchoolChildren5_17Year(), initialSurvey.getReasonNoSchoolChildren5_17Year()) &&
               ObjectsCompat.equals(getMainSourceDrinkingWater(), initialSurvey.getMainSourceDrinkingWater()) &&
               ObjectsCompat.equals(getMainSourceOtherPurposeWater(), initialSurvey.getMainSourceOtherPurposeWater()) &&
@@ -515,7 +515,7 @@ public final class InitialSurvey implements Model {
               ObjectsCompat.equals(getDidSickChildrenGoToHospital(), initialSurvey.getDidSickChildrenGoToHospital()) &&
               ObjectsCompat.equals(getDidSickChildrenGoToHospitalYes(), initialSurvey.getDidSickChildrenGoToHospitalYes()) &&
               ObjectsCompat.equals(getSickChildrenBreastfeeding(), initialSurvey.getSickChildrenBreastfeeding()) &&
-              ObjectsCompat.equals(getOutcomeMostRecentVomitingDiarrheaAtHospital(), initialSurvey.getOutcomeMostRecentVomitingDiarrheaAtHospital()) &&
+              ObjectsCompat.equals(getOutcomeMostRecentVomiting_DiarrheaAtHospital(), initialSurvey.getOutcomeMostRecentVomiting_DiarrheaAtHospital()) &&
               ObjectsCompat.equals(getNoDaysNoWorkBecauseOfOwnIllness(), initialSurvey.getNoDaysNoWorkBecauseOfOwnIllness()) &&
               ObjectsCompat.equals(getNoDaysNoWorkBecauseOfIllnessFamilyMembers(), initialSurvey.getNoDaysNoWorkBecauseOfIllnessFamilyMembers()) &&
               ObjectsCompat.equals(getMoneySpentMedicalTreatmentLast4weeks(), initialSurvey.getMoneySpentMedicalTreatmentLast4weeks()) &&
@@ -552,8 +552,8 @@ public final class InitialSurvey implements Model {
       .append(getNoHouseholdFemale5_12Year())
       .append(getNoHouseholdMale13_17Year())
       .append(getNoHouseholdFemale13_17Year())
-      .append(getNoHouseholdMale18Year())
-      .append(getNoHouseholdFemale18Year())
+      .append(getNoHouseholdMale18_Year())
+      .append(getNoHouseholdFemale18_Year())
       .append(getReasonNoSchoolChildren5_17Year())
       .append(getMainSourceDrinkingWater())
       .append(getMainSourceOtherPurposeWater())
@@ -582,7 +582,7 @@ public final class InitialSurvey implements Model {
       .append(getDidSickChildrenGoToHospital())
       .append(getDidSickChildrenGoToHospitalYes())
       .append(getSickChildrenBreastfeeding())
-      .append(getOutcomeMostRecentVomitingDiarrheaAtHospital())
+      .append(getOutcomeMostRecentVomiting_DiarrheaAtHospital())
       .append(getNoDaysNoWorkBecauseOfOwnIllness())
       .append(getNoDaysNoWorkBecauseOfIllnessFamilyMembers())
       .append(getMoneySpentMedicalTreatmentLast4weeks())
@@ -621,8 +621,8 @@ public final class InitialSurvey implements Model {
       .append("NoHouseholdFemale5_12Year=" + String.valueOf(getNoHouseholdFemale5_12Year()) + ", ")
       .append("NoHouseholdMale13_17Year=" + String.valueOf(getNoHouseholdMale13_17Year()) + ", ")
       .append("NoHouseholdFemale13_17Year=" + String.valueOf(getNoHouseholdFemale13_17Year()) + ", ")
-      .append("NoHouseholdMale18_Year=" + String.valueOf(getNoHouseholdMale18Year()) + ", ")
-      .append("NoHouseholdFemale18_Year=" + String.valueOf(getNoHouseholdFemale18Year()) + ", ")
+      .append("NoHouseholdMale18_Year=" + String.valueOf(getNoHouseholdMale18_Year()) + ", ")
+      .append("NoHouseholdFemale18_Year=" + String.valueOf(getNoHouseholdFemale18_Year()) + ", ")
       .append("ReasonNoSchoolChildren5_17Year=" + String.valueOf(getReasonNoSchoolChildren5_17Year()) + ", ")
       .append("MainSourceDrinkingWater=" + String.valueOf(getMainSourceDrinkingWater()) + ", ")
       .append("MainSourceOtherPurposeWater=" + String.valueOf(getMainSourceOtherPurposeWater()) + ", ")
@@ -651,7 +651,7 @@ public final class InitialSurvey implements Model {
       .append("DidSickChildrenGoToHospital=" + String.valueOf(getDidSickChildrenGoToHospital()) + ", ")
       .append("DidSickChildrenGoToHospitalYes=" + String.valueOf(getDidSickChildrenGoToHospitalYes()) + ", ")
       .append("SickChildrenBreastfeeding=" + String.valueOf(getSickChildrenBreastfeeding()) + ", ")
-      .append("OutcomeMostRecentVomiting_DiarrheaAtHospital=" + String.valueOf(getOutcomeMostRecentVomitingDiarrheaAtHospital()) + ", ")
+      .append("OutcomeMostRecentVomiting_DiarrheaAtHospital=" + String.valueOf(getOutcomeMostRecentVomiting_DiarrheaAtHospital()) + ", ")
       .append("NoDaysNoWorkBecauseOfOwnIllness=" + String.valueOf(getNoDaysNoWorkBecauseOfOwnIllness()) + ", ")
       .append("NoDaysNoWorkBecauseOfIllnessFamilyMembers=" + String.valueOf(getNoDaysNoWorkBecauseOfIllnessFamilyMembers()) + ", ")
       .append("MoneySpentMedicalTreatmentLast4weeks=" + String.valueOf(getMoneySpentMedicalTreatmentLast4weeks()) + ", ")

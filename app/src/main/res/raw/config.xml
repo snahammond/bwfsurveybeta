@@ -2582,7 +2582,7 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue></childvalue>
+    <childvalue>3</childvalue>
     <desc>Referred to another health facility</desc>
     <name>OutcomeMostRecentVomiting_DiarrheaAtHospital</name>
     <parentdesc></parentdesc>
@@ -4130,7 +4130,7 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue></childvalue>
+    <childvalue>4</childvalue>
     <desc>Not applicable</desc>
     <name>OutcomeMostRecentVomiting_DiarrheaAtHospital</name>
     <parentdesc></parentdesc>
@@ -5630,7 +5630,7 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue></childvalue>
+    <childvalue>1</childvalue>
     <desc>Treated and Discharged</desc>
     <name>OutcomeMostRecentVomiting_DiarrheaAtHospital</name>
     <parentdesc></parentdesc>
@@ -5786,7 +5786,7 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue></childvalue>
+    <childvalue>2</childvalue>
     <desc>Detained and Discharged</desc>
     <name>OutcomeMostRecentVomiting_DiarrheaAtHospital</name>
     <parentdesc></parentdesc>

@@ -30,15 +30,19 @@ public class HouseholdCardAdapter extends RecyclerView.Adapter<RecyclerView.View
     private String countrybwe;
     private String surveyType;
     private String operation;
+    private String lat;
+    private String lng;
     private Context context;
 
-    public HouseholdCardAdapter(HouseholdCardSelectActivity familyCardSelectActivity, ArrayList<InitialSurvey> listOfFamilys, String namebwe, String countrybwe, String surveyType, String operation) {
+    public HouseholdCardAdapter(HouseholdCardSelectActivity familyCardSelectActivity, ArrayList<InitialSurvey> listOfFamilys, String namebwe, String countrybwe, String surveyType, String operation, String lat, String lng) {
         this.listOfFamilys = listOfFamilys;
         this.context = familyCardSelectActivity;
         this.namebwe = namebwe;
         this.countrybwe = countrybwe;
         this.surveyType = surveyType;
         this.operation = operation;
+        this.lat = lat;
+        this.lng = lng;
     }
 
     @NonNull
@@ -127,6 +131,8 @@ public class HouseholdCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         i.putExtra("COMMUNITY",community);
         i.putExtra("HHNAME",householdName);
         i.putExtra("SURVEY_ID",familySurveyId);
+        i.putExtra("LAT",lat);
+        i.putExtra("LNG",lng);
         context.startActivity(i);
         ((Activity)context).finish();
     }

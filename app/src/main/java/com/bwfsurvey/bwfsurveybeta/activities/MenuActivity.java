@@ -277,11 +277,23 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+
+
+
         //update incompleted menu items
         Button initialFullSurveyUC = (Button) findViewById(R.id.button_initialFullSurveyUC);
         initialFullSurveyUC.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
+                i.putExtra("OPERATION","UPDATE");
+                startActivity(i);
+            }
+        });
+
+        Button followUpSurveyUpdate = (Button) findViewById(R.id.button_followUpSurveyUC);
+        followUpSurveyUpdate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), UpdateFollowUpSurveyCardSelectActivity.class);
                 i.putExtra("OPERATION","UPDATE");
                 startActivity(i);
             }

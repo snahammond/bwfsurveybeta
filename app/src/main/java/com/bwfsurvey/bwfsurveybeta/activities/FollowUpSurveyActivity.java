@@ -18,9 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
+import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
 import com.example.bwfsurveybeta.R;
 
 import java.text.SimpleDateFormat;
@@ -35,6 +37,8 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
     private String community = null;
     private String householdName = null;
     private int surveyId = 0;
+    private String lat = null;
+    private String lng = null;
 
     private static ArrayList<Interchange> interchanges;
     private RecyclerView recyclerView;
@@ -60,6 +64,11 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
             String surveyIdStr = getIntent().getStringExtra("SURVEY_ID");
             surveyId = Integer.parseInt(surveyIdStr);
         }
+
+        if(getIntent().getStringExtra("LAT")!=null)
+            lat = getIntent().getStringExtra("LAT");
+        if(getIntent().getStringExtra("LNG")!=null)
+            lng = getIntent().getStringExtra("LNG");
 
         Log.i("Tutorials", "Selected family follow up survey class: " + surveyId);
         setContentView(R.layout.activity_recycler);
@@ -117,13 +126,53 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
             if(invalideInterchanges.size()>0){
                 showInvalidSurveyAlert();
             }else{
+
+                String lat_ = "";
+                String lng_ = "";
+                if(lat!=null&&lng!=null){
+                    lat_= lat;
+                    lng_ = lng;
+                }else{
+                    //try and get it again
+                    PhoneLocation phoneLocation = new PhoneLocation(FollowUpSurveyActivity.this);
+                    String[] arraylatlng = phoneLocation.getLocation();
+                    if(arraylatlng!=null){
+                        lat_ = arraylatlng[0];
+                        lng_ = arraylatlng[1];
+                    }
+                }
+
                 //make an InitialSurvey object
-                FollowUpSurvey followUpSurveyToSave = makeFollowUpSurveyObject(interchangesWithUserAns,1,"","");
+                FollowUpSurvey followUpSurveyToSave = makeFollowUpSurveyObject(interchangesWithUserAns,1,lat_,lng_);
 
                 //save the initialSurvey object
                 saveFollowUpSurvey(followUpSurveyToSave);
 
             }
+        }
+
+        if(id== R.id.suspend){
+            ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
+            String lat_ = "";
+            String lng_ = "";
+            if(lat!=null&&lng!=null){
+                lat_= lat;
+                lng_ = lng;
+            }else{
+                //try and get it again
+                PhoneLocation phoneLocation = new PhoneLocation(FollowUpSurveyActivity.this);
+                String[] arraylatlng = phoneLocation.getLocation();
+                if(arraylatlng!=null){
+                    lat_ = arraylatlng[0];
+                    lng_ = arraylatlng[1];
+                }
+            }
+            //make an follow Up survey object
+            FollowUpSurvey followUpSurveyToSave = makeFollowUpSurveyObject(interchangesWithUserAns,0,lat_,lng_);
+
+            //save the follow Up survey object
+            saveFollowUpSurvey(followUpSurveyToSave);
+
         }
         return super.onOptionsItemSelected(item);
     }
