@@ -1,6 +1,8 @@
 package com.bwfsurvey.bwfsurveybeta.adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +13,15 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amplifyframework.datastore.generated.model.CommunityWater;
 import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
-import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.bwfsurvey.bwfsurveybeta.activities.UpdateCommunityWaterCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.UpdateCommunityWaterTestActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.UpdateFollowUpSurveyActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
 
-public class UpdateCommunityWaterTestCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class CommunityWaterTestCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private ArrayList<CommunityWaterTest> listOfCommunityWaterTest;
     private String namebwe;
@@ -30,7 +32,7 @@ public class UpdateCommunityWaterTestCardAdapter extends RecyclerView.Adapter<Re
     private String lng;
     private Context context;
 
-    public UpdateCommunityWaterTestCardAdapter(UpdateCommunityWaterCardSelectActivity updateCommunityWaterCardSelectActivity, ArrayList<CommunityWaterTest> listOfCommunityWaterTest, String namebwe, String countrybwe, String surveyType, String operation, String lat, String lng) {
+    public CommunityWaterTestCardAdapter(UpdateCommunityWaterCardSelectActivity updateCommunityWaterCardSelectActivity, ArrayList<CommunityWaterTest> listOfCommunityWaterTest, String namebwe, String countrybwe, String surveyType, String operation, String lat, String lng) {
         this.listOfCommunityWaterTest = listOfCommunityWaterTest;
         this.context = updateCommunityWaterCardSelectActivity;
         this.namebwe = namebwe;
@@ -45,12 +47,12 @@ public class UpdateCommunityWaterTestCardAdapter extends RecyclerView.Adapter<Re
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.community_water_card, parent, false);
-        return new UpdateCommunityWaterTestCardViewHolder(view);
+        return new CommunityWaterTestCardViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((UpdateCommunityWaterTestCardAdapter.UpdateCommunityWaterTestCardViewHolder) holder).setCommunityWaterCardDetails(listOfCommunityWaterTest.get(position),position);
+        ((CommunityWaterTestCardViewHolder) holder).setCommunityWaterCardDetails(listOfCommunityWaterTest.get(position),position);
     }
 
     @Override
@@ -58,12 +60,13 @@ public class UpdateCommunityWaterTestCardAdapter extends RecyclerView.Adapter<Re
         return listOfCommunityWaterTest.size();
     }
 
-    private class UpdateCommunityWaterTestCardViewHolder extends RecyclerView.ViewHolder {
+    private class CommunityWaterTestCardViewHolder extends RecyclerView.ViewHolder {
         private TextView txtCountry;
         private TextView txtCommunity;
         private TextView txtCommunityWaterLoc;
+        private String uuidCommunityWaterTest;
 
-        public UpdateCommunityWaterTestCardViewHolder(View view) {
+        public CommunityWaterTestCardViewHolder(View view) {
             super(view);
             txtCountry = (TextView) itemView.findViewById(R.id.txtCountry);
             txtCommunity = (TextView) itemView.findViewById(R.id.txtCommunity);
@@ -81,7 +84,7 @@ public class UpdateCommunityWaterTestCardAdapter extends RecyclerView.Adapter<Re
                     }else if(operation.contentEquals("VIEW")){
                         //startViewInitialSurveyActivity(uuidInitialSurvey);
                     }else if(operation.contentEquals("UPDATE")){
-                        //startUpdateInitialSurveyActivity(uuidInitialSurvey);
+                        startUpdateCommunityWaterTestActivity(uuidCommunityWaterTest);
                     }
 
 
@@ -94,6 +97,14 @@ public class UpdateCommunityWaterTestCardAdapter extends RecyclerView.Adapter<Re
             txtCountry.setText(communityWaterTest.getCountry());
             txtCommunity.setText(communityWaterTest.getCommunity());
             txtCommunityWaterLoc.setText(communityWaterTest.getCommunityWaterLocation());
+            uuidCommunityWaterTest = communityWaterTest.getId();
         }
+    }
+
+    private void startUpdateCommunityWaterTestActivity(String uuidCommunityWaterTest){
+        Intent i = new Intent(context, UpdateCommunityWaterTestActivity.class);
+        i.putExtra("UUID", uuidCommunityWaterTest);
+        context.startActivity(i);
+        ((Activity)context).finish();
     }
 }

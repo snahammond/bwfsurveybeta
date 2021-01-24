@@ -14,16 +14,13 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
-import com.amplifyframework.datastore.generated.model.InitialSurvey;
-import com.bwfsurvey.bwfsurveybeta.activities.HouseholdCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.UpdateFollowUpSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.UpdateFollowUpSurveyCardSelectActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.UpdateInitialSurveyActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
 
-public class UpdateFollowUpSurveyCardAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class FollowUpSurveyCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private ArrayList<FollowUpSurvey> listOfFollowUpSurveys;
     private String namebwe;
     private String countrybwe;
@@ -33,7 +30,7 @@ public class UpdateFollowUpSurveyCardAdapter  extends RecyclerView.Adapter<Recyc
     private String lng;
     private Context context;
 
-    public UpdateFollowUpSurveyCardAdapter(UpdateFollowUpSurveyCardSelectActivity updateFollowUpSurveyCardSelectActivity, ArrayList<FollowUpSurvey> listOfFollowUpSurveys, String namebwe, String countrybwe, String surveyType, String operation, String lat, String lng) {
+    public FollowUpSurveyCardAdapter(UpdateFollowUpSurveyCardSelectActivity updateFollowUpSurveyCardSelectActivity, ArrayList<FollowUpSurvey> listOfFollowUpSurveys, String namebwe, String countrybwe, String surveyType, String operation, String lat, String lng) {
         this.listOfFollowUpSurveys = listOfFollowUpSurveys;
         this.context = updateFollowUpSurveyCardSelectActivity;
         this.namebwe = namebwe;
@@ -48,12 +45,12 @@ public class UpdateFollowUpSurveyCardAdapter  extends RecyclerView.Adapter<Recyc
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.family_card, parent, false);
-        return new UpdateFollowUpSurveyCardViewHolder(view);
+        return new FollowUpSurveyCardViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((UpdateFollowUpSurveyCardAdapter.UpdateFollowUpSurveyCardViewHolder) holder).setFamilyCardDetails(listOfFollowUpSurveys.get(position),position);
+        ((FollowUpSurveyCardViewHolder) holder).setFamilyCardDetails(listOfFollowUpSurveys.get(position),position);
     }
 
     @Override
@@ -61,7 +58,7 @@ public class UpdateFollowUpSurveyCardAdapter  extends RecyclerView.Adapter<Recyc
         return listOfFollowUpSurveys.size();
     }
 
-    private class UpdateFollowUpSurveyCardViewHolder extends RecyclerView.ViewHolder {
+    private class FollowUpSurveyCardViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtFamilySurveyId;
         private TextView txtCountry;
@@ -69,7 +66,7 @@ public class UpdateFollowUpSurveyCardAdapter  extends RecyclerView.Adapter<Recyc
         private TextView txtHeadHousehold;
         private String uuidFollowUpSurvey;
 
-        public UpdateFollowUpSurveyCardViewHolder(View view) {
+        public FollowUpSurveyCardViewHolder(View view) {
             super(view);
             txtFamilySurveyId = (TextView) itemView.findViewById(R.id.txtFamilySurveyId);
             txtCountry = (TextView) itemView.findViewById(R.id.txtCountry);

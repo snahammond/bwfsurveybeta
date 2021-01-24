@@ -15,9 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
-import com.amplifyframework.datastore.generated.model.InitialSurvey;
-import com.bwfsurvey.bwfsurveybeta.adapters.HouseholdCardAdapter;
-import com.bwfsurvey.bwfsurveybeta.adapters.UpdateFollowUpSurveyCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.adapters.FollowUpSurveyCardAdapter;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
@@ -26,7 +24,7 @@ import java.util.Comparator;
 public class UpdateFollowUpSurveyCardSelectActivity extends AppCompatActivity {
     private static ArrayList<FollowUpSurvey> listOfFollowUpSurveys;
     private RecyclerView recyclerView;
-    private UpdateFollowUpSurveyCardAdapter adapter;
+    private FollowUpSurveyCardAdapter adapter;
     private String namebwe = null;
     private String countrybwe = null;
     private String surveyType = null;
@@ -148,7 +146,7 @@ public class UpdateFollowUpSurveyCardSelectActivity extends AppCompatActivity {
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new UpdateFollowUpSurveyCardAdapter(UpdateFollowUpSurveyCardSelectActivity.this, UpdateFollowUpSurveyCardSelectActivity.listOfFollowUpSurveys,namebwe,countrybwe,surveyType,operation,lat,lng);
+        adapter = new FollowUpSurveyCardAdapter(UpdateFollowUpSurveyCardSelectActivity.this, UpdateFollowUpSurveyCardSelectActivity.listOfFollowUpSurveys,namebwe,countrybwe,surveyType,operation,lat,lng);
         recyclerView.setAdapter(adapter);
     }
 

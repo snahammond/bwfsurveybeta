@@ -18,9 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
+import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
 import com.example.bwfsurveybeta.R;
 
 import java.text.SimpleDateFormat;
@@ -35,11 +37,15 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
     private String community = null;
     private String communityWaterLoc = null;
     private String householdName = null;
+
     private static ArrayList<Interchange> interchanges;
     private RecyclerView recyclerView;
     private InterchangeCardAdapter adapter;
 
     private LinearLayout progressBar;
+
+    private String lat = null;
+    private String lng = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +60,11 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
             community = getIntent().getStringExtra("COMMUNITY");
         if(getIntent().getStringExtra("COMMUNITY_WATER_LOC")!=null)
             communityWaterLoc = getIntent().getStringExtra("COMMUNITY_WATER_LOC");
+
+        if(getIntent().getStringExtra("LAT")!=null)
+            lat = getIntent().getStringExtra("LAT");
+        if(getIntent().getStringExtra("LNG")!=null)
+            lng = getIntent().getStringExtra("LNG");
 
         setContentView(R.layout.activity_recycler);
         getSupportActionBar().setTitle((CharSequence) "Community Water Test; "+community);
@@ -111,13 +122,52 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
             }else{
                 Log.i("Tutorial", "we are going to save!");
 
+                String lat_ = "";
+                String lng_ = "";
+                if(lat!=null&&lng!=null){
+                    lat_= lat;
+                    lng_ = lng;
+                }else{
+                    //try and get it again
+                    PhoneLocation phoneLocation = new PhoneLocation(CommunityWaterSurveyActivity.this);
+                    String[] arraylatlng = phoneLocation.getLocation();
+                    if(arraylatlng!=null){
+                        lat_ = arraylatlng[0];
+                        lng_ = arraylatlng[1];
+                    }
+                }
+
                 //make an InitialSurvey object
-                CommunityWaterTest communityWaterTestToSave = makeCommunityWaterTestObject(interchangesWithUserAns,1,"","");
+                CommunityWaterTest communityWaterTestToSave = makeCommunityWaterTestObject(interchangesWithUserAns,1,lat_,lng_);
 
                 //save the initialSurvey object
                 saveCommunityWaterTestSurvey(communityWaterTestToSave);
 
             }
+
+        }
+
+        if(id== R.id.suspend){
+            ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
+            String lat_ = "";
+            String lng_ = "";
+            if(lat!=null&&lng!=null){
+                lat_= lat;
+                lng_ = lng;
+            }else{
+                //try and get it again
+                PhoneLocation phoneLocation = new PhoneLocation(CommunityWaterSurveyActivity.this);
+                String[] arraylatlng = phoneLocation.getLocation();
+                if(arraylatlng!=null){
+                    lat_ = arraylatlng[0];
+                    lng_ = arraylatlng[1];
+                }
+            }
+            //make an InitialSurvey object
+            CommunityWaterTest communityWaterTestToSave = makeCommunityWaterTestObject(interchangesWithUserAns,0,lat_,lng_);
+
+            //save the initialSurvey object
+            saveCommunityWaterTestSurvey(communityWaterTestToSave);
 
         }
         return super.onOptionsItemSelected(item);

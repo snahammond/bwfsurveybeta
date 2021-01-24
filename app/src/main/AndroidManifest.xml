@@ -152,6 +152,21 @@
             android:screenOrientation="portrait">
         </activity>
 
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.UpdateCommunityWaterCardSelectActivity"
+            android:label="Select suspended Community Water Test"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.UpdateCommunityWaterTestActivity"
+            android:label="Update Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
