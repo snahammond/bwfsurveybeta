@@ -308,6 +308,15 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        Button waterSurveyUC = (Button) findViewById(R.id.button_waterSurveyUC);
+        waterSurveyUC.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), UpdateHouseholdWaterCardSelectActivity.class);
+                i.putExtra("OPERATION","UPDATE");
+                startActivity(i);
+            }
+        });
+
     }
 
     @Override

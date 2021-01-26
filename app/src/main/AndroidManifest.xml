@@ -167,6 +167,14 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.UpdateHouseholdWaterCardSelectActivity"
+            android:label="Select suspended Household Water Test"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
