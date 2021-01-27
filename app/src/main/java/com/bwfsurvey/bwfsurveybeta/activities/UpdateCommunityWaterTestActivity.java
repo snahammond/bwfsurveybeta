@@ -215,7 +215,7 @@ public class UpdateCommunityWaterTestActivity extends AppCompatActivity {
                 }
             }
             //make an CommunityWaterTest object
-            CommunityWaterTest communityWaterTestToSave = makeCommunityWaterTestObjectWithId(interchangesWithUserAns,1,lat_,lng_);
+            CommunityWaterTest communityWaterTestToSave = makeCommunityWaterTestObjectWithId(interchangesWithUserAns,0,lat_,lng_);
 
             //save the CommunityWaterTest object
             saveCommunityWaterTestSurvey(communityWaterTestToSave);
@@ -233,11 +233,11 @@ public class UpdateCommunityWaterTestActivity extends AppCompatActivity {
         String Country = (String) theCommunityWaterTest.getCountry();
         String Community = (String) theCommunityWaterTest.getCommunity();
         String CommunityWaterLoc = (String) theCommunityWaterTest.getCommunityWaterLocation();
-        Temporal.Date  ColilertDateTested = new Temporal.Date(dateFormat.format(getInterchangeAns("ColilertDateTested",interchangesWithUserAns)));
-        Temporal.Date ColilertDateRead = new Temporal.Date(dateFormat.format(getInterchangeAns("ColilertDateRead",interchangesWithUserAns)));
+        Temporal.Date  ColilertDateTested = parseDateWithDefault(getInterchangeAns("ColilertDateTested",interchangesWithUserAns));
+        Temporal.Date ColilertDateRead = parseDateWithDefault(getInterchangeAns("ColilertDateRead",interchangesWithUserAns));
         String ColilertTestResult = (String) getInterchangeAns("ColilertTestResult",interchangesWithUserAns);
-        Temporal.Date PetrifilmDateTested = new Temporal.Date(dateFormat.format(getInterchangeAns("PetrifilmDateTested",interchangesWithUserAns)));
-        Temporal.Date PetrifilmDateRead = new Temporal.Date(dateFormat.format(getInterchangeAns("PetrifilmDateRead",interchangesWithUserAns)));
+        Temporal.Date PetrifilmDateTested = parseDateWithDefault(getInterchangeAns("PetrifilmDateTested",interchangesWithUserAns));
+        Temporal.Date PetrifilmDateRead = parseDateWithDefault(getInterchangeAns("PetrifilmDateRead",interchangesWithUserAns));
         String PetrifilmTestResult = (String) getInterchangeAns("PetrifilmTestResult",interchangesWithUserAns);
         Temporal.Date date = new Temporal.Date(date_s);
 
@@ -374,5 +374,17 @@ public class UpdateCommunityWaterTestActivity extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .show()
                 .setCanceledOnTouchOutside(false);
+    }
+
+    public static Temporal.Date parseDateWithDefault(Object s){
+        Temporal.Date dateValue = null;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        try{
+            dateValue = new Temporal.Date(dateFormat.format(s));
+        }catch (Exception x){
+            dateValue = new Temporal.Date("1900-01-01");
+        }
+        return dateValue;
     }
 }

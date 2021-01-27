@@ -629,7 +629,8 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
                 try{
                     Date date = sdf.parse(interchange.getAnswer().getAns().toString());
-                    editAnswer.setText(sdf.format(date));
+                    if(date != sdf.parse("1900-01-01"))
+                        editAnswer.setText(sdf.format(date));
                 }catch (Exception x){
                     editAnswer.setText("");
                 }
