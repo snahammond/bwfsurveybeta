@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.AnswerType;
 import com.bwfsurvey.bwfsurveybeta.types.AnswerValue;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.example.bwfsurveybeta.R;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -588,7 +591,6 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
 
             DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear,
                                       int dayOfMonth) {
@@ -598,7 +600,6 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                     updateLabel();
                 }
-
             };
 
             editAnswer.setOnClickListener(new View.OnClickListener() {
@@ -625,7 +626,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             interchangeNumber.setText(Integer.toString(interchange.getInterchangeNumber()));
             txtQuestion.setText(interchange.getQuestion().getQuestionText());
             if(interchange.getAnswer().getAns()!=null){
-                String myFormat = "dd/MM/yyyy"; //In which you need put here
+                /*String myFormat = "dd/MM/yyyy"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
                 try{
                     Date date = sdf.parse(interchange.getAnswer().getAns().toString());
@@ -634,7 +635,45 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 }catch (Exception x){
                     editAnswer.setText("");
                 }
+                */
+                Temporal.Date date = null;
+                String dateStr = interchange.getAnswer().getAns().toString();
+                if(dateStr.indexOf("{")>0&&dateStr.indexOf("}")>0){
+                    dateStr = dateStr.substring(dateStr.indexOf("{") + 1);
+                    dateStr = dateStr.substring(0, dateStr.indexOf("}"));
+                    dateStr = dateStr.split(",")[0].split("=")[1];
+                    dateStr = dateStr.substring( 1, dateStr.length() - 1 );
+                    Log.i("Tutorial", "index dateStr: "+dateStr);
 
+                    Date date_ = null;
+                    try {
+                        date_ = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+                        editAnswer.setText(new SimpleDateFormat("dd/MM/yyyy").format(date_));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        editAnswer.setText("");
+                    }
+
+                }else{
+                    Log.i("Tutorial", "out index dateStr: "+dateStr);
+                    editAnswer.setText("");
+                    //date = new Temporal.Date(dateStr);
+                }
+                /*
+                String myFormat = "dd/MM/yyyy"; //In which you need put here
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+                editAnswer.setText(sdf.format(date));
+                */
+
+
+                /*
+                String dateStr = interchange.getAnswer().getAns().toString();
+                if(!dateStr.contentEquals("1900-01-01") )
+                    editAnswer.setText(dateStr);
+                else
+                    editAnswer.setText("");
+
+                 */
             }else{
                 editAnswer.setText("");
             }
