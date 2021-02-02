@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -43,6 +44,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private static int ANSTYPE_NUMBER = 3;
     private static int ANSTYPE_ENUMDROPDOWN = 4;
     private static int ANSTYPE_DATE = 5;
+    private static int ANSTYPE_ENUMMULTIPLE = 6;
 
     public InterchangeCardAdapter(Activity mainActivity, ArrayList<Interchange> interchanges) {
         this.interchanges = interchanges;
@@ -69,6 +71,9 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }else if (viewType == ANSTYPE_DATE){ // for interchange card with date answer
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_card_date, parent, false);
             return new InterchangeDateAnsViewHolder(view);
+        }else if (viewType == ANSTYPE_ENUMMULTIPLE){ // for interchange card with check box answers
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_card_enum_mul, parent, false);
+            return new InterchangeEnumMulAnsViewHolder(view);
         }else{
             return null;
         }
@@ -626,17 +631,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             interchangeNumber.setText(Integer.toString(interchange.getInterchangeNumber()));
             txtQuestion.setText(interchange.getQuestion().getQuestionText());
             if(interchange.getAnswer().getAns()!=null){
-                /*String myFormat = "dd/MM/yyyy"; //In which you need put here
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-                try{
-                    Date date = sdf.parse(interchange.getAnswer().getAns().toString());
-                    if(date != sdf.parse("1900-01-01"))
-                        editAnswer.setText(sdf.format(date));
-                }catch (Exception x){
-                    editAnswer.setText("");
-                }
-                */
-                Temporal.Date date = null;
+
                 String dateStr = interchange.getAnswer().getAns().toString();
                 if(dateStr.indexOf("{")>0&&dateStr.indexOf("}")>0){
                     dateStr = dateStr.substring(dateStr.indexOf("{") + 1);
@@ -648,32 +643,31 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     Date date_ = null;
                     try {
                         date_ = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
-                        editAnswer.setText(new SimpleDateFormat("dd/MM/yyyy").format(date_));
+                        String dateToShow = new SimpleDateFormat("dd/MM/yyyy").format(date_);
+
+                        if(!dateToShow.contentEquals("01/01/1900")){
+
+                            int dayOfMonth = Integer.parseInt(dateToShow.split("/")[0]);
+                            int monthOfYear = Integer.parseInt(dateToShow.split("/")[1]);
+                            int year = Integer.parseInt(dateToShow.split("/")[2]);
+
+                            myCalendar.set(Calendar.YEAR, year);
+                            myCalendar.set(Calendar.MONTH, monthOfYear-1);
+                            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                            updateLabel();
+                        }
+                        else
+                            editAnswer.setText("");
                     } catch (Exception e) {
-                        e.printStackTrace();
                         editAnswer.setText("");
                     }
 
                 }else{
                     Log.i("Tutorial", "out index dateStr: "+dateStr);
                     editAnswer.setText("");
-                    //date = new Temporal.Date(dateStr);
                 }
-                /*
-                String myFormat = "dd/MM/yyyy"; //In which you need put here
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-                editAnswer.setText(sdf.format(date));
-                */
 
 
-                /*
-                String dateStr = interchange.getAnswer().getAns().toString();
-                if(!dateStr.contentEquals("1900-01-01") )
-                    editAnswer.setText(dateStr);
-                else
-                    editAnswer.setText("");
-
-                 */
             }else{
                 editAnswer.setText("");
             }
@@ -681,11 +675,506 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
     }
 
+    class InterchangeEnumMulAnsViewHolder extends RecyclerView.ViewHolder{
+        private TextView interchangeNumber;
+        private TextView txtQuestion;
+
+        private CheckBox checkbox_1;
+        private CheckBox checkbox_2;
+        private CheckBox checkbox_3;
+        private CheckBox checkbox_4;
+        private CheckBox checkbox_5;
+        private CheckBox checkbox_6;
+        private CheckBox checkbox_7;
+        private CheckBox checkbox_8;
+        private CheckBox checkbox_9;
+        private CheckBox checkbox_10;
+        private int interchangePosition;
+
+        public int getInterchangePosition() {
+            return interchangePosition;
+        }
+
+        public void setInterchangePosition(int interchangePosition) {
+            this.interchangePosition = interchangePosition;
+        }
+
+        InterchangeEnumMulAnsViewHolder(@NonNull View itemView) {
+            super(itemView);
+            interchangeNumber = itemView.findViewById(R.id.interchangeNumber);
+            txtQuestion = itemView.findViewById(R.id.txtQuestion);
+
+            checkbox_1 = (CheckBox)itemView.findViewById(R.id.checkbox_1);
+            checkbox_1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedEnumMulStrValue = ((CheckBox)v).getHint().toString();
+                    String ansAlreadyPresent = (String) _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns();
+                    boolean checked = ((CheckBox) v).isChecked();
+                    if(checked){
+                        if(ansAlreadyPresent!=null){
+                            ansAlreadyPresent = ansAlreadyPresent + selectedEnumMulStrValue + ",";
+                        }else{
+                            ansAlreadyPresent = selectedEnumMulStrValue + ",";
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansAlreadyPresent);
+                        Log.i("Tutorial", "ansAlreadyPresent: "+ ansAlreadyPresent  );
+                    }else{
+                        String[]  ansAlreadyPresentStrArr = ansAlreadyPresent.split(",");
+                        String ansToWrite = "";
+                        for(String anAnswer : ansAlreadyPresentStrArr){
+                            if(!anAnswer.contentEquals(selectedEnumMulStrValue)){
+                                ansToWrite = ansToWrite + anAnswer + ",";
+                            }
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansToWrite);
+                        Log.i("Tutorial", "ansToWrite: "+ ansToWrite  );
+                    }
+                }
+            });
+            checkbox_2 = (CheckBox)itemView.findViewById(R.id.checkbox_2);
+            checkbox_2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedEnumMulStrValue = ((CheckBox)v).getHint().toString();
+                    String ansAlreadyPresent = (String) _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns();
+                    boolean checked = ((CheckBox) v).isChecked();
+                    if(checked){
+                        if(ansAlreadyPresent!=null){
+                            ansAlreadyPresent = ansAlreadyPresent + selectedEnumMulStrValue + ",";
+                        }else{
+                            ansAlreadyPresent = selectedEnumMulStrValue + ",";
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansAlreadyPresent);
+                        Log.i("Tutorial", "ansAlreadyPresent: "+ ansAlreadyPresent  );
+                    }else{
+                        String[]  ansAlreadyPresentStrArr = ansAlreadyPresent.split(",");
+                        String ansToWrite = "";
+                        for(String anAnswer : ansAlreadyPresentStrArr){
+                            if(!anAnswer.contentEquals(selectedEnumMulStrValue)){
+                                ansToWrite = ansToWrite + anAnswer + ",";
+                            }
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansToWrite);
+                        Log.i("Tutorial", "ansToWrite: "+ ansToWrite  );
+                    }
+                }
+            });
+            checkbox_3 = (CheckBox)itemView.findViewById(R.id.checkbox_3);
+            checkbox_3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedEnumMulStrValue = ((CheckBox)v).getHint().toString();
+                    String ansAlreadyPresent = (String) _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns();
+                    boolean checked = ((CheckBox) v).isChecked();
+                    if(checked){
+                        if(ansAlreadyPresent!=null){
+                            ansAlreadyPresent = ansAlreadyPresent + selectedEnumMulStrValue + ",";
+                        }else{
+                            ansAlreadyPresent = selectedEnumMulStrValue + ",";
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansAlreadyPresent);
+                        Log.i("Tutorial", "ansAlreadyPresent: "+ ansAlreadyPresent  );
+                    }else{
+                        String[]  ansAlreadyPresentStrArr = ansAlreadyPresent.split(",");
+                        String ansToWrite = "";
+                        for(String anAnswer : ansAlreadyPresentStrArr){
+                            if(!anAnswer.contentEquals(selectedEnumMulStrValue)){
+                                ansToWrite = ansToWrite + anAnswer + ",";
+                            }
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansToWrite);
+                        Log.i("Tutorial", "ansToWrite: "+ ansToWrite  );
+                    }
+                }
+            });
+            checkbox_4 = (CheckBox)itemView.findViewById(R.id.checkbox_4);
+            checkbox_4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedEnumMulStrValue = ((CheckBox)v).getHint().toString();
+                    String ansAlreadyPresent = (String) _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns();
+                    boolean checked = ((CheckBox) v).isChecked();
+                    if(checked){
+                        if(ansAlreadyPresent!=null){
+                            ansAlreadyPresent = ansAlreadyPresent + selectedEnumMulStrValue + ",";
+                        }else{
+                            ansAlreadyPresent = selectedEnumMulStrValue + ",";
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansAlreadyPresent);
+                        Log.i("Tutorial", "ansAlreadyPresent: "+ ansAlreadyPresent  );
+                    }else{
+                        String[]  ansAlreadyPresentStrArr = ansAlreadyPresent.split(",");
+                        String ansToWrite = "";
+                        for(String anAnswer : ansAlreadyPresentStrArr){
+                            if(!anAnswer.contentEquals(selectedEnumMulStrValue)){
+                                ansToWrite = ansToWrite + anAnswer + ",";
+                            }
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansToWrite);
+                        Log.i("Tutorial", "ansToWrite: "+ ansToWrite  );
+                    }
+                }
+            });
+            checkbox_5 = (CheckBox)itemView.findViewById(R.id.checkbox_5);
+            checkbox_5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedEnumMulStrValue = ((CheckBox)v).getHint().toString();
+                    String ansAlreadyPresent = (String) _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns();
+                    boolean checked = ((CheckBox) v).isChecked();
+                    if(checked){
+                        if(ansAlreadyPresent!=null){
+                            ansAlreadyPresent = ansAlreadyPresent + selectedEnumMulStrValue + ",";
+                        }else{
+                            ansAlreadyPresent = selectedEnumMulStrValue + ",";
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansAlreadyPresent);
+                        Log.i("Tutorial", "ansAlreadyPresent: "+ ansAlreadyPresent  );
+                    }else{
+                        String[]  ansAlreadyPresentStrArr = ansAlreadyPresent.split(",");
+                        String ansToWrite = "";
+                        for(String anAnswer : ansAlreadyPresentStrArr){
+                            if(!anAnswer.contentEquals(selectedEnumMulStrValue)){
+                                ansToWrite = ansToWrite + anAnswer + ",";
+                            }
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansToWrite);
+                        Log.i("Tutorial", "ansToWrite: "+ ansToWrite  );
+                    }
+                }
+            });
+            checkbox_6 = (CheckBox)itemView.findViewById(R.id.checkbox_6);
+            checkbox_6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedEnumMulStrValue = ((CheckBox)v).getHint().toString();
+                    String ansAlreadyPresent = (String) _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns();
+                    boolean checked = ((CheckBox) v).isChecked();
+                    if(checked){
+                        if(ansAlreadyPresent!=null){
+                            ansAlreadyPresent = ansAlreadyPresent + selectedEnumMulStrValue + ",";
+                        }else{
+                            ansAlreadyPresent = selectedEnumMulStrValue + ",";
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansAlreadyPresent);
+                        Log.i("Tutorial", "ansAlreadyPresent: "+ ansAlreadyPresent  );
+                    }else{
+                        String[]  ansAlreadyPresentStrArr = ansAlreadyPresent.split(",");
+                        String ansToWrite = "";
+                        for(String anAnswer : ansAlreadyPresentStrArr){
+                            if(!anAnswer.contentEquals(selectedEnumMulStrValue)){
+                                ansToWrite = ansToWrite + anAnswer + ",";
+                            }
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansToWrite);
+                        Log.i("Tutorial", "ansToWrite: "+ ansToWrite  );
+                    }
+                }
+            });
+            checkbox_7 = (CheckBox)itemView.findViewById(R.id.checkbox_7);
+            checkbox_7.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedEnumMulStrValue = ((CheckBox)v).getHint().toString();
+                    String ansAlreadyPresent = (String) _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns();
+                    boolean checked = ((CheckBox) v).isChecked();
+                    if(checked){
+                        if(ansAlreadyPresent!=null){
+                            ansAlreadyPresent = ansAlreadyPresent + selectedEnumMulStrValue + ",";
+                        }else{
+                            ansAlreadyPresent = selectedEnumMulStrValue + ",";
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansAlreadyPresent);
+                        Log.i("Tutorial", "ansAlreadyPresent: "+ ansAlreadyPresent  );
+                    }else{
+                        String[]  ansAlreadyPresentStrArr = ansAlreadyPresent.split(",");
+                        String ansToWrite = "";
+                        for(String anAnswer : ansAlreadyPresentStrArr){
+                            if(!anAnswer.contentEquals(selectedEnumMulStrValue)){
+                                ansToWrite = ansToWrite + anAnswer + ",";
+                            }
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansToWrite);
+                        Log.i("Tutorial", "ansToWrite: "+ ansToWrite  );
+                    }
+                }
+            });
+            checkbox_8 = (CheckBox)itemView.findViewById(R.id.checkbox_8);
+            checkbox_8.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedEnumMulStrValue = ((CheckBox)v).getHint().toString();
+                    String ansAlreadyPresent = (String) _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns();
+                    boolean checked = ((CheckBox) v).isChecked();
+                    if(checked){
+                        if(ansAlreadyPresent!=null){
+                            ansAlreadyPresent = ansAlreadyPresent + selectedEnumMulStrValue + ",";
+                        }else{
+                            ansAlreadyPresent = selectedEnumMulStrValue + ",";
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansAlreadyPresent);
+                        Log.i("Tutorial", "ansAlreadyPresent: "+ ansAlreadyPresent  );
+                    }else{
+                        String[]  ansAlreadyPresentStrArr = ansAlreadyPresent.split(",");
+                        String ansToWrite = "";
+                        for(String anAnswer : ansAlreadyPresentStrArr){
+                            if(!anAnswer.contentEquals(selectedEnumMulStrValue)){
+                                ansToWrite = ansToWrite + anAnswer + ",";
+                            }
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansToWrite);
+                        Log.i("Tutorial", "ansToWrite: "+ ansToWrite  );
+                    }
+                }
+            });
+            checkbox_9 = (CheckBox)itemView.findViewById(R.id.checkbox_9);
+            checkbox_9.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedEnumMulStrValue = ((CheckBox)v).getHint().toString();
+                    String ansAlreadyPresent = (String) _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns();
+                    boolean checked = ((CheckBox) v).isChecked();
+                    if(checked){
+                        if(ansAlreadyPresent!=null){
+                            ansAlreadyPresent = ansAlreadyPresent + selectedEnumMulStrValue + ",";
+                        }else{
+                            ansAlreadyPresent = selectedEnumMulStrValue + ",";
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansAlreadyPresent);
+                        Log.i("Tutorial", "ansAlreadyPresent: "+ ansAlreadyPresent  );
+                    }else{
+                        String[]  ansAlreadyPresentStrArr = ansAlreadyPresent.split(",");
+                        String ansToWrite = "";
+                        for(String anAnswer : ansAlreadyPresentStrArr){
+                            if(!anAnswer.contentEquals(selectedEnumMulStrValue)){
+                                ansToWrite = ansToWrite + anAnswer + ",";
+                            }
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansToWrite);
+                        Log.i("Tutorial", "ansToWrite: "+ ansToWrite  );
+                    }
+                }
+            });
+            checkbox_10 = (CheckBox)itemView.findViewById(R.id.checkbox_10);
+            checkbox_10.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedEnumMulStrValue = ((CheckBox)v).getHint().toString();
+                    String ansAlreadyPresent = (String) _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns();
+                    boolean checked = ((CheckBox) v).isChecked();
+                    if(checked){
+                        if(ansAlreadyPresent!=null){
+                            ansAlreadyPresent = ansAlreadyPresent + selectedEnumMulStrValue + ",";
+                        }else{
+                            ansAlreadyPresent = selectedEnumMulStrValue + ",";
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansAlreadyPresent);
+                        Log.i("Tutorial", "ansAlreadyPresent: "+ ansAlreadyPresent  );
+                    }else{
+                        String[]  ansAlreadyPresentStrArr = ansAlreadyPresent.split(",");
+                        String ansToWrite = "";
+                        for(String anAnswer : ansAlreadyPresentStrArr){
+                            if(!anAnswer.contentEquals(selectedEnumMulStrValue)){
+                                ansToWrite = ansToWrite + anAnswer + ",";
+                            }
+                        }
+                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansToWrite);
+                        Log.i("Tutorial", "ansToWrite: "+ ansToWrite  );
+                    }
+                }
+            });
+        }
+
+        void setQuestionEnumMulAnsDetails(Interchange interchange, int position) {
+            this.setInterchangePosition(position);
+            interchangeNumber.setText(Integer.toString(interchange.getInterchangeNumber()));
+            txtQuestion.setText(interchange.getQuestion().getQuestionText());
+
+            //Log.i("Tutorial", "question "+ interchange.getQuestion().getQuestionText());
+            String selectedOptionStr = null;
+            //set which of the radio is already selected
+            if(interchange.getAnswer().getAns()!=null){
+                selectedOptionStr = interchange.getAnswer().getAns().toString();
+            }
+
+            addCheckboxes(interchange.getAnswer().getAnswerValArrayList(),position,selectedOptionStr);
+        }
+
+        public void addCheckboxes(ArrayList<AnswerValue> possibleAnss, int position, String selectedOptions) {
+
+            checkbox_1.setVisibility(View.GONE);
+            checkbox_2.setVisibility(View.GONE);
+            checkbox_3.setVisibility(View.GONE);
+            checkbox_4.setVisibility(View.GONE);
+            checkbox_5.setVisibility(View.GONE);
+            checkbox_6.setVisibility(View.GONE);
+            checkbox_7.setVisibility(View.GONE);
+            checkbox_8.setVisibility(View.GONE);
+            checkbox_9.setVisibility(View.GONE);
+            checkbox_10.setVisibility(View.GONE);
+
+
+            if(possibleAnss.size()>0){
+                checkbox_1.setVisibility(View.VISIBLE);
+                checkbox_1.setText(possibleAnss.get(0).getDesc());
+                checkbox_1.setHint(possibleAnss.get(0).getValue());
+
+                if(selectedOptions!=null){
+                    String[]  ansAlreadyPresentStrArr = selectedOptions.split(",");
+                    for(String anAnswer : ansAlreadyPresentStrArr){
+                        if(possibleAnss.get(0).getValue().contentEquals(anAnswer)){
+                            checkbox_1.setChecked(true);
+                        }
+                    }
+                }
+
+            }
+
+            if(possibleAnss.size()>1){
+                checkbox_2.setVisibility(View.VISIBLE);
+                checkbox_2.setChecked(false);
+                checkbox_2.setText( possibleAnss.get(1).getDesc());
+                checkbox_2.setHint(possibleAnss.get(1).getValue());
+                if(selectedOptions!=null){
+                    String[]  ansAlreadyPresentStrArr = selectedOptions.split(",");
+                    for(String anAnswer : ansAlreadyPresentStrArr){
+                        if(possibleAnss.get(1).getValue().contentEquals(anAnswer)){
+                            checkbox_2.setChecked(true);
+                        }
+                    }
+                }
+            }
+
+            if(possibleAnss.size()>2){
+                checkbox_3.setVisibility(View.VISIBLE);
+                checkbox_3.setChecked(false);
+                checkbox_3.setText( possibleAnss.get(2).getDesc());
+                checkbox_3.setHint(possibleAnss.get(2).getValue());
+                if(selectedOptions!=null){
+                    String[]  ansAlreadyPresentStrArr = selectedOptions.split(",");
+                    for(String anAnswer : ansAlreadyPresentStrArr){
+                        if(possibleAnss.get(2).getValue().contentEquals(anAnswer)){
+                            checkbox_3.setChecked(true);
+                        }
+                    }
+                }
+            }
+
+            if(possibleAnss.size()>3){
+                checkbox_4.setVisibility(View.VISIBLE);
+                checkbox_4.setChecked(false);
+                checkbox_4.setText( possibleAnss.get(3).getDesc());
+                checkbox_4.setHint(possibleAnss.get(3).getValue());
+                if(selectedOptions!=null){
+                    String[]  ansAlreadyPresentStrArr = selectedOptions.split(",");
+                    for(String anAnswer : ansAlreadyPresentStrArr){
+                        if(possibleAnss.get(3).getValue().contentEquals(anAnswer)){
+                            checkbox_4.setChecked(true);
+                        }
+                    }
+                }
+            }
+
+            if(possibleAnss.size()>4){
+                checkbox_5.setVisibility(View.VISIBLE);
+                checkbox_5.setChecked(false);
+                checkbox_5.setText( possibleAnss.get(4).getDesc());
+                checkbox_5.setHint(possibleAnss.get(4).getValue());
+                if(selectedOptions!=null){
+                    String[]  ansAlreadyPresentStrArr = selectedOptions.split(",");
+                    for(String anAnswer : ansAlreadyPresentStrArr){
+                        if(possibleAnss.get(4).getValue().contentEquals(anAnswer)){
+                            checkbox_5.setChecked(true);
+                        }
+                    }
+                }
+            }
+
+            if(possibleAnss.size()>5){
+                checkbox_6.setVisibility(View.VISIBLE);
+                checkbox_6.setChecked(false);
+                checkbox_6.setText( possibleAnss.get(5).getDesc());
+                checkbox_6.setHint(possibleAnss.get(5).getValue());
+                if(selectedOptions!=null){
+                    String[]  ansAlreadyPresentStrArr = selectedOptions.split(",");
+                    for(String anAnswer : ansAlreadyPresentStrArr){
+                        if(possibleAnss.get(5).getValue().contentEquals(anAnswer)){
+                            checkbox_6.setChecked(true);
+                        }
+                    }
+                }
+            }
+
+            if(possibleAnss.size()>6){
+                checkbox_7.setVisibility(View.VISIBLE);
+                checkbox_7.setChecked(false);
+                checkbox_7.setText( possibleAnss.get(6).getDesc());
+                checkbox_7.setHint(possibleAnss.get(6).getValue());
+                if(selectedOptions!=null){
+                    String[]  ansAlreadyPresentStrArr = selectedOptions.split(",");
+                    for(String anAnswer : ansAlreadyPresentStrArr){
+                        if(possibleAnss.get(6).getValue().contentEquals(anAnswer)){
+                            checkbox_7.setChecked(true);
+                        }
+                    }
+                }
+
+            }
+
+            if(possibleAnss.size()>7){
+                checkbox_8.setVisibility(View.VISIBLE);
+                checkbox_8.setChecked(false);
+                checkbox_8.setText( possibleAnss.get(7).getDesc());
+                checkbox_8.setHint(possibleAnss.get(7).getValue());
+                if(selectedOptions!=null){
+                    String[]  ansAlreadyPresentStrArr = selectedOptions.split(",");
+                    for(String anAnswer : ansAlreadyPresentStrArr){
+                        if(possibleAnss.get(7).getValue().contentEquals(anAnswer)){
+                            checkbox_8.setChecked(true);
+                        }
+                    }
+                }
+
+            }
+
+            if(possibleAnss.size()>8){
+                checkbox_9.setVisibility(View.VISIBLE);
+                checkbox_9.setChecked(false);
+                checkbox_9.setText( possibleAnss.get(8).getDesc());
+                checkbox_9.setHint(possibleAnss.get(8).getValue());
+                if(selectedOptions!=null){
+                    String[]  ansAlreadyPresentStrArr = selectedOptions.split(",");
+                    for(String anAnswer : ansAlreadyPresentStrArr){
+                        if(possibleAnss.get(8).getValue().contentEquals(anAnswer)){
+                            checkbox_9.setChecked(true);
+                        }
+                    }
+                }
+            }
+
+            if(possibleAnss.size()>9){
+                checkbox_10.setVisibility(View.VISIBLE);
+                checkbox_10.setChecked(false);
+                checkbox_10.setText( possibleAnss.get(9).getDesc());
+                checkbox_10.setHint(possibleAnss.get(9).getValue());
+                if(selectedOptions!=null){
+                    String[]  ansAlreadyPresentStrArr = selectedOptions.split(",");
+                    for(String anAnswer : ansAlreadyPresentStrArr){
+                        if(possibleAnss.get(9).getValue().contentEquals(anAnswer)){
+                            checkbox_10.setChecked(true);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == ANSTYPE_TEXT) {
             ((InterchangeTextAnsViewHolder) holder).setQuestionTextAnsDetails(_retInterchangesWithAns.get(position),position);
-        } else if (getItemViewType(position) == ANSTYPE_ENUM){
+        }else if (getItemViewType(position) == ANSTYPE_ENUM){
             ((InterchangeEnumAnsViewHolder) holder).setQuestionEnumAnsDetails(_retInterchangesWithAns.get(position),position);
         }else if(getItemViewType(position) == ANSTYPE_NUMBER){
             ((InterchangeNumberAnsViewHolder) holder).setQuestionNumberAnsDetails(_retInterchangesWithAns.get(position),position);
@@ -693,6 +1182,8 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             ((InterchangeSpinnerAnsViewHolder) holder).setQuestionSpinnerAnsDetails(_retInterchangesWithAns.get(position),position);
         }else if(getItemViewType(position) == ANSTYPE_DATE){
             ((InterchangeDateAnsViewHolder) holder).setQuestionDateAnsDetails(_retInterchangesWithAns.get(position),position);
+        }else if(getItemViewType(position) == ANSTYPE_ENUMMULTIPLE){
+            ((InterchangeEnumMulAnsViewHolder) holder).setQuestionEnumMulAnsDetails(_retInterchangesWithAns.get(position),position);
         }
     }
 
@@ -714,6 +1205,8 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             return ANSTYPE_ENUMDROPDOWN;
         }else if(interchanges.get(position).getAnswer().getAnswerDef().getType()==AnswerType.DATEVALUE){
             return ANSTYPE_DATE;
+        }else if(interchanges.get(position).getAnswer().getAnswerDef().getType()==AnswerType.ENUMMULTIPLEVALUE){
+            return ANSTYPE_ENUMMULTIPLE;
         }else{
             return 0;
         }

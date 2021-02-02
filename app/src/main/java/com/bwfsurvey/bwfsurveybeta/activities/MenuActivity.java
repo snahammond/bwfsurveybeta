@@ -64,7 +64,7 @@ public class MenuActivity extends AppCompatActivity {
         progressBarText = (TextView) findViewById(R.id.pbText);
 
         progressBarText.setText("Please wait... Synchronizing with cloud!");
-        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);/*
         Amplify.DataStore.start(
                 () -> {
                     Log.i("Tutorials", "DataStore started");
@@ -141,6 +141,8 @@ public class MenuActivity extends AppCompatActivity {
                     });
                 }
         );
+        */
+        showMenu();
     }
 
     public void showMenu(){

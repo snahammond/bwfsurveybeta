@@ -957,7 +957,7 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>AD</type>
-    <value>ENUMVALUE</value>
+    <value>ENUMMULTIPLEVALUE</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -3069,7 +3069,7 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>AD</type>
-    <value>ENUMVALUE</value>
+    <value>ENUMMULTIPLEVALUE</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -5049,7 +5049,7 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>AD</type>
-    <value>ENUMVALUE</value>
+    <value>ENUMMULTIPLEVALUE</value>
   </config>
   <config>
     <childdesc></childdesc>
