@@ -162,6 +162,48 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                         System.out.println("Could not parse " + nfe);
                     }
                     _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((int)myNum);
+
+                    //custom code
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoHouseholdMale0_1Year")){
+                        updateTotalNoPeopleHousehold();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoHouseholdFemale0_1Year")){
+                        updateTotalNoPeopleHousehold();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoHouseholdMale1_5Year")){
+                        updateTotalNoPeopleHousehold();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoHouseholdFemale1_5Year")){
+                        updateTotalNoPeopleHousehold();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoHouseholdMale5_12Year")){
+                        updateTotalNoPeopleHousehold();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoHouseholdFemale5_12Year")){
+                        updateTotalNoPeopleHousehold();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoHouseholdMale13_17Year")){
+                        updateTotalNoPeopleHousehold();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoHouseholdFemale13_17Year")){
+                        updateTotalNoPeopleHousehold();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoHouseholdMale18_Year")){
+                        updateTotalNoPeopleHousehold();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoHouseholdFemale18_Year")){
+                        updateTotalNoPeopleHousehold();
+                    }
+
                 }
             });
         }
@@ -177,7 +219,56 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 editAnswer.setText("0");
                 _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(0);
             }
+
+            if(interchange.getName().contentEquals("TotalNoPeopleHousehold")){
+                editAnswer.setEnabled(false);
+                editAnswer.setText(String.valueOf(_retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns()));
+            }
+
         }
+
+        private void updateTotalNoPeopleHousehold(){
+            for(Interchange interchange : _retInterchangesWithAns){
+                if(interchange.getName().contentEquals("TotalNoPeopleHousehold")){
+                    Integer NoHouseholdMale0_1Year = getInterchangeAns("NoHouseholdMale0_1Year");
+                    Integer NoHouseholdFemale0_1Year = getInterchangeAns("NoHouseholdFemale0_1Year");
+                    Integer NoHouseholdMale1_5Year = getInterchangeAns("NoHouseholdMale1_5Year");
+                    Integer NoHouseholdFemale1_5Year = getInterchangeAns("NoHouseholdFemale1_5Year");
+                    Integer NoHouseholdMale5_12Year = getInterchangeAns("NoHouseholdMale5_12Year");
+                    Integer NoHouseholdFemale5_12Year = getInterchangeAns("NoHouseholdFemale5_12Year");
+                    Integer NoHouseholdMale13_17Year = getInterchangeAns("NoHouseholdMale13_17Year");
+                    Integer NoHouseholdFemale13_17Year = getInterchangeAns("NoHouseholdFemale13_17Year");
+                    Integer NoHouseholdMale18_Year = getInterchangeAns("NoHouseholdMale18_Year");
+                    Integer NoHouseholdFemale18_Year = getInterchangeAns("NoHouseholdFemale18_Year");
+
+                    int TotalNoPeopleHousehold = NoHouseholdMale0_1Year + NoHouseholdFemale0_1Year
+                            + NoHouseholdMale1_5Year + NoHouseholdFemale1_5Year
+                            + NoHouseholdMale5_12Year + NoHouseholdFemale5_12Year
+                            + NoHouseholdMale13_17Year + NoHouseholdFemale13_17Year
+                            + NoHouseholdMale18_Year + NoHouseholdFemale18_Year;
+                    //_retInterchangesWithAns.get(interchange.getPositionOnRecyler()).getAnswer().setAns(currentAnsInTotal+myNum);
+                    interchange.getAnswer().setAns(TotalNoPeopleHousehold);
+                }
+            }
+        }
+
+        private int getInterchangeAns(String interchangeName){
+            int ans = 0;
+            for(Interchange interchange : _retInterchangesWithAns){
+                if(interchange.getName().contentEquals(interchangeName)){
+                    if(interchange.getAnswer()!=null && interchange.getAnswer().getAns()!=null){
+                        try{
+                            ans = (int)interchange.getAnswer().getAns();
+                        }catch (Exception x){
+                            ans = 0;
+                        }
+                    }
+                }
+            }
+            return ans;
+        }
+
+
     }
 
     class InterchangeEnumAnsViewHolder extends RecyclerView.ViewHolder{
