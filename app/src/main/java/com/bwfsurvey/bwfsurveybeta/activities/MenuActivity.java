@@ -142,12 +142,49 @@ public class MenuActivity extends AppCompatActivity {
                 }
         );
         */
-        showMenu();
+
+        ArrayList<Config> configsInner = new ArrayList<Config>();
+        Amplify.DataStore.query(
+                ConfigDefinitions.class,
+                allConfigDefinitions -> {
+                    Log.i("Tutorials", "DataStore is queried config query.");
+                    while (allConfigDefinitions.hasNext()) {
+                        ConfigDefinitions configDef = allConfigDefinitions.next();
+                        if(configDef.getType().contentEquals("C")){
+                            Log.i("Tutorials", "country config. "+ configDef.getChildvalue());
+                        }
+                        configsInner.add(new Config(configDef.getType(), configDef.getName(), configDef.getValue(),configDef.getDesc(), configDef.getChildname(), configDef.getChildvalue(), configDef.getChilddesc(),configDef.getParentname(), configDef.getParentvalue(), configDef.getParentdesc()));
+                    }
+                    Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+configsInner.size() );
+                    if(configsInner.size()>0){
+                        MyAmplifyApplication.configs = configsInner;
+                        MyAmplifyApplication.interchangePool = MyAmplifyApplication.makeAllInterchanges();
+                        Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+MyAmplifyApplication.configs.size() );
+                    }
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            showMenu();
+                        }
+                    });
+
+                },
+                failure ->{
+                    Log.i("Tutorials", "Query failed, going to use file " );
+                    Log.e("Tutorials", "Query failed.", failure);
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            showMenu();
+                        }
+                    });
+                }
+        );
+
+
     }
 
     public void showMenu(){
 
-        if(calledAMPStart){
+        //if(calledAMPStart){
             //wait for sync to finish, because Authenication called start
             startProgress("Please wait... Setting Up!");
             CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
@@ -157,14 +194,16 @@ public class MenuActivity extends AppCompatActivity {
 
                 @Override
                 public void onFinish() {
+                    Log.i("Tutorials", "endProgress in showMenu" );
+                    progressBar.setVisibility(View.GONE);
                     endProgress();
                     initView();
                 }
             };
             countDownTimer.start();
 
-        }else
-            initView();
+        //}else
+          //  initView();
     }
 
     private void initView() {

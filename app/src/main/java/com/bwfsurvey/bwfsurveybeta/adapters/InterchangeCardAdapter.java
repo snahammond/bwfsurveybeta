@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -50,6 +51,15 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         this.interchanges = interchanges;
         this._retInterchangesWithAns = interchanges;
         this.context = mainActivity;
+    }
+
+    RecyclerView mRecyclerView;
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+
+        mRecyclerView = recyclerView;
     }
 
     @NonNull
@@ -144,6 +154,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             interchangeNumber = itemView.findViewById(R.id.interchangeNumber);
             txtQuestion = itemView.findViewById(R.id.txtQuestion);
             editAnswer = itemView.findViewById(R.id.editAnswer);
+            editAnswer.setEnabled(true);
             editAnswer.addTextChangedListener(new TextWatcher() {
 
                 public void afterTextChanged(Editable s) {
@@ -206,6 +217,8 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
                 }
             });
+
+
         }
 
         void setQuestionNumberAnsDetails(Interchange interchange,int position) {
@@ -215,13 +228,14 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
             if(interchange.getAnswer().getAns()!=null){
                 editAnswer.setText(interchange.getAnswer().getAns().toString());
+                editAnswer.setEnabled(true);
             }else{
                 editAnswer.setText("0");
+                editAnswer.setEnabled(true);
                 _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(0);
             }
 
             if(interchange.getName().contentEquals("TotalNoPeopleHousehold")){
-                editAnswer.setEnabled(false);
                 editAnswer.setText(String.valueOf(_retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns()));
             }
 
@@ -248,8 +262,28 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                             + NoHouseholdMale18_Year + NoHouseholdFemale18_Year;
                     //_retInterchangesWithAns.get(interchange.getPositionOnRecyler()).getAnswer().setAns(currentAnsInTotal+myNum);
                     interchange.getAnswer().setAns(TotalNoPeopleHousehold);
+
+                    RecyclerView.ViewHolder totalViewHolder = mRecyclerView.findViewHolderForAdapterPosition(17);
+                    if(totalViewHolder!=null){
+                        TextView interchangeNumberTotal = (TextView)totalViewHolder.itemView.findViewById(R.id.interchangeNumber);
+                        TextView editAnswerTotal = (TextView)totalViewHolder.itemView.findViewById(R.id.editAnswer);
+                        TextView txtQuestion = (TextView)totalViewHolder.itemView.findViewById(R.id.txtQuestion);
+                        Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
+                        if(txtQuestion.getText().toString().contains("Total")){
+                            Log.i("Tutorial", "interchangeNumberTotal : "+ interchangeNumberTotal.getText() );
+                            editAnswerTotal.setEnabled(false);
+                            editAnswerTotal.setText(String.valueOf(TotalNoPeopleHousehold));
+                        }
+
+                    }
+
                 }
             }
+
+
+            //this is the total guy; we need to change as require
+
+
         }
 
         private int getInterchangeAns(String interchangeName){
