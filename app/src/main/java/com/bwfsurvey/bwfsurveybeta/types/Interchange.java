@@ -9,6 +9,7 @@ public class Interchange implements Comparable<Interchange>{
     private Answer answer;
     private int positionOnRecyler;
     private Validation validation;
+    private String comment;
 
     public Interchange(String name, int interchangeNumber, Question question, Answer answer, Validation validation) {
         this.name = name;
@@ -17,9 +18,10 @@ public class Interchange implements Comparable<Interchange>{
         this.answer = answer;
     }
 
-    public Interchange(String name, int interchangeNumber) {
+    public Interchange(String name, int interchangeNumber, String comment) {
         this.name = name;
         this.interchangeNumber = interchangeNumber;
+        this.comment = comment;
     }
 
     public String getName() {
@@ -68,6 +70,14 @@ public class Interchange implements Comparable<Interchange>{
 
     public void setValidation(Validation validation) {
         this.validation = validation;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public boolean isValid(){

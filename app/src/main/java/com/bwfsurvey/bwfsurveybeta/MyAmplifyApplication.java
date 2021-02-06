@@ -153,7 +153,7 @@ public class MyAmplifyApplication extends Application {
                     }catch (Exception x){
                         interchangeNo = -1;
                     }
-                    allInterchangesFromConfig.add(new Interchange(config.getName(),interchangeNo));
+                    allInterchangesFromConfig.add(new Interchange(config.getName(),interchangeNo,config.getDescription()));
                 } else if (config.getType().contentEquals("V")) {
                     int mandatoryInt;
                     boolean mandatory;

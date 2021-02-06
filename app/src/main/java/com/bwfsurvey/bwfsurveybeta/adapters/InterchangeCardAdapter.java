@@ -225,17 +225,16 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             this.setInterchangePosition(position);
             interchangeNumber.setText(Integer.toString(interchange.getInterchangeNumber()));
             txtQuestion.setText(interchange.getQuestion().getQuestionText());
-
+            editAnswer.setEnabled(true);
             if(interchange.getAnswer().getAns()!=null){
                 editAnswer.setText(interchange.getAnswer().getAns().toString());
-                editAnswer.setEnabled(true);
             }else{
                 editAnswer.setText("0");
-                editAnswer.setEnabled(true);
                 _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(0);
             }
 
             if(interchange.getName().contentEquals("TotalNoPeopleHousehold")){
+                editAnswer.setEnabled(false);
                 editAnswer.setText(String.valueOf(_retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns()));
             }
 
@@ -308,6 +307,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     class InterchangeEnumAnsViewHolder extends RecyclerView.ViewHolder{
         private TextView interchangeNumber;
         private TextView txtQuestion;
+        private TextView txtComment;
         private RadioGroup radioEnum;
         private RadioButton radio_1;
         private RadioButton radio_2;
@@ -333,6 +333,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             super(itemView);
             interchangeNumber = itemView.findViewById(R.id.interchangeNumber);
             txtQuestion = itemView.findViewById(R.id.txtQuestion);
+            txtComment = itemView.findViewById(R.id.txtComment);
             radioEnum = (RadioGroup) itemView.findViewById(R.id.radioEnum);
             radio_1 = (RadioButton)itemView.findViewById(R.id.radio_1);
             radio_1.setOnClickListener(new View.OnClickListener() {
@@ -420,6 +421,12 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             this.setInterchangePosition(position);
             interchangeNumber.setText(Integer.toString(interchange.getInterchangeNumber()));
             txtQuestion.setText(interchange.getQuestion().getQuestionText());
+            txtComment.setVisibility(View.GONE);
+            txtComment.setText("");
+            if(interchange.getComment()!=null&&!interchange.getComment().isEmpty()){
+                txtComment.setVisibility(View.VISIBLE);
+                txtComment.setText(interchange.getComment());
+            }
 
             //Log.i("Tutorial", "question "+ interchange.getQuestion().getQuestionText());
             String selectedOptionStr = null;

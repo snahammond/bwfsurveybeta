@@ -107,6 +107,13 @@
                 android:onClick="onCheckboxClicked"
                 android:visibility="gone"/>
 
+        <TextView
+            android:id="@+id/txtComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:visibility="gone"/>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
