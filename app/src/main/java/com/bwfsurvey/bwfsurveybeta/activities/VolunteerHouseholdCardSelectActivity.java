@@ -1,7 +1,6 @@
 package com.bwfsurvey.bwfsurveybeta.activities;
 
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -18,26 +17,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
-import com.amplifyframework.core.model.query.Where;
-import com.amplifyframework.datastore.generated.model.ConfigDefinitions;
-import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
-import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
-import com.bwfsurvey.bwfsurveybeta.adapters.HouseholdCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.adapters.VolunteerHouseholdCardAdapter;
-import com.bwfsurvey.bwfsurveybeta.dialogs.ConfirmSignUp;
 import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewVolunteerHousehold;
-import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
-import com.bwfsurvey.bwfsurveybeta.types.Config;
-import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
-public class VolHouseholdCardSelectActivity extends AppCompatActivity implements CreateNewVolunteerHousehold.CreateNewVolunteerHouseholdListener{
+public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity implements CreateNewVolunteerHousehold.CreateNewVolunteerHouseholdListener{
     private static ArrayList<VolunteerHousehold> listOfVolHouseholds;
     private RecyclerView recyclerView;
     private VolunteerHouseholdCardAdapter adapter;
@@ -137,7 +126,7 @@ public class VolHouseholdCardSelectActivity extends AppCompatActivity implements
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new VolunteerHouseholdCardAdapter(VolHouseholdCardSelectActivity.this, VolHouseholdCardSelectActivity.listOfVolHouseholds,namebwe,countrybwe,surveyType,operation);
+        adapter = new VolunteerHouseholdCardAdapter(VolunteerHouseholdCardSelectActivity.this, VolunteerHouseholdCardSelectActivity.listOfVolHouseholds,namebwe,countrybwe,surveyType,operation);
         recyclerView.setAdapter(adapter);
     }
 
@@ -229,7 +218,7 @@ public class VolHouseholdCardSelectActivity extends AppCompatActivity implements
     }
 
     private void showSavedSuccessfulAlert(){
-        new AlertDialog.Builder(VolHouseholdCardSelectActivity.this)
+        new AlertDialog.Builder(VolunteerHouseholdCardSelectActivity.this)
                 .setTitle("Saved Succussfully")
                 .setMessage("Volunteer household created Succussfully \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
@@ -248,7 +237,7 @@ public class VolHouseholdCardSelectActivity extends AppCompatActivity implements
     private void showSaveFailedAlert(){
         runOnUiThread(new Runnable() {
             public void run() {
-                new AlertDialog.Builder(VolHouseholdCardSelectActivity.this)
+                new AlertDialog.Builder(VolunteerHouseholdCardSelectActivity.this)
                         .setTitle("Save Failed")
                         .setMessage("Volunteer household creation Failed Please try again\n" )
                         // A null listener allows the button to dismiss the dialog and take no further action.

@@ -23,7 +23,7 @@
     <ImageView android:id="@+id/splashscreen"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:src="@drawable/splashscreen2"
+        android:src="@drawable/splashscreen"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
         tools:ignore="MissingConstraints" />

@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -22,13 +21,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.AnswerType;
 import com.bwfsurvey.bwfsurveybeta.types.AnswerValue;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.example.bwfsurveybeta.R;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -1337,7 +1334,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             return ANSTYPE_ENUMDROPDOWN;
         }else if(interchanges.get(position).getAnswer().getAnswerDef().getType()==AnswerType.DATEVALUE){
             return ANSTYPE_DATE;
-        }else if(interchanges.get(position).getAnswer().getAnswerDef().getType()==AnswerType.ENUMMULTIPLEVALUE){
+        }else if(interchanges.get(position).getAnswer().getAnswerDef().getType()== AnswerType.ENUMMULTIPLEVALUE){
             return ANSTYPE_ENUMMULTIPLE;
         }else{
             return 0;

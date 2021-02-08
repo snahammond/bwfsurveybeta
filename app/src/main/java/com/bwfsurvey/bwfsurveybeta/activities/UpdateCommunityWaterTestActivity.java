@@ -19,7 +19,6 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
-import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;

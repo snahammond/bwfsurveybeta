@@ -267,4 +267,25 @@ Lat: String!
 Lng: String!
 }
 
+type Volunteer @model @auth(rules: [{ allow: public,provider: apiKey }]){
+id: ID!
+Namevol: String!
+}
 
+
+type VolunteerMonthlySummary @model @auth(rules: [{ allow: public,provider: apiKey }]){
+id: ID!
+Namevol: String!
+date: AWSDate
+NoWaterSampleTaken: Int!
+NoSurveysCompleted: Int!
+NoLsn1Taught: Int!
+NoLsn2Taught: Int!
+NoLsn3Taught: Int!
+NoLsn4Taught: Int!
+NoPersonsTaught: Int!
+NoChlorineLiquid_TabsDistributed: Int!
+Completed: Int!
+Lat: String!
+Lng: String!
+}

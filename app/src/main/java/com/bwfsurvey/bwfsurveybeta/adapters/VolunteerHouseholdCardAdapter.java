@@ -13,13 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
-import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
-import com.bwfsurvey.bwfsurveybeta.activities.FollowUpSurveyActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.HouseholdCardSelectActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.VolHouseholdCardSelectActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.VolHouseholdWaterSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.VolunteerHouseholdCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.VolunteerHouseholdWaterSurveyActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
@@ -33,7 +29,7 @@ public class VolunteerHouseholdCardAdapter extends RecyclerView.Adapter<Recycler
     private String operation;
     private Context context;
 
-    public VolunteerHouseholdCardAdapter(VolHouseholdCardSelectActivity volHouseholdCardSelectActivity, ArrayList<VolunteerHousehold> listOfVolHouseholds, String namebwe, String countrybwe, String surveyType, String operation) {
+    public VolunteerHouseholdCardAdapter(VolunteerHouseholdCardSelectActivity volHouseholdCardSelectActivity, ArrayList<VolunteerHousehold> listOfVolHouseholds, String namebwe, String countrybwe, String surveyType, String operation) {
         this.listOfVolHouseholds = listOfVolHouseholds;
         this.context = volHouseholdCardSelectActivity;
         this.namebwe = namebwe;
@@ -104,7 +100,7 @@ public class VolunteerHouseholdCardAdapter extends RecyclerView.Adapter<Recycler
     }
 
     private void startVolHouseholdWaterSurveyActivity(String country, String community, String householdName, String householdLoc) {
-        Intent i = new Intent(this.context, VolHouseholdWaterSurveyActivity.class);
+        Intent i = new Intent(this.context, VolunteerHouseholdWaterSurveyActivity.class);
         i.putExtra("NAME_BWE", namebwe);
         i.putExtra("SURVEY_TYPE",surveyType);
         i.putExtra("COUNTRY",country);

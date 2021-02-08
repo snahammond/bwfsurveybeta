@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
-import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
@@ -29,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 
-public class VolHouseholdWaterSurveyActivity extends AppCompatActivity {
+public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
     private String namebwe = null;
     private String surveyType = null;
     private String country = null;
@@ -76,7 +75,7 @@ public class VolHouseholdWaterSurveyActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new InterchangeCardAdapter(VolHouseholdWaterSurveyActivity.this, VolHouseholdWaterSurveyActivity.interchanges);
+        adapter = new InterchangeCardAdapter(VolunteerHouseholdWaterSurveyActivity.this, VolunteerHouseholdWaterSurveyActivity.interchanges);
         recyclerView.setAdapter(adapter);
     }
 
@@ -84,15 +83,15 @@ public class VolHouseholdWaterSurveyActivity extends AppCompatActivity {
         try{
             ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges(surveyType);
             if(returnedInterchanges!=null){
-                VolHouseholdWaterSurveyActivity.interchanges = new ArrayList<>();
+                VolunteerHouseholdWaterSurveyActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;
                 for(Interchange interchange : returnedInterchanges){
                     interchange.setPositionOnRecyler(positionOnRecyler);
-                    VolHouseholdWaterSurveyActivity.interchanges.add(interchange);
+                    VolunteerHouseholdWaterSurveyActivity.interchanges.add(interchange);
                     positionOnRecyler += 1;
                 }
-                Collections.sort(VolHouseholdWaterSurveyActivity.interchanges);
-                Log.i("Tutorial", "VolHouseholdWaterSurveyActivity interchanges length " + VolHouseholdWaterSurveyActivity.interchanges.size());
+                Collections.sort(VolunteerHouseholdWaterSurveyActivity.interchanges);
+                Log.i("Tutorial", "VolHouseholdWaterSurveyActivity interchanges length " + VolunteerHouseholdWaterSurveyActivity.interchanges.size());
             }
         }catch (Exception c){
             Log.i("Tutorial", "we cannot get list of interchanges " );
@@ -175,7 +174,7 @@ public class VolHouseholdWaterSurveyActivity extends AppCompatActivity {
     }
 
     private void showSavedSuccessfulAlert(){
-        new AlertDialog.Builder(VolHouseholdWaterSurveyActivity.this)
+        new AlertDialog.Builder(VolunteerHouseholdWaterSurveyActivity.this)
                 .setTitle("Saved Succussfully")
                 .setMessage("Volunteer Household Water Test Saved Succussfully \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
@@ -184,10 +183,10 @@ public class VolHouseholdWaterSurveyActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //reset all the user answers
-                        for(Interchange interchange: VolHouseholdWaterSurveyActivity.interchanges){
+                        for(Interchange interchange: VolunteerHouseholdWaterSurveyActivity.interchanges){
                             interchange.getAnswer().setAns(null);
                         }
-                        VolHouseholdWaterSurveyActivity.this.finish();
+                        VolunteerHouseholdWaterSurveyActivity.this.finish();
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
@@ -198,7 +197,7 @@ public class VolHouseholdWaterSurveyActivity extends AppCompatActivity {
     private void showSaveFailedAlert(){
         runOnUiThread(new Runnable() {
             public void run() {
-                new AlertDialog.Builder(VolHouseholdWaterSurveyActivity.this)
+                new AlertDialog.Builder(VolunteerHouseholdWaterSurveyActivity.this)
                         .setTitle("Save Failed")
                         .setMessage("Household Water Test Save Failed! Please try again\n" )
                         // A null listener allows the button to dismiss the dialog and take no further action.
@@ -265,7 +264,7 @@ public class VolHouseholdWaterSurveyActivity extends AppCompatActivity {
     }
 
     private void showInvalidSurveyAlert(){
-        new AlertDialog.Builder(VolHouseholdWaterSurveyActivity.this)
+        new AlertDialog.Builder(VolunteerHouseholdWaterSurveyActivity.this)
                 .setTitle("Invalid Questions")
                 .setMessage("Some questions have not been correctly answered \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.

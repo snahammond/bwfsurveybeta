@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
-import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;

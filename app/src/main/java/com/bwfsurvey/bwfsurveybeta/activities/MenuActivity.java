@@ -296,7 +296,7 @@ public class MenuActivity extends AppCompatActivity {
         Button waterSurveyFromVol = (Button) findViewById(R.id.button_waterSurveyFromVol);
         waterSurveyFromVol.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),VolHouseholdCardSelectActivity.class);
+                Intent i = new Intent(getApplicationContext(), VolunteerHouseholdCardSelectActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
                 i.putExtra("COUNTRY_BWE", countrybwe);
                 i.putExtra("POSITION_BWE", positionbwe);

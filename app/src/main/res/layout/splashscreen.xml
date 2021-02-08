@@ -6,10 +6,11 @@
     android:layout_height="fill_parent">
 
     <ImageView
-        android:id="@+id/splashscreen"
+        android:id="@+id/splashscreen2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="@drawable/splashscreen2" />
+        android:layout_height="fill_parent"
+        android:src="@drawable/splashscreen"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop" />
 
 </LinearLayout>

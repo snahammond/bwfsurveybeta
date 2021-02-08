@@ -119,13 +119,13 @@
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.VolHouseholdCardSelectActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.VolunteerHouseholdCardSelectActivity"
             android:label="Select or create new household"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.VolHouseholdWaterSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.VolunteerHouseholdWaterSurveyActivity"
             android:label="Volunteer household"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
