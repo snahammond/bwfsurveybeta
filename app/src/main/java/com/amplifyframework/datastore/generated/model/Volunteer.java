@@ -25,19 +25,26 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 })
 public final class Volunteer implements Model {
   public static final QueryField ID = field("id");
+  public static final QueryField NAMEBWE = field("Namebwe");
   public static final QueryField NAMEVOL = field("Namevol");
   private final @ModelField(targetType="ID", isRequired = true) String id;
+  private final @ModelField(targetType="String", isRequired = true) String Namebwe;
   private final @ModelField(targetType="String", isRequired = true) String Namevol;
   public String getId() {
       return id;
+  }
+  
+  public String getNamebwe() {
+      return Namebwe;
   }
   
   public String getNamevol() {
       return Namevol;
   }
   
-  private Volunteer(String id, String Namevol) {
+  private Volunteer(String id, String Namebwe, String Namevol) {
     this.id = id;
+    this.Namebwe = Namebwe;
     this.Namevol = Namevol;
   }
   
@@ -50,6 +57,7 @@ public final class Volunteer implements Model {
       } else {
       Volunteer volunteer = (Volunteer) obj;
       return ObjectsCompat.equals(getId(), volunteer.getId()) &&
+              ObjectsCompat.equals(getNamebwe(), volunteer.getNamebwe()) &&
               ObjectsCompat.equals(getNamevol(), volunteer.getNamevol());
       }
   }
@@ -58,6 +66,7 @@ public final class Volunteer implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
+      .append(getNamebwe())
       .append(getNamevol())
       .toString()
       .hashCode();
@@ -68,12 +77,13 @@ public final class Volunteer implements Model {
     return new StringBuilder()
       .append("Volunteer {")
       .append("id=" + String.valueOf(getId()) + ", ")
+      .append("Namebwe=" + String.valueOf(getNamebwe()) + ", ")
       .append("Namevol=" + String.valueOf(getNamevol()))
       .append("}")
       .toString();
   }
   
-  public static NamevolStep builder() {
+  public static NamebweStep builder() {
       return new Builder();
   }
   
@@ -98,14 +108,21 @@ public final class Volunteer implements Model {
     }
     return new Volunteer(
       id,
+      null,
       null
     );
   }
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
+      Namebwe,
       Namevol);
   }
+  public interface NamebweStep {
+    NamevolStep namebwe(String namebwe);
+  }
+  
+
   public interface NamevolStep {
     BuildStep namevol(String namevol);
   }
@@ -117,8 +134,9 @@ public final class Volunteer implements Model {
   }
   
 
-  public static class Builder implements NamevolStep, BuildStep {
+  public static class Builder implements NamebweStep, NamevolStep, BuildStep {
     private String id;
+    private String Namebwe;
     private String Namevol;
     @Override
      public Volunteer build() {
@@ -126,7 +144,15 @@ public final class Volunteer implements Model {
         
         return new Volunteer(
           id,
+          Namebwe,
           Namevol);
+    }
+    
+    @Override
+     public NamevolStep namebwe(String namebwe) {
+        Objects.requireNonNull(namebwe);
+        this.Namebwe = namebwe;
+        return this;
     }
     
     @Override
@@ -159,9 +185,15 @@ public final class Volunteer implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String namevol) {
+    private CopyOfBuilder(String id, String namebwe, String namevol) {
       super.id(id);
-      super.namevol(namevol);
+      super.namebwe(namebwe)
+        .namevol(namevol);
+    }
+    
+    @Override
+     public CopyOfBuilder namebwe(String namebwe) {
+      return (CopyOfBuilder) super.namebwe(namebwe);
     }
     
     @Override

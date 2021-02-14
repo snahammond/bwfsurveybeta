@@ -182,6 +182,12 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.VolunteerCardSelectActivity"
+            android:label="Select or create new Volunteer"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 

@@ -26,6 +26,7 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 })
 public final class VolunteerMonthlySummary implements Model {
   public static final QueryField ID = field("id");
+  public static final QueryField NAMEBWE = field("Namebwe");
   public static final QueryField NAMEVOL = field("Namevol");
   public static final QueryField DATE = field("date");
   public static final QueryField NO_WATER_SAMPLE_TAKEN = field("NoWaterSampleTaken");
@@ -40,6 +41,7 @@ public final class VolunteerMonthlySummary implements Model {
   public static final QueryField LAT = field("Lat");
   public static final QueryField LNG = field("Lng");
   private final @ModelField(targetType="ID", isRequired = true) String id;
+  private final @ModelField(targetType="String", isRequired = true) String Namebwe;
   private final @ModelField(targetType="String", isRequired = true) String Namevol;
   private final @ModelField(targetType="AWSDate") Temporal.Date date;
   private final @ModelField(targetType="Int", isRequired = true) Integer NoWaterSampleTaken;
@@ -55,6 +57,10 @@ public final class VolunteerMonthlySummary implements Model {
   private final @ModelField(targetType="String", isRequired = true) String Lng;
   public String getId() {
       return id;
+  }
+  
+  public String getNamebwe() {
+      return Namebwe;
   }
   
   public String getNamevol() {
@@ -109,8 +115,9 @@ public final class VolunteerMonthlySummary implements Model {
       return Lng;
   }
   
-  private VolunteerMonthlySummary(String id, String Namevol, Temporal.Date date, Integer NoWaterSampleTaken, Integer NoSurveysCompleted, Integer NoLsn1Taught, Integer NoLsn2Taught, Integer NoLsn3Taught, Integer NoLsn4Taught, Integer NoPersonsTaught, Integer NoChlorineLiquid_TabsDistributed, Integer Completed, String Lat, String Lng) {
+  private VolunteerMonthlySummary(String id, String Namebwe, String Namevol, Temporal.Date date, Integer NoWaterSampleTaken, Integer NoSurveysCompleted, Integer NoLsn1Taught, Integer NoLsn2Taught, Integer NoLsn3Taught, Integer NoLsn4Taught, Integer NoPersonsTaught, Integer NoChlorineLiquid_TabsDistributed, Integer Completed, String Lat, String Lng) {
     this.id = id;
+    this.Namebwe = Namebwe;
     this.Namevol = Namevol;
     this.date = date;
     this.NoWaterSampleTaken = NoWaterSampleTaken;
@@ -135,6 +142,7 @@ public final class VolunteerMonthlySummary implements Model {
       } else {
       VolunteerMonthlySummary volunteerMonthlySummary = (VolunteerMonthlySummary) obj;
       return ObjectsCompat.equals(getId(), volunteerMonthlySummary.getId()) &&
+              ObjectsCompat.equals(getNamebwe(), volunteerMonthlySummary.getNamebwe()) &&
               ObjectsCompat.equals(getNamevol(), volunteerMonthlySummary.getNamevol()) &&
               ObjectsCompat.equals(getDate(), volunteerMonthlySummary.getDate()) &&
               ObjectsCompat.equals(getNoWaterSampleTaken(), volunteerMonthlySummary.getNoWaterSampleTaken()) &&
@@ -155,6 +163,7 @@ public final class VolunteerMonthlySummary implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
+      .append(getNamebwe())
       .append(getNamevol())
       .append(getDate())
       .append(getNoWaterSampleTaken())
@@ -177,6 +186,7 @@ public final class VolunteerMonthlySummary implements Model {
     return new StringBuilder()
       .append("VolunteerMonthlySummary {")
       .append("id=" + String.valueOf(getId()) + ", ")
+      .append("Namebwe=" + String.valueOf(getNamebwe()) + ", ")
       .append("Namevol=" + String.valueOf(getNamevol()) + ", ")
       .append("date=" + String.valueOf(getDate()) + ", ")
       .append("NoWaterSampleTaken=" + String.valueOf(getNoWaterSampleTaken()) + ", ")
@@ -194,7 +204,7 @@ public final class VolunteerMonthlySummary implements Model {
       .toString();
   }
   
-  public static NamevolStep builder() {
+  public static NamebweStep builder() {
       return new Builder();
   }
   
@@ -231,12 +241,14 @@ public final class VolunteerMonthlySummary implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
+      Namebwe,
       Namevol,
       date,
       NoWaterSampleTaken,
@@ -251,6 +263,11 @@ public final class VolunteerMonthlySummary implements Model {
       Lat,
       Lng);
   }
+  public interface NamebweStep {
+    NamevolStep namebwe(String namebwe);
+  }
+  
+
   public interface NamevolStep {
     NoWaterSampleTakenStep namevol(String namevol);
   }
@@ -318,8 +335,9 @@ public final class VolunteerMonthlySummary implements Model {
   }
   
 
-  public static class Builder implements NamevolStep, NoWaterSampleTakenStep, NoSurveysCompletedStep, NoLsn1TaughtStep, NoLsn2TaughtStep, NoLsn3TaughtStep, NoLsn4TaughtStep, NoPersonsTaughtStep, NoChlorineLiquidTabsDistributedStep, CompletedStep, LatStep, LngStep, BuildStep {
+  public static class Builder implements NamebweStep, NamevolStep, NoWaterSampleTakenStep, NoSurveysCompletedStep, NoLsn1TaughtStep, NoLsn2TaughtStep, NoLsn3TaughtStep, NoLsn4TaughtStep, NoPersonsTaughtStep, NoChlorineLiquidTabsDistributedStep, CompletedStep, LatStep, LngStep, BuildStep {
     private String id;
+    private String Namebwe;
     private String Namevol;
     private Integer NoWaterSampleTaken;
     private Integer NoSurveysCompleted;
@@ -339,6 +357,7 @@ public final class VolunteerMonthlySummary implements Model {
         
         return new VolunteerMonthlySummary(
           id,
+          Namebwe,
           Namevol,
           date,
           NoWaterSampleTaken,
@@ -352,6 +371,13 @@ public final class VolunteerMonthlySummary implements Model {
           Completed,
           Lat,
           Lng);
+    }
+    
+    @Override
+     public NamevolStep namebwe(String namebwe) {
+        Objects.requireNonNull(namebwe);
+        this.Namebwe = namebwe;
+        return this;
     }
     
     @Override
@@ -467,9 +493,10 @@ public final class VolunteerMonthlySummary implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String namevol, Temporal.Date date, Integer noWaterSampleTaken, Integer noSurveysCompleted, Integer noLsn1Taught, Integer noLsn2Taught, Integer noLsn3Taught, Integer noLsn4Taught, Integer noPersonsTaught, Integer noChlorineLiquidTabsDistributed, Integer completed, String lat, String lng) {
+    private CopyOfBuilder(String id, String namebwe, String namevol, Temporal.Date date, Integer noWaterSampleTaken, Integer noSurveysCompleted, Integer noLsn1Taught, Integer noLsn2Taught, Integer noLsn3Taught, Integer noLsn4Taught, Integer noPersonsTaught, Integer noChlorineLiquidTabsDistributed, Integer completed, String lat, String lng) {
       super.id(id);
-      super.namevol(namevol)
+      super.namebwe(namebwe)
+        .namevol(namevol)
         .noWaterSampleTaken(noWaterSampleTaken)
         .noSurveysCompleted(noSurveysCompleted)
         .noLsn1Taught(noLsn1Taught)
@@ -482,6 +509,11 @@ public final class VolunteerMonthlySummary implements Model {
         .lat(lat)
         .lng(lng)
         .date(date);
+    }
+    
+    @Override
+     public CopyOfBuilder namebwe(String namebwe) {
+      return (CopyOfBuilder) super.namebwe(namebwe);
     }
     
     @Override

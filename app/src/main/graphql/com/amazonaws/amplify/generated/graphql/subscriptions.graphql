@@ -959,3 +959,111 @@ subscription OnDeleteVolunteerHousehold {
     updatedAt
   }
 }
+subscription OnCreateVolunteer {
+  onCreateVolunteer {
+    id
+    Namebwe
+    Namevol
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateVolunteer {
+  onUpdateVolunteer {
+    id
+    Namebwe
+    Namevol
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteVolunteer {
+  onDeleteVolunteer {
+    id
+    Namebwe
+    Namevol
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateVolunteerMonthlySummary {
+  onCreateVolunteerMonthlySummary {
+    id
+    Namebwe
+    Namevol
+    date
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoLsn1Taught
+    NoLsn2Taught
+    NoLsn3Taught
+    NoLsn4Taught
+    NoPersonsTaught
+    NoChlorineLiquid_TabsDistributed
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateVolunteerMonthlySummary {
+  onUpdateVolunteerMonthlySummary {
+    id
+    Namebwe
+    Namevol
+    date
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoLsn1Taught
+    NoLsn2Taught
+    NoLsn3Taught
+    NoLsn4Taught
+    NoPersonsTaught
+    NoChlorineLiquid_TabsDistributed
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteVolunteerMonthlySummary {
+  onDeleteVolunteerMonthlySummary {
+    id
+    Namebwe
+    Namevol
+    date
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoLsn1Taught
+    NoLsn2Taught
+    NoLsn3Taught
+    NoLsn4Taught
+    NoPersonsTaught
+    NoChlorineLiquid_TabsDistributed
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

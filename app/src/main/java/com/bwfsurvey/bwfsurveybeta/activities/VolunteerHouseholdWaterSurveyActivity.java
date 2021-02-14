@@ -35,6 +35,7 @@ public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
     private String community = null;
     private String householdName = null;
     private String householdLocation = null;
+    private String nameVol = null;
     private int surveyId = 0;
 
     private static ArrayList<Interchange> interchanges;
@@ -58,6 +59,10 @@ public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
             householdName = getIntent().getStringExtra("HHNAME");
         if(getIntent().getStringExtra("HHLOC")!=null)
             householdLocation = getIntent().getStringExtra("HHLOC");
+        if(getIntent().getStringExtra("NAME_VOL")!=null)
+            nameVol = getIntent().getStringExtra("NAME_VOL");
+
+        Log.i("Tutorials", "Selected family water survey class nameVol: " + nameVol);
 
         if(getIntent().getStringExtra("SURVEY_ID")!=null){
             String surveyIdStr = getIntent().getStringExtra("SURVEY_ID");
@@ -219,6 +224,7 @@ public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
         String Community = (String) community;
         String HeadHouseholdName = (String) householdName;
         String HouseholdLocation = (String) householdLocation;
+        String NameVol = (String) nameVol;
         Temporal.Date  ColilertDateTested = new Temporal.Date(dateFormat.format(getInterchangeAns("ColilertDateTested",interchangesWithUserAns)));
         Temporal.Date ColilertDateRead = new Temporal.Date(dateFormat.format(getInterchangeAns("ColilertDateRead",interchangesWithUserAns)));
         String ColilertTestResult = (String) getInterchangeAns("ColilertTestResult",interchangesWithUserAns);
@@ -229,11 +235,11 @@ public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
 
         VolunteerHouseholdWaterTest volHouseholdWaterTest = VolunteerHouseholdWaterTest.builder()
                 .namebwe(Namebwe)
-                .namevol("")
+                .namevol(NameVol)
                 .country(Country)
                 .community(Community)
                 .headHouseholdName(HeadHouseholdName)
-                .householdLocation("")
+                .householdLocation(HouseholdLocation)
                 .colilertDateTested(ColilertDateTested)
                 .colilertDateRead(ColilertDateRead)
                 .colilertTestResult(ColilertTestResult)

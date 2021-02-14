@@ -269,12 +269,14 @@ Lng: String!
 
 type Volunteer @model @auth(rules: [{ allow: public,provider: apiKey }]){
 id: ID!
+Namebwe: String!
 Namevol: String!
 }
 
 
 type VolunteerMonthlySummary @model @auth(rules: [{ allow: public,provider: apiKey }]){
 id: ID!
+Namebwe: String!
 Namevol: String!
 date: AWSDate
 NoWaterSampleTaken: Int!

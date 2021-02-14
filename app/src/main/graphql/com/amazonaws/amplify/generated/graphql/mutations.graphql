@@ -1058,3 +1058,129 @@ mutation DeleteVolunteerHousehold(
     updatedAt
   }
 }
+mutation CreateVolunteer(
+  $input: CreateVolunteerInput!
+  $condition: ModelVolunteerConditionInput
+) {
+  createVolunteer(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateVolunteer(
+  $input: UpdateVolunteerInput!
+  $condition: ModelVolunteerConditionInput
+) {
+  updateVolunteer(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteVolunteer(
+  $input: DeleteVolunteerInput!
+  $condition: ModelVolunteerConditionInput
+) {
+  deleteVolunteer(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateVolunteerMonthlySummary(
+  $input: CreateVolunteerMonthlySummaryInput!
+  $condition: ModelVolunteerMonthlySummaryConditionInput
+) {
+  createVolunteerMonthlySummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    date
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoLsn1Taught
+    NoLsn2Taught
+    NoLsn3Taught
+    NoLsn4Taught
+    NoPersonsTaught
+    NoChlorineLiquid_TabsDistributed
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateVolunteerMonthlySummary(
+  $input: UpdateVolunteerMonthlySummaryInput!
+  $condition: ModelVolunteerMonthlySummaryConditionInput
+) {
+  updateVolunteerMonthlySummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    date
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoLsn1Taught
+    NoLsn2Taught
+    NoLsn3Taught
+    NoLsn4Taught
+    NoPersonsTaught
+    NoChlorineLiquid_TabsDistributed
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteVolunteerMonthlySummary(
+  $input: DeleteVolunteerMonthlySummaryInput!
+  $condition: ModelVolunteerMonthlySummaryConditionInput
+) {
+  deleteVolunteerMonthlySummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    date
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoLsn1Taught
+    NoLsn2Taught
+    NoLsn3Taught
+    NoLsn4Taught
+    NoPersonsTaught
+    NoChlorineLiquid_TabsDistributed
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
+import com.bwfsurvey.bwfsurveybeta.activities.VolunteerCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.VolunteerHouseholdCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.VolunteerHouseholdWaterSurveyActivity;
 import com.example.bwfsurveybeta.R;
@@ -77,7 +78,8 @@ public class VolunteerHouseholdCardAdapter extends RecyclerView.Adapter<Recycler
                     Log.i("Tutorials", "Selected family: " + txtHeadHousehold.getText());
 
                     if(operation.contentEquals("CREATE")){
-                       startVolHouseholdWaterSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString(), txtHouseholdLoc );
+                       //startVolHouseholdWaterSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString(), txtHouseholdLoc );
+                        startVolunteerCardSelectActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString(), txtHouseholdLoc);
                     }else if(operation.contentEquals("VIEW")){
                        //startViewInitialSurveyActivity(uuidInitialSurvey);
                     }else if(operation.contentEquals("UPDATE")){
@@ -104,6 +106,19 @@ public class VolunteerHouseholdCardAdapter extends RecyclerView.Adapter<Recycler
         i.putExtra("NAME_BWE", namebwe);
         i.putExtra("SURVEY_TYPE",surveyType);
         i.putExtra("COUNTRY",country);
+        i.putExtra("COMMUNITY",community);
+        i.putExtra("HHNAME",householdName);
+        i.putExtra("HHLOC",householdLoc);
+        context.startActivity(i);
+        ((Activity)context).finish();
+    }
+
+    private void startVolunteerCardSelectActivity(String country, String community, String householdName, String householdLoc) {
+        Intent i = new Intent(this.context, VolunteerCardSelectActivity.class);
+        i.putExtra("NAME_BWE", namebwe);
+        i.putExtra("SURVEY_TYPE",surveyType);
+        i.putExtra("OPERATION",operation);
+        i.putExtra("COUNTRY_BWE",country);
         i.putExtra("COMMUNITY",community);
         i.putExtra("HHNAME",householdName);
         i.putExtra("HHLOC",householdLoc);

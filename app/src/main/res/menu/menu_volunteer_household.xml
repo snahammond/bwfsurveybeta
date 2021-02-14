@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Add New Volunteer"
-        android:id="@+id/newVolunteer"/>
+
+    <item android:title="Add New Household"
+        android:id="@+id/newHousehold"/>
 </menu>
