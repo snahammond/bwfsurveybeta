@@ -252,10 +252,11 @@ public class MenuActivity extends AppCompatActivity {
         Button sweMonthlySummary = (Button) findViewById(R.id.button_SWEMonthlySummary);
         sweMonthlySummary.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SWEMonthlySummaryActivity.class);
+                Intent i = new Intent(getApplicationContext(), SubMenuMonthlySummaryActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
                 i.putExtra("POSITION_BWE", positionbwe);
                 i.putExtra("SURVEY_TYPE","SWESUMMARY");
+                i.putExtra("OPERATION","CREATE");
                 i.putExtra("LAT",lat);
                 i.putExtra("LNG",lng);
                 startActivity(i);

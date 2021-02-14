@@ -15,8 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.Volunteer;
 import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
+import com.bwfsurvey.bwfsurveybeta.activities.SWEMonthlySummaryActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.VolunteerCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.VolunteerHouseholdWaterSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.VolunteerMonthlySummaryActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
@@ -77,8 +79,10 @@ public class VolunteerCardAdapter extends RecyclerView.Adapter {
                     Log.i("Tutorials", "Volunteer name: " + txtVolunteerName.getText());
 
                     if(operation.contentEquals("CREATE")){
-                        //startVolHouseholdWaterSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtHeadHousehold.getText().toString(), txtHouseholdLoc );
-                        startVolHouseholdWaterSurveyActivity(txtVolunteerName.getText().toString());
+                        if(surveyType.contentEquals("WATERSURVEYHOUSEHOLD"))
+                            startVolHouseholdWaterSurveyActivity(txtVolunteerName.getText().toString());
+                        else if(surveyType.contentEquals("SWESUMMARY"))
+                            startVolMonthlySummaryActivity(txtVolunteerName.getText().toString());
                     }else if(operation.contentEquals("VIEW")){
                         //startViewInitialSurveyActivity(uuidInitialSurvey);
                     }else if(operation.contentEquals("UPDATE")){
@@ -94,6 +98,17 @@ public class VolunteerCardAdapter extends RecyclerView.Adapter {
             txtVolunteerName.setText(volunteer.getNamevol());
         }
 
+    }
+
+    private void startVolMonthlySummaryActivity(String volunteerName) {
+        Intent i = new Intent(this.context, VolunteerMonthlySummaryActivity.class);
+        i.putExtra("NAME_BWE", namebwe);
+        i.putExtra("POSITION_BWE", "Volunteer");
+        i.putExtra("SURVEY_TYPE","SWESUMMARY");
+        i.putExtra("OPERATION","CREATE");
+        i.putExtra("NAME_VOL",volunteerName);
+        context.startActivity(i);
+        ((Activity)context).finish();
     }
 
     private void startVolHouseholdWaterSurveyActivity(String volunteerName) {

@@ -189,6 +189,21 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.SubMenuMonthlySummaryActivity"
+            android:label="Select sub option"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.VolunteerMonthlySummaryActivity"
+            android:label="Volunteer Monthly Summary"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

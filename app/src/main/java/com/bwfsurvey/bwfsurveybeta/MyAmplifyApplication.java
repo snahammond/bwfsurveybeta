@@ -19,6 +19,7 @@ import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
+import com.amplifyframework.datastore.generated.model.Volunteer;
 import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
 import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
 import com.bwfsurvey.bwfsurveybeta.types.Answer;
@@ -65,6 +66,10 @@ public class MyAmplifyApplication extends Application {
                             () -> FollowUpSurvey.NAMEBWE.eq(namebwe)
                     )
                     .syncExpression(
+                            HouseholdWaterTest.class,
+                            () -> HouseholdWaterTest.NAMEBWE.eq(namebwe)
+                    )
+                    .syncExpression(
                             CommunityWater.class,
                             () -> CommunityWater.NAMEBWE.eq(namebwe)
                     )
@@ -73,16 +78,16 @@ public class MyAmplifyApplication extends Application {
                             () -> CommunityWaterTest.NAMEBWE.eq(namebwe)
                     )
                     .syncExpression(
-                            VolunteerHouseholdWaterTest.class,
-                            () -> VolunteerHouseholdWaterTest.NAMEBWE.eq(namebwe)
+                            Volunteer.class,
+                            () -> Volunteer.NAMEBWE.eq(namebwe)
                     )
                     .syncExpression(
                             VolunteerHousehold.class,
                             () -> VolunteerHousehold.NAMEBWE.eq(namebwe)
                     )
                     .syncExpression(
-                            HouseholdWaterTest.class,
-                            () -> HouseholdWaterTest.NAMEBWE.eq(namebwe)
+                            VolunteerHouseholdWaterTest.class,
+                            () -> VolunteerHouseholdWaterTest.NAMEBWE.eq(namebwe)
                     )
                     .syncExpression(
                             HealthCheckSurvey.class,
