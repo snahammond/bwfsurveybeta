@@ -1,4 +1,4 @@
-package com.bwfsurvey.bwfsurveybeta.activities;
+package com.bwfsurvey.bwfsurveybeta.activities.select;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;

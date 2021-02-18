@@ -1,4 +1,4 @@
-package com.bwfsurvey.bwfsurveybeta.activities;
+package com.bwfsurvey.bwfsurveybeta.activities.update;
 
 import android.content.DialogInterface;
 import android.os.Bundle;

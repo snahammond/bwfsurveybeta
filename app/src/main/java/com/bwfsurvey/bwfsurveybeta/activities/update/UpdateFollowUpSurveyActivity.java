@@ -1,4 +1,4 @@
-package com.bwfsurvey.bwfsurveybeta.activities;
+package com.bwfsurvey.bwfsurveybeta.activities.update;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.core.model.temporal.Temporal;
-import com.amplifyframework.datastore.generated.model.InitialSurvey;
+import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
@@ -30,47 +30,47 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 
-public class UpdateInitialSurveyActivity extends AppCompatActivity {
-    InitialSurvey theInitialSurvey;
-    private String uuidInitialSurvey;
+public class UpdateFollowUpSurveyActivity extends AppCompatActivity {
+    FollowUpSurvey theFollowUpSurvey;
+    private String uuidFollowUpSurvey;
     private RecyclerView recyclerView;
     private InterchangeCardAdapter adapter;
 
-    private String lat = null;
-    private String lng = null;
-
     private static ArrayList<Interchange> interchanges;
     private LinearLayout progressBar;
+
+    private String lat = null;
+    private String lng = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if(getIntent().getStringExtra("UUID")!=null)
-            uuidInitialSurvey = getIntent().getStringExtra("UUID");
+            uuidFollowUpSurvey = getIntent().getStringExtra("UUID");
 
         initView();
     }
 
     private void initView() {
         setContentView(R.layout.activity_recycler);
-        createInitialSurveyUpdateInterchanges();
+        createFollowUpSurveyUpdateInterchanges();
     }
 
-    private void createInitialSurveyUpdateInterchanges() {
+    private void createFollowUpSurveyUpdateInterchanges() {
         interchanges = new ArrayList<>();
         createInterchangesAndShowOnRecyclerView();
     }
 
     private void createInterchangesAndShowOnRecyclerView() {
         Amplify.DataStore.query(
-                InitialSurvey.class,
-                Where.matches(InitialSurvey.ID.eq(uuidInitialSurvey)),
+                FollowUpSurvey.class,
+                Where.matches(FollowUpSurvey.ID.eq(uuidFollowUpSurvey)),
                 initialSurvey -> {
                     Log.i("Tutorials", "DataStore is queried.");
                     while (initialSurvey.hasNext()) {
-                        theInitialSurvey = initialSurvey.next();
-                        Log.i("Tutorials", "DataStore is queried. theInitialSurvey " +theInitialSurvey.getId());
+                        theFollowUpSurvey = initialSurvey.next();
+                        Log.i("Tutorials", "DataStore is queried. theFollowUpSurvey " +theFollowUpSurvey.getId());
                     }
 
                     runOnUiThread(new Runnable() {
@@ -86,10 +86,10 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
     }
 
     private void createInterchangesAndShow() {
-        if(theInitialSurvey!=null){
-            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("INITAILSURVEY");
+        if(theFollowUpSurvey!=null){
+            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("FOLLOWUPSURVEY");
             if(returnedInterchanges!=null){
-                UpdateInitialSurveyActivity.interchanges = new ArrayList<>();
+                UpdateFollowUpSurveyActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;
                 for(Interchange interchange : returnedInterchanges){
                     //set answers
@@ -98,8 +98,8 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
                     String methodName = "get"+nameOfAns;
                     java.lang.reflect.Method method;
                     try {
-                        method = theInitialSurvey.getClass().getMethod(methodName);
-                        Object ansObject = method.invoke(theInitialSurvey);
+                        method = theFollowUpSurvey.getClass().getMethod(methodName);
+                        Object ansObject = method.invoke(theFollowUpSurvey);
                         answer = ansObject.toString();
                     } catch (Exception e) {
                         Log.e("Tutorials", "Could not get answer " + nameOfAns);
@@ -107,11 +107,11 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
                     interchange.getAnswer().setAns(answer);
 
                     interchange.setPositionOnRecyler(positionOnRecyler);
-                    UpdateInitialSurveyActivity.interchanges.add(interchange);
+                    UpdateFollowUpSurveyActivity.interchanges.add(interchange);
                     positionOnRecyler += 1;
                 }
                 //sort the interchanges
-                Collections.sort(UpdateInitialSurveyActivity.interchanges);
+                Collections.sort(UpdateFollowUpSurveyActivity.interchanges);
                 showViewOnlyInterchanges();
             }
         }
@@ -141,15 +141,14 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new InterchangeCardAdapter(UpdateInitialSurveyActivity.this, UpdateInitialSurveyActivity.interchanges);
+        adapter = new InterchangeCardAdapter(UpdateFollowUpSurveyActivity.this, UpdateFollowUpSurveyActivity.interchanges);
         recyclerView.setAdapter(adapter);
     }
-
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        for(Interchange interchange: UpdateInitialSurveyActivity.interchanges){
+        for(Interchange interchange: UpdateFollowUpSurveyActivity.interchanges){
             interchange.getAnswer().setAns(null);
         }
     }
@@ -183,7 +182,7 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
                     lng_ = lng;
                 }else{
                     //try and get it again
-                    PhoneLocation phoneLocation = new PhoneLocation(UpdateInitialSurveyActivity.this);
+                    PhoneLocation phoneLocation = new PhoneLocation(UpdateFollowUpSurveyActivity.this);
                     String[] arraylatlng = phoneLocation.getLocation();
                     if(arraylatlng!=null){
                         lat_ = arraylatlng[0];
@@ -191,8 +190,10 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
                     }
                 }
                 //make an InitialSurvey object
-                InitialSurvey initialSurveyToSave = makeInitialSurveyObjectWithId(interchangesWithUserAns,1,lat_,lng_);
-                saveIntialSurvey(initialSurveyToSave);
+                FollowUpSurvey followUpSurveyToSave = makeFollowUpSurveyObjectWithId(interchangesWithUserAns,1,lat_,lng_);
+
+                //save the initialSurvey object
+                saveFollowUpSurvey(followUpSurveyToSave);
             }
         }
 
@@ -205,16 +206,18 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
                 lng_ = lng;
             }else{
                 //try and get it again
-                PhoneLocation phoneLocation = new PhoneLocation(UpdateInitialSurveyActivity.this);
+                PhoneLocation phoneLocation = new PhoneLocation(UpdateFollowUpSurveyActivity.this);
                 String[] arraylatlng = phoneLocation.getLocation();
                 if(arraylatlng!=null){
                     lat_ = arraylatlng[0];
                     lng_ = arraylatlng[1];
                 }
             }
-            //make an InitialSurvey object to save
-            InitialSurvey initialSurveyToSave = makeInitialSurveyObjectWithId(interchangesWithUserAns,0,lat_,lng_);
-            saveIntialSurvey(initialSurveyToSave);
+            //make an follow Up survey object
+            FollowUpSurvey followUpSurveyToSave = makeFollowUpSurveyObjectWithId(interchangesWithUserAns,0,lat_,lng_);
+
+            //save the follow Up survey object
+            saveFollowUpSurvey(followUpSurveyToSave);
 
         }
         return super.onOptionsItemSelected(item);
@@ -236,7 +239,7 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
     }
 
     private void showInvalidSurveyAlert(){
-        new AlertDialog.Builder(UpdateInitialSurveyActivity.this)
+        new AlertDialog.Builder(UpdateFollowUpSurveyActivity.this)
                 .setTitle("Invalid Questions")
                 .setMessage("Some questions have not been correctly answered \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
@@ -246,41 +249,18 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
                 .setCanceledOnTouchOutside(false);
     }
 
-    private InitialSurvey makeInitialSurveyObjectWithId(ArrayList<Interchange> validatedInterchangesWithAns,int completed, String lat, String lng){
+    private FollowUpSurvey makeFollowUpSurveyObjectWithId(ArrayList<Interchange> validatedInterchangesWithAns,int completed, String lat, String lng){
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_s = dateFormat.format(calendar.getTime());
 
-        String Namebwe = theInitialSurvey.getNamebwe();
-        String Country = theInitialSurvey.getCountry();
-        String Community = theInitialSurvey.getCommunity();
-        Integer SurveyId = theInitialSurvey.getSurveyId();
+        String Namebwe = theFollowUpSurvey.getNamebwe();
+        String Country = theFollowUpSurvey.getCountry();
+        String Community = theFollowUpSurvey.getCommunity();
+        Integer SurveyId = theFollowUpSurvey.getSurveyId();
         Temporal.Date date = new Temporal.Date(date_s);
-        String HeadHouseholdName = (String) getInterchangeAns("HeadHouseholdName",validatedInterchangesWithAns);
-        String HeadHouseholdSex = (String) getInterchangeAns("HeadHouseholdSex",validatedInterchangesWithAns);
-        String HeadHouseholdMaritalStatus = (String) getInterchangeAns("HeadHouseholdMaritalStatus",validatedInterchangesWithAns);
-        Integer HeadHouseholdAge = parseIntegerWithDefault( getInterchangeAns("HeadHouseholdAge",validatedInterchangesWithAns),0);
-        String HeadHouseholdOccupation = (String) getInterchangeAns("HeadHouseholdOccupation",validatedInterchangesWithAns);
-        String HeadHouseholdEducation = (String) getInterchangeAns("HeadHouseholdEducation",validatedInterchangesWithAns);
+        String HeadHouseholdName = (String) theFollowUpSurvey.getHeadHouseholdName();
         String PersonBeingInterviewed = (String) getInterchangeAns("PersonBeingInterviewed",validatedInterchangesWithAns);
-        Integer TotalNoPeopleHousehold = parseIntegerWithDefault(getInterchangeAns("TotalNoPeopleHousehold",validatedInterchangesWithAns),0);
-        Integer NoHouseholdMale0_1Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdMale0_1Year",validatedInterchangesWithAns),0);
-        Integer NoHouseholdFemale0_1Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdMale1_5Year",validatedInterchangesWithAns),0);
-        Integer NoHouseholdMale1_5Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdMale1_5Year",validatedInterchangesWithAns),0);
-        Integer NoHouseholdFemale1_5Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdFemale1_5Year",validatedInterchangesWithAns),0);
-        Integer NoHouseholdMale5_12Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdMale5_12Year",validatedInterchangesWithAns),0);
-        Integer NoHouseholdFemale5_12Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdFemale5_12Year",validatedInterchangesWithAns),0);
-        Integer NoHouseholdMale13_17Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdMale13_17Year",validatedInterchangesWithAns),0);
-        Integer NoHouseholdFemale13_17Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdFemale13_17Year",validatedInterchangesWithAns),0);
-        Integer NoHouseholdMale18_Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdMale18_Year",validatedInterchangesWithAns),0);
-        Integer NoHouseholdFemale18_Year = parseIntegerWithDefault(getInterchangeAns("NoHouseholdFemale18_Year",validatedInterchangesWithAns),0);
-        String ReasonNoSchoolChildren5_17Year = (String) getInterchangeAns("ReasonNoSchoolChildren5_17Year",validatedInterchangesWithAns);
-        String MainSourceDrinkingWater = (String) getInterchangeAns("MainSourceDrinkingWater",validatedInterchangesWithAns);
-        String MainSourceOtherPurposeWater = (String) getInterchangeAns("MainSourceOtherPurposeWater",validatedInterchangesWithAns);
-        Integer TimeToWaterSourceGetReturn = parseIntegerWithDefault(getInterchangeAns("TimeToWaterSourceGetReturn",validatedInterchangesWithAns),0);
-        String HouseholdFrequencyAtWaterSource = (String) getInterchangeAns("HouseholdFrequencyAtWaterSource",validatedInterchangesWithAns);
-        String UsualHouseholdWaterFetcher = (String) getInterchangeAns("UsualHouseholdWaterFetcher",validatedInterchangesWithAns);
-        String ContainerCarryWater = (String) getInterchangeAns("ContainerCarryWater",validatedInterchangesWithAns);
         String WaterTreatmentBeforeDrinking = (String) getInterchangeAns("WaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
         String MainReasonNoWaterTreatmentBeforeDrinking = (String) getInterchangeAns("MainReasonNoWaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
         String WaterTreatmentMethod = (String) getInterchangeAns("WaterTreatmentMethod",validatedInterchangesWithAns);
@@ -289,9 +269,6 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
         String WaterStorageAtHome = (String) getInterchangeAns("WaterStorageAtHome",validatedInterchangesWithAns);
         String WaterStorageContainerHaveLid = (String) getInterchangeAns("WaterStorageContainerHaveLid",validatedInterchangesWithAns);
         String TakingWaterFromStorage = (String) getInterchangeAns("TakingWaterFromStorage",validatedInterchangesWithAns);
-        String RubbishDisposal = (String) getInterchangeAns("RubbishDisposal",validatedInterchangesWithAns);
-        String HouseholdDefecationMethod = (String) getInterchangeAns("HouseholdDefecationMethod",validatedInterchangesWithAns);
-        String WasteDisposalYoungestChild = (String) getInterchangeAns("WasteDisposalYoungestChild",validatedInterchangesWithAns);
         String WashedHandsIn24Hours = (String) getInterchangeAns("WashedHandsIn24Hours",validatedInterchangesWithAns);
         String WhenWashedHandsIn24Hours = (String) getInterchangeAns("WhenWashedHandsIn24Hours",validatedInterchangesWithAns);
         String WhatUsedToWashYourHands = (String) getInterchangeAns("WhatUsedToWashYourHands",validatedInterchangesWithAns);
@@ -308,38 +285,15 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
         Integer MoneySpentMedicalTreatmentLast4weeks = parseIntegerWithDefault(getInterchangeAns("MoneySpentMedicalTreatmentLast4weeks",validatedInterchangesWithAns),0);
         String HealthChangeInAYear = (String) getInterchangeAns("HealthChangeInAYear",validatedInterchangesWithAns);
         String HealthChangeFamilyInAYear = (String) getInterchangeAns("HealthChangeFamilyInAYear",validatedInterchangesWithAns);
+        String BenefitSWP = (String) getInterchangeAns("BenefitSWP",validatedInterchangesWithAns);
 
-
-        InitialSurvey initialSurvey = InitialSurvey.builder()
+        FollowUpSurvey followUpSurvey = FollowUpSurvey.builder()
                 .namebwe(Namebwe)
                 .country(Country)
                 .community(Community)
                 .surveyId(SurveyId)
                 .headHouseholdName(HeadHouseholdName)
-                .headHouseholdSex(HeadHouseholdSex)
-                .headHouseholdMaritalStatus(HeadHouseholdMaritalStatus)
-                .headHouseholdAge(HeadHouseholdAge)
-                .headHouseholdOccupation(HeadHouseholdOccupation)
-                .headHouseholdEducation(HeadHouseholdEducation)
                 .personBeingInterviewed(PersonBeingInterviewed)
-                .totalNoPeopleHousehold(TotalNoPeopleHousehold)
-                .noHouseholdMale0_1Year(NoHouseholdMale0_1Year)
-                .noHouseholdFemale0_1Year(NoHouseholdFemale0_1Year)
-                .noHouseholdMale1_5Year(NoHouseholdMale1_5Year)
-                .noHouseholdFemale1_5Year(NoHouseholdFemale1_5Year)
-                .noHouseholdMale5_12Year(NoHouseholdMale5_12Year)
-                .noHouseholdFemale5_12Year(NoHouseholdFemale5_12Year)
-                .noHouseholdMale13_17Year(NoHouseholdMale13_17Year)
-                .noHouseholdFemale13_17Year(NoHouseholdFemale13_17Year)
-                .noHouseholdMale18Year(NoHouseholdMale18_Year)
-                .noHouseholdFemale18Year(NoHouseholdFemale18_Year)
-                .reasonNoSchoolChildren5_17Year(ReasonNoSchoolChildren5_17Year)
-                .mainSourceDrinkingWater(MainSourceDrinkingWater)
-                .mainSourceOtherPurposeWater(MainSourceOtherPurposeWater)
-                .timeToWaterSourceGetReturn(TimeToWaterSourceGetReturn)
-                .householdFrequencyAtWaterSource(HouseholdFrequencyAtWaterSource)
-                .usualHouseholdWaterFetcher(UsualHouseholdWaterFetcher)
-                .containerCarryWater(ContainerCarryWater)
                 .waterTreatmentBeforeDrinking(WaterTreatmentBeforeDrinking)
                 .mainReasonNoWaterTreatmentBeforeDrinking(MainReasonNoWaterTreatmentBeforeDrinking)
                 .waterTreatmentMethod(WaterTreatmentMethod)
@@ -348,9 +302,6 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
                 .waterStorageAtHome(WaterStorageAtHome)
                 .waterStorageContainerHaveLid(WaterStorageContainerHaveLid)
                 .takingWaterFromStorage(TakingWaterFromStorage)
-                .rubbishDisposal(RubbishDisposal)
-                .householdDefecationMethod(HouseholdDefecationMethod)
-                .wasteDisposalYoungestChild(WasteDisposalYoungestChild)
                 .washedHandsIn24Hours(WashedHandsIn24Hours)
                 .whenWashedHandsIn24Hours(WhenWashedHandsIn24Hours)
                 .whatUsedToWashYourHands(WhatUsedToWashYourHands)
@@ -367,13 +318,15 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
                 .moneySpentMedicalTreatmentLast4weeks(MoneySpentMedicalTreatmentLast4weeks)
                 .healthChangeInAYear(HealthChangeInAYear)
                 .healthChangeFamilyInAYear(HealthChangeFamilyInAYear)
+                .benefitSwp(BenefitSWP)
                 .completed(completed)
                 .lat(lat)
                 .lng(lng)
                 .date(date)
-                .id(theInitialSurvey.getId())
+                .id(theFollowUpSurvey.getId())
                 .build();
-        return initialSurvey;
+        return followUpSurvey;
+
     }
 
     private Object getInterchangeAns(String interchangeName,ArrayList<Interchange> validatedInterchangesWithAns){
@@ -402,11 +355,11 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
 
     }
 
-    private void saveIntialSurvey(InitialSurvey initialSurveyToSave){
-        Amplify.DataStore.save(initialSurveyToSave,
+    private void saveFollowUpSurvey(FollowUpSurvey followUpSurveyToSave){
+        Amplify.DataStore.save(
+                followUpSurveyToSave,
                 update -> {
                     Log.i("Tutorial", "Saved Successfully ");
-
                     runOnUiThread(new Runnable() {
                         public void run() {
                             doSyncWaitAndShowSavedSuccessfulAlert();
@@ -420,7 +373,7 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
         );
     }
 
-    private void doSyncWaitAndShowSavedSuccessfulAlert(){
+    private void doSyncWaitAndShowSavedSuccessfulAlert() {
         //show progress bar so that if user is offline, the save will go into pending to be shot into cloud
         //this is for the progress bar
         progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
@@ -441,12 +394,32 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
         countDownTimer.start();
     }
 
+    private void showSavedSuccessfulAlert(){
+        new AlertDialog.Builder(UpdateFollowUpSurveyActivity.this)
+                .setTitle("Saved Succussfully")
+                .setMessage("Follow Up Survey Saved Succussfully \n" )
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //reset all interchange answers
+                        for(Interchange interchange: UpdateFollowUpSurveyActivity.interchanges){
+                            interchange.getAnswer().setAns(null);
+                        }
+                        UpdateFollowUpSurveyActivity.this.finish();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .show()
+                .setCanceledOnTouchOutside(false);
+    }
+
     private void showSaveFailedAlert(){
         runOnUiThread(new Runnable() {
             public void run() {
-                new AlertDialog.Builder(UpdateInitialSurveyActivity.this)
+                new AlertDialog.Builder(UpdateFollowUpSurveyActivity.this)
                         .setTitle("Save Failed")
-                        .setMessage("Initial Survey Save Failed Please try again\n" )
+                        .setMessage("Follow Up Survey Save Failed Please try again\n" )
                         // A null listener allows the button to dismiss the dialog and take no further action.
                         .setNegativeButton(android.R.string.ok, null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
@@ -456,25 +429,6 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
         });
     }
 
-    private void showSavedSuccessfulAlert(){
-        new AlertDialog.Builder(UpdateInitialSurveyActivity.this)
-                .setTitle("Saved Succussfully")
-                .setMessage("Initial Survey Saved Succussfully \n" )
-                // A null listener allows the button to dismiss the dialog and take no further action.
-                .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //reset all the user answers
-                        for(Interchange interchange: UpdateInitialSurveyActivity.interchanges){
-                            interchange.getAnswer().setAns(null);
-                        }
-                        UpdateInitialSurveyActivity.this.finish();
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_info)
-                .show()
-                .setCanceledOnTouchOutside(false);
-    }
 
 }

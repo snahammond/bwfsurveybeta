@@ -14,12 +14,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
-import com.bwfsurvey.bwfsurveybeta.activities.HouseholdCardSelectActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.FollowUpSurveyActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.HealthCheckSurveyActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.HouseholdWaterSurveyActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.UpdateInitialSurveyActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.ViewInitialSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.collect.FollowUpSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.collect.HealthCheckSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.collect.HouseholdWaterSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateInitialSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.view.ViewInitialSurveyActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.bwfsurvey.bwfsurveybeta.activities;
+package com.bwfsurvey.bwfsurveybeta.activities.select;
 
 import android.os.Build;
 import android.os.Bundle;

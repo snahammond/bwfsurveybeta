@@ -17,6 +17,14 @@ import androidx.fragment.app.DialogFragment;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.ConfigDefinitions;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.activities.collect.SubMenuMonthlySummaryActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.UpdateCommunityWaterCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.UpdateFollowUpSurveyCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.UpdateHouseholdWaterCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
 import com.bwfsurvey.bwfsurveybeta.types.Config;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
@@ -281,7 +289,7 @@ public class MenuActivity extends AppCompatActivity {
         Button waterSurveyComm = (Button) findViewById(R.id.button_waterSurveyComm);
         waterSurveyComm.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),CommunityWaterCardSelectActivity.class);
+                Intent i = new Intent(getApplicationContext(), CommunityWaterCardSelectActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
                 i.putExtra("COUNTRY_BWE", countrybwe);
                 i.putExtra("POSITION_BWE", positionbwe);

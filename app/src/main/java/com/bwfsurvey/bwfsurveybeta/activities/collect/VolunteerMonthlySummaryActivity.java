@@ -1,4 +1,4 @@
-package com.bwfsurvey.bwfsurveybeta.activities;
+package com.bwfsurvey.bwfsurveybeta.activities.collect;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -17,11 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
-import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
 import com.amplifyframework.datastore.generated.model.VolunteerMonthlySummary;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
+import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
 import com.example.bwfsurveybeta.R;
 
 import java.text.SimpleDateFormat;
@@ -33,6 +33,10 @@ public class VolunteerMonthlySummaryActivity extends AppCompatActivity {
     private String namebwe = null;
     private String positionbwe = null;
     private String volunteerName = null;
+
+    private String lat = null;
+    private String lng = null;
+
     private static ArrayList<Interchange> interchanges;
     private RecyclerView recyclerView;
     private InterchangeCardAdapter adapter;
@@ -48,6 +52,11 @@ public class VolunteerMonthlySummaryActivity extends AppCompatActivity {
             positionbwe = getIntent().getStringExtra("POSITION_BWE");
         if(getIntent().getStringExtra("NAME_VOL")!=null)
             volunteerName = getIntent().getStringExtra("NAME_VOL");
+
+        if(getIntent().getStringExtra("LAT")!=null)
+            lat = getIntent().getStringExtra("LAT");
+        if(getIntent().getStringExtra("LNG")!=null)
+            lng = getIntent().getStringExtra("LNG");
 
         initView();
     }
@@ -103,9 +112,54 @@ public class VolunteerMonthlySummaryActivity extends AppCompatActivity {
             if(invalideInterchanges.size()>0){
                 showInvalidSurveyAlert();
             }else{
-
+                String lat_ = "";
+                String lng_ = "";
+                if(lat!=null&&lng!=null){
+                    lat_= lat;
+                    lng_ = lng;
+                }else{
+                    //try and get it again
+                    PhoneLocation phoneLocation = new PhoneLocation(VolunteerMonthlySummaryActivity.this);
+                    String[] arraylatlng = phoneLocation.getLocation();
+                    if(arraylatlng!=null){
+                        lat_ = arraylatlng[0];
+                        lng_ = arraylatlng[1];
+                    }
+                }
                 //make an InitialSurvey object
-                VolunteerMonthlySummary volunteerMonthlySummary = makeVolunteerMonthlySummaryObject(interchangesWithUserAns,1,"","");
+                VolunteerMonthlySummary volunteerMonthlySummary = makeVolunteerMonthlySummaryObject(interchangesWithUserAns,1,lat_,lng_);
+                //save the initialSurvey object
+                saveVolunteerMonthlySummary(volunteerMonthlySummary);
+
+            }
+        }
+
+        if (id == R.id.suspend) {
+            ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
+
+            //we have to validate now
+            ArrayList<Interchange> invalideInterchanges = validateUserAns(interchangesWithUserAns);
+            Log.i("Tutorial", "how many invalid interfaces: " + invalideInterchanges.size());
+
+            if(invalideInterchanges.size()>0){
+                showInvalidSurveyAlert();
+            }else{
+                String lat_ = "";
+                String lng_ = "";
+                if(lat!=null&&lng!=null){
+                    lat_= lat;
+                    lng_ = lng;
+                }else{
+                    //try and get it again
+                    PhoneLocation phoneLocation = new PhoneLocation(VolunteerMonthlySummaryActivity.this);
+                    String[] arraylatlng = phoneLocation.getLocation();
+                    if(arraylatlng!=null){
+                        lat_ = arraylatlng[0];
+                        lng_ = arraylatlng[1];
+                    }
+                }
+                //make an InitialSurvey object
+                VolunteerMonthlySummary volunteerMonthlySummary = makeVolunteerMonthlySummaryObject(interchangesWithUserAns,0,lat_,lng_);
                 //save the initialSurvey object
                 saveVolunteerMonthlySummary(volunteerMonthlySummary);
 

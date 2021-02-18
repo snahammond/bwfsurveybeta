@@ -1,4 +1,4 @@
-package com.bwfsurvey.bwfsurveybeta.activities;
+package com.bwfsurvey.bwfsurveybeta.activities.collect;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -17,10 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
-import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
-import com.bwfsurvey.bwfsurveybeta.types.Interchange;
-import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
+import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
 import com.example.bwfsurveybeta.R;
 
@@ -29,13 +29,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 
-public class FollowUpSurveyActivity extends AppCompatActivity {
+public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
     private String namebwe = null;
     private String surveyType = null;
     private String country = null;
     private String community = null;
     private String householdName = null;
+    private String householdLocation = null;
+    private String nameVol = null;
     private int surveyId = 0;
+
     private String lat = null;
     private String lng = null;
 
@@ -58,6 +61,12 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
             community = getIntent().getStringExtra("COMMUNITY");
         if(getIntent().getStringExtra("HHNAME")!=null)
             householdName = getIntent().getStringExtra("HHNAME");
+        if(getIntent().getStringExtra("HHLOC")!=null)
+            householdLocation = getIntent().getStringExtra("HHLOC");
+        if(getIntent().getStringExtra("NAME_VOL")!=null)
+            nameVol = getIntent().getStringExtra("NAME_VOL");
+
+        Log.i("Tutorials", "Selected family water survey class nameVol: " + nameVol);
 
         if(getIntent().getStringExtra("SURVEY_ID")!=null){
             String surveyIdStr = getIntent().getStringExtra("SURVEY_ID");
@@ -69,33 +78,34 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         if(getIntent().getStringExtra("LNG")!=null)
             lng = getIntent().getStringExtra("LNG");
 
-        Log.i("Tutorials", "Selected family follow up survey class: " + surveyId);
+        Log.i("Tutorials", "Selected family water survey household class: " + householdName +" country: "+ country + " community: "+community + "surveyId: " + surveyId);
         setContentView(R.layout.activity_recycler);
-        getSupportActionBar().setTitle((CharSequence) "FollowUp Survey; "+householdName);
+        getSupportActionBar().setTitle((CharSequence) "Water Survey; "+householdName);
         initView();
     }
 
     private void initView() {
-        createFollowUpSurveyQuestionaire();
+        createHouseholdWaterSurveyQuestionaire();
+
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new InterchangeCardAdapter(FollowUpSurveyActivity.this, FollowUpSurveyActivity.interchanges);
+        adapter = new InterchangeCardAdapter(VolunteerHouseholdWaterSurveyActivity.this, VolunteerHouseholdWaterSurveyActivity.interchanges);
         recyclerView.setAdapter(adapter);
     }
 
-    private void createFollowUpSurveyQuestionaire() {
+    private void createHouseholdWaterSurveyQuestionaire() {
         try{
             ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges(surveyType);
             if(returnedInterchanges!=null){
-                FollowUpSurveyActivity.interchanges = new ArrayList<>();
+                VolunteerHouseholdWaterSurveyActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;
                 for(Interchange interchange : returnedInterchanges){
                     interchange.setPositionOnRecyler(positionOnRecyler);
-                    FollowUpSurveyActivity.interchanges.add(interchange);
+                    VolunteerHouseholdWaterSurveyActivity.interchanges.add(interchange);
                     positionOnRecyler += 1;
                 }
-                //sort the interchanges
-                Collections.sort(FollowUpSurveyActivity.interchanges);
+                Collections.sort(VolunteerHouseholdWaterSurveyActivity.interchanges);
+                Log.i("Tutorial", "VolHouseholdWaterSurveyActivity interchanges length " + VolunteerHouseholdWaterSurveyActivity.interchanges.size());
             }
         }catch (Exception c){
             Log.i("Tutorial", "we cannot get list of interchanges " );
@@ -125,7 +135,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
             if(invalideInterchanges.size()>0){
                 showInvalidSurveyAlert();
             }else{
-
+                Log.i("Tutorial", "we are going to save!");
                 String lat_ = "";
                 String lng_ = "";
                 if(lat!=null&&lng!=null){
@@ -133,54 +143,64 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                     lng_ = lng;
                 }else{
                     //try and get it again
-                    PhoneLocation phoneLocation = new PhoneLocation(FollowUpSurveyActivity.this);
+                    PhoneLocation phoneLocation = new PhoneLocation(VolunteerHouseholdWaterSurveyActivity.this);
                     String[] arraylatlng = phoneLocation.getLocation();
                     if(arraylatlng!=null){
                         lat_ = arraylatlng[0];
                         lng_ = arraylatlng[1];
                     }
                 }
-
                 //make an InitialSurvey object
-                FollowUpSurvey followUpSurveyToSave = makeFollowUpSurveyObject(interchangesWithUserAns,1,lat_,lng_);
+                VolunteerHouseholdWaterTest volHouseholdWaterTestToSave = makeHouseholdWaterTestObject(interchangesWithUserAns,1,lat_,lng_);
 
                 //save the initialSurvey object
-                saveFollowUpSurvey(followUpSurveyToSave);
+                saveHouseholdWaterTestSurvey(volHouseholdWaterTestToSave);
 
             }
         }
 
-        if(id== R.id.suspend){
+        if (id == R.id.suspend) {
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
-            String lat_ = "";
-            String lng_ = "";
-            if(lat!=null&&lng!=null){
-                lat_= lat;
-                lng_ = lng;
+
+            //we have to validate now
+            ArrayList<Interchange> invalideInterchanges = validateUserAns(interchangesWithUserAns);
+            Log.i("Tutorial", "how many invalid interfaces: " + invalideInterchanges.size());
+
+
+            if(invalideInterchanges.size()>0){
+                showInvalidSurveyAlert();
             }else{
-                //try and get it again
-                PhoneLocation phoneLocation = new PhoneLocation(FollowUpSurveyActivity.this);
-                String[] arraylatlng = phoneLocation.getLocation();
-                if(arraylatlng!=null){
-                    lat_ = arraylatlng[0];
-                    lng_ = arraylatlng[1];
+                Log.i("Tutorial", "we are going to save!");
+                String lat_ = "";
+                String lng_ = "";
+                if(lat!=null&&lng!=null){
+                    lat_= lat;
+                    lng_ = lng;
+                }else{
+                    //try and get it again
+                    PhoneLocation phoneLocation = new PhoneLocation(VolunteerHouseholdWaterSurveyActivity.this);
+                    String[] arraylatlng = phoneLocation.getLocation();
+                    if(arraylatlng!=null){
+                        lat_ = arraylatlng[0];
+                        lng_ = arraylatlng[1];
+                    }
                 }
+                //make an InitialSurvey object
+                VolunteerHouseholdWaterTest volHouseholdWaterTestToSave = makeHouseholdWaterTestObject(interchangesWithUserAns,0,lat_,lng_);
+
+                //save the initialSurvey object
+                saveHouseholdWaterTestSurvey(volHouseholdWaterTestToSave);
+
             }
-            //make an follow Up survey object
-            FollowUpSurvey followUpSurveyToSave = makeFollowUpSurveyObject(interchangesWithUserAns,0,lat_,lng_);
-
-            //save the follow Up survey object
-            saveFollowUpSurvey(followUpSurveyToSave);
-
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void saveFollowUpSurvey(FollowUpSurvey followUpSurveyToSave){
-        Amplify.DataStore.save(
-                followUpSurveyToSave,
+    private void saveHouseholdWaterTestSurvey(VolunteerHouseholdWaterTest volHouseholdWaterTestToSave) {
+        Amplify.DataStore.save(volHouseholdWaterTestToSave,
                 update -> {
                     Log.i("Tutorial", "Saved Successfully ");
+
                     runOnUiThread(new Runnable() {
                         public void run() {
                             doSyncWaitAndShowSavedSuccessfulAlert();
@@ -194,7 +214,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         );
     }
 
-    private void doSyncWaitAndShowSavedSuccessfulAlert() {
+    private void doSyncWaitAndShowSavedSuccessfulAlert(){
         //show progress bar so that if user is offline, the save will go into pending to be shot into cloud
         //this is for the progress bar
         progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
@@ -216,18 +236,19 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
     }
 
     private void showSavedSuccessfulAlert(){
-        new AlertDialog.Builder(FollowUpSurveyActivity.this)
+        new AlertDialog.Builder(VolunteerHouseholdWaterSurveyActivity.this)
                 .setTitle("Saved Succussfully")
-                .setMessage("Follow Up Survey Saved Succussfully \n" )
+                .setMessage("Volunteer Household Water Test Saved Succussfully \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
                 .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //reset all interchange answers
-                        for(Interchange interchange: FollowUpSurveyActivity.interchanges){
+                        //reset all the user answers
+                        for(Interchange interchange: VolunteerHouseholdWaterSurveyActivity.interchanges){
                             interchange.getAnswer().setAns(null);
                         }
-                        FollowUpSurveyActivity.this.finish();
+                        VolunteerHouseholdWaterSurveyActivity.this.finish();
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
@@ -238,9 +259,9 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
     private void showSaveFailedAlert(){
         runOnUiThread(new Runnable() {
             public void run() {
-                new AlertDialog.Builder(FollowUpSurveyActivity.this)
+                new AlertDialog.Builder(VolunteerHouseholdWaterSurveyActivity.this)
                         .setTitle("Save Failed")
-                        .setMessage("Follow Up Survey Save Failed Please try again\n" )
+                        .setMessage("Household Water Test Save Failed! Please try again\n" )
                         // A null listener allows the button to dismiss the dialog and take no further action.
                         .setNegativeButton(android.R.string.ok, null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
@@ -250,7 +271,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         });
     }
 
-    private FollowUpSurvey makeFollowUpSurveyObject(ArrayList<Interchange> validatedInterchangesWithAns,int completed, String lat, String lng){
+    private VolunteerHouseholdWaterTest makeHouseholdWaterTestObject(ArrayList<Interchange> interchangesWithUserAns,int completed, String lat, String lng) {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_s = dateFormat.format(calendar.getTime());
@@ -258,75 +279,36 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         String Namebwe = namebwe;
         String Country = (String) country;
         String Community = (String) community;
-        Integer SurveyId = surveyId;
-        Temporal.Date date = new Temporal.Date(date_s);
         String HeadHouseholdName = (String) householdName;
-        String PersonBeingInterviewed = (String) getInterchangeAns("PersonBeingInterviewed",validatedInterchangesWithAns);
-        String WaterTreatmentBeforeDrinking = (String) getInterchangeAns("WaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
-        String MainReasonNoWaterTreatmentBeforeDrinking = (String) getInterchangeAns("MainReasonNoWaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
-        String WaterTreatmentMethod = (String) getInterchangeAns("WaterTreatmentMethod",validatedInterchangesWithAns);
-        String HowLongUsingWaterTreatment = (String) getInterchangeAns("HowLongUsingWaterTreatment",validatedInterchangesWithAns);
-        String FrequencyWaterTreatment = (String) getInterchangeAns("FrequencyWaterTreatment",validatedInterchangesWithAns);
-        String WaterStorageAtHome = (String) getInterchangeAns("WaterStorageAtHome",validatedInterchangesWithAns);
-        String WaterStorageContainerHaveLid = (String) getInterchangeAns("WaterStorageContainerHaveLid",validatedInterchangesWithAns);
-        String TakingWaterFromStorage = (String) getInterchangeAns("TakingWaterFromStorage",validatedInterchangesWithAns);
-        String WashedHandsIn24Hours = (String) getInterchangeAns("WashedHandsIn24Hours",validatedInterchangesWithAns);
-        String WhenWashedHandsIn24Hours = (String) getInterchangeAns("WhenWashedHandsIn24Hours",validatedInterchangesWithAns);
-        String WhatUsedToWashYourHands = (String) getInterchangeAns("WhatUsedToWashYourHands",validatedInterchangesWithAns);
-        String CommonIllnessAffectingAllChildrenInHousehold = (String) getInterchangeAns("CommonIllnessAffectingAllChildrenInHousehold",validatedInterchangesWithAns);
-        Integer NoChildrenWithVomitingOrDiarrheaIn14days = parseIntegerWithDefault(getInterchangeAns("NoChildrenWithVomitingOrDiarrheaIn14days",validatedInterchangesWithAns),0);
-        Integer NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek = parseIntegerWithDefault(getInterchangeAns("NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",validatedInterchangesWithAns),0);
-        Integer NoChildrenWithVomitingOrDiarrheaIn7days = parseIntegerWithDefault(getInterchangeAns("NoChildrenWithVomitingOrDiarrheaIn7days",validatedInterchangesWithAns),0);
-        String DidSickChildrenGoToHospital = (String) getInterchangeAns("DidSickChildrenGoToHospital",validatedInterchangesWithAns);
-        String DidSickChildrenGoToHospitalYes = (String) getInterchangeAns("DidSickChildrenGoToHospitalYes",validatedInterchangesWithAns);
-        String SickChildrenBreastfeeding = (String) getInterchangeAns("SickChildrenBreastfeeding",validatedInterchangesWithAns);
-        String OutcomeMostRecentVomiting_DiarrheaAtHospital = (String) getInterchangeAns("OutcomeMostRecentVomiting_DiarrheaAtHospital",validatedInterchangesWithAns);
-        Integer NoDaysNoWorkBecauseOfOwnIllness = parseIntegerWithDefault(getInterchangeAns("NoDaysNoWorkBecauseOfOwnIllness",validatedInterchangesWithAns),0);
-        Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers = parseIntegerWithDefault(getInterchangeAns("NoDaysNoWorkBecauseOfIllnessFamilyMembers",validatedInterchangesWithAns),0);
-        Integer MoneySpentMedicalTreatmentLast4weeks = parseIntegerWithDefault(getInterchangeAns("MoneySpentMedicalTreatmentLast4weeks",validatedInterchangesWithAns),0);
-        String HealthChangeInAYear = (String) getInterchangeAns("HealthChangeInAYear",validatedInterchangesWithAns);
-        String HealthChangeFamilyInAYear = (String) getInterchangeAns("HealthChangeFamilyInAYear",validatedInterchangesWithAns);
-        String BenefitSWP = (String) getInterchangeAns("BenefitSWP",validatedInterchangesWithAns);
+        String HouseholdLocation = (String) householdLocation;
+        String NameVol = (String) nameVol;
+        Temporal.Date  ColilertDateTested = new Temporal.Date(dateFormat.format(getInterchangeAns("ColilertDateTested",interchangesWithUserAns)));
+        Temporal.Date ColilertDateRead = new Temporal.Date(dateFormat.format(getInterchangeAns("ColilertDateRead",interchangesWithUserAns)));
+        String ColilertTestResult = (String) getInterchangeAns("ColilertTestResult",interchangesWithUserAns);
+        Temporal.Date PetrifilmDateTested = new Temporal.Date(dateFormat.format(getInterchangeAns("PetrifilmDateTested",interchangesWithUserAns)));
+        Temporal.Date PetrifilmDateRead = new Temporal.Date(dateFormat.format(getInterchangeAns("PetrifilmDateRead",interchangesWithUserAns)));
+        String PetrifilmTestResult = (String) getInterchangeAns("PetrifilmTestResult",interchangesWithUserAns);
+        Temporal.Date date = new Temporal.Date(date_s);
 
-        FollowUpSurvey followUpSurvey = FollowUpSurvey.builder()
+        VolunteerHouseholdWaterTest volHouseholdWaterTest = VolunteerHouseholdWaterTest.builder()
                 .namebwe(Namebwe)
+                .namevol(NameVol)
                 .country(Country)
                 .community(Community)
-                .surveyId(SurveyId)
                 .headHouseholdName(HeadHouseholdName)
-                .personBeingInterviewed(PersonBeingInterviewed)
-                .waterTreatmentBeforeDrinking(WaterTreatmentBeforeDrinking)
-                .mainReasonNoWaterTreatmentBeforeDrinking(MainReasonNoWaterTreatmentBeforeDrinking)
-                .waterTreatmentMethod(WaterTreatmentMethod)
-                .howLongUsingWaterTreatment(HowLongUsingWaterTreatment)
-                .frequencyWaterTreatment(FrequencyWaterTreatment)
-                .waterStorageAtHome(WaterStorageAtHome)
-                .waterStorageContainerHaveLid(WaterStorageContainerHaveLid)
-                .takingWaterFromStorage(TakingWaterFromStorage)
-                .washedHandsIn24Hours(WashedHandsIn24Hours)
-                .whenWashedHandsIn24Hours(WhenWashedHandsIn24Hours)
-                .whatUsedToWashYourHands(WhatUsedToWashYourHands)
-                .commonIllnessAffectingAllChildrenInHousehold(CommonIllnessAffectingAllChildrenInHousehold)
-                .noChildrenWithVomitingOrDiarrheaIn14days(NoChildrenWithVomitingOrDiarrheaIn14days)
-                .noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek)
-                .noChildrenWithVomitingOrDiarrheaIn7days(NoChildrenWithVomitingOrDiarrheaIn7days)
-                .didSickChildrenGoToHospital(DidSickChildrenGoToHospital)
-                .didSickChildrenGoToHospitalYes(DidSickChildrenGoToHospitalYes)
-                .sickChildrenBreastfeeding(SickChildrenBreastfeeding)
-                .outcomeMostRecentVomitingDiarrheaAtHospital(OutcomeMostRecentVomiting_DiarrheaAtHospital)
-                .noDaysNoWorkBecauseOfOwnIllness(NoDaysNoWorkBecauseOfOwnIllness)
-                .noDaysNoWorkBecauseOfIllnessFamilyMembers(NoDaysNoWorkBecauseOfIllnessFamilyMembers)
-                .moneySpentMedicalTreatmentLast4weeks(MoneySpentMedicalTreatmentLast4weeks)
-                .healthChangeInAYear(HealthChangeInAYear)
-                .healthChangeFamilyInAYear(HealthChangeFamilyInAYear)
-                .benefitSwp(BenefitSWP)
+                .householdLocation(HouseholdLocation)
+                .colilertDateTested(ColilertDateTested)
+                .colilertDateRead(ColilertDateRead)
+                .colilertTestResult(ColilertTestResult)
+                .petrifilmDateTested(PetrifilmDateTested)
+                .petrifilmDateRead(PetrifilmDateRead)
+                .petrifilmTestResult(PetrifilmTestResult)
                 .completed(completed)
                 .lat(lat)
                 .lng(lng)
                 .date(date)
                 .build();
-        return followUpSurvey;
-
+        return volHouseholdWaterTest;
     }
 
     private Object getInterchangeAns(String interchangeName,ArrayList<Interchange> validatedInterchangesWithAns){
@@ -345,7 +327,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
     }
 
     private void showInvalidSurveyAlert(){
-        new AlertDialog.Builder(FollowUpSurveyActivity.this)
+        new AlertDialog.Builder(VolunteerHouseholdWaterSurveyActivity.this)
                 .setTitle("Invalid Questions")
                 .setMessage("Some questions have not been correctly answered \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
@@ -355,7 +337,6 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                 .setCanceledOnTouchOutside(false);
     }
 
-    //this function will return a list of invalid interchanges
     private ArrayList<Interchange> validateUserAns(ArrayList<Interchange> interchangesWithUserAns) {
         Log.i("Tutorial", "we are now validating " );
         ArrayList<Interchange> invalidinterchange = new ArrayList<>();
@@ -368,16 +349,5 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
             }
         }
         return invalidinterchange;
-    }
-
-    public static int parseIntegerWithDefault(Object s, int defaultVal) {
-        if (s instanceof Integer) {
-            return (Integer) s;
-        }else if (s instanceof String){
-            String str = (String) s;
-            return str.matches("-?\\d+") ? Integer.parseInt(str): defaultVal;
-        }else
-            return defaultVal;
-
     }
 }

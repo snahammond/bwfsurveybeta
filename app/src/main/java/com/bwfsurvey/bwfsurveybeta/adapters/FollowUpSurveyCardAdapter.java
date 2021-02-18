@@ -14,8 +14,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
-import com.bwfsurvey.bwfsurveybeta.activities.UpdateFollowUpSurveyActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.UpdateFollowUpSurveyCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateFollowUpSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.UpdateFollowUpSurveyCardSelectActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;

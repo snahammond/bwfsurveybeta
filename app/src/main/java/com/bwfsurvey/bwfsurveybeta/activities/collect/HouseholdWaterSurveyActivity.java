@@ -1,4 +1,4 @@
-package com.bwfsurvey.bwfsurveybeta.activities;
+package com.bwfsurvey.bwfsurveybeta.activities.collect;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
-import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
+import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
@@ -29,22 +29,22 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 
-public class CommunityWaterSurveyActivity extends AppCompatActivity {
+public class HouseholdWaterSurveyActivity extends AppCompatActivity {
     private String namebwe = null;
     private String surveyType = null;
-    private String countrybwe = null;
+    private String country = null;
     private String community = null;
-    private String communityWaterLoc = null;
     private String householdName = null;
+    private int surveyId = 0;
+
+    private String lat = null;
+    private String lng = null;
 
     private static ArrayList<Interchange> interchanges;
     private RecyclerView recyclerView;
     private InterchangeCardAdapter adapter;
 
     private LinearLayout progressBar;
-
-    private String lat = null;
-    private String lng = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,43 +53,49 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
             namebwe = getIntent().getStringExtra("NAME_BWE");
         if(getIntent().getStringExtra("SURVEY_TYPE")!=null)
             surveyType = getIntent().getStringExtra("SURVEY_TYPE");
-        if(getIntent().getStringExtra("COUNTRY_BWE")!=null)
-            countrybwe = getIntent().getStringExtra("COUNTRY_BWE");
+        if(getIntent().getStringExtra("COUNTRY")!=null)
+            country = getIntent().getStringExtra("COUNTRY");
         if(getIntent().getStringExtra("COMMUNITY")!=null)
             community = getIntent().getStringExtra("COMMUNITY");
-        if(getIntent().getStringExtra("COMMUNITY_WATER_LOC")!=null)
-            communityWaterLoc = getIntent().getStringExtra("COMMUNITY_WATER_LOC");
+        if(getIntent().getStringExtra("HHNAME")!=null)
+            householdName = getIntent().getStringExtra("HHNAME");
+
+        if(getIntent().getStringExtra("SURVEY_ID")!=null){
+            String surveyIdStr = getIntent().getStringExtra("SURVEY_ID");
+            surveyId = Integer.parseInt(surveyIdStr);
+        }
 
         if(getIntent().getStringExtra("LAT")!=null)
             lat = getIntent().getStringExtra("LAT");
         if(getIntent().getStringExtra("LNG")!=null)
             lng = getIntent().getStringExtra("LNG");
 
+        Log.i("Tutorials", "Selected family water survey household class: " + householdName +" country: "+ country + " community: "+community + "surveyId: " + surveyId);
         setContentView(R.layout.activity_recycler);
-        getSupportActionBar().setTitle((CharSequence) "Community Water Test; "+community);
+        getSupportActionBar().setTitle((CharSequence) "Water Survey; "+householdName);
         initView();
     }
 
     private void initView() {
-        createCommunityWaterSurveyQuestionaire();
+        createHouseholdWaterSurveyQuestionaire();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new InterchangeCardAdapter(CommunityWaterSurveyActivity.this, CommunityWaterSurveyActivity.interchanges);
+        adapter = new InterchangeCardAdapter(HouseholdWaterSurveyActivity.this, HouseholdWaterSurveyActivity.interchanges);
         recyclerView.setAdapter(adapter);
     }
 
-    private void createCommunityWaterSurveyQuestionaire() {
+    private void createHouseholdWaterSurveyQuestionaire() {
         try{
             ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges(surveyType);
             if(returnedInterchanges!=null){
-                CommunityWaterSurveyActivity.interchanges = new ArrayList<>();
+                HouseholdWaterSurveyActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;
                 for(Interchange interchange : returnedInterchanges){
                     interchange.setPositionOnRecyler(positionOnRecyler);
-                    CommunityWaterSurveyActivity.interchanges.add(interchange);
+                    HouseholdWaterSurveyActivity.interchanges.add(interchange);
                     positionOnRecyler += 1;
                 }
-                Collections.sort(CommunityWaterSurveyActivity.interchanges);
+                Collections.sort(HouseholdWaterSurveyActivity.interchanges);
             }
         }catch (Exception c){
             Log.i("Tutorial", "we cannot get list of interchanges " );
@@ -120,7 +126,6 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                 showInvalidSurveyAlert();
             }else{
                 Log.i("Tutorial", "we are going to save!");
-
                 String lat_ = "";
                 String lng_ = "";
                 if(lat!=null&&lng!=null){
@@ -128,7 +133,7 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                     lng_ = lng;
                 }else{
                     //try and get it again
-                    PhoneLocation phoneLocation = new PhoneLocation(CommunityWaterSurveyActivity.this);
+                    PhoneLocation phoneLocation = new PhoneLocation(HouseholdWaterSurveyActivity.this);
                     String[] arraylatlng = phoneLocation.getLocation();
                     if(arraylatlng!=null){
                         lat_ = arraylatlng[0];
@@ -136,14 +141,13 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                     }
                 }
 
-                //make an InitialSurvey object
-                CommunityWaterTest communityWaterTestToSave = makeCommunityWaterTestObject(interchangesWithUserAns,1,lat_,lng_);
+                //make an HouseholdWaterTest object
+                HouseholdWaterTest householdWaterTestToSave = makeHouseholdWaterTestObject(interchangesWithUserAns,1,lat_,lng_);
 
-                //save the initialSurvey object
-                saveCommunityWaterTestSurvey(communityWaterTestToSave);
+                //save the HouseholdWaterTest object
+                saveHouseholdWaterTestSurvey(householdWaterTestToSave);
 
             }
-
         }
 
         if(id== R.id.suspend){
@@ -155,25 +159,25 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                 lng_ = lng;
             }else{
                 //try and get it again
-                PhoneLocation phoneLocation = new PhoneLocation(CommunityWaterSurveyActivity.this);
+                PhoneLocation phoneLocation = new PhoneLocation(HouseholdWaterSurveyActivity.this);
                 String[] arraylatlng = phoneLocation.getLocation();
                 if(arraylatlng!=null){
                     lat_ = arraylatlng[0];
                     lng_ = arraylatlng[1];
                 }
             }
-            //make an InitialSurvey object
-            CommunityWaterTest communityWaterTestToSave = makeCommunityWaterTestObject(interchangesWithUserAns,0,lat_,lng_);
+            //make an HouseholdWaterTest object
+            HouseholdWaterTest householdWaterTestToSave = makeHouseholdWaterTestObject(interchangesWithUserAns,0,lat_,lng_);
 
-            //save the initialSurvey object
-            saveCommunityWaterTestSurvey(communityWaterTestToSave);
+            //save the HouseholdWaterTest object
+            saveHouseholdWaterTestSurvey(householdWaterTestToSave);
 
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void saveCommunityWaterTestSurvey(CommunityWaterTest communityWaterTestToSave) {
-        Amplify.DataStore.save(communityWaterTestToSave,
+    private void saveHouseholdWaterTestSurvey(HouseholdWaterTest householdWaterTestToSave) {
+        Amplify.DataStore.save(householdWaterTestToSave,
                 update -> {
                     Log.i("Tutorial", "Saved Successfully ");
 
@@ -188,21 +192,6 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                     showSaveFailedAlert();
                 }
         );
-    }
-
-    private void showSaveFailedAlert(){
-        runOnUiThread(new Runnable() {
-            public void run() {
-                new AlertDialog.Builder(CommunityWaterSurveyActivity.this)
-                        .setTitle("Save Failed")
-                        .setMessage("Community Water Test Save Failed! Please try again\n" )
-                        // A null listener allows the button to dismiss the dialog and take no further action.
-                        .setNegativeButton(android.R.string.ok, null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show()
-                        .setCanceledOnTouchOutside(false);
-            }
-        });
     }
 
     private void doSyncWaitAndShowSavedSuccessfulAlert(){
@@ -227,19 +216,19 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
     }
 
     private void showSavedSuccessfulAlert(){
-        new AlertDialog.Builder(CommunityWaterSurveyActivity.this)
+        new AlertDialog.Builder(HouseholdWaterSurveyActivity.this)
                 .setTitle("Saved Succussfully")
-                .setMessage("Community Water Test Saved Succussfully \n" )
+                .setMessage("Household Water Test Saved Succussfully \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
                 .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //reset all the user answers
-                        for(Interchange interchange: CommunityWaterSurveyActivity.interchanges){
+                        for(Interchange interchange: HouseholdWaterSurveyActivity.interchanges){
                             interchange.getAnswer().setAns(null);
                         }
-                        CommunityWaterSurveyActivity.this.finish();
+                        HouseholdWaterSurveyActivity.this.finish();
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
@@ -247,15 +236,30 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                 .setCanceledOnTouchOutside(false);
     }
 
-    private CommunityWaterTest makeCommunityWaterTestObject(ArrayList<Interchange> interchangesWithUserAns,int completed, String lat, String lng) {
+    private void showSaveFailedAlert(){
+        runOnUiThread(new Runnable() {
+            public void run() {
+                new AlertDialog.Builder(HouseholdWaterSurveyActivity.this)
+                        .setTitle("Save Failed")
+                        .setMessage("Household Water Test Save Failed! Please try again\n" )
+                        // A null listener allows the button to dismiss the dialog and take no further action.
+                        .setNegativeButton(android.R.string.ok, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show()
+                        .setCanceledOnTouchOutside(false);
+            }
+        });
+    }
+
+    private HouseholdWaterTest makeHouseholdWaterTestObject(ArrayList<Interchange> interchangesWithUserAns,int completed, String lat, String lng) {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_s = dateFormat.format(calendar.getTime());
 
         String Namebwe = namebwe;
-        String Country = (String) countrybwe;
+        String Country = (String) country;
         String Community = (String) community;
-        String CommunityWaterLoc = (String) communityWaterLoc;
+        String HeadHouseholdName = (String) householdName;
         Temporal.Date  ColilertDateTested = parseDateWithDefault(getInterchangeAns("ColilertDateTested",interchangesWithUserAns));
         Temporal.Date ColilertDateRead = parseDateWithDefault(getInterchangeAns("ColilertDateRead",interchangesWithUserAns));
         String ColilertTestResult = (String) getInterchangeAns("ColilertTestResult",interchangesWithUserAns);
@@ -264,11 +268,11 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
         String PetrifilmTestResult = (String) getInterchangeAns("PetrifilmTestResult",interchangesWithUserAns);
         Temporal.Date date = new Temporal.Date(date_s);
 
-        CommunityWaterTest communityWaterTest = CommunityWaterTest.builder()
+        HouseholdWaterTest householdWaterTest = HouseholdWaterTest.builder()
                 .namebwe(Namebwe)
                 .country(Country)
                 .community(Community)
-                .communityWaterLocation(CommunityWaterLoc)
+                .headHouseholdName(HeadHouseholdName)
                 .colilertDateTested(ColilertDateTested)
                 .colilertDateRead(ColilertDateRead)
                 .colilertTestResult(ColilertTestResult)
@@ -280,7 +284,7 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                 .lng(lng)
                 .date(date)
                 .build();
-        return communityWaterTest;
+        return householdWaterTest;
     }
 
     private Object getInterchangeAns(String interchangeName,ArrayList<Interchange> validatedInterchangesWithAns){
@@ -299,7 +303,7 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
     }
 
     private void showInvalidSurveyAlert(){
-        new AlertDialog.Builder(CommunityWaterSurveyActivity.this)
+        new AlertDialog.Builder(HouseholdWaterSurveyActivity.this)
                 .setTitle("Invalid Questions")
                 .setMessage("Some questions have not been correctly answered \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.

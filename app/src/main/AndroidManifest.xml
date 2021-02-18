@@ -48,42 +48,42 @@
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.InitialSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.InitialSurveyActivity"
             android:label="Initial Survey"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.HouseholdCardSelectActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdCardSelectActivity"
             android:label="Select household"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.FollowUpSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.FollowUpSurveyActivity"
             android:label="FollowUp Survey"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.HealthCheckSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.HealthCheckSurveyActivity"
             android:label="Health Check Survey"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.SWEMonthlySummaryActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.SWEMonthlySummaryActivity"
             android:label="SWE Monthly Summary"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.HouseholdWaterSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.HouseholdWaterSurveyActivity"
             android:label="Household Water Survey"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
@@ -91,48 +91,48 @@
 
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.CommunityCardSelectActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.CommunityCardSelectActivity"
             android:label="Select community"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.CommunityWaterSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.CommunityWaterSurveyActivity"
             android:label="Community Water Test"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.ViewInitialSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewInitialSurveyActivity"
             android:label="View Details"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.UpdateInitialSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.update.UpdateInitialSurveyActivity"
             android:label="Update Details"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.VolunteerHouseholdCardSelectActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdCardSelectActivity"
             android:label="Select or create new household"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.VolunteerHouseholdWaterSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.VolunteerHouseholdWaterSurveyActivity"
             android:label="Volunteer household"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.CommunityWaterCardSelectActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterCardSelectActivity"
             android:label="Select or create new community water source"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
@@ -140,14 +140,14 @@
 
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.UpdateFollowUpSurveyCardSelectActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.UpdateFollowUpSurveyCardSelectActivity"
             android:label="Select suspended follow up survey"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.UpdateFollowUpSurveyActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.update.UpdateFollowUpSurveyActivity"
             android:label="Update Details"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
@@ -155,42 +155,42 @@
 
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.UpdateCommunityWaterCardSelectActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.UpdateCommunityWaterCardSelectActivity"
             android:label="Select suspended Community Water Test"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.UpdateCommunityWaterTestActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.update.UpdateCommunityWaterTestActivity"
             android:label="Update Details"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.UpdateHouseholdWaterCardSelectActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.UpdateHouseholdWaterCardSelectActivity"
             android:label="Select suspended Household Water Test"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.UpdateHouseholdWaterTestActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.update.UpdateHouseholdWaterTestActivity"
             android:label="Update Details"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.VolunteerCardSelectActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerCardSelectActivity"
             android:label="Select or create new Volunteer"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.SubMenuMonthlySummaryActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.SubMenuMonthlySummaryActivity"
             android:label="Select sub option"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
@@ -198,7 +198,7 @@
 
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.VolunteerMonthlySummaryActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.VolunteerMonthlySummaryActivity"
             android:label="Volunteer Monthly Summary"
             android:configChanges="orientation"
             android:screenOrientation="portrait">

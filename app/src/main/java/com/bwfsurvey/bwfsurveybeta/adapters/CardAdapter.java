@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bwfsurvey.bwfsurveybeta.activities.InitialSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.collect.InitialSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.types.Question;
 import com.example.bwfsurveybeta.R;
 

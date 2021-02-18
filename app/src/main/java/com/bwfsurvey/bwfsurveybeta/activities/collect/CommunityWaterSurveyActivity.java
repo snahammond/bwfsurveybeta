@@ -1,4 +1,4 @@
-package com.bwfsurvey.bwfsurveybeta.activities;
+package com.bwfsurvey.bwfsurveybeta.activities.collect;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -17,10 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
-import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
-import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
-import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
+import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
+import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
 import com.example.bwfsurveybeta.R;
 
 import java.text.SimpleDateFormat;
@@ -28,49 +29,67 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 
-public class SWEMonthlySummaryActivity extends AppCompatActivity {
+public class CommunityWaterSurveyActivity extends AppCompatActivity {
     private String namebwe = null;
-    private String positionbwe = null;
+    private String surveyType = null;
+    private String countrybwe = null;
+    private String community = null;
+    private String communityWaterLoc = null;
+    private String householdName = null;
+
     private static ArrayList<Interchange> interchanges;
     private RecyclerView recyclerView;
     private InterchangeCardAdapter adapter;
 
     private LinearLayout progressBar;
 
+    private String lat = null;
+    private String lng = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getIntent().getStringExtra("NAME_BWE")!=null)
             namebwe = getIntent().getStringExtra("NAME_BWE");
-        if(getIntent().getStringExtra("POSITION_BWE")!=null)
-            positionbwe = getIntent().getStringExtra("POSITION_BWE");
+        if(getIntent().getStringExtra("SURVEY_TYPE")!=null)
+            surveyType = getIntent().getStringExtra("SURVEY_TYPE");
+        if(getIntent().getStringExtra("COUNTRY_BWE")!=null)
+            countrybwe = getIntent().getStringExtra("COUNTRY_BWE");
+        if(getIntent().getStringExtra("COMMUNITY")!=null)
+            community = getIntent().getStringExtra("COMMUNITY");
+        if(getIntent().getStringExtra("COMMUNITY_WATER_LOC")!=null)
+            communityWaterLoc = getIntent().getStringExtra("COMMUNITY_WATER_LOC");
 
+        if(getIntent().getStringExtra("LAT")!=null)
+            lat = getIntent().getStringExtra("LAT");
+        if(getIntent().getStringExtra("LNG")!=null)
+            lng = getIntent().getStringExtra("LNG");
+
+        setContentView(R.layout.activity_recycler);
+        getSupportActionBar().setTitle((CharSequence) "Community Water Test; "+community);
         initView();
     }
 
     private void initView() {
-        setContentView(R.layout.activity_recycler);
-
-        createMonthlySummaryQuestionaire();
+        createCommunityWaterSurveyQuestionaire();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new InterchangeCardAdapter(SWEMonthlySummaryActivity.this, SWEMonthlySummaryActivity.interchanges);
+        adapter = new InterchangeCardAdapter(CommunityWaterSurveyActivity.this, CommunityWaterSurveyActivity.interchanges);
         recyclerView.setAdapter(adapter);
     }
 
-    private void createMonthlySummaryQuestionaire() {
+    private void createCommunityWaterSurveyQuestionaire() {
         try{
-            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("SWESUMMARY");
+            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges(surveyType);
             if(returnedInterchanges!=null){
-                SWEMonthlySummaryActivity.interchanges = new ArrayList<>();
+                CommunityWaterSurveyActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;
                 for(Interchange interchange : returnedInterchanges){
                     interchange.setPositionOnRecyler(positionOnRecyler);
-                    SWEMonthlySummaryActivity.interchanges.add(interchange);
+                    CommunityWaterSurveyActivity.interchanges.add(interchange);
                     positionOnRecyler += 1;
                 }
-                //sort the interchanges
-                Collections.sort(SWEMonthlySummaryActivity.interchanges);
+                Collections.sort(CommunityWaterSurveyActivity.interchanges);
             }
         }catch (Exception c){
             Log.i("Tutorial", "we cannot get list of interchanges " );
@@ -96,22 +115,65 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
             ArrayList<Interchange> invalideInterchanges = validateUserAns(interchangesWithUserAns);
             Log.i("Tutorial", "how many invalid interfaces: " + invalideInterchanges.size());
 
+
             if(invalideInterchanges.size()>0){
                 showInvalidSurveyAlert();
             }else{
+                Log.i("Tutorial", "we are going to save!");
+
+                String lat_ = "";
+                String lng_ = "";
+                if(lat!=null&&lng!=null){
+                    lat_= lat;
+                    lng_ = lng;
+                }else{
+                    //try and get it again
+                    PhoneLocation phoneLocation = new PhoneLocation(CommunityWaterSurveyActivity.this);
+                    String[] arraylatlng = phoneLocation.getLocation();
+                    if(arraylatlng!=null){
+                        lat_ = arraylatlng[0];
+                        lng_ = arraylatlng[1];
+                    }
+                }
 
                 //make an InitialSurvey object
-                SWEMonthlySummary sweMonthlySummary = makeSWEMonthlySummaryObject(interchangesWithUserAns,1,"","");
+                CommunityWaterTest communityWaterTestToSave = makeCommunityWaterTestObject(interchangesWithUserAns,1,lat_,lng_);
+
                 //save the initialSurvey object
-                saveSWEMonthlySummary(sweMonthlySummary);
+                saveCommunityWaterTestSurvey(communityWaterTestToSave);
 
             }
+
+        }
+
+        if(id== R.id.suspend){
+            ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
+            String lat_ = "";
+            String lng_ = "";
+            if(lat!=null&&lng!=null){
+                lat_= lat;
+                lng_ = lng;
+            }else{
+                //try and get it again
+                PhoneLocation phoneLocation = new PhoneLocation(CommunityWaterSurveyActivity.this);
+                String[] arraylatlng = phoneLocation.getLocation();
+                if(arraylatlng!=null){
+                    lat_ = arraylatlng[0];
+                    lng_ = arraylatlng[1];
+                }
+            }
+            //make an InitialSurvey object
+            CommunityWaterTest communityWaterTestToSave = makeCommunityWaterTestObject(interchangesWithUserAns,0,lat_,lng_);
+
+            //save the initialSurvey object
+            saveCommunityWaterTestSurvey(communityWaterTestToSave);
+
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void saveSWEMonthlySummary(SWEMonthlySummary sweMonthlySummary) {
-        Amplify.DataStore.save(sweMonthlySummary,
+    private void saveCommunityWaterTestSurvey(CommunityWaterTest communityWaterTestToSave) {
+        Amplify.DataStore.save(communityWaterTestToSave,
                 update -> {
                     Log.i("Tutorial", "Saved Successfully ");
 
@@ -131,9 +193,9 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
     private void showSaveFailedAlert(){
         runOnUiThread(new Runnable() {
             public void run() {
-                new AlertDialog.Builder(SWEMonthlySummaryActivity.this)
+                new AlertDialog.Builder(CommunityWaterSurveyActivity.this)
                         .setTitle("Save Failed")
-                        .setMessage("Monthly Summary Save Failed! Please try again\n" )
+                        .setMessage("Community Water Test Save Failed! Please try again\n" )
                         // A null listener allows the button to dismiss the dialog and take no further action.
                         .setNegativeButton(android.R.string.ok, null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
@@ -165,59 +227,60 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
     }
 
     private void showSavedSuccessfulAlert(){
-        new AlertDialog.Builder(SWEMonthlySummaryActivity.this)
+        new AlertDialog.Builder(CommunityWaterSurveyActivity.this)
                 .setTitle("Saved Succussfully")
-                .setMessage("Monthly Summary Saved Succussfully \n" )
+                .setMessage("Community Water Test Saved Succussfully \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
                 .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //reset all the user answers
-                        for(Interchange interchange: SWEMonthlySummaryActivity.interchanges){
+                        for(Interchange interchange: CommunityWaterSurveyActivity.interchanges){
                             interchange.getAnswer().setAns(null);
                         }
-                        SWEMonthlySummaryActivity.this.finish();
+                        CommunityWaterSurveyActivity.this.finish();
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .show()
                 .setCanceledOnTouchOutside(false);
     }
-    private SWEMonthlySummary makeSWEMonthlySummaryObject(ArrayList<Interchange> interchangesWithUserAns,int completed, String lat, String lng) {
+
+    private CommunityWaterTest makeCommunityWaterTestObject(ArrayList<Interchange> interchangesWithUserAns,int completed, String lat, String lng) {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_s = dateFormat.format(calendar.getTime());
 
         String Namebwe = namebwe;
-        String SwePosition = positionbwe;
-        Integer NoWaterSampleTaken = parseIntegerWithDefault( getInterchangeAns("NoWaterSampleTaken",interchangesWithUserAns),0);
-        Integer NoSurveysCompleted = parseIntegerWithDefault( getInterchangeAns("NoSurveysCompleted",interchangesWithUserAns),0);
-        Integer NoLsn1Taught = parseIntegerWithDefault( getInterchangeAns("NoLsn1Taught",interchangesWithUserAns),0);
-        Integer NoLsn2Taught = parseIntegerWithDefault( getInterchangeAns("NoLsn2Taught",interchangesWithUserAns),0);
-        Integer NoLsn3Taught = parseIntegerWithDefault( getInterchangeAns("NoLsn3Taught",interchangesWithUserAns),0);
-        Integer NoLsn4Taught = parseIntegerWithDefault( getInterchangeAns("NoLsn4Taught",interchangesWithUserAns),0);
-        Integer NoPersonsTaught = parseIntegerWithDefault( getInterchangeAns("NoPersonsTaught",interchangesWithUserAns),0);
-        Integer NoChlorineLiquidTabsDistributed = parseIntegerWithDefault( getInterchangeAns("NoChlorineLiquid_TabsDistributed",interchangesWithUserAns),0);
+        String Country = (String) countrybwe;
+        String Community = (String) community;
+        String CommunityWaterLoc = (String) communityWaterLoc;
+        Temporal.Date  ColilertDateTested = parseDateWithDefault(getInterchangeAns("ColilertDateTested",interchangesWithUserAns));
+        Temporal.Date ColilertDateRead = parseDateWithDefault(getInterchangeAns("ColilertDateRead",interchangesWithUserAns));
+        String ColilertTestResult = (String) getInterchangeAns("ColilertTestResult",interchangesWithUserAns);
+        Temporal.Date PetrifilmDateTested = parseDateWithDefault(getInterchangeAns("PetrifilmDateTested",interchangesWithUserAns));
+        Temporal.Date PetrifilmDateRead = parseDateWithDefault(getInterchangeAns("PetrifilmDateRead",interchangesWithUserAns));
+        String PetrifilmTestResult = (String) getInterchangeAns("PetrifilmTestResult",interchangesWithUserAns);
         Temporal.Date date = new Temporal.Date(date_s);
 
-        SWEMonthlySummary sweMonthlySummary = SWEMonthlySummary.builder()
+        CommunityWaterTest communityWaterTest = CommunityWaterTest.builder()
                 .namebwe(Namebwe)
-                .swePosition(SwePosition)
-                .noWaterSampleTaken(NoWaterSampleTaken)
-                .noSurveysCompleted(NoSurveysCompleted)
-                .noLsn1Taught(NoLsn1Taught)
-                .noLsn2Taught(NoLsn2Taught)
-                .noLsn3Taught(NoLsn3Taught)
-                .noLsn4Taught(NoLsn4Taught)
-                .noPersonsTaught(NoPersonsTaught)
-                .noChlorineLiquidTabsDistributed(NoChlorineLiquidTabsDistributed)
+                .country(Country)
+                .community(Community)
+                .communityWaterLocation(CommunityWaterLoc)
+                .colilertDateTested(ColilertDateTested)
+                .colilertDateRead(ColilertDateRead)
+                .colilertTestResult(ColilertTestResult)
+                .petrifilmDateTested(PetrifilmDateTested)
+                .petrifilmDateRead(PetrifilmDateRead)
+                .petrifilmTestResult(PetrifilmTestResult)
                 .completed(completed)
                 .lat(lat)
                 .lng(lng)
                 .date(date)
                 .build();
-        return sweMonthlySummary;
+        return communityWaterTest;
     }
 
     private Object getInterchangeAns(String interchangeName,ArrayList<Interchange> validatedInterchangesWithAns){
@@ -235,6 +298,17 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
         return ans;
     }
 
+    private void showInvalidSurveyAlert(){
+        new AlertDialog.Builder(CommunityWaterSurveyActivity.this)
+                .setTitle("Invalid Questions")
+                .setMessage("Some questions have not been correctly answered \n" )
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.ok, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show()
+                .setCanceledOnTouchOutside(false);
+    }
+
     private ArrayList<Interchange> validateUserAns(ArrayList<Interchange> interchangesWithUserAns) {
         Log.i("Tutorial", "we are now validating " );
         ArrayList<Interchange> invalidinterchange = new ArrayList<>();
@@ -249,26 +323,17 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
         return invalidinterchange;
     }
 
-    private void showInvalidSurveyAlert(){
-        new AlertDialog.Builder(SWEMonthlySummaryActivity.this)
-                .setTitle("Invalid Questions")
-                .setMessage("Some questions have not been correctly answered \n" )
-                // A null listener allows the button to dismiss the dialog and take no further action.
-                .setNegativeButton(android.R.string.ok, null)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show()
-                .setCanceledOnTouchOutside(false);
+    public static Temporal.Date parseDateWithDefault(Object s){
+        Temporal.Date dateValue = null;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        try{
+            dateValue = new Temporal.Date(dateFormat.format(s));
+        }catch (Exception x){
+            dateValue = new Temporal.Date("1900-01-01");
+        }
+        return dateValue;
     }
 
-    public static int parseIntegerWithDefault(Object s, int defaultVal) {
-        if (s instanceof Integer) {
-            return (Integer) s;
-        }else if (s instanceof String){
-            String str = (String) s;
-            return str.matches("-?\\d+") ? Integer.parseInt(str): defaultVal;
-        }else
-            return defaultVal;
-
-    }
 
 }

@@ -13,9 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bwfsurvey.bwfsurveybeta.activities.InitialSurveyActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.CommunityCardSelectActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.CommunityWaterSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.collect.InitialSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.collect.CommunityWaterSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.example.bwfsurveybeta.R;
 

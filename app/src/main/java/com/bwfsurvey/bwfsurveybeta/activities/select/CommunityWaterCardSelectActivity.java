@@ -1,4 +1,4 @@
-package com.bwfsurvey.bwfsurveybeta.activities;
+package com.bwfsurvey.bwfsurveybeta.activities.select;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -18,12 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.CommunityWater;
-import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.CommunityWaterCardAdapter;
-import com.bwfsurvey.bwfsurveybeta.adapters.VolunteerHouseholdCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewCommunityWaterSource;
-import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewVolunteerHousehold;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.example.bwfsurveybeta.R;
 

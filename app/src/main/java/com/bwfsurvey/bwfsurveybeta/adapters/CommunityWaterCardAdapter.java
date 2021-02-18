@@ -14,9 +14,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.CommunityWater;
-import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
-import com.bwfsurvey.bwfsurveybeta.activities.CommunityWaterCardSelectActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.CommunityWaterSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.collect.CommunityWaterSurveyActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;

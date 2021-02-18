@@ -16,8 +16,6 @@ import androidx.fragment.app.DialogFragment;
 
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.CommunityWater;
-import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
-import com.bwfsurvey.bwfsurveybeta.activities.CommunityWaterCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.example.bwfsurveybeta.R;
 
