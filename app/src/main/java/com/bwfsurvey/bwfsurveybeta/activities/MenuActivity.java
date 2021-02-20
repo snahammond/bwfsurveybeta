@@ -23,7 +23,7 @@ import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterCardSelectAct
 import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.FollowUpSurveyCardSelectActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.select.UpdateHouseholdWaterCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
 import com.bwfsurvey.bwfsurveybeta.types.Config;
@@ -345,6 +345,15 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        Button waterSurveyView = (Button) findViewById(R.id.button_waterSurveyView);
+        waterSurveyView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), HouseholdWaterTestCardSelectActivity.class);
+                i.putExtra("OPERATION","VIEW");
+                startActivity(i);
+            }
+        });
+
 
 
 
@@ -381,7 +390,7 @@ public class MenuActivity extends AppCompatActivity {
         Button waterSurveyUC = (Button) findViewById(R.id.button_waterSurveyUC);
         waterSurveyUC.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), UpdateHouseholdWaterCardSelectActivity.class);
+                Intent i = new Intent(getApplicationContext(), HouseholdWaterTestCardSelectActivity.class);
                 i.putExtra("OPERATION","UPDATE");
                 startActivity(i);
             }

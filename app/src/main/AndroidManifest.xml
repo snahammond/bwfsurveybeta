@@ -169,8 +169,8 @@
         </activity>
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.UpdateHouseholdWaterCardSelectActivity"
-            android:label="Select suspended Household Water Test"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdWaterTestCardSelectActivity"
+            android:label="Select Household Water Test"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
@@ -213,6 +213,14 @@
 
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewCommunityWaterTestActivity"
+            android:label="View Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewHouseholdWaterTestActivity"
             android:label="View Details"
             android:configChanges="orientation"
             android:screenOrientation="portrait">

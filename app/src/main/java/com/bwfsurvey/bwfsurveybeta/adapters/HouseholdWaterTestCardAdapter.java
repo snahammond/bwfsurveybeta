@@ -14,8 +14,10 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
-import com.bwfsurvey.bwfsurveybeta.activities.select.UpdateHouseholdWaterCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateHouseholdWaterTestActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.view.ViewCommunityWaterTestActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.view.ViewHouseholdWaterTestActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
@@ -31,7 +33,7 @@ public class HouseholdWaterTestCardAdapter extends RecyclerView.Adapter<Recycler
     private String lng;
     private Context context;
 
-    public HouseholdWaterTestCardAdapter(UpdateHouseholdWaterCardSelectActivity updateHouseholdWaterCardSelectActivity, ArrayList<HouseholdWaterTest> listOfHouseholdWaterTest, String namebwe, String countrybwe, String surveyType, String operation, String lat, String lng) {
+    public HouseholdWaterTestCardAdapter(HouseholdWaterTestCardSelectActivity updateHouseholdWaterCardSelectActivity, ArrayList<HouseholdWaterTest> listOfHouseholdWaterTest, String namebwe, String countrybwe, String surveyType, String operation, String lat, String lng) {
         this.listOfHouseholdWaterTest = listOfHouseholdWaterTest;
         this.context = updateHouseholdWaterCardSelectActivity;
         this.namebwe = namebwe;
@@ -80,7 +82,7 @@ public class HouseholdWaterTestCardAdapter extends RecyclerView.Adapter<Recycler
                     if(operation.contentEquals("CREATE")){
                         //
                     }else if(operation.contentEquals("VIEW")){
-                       //
+                        startViewHouseholdWaterTestActivity(uuidHouseholdWaterTest);
                     }else if(operation.contentEquals("UPDATE")){
                         startUpdateHouseholdWaterTestActivity(uuidHouseholdWaterTest);
                     }
@@ -99,6 +101,13 @@ public class HouseholdWaterTestCardAdapter extends RecyclerView.Adapter<Recycler
 
     private void startUpdateHouseholdWaterTestActivity(String uuidHouseholdWaterTest){
         Intent i = new Intent(context, UpdateHouseholdWaterTestActivity.class);
+        i.putExtra("UUID", uuidHouseholdWaterTest);
+        context.startActivity(i);
+        ((Activity)context).finish();
+    }
+
+    private void startViewHouseholdWaterTestActivity(String uuidHouseholdWaterTest){
+        Intent i = new Intent(context, ViewHouseholdWaterTestActivity.class);
         i.putExtra("UUID", uuidHouseholdWaterTest);
         context.startActivity(i);
         ((Activity)context).finish();

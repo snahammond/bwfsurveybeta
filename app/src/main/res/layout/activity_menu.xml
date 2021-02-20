@@ -266,7 +266,7 @@
                                     app:backgroundTint="#FFFFFF"/>
 
                                 <Button
-                                    android:id="@+id/button_waterSurveyUpdate"
+                                    android:id="@+id/button_waterSurveyView"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="10dp"

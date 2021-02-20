@@ -19,7 +19,7 @@ import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
 
-public class UpdateHouseholdWaterCardSelectActivity extends AppCompatActivity {
+public class HouseholdWaterTestCardSelectActivity extends AppCompatActivity {
     private static ArrayList<HouseholdWaterTest> listOfHouseholdWaterTest;
     private RecyclerView recyclerView;
     private HouseholdWaterTestCardAdapter adapter;
@@ -135,7 +135,7 @@ public class UpdateHouseholdWaterCardSelectActivity extends AppCompatActivity {
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new HouseholdWaterTestCardAdapter(UpdateHouseholdWaterCardSelectActivity.this, UpdateHouseholdWaterCardSelectActivity.listOfHouseholdWaterTest,namebwe,countrybwe,surveyType,operation,lat,lng);
+        adapter = new HouseholdWaterTestCardAdapter(HouseholdWaterTestCardSelectActivity.this, HouseholdWaterTestCardSelectActivity.listOfHouseholdWaterTest,namebwe,countrybwe,surveyType,operation,lat,lng);
         recyclerView.setAdapter(adapter);
     }
 }
