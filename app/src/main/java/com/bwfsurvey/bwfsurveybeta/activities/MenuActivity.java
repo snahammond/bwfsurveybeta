@@ -21,8 +21,8 @@ import com.bwfsurvey.bwfsurveybeta.activities.collect.SubMenuMonthlySummaryActiv
 import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdCardSelectActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.select.UpdateCommunityWaterCardSelectActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.select.UpdateFollowUpSurveyCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterTestCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.FollowUpSurveyCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.UpdateHouseholdWaterCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
@@ -327,6 +327,26 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        Button followUpSurveyView = (Button) findViewById(R.id.button_followUpSurveyView);
+        followUpSurveyView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), FollowUpSurveyCardSelectActivity.class);
+                i.putExtra("OPERATION","VIEW");
+                startActivity(i);
+            }
+        });
+
+        Button waterSurveyCommView = (Button) findViewById(R.id.button_waterSurveyCommView);
+        waterSurveyCommView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), CommunityWaterTestCardSelectActivity.class);
+                i.putExtra("OPERATION","VIEW");
+                startActivity(i);
+            }
+        });
+
+
+
 
 
 
@@ -343,7 +363,7 @@ public class MenuActivity extends AppCompatActivity {
         Button followUpSurveyUpdate = (Button) findViewById(R.id.button_followUpSurveyUC);
         followUpSurveyUpdate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), UpdateFollowUpSurveyCardSelectActivity.class);
+                Intent i = new Intent(getApplicationContext(), FollowUpSurveyCardSelectActivity.class);
                 i.putExtra("OPERATION","UPDATE");
                 startActivity(i);
             }
@@ -352,7 +372,7 @@ public class MenuActivity extends AppCompatActivity {
         Button waterSurveyCommUC = (Button) findViewById(R.id.button_waterSurveyCommUC);
         waterSurveyCommUC.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), UpdateCommunityWaterCardSelectActivity.class);
+                Intent i = new Intent(getApplicationContext(), CommunityWaterTestCardSelectActivity.class);
                 i.putExtra("OPERATION","UPDATE");
                 startActivity(i);
             }

@@ -1,5 +1,6 @@
 package com.bwfsurvey.bwfsurveybeta.activities.select;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -13,16 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
-import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
-import com.bwfsurvey.bwfsurveybeta.adapters.CommunityWaterTestCardAdapter;
+import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
+import com.bwfsurvey.bwfsurveybeta.adapters.FollowUpSurveyCardAdapter;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
-public class UpdateCommunityWaterCardSelectActivity extends AppCompatActivity {
-    private static ArrayList<CommunityWaterTest> listOfCommunityWaterTest;
+public class FollowUpSurveyCardSelectActivity extends AppCompatActivity {
+    private static ArrayList<FollowUpSurvey> listOfFollowUpSurveys;
     private RecyclerView recyclerView;
-    private CommunityWaterTestCardAdapter adapter;
+    private FollowUpSurveyCardAdapter adapter;
     private String namebwe = null;
     private String countrybwe = null;
     private String surveyType = null;
@@ -53,15 +55,15 @@ public class UpdateCommunityWaterCardSelectActivity extends AppCompatActivity {
 
     private void initView() {
         setContentView(R.layout.activity_recycler);
-        createUpdateCommunityWaterTestCardSelectList();
+        createUpdateFollowUpCardSelectList();
     }
 
-    private void createUpdateCommunityWaterTestCardSelectList() {
-        listOfCommunityWaterTest = new ArrayList<>();
-        downloadCommunityWaterTestListAndShowOnRecyclerView();
+    private void createUpdateFollowUpCardSelectList(){
+        listOfFollowUpSurveys = new ArrayList<>();
+        downloadFollowUpListAndShowOnRecyclerView();
     }
 
-    public void downloadCommunityWaterTestListAndShowOnRecyclerView(){
+    public void downloadFollowUpListAndShowOnRecyclerView(){
         try{
             int completedL = 0;
             int completedR = 1;
@@ -76,18 +78,26 @@ public class UpdateCommunityWaterCardSelectActivity extends AppCompatActivity {
                 completedR = 1;
             }
             Amplify.DataStore.query(
-                    CommunityWaterTest.class,
-                    Where.matches(CommunityWaterTest.COMPLETED.eq(completedL).or(CommunityWaterTest.COMPLETED.eq(completedR))),
-                    allCommunityWaterTest -> {
+                    FollowUpSurvey.class,
+                    Where.matches(FollowUpSurvey.COMPLETED.eq(completedL).or(FollowUpSurvey.COMPLETED.eq(completedR))),
+                    allFollowUpSurveys -> {
                         Log.i("Tutorials", "DataStore is queried.");
-                        while (allCommunityWaterTest.hasNext()) {
-                            CommunityWaterTest aCommunityWaterTest = allCommunityWaterTest.next();
-                            listOfCommunityWaterTest.add(aCommunityWaterTest);
-                            Log.i("Tutorials", "Title: " + aCommunityWaterTest.getCommunityWaterLocation());
+                        while (allFollowUpSurveys.hasNext()) {
+                            FollowUpSurvey aFollowUpSurvey = allFollowUpSurveys.next();
+                            listOfFollowUpSurveys.add(aFollowUpSurvey);
+                            Log.i("Tutorials", "Title: " + aFollowUpSurvey.getHeadHouseholdName());
+                        }
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                            listOfFollowUpSurveys.sort(new Comparator<FollowUpSurvey>() {
+                                @Override
+                                public int compare(FollowUpSurvey o1, FollowUpSurvey o2) {
+                                    return o1.getSurveyId() - o2.getSurveyId();
+                                }
+                            });
                         }
                         runOnUiThread(new Runnable() {
                             public void run() {
-                                showListOfCommunityWaterTests();
+                                showListOfFollowUpSurveys();
                             }
                         });
                     },
@@ -112,7 +122,7 @@ public class UpdateCommunityWaterCardSelectActivity extends AppCompatActivity {
 
     }
 
-    private void showListOfCommunityWaterTests() {
+    private void showListOfFollowUpSurveys() {
         //wait a lil bit so that if we are offline things will settle
         //this is for the progress bar
         progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
@@ -136,7 +146,7 @@ public class UpdateCommunityWaterCardSelectActivity extends AppCompatActivity {
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CommunityWaterTestCardAdapter(UpdateCommunityWaterCardSelectActivity.this, UpdateCommunityWaterCardSelectActivity.listOfCommunityWaterTest,namebwe,countrybwe,surveyType,operation,lat,lng);
+        adapter = new FollowUpSurveyCardAdapter(FollowUpSurveyCardSelectActivity.this, FollowUpSurveyCardSelectActivity.listOfFollowUpSurveys,namebwe,countrybwe,surveyType,operation,lat,lng);
         recyclerView.setAdapter(adapter);
     }
 

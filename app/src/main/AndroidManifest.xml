@@ -140,8 +140,8 @@
 
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.UpdateFollowUpSurveyCardSelectActivity"
-            android:label="Select suspended follow up survey"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.FollowUpSurveyCardSelectActivity"
+            android:label="Select follow up survey"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
@@ -155,7 +155,7 @@
 
 
         <activity
-            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.UpdateCommunityWaterCardSelectActivity"
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterTestCardSelectActivity"
             android:label="Select suspended Community Water Test"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
@@ -203,6 +203,22 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewFollowUpSurveyActivity"
+            android:label="View Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewCommunityWaterTestActivity"
+            android:label="View Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+
 
     </application>
 

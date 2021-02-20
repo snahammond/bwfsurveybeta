@@ -15,10 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateFollowUpSurveyActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.select.UpdateFollowUpSurveyCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.FollowUpSurveyCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.view.ViewFollowUpSurveyActivity;
 import com.example.bwfsurveybeta.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class FollowUpSurveyCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private ArrayList<FollowUpSurvey> listOfFollowUpSurveys;
@@ -30,7 +34,7 @@ public class FollowUpSurveyCardAdapter extends RecyclerView.Adapter<RecyclerView
     private String lng;
     private Context context;
 
-    public FollowUpSurveyCardAdapter(UpdateFollowUpSurveyCardSelectActivity updateFollowUpSurveyCardSelectActivity, ArrayList<FollowUpSurvey> listOfFollowUpSurveys, String namebwe, String countrybwe, String surveyType, String operation, String lat, String lng) {
+    public FollowUpSurveyCardAdapter(FollowUpSurveyCardSelectActivity updateFollowUpSurveyCardSelectActivity, ArrayList<FollowUpSurvey> listOfFollowUpSurveys, String namebwe, String countrybwe, String surveyType, String operation, String lat, String lng) {
         this.listOfFollowUpSurveys = listOfFollowUpSurveys;
         this.context = updateFollowUpSurveyCardSelectActivity;
         this.namebwe = namebwe;
@@ -44,7 +48,7 @@ public class FollowUpSurveyCardAdapter extends RecyclerView.Adapter<RecyclerView
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.family_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.followup_survey_card, parent, false);
         return new FollowUpSurveyCardViewHolder(view);
     }
 
@@ -64,6 +68,7 @@ public class FollowUpSurveyCardAdapter extends RecyclerView.Adapter<RecyclerView
         private TextView txtCountry;
         private TextView txtCommunity;
         private TextView txtHeadHousehold;
+        private TextView txtDate;
         private String uuidFollowUpSurvey;
 
         public FollowUpSurveyCardViewHolder(View view) {
@@ -72,6 +77,7 @@ public class FollowUpSurveyCardAdapter extends RecyclerView.Adapter<RecyclerView
             txtCountry = (TextView) itemView.findViewById(R.id.txtCountry);
             txtCommunity = (TextView) itemView.findViewById(R.id.txtCommunity);
             txtHeadHousehold = (TextView) itemView.findViewById(R.id.txtHeadHousehold);
+            txtDate = (TextView) itemView.findViewById(R.id.txtDate);
             CardView familyCard = (CardView) itemView.findViewById(R.id.familyCard); // creating a CardView and assigning a value.
 
             familyCard.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +97,7 @@ public class FollowUpSurveyCardAdapter extends RecyclerView.Adapter<RecyclerView
 
                          */
                     }else if(operation.contentEquals("VIEW")){
-                        //startViewInitialSurveyActivity(uuidInitialSurvey);
+                        startViewFollowUpSurveyActivity(uuidFollowUpSurvey);
                     }else if(operation.contentEquals("UPDATE")){
                         startUpdateFollowUpSurveyActivity(uuidFollowUpSurvey);
                     }
@@ -105,6 +111,33 @@ public class FollowUpSurveyCardAdapter extends RecyclerView.Adapter<RecyclerView
             txtCountry.setText(followUpSurvey.getCountry());
             txtCommunity.setText(followUpSurvey.getCommunity());
             txtHeadHousehold.setText(followUpSurvey.getHeadHouseholdName());
+
+            String dateStr = followUpSurvey.getDate().toString();
+            if(dateStr.indexOf("{")>0&&dateStr.indexOf("}")>0){
+                dateStr = dateStr.substring(dateStr.indexOf("{") + 1);
+                dateStr = dateStr.substring(0, dateStr.indexOf("}"));
+                dateStr = dateStr.split(",")[0].split("=")[1];
+                dateStr = dateStr.substring( 1, dateStr.length() - 1 );
+                Log.i("Tutorial", "index dateStr: "+dateStr);
+
+                Date date_ = null;
+                try {
+                    date_ = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+                    String dateToShow = new SimpleDateFormat("dd/MM/yyyy").format(date_);
+
+                    if(!dateToShow.contentEquals("01/01/1900"))
+                        txtDate.setText(dateToShow);
+                    else
+                        txtDate.setText("");
+                } catch (Exception e) {
+                    txtDate.setText("");
+                }
+
+            }else{
+                Log.i("Tutorial", "out index dateStr: "+dateStr);
+                txtDate.setText("");
+            }
+
             uuidFollowUpSurvey = followUpSurvey.getId();
         }
     }
@@ -112,6 +145,13 @@ public class FollowUpSurveyCardAdapter extends RecyclerView.Adapter<RecyclerView
     private void startUpdateFollowUpSurveyActivity(String uuidFollowUpSurvey){
         Intent i = new Intent(context, UpdateFollowUpSurveyActivity.class);
         i.putExtra("UUID", uuidFollowUpSurvey);
+        context.startActivity(i);
+        ((Activity)context).finish();
+    }
+
+    private void startViewFollowUpSurveyActivity(String uuidInitialSurvey){
+        Intent i = new Intent(context, ViewFollowUpSurveyActivity.class);
+        i.putExtra("UUID", uuidInitialSurvey);
         context.startActivity(i);
         ((Activity)context).finish();
     }

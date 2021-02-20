@@ -14,15 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.AnswerType;
+import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
-import com.bwfsurvey.bwfsurveybeta.types.Answer;
-import com.bwfsurvey.bwfsurveybeta.types.AnswerValue;
-import com.bwfsurvey.bwfsurveybeta.types.Question;
-import com.bwfsurvey.bwfsurveybeta.types.Validation;
-import com.bwfsurvey.bwfsurveybeta.types.ViewOnlyInterchange;
 import com.bwfsurvey.bwfsurveybeta.adapters.ViewOnlyInterchangeCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.types.AnswerValue;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
+import com.bwfsurvey.bwfsurveybeta.types.ViewOnlyInterchange;
 import com.example.bwfsurveybeta.R;
 
 import java.text.SimpleDateFormat;
@@ -30,9 +28,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
-public class ViewInitialSurveyActivity extends AppCompatActivity {
-    InitialSurvey theInitialSurvey;
-    private String uuidInitialSurvey;
+public class ViewFollowUpSurveyActivity extends AppCompatActivity {
+    FollowUpSurvey theFollowUpSurvey;
+    private String uuidFollowUpSurvey;
     private RecyclerView recyclerView;
     private ViewOnlyInterchangeCardAdapter adapter;
 
@@ -44,30 +42,30 @@ public class ViewInitialSurveyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if(getIntent().getStringExtra("UUID")!=null)
-            uuidInitialSurvey = getIntent().getStringExtra("UUID");
+            uuidFollowUpSurvey = getIntent().getStringExtra("UUID");
 
         initView();
     }
 
     private void initView() {
         setContentView(R.layout.activity_recycler);
-        createInitialSurveyViewOnlyInterchanges();
+        createFollowUpSurveyViewOnlyInterchanges();
     }
 
-    private void createInitialSurveyViewOnlyInterchanges() {
+    private void createFollowUpSurveyViewOnlyInterchanges() {
         viewOnlyInterchanges = new ArrayList<>();
         createViewOnlyInterchangesAndShowOnRecyclerView();
     }
 
     private void createViewOnlyInterchangesAndShowOnRecyclerView() {
         Amplify.DataStore.query(
-                InitialSurvey.class,
-                Where.matches(InitialSurvey.ID.eq(uuidInitialSurvey)),
-                initialSurvey -> {
+                FollowUpSurvey.class,
+                Where.matches(FollowUpSurvey.ID.eq(uuidFollowUpSurvey)),
+                followUpSurvey -> {
                     Log.i("Tutorials", "DataStore is queried.");
-                    while (initialSurvey.hasNext()) {
-                        theInitialSurvey = initialSurvey.next();
-                        Log.i("Tutorials", "DataStore is queried. theInitialSurvey " +theInitialSurvey.getId());
+                    while (followUpSurvey.hasNext()) {
+                        theFollowUpSurvey = followUpSurvey.next();
+                        Log.i("Tutorials", "DataStore is queried. theFollowUpSurvey " +theFollowUpSurvey.getId());
                     }
 
                     runOnUiThread(new Runnable() {
@@ -83,8 +81,8 @@ public class ViewInitialSurveyActivity extends AppCompatActivity {
     }
 
     private void createViewOnlyInterchangesAndShow() {
-        if(theInitialSurvey!=null){
-            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("INITAILSURVEY");
+        if(theFollowUpSurvey!=null){
+            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("FOLLOWUPSURVEY");
             for(int i=0;i<returnedInterchanges.size();i++){
                 Interchange interchange = returnedInterchanges.get(i);
                 String answer = "";
@@ -92,8 +90,8 @@ public class ViewInitialSurveyActivity extends AppCompatActivity {
                 String methodName = "get"+nameOfAns;
                 java.lang.reflect.Method method;
                 try {
-                    method = theInitialSurvey.getClass().getMethod(methodName);
-                    Object ansObject = method.invoke(theInitialSurvey);
+                    method = theFollowUpSurvey.getClass().getMethod(methodName);
+                    Object ansObject = method.invoke(theFollowUpSurvey);
                     answer = ansObject.toString();
                     //answer is a programmer 1, convert it to a user friendly one
                     if(interchange.getAnswer().getAnswerDef().getType()== AnswerType.ENUMVALUE){
@@ -188,7 +186,7 @@ public class ViewInitialSurveyActivity extends AppCompatActivity {
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ViewOnlyInterchangeCardAdapter(ViewInitialSurveyActivity.this, ViewInitialSurveyActivity.viewOnlyInterchanges);
+        adapter = new ViewOnlyInterchangeCardAdapter(ViewFollowUpSurveyActivity.this, ViewFollowUpSurveyActivity.viewOnlyInterchanges);
         recyclerView.setAdapter(adapter);
     }
 

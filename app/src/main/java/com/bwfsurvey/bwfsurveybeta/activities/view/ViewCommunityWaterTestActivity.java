@@ -14,15 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.AnswerType;
-import com.amplifyframework.datastore.generated.model.InitialSurvey;
+import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
+import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
-import com.bwfsurvey.bwfsurveybeta.types.Answer;
-import com.bwfsurvey.bwfsurveybeta.types.AnswerValue;
-import com.bwfsurvey.bwfsurveybeta.types.Question;
-import com.bwfsurvey.bwfsurveybeta.types.Validation;
-import com.bwfsurvey.bwfsurveybeta.types.ViewOnlyInterchange;
 import com.bwfsurvey.bwfsurveybeta.adapters.ViewOnlyInterchangeCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.types.AnswerValue;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
+import com.bwfsurvey.bwfsurveybeta.types.ViewOnlyInterchange;
 import com.example.bwfsurveybeta.R;
 
 import java.text.SimpleDateFormat;
@@ -30,9 +28,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
-public class ViewInitialSurveyActivity extends AppCompatActivity {
-    InitialSurvey theInitialSurvey;
-    private String uuidInitialSurvey;
+public class ViewCommunityWaterTestActivity extends AppCompatActivity {
+    CommunityWaterTest theCommunityWaterTest;
+    private String uuidCommunityWaterTest;
     private RecyclerView recyclerView;
     private ViewOnlyInterchangeCardAdapter adapter;
 
@@ -44,30 +42,30 @@ public class ViewInitialSurveyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if(getIntent().getStringExtra("UUID")!=null)
-            uuidInitialSurvey = getIntent().getStringExtra("UUID");
+            uuidCommunityWaterTest = getIntent().getStringExtra("UUID");
 
         initView();
     }
 
     private void initView() {
         setContentView(R.layout.activity_recycler);
-        createInitialSurveyViewOnlyInterchanges();
+        createCommunityWaterTestViewOnlyInterchanges();
     }
 
-    private void createInitialSurveyViewOnlyInterchanges() {
+    private void createCommunityWaterTestViewOnlyInterchanges() {
         viewOnlyInterchanges = new ArrayList<>();
         createViewOnlyInterchangesAndShowOnRecyclerView();
     }
 
     private void createViewOnlyInterchangesAndShowOnRecyclerView() {
         Amplify.DataStore.query(
-                InitialSurvey.class,
-                Where.matches(InitialSurvey.ID.eq(uuidInitialSurvey)),
-                initialSurvey -> {
+                CommunityWaterTest.class,
+                Where.matches(FollowUpSurvey.ID.eq(uuidCommunityWaterTest)),
+                communityWaterTest -> {
                     Log.i("Tutorials", "DataStore is queried.");
-                    while (initialSurvey.hasNext()) {
-                        theInitialSurvey = initialSurvey.next();
-                        Log.i("Tutorials", "DataStore is queried. theInitialSurvey " +theInitialSurvey.getId());
+                    while (communityWaterTest.hasNext()) {
+                        theCommunityWaterTest = communityWaterTest.next();
+                        Log.i("Tutorials", "DataStore is queried. CommunityWaterTest " +theCommunityWaterTest.getId());
                     }
 
                     runOnUiThread(new Runnable() {
@@ -83,8 +81,8 @@ public class ViewInitialSurveyActivity extends AppCompatActivity {
     }
 
     private void createViewOnlyInterchangesAndShow() {
-        if(theInitialSurvey!=null){
-            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("INITAILSURVEY");
+        if(theCommunityWaterTest!=null){
+            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("WATERSURVEYCOMMUNITY");
             for(int i=0;i<returnedInterchanges.size();i++){
                 Interchange interchange = returnedInterchanges.get(i);
                 String answer = "";
@@ -92,8 +90,8 @@ public class ViewInitialSurveyActivity extends AppCompatActivity {
                 String methodName = "get"+nameOfAns;
                 java.lang.reflect.Method method;
                 try {
-                    method = theInitialSurvey.getClass().getMethod(methodName);
-                    Object ansObject = method.invoke(theInitialSurvey);
+                    method = theCommunityWaterTest.getClass().getMethod(methodName);
+                    Object ansObject = method.invoke(theCommunityWaterTest);
                     answer = ansObject.toString();
                     //answer is a programmer 1, convert it to a user friendly one
                     if(interchange.getAnswer().getAnswerDef().getType()== AnswerType.ENUMVALUE){
@@ -152,6 +150,7 @@ public class ViewInitialSurveyActivity extends AppCompatActivity {
                         answer = ansToWrite;
                     }
 
+
                 } catch (Exception e) {
                     Log.e("Tutorials", "Could not get answer");
                 }
@@ -188,7 +187,7 @@ public class ViewInitialSurveyActivity extends AppCompatActivity {
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ViewOnlyInterchangeCardAdapter(ViewInitialSurveyActivity.this, ViewInitialSurveyActivity.viewOnlyInterchanges);
+        adapter = new ViewOnlyInterchangeCardAdapter(ViewCommunityWaterTestActivity.this, ViewCommunityWaterTestActivity.viewOnlyInterchanges);
         recyclerView.setAdapter(adapter);
     }
 

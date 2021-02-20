@@ -14,8 +14,10 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
-import com.bwfsurvey.bwfsurveybeta.activities.select.UpdateCommunityWaterCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateCommunityWaterTestActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.view.ViewCommunityWaterTestActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.view.ViewFollowUpSurveyActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
@@ -31,7 +33,7 @@ public class CommunityWaterTestCardAdapter extends RecyclerView.Adapter<Recycler
     private String lng;
     private Context context;
 
-    public CommunityWaterTestCardAdapter(UpdateCommunityWaterCardSelectActivity updateCommunityWaterCardSelectActivity, ArrayList<CommunityWaterTest> listOfCommunityWaterTest, String namebwe, String countrybwe, String surveyType, String operation, String lat, String lng) {
+    public CommunityWaterTestCardAdapter(CommunityWaterTestCardSelectActivity updateCommunityWaterCardSelectActivity, ArrayList<CommunityWaterTest> listOfCommunityWaterTest, String namebwe, String countrybwe, String surveyType, String operation, String lat, String lng) {
         this.listOfCommunityWaterTest = listOfCommunityWaterTest;
         this.context = updateCommunityWaterCardSelectActivity;
         this.namebwe = namebwe;
@@ -81,7 +83,7 @@ public class CommunityWaterTestCardAdapter extends RecyclerView.Adapter<Recycler
                     if(operation.contentEquals("CREATE")){
                         //startCommunityWaterSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(), txtCommunityWaterLoc.getText().toString());
                     }else if(operation.contentEquals("VIEW")){
-                        //startViewInitialSurveyActivity(uuidInitialSurvey);
+                        startViewCommunityWaterTestActivity(uuidCommunityWaterTest);
                     }else if(operation.contentEquals("UPDATE")){
                         startUpdateCommunityWaterTestActivity(uuidCommunityWaterTest);
                     }
@@ -102,6 +104,13 @@ public class CommunityWaterTestCardAdapter extends RecyclerView.Adapter<Recycler
 
     private void startUpdateCommunityWaterTestActivity(String uuidCommunityWaterTest){
         Intent i = new Intent(context, UpdateCommunityWaterTestActivity.class);
+        i.putExtra("UUID", uuidCommunityWaterTest);
+        context.startActivity(i);
+        ((Activity)context).finish();
+    }
+
+    private void startViewCommunityWaterTestActivity(String uuidCommunityWaterTest){
+        Intent i = new Intent(context, ViewCommunityWaterTestActivity.class);
         i.putExtra("UUID", uuidCommunityWaterTest);
         context.startActivity(i);
         ((Activity)context).finish();
