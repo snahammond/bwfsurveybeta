@@ -21,6 +21,8 @@ import com.amplifyframework.datastore.generated.model.VolunteerMonthlySummary;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
+import com.bwfsurvey.bwfsurveybeta.utils.IntegerUtils;
+import com.bwfsurvey.bwfsurveybeta.utils.InterchangeUtils;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
 import com.example.bwfsurveybeta.R;
 
@@ -106,11 +108,11 @@ public class VolunteerMonthlySummaryActivity extends AppCompatActivity {
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
             //we have to validate now
-            ArrayList<Interchange> invalideInterchanges = validateUserAns(interchangesWithUserAns);
+            ArrayList<Interchange> invalideInterchanges = InterchangeUtils.validateUserAns(interchangesWithUserAns);
             Log.i("Tutorial", "how many invalid interfaces: " + invalideInterchanges.size());
 
             if(invalideInterchanges.size()>0){
-                showInvalidSurveyAlert();
+                InterchangeUtils.showInvalidSurveyAlert(invalideInterchanges,VolunteerMonthlySummaryActivity.this);
             }else{
                 String lat_ = "";
                 String lng_ = "";
@@ -137,33 +139,26 @@ public class VolunteerMonthlySummaryActivity extends AppCompatActivity {
         if (id == R.id.suspend) {
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
-            //we have to validate now
-            ArrayList<Interchange> invalideInterchanges = validateUserAns(interchangesWithUserAns);
-            Log.i("Tutorial", "how many invalid interfaces: " + invalideInterchanges.size());
-
-            if(invalideInterchanges.size()>0){
-                showInvalidSurveyAlert();
+            String lat_ = "";
+            String lng_ = "";
+            if(lat!=null&&lng!=null){
+                lat_= lat;
+                lng_ = lng;
             }else{
-                String lat_ = "";
-                String lng_ = "";
-                if(lat!=null&&lng!=null){
-                    lat_= lat;
-                    lng_ = lng;
-                }else{
-                    //try and get it again
-                    PhoneLocation phoneLocation = new PhoneLocation(VolunteerMonthlySummaryActivity.this);
-                    String[] arraylatlng = phoneLocation.getLocation();
-                    if(arraylatlng!=null){
-                        lat_ = arraylatlng[0];
-                        lng_ = arraylatlng[1];
-                    }
+                //try and get it again
+                PhoneLocation phoneLocation = new PhoneLocation(VolunteerMonthlySummaryActivity.this);
+                String[] arraylatlng = phoneLocation.getLocation();
+                if(arraylatlng!=null){
+                    lat_ = arraylatlng[0];
+                    lng_ = arraylatlng[1];
                 }
-                //make an InitialSurvey object
-                VolunteerMonthlySummary volunteerMonthlySummary = makeVolunteerMonthlySummaryObject(interchangesWithUserAns,0,lat_,lng_);
-                //save the initialSurvey object
-                saveVolunteerMonthlySummary(volunteerMonthlySummary);
-
             }
+            //make an InitialSurvey object
+            VolunteerMonthlySummary volunteerMonthlySummary = makeVolunteerMonthlySummaryObject(interchangesWithUserAns,0,lat_,lng_);
+            //save the initialSurvey object
+            saveVolunteerMonthlySummary(volunteerMonthlySummary);
+
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -251,14 +246,14 @@ public class VolunteerMonthlySummaryActivity extends AppCompatActivity {
         String Namebwe = namebwe;
         String SwePosition = positionbwe;
         String NameVolunteer = volunteerName;
-        Integer NoWaterSampleTaken = parseIntegerWithDefault( getInterchangeAns("NoWaterSampleTaken",interchangesWithUserAns),0);
-        Integer NoSurveysCompleted = parseIntegerWithDefault( getInterchangeAns("NoSurveysCompleted",interchangesWithUserAns),0);
-        Integer NoLsn1Taught = parseIntegerWithDefault( getInterchangeAns("NoLsn1Taught",interchangesWithUserAns),0);
-        Integer NoLsn2Taught = parseIntegerWithDefault( getInterchangeAns("NoLsn2Taught",interchangesWithUserAns),0);
-        Integer NoLsn3Taught = parseIntegerWithDefault( getInterchangeAns("NoLsn3Taught",interchangesWithUserAns),0);
-        Integer NoLsn4Taught = parseIntegerWithDefault( getInterchangeAns("NoLsn4Taught",interchangesWithUserAns),0);
-        Integer NoPersonsTaught = parseIntegerWithDefault( getInterchangeAns("NoPersonsTaught",interchangesWithUserAns),0);
-        Integer NoChlorineLiquidTabsDistributed = parseIntegerWithDefault( getInterchangeAns("NoChlorineLiquid_TabsDistributed",interchangesWithUserAns),0);
+        Integer NoWaterSampleTaken = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoWaterSampleTaken",interchangesWithUserAns),0);
+        Integer NoSurveysCompleted = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoSurveysCompleted",interchangesWithUserAns),0);
+        Integer NoLsn1Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn1Taught",interchangesWithUserAns),0);
+        Integer NoLsn2Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn2Taught",interchangesWithUserAns),0);
+        Integer NoLsn3Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn3Taught",interchangesWithUserAns),0);
+        Integer NoLsn4Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn4Taught",interchangesWithUserAns),0);
+        Integer NoPersonsTaught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaught",interchangesWithUserAns),0);
+        Integer NoChlorineLiquidTabsDistributed = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoChlorineLiquid_TabsDistributed",interchangesWithUserAns),0);
         Temporal.Date date = new Temporal.Date(date_s);
 
         VolunteerMonthlySummary volunteerMonthlySummary = VolunteerMonthlySummary.builder()
@@ -280,53 +275,4 @@ public class VolunteerMonthlySummaryActivity extends AppCompatActivity {
         return volunteerMonthlySummary;
     }
 
-    private Object getInterchangeAns(String interchangeName,ArrayList<Interchange> validatedInterchangesWithAns){
-        Object ans = null;
-        Interchange foundInterchange = null;
-        for(Interchange interchange : validatedInterchangesWithAns){
-            if(interchange.getName().contentEquals(interchangeName)){
-                ans = interchange.getAnswer().getAns();
-                foundInterchange = interchange;
-            }
-        }
-        if(ans==null){
-            ans = foundInterchange.getValidation().getDefaultValue();
-        }
-        return ans;
-    }
-
-    public static int parseIntegerWithDefault(Object s, int defaultVal) {
-        if (s instanceof Integer) {
-            return (Integer) s;
-        }else if (s instanceof String){
-            String str = (String) s;
-            return str.matches("-?\\d+") ? Integer.parseInt(str): defaultVal;
-        }else
-            return defaultVal;
-    }
-
-    private ArrayList<Interchange> validateUserAns(ArrayList<Interchange> interchangesWithUserAns) {
-        Log.i("Tutorial", "we are now validating " );
-        ArrayList<Interchange> invalidinterchange = new ArrayList<>();
-        for(Interchange interchange: interchangesWithUserAns){
-            //check for its validation
-            //Log.i("Tutorial", "interchange: "+interchange.getValidation().getName() +" mandatory: "+interchange.getValidation().isMandatory() + "user answer: "+interchange.getAnswer().getAns());
-            if(!interchange.isValid()){
-                invalidinterchange.add(interchange);
-                Log.i("Tutorial", "invalid interchange: "+interchange.getValidation().getName() +" mandatory: "+interchange.getValidation().isMandatory() + " default value: "+interchange.getValidation().getDefaultValue() + "user answer: "+interchange.getAnswer().getAns());
-            }
-        }
-        return invalidinterchange;
-    }
-
-    private void showInvalidSurveyAlert(){
-        new AlertDialog.Builder(VolunteerMonthlySummaryActivity.this)
-                .setTitle("Invalid Questions")
-                .setMessage("Some questions have not been correctly answered \n" )
-                // A null listener allows the button to dismiss the dialog and take no further action.
-                .setNegativeButton(android.R.string.ok, null)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show()
-                .setCanceledOnTouchOutside(false);
-    }
 }

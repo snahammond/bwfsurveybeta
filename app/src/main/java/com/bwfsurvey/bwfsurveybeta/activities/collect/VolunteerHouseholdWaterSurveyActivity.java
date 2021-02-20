@@ -21,6 +21,8 @@ import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTes
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
+import com.bwfsurvey.bwfsurveybeta.utils.DateUtils;
+import com.bwfsurvey.bwfsurveybeta.utils.InterchangeUtils;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
 import com.example.bwfsurveybeta.R;
 
@@ -128,12 +130,12 @@ public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
             //we have to validate now
-            ArrayList<Interchange> invalideInterchanges = validateUserAns(interchangesWithUserAns);
+            ArrayList<Interchange> invalideInterchanges = InterchangeUtils.validateUserAns(interchangesWithUserAns);
             Log.i("Tutorial", "how many invalid interfaces: " + invalideInterchanges.size());
 
 
             if(invalideInterchanges.size()>0){
-                showInvalidSurveyAlert();
+                InterchangeUtils.showInvalidSurveyAlert(invalideInterchanges,VolunteerHouseholdWaterSurveyActivity.this);
             }else{
                 Log.i("Tutorial", "we are going to save!");
                 String lat_ = "";
@@ -162,36 +164,28 @@ public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
         if (id == R.id.suspend) {
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
-            //we have to validate now
-            ArrayList<Interchange> invalideInterchanges = validateUserAns(interchangesWithUserAns);
-            Log.i("Tutorial", "how many invalid interfaces: " + invalideInterchanges.size());
-
-
-            if(invalideInterchanges.size()>0){
-                showInvalidSurveyAlert();
+            Log.i("Tutorial", "we are going to save!");
+            String lat_ = "";
+            String lng_ = "";
+            if(lat!=null&&lng!=null){
+                lat_= lat;
+                lng_ = lng;
             }else{
-                Log.i("Tutorial", "we are going to save!");
-                String lat_ = "";
-                String lng_ = "";
-                if(lat!=null&&lng!=null){
-                    lat_= lat;
-                    lng_ = lng;
-                }else{
-                    //try and get it again
-                    PhoneLocation phoneLocation = new PhoneLocation(VolunteerHouseholdWaterSurveyActivity.this);
-                    String[] arraylatlng = phoneLocation.getLocation();
-                    if(arraylatlng!=null){
-                        lat_ = arraylatlng[0];
-                        lng_ = arraylatlng[1];
-                    }
+                //try and get it again
+                PhoneLocation phoneLocation = new PhoneLocation(VolunteerHouseholdWaterSurveyActivity.this);
+                String[] arraylatlng = phoneLocation.getLocation();
+                if(arraylatlng!=null){
+                    lat_ = arraylatlng[0];
+                    lng_ = arraylatlng[1];
                 }
-                //make an InitialSurvey object
-                VolunteerHouseholdWaterTest volHouseholdWaterTestToSave = makeHouseholdWaterTestObject(interchangesWithUserAns,0,lat_,lng_);
-
-                //save the initialSurvey object
-                saveHouseholdWaterTestSurvey(volHouseholdWaterTestToSave);
-
             }
+            //make an InitialSurvey object
+            VolunteerHouseholdWaterTest volHouseholdWaterTestToSave = makeHouseholdWaterTestObject(interchangesWithUserAns,0,lat_,lng_);
+
+            //save the initialSurvey object
+            saveHouseholdWaterTestSurvey(volHouseholdWaterTestToSave);
+
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -282,12 +276,12 @@ public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
         String HeadHouseholdName = (String) householdName;
         String HouseholdLocation = (String) householdLocation;
         String NameVol = (String) nameVol;
-        Temporal.Date  ColilertDateTested = new Temporal.Date(dateFormat.format(getInterchangeAns("ColilertDateTested",interchangesWithUserAns)));
-        Temporal.Date ColilertDateRead = new Temporal.Date(dateFormat.format(getInterchangeAns("ColilertDateRead",interchangesWithUserAns)));
-        String ColilertTestResult = (String) getInterchangeAns("ColilertTestResult",interchangesWithUserAns);
-        Temporal.Date PetrifilmDateTested = new Temporal.Date(dateFormat.format(getInterchangeAns("PetrifilmDateTested",interchangesWithUserAns)));
-        Temporal.Date PetrifilmDateRead = new Temporal.Date(dateFormat.format(getInterchangeAns("PetrifilmDateRead",interchangesWithUserAns)));
-        String PetrifilmTestResult = (String) getInterchangeAns("PetrifilmTestResult",interchangesWithUserAns);
+        Temporal.Date  ColilertDateTested = DateUtils.parseDateWithDefault(InterchangeUtils.getInterchangeAns("ColilertDateTested",interchangesWithUserAns));
+        Temporal.Date ColilertDateRead = DateUtils.parseDateWithDefault(InterchangeUtils.getInterchangeAns("ColilertDateRead",interchangesWithUserAns));
+        String ColilertTestResult = (String) InterchangeUtils.getInterchangeAns("ColilertTestResult",interchangesWithUserAns);
+        Temporal.Date PetrifilmDateTested = DateUtils.parseDateWithDefault(InterchangeUtils.getInterchangeAns("PetrifilmDateTested",interchangesWithUserAns));
+        Temporal.Date PetrifilmDateRead = DateUtils.parseDateWithDefault(InterchangeUtils.getInterchangeAns("PetrifilmDateRead",interchangesWithUserAns));
+        String PetrifilmTestResult = (String) InterchangeUtils.getInterchangeAns("PetrifilmTestResult",interchangesWithUserAns);
         Temporal.Date date = new Temporal.Date(date_s);
 
         VolunteerHouseholdWaterTest volHouseholdWaterTest = VolunteerHouseholdWaterTest.builder()
@@ -311,21 +305,6 @@ public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
         return volHouseholdWaterTest;
     }
 
-    private Object getInterchangeAns(String interchangeName,ArrayList<Interchange> validatedInterchangesWithAns){
-        Object ans = null;
-        Interchange foundInterchange = null;
-        for(Interchange interchange : validatedInterchangesWithAns){
-            if(interchange.getName().contentEquals(interchangeName)){
-                ans = interchange.getAnswer().getAns();
-                foundInterchange = interchange;
-            }
-        }
-        if(ans==null){
-            ans = foundInterchange.getValidation().getDefaultValue();
-        }
-        return ans;
-    }
-
     private void showInvalidSurveyAlert(){
         new AlertDialog.Builder(VolunteerHouseholdWaterSurveyActivity.this)
                 .setTitle("Invalid Questions")
@@ -337,17 +316,5 @@ public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
                 .setCanceledOnTouchOutside(false);
     }
 
-    private ArrayList<Interchange> validateUserAns(ArrayList<Interchange> interchangesWithUserAns) {
-        Log.i("Tutorial", "we are now validating " );
-        ArrayList<Interchange> invalidinterchange = new ArrayList<>();
-        for(Interchange interchange: interchangesWithUserAns){
-            //check for its validation
-            //Log.i("Tutorial", "interchange: "+interchange.getValidation().getName() +" mandatory: "+interchange.getValidation().isMandatory() + "user answer: "+interchange.getAnswer().getAns());
-            if(!interchange.isValid()){
-                invalidinterchange.add(interchange);
-                Log.i("Tutorial", "invalid interchange: "+interchange.getValidation().getName() +" mandatory: "+interchange.getValidation().isMandatory() + " default value: "+interchange.getValidation().getDefaultValue() + "user answer: "+interchange.getAnswer().getAns());
-            }
-        }
-        return invalidinterchange;
-    }
+
 }

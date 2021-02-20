@@ -13,8 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
+import com.amplifyframework.datastore.generated.model.AnswerType;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.types.Answer;
+import com.bwfsurvey.bwfsurveybeta.types.AnswerValue;
+import com.bwfsurvey.bwfsurveybeta.types.Question;
+import com.bwfsurvey.bwfsurveybeta.types.Validation;
 import com.bwfsurvey.bwfsurveybeta.types.ViewOnlyInterchange;
 import com.bwfsurvey.bwfsurveybeta.adapters.ViewOnlyInterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
@@ -88,6 +93,31 @@ public class ViewInitialSurveyActivity extends AppCompatActivity {
                     method = theInitialSurvey.getClass().getMethod(methodName);
                     Object ansObject = method.invoke(theInitialSurvey);
                     answer = ansObject.toString();
+                    //answer is a programmer 1, convert it to a user friendly one
+                    if(interchange.getAnswer().getAnswerDef().getType()== AnswerType.ENUMVALUE){
+                        ArrayList<AnswerValue> allAnsValuesForThisInterchange = interchange.getAnswer().getAnswerValArrayList();
+                        for(AnswerValue answerValue: allAnsValuesForThisInterchange){
+                            if(answerValue.getValue().contentEquals(answer)){
+                                answer = answerValue.getDesc();
+                            }
+                        }
+                    }
+
+                    if(interchange.getAnswer().getAnswerDef().getType()== AnswerType.ENUMMULTIPLEVALUE){
+                        //answer will have a least 1 comma
+                        String[]  answerList = answer.split(",");
+                        String ansToWrite = "";
+                        for(String anAnswer : answerList){
+                            ArrayList<AnswerValue> allAnsValuesForThisInterchange = interchange.getAnswer().getAnswerValArrayList();
+                            for(AnswerValue answerValue: allAnsValuesForThisInterchange){
+                                if(answerValue.getValue().contentEquals(anAnswer)){
+                                    ansToWrite = ansToWrite + answerValue.getDesc() + "\n";
+                                }
+                            }
+                        }
+                        answer = ansToWrite;
+                    }
+
                 } catch (Exception e) {
                     Log.e("Tutorials", "Could not get answer");
                 }

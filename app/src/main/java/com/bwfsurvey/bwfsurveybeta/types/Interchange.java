@@ -1,5 +1,7 @@
 package com.bwfsurvey.bwfsurveybeta.types;
 
+import android.util.Log;
+
 import com.amplifyframework.datastore.generated.model.AnswerType;
 
 public class Interchange implements Comparable<Interchange>{
@@ -88,11 +90,11 @@ public class Interchange implements Comparable<Interchange>{
                 //if the interchange is mandatory, check if it has a value
                 if(this.getAnswer().getAnswerDef().getType()== AnswerType.TEXTVALUE){
                     if(this.getAnswer().getAns()!=null ){
-                        if(!this.getAnswer().getAns().toString().isEmpty())
+                        if(!this.getAnswer().getAns().toString().trim().isEmpty()){
                             return true;
+                        }
                     }
-                }
-                if(this.getAnswer().getAnswerDef().getType()== AnswerType.NUMBERVALUE){
+                }else if(this.getAnswer().getAnswerDef().getType()== AnswerType.NUMBERVALUE){
                     if(this.getAnswer().getAns()!=null ){
                         if(this.getValidation().getDefaultValue()!=null){
                             if(!this.getValidation().getDefaultValue().toString().isEmpty()){

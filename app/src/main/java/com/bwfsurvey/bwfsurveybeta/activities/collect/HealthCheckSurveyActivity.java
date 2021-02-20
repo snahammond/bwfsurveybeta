@@ -21,6 +21,8 @@ import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.utils.IntegerUtils;
+import com.bwfsurvey.bwfsurveybeta.utils.InterchangeUtils;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
 import com.example.bwfsurveybeta.R;
 
@@ -118,12 +120,12 @@ public class HealthCheckSurveyActivity extends AppCompatActivity {
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
             //we have to validate now
-            ArrayList<Interchange> invalideInterchanges = validateUserAns(interchangesWithUserAns);
+            ArrayList<Interchange> invalideInterchanges = InterchangeUtils.validateUserAns(interchangesWithUserAns);
             Log.i("Tutorial", "how many invalid interfaces: " + invalideInterchanges.size());
 
 
             if(invalideInterchanges.size()>0){
-                showInvalidSurveyAlert();
+                InterchangeUtils.showInvalidSurveyAlert(invalideInterchanges,HealthCheckSurveyActivity.this);
             }else{
                 String lat_ = "";
                 String lng_ = "";
@@ -151,35 +153,27 @@ public class HealthCheckSurveyActivity extends AppCompatActivity {
         if (id == R.id.suspend) {
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
-            //we have to validate now
-            ArrayList<Interchange> invalideInterchanges = validateUserAns(interchangesWithUserAns);
-            Log.i("Tutorial", "how many invalid interfaces: " + invalideInterchanges.size());
-
-
-            if(invalideInterchanges.size()>0){
-                showInvalidSurveyAlert();
+            String lat_ = "";
+            String lng_ = "";
+            if(lat!=null&&lng!=null){
+                lat_= lat;
+                lng_ = lng;
             }else{
-                String lat_ = "";
-                String lng_ = "";
-                if(lat!=null&&lng!=null){
-                    lat_= lat;
-                    lng_ = lng;
-                }else{
-                    //try and get it again
-                    PhoneLocation phoneLocation = new PhoneLocation(HealthCheckSurveyActivity.this);
-                    String[] arraylatlng = phoneLocation.getLocation();
-                    if(arraylatlng!=null){
-                        lat_ = arraylatlng[0];
-                        lng_ = arraylatlng[1];
-                    }
+                //try and get it again
+                PhoneLocation phoneLocation = new PhoneLocation(HealthCheckSurveyActivity.this);
+                String[] arraylatlng = phoneLocation.getLocation();
+                if(arraylatlng!=null){
+                    lat_ = arraylatlng[0];
+                    lng_ = arraylatlng[1];
                 }
-                //make an InitialSurvey object
-                HealthCheckSurvey HealthCheckSurveyToSave = makeHealthCheckSurveyObject(interchangesWithUserAns,0,lat_,lng_);
-
-                //save the initialSurvey object
-                saveHealthCheckSurvey(HealthCheckSurveyToSave);
-
             }
+            //make an InitialSurvey object
+            HealthCheckSurvey HealthCheckSurveyToSave = makeHealthCheckSurveyObject(interchangesWithUserAns,0,lat_,lng_);
+
+            //save the initialSurvey object
+            saveHealthCheckSurvey(HealthCheckSurveyToSave);
+
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -271,24 +265,24 @@ public class HealthCheckSurveyActivity extends AppCompatActivity {
         Integer SurveyId = surveyId;
         Temporal.Date date = new Temporal.Date(date_s);
         String HeadHouseholdName = (String) householdName;
-        String PersonBeingInterviewed = (String) getInterchangeAns("PersonBeingInterviewed",validatedInterchangesWithAns);
-        String WasteDisposalYoungestChild = (String) getInterchangeAns("WasteDisposalYoungestChild",validatedInterchangesWithAns);
-        String WashedHandsIn24Hours = (String) getInterchangeAns("WashedHandsIn24Hours",validatedInterchangesWithAns);
-        String WhenWashedHandsIn24Hours = (String) getInterchangeAns("WhenWashedHandsIn24Hours",validatedInterchangesWithAns);
-        String WhatUsedToWashYourHands = (String) getInterchangeAns("WhatUsedToWashYourHands",validatedInterchangesWithAns);
-        Integer NoChildrenWithVomitingOrDiarrheaIn14days = parseIntegerWithDefault(getInterchangeAns("NoChildrenWithVomitingOrDiarrheaIn14days",validatedInterchangesWithAns),0);
-        Integer NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek = parseIntegerWithDefault(getInterchangeAns("NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",validatedInterchangesWithAns),0);
-        Integer NoChildrenWithVomitingOrDiarrheaIn7days = parseIntegerWithDefault(getInterchangeAns("NoChildrenWithVomitingOrDiarrheaIn7days",validatedInterchangesWithAns),0);
-        String DidSickChildrenGoToHospital = (String) getInterchangeAns("DidSickChildrenGoToHospital",validatedInterchangesWithAns);
-        String DidSickChildrenGoToHospitalYes = (String) getInterchangeAns("DidSickChildrenGoToHospitalYes",validatedInterchangesWithAns);
-        String SickChildrenBreastfeeding = (String) getInterchangeAns("SickChildrenBreastfeeding",validatedInterchangesWithAns);
-        String OutcomeMostRecentVomiting_DiarrheaAtHospital = (String) getInterchangeAns("OutcomeMostRecentVomiting_DiarrheaAtHospital",validatedInterchangesWithAns);
-        Integer NoDaysNoWorkBecauseOfOwnIllness = parseIntegerWithDefault(getInterchangeAns("NoDaysNoWorkBecauseOfOwnIllness",validatedInterchangesWithAns),0);
-        Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers = parseIntegerWithDefault(getInterchangeAns("NoDaysNoWorkBecauseOfIllnessFamilyMembers",validatedInterchangesWithAns),0);
-        Integer MoneySpentMedicalTreatmentLast4weeks = parseIntegerWithDefault(getInterchangeAns("MoneySpentMedicalTreatmentLast4weeks",validatedInterchangesWithAns),0);
-        String WaterTreatment24Hours = (String) getInterchangeAns("WaterTreatment24Hours",validatedInterchangesWithAns);
-        String MainReasonNoWaterTreatment24Hour = (String) getInterchangeAns("MainReasonNoWaterTreatment24Hour",validatedInterchangesWithAns);
-        String WaterTreatment24HourMethod = (String) getInterchangeAns("WaterTreatment24HourMethod",validatedInterchangesWithAns);
+        String PersonBeingInterviewed = (String) InterchangeUtils.getInterchangeAns("PersonBeingInterviewed",validatedInterchangesWithAns);
+        String WasteDisposalYoungestChild = (String) InterchangeUtils.getInterchangeAns("WasteDisposalYoungestChild",validatedInterchangesWithAns);
+        String WashedHandsIn24Hours = (String) InterchangeUtils.getInterchangeAns("WashedHandsIn24Hours",validatedInterchangesWithAns);
+        String WhenWashedHandsIn24Hours = (String) InterchangeUtils.getInterchangeAns("WhenWashedHandsIn24Hours",validatedInterchangesWithAns);
+        String WhatUsedToWashYourHands = (String) InterchangeUtils.getInterchangeAns("WhatUsedToWashYourHands",validatedInterchangesWithAns);
+        Integer NoChildrenWithVomitingOrDiarrheaIn14days = IntegerUtils.parseIntegerWithDefault(InterchangeUtils.getInterchangeAns("NoChildrenWithVomitingOrDiarrheaIn14days",validatedInterchangesWithAns),0);
+        Integer NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek = IntegerUtils.parseIntegerWithDefault(InterchangeUtils.getInterchangeAns("NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek",validatedInterchangesWithAns),0);
+        Integer NoChildrenWithVomitingOrDiarrheaIn7days = IntegerUtils.parseIntegerWithDefault(InterchangeUtils.getInterchangeAns("NoChildrenWithVomitingOrDiarrheaIn7days",validatedInterchangesWithAns),0);
+        String DidSickChildrenGoToHospital = (String) InterchangeUtils.getInterchangeAns("DidSickChildrenGoToHospital",validatedInterchangesWithAns);
+        String DidSickChildrenGoToHospitalYes = (String) InterchangeUtils.getInterchangeAns("DidSickChildrenGoToHospitalYes",validatedInterchangesWithAns);
+        String SickChildrenBreastfeeding = (String) InterchangeUtils.getInterchangeAns("SickChildrenBreastfeeding",validatedInterchangesWithAns);
+        String OutcomeMostRecentVomiting_DiarrheaAtHospital = (String) InterchangeUtils.getInterchangeAns("OutcomeMostRecentVomiting_DiarrheaAtHospital",validatedInterchangesWithAns);
+        Integer NoDaysNoWorkBecauseOfOwnIllness = IntegerUtils.parseIntegerWithDefault(InterchangeUtils.getInterchangeAns("NoDaysNoWorkBecauseOfOwnIllness",validatedInterchangesWithAns),0);
+        Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers = IntegerUtils.parseIntegerWithDefault(InterchangeUtils.getInterchangeAns("NoDaysNoWorkBecauseOfIllnessFamilyMembers",validatedInterchangesWithAns),0);
+        Integer MoneySpentMedicalTreatmentLast4weeks = IntegerUtils.parseIntegerWithDefault(InterchangeUtils.getInterchangeAns("MoneySpentMedicalTreatmentLast4weeks",validatedInterchangesWithAns),0);
+        String WaterTreatment24Hours = (String) InterchangeUtils.getInterchangeAns("WaterTreatment24Hours",validatedInterchangesWithAns);
+        String MainReasonNoWaterTreatment24Hour = (String) InterchangeUtils.getInterchangeAns("MainReasonNoWaterTreatment24Hour",validatedInterchangesWithAns);
+        String WaterTreatment24HourMethod = (String) InterchangeUtils.getInterchangeAns("WaterTreatment24HourMethod",validatedInterchangesWithAns);
 
         HealthCheckSurvey healthCheckSurvey = HealthCheckSurvey.builder()
                 .namebwe(Namebwe)
@@ -320,58 +314,6 @@ public class HealthCheckSurveyActivity extends AppCompatActivity {
                 .date(date)
                 .build();
         return healthCheckSurvey;
-
-    }
-
-    private Object getInterchangeAns(String interchangeName,ArrayList<Interchange> validatedInterchangesWithAns){
-        Object ans = null;
-        Interchange foundInterchange = null;
-        for(Interchange interchange : validatedInterchangesWithAns){
-            if(interchange.getName().contentEquals(interchangeName)){
-                ans = interchange.getAnswer().getAns();
-                foundInterchange = interchange;
-            }
-        }
-        if(ans==null){
-            ans = foundInterchange.getValidation().getDefaultValue();
-        }
-        return ans;
-    }
-
-    private void showInvalidSurveyAlert(){
-        new AlertDialog.Builder(HealthCheckSurveyActivity.this)
-                .setTitle("Invalid Questions")
-                .setMessage("Some questions have not been correctly answered \n" )
-                // A null listener allows the button to dismiss the dialog and take no further action.
-                .setNegativeButton(android.R.string.ok, null)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show()
-                .setCanceledOnTouchOutside(false);
-    }
-
-    //this function will return a list of invalid interchanges
-    private ArrayList<Interchange> validateUserAns(ArrayList<Interchange> interchangesWithUserAns) {
-        Log.i("Tutorial", "we are now validating " );
-        ArrayList<Interchange> invalidinterchange = new ArrayList<>();
-        for(Interchange interchange: interchangesWithUserAns){
-            //check for its validation
-            //Log.i("Tutorial", "interchange: "+interchange.getValidation().getName() +" mandatory: "+interchange.getValidation().isMandatory() + "user answer: "+interchange.getAnswer().getAns());
-            if(!interchange.isValid()){
-                invalidinterchange.add(interchange);
-                Log.i("Tutorial", "invalid interchange: "+interchange.getValidation().getName() +" mandatory: "+interchange.getValidation().isMandatory() + " default value: "+interchange.getValidation().getDefaultValue() + "user answer: "+interchange.getAnswer().getAns());
-            }
-        }
-        return invalidinterchange;
-    }
-
-    public static int parseIntegerWithDefault(Object s, int defaultVal) {
-        if (s instanceof Integer) {
-            return (Integer) s;
-        }else if (s instanceof String){
-            String str = (String) s;
-            return str.matches("-?\\d+") ? Integer.parseInt(str): defaultVal;
-        }else
-            return defaultVal;
 
     }
 }

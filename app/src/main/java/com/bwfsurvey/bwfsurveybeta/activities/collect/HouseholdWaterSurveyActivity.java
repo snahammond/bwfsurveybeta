@@ -21,6 +21,8 @@ import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.utils.DateUtils;
+import com.bwfsurvey.bwfsurveybeta.utils.InterchangeUtils;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
 import com.example.bwfsurveybeta.R;
 
@@ -118,12 +120,12 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
             ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
 
             //we have to validate now
-            ArrayList<Interchange> invalideInterchanges = validateUserAns(interchangesWithUserAns);
+            ArrayList<Interchange> invalideInterchanges = InterchangeUtils.validateUserAns(interchangesWithUserAns);
             Log.i("Tutorial", "how many invalid interfaces: " + invalideInterchanges.size());
 
 
             if(invalideInterchanges.size()>0){
-                showInvalidSurveyAlert();
+                InterchangeUtils.showInvalidSurveyAlert(invalideInterchanges,HouseholdWaterSurveyActivity.this);
             }else{
                 Log.i("Tutorial", "we are going to save!");
                 String lat_ = "";
@@ -260,12 +262,12 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
         String Country = (String) country;
         String Community = (String) community;
         String HeadHouseholdName = (String) householdName;
-        Temporal.Date  ColilertDateTested = parseDateWithDefault(getInterchangeAns("ColilertDateTested",interchangesWithUserAns));
-        Temporal.Date ColilertDateRead = parseDateWithDefault(getInterchangeAns("ColilertDateRead",interchangesWithUserAns));
-        String ColilertTestResult = (String) getInterchangeAns("ColilertTestResult",interchangesWithUserAns);
-        Temporal.Date PetrifilmDateTested = parseDateWithDefault(getInterchangeAns("PetrifilmDateTested",interchangesWithUserAns));
-        Temporal.Date PetrifilmDateRead = parseDateWithDefault(getInterchangeAns("PetrifilmDateRead",interchangesWithUserAns));
-        String PetrifilmTestResult = (String) getInterchangeAns("PetrifilmTestResult",interchangesWithUserAns);
+        Temporal.Date  ColilertDateTested = DateUtils.parseDateWithDefault(InterchangeUtils.getInterchangeAns("ColilertDateTested",interchangesWithUserAns));
+        Temporal.Date ColilertDateRead = DateUtils.parseDateWithDefault(InterchangeUtils.getInterchangeAns("ColilertDateRead",interchangesWithUserAns));
+        String ColilertTestResult = (String) InterchangeUtils.getInterchangeAns("ColilertTestResult",interchangesWithUserAns);
+        Temporal.Date PetrifilmDateTested = DateUtils.parseDateWithDefault(InterchangeUtils.getInterchangeAns("PetrifilmDateTested",interchangesWithUserAns));
+        Temporal.Date PetrifilmDateRead = DateUtils.parseDateWithDefault(InterchangeUtils.getInterchangeAns("PetrifilmDateRead",interchangesWithUserAns));
+        String PetrifilmTestResult = (String) InterchangeUtils.getInterchangeAns("PetrifilmTestResult",interchangesWithUserAns);
         Temporal.Date date = new Temporal.Date(date_s);
 
         HouseholdWaterTest householdWaterTest = HouseholdWaterTest.builder()
@@ -286,58 +288,5 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
                 .build();
         return householdWaterTest;
     }
-
-    private Object getInterchangeAns(String interchangeName,ArrayList<Interchange> validatedInterchangesWithAns){
-        Object ans = null;
-        Interchange foundInterchange = null;
-        for(Interchange interchange : validatedInterchangesWithAns){
-            if(interchange.getName().contentEquals(interchangeName)){
-                ans = interchange.getAnswer().getAns();
-                foundInterchange = interchange;
-            }
-        }
-        if(ans==null){
-            ans = foundInterchange.getValidation().getDefaultValue();
-        }
-        return ans;
-    }
-
-    private void showInvalidSurveyAlert(){
-        new AlertDialog.Builder(HouseholdWaterSurveyActivity.this)
-                .setTitle("Invalid Questions")
-                .setMessage("Some questions have not been correctly answered \n" )
-                // A null listener allows the button to dismiss the dialog and take no further action.
-                .setNegativeButton(android.R.string.ok, null)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show()
-                .setCanceledOnTouchOutside(false);
-    }
-
-    private ArrayList<Interchange> validateUserAns(ArrayList<Interchange> interchangesWithUserAns) {
-        Log.i("Tutorial", "we are now validating " );
-        ArrayList<Interchange> invalidinterchange = new ArrayList<>();
-        for(Interchange interchange: interchangesWithUserAns){
-            //check for its validation
-            //Log.i("Tutorial", "interchange: "+interchange.getValidation().getName() +" mandatory: "+interchange.getValidation().isMandatory() + "user answer: "+interchange.getAnswer().getAns());
-            if(!interchange.isValid()){
-                invalidinterchange.add(interchange);
-                Log.i("Tutorial", "invalid interchange: "+interchange.getValidation().getName() +" mandatory: "+interchange.getValidation().isMandatory() + " default value: "+interchange.getValidation().getDefaultValue() + "user answer: "+interchange.getAnswer().getAns());
-            }
-        }
-        return invalidinterchange;
-    }
-
-    public static Temporal.Date parseDateWithDefault(Object s){
-        Temporal.Date dateValue = null;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-        try{
-            dateValue = new Temporal.Date(dateFormat.format(s));
-        }catch (Exception x){
-            dateValue = new Temporal.Date("1900-01-01");
-        }
-        return dateValue;
-    }
-
 
 }
