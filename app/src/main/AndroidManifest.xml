@@ -227,6 +227,22 @@
         </activity>
 
 
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdWaterTestCardSelectActivity"
+            android:label="Select Volunteer household"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewVolunteerHouseholdWaterTestActivity"
+            android:label="View Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+
 
     </application>
 

@@ -14,9 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.AnswerType;
-import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
+import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.ViewOnlyInterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.AnswerValue;
@@ -29,9 +29,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
-public class ViewHouseholdWaterTestActivity extends AppCompatActivity {
-    HouseholdWaterTest theHouseholdWaterTest;
-    private String uuidHouseholdWaterTest;
+public class ViewVolunteerHouseholdWaterTestActivity extends AppCompatActivity {
+    VolunteerHouseholdWaterTest theVolunteerHouseholdWaterTest;
+    private String uuidVolunteerHouseholdWaterTest;
     private RecyclerView recyclerView;
     private ViewOnlyInterchangeCardAdapter adapter;
 
@@ -43,30 +43,30 @@ public class ViewHouseholdWaterTestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if(getIntent().getStringExtra("UUID")!=null)
-            uuidHouseholdWaterTest = getIntent().getStringExtra("UUID");
+            uuidVolunteerHouseholdWaterTest = getIntent().getStringExtra("UUID");
 
         initView();
     }
 
     private void initView() {
         setContentView(R.layout.activity_recycler);
-        createHouseholdWaterTestViewOnlyInterchanges();
+        createVolunteerHouseholdWaterTestViewOnlyInterchanges();
     }
 
-    private void createHouseholdWaterTestViewOnlyInterchanges() {
+    private void createVolunteerHouseholdWaterTestViewOnlyInterchanges() {
         viewOnlyInterchanges = new ArrayList<>();
         createViewOnlyInterchangesAndShowOnRecyclerView();
     }
 
     private void createViewOnlyInterchangesAndShowOnRecyclerView() {
         Amplify.DataStore.query(
-                HouseholdWaterTest.class,
-                Where.matches(FollowUpSurvey.ID.eq(uuidHouseholdWaterTest)),
-                householdWaterTest -> {
+                VolunteerHouseholdWaterTest.class,
+                Where.matches(FollowUpSurvey.ID.eq(uuidVolunteerHouseholdWaterTest)),
+                volunteerHouseholdWaterTest -> {
                     Log.i("Tutorials", "DataStore is queried.");
-                    while (householdWaterTest.hasNext()) {
-                        theHouseholdWaterTest = householdWaterTest.next();
-                        Log.i("Tutorials", "DataStore is queried. HouseholdWaterTest " +theHouseholdWaterTest.getId());
+                    while (volunteerHouseholdWaterTest.hasNext()) {
+                        theVolunteerHouseholdWaterTest = volunteerHouseholdWaterTest.next();
+                        Log.i("Tutorials", "DataStore is queried. HouseholdWaterTest " +theVolunteerHouseholdWaterTest.getId());
                     }
 
                     runOnUiThread(new Runnable() {
@@ -82,7 +82,7 @@ public class ViewHouseholdWaterTestActivity extends AppCompatActivity {
     }
 
     private void createViewOnlyInterchangesAndShow() {
-        if(theHouseholdWaterTest!=null){
+        if(theVolunteerHouseholdWaterTest!=null){
             ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("WATERSURVEYHOUSEHOLD");
             for(int i=0;i<returnedInterchanges.size();i++){
                 Interchange interchange = returnedInterchanges.get(i);
@@ -91,8 +91,8 @@ public class ViewHouseholdWaterTestActivity extends AppCompatActivity {
                 String methodName = "get"+nameOfAns;
                 java.lang.reflect.Method method;
                 try {
-                    method = theHouseholdWaterTest.getClass().getMethod(methodName);
-                    Object ansObject = method.invoke(theHouseholdWaterTest);
+                    method = theVolunteerHouseholdWaterTest.getClass().getMethod(methodName);
+                    Object ansObject = method.invoke(theVolunteerHouseholdWaterTest);
                     answer = ansObject.toString();
                     //answer is a programmer 1, convert it to a user friendly one
                     if(interchange.getAnswer().getAnswerDef().getType()== AnswerType.ENUMVALUE){
@@ -188,8 +188,7 @@ public class ViewHouseholdWaterTestActivity extends AppCompatActivity {
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ViewOnlyInterchangeCardAdapter(ViewHouseholdWaterTestActivity.this, ViewHouseholdWaterTestActivity.viewOnlyInterchanges);
+        adapter = new ViewOnlyInterchangeCardAdapter(ViewVolunteerHouseholdWaterTestActivity.this, ViewVolunteerHouseholdWaterTestActivity.viewOnlyInterchanges);
         recyclerView.setAdapter(adapter);
     }
-
 }

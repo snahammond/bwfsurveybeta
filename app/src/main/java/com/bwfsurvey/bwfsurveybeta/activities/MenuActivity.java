@@ -25,6 +25,7 @@ import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterTestCardSelec
 import com.bwfsurvey.bwfsurveybeta.activities.select.FollowUpSurveyCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
 import com.bwfsurvey.bwfsurveybeta.types.Config;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
@@ -349,6 +350,15 @@ public class MenuActivity extends AppCompatActivity {
         waterSurveyView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), HouseholdWaterTestCardSelectActivity.class);
+                i.putExtra("OPERATION","VIEW");
+                startActivity(i);
+            }
+        });
+
+        Button waterSurveyVolView = (Button) findViewById(R.id.button_waterSurveyVolView);
+        waterSurveyVolView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), VolunteerHouseholdWaterTestCardSelectActivity.class);
                 i.putExtra("OPERATION","VIEW");
                 startActivity(i);
             }
