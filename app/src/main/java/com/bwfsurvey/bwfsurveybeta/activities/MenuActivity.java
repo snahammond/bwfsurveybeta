@@ -20,12 +20,14 @@ import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.activities.collect.SubMenuMonthlySummaryActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.HealthCheckSurveyCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.FollowUpSurveyCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdWaterTestCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.view.ViewSubMenuMonthlySummaryActivity;
 import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
 import com.bwfsurvey.bwfsurveybeta.types.Config;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
@@ -364,10 +366,25 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        Button healthCheckView = (Button) findViewById(R.id.button_healthCheckView);
+        healthCheckView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), HealthCheckSurveyCardSelectActivity.class);
+                i.putExtra("OPERATION","VIEW");
+                startActivity(i);
+            }
+        });
 
-
-
-
+        Button sweMonthlySummaryView = (Button) findViewById(R.id.button_SWEMonthlySummaryView);
+        sweMonthlySummaryView.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ViewSubMenuMonthlySummaryActivity.class);
+                i.putExtra("OPERATION","VIEW");
+                i.putExtra("LAT",lat);
+                i.putExtra("LNG",lng);
+                startActivity(i);
+            }
+        });
 
         //update incompleted menu items
         Button initialFullSurveyUC = (Button) findViewById(R.id.button_initialFullSurveyUC);

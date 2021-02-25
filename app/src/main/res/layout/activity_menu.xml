@@ -292,7 +292,7 @@
                                     app:backgroundTint="#FFFFFF"/>
 
                                 <Button
-                                    android:id="@+id/button_healthCheckUpdate"
+                                    android:id="@+id/button_healthCheckView"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="10dp"
@@ -305,7 +305,7 @@
                                     app:backgroundTint="#FFFFFF"/>
 
                                 <Button
-                                    android:id="@+id/button_SWEMonthlySummaryUpdate"
+                                    android:id="@+id/button_SWEMonthlySummaryView"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="10dp"

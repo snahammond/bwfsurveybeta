@@ -17,6 +17,8 @@ import com.amplifyframework.datastore.generated.model.Volunteer;
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.collect.VolunteerHouseholdWaterSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.collect.VolunteerMonthlySummaryActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerMonthlySummaryCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.view.ViewSWEMonthlySummaryActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
@@ -82,7 +84,8 @@ public class VolunteerCardAdapter extends RecyclerView.Adapter {
                         else if(surveyType.contentEquals("SWESUMMARY"))
                             startVolMonthlySummaryActivity(txtVolunteerName.getText().toString());
                     }else if(operation.contentEquals("VIEW")){
-                        //startViewInitialSurveyActivity(uuidInitialSurvey);
+                        if(surveyType.contentEquals("SWESUMMARY"))
+                            startViewVolMonthlySummaryActivity(txtVolunteerName.getText().toString());
                     }else if(operation.contentEquals("UPDATE")){
                         //startUpdateInitialSurveyActivity(uuidInitialSurvey);
                     }
@@ -96,6 +99,17 @@ public class VolunteerCardAdapter extends RecyclerView.Adapter {
             txtVolunteerName.setText(volunteer.getNamevol());
         }
 
+    }
+
+    private void startViewVolMonthlySummaryActivity(String volunteerName) {
+        Intent i = new Intent(this.context, VolunteerMonthlySummaryCardSelectActivity.class);
+        i.putExtra("NAME_BWE", namebwe);
+        i.putExtra("POSITION_BWE", "Volunteer");
+        i.putExtra("SURVEY_TYPE","SWESUMMARY");
+        i.putExtra("OPERATION",operation);
+        i.putExtra("NAME_VOL",volunteerName);
+        context.startActivity(i);
+        ((Activity)context).finish();
     }
 
     private void startVolMonthlySummaryActivity(String volunteerName) {

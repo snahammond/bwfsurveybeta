@@ -89,7 +89,6 @@
             android:screenOrientation="portrait">
         </activity>
 
-
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.select.CommunityCardSelectActivity"
             android:label="Select community"
@@ -124,6 +123,7 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
+
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.VolunteerHouseholdWaterSurveyActivity"
             android:label="Volunteer household"
@@ -138,7 +138,6 @@
             android:screenOrientation="portrait">
         </activity>
 
-
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.select.FollowUpSurveyCardSelectActivity"
             android:label="Select follow up survey"
@@ -152,7 +151,6 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
-
 
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterTestCardSelectActivity"
@@ -196,7 +194,6 @@
             android:screenOrientation="portrait">
         </activity>
 
-
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.VolunteerMonthlySummaryActivity"
             android:label="Volunteer Monthly Summary"
@@ -218,14 +215,12 @@
             android:screenOrientation="portrait">
         </activity>
 
-
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewHouseholdWaterTestActivity"
             android:label="View Details"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
-
 
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdWaterTestCardSelectActivity"
@@ -234,7 +229,6 @@
             android:screenOrientation="portrait">
         </activity>
 
-
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewVolunteerHouseholdWaterTestActivity"
             android:label="View Details"
@@ -242,6 +236,55 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.HealthCheckSurveyCardSelectActivity"
+            android:label="Select household"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewHealthCheckSurveyActivity"
+            android:label="View Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewSubMenuMonthlySummaryActivity"
+            android:label="Choose sub menu"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.SWEMonthlySummaryCardSelectActivity"
+            android:label="Select Monthly Summary"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewSWEMonthlySummaryActivity"
+            android:label="View Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerMonthlySummaryCardSelectActivity"
+            android:label="Select Monthly Summary"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewVolunteerMonthlySummaryActivity"
+            android:label="View Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
 
 
     </application>
