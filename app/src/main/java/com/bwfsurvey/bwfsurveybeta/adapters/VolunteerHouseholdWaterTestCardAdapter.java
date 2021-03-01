@@ -18,6 +18,7 @@ import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTes
 import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateHouseholdWaterTestActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateVolunteerHouseholdWaterTestActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewHouseholdWaterTestActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewVolunteerHouseholdWaterTestActivity;
 import com.example.bwfsurveybeta.R;
@@ -85,7 +86,7 @@ public class VolunteerHouseholdWaterTestCardAdapter extends RecyclerView.Adapter
                     }else if(operation.contentEquals("VIEW")){
                         startViewVolunteerHouseholdWaterTestActivity(uuidHouseholdWaterTest);
                     }else if(operation.contentEquals("UPDATE")){
-                        //startUpdateHouseholdWaterTestActivity(uuidHouseholdWaterTest);
+                        startUpdateVolunteerHouseholdWaterTestActivity(uuidHouseholdWaterTest);
                     }
                 }
             });
@@ -100,8 +101,8 @@ public class VolunteerHouseholdWaterTestCardAdapter extends RecyclerView.Adapter
         }
     }
 
-    private void startUpdateHouseholdWaterTestActivity(String uuidVolunteerHouseholdWaterTest){
-        Intent i = new Intent(context, UpdateHouseholdWaterTestActivity.class);
+    private void startUpdateVolunteerHouseholdWaterTestActivity(String uuidVolunteerHouseholdWaterTest){
+        Intent i = new Intent(context, UpdateVolunteerHouseholdWaterTestActivity.class);
         i.putExtra("UUID", uuidVolunteerHouseholdWaterTest);
         context.startActivity(i);
         ((Activity)context).finish();

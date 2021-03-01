@@ -154,7 +154,7 @@
 
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterTestCardSelectActivity"
-            android:label="Select suspended Community Water Test"
+            android:label="Select Community Water Test"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
@@ -238,7 +238,7 @@
 
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.select.HealthCheckSurveyCardSelectActivity"
-            android:label="Select household"
+            android:label="Select health check survey"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
@@ -286,6 +286,27 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.update.UpdateVolunteerHouseholdWaterTestActivity"
+            android:label="Update Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.update.UpdateHealthCheckSurveyActivity"
+            android:label="Update Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.update.UpdateSubMenuMonthlySummaryActivity"
+            android:label="Select Sub Menu"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 

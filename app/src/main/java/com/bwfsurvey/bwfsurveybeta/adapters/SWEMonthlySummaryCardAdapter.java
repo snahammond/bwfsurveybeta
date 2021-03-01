@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
+import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateSWEMonthlySummaryActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewHealthCheckSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewSWEMonthlySummaryActivity;
 import com.example.bwfsurveybeta.R;
@@ -94,7 +95,7 @@ public class SWEMonthlySummaryCardAdapter extends RecyclerView.Adapter<RecyclerV
                     }else if(operation.contentEquals("VIEW")){
                         startViewSWEMonthlySummaryActivity(uuidSWEMonthlySummary);
                     }else if(operation.contentEquals("UPDATE")){
-                        //startUpdateHealthCheckSurveyActivity(uuidHealthCheckSurvey);
+                        startUpdateSWEMonthlySummaryActivity(uuidSWEMonthlySummary);
                     }
 
                 }
@@ -136,6 +137,13 @@ public class SWEMonthlySummaryCardAdapter extends RecyclerView.Adapter<RecyclerV
 
     private void startViewSWEMonthlySummaryActivity(String uuidSWEMonthlySummary) {
         Intent i = new Intent(context, ViewSWEMonthlySummaryActivity.class);
+        i.putExtra("UUID", uuidSWEMonthlySummary);
+        context.startActivity(i);
+        ((Activity)context).finish();
+    }
+
+    private void startUpdateSWEMonthlySummaryActivity(String uuidSWEMonthlySummary) {
+        Intent i = new Intent(context, UpdateSWEMonthlySummaryActivity.class);
         i.putExtra("UUID", uuidSWEMonthlySummary);
         context.startActivity(i);
         ((Activity)context).finish();

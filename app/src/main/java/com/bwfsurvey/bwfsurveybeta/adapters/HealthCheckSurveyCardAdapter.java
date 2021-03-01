@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
+import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateHealthCheckSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewFollowUpSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewHealthCheckSurveyActivity;
 import com.example.bwfsurveybeta.R;
@@ -97,7 +98,7 @@ public class HealthCheckSurveyCardAdapter extends RecyclerView.Adapter<RecyclerV
                     }else if(operation.contentEquals("VIEW")){
                         startViewHealthCheckSurveyActivity(uuidHealthCheckSurvey);
                     }else if(operation.contentEquals("UPDATE")){
-                        //startUpdateHealthCheckSurveyActivity(uuidHealthCheckSurvey);
+                        startUpdateHealthCheckSurveyActivity(uuidHealthCheckSurvey);
                     }
 
                 }
@@ -139,11 +140,17 @@ public class HealthCheckSurveyCardAdapter extends RecyclerView.Adapter<RecyclerV
             uuidHealthCheckSurvey = healthCheckSurvey.getId();
         }
 
-
     }
 
     private void startViewHealthCheckSurveyActivity(String uuidHealthCheckSurvey) {
         Intent i = new Intent(context, ViewHealthCheckSurveyActivity.class);
+        i.putExtra("UUID", uuidHealthCheckSurvey);
+        context.startActivity(i);
+        ((Activity)context).finish();
+    }
+
+    private void startUpdateHealthCheckSurveyActivity(String uuidHealthCheckSurvey) {
+        Intent i = new Intent(context, UpdateHealthCheckSurveyActivity.class);
         i.putExtra("UUID", uuidHealthCheckSurvey);
         context.startActivity(i);
         ((Activity)context).finish();

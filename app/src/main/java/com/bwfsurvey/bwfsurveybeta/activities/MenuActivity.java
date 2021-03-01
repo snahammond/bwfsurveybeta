@@ -27,6 +27,7 @@ import com.bwfsurvey.bwfsurveybeta.activities.select.FollowUpSurveyCardSelectAct
 import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdWaterTestCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateSubMenuMonthlySummaryActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewSubMenuMonthlySummaryActivity;
 import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
 import com.bwfsurvey.bwfsurveybeta.types.Config;
@@ -418,6 +419,33 @@ public class MenuActivity extends AppCompatActivity {
         waterSurveyUC.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), HouseholdWaterTestCardSelectActivity.class);
+                i.putExtra("OPERATION","UPDATE");
+                startActivity(i);
+            }
+        });
+
+        Button waterSurveyFromVolUC = (Button) findViewById(R.id.button_waterSurveyFromVolUC);
+        waterSurveyFromVolUC.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), VolunteerHouseholdWaterTestCardSelectActivity.class);
+                i.putExtra("OPERATION","UPDATE");
+                startActivity(i);
+            }
+        });
+
+        Button healthCheckUC = (Button) findViewById(R.id.button_healthCheckUC);
+        healthCheckUC.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), HealthCheckSurveyCardSelectActivity.class);
+                i.putExtra("OPERATION","UPDATE");
+                startActivity(i);
+            }
+        });
+
+        Button sweMonthlySummaryUC = (Button) findViewById(R.id.button_SWEMonthlySummaryUC);
+        sweMonthlySummaryUC.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), UpdateSubMenuMonthlySummaryActivity.class);
                 i.putExtra("OPERATION","UPDATE");
                 startActivity(i);
             }
