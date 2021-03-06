@@ -18,8 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.core.model.temporal.Temporal;
-import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
+import com.amplifyframework.datastore.generated.model.VolunteerMonthlySummary;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
@@ -33,9 +33,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 
-public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
-    SWEMonthlySummary theSWEMonthlySummary;
-    private String uuidSWEMonthlySummary;
+public class UpdateVolunteerMonthlySummaryActivity extends AppCompatActivity {
+    VolunteerMonthlySummary theVolunteerMonthlySummary;
+    private String uuidVolunteerMonthlySummary;
     private RecyclerView recyclerView;
     private InterchangeCardAdapter adapter;
 
@@ -50,30 +50,30 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         if(getIntent().getStringExtra("UUID")!=null)
-            uuidSWEMonthlySummary = getIntent().getStringExtra("UUID");
+            uuidVolunteerMonthlySummary = getIntent().getStringExtra("UUID");
 
         initView();
     }
 
     private void initView() {
         setContentView(R.layout.activity_recycler);
-        createSWEMonthlySummaryUpdateInterchanges();
+        createVolunteerMonthlySummaryUpdateInterchanges();
     }
 
-    private void createSWEMonthlySummaryUpdateInterchanges() {
+    private void createVolunteerMonthlySummaryUpdateInterchanges() {
         interchanges = new ArrayList<>();
         createInterchangesAndShowOnRecyclerView();
     }
 
     private void createInterchangesAndShowOnRecyclerView() {
         Amplify.DataStore.query(
-                SWEMonthlySummary.class,
-                Where.matches(SWEMonthlySummary.ID.eq(uuidSWEMonthlySummary)),
-                sweMonthlySummary -> {
+                VolunteerMonthlySummary.class,
+                Where.matches(VolunteerMonthlySummary.ID.eq(uuidVolunteerMonthlySummary)),
+                volunteerMonthlySummary -> {
                     Log.i("Tutorials", "DataStore is queried.");
-                    while (sweMonthlySummary.hasNext()) {
-                        theSWEMonthlySummary = sweMonthlySummary.next();
-                        Log.i("Tutorials", "DataStore is queried. theSWEMonthlySummary " +theSWEMonthlySummary.getId());
+                    while (volunteerMonthlySummary.hasNext()) {
+                        theVolunteerMonthlySummary = volunteerMonthlySummary.next();
+                        Log.i("Tutorials", "DataStore is queried. theVolunteerMonthlySummary " +theVolunteerMonthlySummary.getId());
                     }
 
                     runOnUiThread(new Runnable() {
@@ -89,10 +89,10 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
     }
 
     private void createInterchangesAndShow() {
-        if(theSWEMonthlySummary!=null){
+        if(theVolunteerMonthlySummary!=null){
             ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("SWESUMMARY");
             if(returnedInterchanges!=null){
-                UpdateSWEMonthlySummaryActivity.interchanges = new ArrayList<>();
+                UpdateVolunteerMonthlySummaryActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;
                 for(Interchange interchange : returnedInterchanges){
                     //set answers
@@ -101,8 +101,8 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
                     String methodName = "get"+nameOfAns;
                     java.lang.reflect.Method method;
                     try {
-                        method = theSWEMonthlySummary.getClass().getMethod(methodName);
-                        Object ansObject = method.invoke(theSWEMonthlySummary);
+                        method = theVolunteerMonthlySummary.getClass().getMethod(methodName);
+                        Object ansObject = method.invoke(theVolunteerMonthlySummary);
                         answer = ansObject.toString();
                     } catch (Exception e) {
                         Log.e("Tutorials", "Could not get answer " + nameOfAns);
@@ -110,11 +110,11 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
                     interchange.getAnswer().setAns(answer);
 
                     interchange.setPositionOnRecyler(positionOnRecyler);
-                    UpdateSWEMonthlySummaryActivity.interchanges.add(interchange);
+                    UpdateVolunteerMonthlySummaryActivity.interchanges.add(interchange);
                     positionOnRecyler += 1;
                 }
                 //sort the interchanges
-                Collections.sort(UpdateSWEMonthlySummaryActivity.interchanges);
+                Collections.sort(UpdateVolunteerMonthlySummaryActivity.interchanges);
                 showViewOnlyInterchanges();
             }
         }
@@ -144,14 +144,14 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new InterchangeCardAdapter(UpdateSWEMonthlySummaryActivity.this, UpdateSWEMonthlySummaryActivity.interchanges);
+        adapter = new InterchangeCardAdapter(UpdateVolunteerMonthlySummaryActivity.this, UpdateVolunteerMonthlySummaryActivity.interchanges);
         recyclerView.setAdapter(adapter);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        for(Interchange interchange: UpdateSWEMonthlySummaryActivity.interchanges){
+        for(Interchange interchange: UpdateVolunteerMonthlySummaryActivity.interchanges){
             interchange.getAnswer().setAns(null);
         }
     }
@@ -185,18 +185,18 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
                     lng_ = lng;
                 }else{
                     //try and get it again
-                    PhoneLocation phoneLocation = new PhoneLocation(UpdateSWEMonthlySummaryActivity.this);
+                    PhoneLocation phoneLocation = new PhoneLocation(UpdateVolunteerMonthlySummaryActivity.this);
                     String[] arraylatlng = phoneLocation.getLocation();
                     if(arraylatlng!=null){
                         lat_ = arraylatlng[0];
                         lng_ = arraylatlng[1];
                     }
                 }
-                //make an sweMonthlySummary object
-                SWEMonthlySummary sweMonthlySummary = makeSWEMonthlySummaryObjectWithId(interchangesWithUserAns,1,lat_,lng_);
+                //make an volunteerMonthlySummary object
+                VolunteerMonthlySummary volunteerMonthlySummary = makeVolunteerMonthlySummaryObjectWithId(interchangesWithUserAns,1,lat_,lng_);
 
-                //save the sweMonthlySummary object
-                saveSWEMonthlySummary(sweMonthlySummary);
+                //save the volunteerMonthlySummary object
+                saveVolunteerMonthlySummary(volunteerMonthlySummary);
             }
         }
 
@@ -209,25 +209,25 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
                 lng_ = lng;
             }else{
                 //try and get it again
-                PhoneLocation phoneLocation = new PhoneLocation(UpdateSWEMonthlySummaryActivity.this);
+                PhoneLocation phoneLocation = new PhoneLocation(UpdateVolunteerMonthlySummaryActivity.this);
                 String[] arraylatlng = phoneLocation.getLocation();
                 if(arraylatlng!=null){
                     lat_ = arraylatlng[0];
                     lng_ = arraylatlng[1];
                 }
             }
-            //make an sweMonthlySummary object
-            SWEMonthlySummary sweMonthlySummary = makeSWEMonthlySummaryObjectWithId(interchangesWithUserAns,0,lat_,lng_);
+            //make an volunteerMonthlySummary object
+            VolunteerMonthlySummary volunteerMonthlySummary = makeVolunteerMonthlySummaryObjectWithId(interchangesWithUserAns,0,lat_,lng_);
 
-            //save the sweMonthlySummary object
-            saveSWEMonthlySummary(sweMonthlySummary);
+            //save the volunteerMonthlySummary object
+            saveVolunteerMonthlySummary(volunteerMonthlySummary);
 
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void saveSWEMonthlySummary(SWEMonthlySummary sweMonthlySummary) {
-        Amplify.DataStore.save(sweMonthlySummary,
+    private void saveVolunteerMonthlySummary(VolunteerMonthlySummary volunteerMonthlySummary) {
+        Amplify.DataStore.save(volunteerMonthlySummary,
                 update -> {
                     Log.i("Tutorial", "Saved Successfully ");
 
@@ -266,19 +266,19 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
     }
 
     private void showSavedSuccessfulAlert(){
-        new AlertDialog.Builder(UpdateSWEMonthlySummaryActivity.this)
+        new AlertDialog.Builder(UpdateVolunteerMonthlySummaryActivity.this)
                 .setTitle("Saved Succussfully")
-                .setMessage("SWE Monthly Summary Saved Succussfully \n" )
+                .setMessage("Volunteer Monthly Summary Saved Succussfully \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
                 .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //reset all the user answers
-                        for(Interchange interchange: UpdateSWEMonthlySummaryActivity.interchanges){
+                        for(Interchange interchange: UpdateVolunteerMonthlySummaryActivity.interchanges){
                             interchange.getAnswer().setAns(null);
                         }
-                        UpdateSWEMonthlySummaryActivity.this.finish();
+                        UpdateVolunteerMonthlySummaryActivity.this.finish();
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
@@ -289,9 +289,9 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
     private void showSaveFailedAlert(){
         runOnUiThread(new Runnable() {
             public void run() {
-                new AlertDialog.Builder(UpdateSWEMonthlySummaryActivity.this)
+                new AlertDialog.Builder(UpdateVolunteerMonthlySummaryActivity.this)
                         .setTitle("Save Failed")
-                        .setMessage("SWE Monthly Summary Save Failed! Please try again\n" )
+                        .setMessage("Volunteer Monthly Summary Save Failed! Please try again\n" )
                         // A null listener allows the button to dismiss the dialog and take no further action.
                         .setNegativeButton(android.R.string.ok, null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
@@ -316,7 +316,7 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
     }
 
     private void showInvalidSurveyAlert(){
-        new AlertDialog.Builder(UpdateSWEMonthlySummaryActivity.this)
+        new AlertDialog.Builder(UpdateVolunteerMonthlySummaryActivity.this)
                 .setTitle("Invalid Questions")
                 .setMessage("Some questions have not been correctly answered \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
@@ -326,13 +326,14 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
                 .setCanceledOnTouchOutside(false);
     }
 
-    private SWEMonthlySummary makeSWEMonthlySummaryObjectWithId(ArrayList<Interchange> interchangesWithUserAns,int completed, String lat, String lng) {
+    private VolunteerMonthlySummary makeVolunteerMonthlySummaryObjectWithId(ArrayList<Interchange> interchangesWithUserAns,int completed, String lat, String lng) {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date_s = dateFormat.format(calendar.getTime());
 
-        String Namebwe = theSWEMonthlySummary.getNamebwe();
-        String SwePosition = theSWEMonthlySummary.getSwePosition();
+        String Namebwe = theVolunteerMonthlySummary.getNamebwe();
+        String SwePosition = "Volunteer";
+        String NameVolunteer = theVolunteerMonthlySummary.getNamevol();
         Integer NoWaterSampleTaken = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoWaterSampleTaken",interchangesWithUserAns),0);
         Integer NoSurveysCompleted = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoSurveysCompleted",interchangesWithUserAns),0);
         Integer NoLsn1Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn1Taught",interchangesWithUserAns),0);
@@ -343,9 +344,9 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
         Integer NoChlorineLiquidTabsDistributed = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoChlorineLiquid_TabsDistributed",interchangesWithUserAns),0);
         Temporal.Date date = new Temporal.Date(date_s);
 
-        SWEMonthlySummary sweMonthlySummary = SWEMonthlySummary.builder()
+        VolunteerMonthlySummary volunteerMonthlySummary = VolunteerMonthlySummary.builder()
                 .namebwe(Namebwe)
-                .swePosition(SwePosition)
+                .namevol(NameVolunteer)
                 .noWaterSampleTaken(NoWaterSampleTaken)
                 .noSurveysCompleted(NoSurveysCompleted)
                 .noLsn1Taught(NoLsn1Taught)
@@ -358,9 +359,9 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
                 .lat(lat)
                 .lng(lng)
                 .date(date)
-                .id(theSWEMonthlySummary.getId())
+                .id(theVolunteerMonthlySummary.getId())
                 .build();
-        return sweMonthlySummary;
+        return volunteerMonthlySummary;
 
     }
 

@@ -99,7 +99,7 @@ public final class VolunteerMonthlySummary implements Model {
       return NoPersonsTaught;
   }
   
-  public Integer getNoChlorineLiquidTabsDistributed() {
+  public Integer getNoChlorineLiquid_TabsDistributed() {
       return NoChlorineLiquid_TabsDistributed;
   }
   
@@ -152,7 +152,7 @@ public final class VolunteerMonthlySummary implements Model {
               ObjectsCompat.equals(getNoLsn3Taught(), volunteerMonthlySummary.getNoLsn3Taught()) &&
               ObjectsCompat.equals(getNoLsn4Taught(), volunteerMonthlySummary.getNoLsn4Taught()) &&
               ObjectsCompat.equals(getNoPersonsTaught(), volunteerMonthlySummary.getNoPersonsTaught()) &&
-              ObjectsCompat.equals(getNoChlorineLiquidTabsDistributed(), volunteerMonthlySummary.getNoChlorineLiquidTabsDistributed()) &&
+              ObjectsCompat.equals(getNoChlorineLiquid_TabsDistributed(), volunteerMonthlySummary.getNoChlorineLiquid_TabsDistributed()) &&
               ObjectsCompat.equals(getCompleted(), volunteerMonthlySummary.getCompleted()) &&
               ObjectsCompat.equals(getLat(), volunteerMonthlySummary.getLat()) &&
               ObjectsCompat.equals(getLng(), volunteerMonthlySummary.getLng());
@@ -173,7 +173,7 @@ public final class VolunteerMonthlySummary implements Model {
       .append(getNoLsn3Taught())
       .append(getNoLsn4Taught())
       .append(getNoPersonsTaught())
-      .append(getNoChlorineLiquidTabsDistributed())
+      .append(getNoChlorineLiquid_TabsDistributed())
       .append(getCompleted())
       .append(getLat())
       .append(getLng())
@@ -196,7 +196,7 @@ public final class VolunteerMonthlySummary implements Model {
       .append("NoLsn3Taught=" + String.valueOf(getNoLsn3Taught()) + ", ")
       .append("NoLsn4Taught=" + String.valueOf(getNoLsn4Taught()) + ", ")
       .append("NoPersonsTaught=" + String.valueOf(getNoPersonsTaught()) + ", ")
-      .append("NoChlorineLiquid_TabsDistributed=" + String.valueOf(getNoChlorineLiquidTabsDistributed()) + ", ")
+      .append("NoChlorineLiquid_TabsDistributed=" + String.valueOf(getNoChlorineLiquid_TabsDistributed()) + ", ")
       .append("Completed=" + String.valueOf(getCompleted()) + ", ")
       .append("Lat=" + String.valueOf(getLat()) + ", ")
       .append("Lng=" + String.valueOf(getLng()))

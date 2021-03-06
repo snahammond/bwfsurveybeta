@@ -87,7 +87,8 @@ public class VolunteerCardAdapter extends RecyclerView.Adapter {
                         if(surveyType.contentEquals("SWESUMMARY"))
                             startViewVolMonthlySummaryActivity(txtVolunteerName.getText().toString());
                     }else if(operation.contentEquals("UPDATE")){
-                        //startUpdateInitialSurveyActivity(uuidInitialSurvey);
+                        if(surveyType.contentEquals("SWESUMMARY"))
+                            startUpdateVolMonthlySummaryActivity(txtVolunteerName.getText().toString());
                     }
 
 
@@ -102,6 +103,17 @@ public class VolunteerCardAdapter extends RecyclerView.Adapter {
     }
 
     private void startViewVolMonthlySummaryActivity(String volunteerName) {
+        Intent i = new Intent(this.context, VolunteerMonthlySummaryCardSelectActivity.class);
+        i.putExtra("NAME_BWE", namebwe);
+        i.putExtra("POSITION_BWE", "Volunteer");
+        i.putExtra("SURVEY_TYPE","SWESUMMARY");
+        i.putExtra("OPERATION",operation);
+        i.putExtra("NAME_VOL",volunteerName);
+        context.startActivity(i);
+        ((Activity)context).finish();
+    }
+
+    private void startUpdateVolMonthlySummaryActivity(String volunteerName) {
         Intent i = new Intent(this.context, VolunteerMonthlySummaryCardSelectActivity.class);
         i.putExtra("NAME_BWE", namebwe);
         i.putExtra("POSITION_BWE", "Volunteer");
@@ -135,4 +147,5 @@ public class VolunteerCardAdapter extends RecyclerView.Adapter {
         context.startActivity(i);
         ((Activity)context).finish();
     }
+
 }

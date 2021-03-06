@@ -57,6 +57,10 @@ public class VolunteerCardSelectActivity extends AppCompatActivity implements Cr
             householdName = getIntent().getStringExtra("HHNAME");
         if(getIntent().getStringExtra("HHLOC")!=null)
             householdLocation = getIntent().getStringExtra("HHLOC");
+
+        if(operation.contentEquals("CREATE"))
+            setTitle("Select or create new Volunteer");
+
         initView();
     }
 
@@ -142,7 +146,9 @@ public class VolunteerCardSelectActivity extends AppCompatActivity implements Cr
     public boolean onCreateOptionsMenu(Menu menu) {
         // R.menu.mymenu is a reference to an xml file named mymenu.xml which should be inside your res/menu directory.
         // If you don't have res/menu, just create a directory named "menu" inside res
-        getMenuInflater().inflate(R.menu.menu_volunteer, menu);
+        if(operation.contentEquals("CREATE"))
+            getMenuInflater().inflate(R.menu.menu_volunteer, menu);
+
         return super.onCreateOptionsMenu(menu);
     }
 

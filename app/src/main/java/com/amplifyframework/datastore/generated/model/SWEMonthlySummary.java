@@ -99,7 +99,7 @@ public final class SWEMonthlySummary implements Model {
       return NoPersonsTaught;
   }
   
-  public Integer getNoChlorineLiquidTabsDistributed() {
+  public Integer getNoChlorineLiquid_TabsDistributed() {
       return NoChlorineLiquid_TabsDistributed;
   }
   
@@ -152,7 +152,7 @@ public final class SWEMonthlySummary implements Model {
               ObjectsCompat.equals(getNoLsn3Taught(), sweMonthlySummary.getNoLsn3Taught()) &&
               ObjectsCompat.equals(getNoLsn4Taught(), sweMonthlySummary.getNoLsn4Taught()) &&
               ObjectsCompat.equals(getNoPersonsTaught(), sweMonthlySummary.getNoPersonsTaught()) &&
-              ObjectsCompat.equals(getNoChlorineLiquidTabsDistributed(), sweMonthlySummary.getNoChlorineLiquidTabsDistributed()) &&
+              ObjectsCompat.equals(getNoChlorineLiquid_TabsDistributed(), sweMonthlySummary.getNoChlorineLiquid_TabsDistributed()) &&
               ObjectsCompat.equals(getCompleted(), sweMonthlySummary.getCompleted()) &&
               ObjectsCompat.equals(getLat(), sweMonthlySummary.getLat()) &&
               ObjectsCompat.equals(getLng(), sweMonthlySummary.getLng());
@@ -173,7 +173,7 @@ public final class SWEMonthlySummary implements Model {
       .append(getNoLsn3Taught())
       .append(getNoLsn4Taught())
       .append(getNoPersonsTaught())
-      .append(getNoChlorineLiquidTabsDistributed())
+      .append(getNoChlorineLiquid_TabsDistributed())
       .append(getCompleted())
       .append(getLat())
       .append(getLng())
@@ -196,7 +196,7 @@ public final class SWEMonthlySummary implements Model {
       .append("NoLsn3Taught=" + String.valueOf(getNoLsn3Taught()) + ", ")
       .append("NoLsn4Taught=" + String.valueOf(getNoLsn4Taught()) + ", ")
       .append("NoPersonsTaught=" + String.valueOf(getNoPersonsTaught()) + ", ")
-      .append("NoChlorineLiquid_TabsDistributed=" + String.valueOf(getNoChlorineLiquidTabsDistributed()) + ", ")
+      .append("NoChlorineLiquid_TabsDistributed=" + String.valueOf(getNoChlorineLiquid_TabsDistributed()) + ", ")
       .append("Completed=" + String.valueOf(getCompleted()) + ", ")
       .append("Lat=" + String.valueOf(getLat()) + ", ")
       .append("Lng=" + String.valueOf(getLng()))

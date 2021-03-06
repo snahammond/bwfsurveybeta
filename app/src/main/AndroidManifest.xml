@@ -182,14 +182,14 @@
 
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerCardSelectActivity"
-            android:label="Select or create new Volunteer"
+            android:label="Select Volunteer"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.SubMenuMonthlySummaryActivity"
-            android:label="Select sub option"
+            android:label="Select Sub Menu"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
@@ -300,10 +300,25 @@
             android:screenOrientation="portrait">
         </activity>
 
-
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.update.UpdateSubMenuMonthlySummaryActivity"
             android:label="Select Sub Menu"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.update.UpdateSWEMonthlySummaryActivity"
+            android:label="Update Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.update.UpdateVolunteerMonthlySummaryActivity"
+            android:label="Update Details"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
