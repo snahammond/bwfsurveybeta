@@ -251,7 +251,7 @@ public class UpdateVolunteerMonthlySummaryActivity extends AppCompatActivity {
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Syncing Up!");
         progressBar.setVisibility(View.VISIBLE);
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
+        CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
             }

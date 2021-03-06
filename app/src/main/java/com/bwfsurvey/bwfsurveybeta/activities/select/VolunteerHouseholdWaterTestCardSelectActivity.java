@@ -15,8 +15,10 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
+import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.HouseholdWaterTestCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.adapters.VolunteerHouseholdWaterTestCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
@@ -114,24 +116,35 @@ public class VolunteerHouseholdWaterTestCardSelectActivity extends AppCompatActi
     }
 
     private void showListOflistOfHouseholdWaterTests() {
-        //wait a lil bit so that if we are offline things will settle
-        //this is for the progress bar
-        progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
-        TextView progressBarText = (TextView) findViewById(R.id.pbText);
-        progressBarText.setText("Please wait... Getting records!");
-        progressBar.setVisibility(View.VISIBLE);
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
+        if(listOfVolunteerHouseholdWaterTest.size()>0){
+            //wait a lil bit so that if we are offline things will settle
+            //this is for the progress bar
+            progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
+            TextView progressBarText = (TextView) findViewById(R.id.pbText);
+            progressBarText.setText("Please wait... Getting records!");
+            progressBar.setVisibility(View.VISIBLE);
+            CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                }
 
-            @Override
-            public void onFinish() {
-                progressBar.setVisibility(View.GONE);
-                initViewElements();
+                @Override
+                public void onFinish() {
+                    progressBar.setVisibility(View.GONE);
+                    initViewElements();
+                }
+            };
+            countDownTimer.start();
+        }else{
+            String msg = "No data for Volunteer household water test found.";
+            if(operation.contentEquals("UPDATE")){
+                msg = "No suspended data for Volunteer household water test found.";
+            }else if(operation.contentEquals("VIEW")){
+                msg = "No data for Volunteer household water test found.";
             }
-        };
-        countDownTimer.start();
+            ListUtils.showZeroListAlert(msg,VolunteerHouseholdWaterTestCardSelectActivity.this);
+        }
+
     }
 
     private void initViewElements() {

@@ -199,7 +199,7 @@ public class MenuActivity extends AppCompatActivity {
         //if(calledAMPStart){
             //wait for sync to finish, because Authenication called start
             startProgress("Please wait... Setting Up!");
-            CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
+            CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                 }

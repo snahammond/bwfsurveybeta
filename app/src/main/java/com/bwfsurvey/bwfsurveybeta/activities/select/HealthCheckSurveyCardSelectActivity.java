@@ -16,8 +16,10 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
+import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.FollowUpSurveyCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.adapters.HealthCheckSurveyCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
@@ -124,24 +126,35 @@ public class HealthCheckSurveyCardSelectActivity extends AppCompatActivity {
     }
 
     private void showListOfHealthCheckSurveys() {
-        //wait a lil bit so that if we are offline things will settle
-        //this is for the progress bar
-        progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
-        TextView progressBarText = (TextView) findViewById(R.id.pbText);
-        progressBarText.setText("Please wait... Getting records!");
-        progressBar.setVisibility(View.VISIBLE);
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
+        if(listOfHealthCheckSurveys.size()>0){
+            //wait a lil bit so that if we are offline things will settle
+            //this is for the progress bar
+            progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
+            TextView progressBarText = (TextView) findViewById(R.id.pbText);
+            progressBarText.setText("Please wait... Getting records!");
+            progressBar.setVisibility(View.VISIBLE);
+            CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                }
 
-            @Override
-            public void onFinish() {
-                progressBar.setVisibility(View.GONE);
-                initViewElements();
+                @Override
+                public void onFinish() {
+                    progressBar.setVisibility(View.GONE);
+                    initViewElements();
+                }
+            };
+            countDownTimer.start();
+        }else{
+            String msg = "No data for health check found.";
+            if(operation.contentEquals("UPDATE")){
+                msg = "No suspended data for health check found.";
+            }else if(operation.contentEquals("VIEW")){
+                msg = "No data for health check found.";
             }
-        };
-        countDownTimer.start();
+            ListUtils.showZeroListAlert(msg,HealthCheckSurveyCardSelectActivity.this);
+        }
+
     }
 
     private void initViewElements() {

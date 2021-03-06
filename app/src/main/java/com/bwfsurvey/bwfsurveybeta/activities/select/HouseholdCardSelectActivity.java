@@ -16,7 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
+import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.HouseholdCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
@@ -125,24 +127,30 @@ public class HouseholdCardSelectActivity extends AppCompatActivity {
     }
 
     private void showListOfFamilys() {
-        //wait a lil bit so that if we are offline things will settle
-        //this is for the progress bar
-        progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
-        TextView progressBarText = (TextView) findViewById(R.id.pbText);
-        progressBarText.setText("Please wait... Getting records!");
-        progressBar.setVisibility(View.VISIBLE);
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
+        if(listOfFamilys.size()>0){
+            //wait a lil bit so that if we are offline things will settle
+            //this is for the progress bar
+            progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
+            TextView progressBarText = (TextView) findViewById(R.id.pbText);
+            progressBarText.setText("Please wait... Getting records!");
+            progressBar.setVisibility(View.VISIBLE);
+            CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                }
 
-            @Override
-            public void onFinish() {
-                progressBar.setVisibility(View.GONE);
-                initViewElements();
-            }
-        };
-        countDownTimer.start();
+                @Override
+                public void onFinish() {
+                    progressBar.setVisibility(View.GONE);
+                    initViewElements();
+                }
+            };
+            countDownTimer.start();
+        }else{
+            String msg = "No initial family survey found, please complete as least one initial survey";
+            ListUtils.showZeroListAlert(msg,HouseholdCardSelectActivity.this);
+        }
+
     }
 
     private void initViewElements() {

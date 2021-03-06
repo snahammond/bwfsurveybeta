@@ -46,6 +46,7 @@ public class MyAmplifyApplication extends Application {
     public static ArrayList<Config> configs;
     public static ArrayList<Interchange> interchangePool;
     public static String namebwe = "";
+    public static Long manualTimer = Long.valueOf(5000);
 
 
     @Override

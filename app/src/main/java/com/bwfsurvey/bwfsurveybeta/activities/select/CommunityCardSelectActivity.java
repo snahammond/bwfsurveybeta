@@ -1,5 +1,6 @@
 package com.bwfsurvey.bwfsurveybeta.activities.select;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,10 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
+import com.bwfsurvey.bwfsurveybeta.activities.collect.CommunityWaterSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.adapters.CommunityCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
+import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
@@ -81,7 +85,7 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
                                 TextView progressBarText = (TextView) findViewById(R.id.pbText);
                                 progressBarText.setText("Please wait... Setting Up!");
                                 progressBar.setVisibility(View.VISIBLE);
-                                CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
+                                CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
                                     @Override
                                     public void onTick(long millisUntilFinished) {
                                     }
@@ -134,7 +138,11 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
     }
 
     private void showListOfCommunities() {
-        initViewElements();
+        if(listOfCommunities.size()>0){
+            initViewElements();
+        }else{
+            ListUtils.showZeroListAlert("No community can be found for the current country, please change the current country on the main menu page.",CommunityCardSelectActivity.this);
+        }
     }
 
     private void initViewElements() {
@@ -143,4 +151,6 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
         adapter = new CommunityCardAdapter(CommunityCardSelectActivity.this, CommunityCardSelectActivity.listOfCommunities,namebwe,positionbwe,surveyType,surveyIdForInitialSurvey,lat,lng);
         recyclerView.setAdapter(adapter);
     }
+
+
 }
