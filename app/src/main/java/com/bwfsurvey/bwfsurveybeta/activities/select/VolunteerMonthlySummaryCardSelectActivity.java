@@ -13,10 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
-import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
 import com.amplifyframework.datastore.generated.model.VolunteerMonthlySummary;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
-import com.bwfsurvey.bwfsurveybeta.adapters.SWEMonthlySummaryCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.adapters.VolunteerMonthlySummaryCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;
 import com.example.bwfsurveybeta.R;

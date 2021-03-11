@@ -1,6 +1,5 @@
 package com.bwfsurvey.bwfsurveybeta.activities.select;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -14,16 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
-import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
-import com.bwfsurvey.bwfsurveybeta.adapters.HealthCheckSurveyCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.adapters.SWEMonthlySummaryCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class SWEMonthlySummaryCardSelectActivity extends AppCompatActivity {
     private static ArrayList<SWEMonthlySummary> listOfSWEMonthlySummarys;

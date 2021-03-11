@@ -544,12 +544,22 @@ query SyncSweMonthlySummaries(
       SWEPosition
       NoWaterSampleTaken
       NoSurveysCompleted
+      NoHealthCheck
       NoLsn1Taught
+      NoPersonsTaughtLesson1
       NoLsn2Taught
+      NoPersonsTaughtLesson2
       NoLsn3Taught
+      NoPersonsTaughtLesson3
       NoLsn4Taught
+      NoPersonsTaughtLesson4
       NoPersonsTaught
-      NoChlorineLiquid_TabsDistributed
+      NoHouseholdReceivingChlorineSupplies
+      NoLiquidChlorineDistributed
+      NoChlorineTabletsDistributed
+      NoWaterStorageContainersDistributed
+      NoSchoolVisits
+      NoPublicServiceMessagesAired
       Completed
       Lat
       Lng
@@ -571,12 +581,22 @@ query GetSweMonthlySummary($id: ID!) {
     SWEPosition
     NoWaterSampleTaken
     NoSurveysCompleted
+    NoHealthCheck
     NoLsn1Taught
+    NoPersonsTaughtLesson1
     NoLsn2Taught
+    NoPersonsTaughtLesson2
     NoLsn3Taught
+    NoPersonsTaughtLesson3
     NoLsn4Taught
+    NoPersonsTaughtLesson4
     NoPersonsTaught
-    NoChlorineLiquid_TabsDistributed
+    NoHouseholdReceivingChlorineSupplies
+    NoLiquidChlorineDistributed
+    NoChlorineTabletsDistributed
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
     Completed
     Lat
     Lng
@@ -604,12 +624,22 @@ query ListSweMonthlySummarys(
       SWEPosition
       NoWaterSampleTaken
       NoSurveysCompleted
+      NoHealthCheck
       NoLsn1Taught
+      NoPersonsTaughtLesson1
       NoLsn2Taught
+      NoPersonsTaughtLesson2
       NoLsn3Taught
+      NoPersonsTaughtLesson3
       NoLsn4Taught
+      NoPersonsTaughtLesson4
       NoPersonsTaught
-      NoChlorineLiquid_TabsDistributed
+      NoHouseholdReceivingChlorineSupplies
+      NoLiquidChlorineDistributed
+      NoChlorineTabletsDistributed
+      NoWaterStorageContainersDistributed
+      NoSchoolVisits
+      NoPublicServiceMessagesAired
       Completed
       Lat
       Lng
@@ -1306,12 +1336,22 @@ query SyncVolunteerMonthlySummaries(
       date
       NoWaterSampleTaken
       NoSurveysCompleted
+      NoHealthCheck
       NoLsn1Taught
+      NoPersonsTaughtLesson1
       NoLsn2Taught
+      NoPersonsTaughtLesson2
       NoLsn3Taught
+      NoPersonsTaughtLesson3
       NoLsn4Taught
+      NoPersonsTaughtLesson4
       NoPersonsTaught
-      NoChlorineLiquid_TabsDistributed
+      NoHouseholdReceivingChlorineSupplies
+      NoLiquidChlorineDistributed
+      NoChlorineTabletsDistributed
+      NoWaterStorageContainersDistributed
+      NoSchoolVisits
+      NoPublicServiceMessagesAired
       Completed
       Lat
       Lng
@@ -1333,12 +1373,22 @@ query GetVolunteerMonthlySummary($id: ID!) {
     date
     NoWaterSampleTaken
     NoSurveysCompleted
+    NoHealthCheck
     NoLsn1Taught
+    NoPersonsTaughtLesson1
     NoLsn2Taught
+    NoPersonsTaughtLesson2
     NoLsn3Taught
+    NoPersonsTaughtLesson3
     NoLsn4Taught
+    NoPersonsTaughtLesson4
     NoPersonsTaught
-    NoChlorineLiquid_TabsDistributed
+    NoHouseholdReceivingChlorineSupplies
+    NoLiquidChlorineDistributed
+    NoChlorineTabletsDistributed
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
     Completed
     Lat
     Lng
@@ -1366,12 +1416,22 @@ query ListVolunteerMonthlySummarys(
       date
       NoWaterSampleTaken
       NoSurveysCompleted
+      NoHealthCheck
       NoLsn1Taught
+      NoPersonsTaughtLesson1
       NoLsn2Taught
+      NoPersonsTaughtLesson2
       NoLsn3Taught
+      NoPersonsTaughtLesson3
       NoLsn4Taught
+      NoPersonsTaughtLesson4
       NoPersonsTaught
-      NoChlorineLiquid_TabsDistributed
+      NoHouseholdReceivingChlorineSupplies
+      NoLiquidChlorineDistributed
+      NoChlorineTabletsDistributed
+      NoWaterStorageContainersDistributed
+      NoSchoolVisits
+      NoPublicServiceMessagesAired
       Completed
       Lat
       Lng

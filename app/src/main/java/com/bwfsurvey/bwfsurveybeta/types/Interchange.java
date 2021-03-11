@@ -1,7 +1,5 @@
 package com.bwfsurvey.bwfsurveybeta.types;
 
-import android.util.Log;
-
 import com.amplifyframework.datastore.generated.model.AnswerType;
 
 public class Interchange implements Comparable<Interchange>{

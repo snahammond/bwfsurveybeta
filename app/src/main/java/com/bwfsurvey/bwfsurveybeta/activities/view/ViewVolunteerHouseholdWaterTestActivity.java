@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.AnswerType;
-import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
-import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.ViewOnlyInterchangeCardAdapter;
@@ -61,7 +59,7 @@ public class ViewVolunteerHouseholdWaterTestActivity extends AppCompatActivity {
     private void createViewOnlyInterchangesAndShowOnRecyclerView() {
         Amplify.DataStore.query(
                 VolunteerHouseholdWaterTest.class,
-                Where.matches(FollowUpSurvey.ID.eq(uuidVolunteerHouseholdWaterTest)),
+                Where.matches(VolunteerHouseholdWaterTest.ID.eq(uuidVolunteerHouseholdWaterTest)),
                 volunteerHouseholdWaterTest -> {
                     Log.i("Tutorials", "DataStore is queried.");
                     while (volunteerHouseholdWaterTest.hasNext()) {

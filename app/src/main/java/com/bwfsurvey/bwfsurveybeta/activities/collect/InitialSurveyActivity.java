@@ -1,6 +1,5 @@
 package com.bwfsurvey.bwfsurveybeta.activities.collect;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.CountDownTimer;

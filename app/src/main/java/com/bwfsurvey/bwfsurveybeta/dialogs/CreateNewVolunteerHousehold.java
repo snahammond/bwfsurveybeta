@@ -16,8 +16,6 @@ import androidx.fragment.app.DialogFragment;
 
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
-import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
-import com.bwfsurvey.bwfsurveybeta.activities.AuthenticationActivity;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.example.bwfsurveybeta.R;
 
@@ -39,7 +37,7 @@ public class CreateNewVolunteerHousehold extends DialogFragment {
     }
 
     public interface CreateNewVolunteerHouseholdListener {
-        public void onDialogPositiveClick(DialogFragment dialog,VolunteerHousehold newVolunteerHousehold);
+        public void onDialogPositiveClick(DialogFragment dialog, VolunteerHousehold newVolunteerHousehold);
         public void onDialogNegativeClick(DialogFragment dialog);
     }
 

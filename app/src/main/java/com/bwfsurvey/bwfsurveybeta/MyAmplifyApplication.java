@@ -22,6 +22,7 @@ import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
 import com.amplifyframework.datastore.generated.model.Volunteer;
 import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
 import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
+import com.amplifyframework.datastore.generated.model.VolunteerMonthlySummary;
 import com.bwfsurvey.bwfsurveybeta.types.Answer;
 import com.bwfsurvey.bwfsurveybeta.types.AnswerDef;
 import com.bwfsurvey.bwfsurveybeta.types.AnswerValue;
@@ -97,6 +98,10 @@ public class MyAmplifyApplication extends Application {
                     .syncExpression(
                             SWEMonthlySummary.class,
                             () -> SWEMonthlySummary.NAMEBWE.eq(namebwe)
+                    )
+                    .syncExpression(
+                            VolunteerMonthlySummary.class,
+                            () -> VolunteerMonthlySummary.NAMEBWE.eq(namebwe)
                     )
                     .build()));
             Amplify.addPlugin(new AWSApiPlugin());

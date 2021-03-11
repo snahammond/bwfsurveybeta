@@ -13,10 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
 import com.amplifyframework.datastore.generated.model.VolunteerMonthlySummary;
 import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateVolunteerMonthlySummaryActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.view.ViewSWEMonthlySummaryActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewVolunteerMonthlySummaryActivity;
 import com.example.bwfsurveybeta.R;
 

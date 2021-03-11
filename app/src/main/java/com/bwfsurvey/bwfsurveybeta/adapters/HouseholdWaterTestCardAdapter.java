@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateHouseholdWaterTestActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.view.ViewCommunityWaterTestActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewHouseholdWaterTestActivity;
 import com.example.bwfsurveybeta.R;
 

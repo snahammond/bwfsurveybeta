@@ -493,12 +493,22 @@ mutation CreateSweMonthlySummary(
     SWEPosition
     NoWaterSampleTaken
     NoSurveysCompleted
+    NoHealthCheck
     NoLsn1Taught
+    NoPersonsTaughtLesson1
     NoLsn2Taught
+    NoPersonsTaughtLesson2
     NoLsn3Taught
+    NoPersonsTaughtLesson3
     NoLsn4Taught
+    NoPersonsTaughtLesson4
     NoPersonsTaught
-    NoChlorineLiquid_TabsDistributed
+    NoHouseholdReceivingChlorineSupplies
+    NoLiquidChlorineDistributed
+    NoChlorineTabletsDistributed
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
     Completed
     Lat
     Lng
@@ -520,12 +530,22 @@ mutation UpdateSweMonthlySummary(
     SWEPosition
     NoWaterSampleTaken
     NoSurveysCompleted
+    NoHealthCheck
     NoLsn1Taught
+    NoPersonsTaughtLesson1
     NoLsn2Taught
+    NoPersonsTaughtLesson2
     NoLsn3Taught
+    NoPersonsTaughtLesson3
     NoLsn4Taught
+    NoPersonsTaughtLesson4
     NoPersonsTaught
-    NoChlorineLiquid_TabsDistributed
+    NoHouseholdReceivingChlorineSupplies
+    NoLiquidChlorineDistributed
+    NoChlorineTabletsDistributed
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
     Completed
     Lat
     Lng
@@ -547,12 +567,22 @@ mutation DeleteSweMonthlySummary(
     SWEPosition
     NoWaterSampleTaken
     NoSurveysCompleted
+    NoHealthCheck
     NoLsn1Taught
+    NoPersonsTaughtLesson1
     NoLsn2Taught
+    NoPersonsTaughtLesson2
     NoLsn3Taught
+    NoPersonsTaughtLesson3
     NoLsn4Taught
+    NoPersonsTaughtLesson4
     NoPersonsTaught
-    NoChlorineLiquid_TabsDistributed
+    NoHouseholdReceivingChlorineSupplies
+    NoLiquidChlorineDistributed
+    NoChlorineTabletsDistributed
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
     Completed
     Lat
     Lng
@@ -1114,12 +1144,22 @@ mutation CreateVolunteerMonthlySummary(
     date
     NoWaterSampleTaken
     NoSurveysCompleted
+    NoHealthCheck
     NoLsn1Taught
+    NoPersonsTaughtLesson1
     NoLsn2Taught
+    NoPersonsTaughtLesson2
     NoLsn3Taught
+    NoPersonsTaughtLesson3
     NoLsn4Taught
+    NoPersonsTaughtLesson4
     NoPersonsTaught
-    NoChlorineLiquid_TabsDistributed
+    NoHouseholdReceivingChlorineSupplies
+    NoLiquidChlorineDistributed
+    NoChlorineTabletsDistributed
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
     Completed
     Lat
     Lng
@@ -1141,12 +1181,22 @@ mutation UpdateVolunteerMonthlySummary(
     date
     NoWaterSampleTaken
     NoSurveysCompleted
+    NoHealthCheck
     NoLsn1Taught
+    NoPersonsTaughtLesson1
     NoLsn2Taught
+    NoPersonsTaughtLesson2
     NoLsn3Taught
+    NoPersonsTaughtLesson3
     NoLsn4Taught
+    NoPersonsTaughtLesson4
     NoPersonsTaught
-    NoChlorineLiquid_TabsDistributed
+    NoHouseholdReceivingChlorineSupplies
+    NoLiquidChlorineDistributed
+    NoChlorineTabletsDistributed
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
     Completed
     Lat
     Lng
@@ -1168,12 +1218,22 @@ mutation DeleteVolunteerMonthlySummary(
     date
     NoWaterSampleTaken
     NoSurveysCompleted
+    NoHealthCheck
     NoLsn1Taught
+    NoPersonsTaughtLesson1
     NoLsn2Taught
+    NoPersonsTaughtLesson2
     NoLsn3Taught
+    NoPersonsTaughtLesson3
     NoLsn4Taught
+    NoPersonsTaughtLesson4
     NoPersonsTaught
-    NoChlorineLiquid_TabsDistributed
+    NoHouseholdReceivingChlorineSupplies
+    NoLiquidChlorineDistributed
+    NoChlorineTabletsDistributed
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
     Completed
     Lat
     Lng

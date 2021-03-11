@@ -463,12 +463,22 @@ subscription OnCreateSweMonthlySummary {
     SWEPosition
     NoWaterSampleTaken
     NoSurveysCompleted
+    NoHealthCheck
     NoLsn1Taught
+    NoPersonsTaughtLesson1
     NoLsn2Taught
+    NoPersonsTaughtLesson2
     NoLsn3Taught
+    NoPersonsTaughtLesson3
     NoLsn4Taught
+    NoPersonsTaughtLesson4
     NoPersonsTaught
-    NoChlorineLiquid_TabsDistributed
+    NoHouseholdReceivingChlorineSupplies
+    NoLiquidChlorineDistributed
+    NoChlorineTabletsDistributed
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
     Completed
     Lat
     Lng
@@ -487,12 +497,22 @@ subscription OnUpdateSweMonthlySummary {
     SWEPosition
     NoWaterSampleTaken
     NoSurveysCompleted
+    NoHealthCheck
     NoLsn1Taught
+    NoPersonsTaughtLesson1
     NoLsn2Taught
+    NoPersonsTaughtLesson2
     NoLsn3Taught
+    NoPersonsTaughtLesson3
     NoLsn4Taught
+    NoPersonsTaughtLesson4
     NoPersonsTaught
-    NoChlorineLiquid_TabsDistributed
+    NoHouseholdReceivingChlorineSupplies
+    NoLiquidChlorineDistributed
+    NoChlorineTabletsDistributed
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
     Completed
     Lat
     Lng
@@ -511,12 +531,22 @@ subscription OnDeleteSweMonthlySummary {
     SWEPosition
     NoWaterSampleTaken
     NoSurveysCompleted
+    NoHealthCheck
     NoLsn1Taught
+    NoPersonsTaughtLesson1
     NoLsn2Taught
+    NoPersonsTaughtLesson2
     NoLsn3Taught
+    NoPersonsTaughtLesson3
     NoLsn4Taught
+    NoPersonsTaughtLesson4
     NoPersonsTaught
-    NoChlorineLiquid_TabsDistributed
+    NoHouseholdReceivingChlorineSupplies
+    NoLiquidChlorineDistributed
+    NoChlorineTabletsDistributed
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
     Completed
     Lat
     Lng
@@ -1003,12 +1033,22 @@ subscription OnCreateVolunteerMonthlySummary {
     date
     NoWaterSampleTaken
     NoSurveysCompleted
+    NoHealthCheck
     NoLsn1Taught
+    NoPersonsTaughtLesson1
     NoLsn2Taught
+    NoPersonsTaughtLesson2
     NoLsn3Taught
+    NoPersonsTaughtLesson3
     NoLsn4Taught
+    NoPersonsTaughtLesson4
     NoPersonsTaught
-    NoChlorineLiquid_TabsDistributed
+    NoHouseholdReceivingChlorineSupplies
+    NoLiquidChlorineDistributed
+    NoChlorineTabletsDistributed
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
     Completed
     Lat
     Lng
@@ -1027,12 +1067,22 @@ subscription OnUpdateVolunteerMonthlySummary {
     date
     NoWaterSampleTaken
     NoSurveysCompleted
+    NoHealthCheck
     NoLsn1Taught
+    NoPersonsTaughtLesson1
     NoLsn2Taught
+    NoPersonsTaughtLesson2
     NoLsn3Taught
+    NoPersonsTaughtLesson3
     NoLsn4Taught
+    NoPersonsTaughtLesson4
     NoPersonsTaught
-    NoChlorineLiquid_TabsDistributed
+    NoHouseholdReceivingChlorineSupplies
+    NoLiquidChlorineDistributed
+    NoChlorineTabletsDistributed
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
     Completed
     Lat
     Lng
@@ -1051,12 +1101,22 @@ subscription OnDeleteVolunteerMonthlySummary {
     date
     NoWaterSampleTaken
     NoSurveysCompleted
+    NoHealthCheck
     NoLsn1Taught
+    NoPersonsTaughtLesson1
     NoLsn2Taught
+    NoPersonsTaughtLesson2
     NoLsn3Taught
+    NoPersonsTaughtLesson3
     NoLsn4Taught
+    NoPersonsTaughtLesson4
     NoPersonsTaught
-    NoChlorineLiquid_TabsDistributed
+    NoHouseholdReceivingChlorineSupplies
+    NoLiquidChlorineDistributed
+    NoChlorineTabletsDistributed
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
     Completed
     Lat
     Lng

@@ -13,13 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
-import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdWaterTestCardSelectActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdWaterTestCardSelectActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateHouseholdWaterTestActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateVolunteerHouseholdWaterTestActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.view.ViewHouseholdWaterTestActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewVolunteerHouseholdWaterTestActivity;
 import com.example.bwfsurveybeta.R;
 

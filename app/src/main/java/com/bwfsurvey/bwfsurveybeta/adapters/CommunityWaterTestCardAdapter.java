@@ -17,7 +17,6 @@ import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
 import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateCommunityWaterTestActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewCommunityWaterTestActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.view.ViewFollowUpSurveyActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;

@@ -60,7 +60,7 @@ public class ViewHealthCheckSurveyActivity extends AppCompatActivity {
     private void createViewOnlyInterchangesAndShowOnRecyclerView() {
         Amplify.DataStore.query(
                 HealthCheckSurvey.class,
-                Where.matches(FollowUpSurvey.ID.eq(uuidHealthCheckSurvey)),
+                Where.matches(HealthCheckSurvey.ID.eq(uuidHealthCheckSurvey)),
                 healthCheckSurvey -> {
                     Log.i("Tutorials", "DataStore is queried.");
                     while (healthCheckSurvey.hasNext()) {

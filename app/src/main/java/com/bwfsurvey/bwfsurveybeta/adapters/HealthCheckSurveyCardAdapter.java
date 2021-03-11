@@ -13,10 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
 import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateHealthCheckSurveyActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.view.ViewFollowUpSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewHealthCheckSurveyActivity;
 import com.example.bwfsurveybeta.R;
 

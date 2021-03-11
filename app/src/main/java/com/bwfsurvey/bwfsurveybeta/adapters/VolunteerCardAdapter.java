@@ -18,7 +18,6 @@ import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerCardSelectActivity
 import com.bwfsurvey.bwfsurveybeta.activities.collect.VolunteerHouseholdWaterSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.collect.VolunteerMonthlySummaryActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerMonthlySummaryCardSelectActivity;
-import com.bwfsurvey.bwfsurveybeta.activities.view.ViewSWEMonthlySummaryActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -452,7 +453,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
             if(possibleAnss.size()>0){
                 radio_1.setVisibility(View.VISIBLE);
-                radio_1.setText(possibleAnss.get(0).getDesc());
+                radio_1.setText(Html.fromHtml(possibleAnss.get(0).getDesc()));
                 radio_1.setHint(possibleAnss.get(0).getValue());
                 if(selectedOption!=null){
                     if(possibleAnss.get(0).getValue().contentEquals(selectedOption)){
@@ -464,7 +465,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             if(possibleAnss.size()>1){
                 radio_2.setVisibility(View.VISIBLE);
                 radio_2.setChecked(false);
-                radio_2.setText( possibleAnss.get(1).getDesc());
+                radio_2.setText(Html.fromHtml( possibleAnss.get(1).getDesc()));
                 radio_2.setHint(possibleAnss.get(1).getValue());
                 if(selectedOption!=null) {
                     if (possibleAnss.get(1).getValue().contentEquals(selectedOption))
@@ -475,7 +476,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             if(possibleAnss.size()>2){
                 radio_3.setVisibility(View.VISIBLE);
                 radio_3.setChecked(false);
-                radio_3.setText( possibleAnss.get(2).getDesc());
+                radio_3.setText( Html.fromHtml(possibleAnss.get(2).getDesc()));
                 radio_3.setHint(possibleAnss.get(2).getValue());
                 if(selectedOption!=null) {
                     if(possibleAnss.get(2).getValue().contentEquals(selectedOption))
@@ -486,7 +487,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             if(possibleAnss.size()>3){
                 radio_4.setVisibility(View.VISIBLE);
                 radio_4.setChecked(false);
-                radio_4.setText( possibleAnss.get(3).getDesc());
+                radio_4.setText( Html.fromHtml(possibleAnss.get(3).getDesc()));
                 radio_4.setHint(possibleAnss.get(3).getValue());
                 if(selectedOption!=null) {
                     if(possibleAnss.get(3).getValue().contentEquals(selectedOption))
@@ -497,7 +498,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             if(possibleAnss.size()>4){
                 radio_5.setVisibility(View.VISIBLE);
                 radio_5.setChecked(false);
-                radio_5.setText( possibleAnss.get(4).getDesc());
+                radio_5.setText( Html.fromHtml(possibleAnss.get(4).getDesc()));
                 radio_5.setHint(possibleAnss.get(4).getValue());
                 if(selectedOption!=null) {
                     if(possibleAnss.get(4).getValue().contentEquals(selectedOption))
@@ -508,7 +509,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             if(possibleAnss.size()>5){
                 radio_6.setVisibility(View.VISIBLE);
                 radio_6.setChecked(false);
-                radio_6.setText( possibleAnss.get(5).getDesc());
+                radio_6.setText( Html.fromHtml(possibleAnss.get(5).getDesc()));
                 radio_6.setHint(possibleAnss.get(5).getValue());
                 if(selectedOption!=null) {
                     if(possibleAnss.get(5).getValue().contentEquals(selectedOption))
@@ -519,7 +520,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             if(possibleAnss.size()>6){
                 radio_7.setVisibility(View.VISIBLE);
                 radio_7.setChecked(false);
-                radio_7.setText( possibleAnss.get(6).getDesc());
+                radio_7.setText( Html.fromHtml(possibleAnss.get(6).getDesc()));
                 radio_7.setHint(possibleAnss.get(6).getValue());
                 if(selectedOption!=null) {
                     if(possibleAnss.get(6).getValue().contentEquals(selectedOption))
@@ -531,7 +532,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             if(possibleAnss.size()>7){
                 radio_8.setVisibility(View.VISIBLE);
                 radio_8.setChecked(false);
-                radio_8.setText( possibleAnss.get(7).getDesc());
+                radio_8.setText( Html.fromHtml(possibleAnss.get(7).getDesc()));
                 radio_8.setHint(possibleAnss.get(7).getValue());
                 if(selectedOption!=null) {
                     if(possibleAnss.get(7).getValue().contentEquals(selectedOption))
@@ -543,7 +544,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             if(possibleAnss.size()>8){
                 radio_9.setVisibility(View.VISIBLE);
                 radio_9.setChecked(false);
-                radio_9.setText( possibleAnss.get(8).getDesc());
+                radio_9.setText( Html.fromHtml(possibleAnss.get(8).getDesc()));
                 radio_9.setHint(possibleAnss.get(8).getValue());
                 if(selectedOption!=null) {
                     if(possibleAnss.get(8).getValue().contentEquals(selectedOption))
@@ -554,7 +555,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             if(possibleAnss.size()>9){
                 radio_10.setVisibility(View.VISIBLE);
                 radio_10.setChecked(false);
-                radio_10.setText( possibleAnss.get(9).getDesc());
+                radio_10.setText( Html.fromHtml(possibleAnss.get(9).getDesc()));
                 radio_10.setHint(possibleAnss.get(9).getValue());
                 if(selectedOption!=null) {
                     if(possibleAnss.get(9).getValue().contentEquals(selectedOption))

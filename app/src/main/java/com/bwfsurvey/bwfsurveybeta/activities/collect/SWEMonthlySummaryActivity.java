@@ -243,12 +243,22 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
         String SwePosition = positionbwe;
         Integer NoWaterSampleTaken = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoWaterSampleTaken",interchangesWithUserAns),0);
         Integer NoSurveysCompleted = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoSurveysCompleted",interchangesWithUserAns),0);
+        Integer NoHealthCheck = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoHealthCheck",interchangesWithUserAns),0);
         Integer NoLsn1Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn1Taught",interchangesWithUserAns),0);
+        Integer NoPersonsTaughtLesson1 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson1",interchangesWithUserAns),0);
         Integer NoLsn2Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn2Taught",interchangesWithUserAns),0);
+        Integer NoPersonsTaughtLesson2 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson2",interchangesWithUserAns),0);
         Integer NoLsn3Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn3Taught",interchangesWithUserAns),0);
+        Integer NoPersonsTaughtLesson3 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson3",interchangesWithUserAns),0);
         Integer NoLsn4Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn4Taught",interchangesWithUserAns),0);
+        Integer NoPersonsTaughtLesson4 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson4",interchangesWithUserAns),0);
         Integer NoPersonsTaught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaught",interchangesWithUserAns),0);
-        Integer NoChlorineLiquidTabsDistributed = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoChlorineLiquid_TabsDistributed",interchangesWithUserAns),0);
+        Integer NoHouseholdReceivingChlorineSupplies = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoHouseholdReceivingChlorineSupplies",interchangesWithUserAns),0);
+        Integer NoLiquidChlorineDistributed = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLiquidChlorineDistributed",interchangesWithUserAns),0);
+        Integer NoChlorineTabletsDistributed = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoChlorineTabletsDistributed",interchangesWithUserAns),0);
+        Integer NoWaterStorageContainersDistributed = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoWaterStorageContainersDistributed",interchangesWithUserAns),0);
+        Integer NoSchoolVisits = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoSchoolVisits",interchangesWithUserAns),0);
+        Integer NoPublicServiceMessagesAired = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPublicServiceMessagesAired",interchangesWithUserAns),0);
         Temporal.Date date = new Temporal.Date(date_s);
 
         SWEMonthlySummary sweMonthlySummary = SWEMonthlySummary.builder()
@@ -256,12 +266,22 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
                 .swePosition(SwePosition)
                 .noWaterSampleTaken(NoWaterSampleTaken)
                 .noSurveysCompleted(NoSurveysCompleted)
+                .noHealthCheck(NoHealthCheck)
                 .noLsn1Taught(NoLsn1Taught)
+                .noPersonsTaughtLesson1(NoPersonsTaughtLesson1)
                 .noLsn2Taught(NoLsn2Taught)
+                .noPersonsTaughtLesson2(NoPersonsTaughtLesson2)
                 .noLsn3Taught(NoLsn3Taught)
+                .noPersonsTaughtLesson3(NoPersonsTaughtLesson3)
                 .noLsn4Taught(NoLsn4Taught)
+                .noPersonsTaughtLesson4(NoPersonsTaughtLesson4)
                 .noPersonsTaught(NoPersonsTaught)
-                .noChlorineLiquidTabsDistributed(NoChlorineLiquidTabsDistributed)
+                .noHouseholdReceivingChlorineSupplies(NoHouseholdReceivingChlorineSupplies)
+                .noLiquidChlorineDistributed(NoLiquidChlorineDistributed)
+                .noChlorineTabletsDistributed(NoChlorineTabletsDistributed)
+                .noWaterStorageContainersDistributed(NoWaterStorageContainersDistributed)
+                .noSchoolVisits(NoSchoolVisits)
+                .noPublicServiceMessagesAired(NoPublicServiceMessagesAired)
                 .completed(completed)
                 .lat(lat)
                 .lng(lng)
