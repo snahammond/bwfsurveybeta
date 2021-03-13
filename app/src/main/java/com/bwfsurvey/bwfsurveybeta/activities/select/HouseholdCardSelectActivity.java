@@ -148,6 +148,9 @@ public class HouseholdCardSelectActivity extends AppCompatActivity {
             countDownTimer.start();
         }else{
             String msg = "No initial family survey found, please complete as least one initial survey";
+            if(operation.contentEquals("UPDATE")){
+                msg = "No suspended data for initial family survey found.";
+            }
             ListUtils.showZeroListAlert(msg,HouseholdCardSelectActivity.this);
         }
 

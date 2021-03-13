@@ -33,7 +33,7 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>I</type>
-    <value>21</value>
+    <value>20</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -134,18 +134,6 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>1</childvalue>
-    <desc>Always</desc>
-    <name>FrequencyWaterTreatment</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>AV</type>
-    <value>ALWAYS</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
     <childvalue></childvalue>
     <desc></desc>
     <name>NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek</name>
@@ -154,6 +142,18 @@
     <parentvalue></parentvalue>
     <type>I</type>
     <value>46</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue>6</childvalue>
+    <desc>Some Sr. High School</desc>
+    <name>HeadHouseholdEducation</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>AV</type>
+    <value>SOMESRHIGHSCHOOL</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -195,7 +195,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc>Number of lesson 3 (Washing Hands) taught</desc>
+    <desc>Number of lesson 3 (Washing Hands) taught this month</desc>
     <name>NoLsn3Taught</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -327,7 +327,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc>Number of lesson 1 (Is My Water Safe) taught</desc>
+    <desc>Number of lesson 1 (Is My Water Safe) taught this month</desc>
     <name>NoLsn1Taught</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -466,6 +466,18 @@
     <parentvalue></parentvalue>
     <type>AD</type>
     <value>NUMBERVALUE</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue>3</childvalue>
+    <desc>A variety of ways are used for taking water from the storage container by household member</desc>
+    <name>TakingWaterFromStorage</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>AV</type>
+    <value>VARIETYWAYSUSED</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -1000,18 +1012,6 @@
     <childname></childname>
     <childvalue></childvalue>
     <desc></desc>
-    <name>HeadHouseholdEducation</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>I</type>
-    <value>10</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
-    <childvalue></childvalue>
-    <desc></desc>
     <name>NoLsn1Taught</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -1023,7 +1023,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue>9</childvalue>
-    <desc>Some of the options</desc>
+    <desc>After some of the applicable options above</desc>
     <name>WhenWashedHandsIn24Hours</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -1167,13 +1167,13 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue>3</childvalue>
-    <desc>Completed primary education</desc>
+    <desc>Completed primary school</desc>
     <name>HeadHouseholdEducation</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>AV</type>
-    <value>COMPLETEDPRIMARYEDUCATION</value>
+    <value>COMPLETEDPRIMARYSCHOOL</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -1209,7 +1209,7 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>I</type>
-    <value>14</value>
+    <value>13</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -1274,8 +1274,20 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
+    <childvalue>1</childvalue>
+    <desc>Always</desc>
+    <name>FrequencyWaterTreatment</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>AV</type>
+    <value>ALWAYS</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
     <childvalue></childvalue>
-    <desc>In the last two weeks (14 days), how many school-age children in your household had vomiting and/or diarrhea?</desc>
+    <desc>In the last two weeks (14 days), how many school-age children in your household experienced vomiting and/or diarrhea? (number of children)</desc>
     <name>NoChildrenWithVomitingOrDiarrheaIn14days</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -1335,7 +1347,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc>What are the most common illnesses affecting all children in this household?</desc>
+    <desc>What are the three most common illnesses affecting all children in this household?</desc>
     <name>CommonIllnessAffectingAllChildrenInHousehold</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -1347,7 +1359,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc>In the last two weeks, how many total schooldays have school-age children in this household missed due to illness?</desc>
+    <desc>In the last two weeks, how many total school days have school-age children in this household missed due to illness? (No. of days)</desc>
     <name>NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -1514,7 +1526,7 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>5</childvalue>
+    <childvalue>6</childvalue>
     <desc>Don&#8217;t know</desc>
     <name>TakingWaterFromStorage</name>
     <parentdesc></parentdesc>
@@ -1670,18 +1682,6 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>3</childvalue>
-    <desc>Pain killer</desc>
-    <name>DidSickChildrenGoToHospitalYes</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>AV</type>
-    <value>PAINKILLER</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
     <childvalue></childvalue>
     <desc></desc>
     <name>NoHouseholdFemale5_12Year</name>
@@ -1689,7 +1689,7 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>I</type>
-    <value>18</value>
+    <value>17</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -1875,7 +1875,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue>1</childvalue>
-    <desc>Rubbish pit or garbage pail</desc>
+    <desc>Household Rubbish pit or garbage pail</desc>
     <name>RubbishDisposal</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -2018,8 +2018,8 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>1</childvalue>
-    <desc>A clean cup/dipper is used only for pouring stored water into other containers for drinking</desc>
+    <childvalue>4</childvalue>
+    <desc>A dedicated, clean cup or dipper is used for taking stored water from the storage container forpouring into another glass/cup for drinking</desc>
     <name>TakingWaterFromStorage</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -2090,18 +2090,6 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>2</childvalue>
-    <desc>No</desc>
-    <name>WashedHandsIn24Hours</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>AV</type>
-    <value>NO</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
     <childvalue></childvalue>
     <desc></desc>
     <name>ColilertTestResult</name>
@@ -2126,7 +2114,7 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>4</childvalue>
+    <childvalue>2</childvalue>
     <desc>Compost/in garden/give to animals</desc>
     <name>RubbishDisposal</name>
     <parentdesc></parentdesc>
@@ -2151,7 +2139,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue>2</childvalue>
-    <desc>Adult man</desc>
+    <desc>Male &gt; 15 years</desc>
     <name>UsualHouseholdWaterFetcher</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -2163,7 +2151,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue>1</childvalue>
-    <desc>Adult woman</desc>
+    <desc>Female &gt; 15 years</desc>
     <name>UsualHouseholdWaterFetcher</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -2234,8 +2222,32 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
+    <childvalue>4</childvalue>
+    <desc>Let stand and settle only</desc>
+    <name>WaterTreatmentMethod</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>AV</type>
+    <value>LETSTANDANDSETTLEONLY</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
     <childvalue></childvalue>
-    <desc>How much was spent by members of this household for medical treatment for these illnesses in the last four (4) weeks?</desc>
+    <desc></desc>
+    <name>HeadHouseholdEducation</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>I</type>
+    <value>10</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue></childvalue>
+    <desc>How much money was spent by members of this household for medical treatment for these illnesses in the last four (4) weeks? (in local currency)</desc>
     <name>MoneySpentMedicalTreatmentLast4weeks</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -2326,18 +2338,6 @@
     <parentvalue></parentvalue>
     <type>AD</type>
     <value>DATEVALUE</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
-    <childvalue>1</childvalue>
-    <desc>Let stand and settle, strain thru a cloth and Boil</desc>
-    <name>WaterTreatment24HourMethod</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>AV</type>
-    <value>LETSTANDANDSETTLESTRAINTHRUACLOTHANDBOIL</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -2630,18 +2630,6 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>2</childvalue>
-    <desc>Hot water only</desc>
-    <name>WhatUsedToWashYourHands</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>AV</type>
-    <value>HOTWATER</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
     <childvalue>4</childvalue>
     <desc>Protected/Covered Hand-dug well</desc>
     <name>MainSourceDrinkingWater</name>
@@ -2739,7 +2727,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc>Head of Household Name</desc>
+    <desc>Head of Household Name (Last Name, Given Name &#8211; Example: Boadu, Benjamin)</desc>
     <name>HeadHouseholdName</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -2811,7 +2799,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc>Is the young child(ren) who was ill breastfeeding?</desc>
+    <desc>Is the young child(ren) [&lt; 5 years] who was ill breastfeeding?</desc>
     <name>SickChildrenBreastfeeding</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -2841,7 +2829,7 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>I</type>
-    <value>19</value>
+    <value>18</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -2858,8 +2846,8 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>2</childvalue>
-    <desc>Scatter/litter on the ground</desc>
+    <childvalue>4</childvalue>
+    <desc>Scatter/littered on the ground</desc>
     <name>RubbishDisposal</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -2870,8 +2858,8 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>6</childvalue>
-    <desc>Use chlorine tablets</desc>
+    <childvalue>7</childvalue>
+    <desc>Add chlorine tablets</desc>
     <name>WaterTreatmentMethod</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -2925,7 +2913,7 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>I</type>
-    <value>12</value>
+    <value>22</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -2962,6 +2950,18 @@
     <parentvalue></parentvalue>
     <type>AV</type>
     <value>SCHOOLTOOFARAWAY</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue>3</childvalue>
+    <desc>Pain killer</desc>
+    <name>DidSickChildrenGoToHospitalYes</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>AV</type>
+    <value>PAINKILLER</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -3039,30 +3039,6 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc>What level of benefit has taking part in the safe water education program been to you and your household?</desc>
-    <name>BenefitSWP</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>Q</type>
-    <value>BenefitSWP</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
-    <childvalue>1</childvalue>
-    <desc>Yes</desc>
-    <name>WaterTreatment24Hours</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>AV</type>
-    <value>YES</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
-    <childvalue></childvalue>
     <desc></desc>
     <name>CommonIllnessAffectingAllChildrenInHousehold</name>
     <parentdesc></parentdesc>
@@ -3105,12 +3081,12 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>I</type>
-    <value>13</value>
+    <value>12</value>
   </config>
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>8</childvalue>
+    <childvalue>9</childvalue>
     <desc>Not applicable</desc>
     <name>WaterTreatmentMethod</name>
     <parentdesc></parentdesc>
@@ -3206,8 +3182,20 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
+    <childvalue>2</childvalue>
+    <desc>No</desc>
+    <name>WashedHandsIn24Hours</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>AV</type>
+    <value>NO</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
     <childvalue></childvalue>
-    <desc>Where do you store the water you drink in the home? (If practical, ask to see where the water is stored for drinking.)</desc>
+    <desc>Where do you store the water you drink in the home? (If possible, ask to see where the water is stored for drinking.)</desc>
     <name>WaterStorageAtHome</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -3219,7 +3207,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc>How do members of the household take water from the storage vessel?</desc>
+    <desc>How do members of your household take water from the home storage container?</desc>
     <name>TakingWaterFromStorage</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -3249,7 +3237,7 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>I</type>
-    <value>20</value>
+    <value>19</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -3291,13 +3279,13 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue>4</childvalue>
-    <desc>Some secondary education</desc>
+    <desc>Some Jr. High school</desc>
     <name>HeadHouseholdEducation</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>AV</type>
-    <value>SOMESECONDARYEDUCATION</value>
+    <value>SOMEJRHIGHSCHOOL</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -3566,6 +3554,18 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
+    <childvalue>1</childvalue>
+    <desc>Let stand and settle, strain thru a cloth and Boil</desc>
+    <name>WaterTreatment24HourMethod</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>AV</type>
+    <value>LETSTANDANDSETTLESTRAINTHRUACLOTHANDBOIL</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
     <childvalue>6</childvalue>
     <desc>Not applicable</desc>
     <name>HowLongUsingWaterTreatment</name>
@@ -3614,8 +3614,8 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>3</childvalue>
-    <desc>One cup/dipper is used by all members for taking water for drinking</desc>
+    <childvalue>2</childvalue>
+    <desc>The same cup/dipper is used by all members for taking water for drinking</desc>
     <name>TakingWaterFromStorage</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -3735,13 +3735,13 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue>2</childvalue>
-    <desc>Some primary education</desc>
+    <desc>Some primary school</desc>
     <name>HeadHouseholdEducation</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>AV</type>
-    <value>SOMEPRIMARYEDUCATION</value>
+    <value>SOMEPRIMARYSCHOOL</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -3850,6 +3850,18 @@
     <parentvalue></parentvalue>
     <type>Q</type>
     <value>NoPersonsTaught</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue>2</childvalue>
+    <desc>Hot water only</desc>
+    <name>WhatUsedToWashYourHands</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>AV</type>
+    <value>HOTWATER</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -3963,13 +3975,13 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue>5</childvalue>
-    <desc>Completed Jr. High</desc>
+    <desc>Completed Jr. High school</desc>
     <name>HeadHouseholdEducation</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>AV</type>
-    <value>COMPLETEDJRHIGH</value>
+    <value>COMPLETEDJRHIGHSCHOOL</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -4053,7 +4065,7 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>I</type>
-    <value>17</value>
+    <value>16</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -4197,31 +4209,19 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>I</type>
-    <value>16</value>
+    <value>15</value>
   </config>
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>2</childvalue>
-    <desc>Each person uses their own cup or their hands to take water from the storage vessel</desc>
+    <childvalue>1</childvalue>
+    <desc>Each person uses their own cup or their hands to take water from the storage container</desc>
     <name>TakingWaterFromStorage</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>AV</type>
     <value>EACHPERSONUSESOWNCUP</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
-    <childvalue></childvalue>
-    <desc></desc>
-    <name>NoLsn3Taught</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>I</type>
-    <value>104</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -4251,7 +4251,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc>In the last two weeks, how many days have you been unable to do work due to your own stomach pain/diarrhea illness?</desc>
+    <desc>In the last two weeks, how many days have you personally been unable to do work due to your own stomach pain/diarrhea illness?</desc>
     <name>NoDaysNoWorkBecauseOfOwnIllness</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -4285,18 +4285,6 @@
   </config>
   <config>
     <childdesc></childdesc>
-    <childname></childname>
-    <childvalue>1</childvalue>
-    <desc>Father</desc>
-    <name>PersonBeingInterviewed</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>AV</type>
-    <value>FATHER</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
     <childname>order</childname>
     <childvalue>2</childvalue>
     <desc>Single</desc>
@@ -4323,6 +4311,18 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
+    <desc>What level of benefit has taking part in the safe water education program been to you and your household?</desc>
+    <name>BenefitSWP</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>Q</type>
+    <value>BenefitSWP</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue></childvalue>
     <desc></desc>
     <name>NoChildrenWithVomitingOrDiarrheaIn14days</name>
     <parentdesc></parentdesc>
@@ -4342,6 +4342,18 @@
     <parentvalue></parentvalue>
     <type>AD</type>
     <value>NUMBERVALUE</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue>1</childvalue>
+    <desc>Yes</desc>
+    <name>WaterTreatment24Hours</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>AV</type>
+    <value>YES</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -4418,7 +4430,7 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>5</childvalue>
+    <childvalue>6</childvalue>
     <desc>Add liquid bleach/chlorine</desc>
     <name>WaterTreatmentMethod</name>
     <parentdesc></parentdesc>
@@ -4426,18 +4438,6 @@
     <parentvalue></parentvalue>
     <type>AV</type>
     <value>ADDLIQUIDBLEACH_CHLORINE</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
-    <childvalue>1</childvalue>
-    <desc>Yes</desc>
-    <name>WashedHandsIn24Hours</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>AV</type>
-    <value>YES</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -4454,7 +4454,7 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>4</childvalue>
+    <childvalue>5</childvalue>
     <desc>Boil</desc>
     <name>WaterTreatmentMethod</name>
     <parentdesc></parentdesc>
@@ -4485,7 +4485,7 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>I</type>
-    <value>22</value>
+    <value>21</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -4623,7 +4623,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc></desc>
+    <desc>(If Yes, go to 32)</desc>
     <name>WaterTreatmentBeforeDrinking</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -4827,7 +4827,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue>8</childvalue>
-    <desc>All of the options</desc>
+    <desc>After all applicable options above</desc>
     <name>WhenWashedHandsIn24Hours</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -4839,7 +4839,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc></desc>
+    <desc>17</desc>
     <name>HeadHouseholdAge</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -5006,14 +5006,14 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>6</childvalue>
-    <desc>Completed Secondary</desc>
+    <childvalue>7</childvalue>
+    <desc>Completed Sr. High School</desc>
     <name>HeadHouseholdEducation</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>AV</type>
-    <value>COMPLETEDSECONDARY</value>
+    <value>COMPLETEDSRHIGHSCHOOL</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -5114,18 +5114,6 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>7</childvalue>
-    <desc>Completed more than Secondary</desc>
-    <name>HeadHouseholdEducation</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>AV</type>
-    <value>COMPLETEDMORETHANSECONDARY</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
     <childvalue></childvalue>
     <desc></desc>
     <name>RubbishDisposal</name>
@@ -5210,8 +5198,8 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>7</childvalue>
-    <desc>Use a water filter</desc>
+    <childvalue>8</childvalue>
+    <desc>Move water thru filter</desc>
     <name>WaterTreatmentMethod</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -5282,18 +5270,6 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue></childvalue>
-    <desc></desc>
-    <name>UsualHouseholdWaterFetcher</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>V</type>
-    <value>1</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
     <childvalue>7</childvalue>
     <desc>Don&#8217;t know</desc>
     <name>MainReasonNoWaterTreatmentBeforeDrinking</name>
@@ -5354,6 +5330,18 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
+    <childvalue></childvalue>
+    <desc></desc>
+    <name>NoLsn3Taught</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>I</type>
+    <value>104</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
     <childvalue>10</childvalue>
     <desc>Not applicable</desc>
     <name>CommonIllnessAffectingAllChildrenInHousehold</name>
@@ -5386,6 +5374,18 @@
     <parentvalue></parentvalue>
     <type>V</type>
     <value>1</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue>1</childvalue>
+    <desc>Father</desc>
+    <name>PersonBeingInterviewed</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>AV</type>
+    <value>FATHER</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -5486,7 +5486,7 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue>4</childvalue>
+    <childvalue>5</childvalue>
     <desc>Water is taken by opening the spigot on the container</desc>
     <name>TakingWaterFromStorage</name>
     <parentdesc></parentdesc>
@@ -5499,7 +5499,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc>If you treat your water, how long have you been using these methods?</desc>
+    <desc>(if the answer to #30 was NO, skip this question) If you treat your water, how long have you been using these methods?</desc>
     <name>HowLongUsingWaterTreatment</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -5614,6 +5614,18 @@
     <parentvalue></parentvalue>
     <type>I</type>
     <value>47</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue>1</childvalue>
+    <desc>Yes</desc>
+    <name>WashedHandsIn24Hours</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>AV</type>
+    <value>YES</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -5990,18 +6002,6 @@
   <config>
     <childdesc></childdesc>
     <childname></childname>
-    <childvalue></childvalue>
-    <desc></desc>
-    <name>NoChlorineLiquid_TabsDistributed</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>V</type>
-    <value>0</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
     <childvalue>3</childvalue>
     <desc>Stayed the same since last year</desc>
     <name>HealthChangeFamilyInAYear</name>
@@ -6015,7 +6015,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc>How long does it take to go to the water source, get water, and return?</desc>
+    <desc>How long does it take to go to the water source, get water, and return (in No. of Minutes)?</desc>
     <name>TimeToWaterSourceGetReturn</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -6027,7 +6027,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc>Number of lesson 4 (Benefits of Safe Water) taught</desc>
+    <desc>Number of lesson 4 (Benefits of Safe Water) taught this month</desc>
     <name>NoLsn4Taught</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -6099,7 +6099,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc>Number of lesson 2 (Testing and Treating Water) taught</desc>
+    <desc>Number of lesson 2 (Testing and Treating Water) taught this month</desc>
     <name>NoLsn2Taught</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -6118,6 +6118,18 @@
     <parentvalue></parentvalue>
     <type>V</type>
     <value>0</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue>8</childvalue>
+    <desc>Some education beyond High School</desc>
+    <name>HeadHouseholdEducation</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>AV</type>
+    <value>SOMEEDUCATIONBEYONDHIGHSCHOOL</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -6165,7 +6177,7 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>I</type>
-    <value>15</value>
+    <value>14</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -6190,6 +6202,18 @@
     <parentvalue></parentvalue>
     <type>AV</type>
     <value>PLASTICBARREL</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue></childvalue>
+    <desc></desc>
+    <name>UsualHouseholdWaterFetcher</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>V</type>
+    <value>1</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -6255,7 +6279,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc></desc>
+    <desc>1</desc>
     <name>TotalNoPeopleHousehold</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -6358,6 +6382,18 @@
     <parentvalue></parentvalue>
     <type>Q</type>
     <value>WaterTreatment24HourMethod</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue></childvalue>
+    <desc></desc>
+    <name>NoChlorineLiquid_TabsDistributed</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>V</type>
+    <value>0</value>
   </config>
   <config>
     <childdesc></childdesc>

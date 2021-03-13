@@ -172,7 +172,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     }
                     _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((int)myNum);
 
-                    //custom code
+                    //custom code automated TotalNoPeopleHousehold
                     if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoHouseholdMale0_1Year")){
                         updateTotalNoPeopleHousehold();
                     }
@@ -212,7 +212,25 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoHouseholdFemale18_Year")){
                         updateTotalNoPeopleHousehold();
                     }
+                    //End custom code automated TotalNoPeopleHousehold
 
+                    //custom code automated NoPersonsTaught
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoPersonsTaughtLesson1")){
+                        updateTotalNoPersonsTaught();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoPersonsTaughtLesson2")){
+                        updateTotalNoPersonsTaught();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoPersonsTaughtLesson3")){
+                        updateTotalNoPersonsTaught();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoPersonsTaughtLesson4")){
+                        updateTotalNoPersonsTaught();
+                    }
+                    //custom code automated NoPersonsTaught
                 }
             });
 
@@ -232,6 +250,11 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             }
 
             if(interchange.getName().contentEquals("TotalNoPeopleHousehold")){
+                editAnswer.setEnabled(false);
+                editAnswer.setText(String.valueOf(_retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns()));
+            }
+
+            if(interchange.getName().contentEquals("NoPersonsTaught")){
                 editAnswer.setEnabled(false);
                 editAnswer.setText(String.valueOf(_retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns()));
             }
@@ -271,16 +294,38 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                             editAnswerTotal.setEnabled(false);
                             editAnswerTotal.setText(String.valueOf(TotalNoPeopleHousehold));
                         }
-
                     }
-
                 }
             }
+        }
 
+        private void updateTotalNoPersonsTaught(){
+            for(Interchange interchange : _retInterchangesWithAns){
+                if(interchange.getName().contentEquals("NoPersonsTaught")){
+                    Integer NoPersonsTaughtLesson1 = getInterchangeAns("NoPersonsTaughtLesson1");
+                    Integer NoPersonsTaughtLesson2 = getInterchangeAns("NoPersonsTaughtLesson2");
+                    Integer NoPersonsTaughtLesson3 = getInterchangeAns("NoPersonsTaughtLesson3");
+                    Integer NoPersonsTaughtLesson4 = getInterchangeAns("NoPersonsTaughtLesson4");
 
-            //this is the total guy; we need to change as require
+                    int NoPersonsTaught = NoPersonsTaughtLesson1 + NoPersonsTaughtLesson2
+                            + NoPersonsTaughtLesson3 + NoPersonsTaughtLesson4;
+                    //_retInterchangesWithAns.get(interchange.getPositionOnRecyler()).getAnswer().setAns(currentAnsInTotal+myNum);
+                    interchange.getAnswer().setAns(NoPersonsTaught);
 
-
+                    RecyclerView.ViewHolder totalViewHolder = mRecyclerView.findViewHolderForAdapterPosition(11);
+                    if(totalViewHolder!=null){
+                        TextView interchangeNumberTotal = (TextView)totalViewHolder.itemView.findViewById(R.id.interchangeNumber);
+                        TextView editAnswerTotal = (TextView)totalViewHolder.itemView.findViewById(R.id.editAnswer);
+                        TextView txtQuestion = (TextView)totalViewHolder.itemView.findViewById(R.id.txtQuestion);
+                        Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
+                        if(txtQuestion.getText().toString().contains("Total")){
+                            Log.i("Tutorial", "interchangeNumberTotal : "+ interchangeNumberTotal.getText() );
+                            editAnswerTotal.setEnabled(false);
+                            editAnswerTotal.setText(String.valueOf(NoPersonsTaught));
+                        }
+                    }
+                }
+            }
         }
 
         private int getInterchangeAns(String interchangeName){
@@ -298,7 +343,6 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             }
             return ans;
         }
-
 
     }
 
@@ -850,15 +894,18 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                         _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansAlreadyPresent);
                         Log.i("Tutorial", "ansAlreadyPresent: "+ ansAlreadyPresent  );
                     }else{
-                        String[]  ansAlreadyPresentStrArr = ansAlreadyPresent.split(",");
-                        String ansToWrite = "";
-                        for(String anAnswer : ansAlreadyPresentStrArr){
-                            if(!anAnswer.contentEquals(selectedEnumMulStrValue)){
-                                ansToWrite = ansToWrite + anAnswer + ",";
+                        if(ansAlreadyPresent!=null){
+                            String[]  ansAlreadyPresentStrArr = ansAlreadyPresent.split(",");
+                            String ansToWrite = "";
+                            for(String anAnswer : ansAlreadyPresentStrArr){
+                                if(!anAnswer.contentEquals(selectedEnumMulStrValue)){
+                                    ansToWrite = ansToWrite + anAnswer + ",";
+                                }
                             }
+                            _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansToWrite);
+                            Log.i("Tutorial", "ansToWrite: "+ ansToWrite  );
                         }
-                        _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(ansToWrite);
-                        Log.i("Tutorial", "ansToWrite: "+ ansToWrite  );
+
                     }
                 }
             });
@@ -1144,6 +1191,16 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             checkbox_9.setVisibility(View.GONE);
             checkbox_10.setVisibility(View.GONE);
 
+            checkbox_1.setChecked(false);
+            checkbox_2.setChecked(false);
+            checkbox_3.setChecked(false);
+            checkbox_4.setChecked(false);
+            checkbox_5.setChecked(false);
+            checkbox_6.setChecked(false);
+            checkbox_7.setChecked(false);
+            checkbox_8.setChecked(false);
+            checkbox_9.setChecked(false);
+            checkbox_10.setChecked(false);
 
             if(possibleAnss.size()>0){
                 checkbox_1.setVisibility(View.VISIBLE);
