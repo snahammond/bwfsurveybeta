@@ -30,23 +30,19 @@ public final class VolunteerMonthlySummary implements Model {
   public static final QueryField NAMEVOL = field("Namevol");
   public static final QueryField DATE = field("date");
   public static final QueryField NO_WATER_SAMPLE_TAKEN = field("NoWaterSampleTaken");
-  public static final QueryField NO_SURVEYS_COMPLETED = field("NoSurveysCompleted");
-  public static final QueryField NO_HEALTH_CHECK = field("NoHealthCheck");
-  public static final QueryField NO_LSN1_TAUGHT = field("NoLsn1Taught");
-  public static final QueryField NO_PERSONS_TAUGHT_LESSON1 = field("NoPersonsTaughtLesson1");
-  public static final QueryField NO_LSN2_TAUGHT = field("NoLsn2Taught");
-  public static final QueryField NO_PERSONS_TAUGHT_LESSON2 = field("NoPersonsTaughtLesson2");
-  public static final QueryField NO_LSN3_TAUGHT = field("NoLsn3Taught");
-  public static final QueryField NO_PERSONS_TAUGHT_LESSON3 = field("NoPersonsTaughtLesson3");
-  public static final QueryField NO_LSN4_TAUGHT = field("NoLsn4Taught");
-  public static final QueryField NO_PERSONS_TAUGHT_LESSON4 = field("NoPersonsTaughtLesson4");
-  public static final QueryField NO_PERSONS_TAUGHT = field("NoPersonsTaught");
-  public static final QueryField NO_HOUSEHOLD_RECEIVING_CHLORINE_SUPPLIES = field("NoHouseholdReceivingChlorineSupplies");
-  public static final QueryField NO_LIQUID_CHLORINE_DISTRIBUTED = field("NoLiquidChlorineDistributed");
-  public static final QueryField NO_CHLORINE_TABLETS_DISTRIBUTED = field("NoChlorineTabletsDistributed");
-  public static final QueryField NO_WATER_STORAGE_CONTAINERS_DISTRIBUTED = field("NoWaterStorageContainersDistributed");
-  public static final QueryField NO_SCHOOL_VISITS = field("NoSchoolVisits");
-  public static final QueryField NO_PUBLIC_SERVICE_MESSAGES_AIRED = field("NoPublicServiceMessagesAired");
+  public static final QueryField NO_LSN1_TAUGHT_AS_PRIMARY_INSTR = field("NoLsn1TaughtAsPrimaryInstr");
+  public static final QueryField NO_LSN1_TAUGHT_ASSISTING_SWE = field("NoLsn1TaughtAssistingSWE");
+  public static final QueryField NO_PERSONS_TAUGHT_LESSON1_BY_VOL = field("NoPersonsTaughtLesson1ByVol");
+  public static final QueryField NO_LSN2_TAUGHT_AS_PRIMARY_INSTR = field("NoLsn2TaughtAsPrimaryInstr");
+  public static final QueryField NO_LSN2_TAUGHT_ASSISTING_SWE = field("NoLsn2TaughtAssistingSWE");
+  public static final QueryField NO_PERSONS_TAUGHT_LESSON2_BY_VOL = field("NoPersonsTaughtLesson2ByVol");
+  public static final QueryField NO_LSN3_TAUGHT_AS_PRIMARY_INSTR = field("NoLsn3TaughtAsPrimaryInstr");
+  public static final QueryField NO_LSN3_TAUGHT_ASSISTING_SWE = field("NoLsn3TaughtAssistingSWE");
+  public static final QueryField NO_PERSONS_TAUGHT_LESSON3_BY_VOL = field("NoPersonsTaughtLesson3ByVol");
+  public static final QueryField NO_LSN4_TAUGHT_AS_PRIMARY_INSTR = field("NoLsn4TaughtAsPrimaryInstr");
+  public static final QueryField NO_LSN4_TAUGHT_ASSISTING_SWE = field("NoLsn4TaughtAssistingSWE");
+  public static final QueryField NO_PERSONS_TAUGHT_LESSON4_BY_VOL = field("NoPersonsTaughtLesson4ByVol");
+  public static final QueryField NO_PERSONS_TAUGHT_BY_VOL = field("NoPersonsTaughtByVol");
   public static final QueryField COMPLETED = field("Completed");
   public static final QueryField LAT = field("Lat");
   public static final QueryField LNG = field("Lng");
@@ -55,23 +51,19 @@ public final class VolunteerMonthlySummary implements Model {
   private final @ModelField(targetType="String", isRequired = true) String Namevol;
   private final @ModelField(targetType="AWSDate") Temporal.Date date;
   private final @ModelField(targetType="Int", isRequired = true) Integer NoWaterSampleTaken;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoSurveysCompleted;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoHealthCheck;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoLsn1Taught;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoPersonsTaughtLesson1;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoLsn2Taught;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoPersonsTaughtLesson2;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoLsn3Taught;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoPersonsTaughtLesson3;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoLsn4Taught;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoPersonsTaughtLesson4;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoPersonsTaught;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoHouseholdReceivingChlorineSupplies;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoLiquidChlorineDistributed;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoChlorineTabletsDistributed;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoWaterStorageContainersDistributed;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoSchoolVisits;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoPublicServiceMessagesAired;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoLsn1TaughtAsPrimaryInstr;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoLsn1TaughtAssistingSWE;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoPersonsTaughtLesson1ByVol;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoLsn2TaughtAsPrimaryInstr;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoLsn2TaughtAssistingSWE;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoPersonsTaughtLesson2ByVol;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoLsn3TaughtAsPrimaryInstr;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoLsn3TaughtAssistingSWE;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoPersonsTaughtLesson3ByVol;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoLsn4TaughtAsPrimaryInstr;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoLsn4TaughtAssistingSWE;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoPersonsTaughtLesson4ByVol;
+  private final @ModelField(targetType="Int", isRequired = true) Integer NoPersonsTaughtByVol;
   private final @ModelField(targetType="Int", isRequired = true) Integer Completed;
   private final @ModelField(targetType="String", isRequired = true) String Lat;
   private final @ModelField(targetType="String", isRequired = true) String Lng;
@@ -95,72 +87,56 @@ public final class VolunteerMonthlySummary implements Model {
       return NoWaterSampleTaken;
   }
   
-  public Integer getNoSurveysCompleted() {
-      return NoSurveysCompleted;
+  public Integer getNoLsn1TaughtAsPrimaryInstr() {
+      return NoLsn1TaughtAsPrimaryInstr;
   }
   
-  public Integer getNoHealthCheck() {
-      return NoHealthCheck;
+  public Integer getNoLsn1TaughtAssistingSWE() {
+      return NoLsn1TaughtAssistingSWE;
   }
   
-  public Integer getNoLsn1Taught() {
-      return NoLsn1Taught;
+  public Integer getNoPersonsTaughtLesson1ByVol() {
+      return NoPersonsTaughtLesson1ByVol;
   }
   
-  public Integer getNoPersonsTaughtLesson1() {
-      return NoPersonsTaughtLesson1;
+  public Integer getNoLsn2TaughtAsPrimaryInstr() {
+      return NoLsn2TaughtAsPrimaryInstr;
   }
   
-  public Integer getNoLsn2Taught() {
-      return NoLsn2Taught;
+  public Integer getNoLsn2TaughtAssistingSWE() {
+      return NoLsn2TaughtAssistingSWE;
   }
   
-  public Integer getNoPersonsTaughtLesson2() {
-      return NoPersonsTaughtLesson2;
+  public Integer getNoPersonsTaughtLesson2ByVol() {
+      return NoPersonsTaughtLesson2ByVol;
   }
   
-  public Integer getNoLsn3Taught() {
-      return NoLsn3Taught;
+  public Integer getNoLsn3TaughtAsPrimaryInstr() {
+      return NoLsn3TaughtAsPrimaryInstr;
   }
   
-  public Integer getNoPersonsTaughtLesson3() {
-      return NoPersonsTaughtLesson3;
+  public Integer getNoLsn3TaughtAssistingSWE() {
+      return NoLsn3TaughtAssistingSWE;
   }
   
-  public Integer getNoLsn4Taught() {
-      return NoLsn4Taught;
+  public Integer getNoPersonsTaughtLesson3ByVol() {
+      return NoPersonsTaughtLesson3ByVol;
   }
   
-  public Integer getNoPersonsTaughtLesson4() {
-      return NoPersonsTaughtLesson4;
+  public Integer getNoLsn4TaughtAsPrimaryInstr() {
+      return NoLsn4TaughtAsPrimaryInstr;
   }
   
-  public Integer getNoPersonsTaught() {
-      return NoPersonsTaught;
+  public Integer getNoLsn4TaughtAssistingSWE() {
+      return NoLsn4TaughtAssistingSWE;
   }
   
-  public Integer getNoHouseholdReceivingChlorineSupplies() {
-      return NoHouseholdReceivingChlorineSupplies;
+  public Integer getNoPersonsTaughtLesson4ByVol() {
+      return NoPersonsTaughtLesson4ByVol;
   }
   
-  public Integer getNoLiquidChlorineDistributed() {
-      return NoLiquidChlorineDistributed;
-  }
-  
-  public Integer getNoChlorineTabletsDistributed() {
-      return NoChlorineTabletsDistributed;
-  }
-  
-  public Integer getNoWaterStorageContainersDistributed() {
-      return NoWaterStorageContainersDistributed;
-  }
-  
-  public Integer getNoSchoolVisits() {
-      return NoSchoolVisits;
-  }
-  
-  public Integer getNoPublicServiceMessagesAired() {
-      return NoPublicServiceMessagesAired;
+  public Integer getNoPersonsTaughtByVol() {
+      return NoPersonsTaughtByVol;
   }
   
   public Integer getCompleted() {
@@ -175,29 +151,25 @@ public final class VolunteerMonthlySummary implements Model {
       return Lng;
   }
   
-  private VolunteerMonthlySummary(String id, String Namebwe, String Namevol, Temporal.Date date, Integer NoWaterSampleTaken, Integer NoSurveysCompleted, Integer NoHealthCheck, Integer NoLsn1Taught, Integer NoPersonsTaughtLesson1, Integer NoLsn2Taught, Integer NoPersonsTaughtLesson2, Integer NoLsn3Taught, Integer NoPersonsTaughtLesson3, Integer NoLsn4Taught, Integer NoPersonsTaughtLesson4, Integer NoPersonsTaught, Integer NoHouseholdReceivingChlorineSupplies, Integer NoLiquidChlorineDistributed, Integer NoChlorineTabletsDistributed, Integer NoWaterStorageContainersDistributed, Integer NoSchoolVisits, Integer NoPublicServiceMessagesAired, Integer Completed, String Lat, String Lng) {
+  private VolunteerMonthlySummary(String id, String Namebwe, String Namevol, Temporal.Date date, Integer NoWaterSampleTaken, Integer NoLsn1TaughtAsPrimaryInstr, Integer NoLsn1TaughtAssistingSWE, Integer NoPersonsTaughtLesson1ByVol, Integer NoLsn2TaughtAsPrimaryInstr, Integer NoLsn2TaughtAssistingSWE, Integer NoPersonsTaughtLesson2ByVol, Integer NoLsn3TaughtAsPrimaryInstr, Integer NoLsn3TaughtAssistingSWE, Integer NoPersonsTaughtLesson3ByVol, Integer NoLsn4TaughtAsPrimaryInstr, Integer NoLsn4TaughtAssistingSWE, Integer NoPersonsTaughtLesson4ByVol, Integer NoPersonsTaughtByVol, Integer Completed, String Lat, String Lng) {
     this.id = id;
     this.Namebwe = Namebwe;
     this.Namevol = Namevol;
     this.date = date;
     this.NoWaterSampleTaken = NoWaterSampleTaken;
-    this.NoSurveysCompleted = NoSurveysCompleted;
-    this.NoHealthCheck = NoHealthCheck;
-    this.NoLsn1Taught = NoLsn1Taught;
-    this.NoPersonsTaughtLesson1 = NoPersonsTaughtLesson1;
-    this.NoLsn2Taught = NoLsn2Taught;
-    this.NoPersonsTaughtLesson2 = NoPersonsTaughtLesson2;
-    this.NoLsn3Taught = NoLsn3Taught;
-    this.NoPersonsTaughtLesson3 = NoPersonsTaughtLesson3;
-    this.NoLsn4Taught = NoLsn4Taught;
-    this.NoPersonsTaughtLesson4 = NoPersonsTaughtLesson4;
-    this.NoPersonsTaught = NoPersonsTaught;
-    this.NoHouseholdReceivingChlorineSupplies = NoHouseholdReceivingChlorineSupplies;
-    this.NoLiquidChlorineDistributed = NoLiquidChlorineDistributed;
-    this.NoChlorineTabletsDistributed = NoChlorineTabletsDistributed;
-    this.NoWaterStorageContainersDistributed = NoWaterStorageContainersDistributed;
-    this.NoSchoolVisits = NoSchoolVisits;
-    this.NoPublicServiceMessagesAired = NoPublicServiceMessagesAired;
+    this.NoLsn1TaughtAsPrimaryInstr = NoLsn1TaughtAsPrimaryInstr;
+    this.NoLsn1TaughtAssistingSWE = NoLsn1TaughtAssistingSWE;
+    this.NoPersonsTaughtLesson1ByVol = NoPersonsTaughtLesson1ByVol;
+    this.NoLsn2TaughtAsPrimaryInstr = NoLsn2TaughtAsPrimaryInstr;
+    this.NoLsn2TaughtAssistingSWE = NoLsn2TaughtAssistingSWE;
+    this.NoPersonsTaughtLesson2ByVol = NoPersonsTaughtLesson2ByVol;
+    this.NoLsn3TaughtAsPrimaryInstr = NoLsn3TaughtAsPrimaryInstr;
+    this.NoLsn3TaughtAssistingSWE = NoLsn3TaughtAssistingSWE;
+    this.NoPersonsTaughtLesson3ByVol = NoPersonsTaughtLesson3ByVol;
+    this.NoLsn4TaughtAsPrimaryInstr = NoLsn4TaughtAsPrimaryInstr;
+    this.NoLsn4TaughtAssistingSWE = NoLsn4TaughtAssistingSWE;
+    this.NoPersonsTaughtLesson4ByVol = NoPersonsTaughtLesson4ByVol;
+    this.NoPersonsTaughtByVol = NoPersonsTaughtByVol;
     this.Completed = Completed;
     this.Lat = Lat;
     this.Lng = Lng;
@@ -216,23 +188,19 @@ public final class VolunteerMonthlySummary implements Model {
               ObjectsCompat.equals(getNamevol(), volunteerMonthlySummary.getNamevol()) &&
               ObjectsCompat.equals(getDate(), volunteerMonthlySummary.getDate()) &&
               ObjectsCompat.equals(getNoWaterSampleTaken(), volunteerMonthlySummary.getNoWaterSampleTaken()) &&
-              ObjectsCompat.equals(getNoSurveysCompleted(), volunteerMonthlySummary.getNoSurveysCompleted()) &&
-              ObjectsCompat.equals(getNoHealthCheck(), volunteerMonthlySummary.getNoHealthCheck()) &&
-              ObjectsCompat.equals(getNoLsn1Taught(), volunteerMonthlySummary.getNoLsn1Taught()) &&
-              ObjectsCompat.equals(getNoPersonsTaughtLesson1(), volunteerMonthlySummary.getNoPersonsTaughtLesson1()) &&
-              ObjectsCompat.equals(getNoLsn2Taught(), volunteerMonthlySummary.getNoLsn2Taught()) &&
-              ObjectsCompat.equals(getNoPersonsTaughtLesson2(), volunteerMonthlySummary.getNoPersonsTaughtLesson2()) &&
-              ObjectsCompat.equals(getNoLsn3Taught(), volunteerMonthlySummary.getNoLsn3Taught()) &&
-              ObjectsCompat.equals(getNoPersonsTaughtLesson3(), volunteerMonthlySummary.getNoPersonsTaughtLesson3()) &&
-              ObjectsCompat.equals(getNoLsn4Taught(), volunteerMonthlySummary.getNoLsn4Taught()) &&
-              ObjectsCompat.equals(getNoPersonsTaughtLesson4(), volunteerMonthlySummary.getNoPersonsTaughtLesson4()) &&
-              ObjectsCompat.equals(getNoPersonsTaught(), volunteerMonthlySummary.getNoPersonsTaught()) &&
-              ObjectsCompat.equals(getNoHouseholdReceivingChlorineSupplies(), volunteerMonthlySummary.getNoHouseholdReceivingChlorineSupplies()) &&
-              ObjectsCompat.equals(getNoLiquidChlorineDistributed(), volunteerMonthlySummary.getNoLiquidChlorineDistributed()) &&
-              ObjectsCompat.equals(getNoChlorineTabletsDistributed(), volunteerMonthlySummary.getNoChlorineTabletsDistributed()) &&
-              ObjectsCompat.equals(getNoWaterStorageContainersDistributed(), volunteerMonthlySummary.getNoWaterStorageContainersDistributed()) &&
-              ObjectsCompat.equals(getNoSchoolVisits(), volunteerMonthlySummary.getNoSchoolVisits()) &&
-              ObjectsCompat.equals(getNoPublicServiceMessagesAired(), volunteerMonthlySummary.getNoPublicServiceMessagesAired()) &&
+              ObjectsCompat.equals(getNoLsn1TaughtAsPrimaryInstr(), volunteerMonthlySummary.getNoLsn1TaughtAsPrimaryInstr()) &&
+              ObjectsCompat.equals(getNoLsn1TaughtAssistingSWE(), volunteerMonthlySummary.getNoLsn1TaughtAssistingSWE()) &&
+              ObjectsCompat.equals(getNoPersonsTaughtLesson1ByVol(), volunteerMonthlySummary.getNoPersonsTaughtLesson1ByVol()) &&
+              ObjectsCompat.equals(getNoLsn2TaughtAsPrimaryInstr(), volunteerMonthlySummary.getNoLsn2TaughtAsPrimaryInstr()) &&
+              ObjectsCompat.equals(getNoLsn2TaughtAssistingSWE(), volunteerMonthlySummary.getNoLsn2TaughtAssistingSWE()) &&
+              ObjectsCompat.equals(getNoPersonsTaughtLesson2ByVol(), volunteerMonthlySummary.getNoPersonsTaughtLesson2ByVol()) &&
+              ObjectsCompat.equals(getNoLsn3TaughtAsPrimaryInstr(), volunteerMonthlySummary.getNoLsn3TaughtAsPrimaryInstr()) &&
+              ObjectsCompat.equals(getNoLsn3TaughtAssistingSWE(), volunteerMonthlySummary.getNoLsn3TaughtAssistingSWE()) &&
+              ObjectsCompat.equals(getNoPersonsTaughtLesson3ByVol(), volunteerMonthlySummary.getNoPersonsTaughtLesson3ByVol()) &&
+              ObjectsCompat.equals(getNoLsn4TaughtAsPrimaryInstr(), volunteerMonthlySummary.getNoLsn4TaughtAsPrimaryInstr()) &&
+              ObjectsCompat.equals(getNoLsn4TaughtAssistingSWE(), volunteerMonthlySummary.getNoLsn4TaughtAssistingSWE()) &&
+              ObjectsCompat.equals(getNoPersonsTaughtLesson4ByVol(), volunteerMonthlySummary.getNoPersonsTaughtLesson4ByVol()) &&
+              ObjectsCompat.equals(getNoPersonsTaughtByVol(), volunteerMonthlySummary.getNoPersonsTaughtByVol()) &&
               ObjectsCompat.equals(getCompleted(), volunteerMonthlySummary.getCompleted()) &&
               ObjectsCompat.equals(getLat(), volunteerMonthlySummary.getLat()) &&
               ObjectsCompat.equals(getLng(), volunteerMonthlySummary.getLng());
@@ -247,23 +215,19 @@ public final class VolunteerMonthlySummary implements Model {
       .append(getNamevol())
       .append(getDate())
       .append(getNoWaterSampleTaken())
-      .append(getNoSurveysCompleted())
-      .append(getNoHealthCheck())
-      .append(getNoLsn1Taught())
-      .append(getNoPersonsTaughtLesson1())
-      .append(getNoLsn2Taught())
-      .append(getNoPersonsTaughtLesson2())
-      .append(getNoLsn3Taught())
-      .append(getNoPersonsTaughtLesson3())
-      .append(getNoLsn4Taught())
-      .append(getNoPersonsTaughtLesson4())
-      .append(getNoPersonsTaught())
-      .append(getNoHouseholdReceivingChlorineSupplies())
-      .append(getNoLiquidChlorineDistributed())
-      .append(getNoChlorineTabletsDistributed())
-      .append(getNoWaterStorageContainersDistributed())
-      .append(getNoSchoolVisits())
-      .append(getNoPublicServiceMessagesAired())
+      .append(getNoLsn1TaughtAsPrimaryInstr())
+      .append(getNoLsn1TaughtAssistingSWE())
+      .append(getNoPersonsTaughtLesson1ByVol())
+      .append(getNoLsn2TaughtAsPrimaryInstr())
+      .append(getNoLsn2TaughtAssistingSWE())
+      .append(getNoPersonsTaughtLesson2ByVol())
+      .append(getNoLsn3TaughtAsPrimaryInstr())
+      .append(getNoLsn3TaughtAssistingSWE())
+      .append(getNoPersonsTaughtLesson3ByVol())
+      .append(getNoLsn4TaughtAsPrimaryInstr())
+      .append(getNoLsn4TaughtAssistingSWE())
+      .append(getNoPersonsTaughtLesson4ByVol())
+      .append(getNoPersonsTaughtByVol())
       .append(getCompleted())
       .append(getLat())
       .append(getLng())
@@ -280,23 +244,19 @@ public final class VolunteerMonthlySummary implements Model {
       .append("Namevol=" + String.valueOf(getNamevol()) + ", ")
       .append("date=" + String.valueOf(getDate()) + ", ")
       .append("NoWaterSampleTaken=" + String.valueOf(getNoWaterSampleTaken()) + ", ")
-      .append("NoSurveysCompleted=" + String.valueOf(getNoSurveysCompleted()) + ", ")
-      .append("NoHealthCheck=" + String.valueOf(getNoHealthCheck()) + ", ")
-      .append("NoLsn1Taught=" + String.valueOf(getNoLsn1Taught()) + ", ")
-      .append("NoPersonsTaughtLesson1=" + String.valueOf(getNoPersonsTaughtLesson1()) + ", ")
-      .append("NoLsn2Taught=" + String.valueOf(getNoLsn2Taught()) + ", ")
-      .append("NoPersonsTaughtLesson2=" + String.valueOf(getNoPersonsTaughtLesson2()) + ", ")
-      .append("NoLsn3Taught=" + String.valueOf(getNoLsn3Taught()) + ", ")
-      .append("NoPersonsTaughtLesson3=" + String.valueOf(getNoPersonsTaughtLesson3()) + ", ")
-      .append("NoLsn4Taught=" + String.valueOf(getNoLsn4Taught()) + ", ")
-      .append("NoPersonsTaughtLesson4=" + String.valueOf(getNoPersonsTaughtLesson4()) + ", ")
-      .append("NoPersonsTaught=" + String.valueOf(getNoPersonsTaught()) + ", ")
-      .append("NoHouseholdReceivingChlorineSupplies=" + String.valueOf(getNoHouseholdReceivingChlorineSupplies()) + ", ")
-      .append("NoLiquidChlorineDistributed=" + String.valueOf(getNoLiquidChlorineDistributed()) + ", ")
-      .append("NoChlorineTabletsDistributed=" + String.valueOf(getNoChlorineTabletsDistributed()) + ", ")
-      .append("NoWaterStorageContainersDistributed=" + String.valueOf(getNoWaterStorageContainersDistributed()) + ", ")
-      .append("NoSchoolVisits=" + String.valueOf(getNoSchoolVisits()) + ", ")
-      .append("NoPublicServiceMessagesAired=" + String.valueOf(getNoPublicServiceMessagesAired()) + ", ")
+      .append("NoLsn1TaughtAsPrimaryInstr=" + String.valueOf(getNoLsn1TaughtAsPrimaryInstr()) + ", ")
+      .append("NoLsn1TaughtAssistingSWE=" + String.valueOf(getNoLsn1TaughtAssistingSWE()) + ", ")
+      .append("NoPersonsTaughtLesson1ByVol=" + String.valueOf(getNoPersonsTaughtLesson1ByVol()) + ", ")
+      .append("NoLsn2TaughtAsPrimaryInstr=" + String.valueOf(getNoLsn2TaughtAsPrimaryInstr()) + ", ")
+      .append("NoLsn2TaughtAssistingSWE=" + String.valueOf(getNoLsn2TaughtAssistingSWE()) + ", ")
+      .append("NoPersonsTaughtLesson2ByVol=" + String.valueOf(getNoPersonsTaughtLesson2ByVol()) + ", ")
+      .append("NoLsn3TaughtAsPrimaryInstr=" + String.valueOf(getNoLsn3TaughtAsPrimaryInstr()) + ", ")
+      .append("NoLsn3TaughtAssistingSWE=" + String.valueOf(getNoLsn3TaughtAssistingSWE()) + ", ")
+      .append("NoPersonsTaughtLesson3ByVol=" + String.valueOf(getNoPersonsTaughtLesson3ByVol()) + ", ")
+      .append("NoLsn4TaughtAsPrimaryInstr=" + String.valueOf(getNoLsn4TaughtAsPrimaryInstr()) + ", ")
+      .append("NoLsn4TaughtAssistingSWE=" + String.valueOf(getNoLsn4TaughtAssistingSWE()) + ", ")
+      .append("NoPersonsTaughtLesson4ByVol=" + String.valueOf(getNoPersonsTaughtLesson4ByVol()) + ", ")
+      .append("NoPersonsTaughtByVol=" + String.valueOf(getNoPersonsTaughtByVol()) + ", ")
       .append("Completed=" + String.valueOf(getCompleted()) + ", ")
       .append("Lat=" + String.valueOf(getLat()) + ", ")
       .append("Lng=" + String.valueOf(getLng()))
@@ -348,10 +308,6 @@ public final class VolunteerMonthlySummary implements Model {
       null,
       null,
       null,
-      null,
-      null,
-      null,
-      null,
       null
     );
   }
@@ -362,23 +318,19 @@ public final class VolunteerMonthlySummary implements Model {
       Namevol,
       date,
       NoWaterSampleTaken,
-      NoSurveysCompleted,
-      NoHealthCheck,
-      NoLsn1Taught,
-      NoPersonsTaughtLesson1,
-      NoLsn2Taught,
-      NoPersonsTaughtLesson2,
-      NoLsn3Taught,
-      NoPersonsTaughtLesson3,
-      NoLsn4Taught,
-      NoPersonsTaughtLesson4,
-      NoPersonsTaught,
-      NoHouseholdReceivingChlorineSupplies,
-      NoLiquidChlorineDistributed,
-      NoChlorineTabletsDistributed,
-      NoWaterStorageContainersDistributed,
-      NoSchoolVisits,
-      NoPublicServiceMessagesAired,
+      NoLsn1TaughtAsPrimaryInstr,
+      NoLsn1TaughtAssistingSWE,
+      NoPersonsTaughtLesson1ByVol,
+      NoLsn2TaughtAsPrimaryInstr,
+      NoLsn2TaughtAssistingSWE,
+      NoPersonsTaughtLesson2ByVol,
+      NoLsn3TaughtAsPrimaryInstr,
+      NoLsn3TaughtAssistingSWE,
+      NoPersonsTaughtLesson3ByVol,
+      NoLsn4TaughtAsPrimaryInstr,
+      NoLsn4TaughtAssistingSWE,
+      NoPersonsTaughtLesson4ByVol,
+      NoPersonsTaughtByVol,
       Completed,
       Lat,
       Lng);
@@ -394,92 +346,72 @@ public final class VolunteerMonthlySummary implements Model {
   
 
   public interface NoWaterSampleTakenStep {
-    NoSurveysCompletedStep noWaterSampleTaken(Integer noWaterSampleTaken);
+    NoLsn1TaughtAsPrimaryInstrStep noWaterSampleTaken(Integer noWaterSampleTaken);
   }
   
 
-  public interface NoSurveysCompletedStep {
-    NoHealthCheckStep noSurveysCompleted(Integer noSurveysCompleted);
+  public interface NoLsn1TaughtAsPrimaryInstrStep {
+    NoLsn1TaughtAssistingSweStep noLsn1TaughtAsPrimaryInstr(Integer noLsn1TaughtAsPrimaryInstr);
   }
   
 
-  public interface NoHealthCheckStep {
-    NoLsn1TaughtStep noHealthCheck(Integer noHealthCheck);
+  public interface NoLsn1TaughtAssistingSweStep {
+    NoPersonsTaughtLesson1ByVolStep noLsn1TaughtAssistingSwe(Integer noLsn1TaughtAssistingSwe);
   }
   
 
-  public interface NoLsn1TaughtStep {
-    NoPersonsTaughtLesson1Step noLsn1Taught(Integer noLsn1Taught);
+  public interface NoPersonsTaughtLesson1ByVolStep {
+    NoLsn2TaughtAsPrimaryInstrStep noPersonsTaughtLesson1ByVol(Integer noPersonsTaughtLesson1ByVol);
   }
   
 
-  public interface NoPersonsTaughtLesson1Step {
-    NoLsn2TaughtStep noPersonsTaughtLesson1(Integer noPersonsTaughtLesson1);
+  public interface NoLsn2TaughtAsPrimaryInstrStep {
+    NoLsn2TaughtAssistingSweStep noLsn2TaughtAsPrimaryInstr(Integer noLsn2TaughtAsPrimaryInstr);
   }
   
 
-  public interface NoLsn2TaughtStep {
-    NoPersonsTaughtLesson2Step noLsn2Taught(Integer noLsn2Taught);
+  public interface NoLsn2TaughtAssistingSweStep {
+    NoPersonsTaughtLesson2ByVolStep noLsn2TaughtAssistingSwe(Integer noLsn2TaughtAssistingSwe);
   }
   
 
-  public interface NoPersonsTaughtLesson2Step {
-    NoLsn3TaughtStep noPersonsTaughtLesson2(Integer noPersonsTaughtLesson2);
+  public interface NoPersonsTaughtLesson2ByVolStep {
+    NoLsn3TaughtAsPrimaryInstrStep noPersonsTaughtLesson2ByVol(Integer noPersonsTaughtLesson2ByVol);
   }
   
 
-  public interface NoLsn3TaughtStep {
-    NoPersonsTaughtLesson3Step noLsn3Taught(Integer noLsn3Taught);
+  public interface NoLsn3TaughtAsPrimaryInstrStep {
+    NoLsn3TaughtAssistingSweStep noLsn3TaughtAsPrimaryInstr(Integer noLsn3TaughtAsPrimaryInstr);
   }
   
 
-  public interface NoPersonsTaughtLesson3Step {
-    NoLsn4TaughtStep noPersonsTaughtLesson3(Integer noPersonsTaughtLesson3);
+  public interface NoLsn3TaughtAssistingSweStep {
+    NoPersonsTaughtLesson3ByVolStep noLsn3TaughtAssistingSwe(Integer noLsn3TaughtAssistingSwe);
   }
   
 
-  public interface NoLsn4TaughtStep {
-    NoPersonsTaughtLesson4Step noLsn4Taught(Integer noLsn4Taught);
+  public interface NoPersonsTaughtLesson3ByVolStep {
+    NoLsn4TaughtAsPrimaryInstrStep noPersonsTaughtLesson3ByVol(Integer noPersonsTaughtLesson3ByVol);
   }
   
 
-  public interface NoPersonsTaughtLesson4Step {
-    NoPersonsTaughtStep noPersonsTaughtLesson4(Integer noPersonsTaughtLesson4);
+  public interface NoLsn4TaughtAsPrimaryInstrStep {
+    NoLsn4TaughtAssistingSweStep noLsn4TaughtAsPrimaryInstr(Integer noLsn4TaughtAsPrimaryInstr);
   }
   
 
-  public interface NoPersonsTaughtStep {
-    NoHouseholdReceivingChlorineSuppliesStep noPersonsTaught(Integer noPersonsTaught);
+  public interface NoLsn4TaughtAssistingSweStep {
+    NoPersonsTaughtLesson4ByVolStep noLsn4TaughtAssistingSwe(Integer noLsn4TaughtAssistingSwe);
   }
   
 
-  public interface NoHouseholdReceivingChlorineSuppliesStep {
-    NoLiquidChlorineDistributedStep noHouseholdReceivingChlorineSupplies(Integer noHouseholdReceivingChlorineSupplies);
+  public interface NoPersonsTaughtLesson4ByVolStep {
+    NoPersonsTaughtByVolStep noPersonsTaughtLesson4ByVol(Integer noPersonsTaughtLesson4ByVol);
   }
   
 
-  public interface NoLiquidChlorineDistributedStep {
-    NoChlorineTabletsDistributedStep noLiquidChlorineDistributed(Integer noLiquidChlorineDistributed);
-  }
-  
-
-  public interface NoChlorineTabletsDistributedStep {
-    NoWaterStorageContainersDistributedStep noChlorineTabletsDistributed(Integer noChlorineTabletsDistributed);
-  }
-  
-
-  public interface NoWaterStorageContainersDistributedStep {
-    NoSchoolVisitsStep noWaterStorageContainersDistributed(Integer noWaterStorageContainersDistributed);
-  }
-  
-
-  public interface NoSchoolVisitsStep {
-    NoPublicServiceMessagesAiredStep noSchoolVisits(Integer noSchoolVisits);
-  }
-  
-
-  public interface NoPublicServiceMessagesAiredStep {
-    CompletedStep noPublicServiceMessagesAired(Integer noPublicServiceMessagesAired);
+  public interface NoPersonsTaughtByVolStep {
+    CompletedStep noPersonsTaughtByVol(Integer noPersonsTaughtByVol);
   }
   
 
@@ -505,28 +437,24 @@ public final class VolunteerMonthlySummary implements Model {
   }
   
 
-  public static class Builder implements NamebweStep, NamevolStep, NoWaterSampleTakenStep, NoSurveysCompletedStep, NoHealthCheckStep, NoLsn1TaughtStep, NoPersonsTaughtLesson1Step, NoLsn2TaughtStep, NoPersonsTaughtLesson2Step, NoLsn3TaughtStep, NoPersonsTaughtLesson3Step, NoLsn4TaughtStep, NoPersonsTaughtLesson4Step, NoPersonsTaughtStep, NoHouseholdReceivingChlorineSuppliesStep, NoLiquidChlorineDistributedStep, NoChlorineTabletsDistributedStep, NoWaterStorageContainersDistributedStep, NoSchoolVisitsStep, NoPublicServiceMessagesAiredStep, CompletedStep, LatStep, LngStep, BuildStep {
+  public static class Builder implements NamebweStep, NamevolStep, NoWaterSampleTakenStep, NoLsn1TaughtAsPrimaryInstrStep, NoLsn1TaughtAssistingSweStep, NoPersonsTaughtLesson1ByVolStep, NoLsn2TaughtAsPrimaryInstrStep, NoLsn2TaughtAssistingSweStep, NoPersonsTaughtLesson2ByVolStep, NoLsn3TaughtAsPrimaryInstrStep, NoLsn3TaughtAssistingSweStep, NoPersonsTaughtLesson3ByVolStep, NoLsn4TaughtAsPrimaryInstrStep, NoLsn4TaughtAssistingSweStep, NoPersonsTaughtLesson4ByVolStep, NoPersonsTaughtByVolStep, CompletedStep, LatStep, LngStep, BuildStep {
     private String id;
     private String Namebwe;
     private String Namevol;
     private Integer NoWaterSampleTaken;
-    private Integer NoSurveysCompleted;
-    private Integer NoHealthCheck;
-    private Integer NoLsn1Taught;
-    private Integer NoPersonsTaughtLesson1;
-    private Integer NoLsn2Taught;
-    private Integer NoPersonsTaughtLesson2;
-    private Integer NoLsn3Taught;
-    private Integer NoPersonsTaughtLesson3;
-    private Integer NoLsn4Taught;
-    private Integer NoPersonsTaughtLesson4;
-    private Integer NoPersonsTaught;
-    private Integer NoHouseholdReceivingChlorineSupplies;
-    private Integer NoLiquidChlorineDistributed;
-    private Integer NoChlorineTabletsDistributed;
-    private Integer NoWaterStorageContainersDistributed;
-    private Integer NoSchoolVisits;
-    private Integer NoPublicServiceMessagesAired;
+    private Integer NoLsn1TaughtAsPrimaryInstr;
+    private Integer NoLsn1TaughtAssistingSWE;
+    private Integer NoPersonsTaughtLesson1ByVol;
+    private Integer NoLsn2TaughtAsPrimaryInstr;
+    private Integer NoLsn2TaughtAssistingSWE;
+    private Integer NoPersonsTaughtLesson2ByVol;
+    private Integer NoLsn3TaughtAsPrimaryInstr;
+    private Integer NoLsn3TaughtAssistingSWE;
+    private Integer NoPersonsTaughtLesson3ByVol;
+    private Integer NoLsn4TaughtAsPrimaryInstr;
+    private Integer NoLsn4TaughtAssistingSWE;
+    private Integer NoPersonsTaughtLesson4ByVol;
+    private Integer NoPersonsTaughtByVol;
     private Integer Completed;
     private String Lat;
     private String Lng;
@@ -541,23 +469,19 @@ public final class VolunteerMonthlySummary implements Model {
           Namevol,
           date,
           NoWaterSampleTaken,
-          NoSurveysCompleted,
-          NoHealthCheck,
-          NoLsn1Taught,
-          NoPersonsTaughtLesson1,
-          NoLsn2Taught,
-          NoPersonsTaughtLesson2,
-          NoLsn3Taught,
-          NoPersonsTaughtLesson3,
-          NoLsn4Taught,
-          NoPersonsTaughtLesson4,
-          NoPersonsTaught,
-          NoHouseholdReceivingChlorineSupplies,
-          NoLiquidChlorineDistributed,
-          NoChlorineTabletsDistributed,
-          NoWaterStorageContainersDistributed,
-          NoSchoolVisits,
-          NoPublicServiceMessagesAired,
+          NoLsn1TaughtAsPrimaryInstr,
+          NoLsn1TaughtAssistingSWE,
+          NoPersonsTaughtLesson1ByVol,
+          NoLsn2TaughtAsPrimaryInstr,
+          NoLsn2TaughtAssistingSWE,
+          NoPersonsTaughtLesson2ByVol,
+          NoLsn3TaughtAsPrimaryInstr,
+          NoLsn3TaughtAssistingSWE,
+          NoPersonsTaughtLesson3ByVol,
+          NoLsn4TaughtAsPrimaryInstr,
+          NoLsn4TaughtAssistingSWE,
+          NoPersonsTaughtLesson4ByVol,
+          NoPersonsTaughtByVol,
           Completed,
           Lat,
           Lng);
@@ -578,128 +502,100 @@ public final class VolunteerMonthlySummary implements Model {
     }
     
     @Override
-     public NoSurveysCompletedStep noWaterSampleTaken(Integer noWaterSampleTaken) {
+     public NoLsn1TaughtAsPrimaryInstrStep noWaterSampleTaken(Integer noWaterSampleTaken) {
         Objects.requireNonNull(noWaterSampleTaken);
         this.NoWaterSampleTaken = noWaterSampleTaken;
         return this;
     }
     
     @Override
-     public NoHealthCheckStep noSurveysCompleted(Integer noSurveysCompleted) {
-        Objects.requireNonNull(noSurveysCompleted);
-        this.NoSurveysCompleted = noSurveysCompleted;
+     public NoLsn1TaughtAssistingSweStep noLsn1TaughtAsPrimaryInstr(Integer noLsn1TaughtAsPrimaryInstr) {
+        Objects.requireNonNull(noLsn1TaughtAsPrimaryInstr);
+        this.NoLsn1TaughtAsPrimaryInstr = noLsn1TaughtAsPrimaryInstr;
         return this;
     }
     
     @Override
-     public NoLsn1TaughtStep noHealthCheck(Integer noHealthCheck) {
-        Objects.requireNonNull(noHealthCheck);
-        this.NoHealthCheck = noHealthCheck;
+     public NoPersonsTaughtLesson1ByVolStep noLsn1TaughtAssistingSwe(Integer noLsn1TaughtAssistingSwe) {
+        Objects.requireNonNull(noLsn1TaughtAssistingSwe);
+        this.NoLsn1TaughtAssistingSWE = noLsn1TaughtAssistingSwe;
         return this;
     }
     
     @Override
-     public NoPersonsTaughtLesson1Step noLsn1Taught(Integer noLsn1Taught) {
-        Objects.requireNonNull(noLsn1Taught);
-        this.NoLsn1Taught = noLsn1Taught;
+     public NoLsn2TaughtAsPrimaryInstrStep noPersonsTaughtLesson1ByVol(Integer noPersonsTaughtLesson1ByVol) {
+        Objects.requireNonNull(noPersonsTaughtLesson1ByVol);
+        this.NoPersonsTaughtLesson1ByVol = noPersonsTaughtLesson1ByVol;
         return this;
     }
     
     @Override
-     public NoLsn2TaughtStep noPersonsTaughtLesson1(Integer noPersonsTaughtLesson1) {
-        Objects.requireNonNull(noPersonsTaughtLesson1);
-        this.NoPersonsTaughtLesson1 = noPersonsTaughtLesson1;
+     public NoLsn2TaughtAssistingSweStep noLsn2TaughtAsPrimaryInstr(Integer noLsn2TaughtAsPrimaryInstr) {
+        Objects.requireNonNull(noLsn2TaughtAsPrimaryInstr);
+        this.NoLsn2TaughtAsPrimaryInstr = noLsn2TaughtAsPrimaryInstr;
         return this;
     }
     
     @Override
-     public NoPersonsTaughtLesson2Step noLsn2Taught(Integer noLsn2Taught) {
-        Objects.requireNonNull(noLsn2Taught);
-        this.NoLsn2Taught = noLsn2Taught;
+     public NoPersonsTaughtLesson2ByVolStep noLsn2TaughtAssistingSwe(Integer noLsn2TaughtAssistingSwe) {
+        Objects.requireNonNull(noLsn2TaughtAssistingSwe);
+        this.NoLsn2TaughtAssistingSWE = noLsn2TaughtAssistingSwe;
         return this;
     }
     
     @Override
-     public NoLsn3TaughtStep noPersonsTaughtLesson2(Integer noPersonsTaughtLesson2) {
-        Objects.requireNonNull(noPersonsTaughtLesson2);
-        this.NoPersonsTaughtLesson2 = noPersonsTaughtLesson2;
+     public NoLsn3TaughtAsPrimaryInstrStep noPersonsTaughtLesson2ByVol(Integer noPersonsTaughtLesson2ByVol) {
+        Objects.requireNonNull(noPersonsTaughtLesson2ByVol);
+        this.NoPersonsTaughtLesson2ByVol = noPersonsTaughtLesson2ByVol;
         return this;
     }
     
     @Override
-     public NoPersonsTaughtLesson3Step noLsn3Taught(Integer noLsn3Taught) {
-        Objects.requireNonNull(noLsn3Taught);
-        this.NoLsn3Taught = noLsn3Taught;
+     public NoLsn3TaughtAssistingSweStep noLsn3TaughtAsPrimaryInstr(Integer noLsn3TaughtAsPrimaryInstr) {
+        Objects.requireNonNull(noLsn3TaughtAsPrimaryInstr);
+        this.NoLsn3TaughtAsPrimaryInstr = noLsn3TaughtAsPrimaryInstr;
         return this;
     }
     
     @Override
-     public NoLsn4TaughtStep noPersonsTaughtLesson3(Integer noPersonsTaughtLesson3) {
-        Objects.requireNonNull(noPersonsTaughtLesson3);
-        this.NoPersonsTaughtLesson3 = noPersonsTaughtLesson3;
+     public NoPersonsTaughtLesson3ByVolStep noLsn3TaughtAssistingSwe(Integer noLsn3TaughtAssistingSwe) {
+        Objects.requireNonNull(noLsn3TaughtAssistingSwe);
+        this.NoLsn3TaughtAssistingSWE = noLsn3TaughtAssistingSwe;
         return this;
     }
     
     @Override
-     public NoPersonsTaughtLesson4Step noLsn4Taught(Integer noLsn4Taught) {
-        Objects.requireNonNull(noLsn4Taught);
-        this.NoLsn4Taught = noLsn4Taught;
+     public NoLsn4TaughtAsPrimaryInstrStep noPersonsTaughtLesson3ByVol(Integer noPersonsTaughtLesson3ByVol) {
+        Objects.requireNonNull(noPersonsTaughtLesson3ByVol);
+        this.NoPersonsTaughtLesson3ByVol = noPersonsTaughtLesson3ByVol;
         return this;
     }
     
     @Override
-     public NoPersonsTaughtStep noPersonsTaughtLesson4(Integer noPersonsTaughtLesson4) {
-        Objects.requireNonNull(noPersonsTaughtLesson4);
-        this.NoPersonsTaughtLesson4 = noPersonsTaughtLesson4;
+     public NoLsn4TaughtAssistingSweStep noLsn4TaughtAsPrimaryInstr(Integer noLsn4TaughtAsPrimaryInstr) {
+        Objects.requireNonNull(noLsn4TaughtAsPrimaryInstr);
+        this.NoLsn4TaughtAsPrimaryInstr = noLsn4TaughtAsPrimaryInstr;
         return this;
     }
     
     @Override
-     public NoHouseholdReceivingChlorineSuppliesStep noPersonsTaught(Integer noPersonsTaught) {
-        Objects.requireNonNull(noPersonsTaught);
-        this.NoPersonsTaught = noPersonsTaught;
+     public NoPersonsTaughtLesson4ByVolStep noLsn4TaughtAssistingSwe(Integer noLsn4TaughtAssistingSwe) {
+        Objects.requireNonNull(noLsn4TaughtAssistingSwe);
+        this.NoLsn4TaughtAssistingSWE = noLsn4TaughtAssistingSwe;
         return this;
     }
     
     @Override
-     public NoLiquidChlorineDistributedStep noHouseholdReceivingChlorineSupplies(Integer noHouseholdReceivingChlorineSupplies) {
-        Objects.requireNonNull(noHouseholdReceivingChlorineSupplies);
-        this.NoHouseholdReceivingChlorineSupplies = noHouseholdReceivingChlorineSupplies;
+     public NoPersonsTaughtByVolStep noPersonsTaughtLesson4ByVol(Integer noPersonsTaughtLesson4ByVol) {
+        Objects.requireNonNull(noPersonsTaughtLesson4ByVol);
+        this.NoPersonsTaughtLesson4ByVol = noPersonsTaughtLesson4ByVol;
         return this;
     }
     
     @Override
-     public NoChlorineTabletsDistributedStep noLiquidChlorineDistributed(Integer noLiquidChlorineDistributed) {
-        Objects.requireNonNull(noLiquidChlorineDistributed);
-        this.NoLiquidChlorineDistributed = noLiquidChlorineDistributed;
-        return this;
-    }
-    
-    @Override
-     public NoWaterStorageContainersDistributedStep noChlorineTabletsDistributed(Integer noChlorineTabletsDistributed) {
-        Objects.requireNonNull(noChlorineTabletsDistributed);
-        this.NoChlorineTabletsDistributed = noChlorineTabletsDistributed;
-        return this;
-    }
-    
-    @Override
-     public NoSchoolVisitsStep noWaterStorageContainersDistributed(Integer noWaterStorageContainersDistributed) {
-        Objects.requireNonNull(noWaterStorageContainersDistributed);
-        this.NoWaterStorageContainersDistributed = noWaterStorageContainersDistributed;
-        return this;
-    }
-    
-    @Override
-     public NoPublicServiceMessagesAiredStep noSchoolVisits(Integer noSchoolVisits) {
-        Objects.requireNonNull(noSchoolVisits);
-        this.NoSchoolVisits = noSchoolVisits;
-        return this;
-    }
-    
-    @Override
-     public CompletedStep noPublicServiceMessagesAired(Integer noPublicServiceMessagesAired) {
-        Objects.requireNonNull(noPublicServiceMessagesAired);
-        this.NoPublicServiceMessagesAired = noPublicServiceMessagesAired;
+     public CompletedStep noPersonsTaughtByVol(Integer noPersonsTaughtByVol) {
+        Objects.requireNonNull(noPersonsTaughtByVol);
+        this.NoPersonsTaughtByVol = noPersonsTaughtByVol;
         return this;
     }
     
@@ -753,28 +649,24 @@ public final class VolunteerMonthlySummary implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String namebwe, String namevol, Temporal.Date date, Integer noWaterSampleTaken, Integer noSurveysCompleted, Integer noHealthCheck, Integer noLsn1Taught, Integer noPersonsTaughtLesson1, Integer noLsn2Taught, Integer noPersonsTaughtLesson2, Integer noLsn3Taught, Integer noPersonsTaughtLesson3, Integer noLsn4Taught, Integer noPersonsTaughtLesson4, Integer noPersonsTaught, Integer noHouseholdReceivingChlorineSupplies, Integer noLiquidChlorineDistributed, Integer noChlorineTabletsDistributed, Integer noWaterStorageContainersDistributed, Integer noSchoolVisits, Integer noPublicServiceMessagesAired, Integer completed, String lat, String lng) {
+    private CopyOfBuilder(String id, String namebwe, String namevol, Temporal.Date date, Integer noWaterSampleTaken, Integer noLsn1TaughtAsPrimaryInstr, Integer noLsn1TaughtAssistingSwe, Integer noPersonsTaughtLesson1ByVol, Integer noLsn2TaughtAsPrimaryInstr, Integer noLsn2TaughtAssistingSwe, Integer noPersonsTaughtLesson2ByVol, Integer noLsn3TaughtAsPrimaryInstr, Integer noLsn3TaughtAssistingSwe, Integer noPersonsTaughtLesson3ByVol, Integer noLsn4TaughtAsPrimaryInstr, Integer noLsn4TaughtAssistingSwe, Integer noPersonsTaughtLesson4ByVol, Integer noPersonsTaughtByVol, Integer completed, String lat, String lng) {
       super.id(id);
       super.namebwe(namebwe)
         .namevol(namevol)
         .noWaterSampleTaken(noWaterSampleTaken)
-        .noSurveysCompleted(noSurveysCompleted)
-        .noHealthCheck(noHealthCheck)
-        .noLsn1Taught(noLsn1Taught)
-        .noPersonsTaughtLesson1(noPersonsTaughtLesson1)
-        .noLsn2Taught(noLsn2Taught)
-        .noPersonsTaughtLesson2(noPersonsTaughtLesson2)
-        .noLsn3Taught(noLsn3Taught)
-        .noPersonsTaughtLesson3(noPersonsTaughtLesson3)
-        .noLsn4Taught(noLsn4Taught)
-        .noPersonsTaughtLesson4(noPersonsTaughtLesson4)
-        .noPersonsTaught(noPersonsTaught)
-        .noHouseholdReceivingChlorineSupplies(noHouseholdReceivingChlorineSupplies)
-        .noLiquidChlorineDistributed(noLiquidChlorineDistributed)
-        .noChlorineTabletsDistributed(noChlorineTabletsDistributed)
-        .noWaterStorageContainersDistributed(noWaterStorageContainersDistributed)
-        .noSchoolVisits(noSchoolVisits)
-        .noPublicServiceMessagesAired(noPublicServiceMessagesAired)
+        .noLsn1TaughtAsPrimaryInstr(noLsn1TaughtAsPrimaryInstr)
+        .noLsn1TaughtAssistingSwe(noLsn1TaughtAssistingSwe)
+        .noPersonsTaughtLesson1ByVol(noPersonsTaughtLesson1ByVol)
+        .noLsn2TaughtAsPrimaryInstr(noLsn2TaughtAsPrimaryInstr)
+        .noLsn2TaughtAssistingSwe(noLsn2TaughtAssistingSwe)
+        .noPersonsTaughtLesson2ByVol(noPersonsTaughtLesson2ByVol)
+        .noLsn3TaughtAsPrimaryInstr(noLsn3TaughtAsPrimaryInstr)
+        .noLsn3TaughtAssistingSwe(noLsn3TaughtAssistingSwe)
+        .noPersonsTaughtLesson3ByVol(noPersonsTaughtLesson3ByVol)
+        .noLsn4TaughtAsPrimaryInstr(noLsn4TaughtAsPrimaryInstr)
+        .noLsn4TaughtAssistingSwe(noLsn4TaughtAssistingSwe)
+        .noPersonsTaughtLesson4ByVol(noPersonsTaughtLesson4ByVol)
+        .noPersonsTaughtByVol(noPersonsTaughtByVol)
         .completed(completed)
         .lat(lat)
         .lng(lng)
@@ -797,88 +689,68 @@ public final class VolunteerMonthlySummary implements Model {
     }
     
     @Override
-     public CopyOfBuilder noSurveysCompleted(Integer noSurveysCompleted) {
-      return (CopyOfBuilder) super.noSurveysCompleted(noSurveysCompleted);
+     public CopyOfBuilder noLsn1TaughtAsPrimaryInstr(Integer noLsn1TaughtAsPrimaryInstr) {
+      return (CopyOfBuilder) super.noLsn1TaughtAsPrimaryInstr(noLsn1TaughtAsPrimaryInstr);
     }
     
     @Override
-     public CopyOfBuilder noHealthCheck(Integer noHealthCheck) {
-      return (CopyOfBuilder) super.noHealthCheck(noHealthCheck);
+     public CopyOfBuilder noLsn1TaughtAssistingSwe(Integer noLsn1TaughtAssistingSwe) {
+      return (CopyOfBuilder) super.noLsn1TaughtAssistingSwe(noLsn1TaughtAssistingSwe);
     }
     
     @Override
-     public CopyOfBuilder noLsn1Taught(Integer noLsn1Taught) {
-      return (CopyOfBuilder) super.noLsn1Taught(noLsn1Taught);
+     public CopyOfBuilder noPersonsTaughtLesson1ByVol(Integer noPersonsTaughtLesson1ByVol) {
+      return (CopyOfBuilder) super.noPersonsTaughtLesson1ByVol(noPersonsTaughtLesson1ByVol);
     }
     
     @Override
-     public CopyOfBuilder noPersonsTaughtLesson1(Integer noPersonsTaughtLesson1) {
-      return (CopyOfBuilder) super.noPersonsTaughtLesson1(noPersonsTaughtLesson1);
+     public CopyOfBuilder noLsn2TaughtAsPrimaryInstr(Integer noLsn2TaughtAsPrimaryInstr) {
+      return (CopyOfBuilder) super.noLsn2TaughtAsPrimaryInstr(noLsn2TaughtAsPrimaryInstr);
     }
     
     @Override
-     public CopyOfBuilder noLsn2Taught(Integer noLsn2Taught) {
-      return (CopyOfBuilder) super.noLsn2Taught(noLsn2Taught);
+     public CopyOfBuilder noLsn2TaughtAssistingSwe(Integer noLsn2TaughtAssistingSwe) {
+      return (CopyOfBuilder) super.noLsn2TaughtAssistingSwe(noLsn2TaughtAssistingSwe);
     }
     
     @Override
-     public CopyOfBuilder noPersonsTaughtLesson2(Integer noPersonsTaughtLesson2) {
-      return (CopyOfBuilder) super.noPersonsTaughtLesson2(noPersonsTaughtLesson2);
+     public CopyOfBuilder noPersonsTaughtLesson2ByVol(Integer noPersonsTaughtLesson2ByVol) {
+      return (CopyOfBuilder) super.noPersonsTaughtLesson2ByVol(noPersonsTaughtLesson2ByVol);
     }
     
     @Override
-     public CopyOfBuilder noLsn3Taught(Integer noLsn3Taught) {
-      return (CopyOfBuilder) super.noLsn3Taught(noLsn3Taught);
+     public CopyOfBuilder noLsn3TaughtAsPrimaryInstr(Integer noLsn3TaughtAsPrimaryInstr) {
+      return (CopyOfBuilder) super.noLsn3TaughtAsPrimaryInstr(noLsn3TaughtAsPrimaryInstr);
     }
     
     @Override
-     public CopyOfBuilder noPersonsTaughtLesson3(Integer noPersonsTaughtLesson3) {
-      return (CopyOfBuilder) super.noPersonsTaughtLesson3(noPersonsTaughtLesson3);
+     public CopyOfBuilder noLsn3TaughtAssistingSwe(Integer noLsn3TaughtAssistingSwe) {
+      return (CopyOfBuilder) super.noLsn3TaughtAssistingSwe(noLsn3TaughtAssistingSwe);
     }
     
     @Override
-     public CopyOfBuilder noLsn4Taught(Integer noLsn4Taught) {
-      return (CopyOfBuilder) super.noLsn4Taught(noLsn4Taught);
+     public CopyOfBuilder noPersonsTaughtLesson3ByVol(Integer noPersonsTaughtLesson3ByVol) {
+      return (CopyOfBuilder) super.noPersonsTaughtLesson3ByVol(noPersonsTaughtLesson3ByVol);
     }
     
     @Override
-     public CopyOfBuilder noPersonsTaughtLesson4(Integer noPersonsTaughtLesson4) {
-      return (CopyOfBuilder) super.noPersonsTaughtLesson4(noPersonsTaughtLesson4);
+     public CopyOfBuilder noLsn4TaughtAsPrimaryInstr(Integer noLsn4TaughtAsPrimaryInstr) {
+      return (CopyOfBuilder) super.noLsn4TaughtAsPrimaryInstr(noLsn4TaughtAsPrimaryInstr);
     }
     
     @Override
-     public CopyOfBuilder noPersonsTaught(Integer noPersonsTaught) {
-      return (CopyOfBuilder) super.noPersonsTaught(noPersonsTaught);
+     public CopyOfBuilder noLsn4TaughtAssistingSwe(Integer noLsn4TaughtAssistingSwe) {
+      return (CopyOfBuilder) super.noLsn4TaughtAssistingSwe(noLsn4TaughtAssistingSwe);
     }
     
     @Override
-     public CopyOfBuilder noHouseholdReceivingChlorineSupplies(Integer noHouseholdReceivingChlorineSupplies) {
-      return (CopyOfBuilder) super.noHouseholdReceivingChlorineSupplies(noHouseholdReceivingChlorineSupplies);
+     public CopyOfBuilder noPersonsTaughtLesson4ByVol(Integer noPersonsTaughtLesson4ByVol) {
+      return (CopyOfBuilder) super.noPersonsTaughtLesson4ByVol(noPersonsTaughtLesson4ByVol);
     }
     
     @Override
-     public CopyOfBuilder noLiquidChlorineDistributed(Integer noLiquidChlorineDistributed) {
-      return (CopyOfBuilder) super.noLiquidChlorineDistributed(noLiquidChlorineDistributed);
-    }
-    
-    @Override
-     public CopyOfBuilder noChlorineTabletsDistributed(Integer noChlorineTabletsDistributed) {
-      return (CopyOfBuilder) super.noChlorineTabletsDistributed(noChlorineTabletsDistributed);
-    }
-    
-    @Override
-     public CopyOfBuilder noWaterStorageContainersDistributed(Integer noWaterStorageContainersDistributed) {
-      return (CopyOfBuilder) super.noWaterStorageContainersDistributed(noWaterStorageContainersDistributed);
-    }
-    
-    @Override
-     public CopyOfBuilder noSchoolVisits(Integer noSchoolVisits) {
-      return (CopyOfBuilder) super.noSchoolVisits(noSchoolVisits);
-    }
-    
-    @Override
-     public CopyOfBuilder noPublicServiceMessagesAired(Integer noPublicServiceMessagesAired) {
-      return (CopyOfBuilder) super.noPublicServiceMessagesAired(noPublicServiceMessagesAired);
+     public CopyOfBuilder noPersonsTaughtByVol(Integer noPersonsTaughtByVol) {
+      return (CopyOfBuilder) super.noPersonsTaughtByVol(noPersonsTaughtByVol);
     }
     
     @Override

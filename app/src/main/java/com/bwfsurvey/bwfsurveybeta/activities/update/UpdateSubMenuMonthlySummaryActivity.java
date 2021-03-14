@@ -57,7 +57,7 @@ public class UpdateSubMenuMonthlySummaryActivity extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), VolunteerCardSelectActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
                 i.putExtra("POSITION_BWE", "Volunteer");
-                i.putExtra("SURVEY_TYPE","SWESUMMARY");
+                i.putExtra("SURVEY_TYPE","VOLUNTEERSUMMARY");
                 i.putExtra("OPERATION","UPDATE");
                 i.putExtra("LAT",lat);
                 i.putExtra("LNG",lng);

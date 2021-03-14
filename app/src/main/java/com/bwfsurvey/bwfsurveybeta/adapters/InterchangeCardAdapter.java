@@ -231,6 +231,25 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                         updateTotalNoPersonsTaught();
                     }
                     //custom code automated NoPersonsTaught
+
+
+                    //custom code automated NoPersonsTaughtByVol
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoPersonsTaughtLesson1ByVol")){
+                        updateTotalNoPersonsTaughtByVol();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoPersonsTaughtLesson2ByVol")){
+                        updateTotalNoPersonsTaughtByVol();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoPersonsTaughtLesson3ByVol")){
+                        updateTotalNoPersonsTaughtByVol();
+                    }
+
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("NoPersonsTaughtLesson4ByVol")){
+                        updateTotalNoPersonsTaughtByVol();
+                    }
+                    //custom code automated NoPersonsTaught
                 }
             });
 
@@ -255,6 +274,11 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             }
 
             if(interchange.getName().contentEquals("NoPersonsTaught")){
+                editAnswer.setEnabled(false);
+                editAnswer.setText(String.valueOf(_retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns()));
+            }
+
+            if(interchange.getName().contentEquals("NoPersonsTaughtByVol")){
                 editAnswer.setEnabled(false);
                 editAnswer.setText(String.valueOf(_retInterchangesWithAns.get(getInterchangePosition()).getAnswer().getAns()));
             }
@@ -322,6 +346,35 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                             Log.i("Tutorial", "interchangeNumberTotal : "+ interchangeNumberTotal.getText() );
                             editAnswerTotal.setEnabled(false);
                             editAnswerTotal.setText(String.valueOf(NoPersonsTaught));
+                        }
+                    }
+                }
+            }
+        }
+
+        private void updateTotalNoPersonsTaughtByVol(){
+            for(Interchange interchange : _retInterchangesWithAns){
+                if(interchange.getName().contentEquals("NoPersonsTaughtByVol")){
+                    Integer NoPersonsTaughtLesson1ByVol = getInterchangeAns("NoPersonsTaughtLesson1ByVol");
+                    Integer NoPersonsTaughtLesson2ByVol = getInterchangeAns("NoPersonsTaughtLesson2ByVol");
+                    Integer NoPersonsTaughtLesson3ByVol = getInterchangeAns("NoPersonsTaughtLesson3ByVol");
+                    Integer NoPersonsTaughtLesson4ByVol = getInterchangeAns("NoPersonsTaughtLesson4ByVol");
+
+                    int NoPersonsTaughtByVol = NoPersonsTaughtLesson1ByVol + NoPersonsTaughtLesson2ByVol
+                            + NoPersonsTaughtLesson3ByVol + NoPersonsTaughtLesson4ByVol;
+                    //_retInterchangesWithAns.get(interchange.getPositionOnRecyler()).getAnswer().setAns(currentAnsInTotal+myNum);
+                    interchange.getAnswer().setAns(NoPersonsTaughtByVol);
+
+                    RecyclerView.ViewHolder totalViewHolder = mRecyclerView.findViewHolderForAdapterPosition(13);
+                    if(totalViewHolder!=null){
+                        TextView interchangeNumberTotal = (TextView)totalViewHolder.itemView.findViewById(R.id.interchangeNumber);
+                        TextView editAnswerTotal = (TextView)totalViewHolder.itemView.findViewById(R.id.editAnswer);
+                        TextView txtQuestion = (TextView)totalViewHolder.itemView.findViewById(R.id.txtQuestion);
+                        Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
+                        if(txtQuestion.getText().toString().contains("Total")){
+                            Log.i("Tutorial", "interchangeNumberTotal : "+ interchangeNumberTotal.getText() );
+                            editAnswerTotal.setEnabled(false);
+                            editAnswerTotal.setText(String.valueOf(NoPersonsTaughtByVol));
                         }
                     }
                 }

@@ -46,7 +46,7 @@ public class VolunteerMonthlySummaryCardAdapter extends RecyclerView.Adapter<Rec
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.monthly_summary_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.monthly_summary_card_vol, parent, false);
         return new VolunteerMonthlySummaryCardViewHolder(view);
     }
 
@@ -63,14 +63,12 @@ public class VolunteerMonthlySummaryCardAdapter extends RecyclerView.Adapter<Rec
     private class VolunteerMonthlySummaryCardViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtNoOfPersonsTaught;
-        private TextView txtNoOfSurveysCompleted;
         private TextView txtDate;
         private String uuidVolunteerMonthlySummary;
 
         public VolunteerMonthlySummaryCardViewHolder(View view) {
             super(view);
             txtNoOfPersonsTaught = (TextView) itemView.findViewById(R.id.txtNoOfPersonsTaught);
-            txtNoOfSurveysCompleted = (TextView) itemView.findViewById(R.id.txtNoOfSurveysCompleted);
             txtDate = (TextView) itemView.findViewById(R.id.txtDate);
             CardView monthlySummaryCard = (CardView) itemView.findViewById(R.id.monthlySummaryCard); // creating a CardView and assigning a value.
 
@@ -102,8 +100,7 @@ public class VolunteerMonthlySummaryCardAdapter extends RecyclerView.Adapter<Rec
         }
 
         void setVolunteerMonthlySummaryDetails(VolunteerMonthlySummary volunteerMonthlySummary,int position) {
-            txtNoOfPersonsTaught.setText(volunteerMonthlySummary.getNoPersonsTaught().toString());
-            txtNoOfSurveysCompleted.setText(volunteerMonthlySummary.getNoSurveysCompleted().toString());
+            txtNoOfPersonsTaught.setText(volunteerMonthlySummary.getNoPersonsTaughtByVol().toString());
             String dateStr = volunteerMonthlySummary.getDate().toString();
             if(dateStr.indexOf("{")>0&&dateStr.indexOf("}")>0){
                 dateStr = dateStr.substring(dateStr.indexOf("{") + 1);

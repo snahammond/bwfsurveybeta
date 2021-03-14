@@ -89,7 +89,7 @@ public class UpdateVolunteerMonthlySummaryActivity extends AppCompatActivity {
 
     private void createInterchangesAndShow() {
         if(theVolunteerMonthlySummary!=null){
-            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("SWESUMMARY");
+            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("VOLUNTEERSUMMARY");
             if(returnedInterchanges!=null){
                 UpdateVolunteerMonthlySummaryActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;
@@ -126,7 +126,7 @@ public class UpdateVolunteerMonthlySummaryActivity extends AppCompatActivity {
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Getting records!");
         progressBar.setVisibility(View.VISIBLE);
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
+        CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
             }
@@ -334,46 +334,38 @@ public class UpdateVolunteerMonthlySummaryActivity extends AppCompatActivity {
         String SwePosition = "Volunteer";
         String NameVolunteer = theVolunteerMonthlySummary.getNamevol();
         Integer NoWaterSampleTaken = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoWaterSampleTaken",interchangesWithUserAns),0);
-        Integer NoSurveysCompleted = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoSurveysCompleted",interchangesWithUserAns),0);
-        Integer NoHealthCheck = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoHealthCheck",interchangesWithUserAns),0);
-        Integer NoLsn1Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn1Taught",interchangesWithUserAns),0);
-        Integer NoPersonsTaughtLesson1 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson1",interchangesWithUserAns),0);
-        Integer NoLsn2Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn2Taught",interchangesWithUserAns),0);
-        Integer NoPersonsTaughtLesson2 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson2",interchangesWithUserAns),0);
-        Integer NoLsn3Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn3Taught",interchangesWithUserAns),0);
-        Integer NoPersonsTaughtLesson3 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson3",interchangesWithUserAns),0);
-        Integer NoLsn4Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn4Taught",interchangesWithUserAns),0);
-        Integer NoPersonsTaughtLesson4 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson4",interchangesWithUserAns),0);
-        Integer NoPersonsTaught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaught",interchangesWithUserAns),0);
-        Integer NoHouseholdReceivingChlorineSupplies = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoHouseholdReceivingChlorineSupplies",interchangesWithUserAns),0);
-        Integer NoLiquidChlorineDistributed = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLiquidChlorineDistributed",interchangesWithUserAns),0);
-        Integer NoChlorineTabletsDistributed = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoChlorineTabletsDistributed",interchangesWithUserAns),0);
-        Integer NoWaterStorageContainersDistributed = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoWaterStorageContainersDistributed",interchangesWithUserAns),0);
-        Integer NoSchoolVisits = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoSchoolVisits",interchangesWithUserAns),0);
-        Integer NoPublicServiceMessagesAired = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPublicServiceMessagesAired",interchangesWithUserAns),0);
+        Integer NoLsn1TaughtAsPrimaryInstr = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn1TaughtAsPrimaryInstr",interchangesWithUserAns),0);
+        Integer NoLsn1TaughtAssistingSWE = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn1TaughtAssistingSWE",interchangesWithUserAns),0);
+        Integer NoPersonsTaughtLesson1ByVol = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson1ByVol",interchangesWithUserAns),0);
+        Integer NoLsn2TaughtAsPrimaryInstr = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn2TaughtAsPrimaryInstr",interchangesWithUserAns),0);
+        Integer NoLsn2TaughtAssistingSWE = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn2TaughtAssistingSWE",interchangesWithUserAns),0);
+        Integer NoPersonsTaughtLesson2ByVol = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson2ByVol",interchangesWithUserAns),0);
+        Integer NoLsn3TaughtAsPrimaryInstr = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn3TaughtAsPrimaryInstr",interchangesWithUserAns),0);
+        Integer NoLsn3TaughtAssistingSWE = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn3TaughtAssistingSWE",interchangesWithUserAns),0);
+        Integer NoPersonsTaughtLesson3ByVol = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson3ByVol",interchangesWithUserAns),0);
+        Integer NoLsn4TaughtAsPrimaryInstr = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn4TaughtAsPrimaryInstr",interchangesWithUserAns),0);
+        Integer NoLsn4TaughtAssistingSWE = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn4TaughtAssistingSWE",interchangesWithUserAns),0);
+        Integer NoPersonsTaughtLesson4ByVol = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson4ByVol",interchangesWithUserAns),0);
+        Integer NoPersonsTaughtByVol = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtByVol",interchangesWithUserAns),0);
         Temporal.Date date = new Temporal.Date(date_s);
 
         VolunteerMonthlySummary volunteerMonthlySummary = VolunteerMonthlySummary.builder()
                 .namebwe(Namebwe)
                 .namevol(NameVolunteer)
                 .noWaterSampleTaken(NoWaterSampleTaken)
-                .noSurveysCompleted(NoSurveysCompleted)
-                .noHealthCheck(NoHealthCheck)
-                .noLsn1Taught(NoLsn1Taught)
-                .noPersonsTaughtLesson1(NoPersonsTaughtLesson1)
-                .noLsn2Taught(NoLsn2Taught)
-                .noPersonsTaughtLesson2(NoPersonsTaughtLesson2)
-                .noLsn3Taught(NoLsn3Taught)
-                .noPersonsTaughtLesson3(NoPersonsTaughtLesson3)
-                .noLsn4Taught(NoLsn4Taught)
-                .noPersonsTaughtLesson4(NoPersonsTaughtLesson4)
-                .noPersonsTaught(NoPersonsTaught)
-                .noHouseholdReceivingChlorineSupplies(NoHouseholdReceivingChlorineSupplies)
-                .noLiquidChlorineDistributed(NoLiquidChlorineDistributed)
-                .noChlorineTabletsDistributed(NoChlorineTabletsDistributed)
-                .noWaterStorageContainersDistributed(NoWaterStorageContainersDistributed)
-                .noSchoolVisits(NoSchoolVisits)
-                .noPublicServiceMessagesAired(NoPublicServiceMessagesAired)
+                .noLsn1TaughtAsPrimaryInstr(NoLsn1TaughtAsPrimaryInstr)
+                .noLsn1TaughtAssistingSwe(NoLsn1TaughtAssistingSWE)
+                .noPersonsTaughtLesson1ByVol(NoPersonsTaughtLesson1ByVol)
+                .noLsn2TaughtAsPrimaryInstr(NoLsn2TaughtAsPrimaryInstr)
+                .noLsn2TaughtAssistingSwe(NoLsn2TaughtAssistingSWE)
+                .noPersonsTaughtLesson2ByVol(NoPersonsTaughtLesson2ByVol)
+                .noLsn3TaughtAsPrimaryInstr(NoLsn3TaughtAsPrimaryInstr)
+                .noLsn3TaughtAssistingSwe(NoLsn3TaughtAssistingSWE)
+                .noPersonsTaughtLesson3ByVol(NoPersonsTaughtLesson3ByVol)
+                .noLsn4TaughtAsPrimaryInstr(NoLsn4TaughtAsPrimaryInstr)
+                .noLsn4TaughtAssistingSwe(NoLsn4TaughtAssistingSWE)
+                .noPersonsTaughtLesson4ByVol(NoPersonsTaughtLesson4ByVol)
+                .noPersonsTaughtByVol(NoPersonsTaughtByVol)
                 .completed(completed)
                 .lat(lat)
                 .lng(lng)

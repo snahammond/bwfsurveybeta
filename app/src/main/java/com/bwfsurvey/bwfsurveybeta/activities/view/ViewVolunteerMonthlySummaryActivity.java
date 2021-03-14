@@ -81,7 +81,7 @@ public class ViewVolunteerMonthlySummaryActivity extends AppCompatActivity {
 
     private void createViewOnlyInterchangesAndShow() {
         if(theVolunteerMonthlySummary!=null){
-            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("SWESUMMARY");
+            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("VOLUNTEERSUMMARY");
             for(int i=0;i<returnedInterchanges.size();i++){
                 Interchange interchange = returnedInterchanges.get(i);
                 String answer = "";

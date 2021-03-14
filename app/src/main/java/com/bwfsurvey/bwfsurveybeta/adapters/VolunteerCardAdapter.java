@@ -80,13 +80,13 @@ public class VolunteerCardAdapter extends RecyclerView.Adapter {
                     if(operation.contentEquals("CREATE")){
                         if(surveyType.contentEquals("WATERSURVEYHOUSEHOLD"))
                             startVolHouseholdWaterSurveyActivity(txtVolunteerName.getText().toString());
-                        else if(surveyType.contentEquals("SWESUMMARY"))
+                        else if(surveyType.contentEquals("VOLUNTEERSUMMARY"))
                             startVolMonthlySummaryActivity(txtVolunteerName.getText().toString());
                     }else if(operation.contentEquals("VIEW")){
-                        if(surveyType.contentEquals("SWESUMMARY"))
+                        if(surveyType.contentEquals("VOLUNTEERSUMMARY"))
                             startViewVolMonthlySummaryActivity(txtVolunteerName.getText().toString());
                     }else if(operation.contentEquals("UPDATE")){
-                        if(surveyType.contentEquals("SWESUMMARY"))
+                        if(surveyType.contentEquals("VOLUNTEERSUMMARY"))
                             startUpdateVolMonthlySummaryActivity(txtVolunteerName.getText().toString());
                     }
 
@@ -127,7 +127,7 @@ public class VolunteerCardAdapter extends RecyclerView.Adapter {
         Intent i = new Intent(this.context, VolunteerMonthlySummaryActivity.class);
         i.putExtra("NAME_BWE", namebwe);
         i.putExtra("POSITION_BWE", "Volunteer");
-        i.putExtra("SURVEY_TYPE","SWESUMMARY");
+        i.putExtra("SURVEY_TYPE","VOLUNTEERSUMMARY");
         i.putExtra("OPERATION","CREATE");
         i.putExtra("NAME_VOL",volunteerName);
         context.startActivity(i);

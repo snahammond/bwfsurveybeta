@@ -1143,23 +1143,19 @@ mutation CreateVolunteerMonthlySummary(
     Namevol
     date
     NoWaterSampleTaken
-    NoSurveysCompleted
-    NoHealthCheck
-    NoLsn1Taught
-    NoPersonsTaughtLesson1
-    NoLsn2Taught
-    NoPersonsTaughtLesson2
-    NoLsn3Taught
-    NoPersonsTaughtLesson3
-    NoLsn4Taught
-    NoPersonsTaughtLesson4
-    NoPersonsTaught
-    NoHouseholdReceivingChlorineSupplies
-    NoLiquidChlorineDistributed
-    NoChlorineTabletsDistributed
-    NoWaterStorageContainersDistributed
-    NoSchoolVisits
-    NoPublicServiceMessagesAired
+    NoLsn1TaughtAsPrimaryInstr
+    NoLsn1TaughtAssistingSWE
+    NoPersonsTaughtLesson1ByVol
+    NoLsn2TaughtAsPrimaryInstr
+    NoLsn2TaughtAssistingSWE
+    NoPersonsTaughtLesson2ByVol
+    NoLsn3TaughtAsPrimaryInstr
+    NoLsn3TaughtAssistingSWE
+    NoPersonsTaughtLesson3ByVol
+    NoLsn4TaughtAsPrimaryInstr
+    NoLsn4TaughtAssistingSWE
+    NoPersonsTaughtLesson4ByVol
+    NoPersonsTaughtByVol
     Completed
     Lat
     Lng
@@ -1180,23 +1176,19 @@ mutation UpdateVolunteerMonthlySummary(
     Namevol
     date
     NoWaterSampleTaken
-    NoSurveysCompleted
-    NoHealthCheck
-    NoLsn1Taught
-    NoPersonsTaughtLesson1
-    NoLsn2Taught
-    NoPersonsTaughtLesson2
-    NoLsn3Taught
-    NoPersonsTaughtLesson3
-    NoLsn4Taught
-    NoPersonsTaughtLesson4
-    NoPersonsTaught
-    NoHouseholdReceivingChlorineSupplies
-    NoLiquidChlorineDistributed
-    NoChlorineTabletsDistributed
-    NoWaterStorageContainersDistributed
-    NoSchoolVisits
-    NoPublicServiceMessagesAired
+    NoLsn1TaughtAsPrimaryInstr
+    NoLsn1TaughtAssistingSWE
+    NoPersonsTaughtLesson1ByVol
+    NoLsn2TaughtAsPrimaryInstr
+    NoLsn2TaughtAssistingSWE
+    NoPersonsTaughtLesson2ByVol
+    NoLsn3TaughtAsPrimaryInstr
+    NoLsn3TaughtAssistingSWE
+    NoPersonsTaughtLesson3ByVol
+    NoLsn4TaughtAsPrimaryInstr
+    NoLsn4TaughtAssistingSWE
+    NoPersonsTaughtLesson4ByVol
+    NoPersonsTaughtByVol
     Completed
     Lat
     Lng
@@ -1217,23 +1209,19 @@ mutation DeleteVolunteerMonthlySummary(
     Namevol
     date
     NoWaterSampleTaken
-    NoSurveysCompleted
-    NoHealthCheck
-    NoLsn1Taught
-    NoPersonsTaughtLesson1
-    NoLsn2Taught
-    NoPersonsTaughtLesson2
-    NoLsn3Taught
-    NoPersonsTaughtLesson3
-    NoLsn4Taught
-    NoPersonsTaughtLesson4
-    NoPersonsTaught
-    NoHouseholdReceivingChlorineSupplies
-    NoLiquidChlorineDistributed
-    NoChlorineTabletsDistributed
-    NoWaterStorageContainersDistributed
-    NoSchoolVisits
-    NoPublicServiceMessagesAired
+    NoLsn1TaughtAsPrimaryInstr
+    NoLsn1TaughtAssistingSWE
+    NoPersonsTaughtLesson1ByVol
+    NoLsn2TaughtAsPrimaryInstr
+    NoLsn2TaughtAssistingSWE
+    NoPersonsTaughtLesson2ByVol
+    NoLsn3TaughtAsPrimaryInstr
+    NoLsn3TaughtAssistingSWE
+    NoPersonsTaughtLesson3ByVol
+    NoLsn4TaughtAsPrimaryInstr
+    NoLsn4TaughtAssistingSWE
+    NoPersonsTaughtLesson4ByVol
+    NoPersonsTaughtByVol
     Completed
     Lat
     Lng

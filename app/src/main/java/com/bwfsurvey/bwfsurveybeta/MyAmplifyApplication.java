@@ -220,7 +220,7 @@ public class MyAmplifyApplication extends Application {
         ArrayList<Config> configs = null;
         //load from file
         ConfigXmlParser configXmlParser = new ConfigXmlParser();
-        InputStream is = getResources().openRawResource(R.raw.config);
+        InputStream is = getResources().openRawResource(R.raw.config_old);
 
         try {
             configs = (ArrayList<Config>) configXmlParser.parse(is);

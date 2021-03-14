@@ -10580,7 +10580,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoSurveysCompleted",
+                        "name": "NoLsn1TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10590,7 +10590,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoHealthCheck",
+                        "name": "NoLsn1TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10600,7 +10600,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn1Taught",
+                        "name": "NoPersonsTaughtLesson1ByVol",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10610,7 +10610,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson1",
+                        "name": "NoLsn2TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10620,7 +10620,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn2Taught",
+                        "name": "NoLsn2TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10630,7 +10630,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson2",
+                        "name": "NoPersonsTaughtLesson2ByVol",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10640,7 +10640,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn3Taught",
+                        "name": "NoLsn3TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10650,7 +10650,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson3",
+                        "name": "NoLsn3TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10660,7 +10660,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn4Taught",
+                        "name": "NoPersonsTaughtLesson3ByVol",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10670,7 +10670,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson4",
+                        "name": "NoLsn4TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10680,7 +10680,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaught",
+                        "name": "NoLsn4TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10690,7 +10690,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoHouseholdReceivingChlorineSupplies",
+                        "name": "NoPersonsTaughtLesson4ByVol",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10700,47 +10700,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLiquidChlorineDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoChlorineTabletsDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoWaterStorageContainersDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoSchoolVisits",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoPublicServiceMessagesAired",
+                        "name": "NoPersonsTaughtByVol",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -10955,7 +10915,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoSurveysCompleted",
+                        "name": "NoLsn1TaughtAsPrimaryInstr",
                         "description": null,
                         "args": [],
                         "type": {
@@ -10971,7 +10931,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoHealthCheck",
+                        "name": "NoLsn1TaughtAssistingSWE",
                         "description": null,
                         "args": [],
                         "type": {
@@ -10987,7 +10947,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoLsn1Taught",
+                        "name": "NoPersonsTaughtLesson1ByVol",
                         "description": null,
                         "args": [],
                         "type": {
@@ -11003,7 +10963,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson1",
+                        "name": "NoLsn2TaughtAsPrimaryInstr",
                         "description": null,
                         "args": [],
                         "type": {
@@ -11019,7 +10979,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoLsn2Taught",
+                        "name": "NoLsn2TaughtAssistingSWE",
                         "description": null,
                         "args": [],
                         "type": {
@@ -11035,7 +10995,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson2",
+                        "name": "NoPersonsTaughtLesson2ByVol",
                         "description": null,
                         "args": [],
                         "type": {
@@ -11051,7 +11011,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoLsn3Taught",
+                        "name": "NoLsn3TaughtAsPrimaryInstr",
                         "description": null,
                         "args": [],
                         "type": {
@@ -11067,7 +11027,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson3",
+                        "name": "NoLsn3TaughtAssistingSWE",
                         "description": null,
                         "args": [],
                         "type": {
@@ -11083,7 +11043,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoLsn4Taught",
+                        "name": "NoPersonsTaughtLesson3ByVol",
                         "description": null,
                         "args": [],
                         "type": {
@@ -11099,7 +11059,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson4",
+                        "name": "NoLsn4TaughtAsPrimaryInstr",
                         "description": null,
                         "args": [],
                         "type": {
@@ -11115,7 +11075,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoPersonsTaught",
+                        "name": "NoLsn4TaughtAssistingSWE",
                         "description": null,
                         "args": [],
                         "type": {
@@ -11131,7 +11091,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoHouseholdReceivingChlorineSupplies",
+                        "name": "NoPersonsTaughtLesson4ByVol",
                         "description": null,
                         "args": [],
                         "type": {
@@ -11147,71 +11107,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "NoLiquidChlorineDistributed",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "NoChlorineTabletsDistributed",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "NoWaterStorageContainersDistributed",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "NoSchoolVisits",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "NoPublicServiceMessagesAired",
+                        "name": "NoPersonsTaughtByVol",
                         "description": null,
                         "args": [],
                         "type": {
@@ -22129,7 +22025,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoSurveysCompleted",
+                        "name": "NoLsn1TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -22143,7 +22039,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoHealthCheck",
+                        "name": "NoLsn1TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -22157,7 +22053,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn1Taught",
+                        "name": "NoPersonsTaughtLesson1ByVol",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -22171,7 +22067,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson1",
+                        "name": "NoLsn2TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -22185,7 +22081,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn2Taught",
+                        "name": "NoLsn2TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -22199,7 +22095,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson2",
+                        "name": "NoPersonsTaughtLesson2ByVol",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -22213,7 +22109,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn3Taught",
+                        "name": "NoLsn3TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -22227,7 +22123,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson3",
+                        "name": "NoLsn3TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -22241,7 +22137,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn4Taught",
+                        "name": "NoPersonsTaughtLesson3ByVol",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -22255,7 +22151,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson4",
+                        "name": "NoLsn4TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -22269,7 +22165,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaught",
+                        "name": "NoLsn4TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -22283,7 +22179,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoHouseholdReceivingChlorineSupplies",
+                        "name": "NoPersonsTaughtLesson4ByVol",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -22297,63 +22193,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLiquidChlorineDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoChlorineTabletsDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoWaterStorageContainersDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoSchoolVisits",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoPublicServiceMessagesAired",
+                        "name": "NoPersonsTaughtByVol",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -22470,7 +22310,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoSurveysCompleted",
+                        "name": "NoLsn1TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -22480,7 +22320,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoHealthCheck",
+                        "name": "NoLsn1TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -22490,7 +22330,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn1Taught",
+                        "name": "NoPersonsTaughtLesson1ByVol",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -22500,7 +22340,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson1",
+                        "name": "NoLsn2TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -22510,7 +22350,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn2Taught",
+                        "name": "NoLsn2TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -22520,7 +22360,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson2",
+                        "name": "NoPersonsTaughtLesson2ByVol",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -22530,7 +22370,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn3Taught",
+                        "name": "NoLsn3TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -22540,7 +22380,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson3",
+                        "name": "NoLsn3TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -22550,7 +22390,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn4Taught",
+                        "name": "NoPersonsTaughtLesson3ByVol",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -22560,7 +22400,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson4",
+                        "name": "NoLsn4TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -22570,7 +22410,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaught",
+                        "name": "NoLsn4TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -22580,7 +22420,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoHouseholdReceivingChlorineSupplies",
+                        "name": "NoPersonsTaughtLesson4ByVol",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -22590,47 +22430,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLiquidChlorineDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoChlorineTabletsDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoWaterStorageContainersDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoSchoolVisits",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoPublicServiceMessagesAired",
+                        "name": "NoPersonsTaughtByVol",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -22773,7 +22573,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoSurveysCompleted",
+                        "name": "NoLsn1TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -22783,7 +22583,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoHealthCheck",
+                        "name": "NoLsn1TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -22793,7 +22593,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn1Taught",
+                        "name": "NoPersonsTaughtLesson1ByVol",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -22803,7 +22603,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson1",
+                        "name": "NoLsn2TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -22813,7 +22613,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn2Taught",
+                        "name": "NoLsn2TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -22823,7 +22623,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson2",
+                        "name": "NoPersonsTaughtLesson2ByVol",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -22833,7 +22633,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn3Taught",
+                        "name": "NoLsn3TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -22843,7 +22643,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson3",
+                        "name": "NoLsn3TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -22853,7 +22653,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLsn4Taught",
+                        "name": "NoPersonsTaughtLesson3ByVol",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -22863,7 +22663,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaughtLesson4",
+                        "name": "NoLsn4TaughtAsPrimaryInstr",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -22873,7 +22673,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoPersonsTaught",
+                        "name": "NoLsn4TaughtAssistingSWE",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -22883,7 +22683,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoHouseholdReceivingChlorineSupplies",
+                        "name": "NoPersonsTaughtLesson4ByVol",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -22893,47 +22693,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoLiquidChlorineDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoChlorineTabletsDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoWaterStorageContainersDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoSchoolVisits",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoPublicServiceMessagesAired",
+                        "name": "NoPersonsTaughtByVol",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
