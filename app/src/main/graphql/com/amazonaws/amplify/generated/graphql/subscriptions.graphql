@@ -62,6 +62,8 @@ subscription OnCreateInitialSurvey {
     Completed
     Lat
     Lng
+    ChildrenDiedAfterBeingBornAlive
+    CausesOfChildrenDeath
     _version
     _deleted
     _lastChangedAt
@@ -132,6 +134,8 @@ subscription OnUpdateInitialSurvey {
     Completed
     Lat
     Lng
+    ChildrenDiedAfterBeingBornAlive
+    CausesOfChildrenDeath
     _version
     _deleted
     _lastChangedAt
@@ -202,6 +206,8 @@ subscription OnDeleteInitialSurvey {
     Completed
     Lat
     Lng
+    ChildrenDiedAfterBeingBornAlive
+    CausesOfChildrenDeath
     _version
     _deleted
     _lastChangedAt

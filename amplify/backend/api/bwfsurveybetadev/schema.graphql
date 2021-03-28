@@ -1,6 +1,7 @@
 enum AnswerType {
   TEXTVALUE
   ENUMVALUE
+  ENUMMULTIPLEVALUE
   ENUMWITHNONEVALUE
   ENUMDROPDOWNVALUE
   NUMBERVALUE
@@ -71,6 +72,8 @@ HealthChangeFamilyInAYear: String!
 Completed: Int!
 Lat: String!
 Lng: String!
+ChildrenDiedAfterBeingBornAlive: String!
+CausesOfChildrenDeath: String!
 }
 
 

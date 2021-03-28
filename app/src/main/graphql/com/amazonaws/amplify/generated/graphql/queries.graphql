@@ -73,6 +73,8 @@ query SyncInitialSurveys(
       Completed
       Lat
       Lng
+      ChildrenDiedAfterBeingBornAlive
+      CausesOfChildrenDeath
       _version
       _deleted
       _lastChangedAt
@@ -146,6 +148,8 @@ query GetInitialSurvey($id: ID!) {
     Completed
     Lat
     Lng
+    ChildrenDiedAfterBeingBornAlive
+    CausesOfChildrenDeath
     _version
     _deleted
     _lastChangedAt
@@ -221,6 +225,8 @@ query ListInitialSurveys(
       Completed
       Lat
       Lng
+      ChildrenDiedAfterBeingBornAlive
+      CausesOfChildrenDeath
       _version
       _deleted
       _lastChangedAt

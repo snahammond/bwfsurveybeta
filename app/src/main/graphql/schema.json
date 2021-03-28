@@ -2237,6 +2237,26 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "ChildrenDiedAfterBeingBornAlive",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "CausesOfChildrenDeath",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "and",
                         "description": null,
                         "type": {
@@ -3894,6 +3914,38 @@
                     },
                     {
                         "name": "Lng",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "ChildrenDiedAfterBeingBornAlive",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "CausesOfChildrenDeath",
                         "description": null,
                         "args": [],
                         "type": {
@@ -13559,6 +13611,34 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "ChildrenDiedAfterBeingBornAlive",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "CausesOfChildrenDeath",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "_version",
                         "description": null,
                         "type": {
@@ -14171,6 +14251,26 @@
                     },
                     {
                         "name": "Lng",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ChildrenDiedAfterBeingBornAlive",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "CausesOfChildrenDeath",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -14834,6 +14934,26 @@
                     },
                     {
                         "name": "Lng",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ChildrenDiedAfterBeingBornAlive",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "CausesOfChildrenDeath",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -24149,6 +24269,12 @@
                     },
                     {
                         "name": "ENUMVALUE",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "ENUMMULTIPLEVALUE",
                         "description": null,
                         "isDeprecated": false,
                         "deprecationReason": null

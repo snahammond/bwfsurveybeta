@@ -107,12 +107,48 @@
                 android:onClick="onCheckboxClicked"
                 android:visibility="gone"/>
 
+            <CheckBox android:id="@+id/checkbox_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11"
+                android:onClick="onCheckboxClicked"
+                android:visibility="gone"/>
+
+            <CheckBox android:id="@+id/checkbox_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12"
+                android:onClick="onCheckboxClicked"
+                android:visibility="gone"/>
+
+            <CheckBox android:id="@+id/checkbox_13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13"
+                android:onClick="onCheckboxClicked"
+                android:visibility="gone"/>
+
+            <CheckBox android:id="@+id/checkbox_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14"
+                android:onClick="onCheckboxClicked"
+                android:visibility="gone"/>
+
+            <CheckBox android:id="@+id/checkbox_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15"
+                android:onClick="onCheckboxClicked"
+                android:visibility="gone"/>
+
         <TextView
             android:id="@+id/txtComment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
             android:visibility="gone"/>
+
 
     </LinearLayout>
 

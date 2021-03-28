@@ -361,7 +361,7 @@
                             android:background="?android:attr/selectableItemBackground"
                             android:gravity="start"
                             android:shadowColor="#FFFFFF"
-                            android:text="update incompleted data"
+                            android:text="update incomplete data"
                             android:textColor="#3F51B5"
                             app:backgroundTint="#FFFFFF" />
 

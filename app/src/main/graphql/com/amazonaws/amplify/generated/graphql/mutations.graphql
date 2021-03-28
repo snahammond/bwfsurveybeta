@@ -65,6 +65,8 @@ mutation CreateInitialSurvey(
     Completed
     Lat
     Lng
+    ChildrenDiedAfterBeingBornAlive
+    CausesOfChildrenDeath
     _version
     _deleted
     _lastChangedAt
@@ -138,6 +140,8 @@ mutation UpdateInitialSurvey(
     Completed
     Lat
     Lng
+    ChildrenDiedAfterBeingBornAlive
+    CausesOfChildrenDeath
     _version
     _deleted
     _lastChangedAt
@@ -211,6 +215,8 @@ mutation DeleteInitialSurvey(
     Completed
     Lat
     Lng
+    ChildrenDiedAfterBeingBornAlive
+    CausesOfChildrenDeath
     _version
     _deleted
     _lastChangedAt

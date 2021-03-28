@@ -22,6 +22,7 @@ import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
+import com.bwfsurvey.bwfsurveybeta.utils.InterchangeUtils;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
 import com.example.bwfsurveybeta.R;
 
@@ -308,6 +309,8 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
         Integer MoneySpentMedicalTreatmentLast4weeks = parseIntegerWithDefault(getInterchangeAns("MoneySpentMedicalTreatmentLast4weeks",validatedInterchangesWithAns),0);
         String HealthChangeInAYear = (String) getInterchangeAns("HealthChangeInAYear",validatedInterchangesWithAns);
         String HealthChangeFamilyInAYear = (String) getInterchangeAns("HealthChangeFamilyInAYear",validatedInterchangesWithAns);
+        String ChildrenDiedAfterBeingBornAlive = (String) InterchangeUtils.getInterchangeAns("ChildrenDiedAfterBeingBornAlive",validatedInterchangesWithAns);
+        String CausesOfChildrenDeath = (String) InterchangeUtils.getInterchangeAns("CausesOfChildrenDeath", validatedInterchangesWithAns);
 
 
         InitialSurvey initialSurvey = InitialSurvey.builder()
@@ -370,6 +373,8 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
                 .completed(completed)
                 .lat(lat)
                 .lng(lng)
+                .childrenDiedAfterBeingBornAlive(ChildrenDiedAfterBeingBornAlive)
+                .causesOfChildrenDeath(CausesOfChildrenDeath)
                 .date(date)
                 .id(theInitialSurvey.getId())
                 .build();

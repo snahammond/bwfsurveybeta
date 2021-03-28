@@ -306,7 +306,8 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         Integer MoneySpentMedicalTreatmentLast4weeks = IntegerUtils.parseIntegerWithDefault(InterchangeUtils.getInterchangeAns("MoneySpentMedicalTreatmentLast4weeks",validatedInterchangesWithAns),0);
         String HealthChangeInAYear = (String) InterchangeUtils.getInterchangeAns("HealthChangeInAYear",validatedInterchangesWithAns);
         String HealthChangeFamilyInAYear = (String) InterchangeUtils.getInterchangeAns("HealthChangeFamilyInAYear",validatedInterchangesWithAns);
-
+        String ChildrenDiedAfterBeingBornAlive = (String) InterchangeUtils.getInterchangeAns("ChildrenDiedAfterBeingBornAlive",validatedInterchangesWithAns);
+        String CausesOfChildrenDeath = (String) InterchangeUtils.getInterchangeAns("CausesOfChildrenDeath", validatedInterchangesWithAns);
 
         InitialSurvey initialSurvey = InitialSurvey.builder()
                 .namebwe(Namebwe)
@@ -368,6 +369,8 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                 .completed(completed)
                 .lat(lat)
                 .lng(lng)
+                .childrenDiedAfterBeingBornAlive(ChildrenDiedAfterBeingBornAlive)
+                .causesOfChildrenDeath(CausesOfChildrenDeath)
                 .date(date)
                 .build();
         return initialSurvey;

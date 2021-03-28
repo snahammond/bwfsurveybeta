@@ -16,12 +16,12 @@
     <string name="confirm">confirm</string>
     <string name="cancel">cancel</string>
     <string name="continueAs">continue as</string>
-    <string name="authenticated">Authenticated</string>
+    <string name="authenticated">Authenticate</string>
     <string name="collectData">collect data</string>
     <string name="viewCollectedData">view data</string>
     <string name="initialSurvey">Initial Household Survey</string>
     <string name="waterSurvey">Household Water Test-SWE</string>
-    <string name="healthCheck">Monthly Health Check Survey</string>
+    <string name="healthCheck">Health Check Survey</string>
     <string name="followUpSurvey">6 &amp; 12 month follow-up Household Survey</string>
     <string name="Surname">Surname</string>
     <string name="firstname">first name</string>
