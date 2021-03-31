@@ -13,17 +13,17 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.bwfsurveybeta.R;
 
+public class ResetPasswordUsername extends DialogFragment {
 
-public class ConfirmSignUp extends DialogFragment {
-    public EditText confirmation_code;
+    public EditText editText_emailAddress;
 
-    public interface ConfirmSignUpListener {
-        public void onConfirmSignUpDialogPositiveClick(DialogFragment dialog,String confirmationCode);
-        public void onConfirmSignUpDialogNegativeClick(DialogFragment dialog);
+    public interface ResetPasswordUsernameListener {
+        public void onResetPasswordUsernameDialogPositiveClick(DialogFragment dialog,String email);
+        public void onResetPasswordUsernameDialogNegativeClick(DialogFragment dialog);
     }
 
     // Use this instance of the interface to deliver action events
-    ConfirmSignUpListener listener;
+    ResetPasswordUsername.ResetPasswordUsernameListener listener;
 
     // Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
     @Override
@@ -32,10 +32,10 @@ public class ConfirmSignUp extends DialogFragment {
         // Verify that the host activity implements the callback interface
         try {
             // Instantiate the NoticeDialogListener so we can send events to the host
-            listener = (ConfirmSignUpListener) context;
+            listener = (ResetPasswordUsername.ResetPasswordUsernameListener) context;
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException("AuthenticationActivity must implement ConfirmSignUpListener");
+            throw new ClassCastException("AuthenticationActivity must implement ResetPasswordUsernameListener");
         }
     }
 
@@ -45,19 +45,19 @@ public class ConfirmSignUp extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = requireActivity().getLayoutInflater();
-        final View layoutView = inflater.inflate(R.layout.dialog_confirm_signup, null);
+        final View layoutView = inflater.inflate(R.layout.dialog_reset_password_username, null);
         builder.setView(layoutView)
-                .setPositiveButton(R.string.confirm_signup, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.send_password_reset_code, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        confirmation_code = (EditText)layoutView.findViewById(R.id.confirmation_code);
+                        editText_emailAddress = (EditText)layoutView.findViewById(R.id.resetPasswordUsername);
                         // Send the positive button event back to the host activity
-                        listener.onConfirmSignUpDialogPositiveClick(ConfirmSignUp.this,confirmation_code.getText().toString());
+                        listener.onResetPasswordUsernameDialogPositiveClick(ResetPasswordUsername.this,editText_emailAddress.getText().toString());
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Send the negative button event back to the host activity
-                        listener.onConfirmSignUpDialogNegativeClick(ConfirmSignUp.this);
+                        listener.onResetPasswordUsernameDialogNegativeClick(ResetPasswordUsername.this);
                     }
                 });;
         // Create the AlertDialog object and return it

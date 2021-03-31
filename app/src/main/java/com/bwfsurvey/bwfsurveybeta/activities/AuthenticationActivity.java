@@ -30,6 +30,8 @@ import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
 import com.bwfsurvey.bwfsurveybeta.dialogs.ConfirmSignUp;
 import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.dialogs.ResetPasswordConfirmation;
+import com.bwfsurvey.bwfsurveybeta.dialogs.ResetPasswordUsername;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
@@ -38,7 +40,7 @@ import java.util.Locale;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class AuthenticationActivity extends FragmentActivity implements ConfirmSignUp.ConfirmSignUpListener {
+public class AuthenticationActivity extends FragmentActivity implements ConfirmSignUp.ConfirmSignUpListener, ResetPasswordUsername.ResetPasswordUsernameListener, ResetPasswordConfirmation.ResetPasswordConfirmationListener {
     private static final String SHOWING_CONFIRMATION_DIALOG = "showing_confirmation_dialog";
     private static final String STRING_CONFIRMATION_CODE = "string_confirmation_code";
 
@@ -56,6 +58,8 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
     RadioGroup radioSWEPosition;
     RadioButton radioEducator;
     RadioButton radioVolunteer;
+
+    LinearLayout forgotPasswordLayout;
 
     String uniqueBWEName = null;
     String authenticatedName = null;
@@ -225,9 +229,12 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
         progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
         progressBarText = (TextView) findViewById(R.id.pbText);
 
+        forgotPasswordLayout = (LinearLayout) findViewById(R.id.forgotPasswordLayout);
+
         TextView newUserOrAlreadySignUpPrompt = (TextView) findViewById(R.id.newUserOrAlreadySignUpPrompt);
         Button button_login = (Button) findViewById(R.id.button_login);
         Button button_signup = (Button) findViewById(R.id.button_signup);
+        Button button_resetPassword = (Button) findViewById(R.id.button_resetPassword);
 
         button_signup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -238,6 +245,8 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                     editTextUserfamilyname.setVisibility(View.VISIBLE);
                     editTextUsergivenname.setVisibility(View.VISIBLE);
                     spinnerCountry.setVisibility(View.VISIBLE);
+                    forgotPasswordLayout.setVisibility(View.GONE);
+
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(AuthenticationActivity.this,android.R.layout.simple_spinner_item, getCountryListByLocale().toArray(new String[0]));
                     spinnerCountry.setAdapter(adapter);
                     spinnerCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -276,6 +285,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                     editTextUsergivenname.setVisibility(View.GONE);
                     spinnerCountry.setVisibility(View.GONE);
                     radioSWEPosition.setVisibility(View.GONE);
+                    forgotPasswordLayout.setVisibility(View.VISIBLE);
 
                     button_login.setText(R.string.Login);
                     button_signup.setText(R.string.signup);
@@ -305,6 +315,12 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                         showTitleMessageAlert("Validation Error", "Please fill in all details");
                 }
 
+            }
+        });
+
+        button_resetPassword.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showResetPasswordUsernameDialog();
             }
         });
     }
@@ -378,7 +394,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
     }
 
     @Override
-    public void onDialogPositiveClick(DialogFragment dialog,String confirmationCode) {
+    public void onConfirmSignUpDialogPositiveClick(DialogFragment dialog,String confirmationCode) {
         //do progress thing here
         runOnUiThread(new Runnable() {
             public void run() {
@@ -411,9 +427,10 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
     }
 
     @Override
-    public void onDialogNegativeClick(DialogFragment dialog) {
+    public void onConfirmSignUpDialogNegativeClick(DialogFragment dialog) {
         dialog.getDialog().cancel();
     }
+
 
     public void signin(String email,String password){
         runOnUiThread(new Runnable() {
@@ -592,6 +609,77 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                 showAuthenticatedScreen(authenticatedName,calledAMPStart);
             }
         });
+    }
+
+    private DialogFragment resetPasswordUsernameDialog;
+    public void showResetPasswordUsernameDialog() {
+        resetPasswordUsernameDialog = new ResetPasswordUsername();
+        resetPasswordUsernameDialog.show(getSupportFragmentManager(), "PasswordUsername");
+    }
+
+    String resetPasswordEmail = null;
+    @Override
+    public void onResetPasswordUsernameDialogPositiveClick(DialogFragment dialog, String email) {
+        resetPasswordEmail = email;
+        //do progress thing here
+        runOnUiThread(new Runnable() {
+            public void run() {
+                startProgress("Please wait... Sending reset code to email!");
+            }
+        });
+
+        Amplify.Auth.resetPassword(
+                email,
+                result -> {
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            endProgress();
+                            showResetPasswordConfirmationDialog();
+                        }
+                    });
+                },
+                error -> {
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            endProgress();
+                            showTitleMessageAlert("Password Reset Error", "Password reset unsucessful, Please try again later");
+                        }
+                    });
+                    Log.e("Tutorials", "Reset Password username Error " + error.toString());
+                }
+        );
+
+    }
+
+    @Override
+    public void onResetPasswordUsernameDialogNegativeClick(DialogFragment dialog) {
+        dialog.getDialog().cancel();
+    }
+
+    private DialogFragment resetPasswordConfirmationDialog;
+    public void showResetPasswordConfirmationDialog() {
+        resetPasswordConfirmationDialog = new ResetPasswordConfirmation();
+        resetPasswordConfirmationDialog.show(getSupportFragmentManager(), "PasswordConfirmation");
+    }
+
+    @Override
+    public void onResetPasswordConfirmationDialogPositiveClick(DialogFragment dialog, String newPassword, String confirmationCode) {
+        Amplify.Auth.confirmResetPassword(
+                newPassword,
+                confirmationCode,
+                () -> {
+                    signin(resetPasswordEmail,newPassword);
+                },
+                error -> {
+                    Log.e("Tutorials", "Reset Password username Error " + error.toString());
+                }
+        );
+    }
+
+    @Override
+    public void onResetPasswordConfirmationDialogNegativeClick(DialogFragment dialog) {
+        dialog.getDialog().cancel();
     }
 
     /*

@@ -33,4 +33,14 @@
     <string name="confirmationDesc">We sent a security code to your email,, Please enter it here.</string>
     <string name="signOut">Sign Out</string>
     <string name="household_water_test_volunteers">Household Water Test-Volunteers</string>
+    <string name="forgotPassword">Forgot password?</string>
+    <string name="resetPassword">Reset password</string>
+    <string name="textResetPasswordDesc">Please enter your email address you signed up with</string>
+    <string name="emailAddress">Email Address</string>
+    <string name="send_password_reset_code">reset password</string>
+    <string name="confirm_password_reset">confirm password reset</string>
+    <string name="resetPasswordConfirmation">Password Reset Confirmation</string>
+    <string name="textResetPasswordConfirmationDesc">Please enter a new password and the password reset code sent to your email</string>
+    <string name="newpassword">new password</string>
+    <string name="resetPasswordConfirmationCode">reset password confirmation code</string>
 </resources>
