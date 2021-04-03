@@ -135,10 +135,10 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
     }
 
     private void showListOfCommunities() {
-        if(listOfCommunities.size()>0){
+        if(listOfCommunities!=null &&listOfCommunities.size()>0){
             initViewElements();
         }else{
-            ListUtils.showZeroListAlert("No community can be found for the current country, please change the current country on the main menu page.",CommunityCardSelectActivity.this);
+            ListUtils.showZeroListAlert("No community can be found for the current country; " + countrybwe +". Please change the current country on the main menu page.",CommunityCardSelectActivity.this);
         }
     }
 

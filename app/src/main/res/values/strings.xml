@@ -30,7 +30,7 @@
     <string name="waterSurveyComm">Community Water Test</string>
     <string name="SWEMonthlySummary">Monthly SWE/Vol Activity summary</string>
     <string name="confirmation">Confirmation</string>
-    <string name="confirmationDesc">We sent a security code to your email,, Please enter it here.</string>
+    <string name="confirmationDesc">We sent a security code to your email, Please enter it here.</string>
     <string name="signOut">Sign Out</string>
     <string name="household_water_test_volunteers">Household Water Test-Volunteers</string>
     <string name="forgotPassword">Forgot password?</string>

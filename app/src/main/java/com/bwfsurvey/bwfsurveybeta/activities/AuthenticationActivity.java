@@ -126,11 +126,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
             //try to get the Attrubutes if we cannot get it we will use his email to welcome him;
             Amplify.Auth.fetchUserAttributes(
                 attributes -> {
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            endProgress();
-                        }
-                    });
+
                     //user is online
                     String firstname = null;
                     String surname = null;
@@ -211,6 +207,12 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                 //sign out of cognito, move back to authentication screen
                 Log.i("Tutorials", "sign out of cognito, move back to authentication screen" );
                 signout();
+            }
+        });
+
+        runOnUiThread(new Runnable() {
+            public void run() {
+                endProgress();
             }
         });
     }
@@ -391,6 +393,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
     public void showConfirmSignUp() {
         confirmSignUp = new ConfirmSignUp();
         confirmSignUp.show(getSupportFragmentManager(), "confirmSignUp");
+        confirmSignUp.setCancelable(false);
     }
 
     @Override
@@ -421,6 +424,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                             endProgress();
                         }
                     });
+                    showTitleMessageAlert("Confirmation Error", "Please check the code and try again.");
                     Log.e("Tutorials", "Confirm signUp " + error.toString());
                 }
         );
@@ -442,11 +446,6 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
             email,
             password,
             result -> {
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        endProgress();
-                    }
-                });
                 if(result.isSignInComplete() ){
                     UserState = "SIGNED_IN";
                     Log.i("Tutorial","User state after sign in " + UserState);
@@ -455,6 +454,13 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                         doAuthentication();
                     }
                 }else{
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            endProgress();
+                        }
+                    });
+
                     AuthenticationActivity.this.runOnUiThread(new Runnable() {
                         public void run() {
                             Toast.makeText(AuthenticationActivity.this, "Log in failed Please check, if you are a new user please sign up", Toast.LENGTH_SHORT).show();
@@ -615,6 +621,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
     public void showResetPasswordUsernameDialog() {
         resetPasswordUsernameDialog = new ResetPasswordUsername();
         resetPasswordUsernameDialog.show(getSupportFragmentManager(), "PasswordUsername");
+        resetPasswordUsernameDialog.setCancelable(false);
     }
 
     String resetPasswordEmail = null;
@@ -661,6 +668,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
     public void showResetPasswordConfirmationDialog() {
         resetPasswordConfirmationDialog = new ResetPasswordConfirmation();
         resetPasswordConfirmationDialog.show(getSupportFragmentManager(), "PasswordConfirmation");
+        resetPasswordConfirmationDialog.setCancelable(false);
     }
 
     @Override
