@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -514,6 +515,7 @@ public class MenuActivity extends AppCompatActivity {
             Log.i("Tutorials", "going to sync with cloud" );
             progressBarText.setText("Please wait... Synchronizing with cloud!");
             progressBar.setVisibility(View.VISIBLE);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             Amplify.DataStore.clear(
                     () -> {
                         runOnUiThread(new Runnable() {
@@ -567,6 +569,7 @@ public class MenuActivity extends AppCompatActivity {
                                                                                         @Override
                                                                                         public void onFinish() {
                                                                                             progressBar.setVisibility(View.GONE);
+                                                                                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                                                                                         }
                                                                                     };
                                                                                     countDownTimer.start();
@@ -582,6 +585,7 @@ public class MenuActivity extends AppCompatActivity {
                                                                                     progressBar.setVisibility(View.GONE);
                                                                                 }
                                                                             });
+                                                                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                                                                         }
                                                                 );
                                                             }
@@ -597,6 +601,7 @@ public class MenuActivity extends AppCompatActivity {
                                                         progressBar.setVisibility(View.GONE);
                                                     }
                                                 });
+                                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                                             }
                                     );
                                 }
@@ -612,6 +617,7 @@ public class MenuActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                             }
                         });
+                        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                     });
 
 

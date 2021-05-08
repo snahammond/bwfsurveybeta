@@ -258,6 +258,7 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
         Integer SurveyId = theInitialSurvey.getSurveyId();
         Temporal.Date date = new Temporal.Date(date_s);
         String HeadHouseholdName = (String) getInterchangeAns("HeadHouseholdName",validatedInterchangesWithAns);
+        String HeadHouseholdPhoneNumber = (String) InterchangeUtils.getInterchangeAns("HeadHouseholdPhoneNumber",validatedInterchangesWithAns);
         String HeadHouseholdSex = (String) getInterchangeAns("HeadHouseholdSex",validatedInterchangesWithAns);
         String HeadHouseholdMaritalStatus = (String) getInterchangeAns("HeadHouseholdMaritalStatus",validatedInterchangesWithAns);
         Integer HeadHouseholdAge = parseIntegerWithDefault( getInterchangeAns("HeadHouseholdAge",validatedInterchangesWithAns),0);
@@ -319,6 +320,7 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
                 .community(Community)
                 .surveyId(SurveyId)
                 .headHouseholdName(HeadHouseholdName)
+                .headHouseholdPhoneNumber(HeadHouseholdPhoneNumber)
                 .headHouseholdSex(HeadHouseholdSex)
                 .headHouseholdMaritalStatus(HeadHouseholdMaritalStatus)
                 .headHouseholdAge(HeadHouseholdAge)

@@ -109,7 +109,7 @@ public class Interchange implements Comparable<Interchange>{
                                     }catch (Exception x){
                                         userAns = 0;
                                     }
-                                    if(minValue<userAns)
+                                    if(minValue<=userAns)
                                         return true;
                                 }
                             }else{

@@ -18,6 +18,7 @@ Community: String!
 SurveyId: Int!
 date: AWSDate
 HeadHouseholdName: String!
+HeadHouseholdPhoneNumber: String!
 HeadHouseholdSex: String!
 HeadHouseholdMaritalStatus: String!
 HeadHouseholdAge: Int!

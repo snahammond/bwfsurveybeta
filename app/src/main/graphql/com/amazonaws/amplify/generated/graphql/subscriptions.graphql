@@ -8,6 +8,7 @@ subscription OnCreateInitialSurvey {
     SurveyId
     date
     HeadHouseholdName
+    HeadHouseholdPhoneNumber
     HeadHouseholdSex
     HeadHouseholdMaritalStatus
     HeadHouseholdAge
@@ -80,6 +81,7 @@ subscription OnUpdateInitialSurvey {
     SurveyId
     date
     HeadHouseholdName
+    HeadHouseholdPhoneNumber
     HeadHouseholdSex
     HeadHouseholdMaritalStatus
     HeadHouseholdAge
@@ -152,6 +154,7 @@ subscription OnDeleteInitialSurvey {
     SurveyId
     date
     HeadHouseholdName
+    HeadHouseholdPhoneNumber
     HeadHouseholdSex
     HeadHouseholdMaritalStatus
     HeadHouseholdAge

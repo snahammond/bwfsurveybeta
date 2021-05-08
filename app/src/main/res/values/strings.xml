@@ -42,5 +42,5 @@
     <string name="resetPasswordConfirmation">Password Reset Confirmation</string>
     <string name="textResetPasswordConfirmationDesc">Please enter a new password and the password reset code sent to your email</string>
     <string name="newpassword">new password</string>
-    <string name="resetPasswordConfirmationCode">reset password confirmation code</string>
+    <string name="resetPasswordConfirmationCode">verification code just sent to your email</string>
 </resources>

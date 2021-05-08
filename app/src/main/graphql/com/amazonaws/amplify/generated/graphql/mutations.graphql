@@ -11,6 +11,7 @@ mutation CreateInitialSurvey(
     SurveyId
     date
     HeadHouseholdName
+    HeadHouseholdPhoneNumber
     HeadHouseholdSex
     HeadHouseholdMaritalStatus
     HeadHouseholdAge
@@ -86,6 +87,7 @@ mutation UpdateInitialSurvey(
     SurveyId
     date
     HeadHouseholdName
+    HeadHouseholdPhoneNumber
     HeadHouseholdSex
     HeadHouseholdMaritalStatus
     HeadHouseholdAge
@@ -161,6 +163,7 @@ mutation DeleteInitialSurvey(
     SurveyId
     date
     HeadHouseholdName
+    HeadHouseholdPhoneNumber
     HeadHouseholdSex
     HeadHouseholdMaritalStatus
     HeadHouseholdAge

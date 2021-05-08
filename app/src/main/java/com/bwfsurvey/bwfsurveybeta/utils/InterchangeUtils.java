@@ -52,7 +52,7 @@ public class InterchangeUtils {
                 foundInterchange = interchange;
             }
         }
-        if(ans==null){
+        if(ans==null&&foundInterchange!=null){
             ans = foundInterchange.getValidation().getDefaultValue();
         }
         return ans;

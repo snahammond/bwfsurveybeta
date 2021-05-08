@@ -255,6 +255,7 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         Integer SurveyId = surveyId;
         Temporal.Date date = new Temporal.Date(date_s);
         String HeadHouseholdName = (String) InterchangeUtils.getInterchangeAns("HeadHouseholdName",validatedInterchangesWithAns);
+        String HeadHouseholdPhoneNumber = (String) InterchangeUtils.getInterchangeAns("HeadHouseholdPhoneNumber",validatedInterchangesWithAns);
         String HeadHouseholdSex = (String) InterchangeUtils.getInterchangeAns("HeadHouseholdSex",validatedInterchangesWithAns);
         String HeadHouseholdMaritalStatus = (String) InterchangeUtils.getInterchangeAns("HeadHouseholdMaritalStatus",validatedInterchangesWithAns);
         Integer HeadHouseholdAge = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("HeadHouseholdAge",validatedInterchangesWithAns),0);
@@ -315,6 +316,7 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                 .community(Community)
                 .surveyId(SurveyId)
                 .headHouseholdName(HeadHouseholdName)
+                .headHouseholdPhoneNumber(HeadHouseholdPhoneNumber)
                 .headHouseholdSex(HeadHouseholdSex)
                 .headHouseholdMaritalStatus(HeadHouseholdMaritalStatus)
                 .headHouseholdAge(HeadHouseholdAge)

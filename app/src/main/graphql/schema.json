@@ -1697,6 +1697,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "HeadHouseholdPhoneNumber",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "HeadHouseholdSex",
                         "description": null,
                         "type": {
@@ -3050,6 +3060,22 @@
                     },
                     {
                         "name": "HeadHouseholdName",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "HeadHouseholdPhoneNumber",
                         "description": null,
                         "args": [],
                         "type": {
@@ -12855,6 +12881,20 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "HeadHouseholdPhoneNumber",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "HeadHouseholdSex",
                         "description": null,
                         "type": {
@@ -13720,6 +13760,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "HeadHouseholdPhoneNumber",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "HeadHouseholdSex",
                         "description": null,
                         "type": {
@@ -14394,6 +14444,16 @@
                     },
                     {
                         "name": "HeadHouseholdName",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HeadHouseholdPhoneNumber",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",

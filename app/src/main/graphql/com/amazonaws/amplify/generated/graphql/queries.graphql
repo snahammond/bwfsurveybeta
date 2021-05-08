@@ -19,6 +19,7 @@ query SyncInitialSurveys(
       SurveyId
       date
       HeadHouseholdName
+      HeadHouseholdPhoneNumber
       HeadHouseholdSex
       HeadHouseholdMaritalStatus
       HeadHouseholdAge
@@ -94,6 +95,7 @@ query GetInitialSurvey($id: ID!) {
     SurveyId
     date
     HeadHouseholdName
+    HeadHouseholdPhoneNumber
     HeadHouseholdSex
     HeadHouseholdMaritalStatus
     HeadHouseholdAge
@@ -171,6 +173,7 @@ query ListInitialSurveys(
       SurveyId
       date
       HeadHouseholdName
+      HeadHouseholdPhoneNumber
       HeadHouseholdSex
       HeadHouseholdMaritalStatus
       HeadHouseholdAge

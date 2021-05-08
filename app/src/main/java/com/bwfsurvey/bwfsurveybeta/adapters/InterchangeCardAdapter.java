@@ -307,7 +307,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     //_retInterchangesWithAns.get(interchange.getPositionOnRecyler()).getAnswer().setAns(currentAnsInTotal+myNum);
                     interchange.getAnswer().setAns(TotalNoPeopleHousehold);
 
-                    RecyclerView.ViewHolder totalViewHolder = mRecyclerView.findViewHolderForAdapterPosition(17);
+                    RecyclerView.ViewHolder totalViewHolder = mRecyclerView.findViewHolderForAdapterPosition(18);
                     if(totalViewHolder!=null){
                         TextView interchangeNumberTotal = (TextView)totalViewHolder.itemView.findViewById(R.id.interchangeNumber);
                         TextView editAnswerTotal = (TextView)totalViewHolder.itemView.findViewById(R.id.editAnswer);
@@ -414,6 +414,11 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         private RadioButton radio_8;
         private RadioButton radio_9;
         private RadioButton radio_10;
+        private RadioButton radio_11;
+        private RadioButton radio_12;
+        private RadioButton radio_13;
+        private RadioButton radio_14;
+        private RadioButton radio_15;
         private int interchangePosition;
 
         public int getInterchangePosition() {
@@ -510,6 +515,46 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
                 }
             });
+            radio_11 = (RadioButton)itemView.findViewById(R.id.radio_11);
+            radio_11.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
+            radio_12 = (RadioButton)itemView.findViewById(R.id.radio_12);
+            radio_12.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
+            radio_13 = (RadioButton)itemView.findViewById(R.id.radio_13);
+            radio_13.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
+            radio_14 = (RadioButton)itemView.findViewById(R.id.radio_14);
+            radio_14.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
+            radio_15 = (RadioButton)itemView.findViewById(R.id.radio_15);
+            radio_15.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
+                    _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                }
+            });
         }
 
         void setQuestionEnumAnsDetails(Interchange interchange, int position) {
@@ -545,11 +590,17 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             radio_8.setVisibility(View.GONE);
             radio_9.setVisibility(View.GONE);
             radio_10.setVisibility(View.GONE);
+            radio_11.setVisibility(View.GONE);
+            radio_12.setVisibility(View.GONE);
+            radio_13.setVisibility(View.GONE);
+            radio_14.setVisibility(View.GONE);
+            radio_15.setVisibility(View.GONE);
 
             radioEnum.clearCheck();
 
             if(possibleAnss.size()>0){
                 radio_1.setVisibility(View.VISIBLE);
+                radio_1.setChecked(false);
                 radio_1.setText(Html.fromHtml(possibleAnss.get(0).getDesc()));
                 radio_1.setHint(possibleAnss.get(0).getValue());
                 if(selectedOption!=null){
@@ -659,6 +710,63 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                         radioEnum.check(R.id.radio_10);
                 }
             }
+
+            if(possibleAnss.size()>10){
+                radio_11.setVisibility(View.VISIBLE);
+                radio_11.setChecked(false);
+                radio_11.setText(Html.fromHtml(possibleAnss.get(10).getDesc()));
+                radio_11.setHint(possibleAnss.get(10).getValue());
+                if(selectedOption!=null){
+                    if(possibleAnss.get(10).getValue().contentEquals(selectedOption)){
+                        radioEnum.check(R.id.radio_11);
+                    }
+                }
+            }
+
+            if(possibleAnss.size()>11){
+                radio_12.setVisibility(View.VISIBLE);
+                radio_12.setChecked(false);
+                radio_12.setText(Html.fromHtml( possibleAnss.get(11).getDesc()));
+                radio_12.setHint(possibleAnss.get(11).getValue());
+                if(selectedOption!=null) {
+                    if (possibleAnss.get(11).getValue().contentEquals(selectedOption))
+                        radioEnum.check(R.id.radio_12);
+                }
+            }
+
+            if(possibleAnss.size()>12){
+                radio_13.setVisibility(View.VISIBLE);
+                radio_13.setChecked(false);
+                radio_13.setText( Html.fromHtml(possibleAnss.get(12).getDesc()));
+                radio_13.setHint(possibleAnss.get(12).getValue());
+                if(selectedOption!=null) {
+                    if(possibleAnss.get(12).getValue().contentEquals(selectedOption))
+                        radioEnum.check(R.id.radio_13);
+                }
+            }
+
+            if(possibleAnss.size()>13){
+                radio_14.setVisibility(View.VISIBLE);
+                radio_14.setChecked(false);
+                radio_14.setText( Html.fromHtml(possibleAnss.get(13).getDesc()));
+                radio_14.setHint(possibleAnss.get(13).getValue());
+                if(selectedOption!=null) {
+                    if(possibleAnss.get(13).getValue().contentEquals(selectedOption))
+                        radioEnum.check(R.id.radio_14);
+                }
+            }
+
+            if(possibleAnss.size()>14){
+                radio_15.setVisibility(View.VISIBLE);
+                radio_15.setChecked(false);
+                radio_15.setText( Html.fromHtml(possibleAnss.get(14).getDesc()));
+                radio_15.setHint(possibleAnss.get(14).getValue());
+                if(selectedOption!=null) {
+                    if(possibleAnss.get(4).getValue().contentEquals(selectedOption))
+                        radioEnum.check(R.id.radio_15);
+                }
+            }
+
         }
     }
 

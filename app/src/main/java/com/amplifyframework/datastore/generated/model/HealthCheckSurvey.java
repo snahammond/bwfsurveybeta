@@ -153,7 +153,7 @@ public final class HealthCheckSurvey implements Model {
       return SickChildrenBreastfeeding;
   }
   
-  public String getOutcomeMostRecentVomitingDiarrheaAtHospital() {
+  public String getOutcomeMostRecentVomiting_DiarrheaAtHospital() {
       return OutcomeMostRecentVomiting_DiarrheaAtHospital;
   }
   
@@ -250,7 +250,7 @@ public final class HealthCheckSurvey implements Model {
               ObjectsCompat.equals(getDidSickChildrenGoToHospital(), healthCheckSurvey.getDidSickChildrenGoToHospital()) &&
               ObjectsCompat.equals(getDidSickChildrenGoToHospitalYes(), healthCheckSurvey.getDidSickChildrenGoToHospitalYes()) &&
               ObjectsCompat.equals(getSickChildrenBreastfeeding(), healthCheckSurvey.getSickChildrenBreastfeeding()) &&
-              ObjectsCompat.equals(getOutcomeMostRecentVomitingDiarrheaAtHospital(), healthCheckSurvey.getOutcomeMostRecentVomitingDiarrheaAtHospital()) &&
+              ObjectsCompat.equals(getOutcomeMostRecentVomiting_DiarrheaAtHospital(), healthCheckSurvey.getOutcomeMostRecentVomiting_DiarrheaAtHospital()) &&
               ObjectsCompat.equals(getNoDaysNoWorkBecauseOfOwnIllness(), healthCheckSurvey.getNoDaysNoWorkBecauseOfOwnIllness()) &&
               ObjectsCompat.equals(getNoDaysNoWorkBecauseOfIllnessFamilyMembers(), healthCheckSurvey.getNoDaysNoWorkBecauseOfIllnessFamilyMembers()) &&
               ObjectsCompat.equals(getMoneySpentMedicalTreatmentLast4weeks(), healthCheckSurvey.getMoneySpentMedicalTreatmentLast4weeks()) &&
@@ -284,7 +284,7 @@ public final class HealthCheckSurvey implements Model {
       .append(getDidSickChildrenGoToHospital())
       .append(getDidSickChildrenGoToHospitalYes())
       .append(getSickChildrenBreastfeeding())
-      .append(getOutcomeMostRecentVomitingDiarrheaAtHospital())
+      .append(getOutcomeMostRecentVomiting_DiarrheaAtHospital())
       .append(getNoDaysNoWorkBecauseOfOwnIllness())
       .append(getNoDaysNoWorkBecauseOfIllnessFamilyMembers())
       .append(getMoneySpentMedicalTreatmentLast4weeks())
@@ -320,7 +320,7 @@ public final class HealthCheckSurvey implements Model {
       .append("DidSickChildrenGoToHospital=" + String.valueOf(getDidSickChildrenGoToHospital()) + ", ")
       .append("DidSickChildrenGoToHospitalYes=" + String.valueOf(getDidSickChildrenGoToHospitalYes()) + ", ")
       .append("SickChildrenBreastfeeding=" + String.valueOf(getSickChildrenBreastfeeding()) + ", ")
-      .append("OutcomeMostRecentVomiting_DiarrheaAtHospital=" + String.valueOf(getOutcomeMostRecentVomitingDiarrheaAtHospital()) + ", ")
+      .append("OutcomeMostRecentVomiting_DiarrheaAtHospital=" + String.valueOf(getOutcomeMostRecentVomiting_DiarrheaAtHospital()) + ", ")
       .append("NoDaysNoWorkBecauseOfOwnIllness=" + String.valueOf(getNoDaysNoWorkBecauseOfOwnIllness()) + ", ")
       .append("NoDaysNoWorkBecauseOfIllnessFamilyMembers=" + String.valueOf(getNoDaysNoWorkBecauseOfIllnessFamilyMembers()) + ", ")
       .append("MoneySpentMedicalTreatmentLast4weeks=" + String.valueOf(getMoneySpentMedicalTreatmentLast4weeks()) + ", ")
