@@ -3,6 +3,18 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
+    <desc>The app version</desc>
+    <name>AppVersion</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>APP</type>
+    <value>0</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue></childvalue>
     <desc></desc>
     <name>PetrifilmDateTested</name>
     <parentdesc></parentdesc>

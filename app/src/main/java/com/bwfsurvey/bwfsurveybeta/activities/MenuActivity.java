@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.ConfigDefinitions;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
@@ -38,6 +39,7 @@ import com.example.bwfsurveybeta.R;
 import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity {
+
     String namebwe = null;
     String countrybwe = null;
     String positionbwe = null;
@@ -77,121 +79,203 @@ public class MenuActivity extends AppCompatActivity {
         progressBarText = (TextView) findViewById(R.id.pbText);
 
         progressBarText.setText("Please wait... Synchronizing with cloud!");
-        progressBar.setVisibility(View.VISIBLE);/*
-        Amplify.DataStore.start(
-                () -> {
-                    Log.i("Tutorials", "DataStore started");
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            CountDownTimer countDownTimer = new CountDownTimer(30000,1000) {
-                                @Override
-                                public void onTick(long millisUntilFinished) {
-                                }
-
-                                @Override
-                                public void onFinish() {
-                                    ArrayList<Config> configsInner = new ArrayList<Config>();
-                                    Amplify.DataStore.query(
-                                            ConfigDefinitions.class,
-                                            allConfigDefinitions -> {
-                                                Log.i("Tutorials", "DataStore is queried config query.");
-                                                while (allConfigDefinitions.hasNext()) {
-                                                    ConfigDefinitions configDef = allConfigDefinitions.next();
-                                                    if(configDef.getType().contentEquals("C")){
-                                                        Log.i("Tutorials", "country config. "+ configDef.getChildvalue());
-                                                    }
-                                                    configsInner.add(new Config(configDef.getType(), configDef.getName(), configDef.getValue(),configDef.getDesc(), configDef.getChildname(), configDef.getChildvalue(), configDef.getChilddesc(),configDef.getParentname(), configDef.getParentvalue(), configDef.getParentdesc()));
-                                                }
-                                                Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+configsInner.size() );
-                                                if(configsInner.size()>0){
-                                                    MyAmplifyApplication.configs = configsInner;
-                                                    MyAmplifyApplication.interchangePool = MyAmplifyApplication.makeAllInterchanges();
-                                                    Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+MyAmplifyApplication.configs.size() );
-                                                }
-
-                                                runOnUiThread(new Runnable() {
-                                                    public void run() {
-                                                        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-                                                            @Override
-                                                            public void onTick(long millisUntilFinished) {
+        progressBar.setVisibility(View.VISIBLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        //first of all we will query the cloud to get lastest version of app
+        Amplify.API.query(
+                ModelQuery.get(ConfigDefinitions.class, "f5ccce23-64a7-4bb6-8f79-02ac8d03a659"),
+                response -> {
+                    int remoteAppVersion = Integer.valueOf(((ConfigDefinitions) response.getData()).getValue());
+                    int localFileAppVersion = BwfSurveyAmplifyApplication.APPVERSION;
+                    Log.i("BwfSurveyAmplifyApp", "remoteAppVersion: "+ remoteAppVersion );
+                    Log.i("BwfSurveyAmplifyApp", "localFileAppVersion: "+ localFileAppVersion );
+                    if(remoteAppVersion>localFileAppVersion){
+                        //we need to get ready to do sync, but first lets check local storage if we have the correct app version
+                        ArrayList<Config> configsInner = new ArrayList<Config>();
+                        ArrayList<ConfigDefinitions> configsInnerFromLocalStore = new ArrayList<ConfigDefinitions>();
+                        Amplify.DataStore.query(
+                                ConfigDefinitions.class,
+                                allConfigDefinitions -> {
+                                    Log.i("Tutorials", "DataStore is queried config query.");
+                                    while (allConfigDefinitions.hasNext()) {
+                                        ConfigDefinitions configDef = allConfigDefinitions.next();
+                                        if(configDef.getType().contentEquals("C")){
+                                            Log.i("Tutorials", "country config. "+ configDef.getChildvalue());
+                                        }
+                                        configsInner.add(new Config(configDef.getType(), configDef.getName(), configDef.getValue(),configDef.getDesc(), configDef.getChildname(), configDef.getChildvalue(), configDef.getChilddesc(),configDef.getParentname(), configDef.getParentvalue(), configDef.getParentdesc()));
+                                        configsInnerFromLocalStore.add(configDef);
+                                    }
+                                    Log.i("BwfSurveyAmplifyApp", "DataStore is queried for configs. No of configs is "+configsInner.size() );
+                                    if(configsInner.size()>0){
+                                        BwfSurveyAmplifyApplication.configs = configsInner;
+                                        BwfSurveyAmplifyApplication.interchangePool = BwfSurveyAmplifyApplication.makeAllInterchanges();
+                                        //get the local data store app version
+                                        int localStoreAppVersion = BwfSurveyAmplifyApplication.getAPPVERSION();
+                                        Log.i("BwfSurveyAmplifyApp", "remoteAppVersion: "+ remoteAppVersion );
+                                        Log.i("BwfSurveyAmplifyApp", "localStoreAppVersion: "+ localStoreAppVersion );
+                                        if(remoteAppVersion>localStoreAppVersion){
+                                            //call api to get you all configs because we do not have the configs locally
+                                            Log.i("BwfSurveyAmplifyApp", "remoteAppVersion greater ");
+                                            Log.i("BwfSurveyAmplifyApp", "remoteAppVersion: "+ remoteAppVersion );
+                                            Log.i("BwfSurveyAmplifyApp", "localStoreAppVersion: "+ localStoreAppVersion );
+                                            Amplify.API.query(
+                                                    ModelQuery.list(ConfigDefinitions.class),
+                                                    responseinner -> {
+                                                        if (responseinner.hasData()) {
+                                                            for (ConfigDefinitions configDefFromRemote : responseinner.getData()) {
+                                                                //check before saving
+                                                                //find the config here in configsInner
+                                                                boolean found = false;
+                                                                for(ConfigDefinitions configFromLocalStore : configsInnerFromLocalStore){
+                                                                    if(configDefFromRemote.getId().contentEquals(configFromLocalStore.getId())){
+                                                                        found = true;
+                                                                        //check if all things are ok
+                                                                        if(!configDefFromRemote.equals(configFromLocalStore)){
+                                                                            Amplify.DataStore.save(configDefFromRemote,
+                                                                                    updateDS -> {
+                                                                                        Log.i("BwfSurveyAmplifyApp", "Manaul Config Saved Successfully ");
+                                                                                    },
+                                                                                    failureDS -> {
+                                                                                        Log.e("BwfSurveyAmplifyApp", "Manaul Config Save Failed "+ failureDS.getMessage());
+                                                                                    }
+                                                                            );
+                                                                        }
+                                                                    }
+                                                                }
+                                                                if(!found){
+                                                                    Amplify.DataStore.save(configDefFromRemote,
+                                                                            updateDS -> {
+                                                                                Log.i("BwfSurveyAmplifyApp", "Manaul Config Saved Successfully ");
+                                                                            },
+                                                                            failureDS -> {
+                                                                                Log.e("BwfSurveyAmplifyApp", "Manaul Config Save Failed "+ failureDS.getMessage());
+                                                                            }
+                                                                    );
+                                                                }
                                                             }
-
-                                                            @Override
-                                                            public void onFinish() {
-                                                                progressBar.setVisibility(View.GONE);
+                                                        }
+                                                        //everything looks ok we can show the menu
+                                                        runOnUiThread(new Runnable() {
+                                                            public void run() {
                                                                 showMenu();
                                                             }
-                                                        };
-                                                        countDownTimer.start();
+                                                        });
+                                                    },
+                                                    failureinner ->{
+                                                        //we failed when trying to pull down the remote configs
+                                                        runOnUiThread(new Runnable() {
+                                                            public void run() {
+                                                                showMenu();
+                                                            }
+                                                        });
+                                                        Log.e("BwfSurveyAmplifyApp", "Manaul Fetch list "+ failureinner.getMessage());
                                                     }
-                                                });
+                                            );
+                                        }
+                                        else{
+                                            //everything looks ok we can show the menu
+                                            runOnUiThread(new Runnable() {
+                                                public void run() {
+                                                    showMenu();
+                                                }
+                                            });
+                                            Log.i("BwfSurveyAmplifyApp", "remoteAppVersion equal or less ");
+                                            Log.i("BwfSurveyAmplifyApp", "remoteAppVersion: "+ remoteAppVersion );
+                                            Log.i("BwfSurveyAmplifyApp", "localStoreAppVersion: "+ localStoreAppVersion );
+                                        }
 
-                                            },
-                                            failure ->{
-                                                Log.i("Tutorials", "Query failed, going to use file " );
-                                                Log.e("Tutorials", "Query failed.", failure);
-                                                runOnUiThread(new Runnable() {
-                                                    public void run() {
-                                                        progressBar.setVisibility(View.GONE);
-                                                        showMenu();
+                                    }
+                                    else{
+                                        //call api to get you all configs because we do not have the configs locally
+                                        Amplify.API.query(
+                                                ModelQuery.list(ConfigDefinitions.class),
+                                                responseinner -> {
+                                                    if (responseinner.hasData()) {
+                                                        for (ConfigDefinitions configDefFromRemote : responseinner.getData()) {
+                                                            Amplify.DataStore.save(configDefFromRemote,
+                                                                    updateDS -> {
+                                                                        Log.i("BwfSurveyAmplifyApp", "Manaul Config Saved Successfully ");
+                                                                    },
+                                                                    failureDS -> {
+                                                                        Log.e("BwfSurveyAmplifyApp", "Manaul Config Save Failed "+ failureDS.getMessage());
+                                                                    }
+                                                            );
+                                                        }
                                                     }
-                                                });
+                                                    runOnUiThread(new Runnable() {
+                                                        public void run() {
+                                                            showMenu();
+                                                        }
+                                                    });
+                                                },
+                                                failureinner ->{
+                                                    runOnUiThread(new Runnable() {
+                                                        public void run() {
+                                                            showMenu();
+                                                        }
+                                                    });
+                                                    Log.e("BwfSurveyAmplifyApp", "Manaul Fetch list "+ failureinner.getMessage());
+                                                }
+                                        );
+                                    }
+
+                                },
+                                failure ->{
+                                    Log.i("Tutorials", "Query failed, going to use file " );
+                                    Log.e("Tutorials", "Query failed.", failure);
+                                    //we need to do sync now because when we tried to query we failed, maybe ConfigDefinitions
+                                    //has not even been created
+                                    Amplify.API.query(
+                                        ModelQuery.list(ConfigDefinitions.class),
+                                        responseinner -> {
+                                            if (responseinner.hasData()) {
+                                                for (ConfigDefinitions configDefFromRemote : responseinner.getData()) {
+                                                    Amplify.DataStore.save(configDefFromRemote,
+                                                            updateDS -> {
+                                                                Log.i("BwfSurveyAmplifyApp", "Manaul Config Saved Successfully ");
+                                                            },
+                                                            failureDS -> {
+                                                                Log.e("BwfSurveyAmplifyApp", "Manaul Config Save Failed "+ failureDS.getMessage());
+                                                            }
+                                                    );
+                                                }
                                             }
+                                            runOnUiThread(new Runnable() {
+                                                public void run() {
+                                                    showMenu();
+                                                }
+                                            });
+                                        },
+                                        failureinner ->{
+                                            runOnUiThread(new Runnable() {
+                                                public void run() {
+                                                    showMenu();
+                                                }
+                                            });
+                                            Log.e("BwfSurveyAmplifyApp", "Manaul Fetch list "+ failureinner.getMessage());
+                                        }
                                     );
                                 }
-                            };
-                            countDownTimer.start();
-                        }
-                    });
+                        );
+                    }
+                    else{
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                showMenu();
+                            }
+                        });
+                    }
                 },
                 error -> {
-                    Log.e("Tutorials", "Error starting DataStore", error);
                     runOnUiThread(new Runnable() {
                         public void run() {
-                            progressBar.setVisibility(View.GONE);
+                            if(progressBarText != null)
+                                progressBarText.setText("Please note that you are offline");
                             showMenu();
                         }
                     });
                 }
         );
-        */
-
-        ArrayList<Config> configsInner = new ArrayList<Config>();
-        Amplify.DataStore.query(
-                ConfigDefinitions.class,
-                allConfigDefinitions -> {
-                    Log.i("Tutorials", "DataStore is queried config query.");
-                    while (allConfigDefinitions.hasNext()) {
-                        ConfigDefinitions configDef = allConfigDefinitions.next();
-                        if(configDef.getType().contentEquals("C")){
-                            Log.i("Tutorials", "country config. "+ configDef.getChildvalue());
-                        }
-                        configsInner.add(new Config(configDef.getType(), configDef.getName(), configDef.getValue(),configDef.getDesc(), configDef.getChildname(), configDef.getChildvalue(), configDef.getChilddesc(),configDef.getParentname(), configDef.getParentvalue(), configDef.getParentdesc()));
-                    }
-                    Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+configsInner.size() );
-                    if(configsInner.size()>0){
-                        BwfSurveyAmplifyApplication.configs = configsInner;
-                        BwfSurveyAmplifyApplication.interchangePool = BwfSurveyAmplifyApplication.makeAllInterchanges();
-                        Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+ BwfSurveyAmplifyApplication.configs.size() );
-                    }
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            showMenu();
-                        }
-                    });
-
-                },
-                failure ->{
-                    Log.i("Tutorials", "Query failed, going to use file " );
-                    Log.e("Tutorials", "Query failed.", failure);
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            showMenu();
-                        }
-                    });
-                }
-        );
-
 
     }
 
@@ -210,6 +294,7 @@ public class MenuActivity extends AppCompatActivity {
                     Log.i("Tutorials", "endProgress in showMenu" );
                     progressBar.setVisibility(View.GONE);
                     endProgress();
+                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                     initView();
                 }
             };
@@ -510,7 +595,7 @@ public class MenuActivity extends AppCompatActivity {
             });
             dialog.show(getSupportFragmentManager(), "countries");
         }
-
+        /*
         if (id == R.id.syncCloud) {
             Log.i("Tutorials", "going to sync with cloud" );
             progressBarText.setText("Please wait... Synchronizing with cloud!");
@@ -622,6 +707,7 @@ public class MenuActivity extends AppCompatActivity {
 
 
         }
+        */
 
         return super.onOptionsItemSelected(item);
     }

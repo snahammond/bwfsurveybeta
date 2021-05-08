@@ -14,6 +14,7 @@ import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.DataStoreConfiguration;
 import com.amplifyframework.datastore.generated.model.CommunityWater;
 import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
+import com.amplifyframework.datastore.generated.model.ConfigDefinitions;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
@@ -44,6 +45,7 @@ import java.util.Collections;
 public class BwfSurveyAmplifyApplication extends Application {
     private static Context context;
     private static Activity CurrentActivity;
+    public static int APPVERSION = -1;
     public static ArrayList<Config> configs;
     public static ArrayList<Interchange> interchangePool;
     public static String namebwe = "";
@@ -121,8 +123,21 @@ public class BwfSurveyAmplifyApplication extends Application {
 
         //load the config file
         BwfSurveyAmplifyApplication.configs = loadInAllConfigs();
+        BwfSurveyAmplifyApplication.APPVERSION = getAPPVERSION();
         BwfSurveyAmplifyApplication.interchangePool = makeAllInterchanges();
 
+    }
+
+    public static int getAPPVERSION() {
+        int appVersion = -1;
+        for(Config config : configs) {
+            //Log.i("Tutorial", "config " +config.getType() + " "+ config.getName() +" "+ config.getValue());
+            if (config.getType().contentEquals("APP")) {
+                appVersion = Integer.parseInt(config.getValue());
+                break;
+            }
+        }
+        return appVersion;
     }
 
     public static Context getAppContext() {
