@@ -20,7 +20,7 @@ import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
-import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.utils.DateUtils;
 import com.bwfsurvey.bwfsurveybeta.utils.InterchangeUtils;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
@@ -88,7 +88,7 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
 
     private void createHouseholdWaterSurveyQuestionaire() {
         try{
-            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges(surveyType);
+            ArrayList<Interchange> returnedInterchanges = BwfSurveyAmplifyApplication.getInterchanges(surveyType);
             if(returnedInterchanges!=null){
                 HouseholdWaterSurveyActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;

@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Volunteer;
-import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.VolunteerCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewVolunteer;
 import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;
@@ -124,7 +124,7 @@ public class VolunteerCardSelectActivity extends AppCompatActivity implements Cr
             TextView progressBarText = (TextView) findViewById(R.id.pbText);
             progressBarText.setText("Please wait... Getting records!");
             progressBar.setVisibility(View.VISIBLE);
-            CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
+            CountDownTimer countDownTimer = new CountDownTimer(BwfSurveyAmplifyApplication.manualTimer,1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                 }

@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.CommunityWater;
-import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.CommunityWaterCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewCommunityWaterSource;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
@@ -110,7 +110,7 @@ public class CommunityWaterCardSelectActivity extends AppCompatActivity implemen
             TextView progressBarText = (TextView) findViewById(R.id.pbText);
             progressBarText.setText("Please wait... Getting records!");
             progressBar.setVisibility(View.VISIBLE);
-            CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
+            CountDownTimer countDownTimer = new CountDownTimer(BwfSurveyAmplifyApplication.manualTimer,1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                 }
@@ -151,7 +151,7 @@ public class CommunityWaterCardSelectActivity extends AppCompatActivity implemen
         if (id == R.id.newCommunityWaterSource) {
             Log.i("Tutorials", "going to get communities" );
 
-            ArrayList<Community> listOfCommunities = MyAmplifyApplication.getCommunities(countrybwe);
+            ArrayList<Community> listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
             showCreateNewCommunityWaterSource(listOfCommunities);
 
             /*

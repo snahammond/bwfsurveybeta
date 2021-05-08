@@ -14,9 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.AnswerType;
-import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
-import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.ViewOnlyInterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.AnswerValue;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
@@ -82,7 +81,7 @@ public class ViewHealthCheckSurveyActivity extends AppCompatActivity {
 
     private void createViewOnlyInterchangesAndShow() {
         if(theHealthCheckSurvey!=null){
-            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("HEALTHCHECKSURVEY");
+            ArrayList<Interchange> returnedInterchanges = BwfSurveyAmplifyApplication.getInterchanges("HEALTHCHECKSURVEY");
             for(int i=0;i<returnedInterchanges.size();i++){
                 Interchange interchange = returnedInterchanges.get(i);
                 String answer = "";
@@ -169,7 +168,7 @@ public class ViewHealthCheckSurveyActivity extends AppCompatActivity {
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Getting records!");
         progressBar.setVisibility(View.VISIBLE);
-        CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
+        CountDownTimer countDownTimer = new CountDownTimer(BwfSurveyAmplifyApplication.manualTimer,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
             }

@@ -15,7 +15,7 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.AnswerType;
 import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
-import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.ViewOnlyInterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.AnswerValue;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
@@ -81,7 +81,7 @@ public class ViewVolunteerHouseholdWaterTestActivity extends AppCompatActivity {
 
     private void createViewOnlyInterchangesAndShow() {
         if(theVolunteerHouseholdWaterTest!=null){
-            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("WATERSURVEYHOUSEHOLD");
+            ArrayList<Interchange> returnedInterchanges = BwfSurveyAmplifyApplication.getInterchanges("WATERSURVEYHOUSEHOLD");
             for(int i=0;i<returnedInterchanges.size();i++){
                 Interchange interchange = returnedInterchanges.get(i);
                 String answer = "";
@@ -169,7 +169,7 @@ public class ViewVolunteerHouseholdWaterTestActivity extends AppCompatActivity {
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Getting records!");
         progressBar.setVisibility(View.VISIBLE);
-        CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
+        CountDownTimer countDownTimer = new CountDownTimer(BwfSurveyAmplifyApplication.manualTimer,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
             }

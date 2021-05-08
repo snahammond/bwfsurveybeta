@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.VolunteerMonthlySummary;
-import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.utils.IntegerUtils;
@@ -75,7 +75,7 @@ public class VolunteerMonthlySummaryActivity extends AppCompatActivity {
 
     private void createMonthlySummaryQuestionaire() {
         try{
-            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("VOLUNTEERSUMMARY");
+            ArrayList<Interchange> returnedInterchanges = BwfSurveyAmplifyApplication.getInterchanges("VOLUNTEERSUMMARY");
             if(returnedInterchanges!=null){
                 VolunteerMonthlySummaryActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;

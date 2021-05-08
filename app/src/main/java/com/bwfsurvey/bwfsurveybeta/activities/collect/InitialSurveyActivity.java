@@ -20,7 +20,7 @@ import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
-import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.utils.IntegerUtils;
 import com.bwfsurvey.bwfsurveybeta.utils.InterchangeUtils;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
@@ -80,7 +80,7 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
 
     private void createInitialSurveyQuestionaire(){
         try{
-            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("INITAILSURVEY");
+            ArrayList<Interchange> returnedInterchanges = BwfSurveyAmplifyApplication.getInterchanges("INITAILSURVEY");
             if(returnedInterchanges!=null){
                 InitialSurveyActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;

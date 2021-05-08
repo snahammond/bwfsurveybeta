@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
-import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.utils.DateUtils;
@@ -97,7 +97,7 @@ public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
 
     private void createHouseholdWaterSurveyQuestionaire() {
         try{
-            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges(surveyType);
+            ArrayList<Interchange> returnedInterchanges = BwfSurveyAmplifyApplication.getInterchanges(surveyType);
             if(returnedInterchanges!=null){
                 VolunteerHouseholdWaterSurveyActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;

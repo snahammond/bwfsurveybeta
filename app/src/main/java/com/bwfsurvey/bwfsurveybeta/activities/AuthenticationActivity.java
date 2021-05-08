@@ -29,7 +29,7 @@ import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
 import com.bwfsurvey.bwfsurveybeta.dialogs.ConfirmSignUp;
-import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.dialogs.ResetPasswordConfirmation;
 import com.bwfsurvey.bwfsurveybeta.dialogs.ResetPasswordUsername;
 import com.example.bwfsurveybeta.R;
@@ -151,10 +151,10 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                     Log.i("Tutorials", "user online SWECountry: " + SWECountry + " SWEPosition: " +SWEPosition);
 
                     try {
-                        MyAmplifyApplication.namebwe=uniqueBWEName;
+                        BwfSurveyAmplifyApplication.namebwe=uniqueBWEName;
                         reevluateStartDataStoreSyncAndStartAuthenticatedScreen();
                     }catch (Exception c){
-                        MyAmplifyApplication.namebwe=uniqueBWEName;
+                        BwfSurveyAmplifyApplication.namebwe=uniqueBWEName;
                         reevluateStartDataStoreSyncAndStartAuthenticatedScreen();
                     }
                 },

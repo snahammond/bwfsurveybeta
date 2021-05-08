@@ -19,7 +19,7 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
-import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.utils.IntegerUtils;
@@ -89,7 +89,7 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
 
     private void createInterchangesAndShow() {
         if(theSWEMonthlySummary!=null){
-            ArrayList<Interchange> returnedInterchanges = MyAmplifyApplication.getInterchanges("SWESUMMARY");
+            ArrayList<Interchange> returnedInterchanges = BwfSurveyAmplifyApplication.getInterchanges("SWESUMMARY");
             if(returnedInterchanges!=null){
                 UpdateSWEMonthlySummaryActivity.interchanges = new ArrayList<>();
                 int positionOnRecyler = 0;
@@ -126,7 +126,7 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Getting records!");
         progressBar.setVisibility(View.VISIBLE);
-        CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
+        CountDownTimer countDownTimer = new CountDownTimer(BwfSurveyAmplifyApplication.manualTimer,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
             }

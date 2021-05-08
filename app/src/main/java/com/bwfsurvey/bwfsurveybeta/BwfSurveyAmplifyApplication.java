@@ -41,7 +41,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MyAmplifyApplication extends Application {
+public class BwfSurveyAmplifyApplication extends Application {
     private static Context context;
     private static Activity CurrentActivity;
     public static ArrayList<Config> configs;
@@ -53,7 +53,7 @@ public class MyAmplifyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        MyAmplifyApplication.context = getApplicationContext();
+        BwfSurveyAmplifyApplication.context = getApplicationContext();
 
         try {
 
@@ -120,21 +120,21 @@ public class MyAmplifyApplication extends Application {
         }
 
         //load the config file
-        MyAmplifyApplication.configs = loadInAllConfigs();
-        MyAmplifyApplication.interchangePool = makeAllInterchanges();
+        BwfSurveyAmplifyApplication.configs = loadInAllConfigs();
+        BwfSurveyAmplifyApplication.interchangePool = makeAllInterchanges();
 
     }
 
     public static Context getAppContext() {
-        return MyAmplifyApplication.context;
+        return BwfSurveyAmplifyApplication.context;
     }
 
     public static void setCurrentActivity(Activity activity) {
-        MyAmplifyApplication.CurrentActivity = activity;
+        BwfSurveyAmplifyApplication.CurrentActivity = activity;
     }
 
     public static Activity getCurrentActivity() {
-        return MyAmplifyApplication.CurrentActivity;
+        return BwfSurveyAmplifyApplication.CurrentActivity;
     }
 
 
@@ -142,7 +142,7 @@ public class MyAmplifyApplication extends Application {
     public static ArrayList<Interchange> makeAllInterchanges(){
         ArrayList<Interchange> allInterchangesFromConfig = new ArrayList<>();
 
-        if(MyAmplifyApplication.configs!=null){
+        if(BwfSurveyAmplifyApplication.configs!=null){
             ArrayList<AnswerValue> answerValuesPool = new ArrayList<>();
             ArrayList<AnswerDef> answerDefPool = new ArrayList<>();
             ArrayList<Question> questionPool = new ArrayList<>();
@@ -248,7 +248,7 @@ public class MyAmplifyApplication extends Application {
 
     private static Config searchConfigForSurvey(String nameOfSurvey){
         Config surveyConfig = null;
-        for(Config config : MyAmplifyApplication.configs){
+        for(Config config : BwfSurveyAmplifyApplication.configs){
             if(config.getName().contentEquals(nameOfSurvey) && config.getType().contentEquals("S")){
                 return config;
             }
@@ -292,7 +292,7 @@ public class MyAmplifyApplication extends Application {
 
     private static Config searchConfigForCountry(String country){
         Config surveyConfig = null;
-        for(Config config : MyAmplifyApplication.configs){
+        for(Config config : BwfSurveyAmplifyApplication.configs){
             if(config.getName().contentEquals(country.toUpperCase()) && config.getType().contentEquals("C")){
                 return config;
             }
@@ -302,7 +302,7 @@ public class MyAmplifyApplication extends Application {
 
     public static ArrayList<String> getCountries(){
         ArrayList<String> countries = new ArrayList<>();
-        for(Config config : MyAmplifyApplication.configs){
+        for(Config config : BwfSurveyAmplifyApplication.configs){
             if(config.getType().contentEquals("C")){
                 countries.add(config.getDescription());
             }
@@ -328,7 +328,7 @@ public class MyAmplifyApplication extends Application {
         ArrayList<Interchange> interchangesRequested = null;
         if (interchangesRequired != null) {
             interchangesRequested = new ArrayList<>();
-            for(Interchange interchange : MyAmplifyApplication.interchangePool){
+            for(Interchange interchange : BwfSurveyAmplifyApplication.interchangePool){
                 for(int interchangeNo : interchangesRequired){
                     if(interchangeNo == interchange.getInterchangeNumber()){
                         interchangesRequested.add(interchange);

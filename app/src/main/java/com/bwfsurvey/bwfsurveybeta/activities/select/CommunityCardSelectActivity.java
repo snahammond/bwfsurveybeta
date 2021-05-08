@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.bwfsurvey.bwfsurveybeta.adapters.CommunityCardAdapter;
-import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;
@@ -82,7 +82,7 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
                                 TextView progressBarText = (TextView) findViewById(R.id.pbText);
                                 progressBarText.setText("Please wait... Setting Up!");
                                 progressBar.setVisibility(View.VISIBLE);
-                                CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
+                                CountDownTimer countDownTimer = new CountDownTimer(BwfSurveyAmplifyApplication.manualTimer,1000) {
                                     @Override
                                     public void onTick(long millisUntilFinished) {
                                     }
@@ -114,17 +114,17 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
 
     private void getCommunityListAndShowOnRecyclerView() {
         if(countrybwe!=null && countrybwe!=""){
-            listOfCommunities = MyAmplifyApplication.getCommunities(countrybwe);
+            listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
             showListOfCommunities();
         }
         else{
             //ask the use to select the country name, because we do not have it
-            ArrayList<String> listOfCountries = MyAmplifyApplication.getCountries();
+            ArrayList<String> listOfCountries = BwfSurveyAmplifyApplication.getCountries();
             DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
                 @Override
                 public void onSelectedCountry(String countryName) {
                     countrybwe = countryName;
-                    listOfCommunities = MyAmplifyApplication.getCommunities(countrybwe);
+                    listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
                     showListOfCommunities();
                 }
             });

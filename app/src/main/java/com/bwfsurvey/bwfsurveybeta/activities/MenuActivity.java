@@ -17,7 +17,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.ConfigDefinitions;
-import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.activities.collect.SubMenuMonthlySummaryActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterCardSelectActivity;
@@ -170,9 +170,9 @@ public class MenuActivity extends AppCompatActivity {
                     }
                     Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+configsInner.size() );
                     if(configsInner.size()>0){
-                        MyAmplifyApplication.configs = configsInner;
-                        MyAmplifyApplication.interchangePool = MyAmplifyApplication.makeAllInterchanges();
-                        Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+MyAmplifyApplication.configs.size() );
+                        BwfSurveyAmplifyApplication.configs = configsInner;
+                        BwfSurveyAmplifyApplication.interchangePool = BwfSurveyAmplifyApplication.makeAllInterchanges();
+                        Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+ BwfSurveyAmplifyApplication.configs.size() );
                     }
                     runOnUiThread(new Runnable() {
                         public void run() {
@@ -200,7 +200,7 @@ public class MenuActivity extends AppCompatActivity {
         //if(calledAMPStart){
             //wait for sync to finish, because Authenication called start
             startProgress("Please wait... Setting Up!");
-            CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
+            CountDownTimer countDownTimer = new CountDownTimer(BwfSurveyAmplifyApplication.manualTimer,1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                 }
@@ -500,7 +500,7 @@ public class MenuActivity extends AppCompatActivity {
 
         if (id == R.id.changeSurveyCountry) {
             Log.i("Tutorials", "going to change survey country" );
-            ArrayList<String> listOfCountries = MyAmplifyApplication.getCountries();
+            ArrayList<String> listOfCountries = BwfSurveyAmplifyApplication.getCountries();
             DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
                 @Override
                 public void onSelectedCountry(String countryName) {
@@ -554,9 +554,9 @@ public class MenuActivity extends AppCompatActivity {
                                                                             }
                                                                             Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+configsInner.size() );
                                                                             if(configsInner.size()>0){
-                                                                                MyAmplifyApplication.configs = configsInner;
-                                                                                MyAmplifyApplication.interchangePool = MyAmplifyApplication.makeAllInterchanges();
-                                                                                Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+MyAmplifyApplication.configs.size() );
+                                                                                BwfSurveyAmplifyApplication.configs = configsInner;
+                                                                                BwfSurveyAmplifyApplication.interchangePool = BwfSurveyAmplifyApplication.makeAllInterchanges();
+                                                                                Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+ BwfSurveyAmplifyApplication.configs.size() );
                                                                             }
 
                                                                             runOnUiThread(new Runnable() {

@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
-        android:name="com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication"
+        android:name="com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication"
         tools:replace="android:name"
         android:allowBackup="true"
         android:icon="@mipmap/ic_logo"

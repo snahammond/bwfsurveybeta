@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
-import com.bwfsurvey.bwfsurveybeta.MyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.VolunteerHouseholdCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewVolunteerHousehold;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
@@ -111,7 +111,7 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
             TextView progressBarText = (TextView) findViewById(R.id.pbText);
             progressBarText.setText("Please wait... Getting records!");
             progressBar.setVisibility(View.VISIBLE);
-            CountDownTimer countDownTimer = new CountDownTimer(MyAmplifyApplication.manualTimer,1000) {
+            CountDownTimer countDownTimer = new CountDownTimer(BwfSurveyAmplifyApplication.manualTimer,1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                 }
@@ -152,7 +152,7 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
         if (id == R.id.newHousehold) {
             Log.i("Tutorials", "going to get communities" );
 
-            ArrayList<Community> listOfCommunities = MyAmplifyApplication.getCommunities(countrybwe);
+            ArrayList<Community> listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
             showCreateNewVolunteerHousehold(listOfCommunities);
 
             /*
