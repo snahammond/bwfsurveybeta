@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
@@ -86,6 +87,14 @@ public class HouseholdWaterTestCardSelectActivity extends AppCompatActivity {
                             HouseholdWaterTest aHouseholdWaterTest = allHouseholdWaterTest.next();
                             listOfHouseholdWaterTest.add(aHouseholdWaterTest);
                             Log.i("Tutorials", "Title: " + aHouseholdWaterTest.getHeadHouseholdName());
+                            //try to send all the InitialSurveys by forcefully pushing
+                            Amplify.API.mutate(
+                                    ModelMutation.create(aHouseholdWaterTest),
+                                    response -> {
+                                    },
+                                    error -> {
+                                    }
+                            );
                         }
                         runOnUiThread(new Runnable() {
                             public void run() {

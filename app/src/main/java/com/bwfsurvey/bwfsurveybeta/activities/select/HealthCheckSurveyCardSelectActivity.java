@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
@@ -88,6 +89,15 @@ public class HealthCheckSurveyCardSelectActivity extends AppCompatActivity {
                             HealthCheckSurvey aHealthCheckSurvey = allHealthCheckSurveys.next();
                             listOfHealthCheckSurveys.add(aHealthCheckSurvey);
                             Log.i("Tutorials", "Title: " + aHealthCheckSurvey.getHeadHouseholdName());
+
+                            //try to send all the InitialSurveys by forcefully pushing
+                            Amplify.API.mutate(
+                                    ModelMutation.create(aHealthCheckSurvey),
+                                    response -> {
+                                    },
+                                    error -> {
+                                    }
+                            );
                         }
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                             listOfHealthCheckSurveys.sort(new Comparator<HealthCheckSurvey>() {

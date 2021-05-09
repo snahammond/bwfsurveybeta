@@ -16,6 +16,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Volunteer;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
@@ -88,6 +89,14 @@ public class VolunteerCardSelectActivity extends AppCompatActivity implements Cr
                             Volunteer aVolunteer = allVolunteers.next();
                             listOfVolunteers.add(aVolunteer);
                             Log.i("Tutorials", "Title: " + aVolunteer.getNamevol());
+                            //try to send all the InitialSurveys by forcefully pushing
+                            Amplify.API.mutate(
+                                    ModelMutation.create(aVolunteer),
+                                    response -> {
+                                    },
+                                    error -> {
+                                    }
+                            );
                         }
                         Log.i("Tutorials", "Queried");
                         runOnUiThread(new Runnable() {

@@ -227,6 +227,7 @@ subscription OnCreateFollowUpSurvey {
     SurveyId
     date
     HeadHouseholdName
+    MainSourceDrinkingWater
     PersonBeingInterviewed
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
@@ -272,6 +273,7 @@ subscription OnUpdateFollowUpSurvey {
     SurveyId
     date
     HeadHouseholdName
+    MainSourceDrinkingWater
     PersonBeingInterviewed
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
@@ -317,6 +319,7 @@ subscription OnDeleteFollowUpSurvey {
     SurveyId
     date
     HeadHouseholdName
+    MainSourceDrinkingWater
     PersonBeingInterviewed
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking

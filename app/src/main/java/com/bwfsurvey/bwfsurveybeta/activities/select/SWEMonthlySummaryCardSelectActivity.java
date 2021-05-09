@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
@@ -86,6 +87,14 @@ public class SWEMonthlySummaryCardSelectActivity extends AppCompatActivity {
                             SWEMonthlySummary aSWEMonthlySummary = allSWEMonthlySummarys.next();
                             listOfSWEMonthlySummarys.add(aSWEMonthlySummary);
                             Log.i("Tutorials", "Title: " + aSWEMonthlySummary.getNamebwe());
+                            //try to send all the InitialSurveys by forcefully pushing
+                            Amplify.API.mutate(
+                                    ModelMutation.create(aSWEMonthlySummary),
+                                    response -> {
+                                    },
+                                    error -> {
+                                    }
+                            );
                         }
 
                         runOnUiThread(new Runnable() {

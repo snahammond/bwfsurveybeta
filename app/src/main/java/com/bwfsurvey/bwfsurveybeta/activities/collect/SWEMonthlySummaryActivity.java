@@ -17,7 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
+import com.amplifyframework.datastore.DataStoreChannelEventName;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
+import com.amplifyframework.datastore.syncengine.OutboxMutationEvent;
+import com.amplifyframework.hub.HubChannel;
+import com.amplifyframework.hub.SubscriptionToken;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
@@ -160,7 +164,25 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    SubscriptionToken checkToken = null;
     private void saveSWEMonthlySummary(SWEMonthlySummary sweMonthlySummary) {
+        checkToken = Amplify.Hub.subscribe(
+                HubChannel.DATASTORE,
+                hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
+                hubEvent -> {
+                    OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
+                    if(event.getModelName().contentEquals("SWEMonthlySummary")){
+                        if(event.getElement().getModel().equals(sweMonthlySummary)){
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    progressBar.setVisibility(View.GONE);
+                                    showSavedSuccessfulAlert();
+                                }
+                            });
+                        }
+                    }
+                }
+        );
         Amplify.DataStore.save(sweMonthlySummary,
                 update -> {
                     Log.i("Tutorial", "Saved Successfully ");
@@ -200,6 +222,7 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Syncing Up!");
         progressBar.setVisibility(View.VISIBLE);
+        /*
         CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -212,9 +235,12 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
             }
         };
         countDownTimer.start();
+         */
     }
 
     private void showSavedSuccessfulAlert(){
+        if(checkToken!=null)
+            Amplify.Hub.unsubscribe(checkToken);
         new AlertDialog.Builder(SWEMonthlySummaryActivity.this)
                 .setTitle("Saved Succussfully")
                 .setMessage("Monthly Summary Saved Succussfully \n" )

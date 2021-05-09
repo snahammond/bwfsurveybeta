@@ -17,7 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
+import com.amplifyframework.datastore.DataStoreChannelEventName;
+import com.amplifyframework.datastore.events.NetworkStatusEvent;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
+import com.amplifyframework.datastore.syncengine.OutboxMutationEvent;
+import com.amplifyframework.hub.HubChannel;
+import com.amplifyframework.hub.SubscriptionToken;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
@@ -168,17 +173,35 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
     }
 
 
-
+    SubscriptionToken checkToken = null;
     private void saveIntialSurvey(InitialSurvey initialSurveyToSave){
+        checkToken = Amplify.Hub.subscribe(
+                HubChannel.DATASTORE,
+                hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
+                hubEvent -> {
+                    OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
+                    Log.i("bwfSurveyAmplify", " InitialSurvey "+event.getModelName());
+                    if(event.getModelName().contentEquals("InitialSurvey")){
+                        if(event.getElement().getModel().equals(initialSurveyToSave)){
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    progressBar.setVisibility(View.GONE);
+                                    showSavedSuccessfulAlert();
+                                }
+                            });
+                        }
+                    }
+                }
+        );
         Amplify.DataStore.save(initialSurveyToSave,
                 update -> {
-                    Log.i("Tutorial", "Saved Successfully ");
-
+                    //Log.i("Tutorial", "Saved Successfully ");
                     runOnUiThread(new Runnable() {
                         public void run() {
                             doSyncWaitAndShowSavedSuccessfulAlert();
                         }
                     });
+
                 },
                 failure -> {
                     Log.i("Tutorial", "Save Failed ");
@@ -194,6 +217,7 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Syncing Up!");
         progressBar.setVisibility(View.VISIBLE);
+        /*
         CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -206,9 +230,13 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
             }
         };
         countDownTimer.start();
+        */
+
     }
 
     private void showSavedSuccessfulAlert(){
+        if(checkToken!=null)
+            Amplify.Hub.unsubscribe(checkToken);
         new AlertDialog.Builder(InitialSurveyActivity.this)
                 .setTitle("Saved Succussfully")
                 .setMessage("Initial Survey Saved Succussfully \n" )

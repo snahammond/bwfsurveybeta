@@ -239,6 +239,7 @@ mutation CreateFollowUpSurvey(
     SurveyId
     date
     HeadHouseholdName
+    MainSourceDrinkingWater
     PersonBeingInterviewed
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
@@ -287,6 +288,7 @@ mutation UpdateFollowUpSurvey(
     SurveyId
     date
     HeadHouseholdName
+    MainSourceDrinkingWater
     PersonBeingInterviewed
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
@@ -335,6 +337,7 @@ mutation DeleteFollowUpSurvey(
     SurveyId
     date
     HeadHouseholdName
+    MainSourceDrinkingWater
     PersonBeingInterviewed
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking

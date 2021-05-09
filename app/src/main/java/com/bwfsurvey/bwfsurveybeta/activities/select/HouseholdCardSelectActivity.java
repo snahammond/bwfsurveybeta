@@ -13,9 +13,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
+import com.amplifyframework.datastore.DataStoreChannelEventName;
+import com.amplifyframework.datastore.events.OutboxStatusEvent;
+import com.amplifyframework.datastore.generated.model.ConfigDefinitions;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
+import com.amplifyframework.datastore.syncengine.OutboxMutationEvent;
+import com.amplifyframework.hub.HubChannel;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.HouseholdCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;
@@ -81,15 +88,25 @@ public class HouseholdCardSelectActivity extends AppCompatActivity {
                 completedL = 0;
                 completedR = 1;
             }
+
             Amplify.DataStore.query(
                     InitialSurvey.class,
                     Where.matches(InitialSurvey.COMPLETED.eq(completedL).or(InitialSurvey.COMPLETED.eq(completedR))),
                     allInitialSurveyFamilys -> {
-                        Log.i("Tutorials", "DataStore is queried.");
+                        Log.i("bwfsurveybeta", "DataStore is queried.");
                         while (allInitialSurveyFamilys.hasNext()) {
                             InitialSurvey aFamily = allInitialSurveyFamilys.next();
                             listOfFamilys.add(aFamily);
-                            Log.i("Tutorials", "Title: " + aFamily.getHeadHouseholdName());
+                            Log.i("bwfsurveybeta", "Title: " + aFamily.getHeadHouseholdName());
+
+                            //try to send all the InitialSurveys by forcefully pushing
+                            Amplify.API.mutate(
+                                    ModelMutation.create(aFamily),
+                                    response -> {
+                                    },
+                                    error -> {
+                                    }
+                            );
                         }
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                             listOfFamilys.sort(new Comparator<InitialSurvey>() {
@@ -99,6 +116,7 @@ public class HouseholdCardSelectActivity extends AppCompatActivity {
                                 }
                             });
                         }
+
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 showListOfFamilys();

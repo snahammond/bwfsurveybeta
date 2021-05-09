@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
@@ -88,6 +89,14 @@ public class FollowUpSurveyCardSelectActivity extends AppCompatActivity {
                             FollowUpSurvey aFollowUpSurvey = allFollowUpSurveys.next();
                             listOfFollowUpSurveys.add(aFollowUpSurvey);
                             Log.i("Tutorials", "Title: " + aFollowUpSurvey.getHeadHouseholdName());
+                            //try to send all the InitialSurveys by forcefully pushing
+                            Amplify.API.mutate(
+                                    ModelMutation.create(aFollowUpSurvey),
+                                    response -> {
+                                    },
+                                    error -> {
+                                    }
+                            );
                         }
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                             listOfFollowUpSurveys.sort(new Comparator<FollowUpSurvey>() {

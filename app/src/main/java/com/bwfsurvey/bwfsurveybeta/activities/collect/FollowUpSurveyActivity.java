@@ -17,7 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
+import com.amplifyframework.datastore.DataStoreChannelEventName;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
+import com.amplifyframework.datastore.syncengine.OutboxMutationEvent;
+import com.amplifyframework.hub.HubChannel;
+import com.amplifyframework.hub.SubscriptionToken;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
@@ -178,7 +182,25 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    SubscriptionToken checkToken = null;
     private void saveFollowUpSurvey(FollowUpSurvey followUpSurveyToSave){
+        checkToken = Amplify.Hub.subscribe(
+                HubChannel.DATASTORE,
+                hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
+                hubEvent -> {
+                    OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
+                    if(event.getModelName().contentEquals("FollowUpSurvey")){
+                        if(event.getElement().getModel().equals(followUpSurveyToSave)){
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    progressBar.setVisibility(View.GONE);
+                                    showSavedSuccessfulAlert();
+                                }
+                            });
+                        }
+                    }
+                }
+        );
         Amplify.DataStore.save(
                 followUpSurveyToSave,
                 update -> {
@@ -203,6 +225,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Syncing Up!");
         progressBar.setVisibility(View.VISIBLE);
+        /*
         CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -215,9 +238,12 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
             }
         };
         countDownTimer.start();
+         */
     }
 
     private void showSavedSuccessfulAlert(){
+        if(checkToken!=null)
+            Amplify.Hub.unsubscribe(checkToken);
         new AlertDialog.Builder(FollowUpSurveyActivity.this)
                 .setTitle("Saved Succussfully")
                 .setMessage("Follow Up Survey Saved Succussfully \n" )
@@ -263,6 +289,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         Integer SurveyId = surveyId;
         Temporal.Date date = new Temporal.Date(date_s);
         String HeadHouseholdName = (String) householdName;
+        String MainSourceDrinkingWater = (String) InterchangeUtils.getInterchangeAns("MainSourceDrinkingWater",validatedInterchangesWithAns);
         String PersonBeingInterviewed = (String) InterchangeUtils.getInterchangeAns("PersonBeingInterviewed",validatedInterchangesWithAns);
         String WaterTreatmentBeforeDrinking = (String) InterchangeUtils.getInterchangeAns("WaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
         String MainReasonNoWaterTreatmentBeforeDrinking = (String) InterchangeUtils.getInterchangeAns("MainReasonNoWaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
@@ -296,6 +323,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                 .community(Community)
                 .surveyId(SurveyId)
                 .headHouseholdName(HeadHouseholdName)
+                .mainSourceDrinkingWater(MainSourceDrinkingWater)
                 .personBeingInterviewed(PersonBeingInterviewed)
                 .waterTreatmentBeforeDrinking(WaterTreatmentBeforeDrinking)
                 .mainReasonNoWaterTreatmentBeforeDrinking(MainReasonNoWaterTreatmentBeforeDrinking)

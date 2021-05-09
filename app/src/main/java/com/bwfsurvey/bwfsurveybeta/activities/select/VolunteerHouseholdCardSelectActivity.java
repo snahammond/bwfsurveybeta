@@ -16,11 +16,17 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.DataStoreChannelEventName;
 import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
+import com.amplifyframework.datastore.syncengine.OutboxMutationEvent;
+import com.amplifyframework.hub.HubChannel;
+import com.amplifyframework.hub.SubscriptionToken;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.VolunteerHouseholdCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewVolunteerHousehold;
+import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;
 import com.example.bwfsurveybeta.R;
@@ -75,6 +81,14 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
                             VolunteerHousehold aVolHousehold = allVolunteerHouseholds.next();
                             listOfVolHouseholds.add(aVolHousehold);
                             Log.i("Tutorials", "Title: " + aVolHousehold.getHeadHouseholdName());
+                            //try to send all the InitialSurveys by forcefully pushing
+                            Amplify.API.mutate(
+                                    ModelMutation.create(aVolHousehold),
+                                    response -> {
+                                    },
+                                    error -> {
+                                    }
+                            );
                         }
                         Log.i("Tutorials", "Queried");
                         runOnUiThread(new Runnable() {
@@ -151,20 +165,27 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
 
         if (id == R.id.newHousehold) {
             Log.i("Tutorials", "going to get communities" );
-
-            ArrayList<Community> listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
-            showCreateNewVolunteerHousehold(listOfCommunities);
-
-            /*
-            DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
-                @Override
-                public void onSelectedCountry(String countryName) {
-                    countrybwe = countryName;
-                    Log.i("Tutorials", "country selected is " + countrybwe );
-                }
-            });
-            dialog.show(getSupportFragmentManager(), "countries");
-             */
+            if(countrybwe==null){
+                Log.i("bwfsurveybeta", "countrybwe is null" );
+                ArrayList<String> listOfCountries = BwfSurveyAmplifyApplication.getCountries();
+                DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
+                    @Override
+                    public void onSelectedCountry(String countryName) {
+                        countrybwe = countryName;
+                        Log.i("Tutorials", "country selected is " + countrybwe );
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                ArrayList<Community> listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
+                                showCreateNewVolunteerHousehold(listOfCommunities);
+                            }
+                        });
+                    }
+                });
+                dialog.show(getSupportFragmentManager(), "countries");
+            }else{
+                ArrayList<Community> listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
+                showCreateNewVolunteerHousehold(listOfCommunities);
+            }
         }
 
         return super.onOptionsItemSelected(item);
@@ -176,12 +197,30 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
         createNewVolunteerHousehold.show(getSupportFragmentManager(), "createNewVolunteerHousehold");
     }
 
+    SubscriptionToken checkToken = null;
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, VolunteerHousehold newVolunteerHousehold) {
         Log.i("Tutorials", "newVolunteerHousehold " + newVolunteerHousehold.getCommunity() + " " +newVolunteerHousehold.getHeadHouseholdName() + " " + newVolunteerHousehold.getHouseholdLocation() );
 
         if (newVolunteerHousehold.getHeadHouseholdName()!=null&&newVolunteerHousehold.getHeadHouseholdName()!=""){
-
+            checkToken = Amplify.Hub.subscribe(
+                    HubChannel.DATASTORE,
+                    hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
+                    hubEvent -> {
+                        OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
+                        Log.i("bwfSurveyAmplify", " VolunteerHousehold "+event.getModelName());
+                        if(event.getModelName().contentEquals("VolunteerHousehold")){
+                            if(event.getElement().getModel().equals(newVolunteerHousehold)){
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        progressBar.setVisibility(View.GONE);
+                                        showSavedSuccessfulAlert();
+                                    }
+                                });
+                            }
+                        }
+                    }
+            );
             Amplify.DataStore.save(newVolunteerHousehold,
                     update -> {
                         Log.i("Tutorial", "Saved Successfully ");
@@ -210,6 +249,7 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Syncing Up!");
         progressBar.setVisibility(View.VISIBLE);
+        /*
         CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -222,9 +262,12 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
             }
         };
         countDownTimer.start();
+         */
     }
 
     private void showSavedSuccessfulAlert(){
+        if(checkToken!=null)
+            Amplify.Hub.unsubscribe(checkToken);
         new AlertDialog.Builder(VolunteerHouseholdCardSelectActivity.this)
                 .setTitle("Saved Succussfully")
                 .setMessage("Volunteer household created Succussfully \n" )

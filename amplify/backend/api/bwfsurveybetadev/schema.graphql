@@ -88,6 +88,7 @@ Community: String!
 SurveyId: Int!
 date: AWSDate
 HeadHouseholdName: String!
+MainSourceDrinkingWater: String!
 PersonBeingInterviewed: String!
 WaterTreatmentBeforeDrinking: String!
 MainReasonNoWaterTreatmentBeforeDrinking: String!

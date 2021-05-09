@@ -260,6 +260,7 @@ query SyncFollowUpSurveys(
       SurveyId
       date
       HeadHouseholdName
+      MainSourceDrinkingWater
       PersonBeingInterviewed
       WaterTreatmentBeforeDrinking
       MainReasonNoWaterTreatmentBeforeDrinking
@@ -308,6 +309,7 @@ query GetFollowUpSurvey($id: ID!) {
     SurveyId
     date
     HeadHouseholdName
+    MainSourceDrinkingWater
     PersonBeingInterviewed
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
@@ -358,6 +360,7 @@ query ListFollowUpSurveys(
       SurveyId
       date
       HeadHouseholdName
+      MainSourceDrinkingWater
       PersonBeingInterviewed
       WaterTreatmentBeforeDrinking
       MainReasonNoWaterTreatmentBeforeDrinking

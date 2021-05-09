@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.VolunteerMonthlySummary;
@@ -89,6 +90,14 @@ public class VolunteerMonthlySummaryCardSelectActivity extends AppCompatActivity
                             VolunteerMonthlySummary aVolunteerMonthlySummary = allVolunteerMonthlySummarys.next();
                             listOfVolunteerMonthlySummarys.add(aVolunteerMonthlySummary);
                             Log.i("Tutorials", "Title: " + aVolunteerMonthlySummary.getNamebwe());
+                            //try to send all the InitialSurveys by forcefully pushing
+                            Amplify.API.mutate(
+                                    ModelMutation.create(aVolunteerMonthlySummary),
+                                    response -> {
+                                    },
+                                    error -> {
+                                    }
+                            );
                         }
 
                         runOnUiThread(new Runnable() {
