@@ -14,7 +14,6 @@ import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.DataStoreConfiguration;
 import com.amplifyframework.datastore.generated.model.CommunityWater;
 import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
-import com.amplifyframework.datastore.generated.model.ConfigDefinitions;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
