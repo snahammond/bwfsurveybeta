@@ -91,7 +91,7 @@ public final class VolunteerMonthlySummary implements Model {
       return NoLsn1TaughtAsPrimaryInstr;
   }
   
-  public Integer getNoLsn1TaughtAssistingSWE() {
+  public Integer getNoLsn1TaughtAssistingSwe() {
       return NoLsn1TaughtAssistingSWE;
   }
   
@@ -103,7 +103,7 @@ public final class VolunteerMonthlySummary implements Model {
       return NoLsn2TaughtAsPrimaryInstr;
   }
   
-  public Integer getNoLsn2TaughtAssistingSWE() {
+  public Integer getNoLsn2TaughtAssistingSwe() {
       return NoLsn2TaughtAssistingSWE;
   }
   
@@ -115,7 +115,7 @@ public final class VolunteerMonthlySummary implements Model {
       return NoLsn3TaughtAsPrimaryInstr;
   }
   
-  public Integer getNoLsn3TaughtAssistingSWE() {
+  public Integer getNoLsn3TaughtAssistingSwe() {
       return NoLsn3TaughtAssistingSWE;
   }
   
@@ -127,7 +127,7 @@ public final class VolunteerMonthlySummary implements Model {
       return NoLsn4TaughtAsPrimaryInstr;
   }
   
-  public Integer getNoLsn4TaughtAssistingSWE() {
+  public Integer getNoLsn4TaughtAssistingSwe() {
       return NoLsn4TaughtAssistingSWE;
   }
   
@@ -189,16 +189,16 @@ public final class VolunteerMonthlySummary implements Model {
               ObjectsCompat.equals(getDate(), volunteerMonthlySummary.getDate()) &&
               ObjectsCompat.equals(getNoWaterSampleTaken(), volunteerMonthlySummary.getNoWaterSampleTaken()) &&
               ObjectsCompat.equals(getNoLsn1TaughtAsPrimaryInstr(), volunteerMonthlySummary.getNoLsn1TaughtAsPrimaryInstr()) &&
-              ObjectsCompat.equals(getNoLsn1TaughtAssistingSWE(), volunteerMonthlySummary.getNoLsn1TaughtAssistingSWE()) &&
+              ObjectsCompat.equals(getNoLsn1TaughtAssistingSwe(), volunteerMonthlySummary.getNoLsn1TaughtAssistingSwe()) &&
               ObjectsCompat.equals(getNoPersonsTaughtLesson1ByVol(), volunteerMonthlySummary.getNoPersonsTaughtLesson1ByVol()) &&
               ObjectsCompat.equals(getNoLsn2TaughtAsPrimaryInstr(), volunteerMonthlySummary.getNoLsn2TaughtAsPrimaryInstr()) &&
-              ObjectsCompat.equals(getNoLsn2TaughtAssistingSWE(), volunteerMonthlySummary.getNoLsn2TaughtAssistingSWE()) &&
+              ObjectsCompat.equals(getNoLsn2TaughtAssistingSwe(), volunteerMonthlySummary.getNoLsn2TaughtAssistingSwe()) &&
               ObjectsCompat.equals(getNoPersonsTaughtLesson2ByVol(), volunteerMonthlySummary.getNoPersonsTaughtLesson2ByVol()) &&
               ObjectsCompat.equals(getNoLsn3TaughtAsPrimaryInstr(), volunteerMonthlySummary.getNoLsn3TaughtAsPrimaryInstr()) &&
-              ObjectsCompat.equals(getNoLsn3TaughtAssistingSWE(), volunteerMonthlySummary.getNoLsn3TaughtAssistingSWE()) &&
+              ObjectsCompat.equals(getNoLsn3TaughtAssistingSwe(), volunteerMonthlySummary.getNoLsn3TaughtAssistingSwe()) &&
               ObjectsCompat.equals(getNoPersonsTaughtLesson3ByVol(), volunteerMonthlySummary.getNoPersonsTaughtLesson3ByVol()) &&
               ObjectsCompat.equals(getNoLsn4TaughtAsPrimaryInstr(), volunteerMonthlySummary.getNoLsn4TaughtAsPrimaryInstr()) &&
-              ObjectsCompat.equals(getNoLsn4TaughtAssistingSWE(), volunteerMonthlySummary.getNoLsn4TaughtAssistingSWE()) &&
+              ObjectsCompat.equals(getNoLsn4TaughtAssistingSwe(), volunteerMonthlySummary.getNoLsn4TaughtAssistingSwe()) &&
               ObjectsCompat.equals(getNoPersonsTaughtLesson4ByVol(), volunteerMonthlySummary.getNoPersonsTaughtLesson4ByVol()) &&
               ObjectsCompat.equals(getNoPersonsTaughtByVol(), volunteerMonthlySummary.getNoPersonsTaughtByVol()) &&
               ObjectsCompat.equals(getCompleted(), volunteerMonthlySummary.getCompleted()) &&
@@ -216,16 +216,16 @@ public final class VolunteerMonthlySummary implements Model {
       .append(getDate())
       .append(getNoWaterSampleTaken())
       .append(getNoLsn1TaughtAsPrimaryInstr())
-      .append(getNoLsn1TaughtAssistingSWE())
+      .append(getNoLsn1TaughtAssistingSwe())
       .append(getNoPersonsTaughtLesson1ByVol())
       .append(getNoLsn2TaughtAsPrimaryInstr())
-      .append(getNoLsn2TaughtAssistingSWE())
+      .append(getNoLsn2TaughtAssistingSwe())
       .append(getNoPersonsTaughtLesson2ByVol())
       .append(getNoLsn3TaughtAsPrimaryInstr())
-      .append(getNoLsn3TaughtAssistingSWE())
+      .append(getNoLsn3TaughtAssistingSwe())
       .append(getNoPersonsTaughtLesson3ByVol())
       .append(getNoLsn4TaughtAsPrimaryInstr())
-      .append(getNoLsn4TaughtAssistingSWE())
+      .append(getNoLsn4TaughtAssistingSwe())
       .append(getNoPersonsTaughtLesson4ByVol())
       .append(getNoPersonsTaughtByVol())
       .append(getCompleted())
@@ -245,16 +245,16 @@ public final class VolunteerMonthlySummary implements Model {
       .append("date=" + String.valueOf(getDate()) + ", ")
       .append("NoWaterSampleTaken=" + String.valueOf(getNoWaterSampleTaken()) + ", ")
       .append("NoLsn1TaughtAsPrimaryInstr=" + String.valueOf(getNoLsn1TaughtAsPrimaryInstr()) + ", ")
-      .append("NoLsn1TaughtAssistingSWE=" + String.valueOf(getNoLsn1TaughtAssistingSWE()) + ", ")
+      .append("NoLsn1TaughtAssistingSWE=" + String.valueOf(getNoLsn1TaughtAssistingSwe()) + ", ")
       .append("NoPersonsTaughtLesson1ByVol=" + String.valueOf(getNoPersonsTaughtLesson1ByVol()) + ", ")
       .append("NoLsn2TaughtAsPrimaryInstr=" + String.valueOf(getNoLsn2TaughtAsPrimaryInstr()) + ", ")
-      .append("NoLsn2TaughtAssistingSWE=" + String.valueOf(getNoLsn2TaughtAssistingSWE()) + ", ")
+      .append("NoLsn2TaughtAssistingSWE=" + String.valueOf(getNoLsn2TaughtAssistingSwe()) + ", ")
       .append("NoPersonsTaughtLesson2ByVol=" + String.valueOf(getNoPersonsTaughtLesson2ByVol()) + ", ")
       .append("NoLsn3TaughtAsPrimaryInstr=" + String.valueOf(getNoLsn3TaughtAsPrimaryInstr()) + ", ")
-      .append("NoLsn3TaughtAssistingSWE=" + String.valueOf(getNoLsn3TaughtAssistingSWE()) + ", ")
+      .append("NoLsn3TaughtAssistingSWE=" + String.valueOf(getNoLsn3TaughtAssistingSwe()) + ", ")
       .append("NoPersonsTaughtLesson3ByVol=" + String.valueOf(getNoPersonsTaughtLesson3ByVol()) + ", ")
       .append("NoLsn4TaughtAsPrimaryInstr=" + String.valueOf(getNoLsn4TaughtAsPrimaryInstr()) + ", ")
-      .append("NoLsn4TaughtAssistingSWE=" + String.valueOf(getNoLsn4TaughtAssistingSWE()) + ", ")
+      .append("NoLsn4TaughtAssistingSWE=" + String.valueOf(getNoLsn4TaughtAssistingSwe()) + ", ")
       .append("NoPersonsTaughtLesson4ByVol=" + String.valueOf(getNoPersonsTaughtLesson4ByVol()) + ", ")
       .append("NoPersonsTaughtByVol=" + String.valueOf(getNoPersonsTaughtByVol()) + ", ")
       .append("Completed=" + String.valueOf(getCompleted()) + ", ")

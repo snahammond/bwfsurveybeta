@@ -311,10 +311,11 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         String WaterTreatmentBeforeDrinking = (String) InterchangeUtils.getInterchangeAns("WaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
         String MainReasonNoWaterTreatmentBeforeDrinking = (String) InterchangeUtils.getInterchangeAns("MainReasonNoWaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
         String WaterTreatmentMethod = (String) InterchangeUtils.getInterchangeAns("WaterTreatmentMethod",validatedInterchangesWithAns);
-        String HowLongUsingWaterTreatment = (String) InterchangeUtils.getInterchangeAns("HowLongUsingWaterTreatment",validatedInterchangesWithAns);
         String FrequencyWaterTreatment = (String) InterchangeUtils.getInterchangeAns("FrequencyWaterTreatment",validatedInterchangesWithAns);
-        String WaterStorageAtHome = (String) InterchangeUtils.getInterchangeAns("WaterStorageAtHome",validatedInterchangesWithAns);
-        String WaterStorageContainerHaveLid = (String) InterchangeUtils.getInterchangeAns("WaterStorageContainerHaveLid",validatedInterchangesWithAns);
+        String LastTimeTreatedHouseholdWaterWithChlorine = (String) InterchangeUtils.getInterchangeAns("LastTimeTreatedHouseholdWaterWithChlorine",validatedInterchangesWithAns);
+        String WhereDidYouGetChlorineToTreatHouseholdWater = (String) InterchangeUtils.getInterchangeAns("WhereDidYouGetChlorineToTreatHouseholdWater",validatedInterchangesWithAns);
+        Integer AmountSpendPerWeekForChlorineToTreatWater = IntegerUtils.parseIntegerWithDefault(InterchangeUtils.getInterchangeAns("AmountSpendPerWeekForChlorineToTreatWater", validatedInterchangesWithAns),0);
+        String HowDifficultToObtainChlorine = (String) InterchangeUtils.getInterchangeAns("HowDifficultToObtainChlorine",validatedInterchangesWithAns);
         String TakingWaterFromStorage = (String) InterchangeUtils.getInterchangeAns("TakingWaterFromStorage",validatedInterchangesWithAns);
         String RubbishDisposal = (String) InterchangeUtils.getInterchangeAns("RubbishDisposal",validatedInterchangesWithAns);
         String HouseholdDefecationMethod = (String) InterchangeUtils.getInterchangeAns("HouseholdDefecationMethod",validatedInterchangesWithAns);
@@ -372,10 +373,11 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                 .waterTreatmentBeforeDrinking(WaterTreatmentBeforeDrinking)
                 .mainReasonNoWaterTreatmentBeforeDrinking(MainReasonNoWaterTreatmentBeforeDrinking)
                 .waterTreatmentMethod(WaterTreatmentMethod)
-                .howLongUsingWaterTreatment(HowLongUsingWaterTreatment)
                 .frequencyWaterTreatment(FrequencyWaterTreatment)
-                .waterStorageAtHome(WaterStorageAtHome)
-                .waterStorageContainerHaveLid(WaterStorageContainerHaveLid)
+                .lastTimeTreatedHouseholdWaterWithChlorine(LastTimeTreatedHouseholdWaterWithChlorine)
+                .whereDidYouGetChlorineToTreatHouseholdWater(WhereDidYouGetChlorineToTreatHouseholdWater)
+                .amountSpendPerWeekForChlorineToTreatWater(AmountSpendPerWeekForChlorineToTreatWater)
+                .howDifficultToObtainChlorine(HowDifficultToObtainChlorine)
                 .takingWaterFromStorage(TakingWaterFromStorage)
                 .rubbishDisposal(RubbishDisposal)
                 .householdDefecationMethod(HouseholdDefecationMethod)

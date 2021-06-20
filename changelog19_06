@@ -1,0 +1,36 @@
+name, oldValue, newValue; comment
+HowLongUsingWaterTreatment, 36, -100
+FrequencyWaterTreatment, 37, 36
+LastTimeTreatedHouseholdWaterWithChlorine,_,37
+
+WaterStorageAtHome,38,-99
+WhereDidYouGetChlorineToTreatHouseholdWater,_,38
+
+WaterStorageContainerHaveLid,39,-98
+AmountSpendPerWeekForChlorineToTreatWater,_,39
+
+TakingWaterFromStorage,40,41
+HowDifficultToObtainChlorine,_,40; option 4 looks like option 5
+
+from 42, 61
+
+
+f5ccce23-64a7-4bb6-8f79-02ac8d03a659 AppVersion
+
+New Initial Survey
+[5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60]
+
+New followup survey
+[12,27,33,34,35,36,37,38,39,40,41,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61]
+
+New Health check survey
+[12,37,38,39,40,44,45,46,47,49,50,51,52,53,54,55,56,57,58]
+[12,44,45,46,47,49,50,51,52,53,54,55,56,57,58,62,63,64]
+
+
+
+
+"LastTimeTreatedHouseholdWaterWithChlorine":"",
+"WhereDidYouGetChlorineToTreatHouseholdWater":"",
+"AmountSpendPerWeekForChlorineToTreatWater":0,
+"HowDifficultToObtainChlorine":"",

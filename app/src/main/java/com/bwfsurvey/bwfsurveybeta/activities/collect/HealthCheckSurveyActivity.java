@@ -292,6 +292,10 @@ public class HealthCheckSurveyActivity extends AppCompatActivity {
         Temporal.Date date = new Temporal.Date(date_s);
         String HeadHouseholdName = (String) householdName;
         String PersonBeingInterviewed = (String) InterchangeUtils.getInterchangeAns("PersonBeingInterviewed",validatedInterchangesWithAns);
+        String LastTimeTreatedHouseholdWaterWithChlorine = (String) InterchangeUtils.getInterchangeAns("LastTimeTreatedHouseholdWaterWithChlorine",validatedInterchangesWithAns);
+        String WhereDidYouGetChlorineToTreatHouseholdWater = (String) InterchangeUtils.getInterchangeAns("WhereDidYouGetChlorineToTreatHouseholdWater",validatedInterchangesWithAns);
+        Integer AmountSpendPerWeekForChlorineToTreatWater = IntegerUtils.parseIntegerWithDefault(InterchangeUtils.getInterchangeAns("AmountSpendPerWeekForChlorineToTreatWater", validatedInterchangesWithAns),0);
+        String HowDifficultToObtainChlorine = (String) InterchangeUtils.getInterchangeAns("HowDifficultToObtainChlorine",validatedInterchangesWithAns);
         String WasteDisposalYoungestChild = (String) InterchangeUtils.getInterchangeAns("WasteDisposalYoungestChild",validatedInterchangesWithAns);
         String WashedHandsIn24Hours = (String) InterchangeUtils.getInterchangeAns("WashedHandsIn24Hours",validatedInterchangesWithAns);
         String WhenWashedHandsIn24Hours = (String) InterchangeUtils.getInterchangeAns("WhenWashedHandsIn24Hours",validatedInterchangesWithAns);
@@ -317,6 +321,10 @@ public class HealthCheckSurveyActivity extends AppCompatActivity {
                 .surveyId(SurveyId)
                 .headHouseholdName(HeadHouseholdName)
                 .personBeingInterviewed(PersonBeingInterviewed)
+                .lastTimeTreatedHouseholdWaterWithChlorine(LastTimeTreatedHouseholdWaterWithChlorine)
+                .whereDidYouGetChlorineToTreatHouseholdWater(WhereDidYouGetChlorineToTreatHouseholdWater)
+                .amountSpendPerWeekForChlorineToTreatWater(AmountSpendPerWeekForChlorineToTreatWater)
+                .howDifficultToObtainChlorine(HowDifficultToObtainChlorine)
                 .wasteDisposalYoungestChild(WasteDisposalYoungestChild)
                 .washedHandsIn24Hours(WashedHandsIn24Hours)
                 .whenWashedHandsIn24Hours(WhenWashedHandsIn24Hours)
@@ -331,9 +339,6 @@ public class HealthCheckSurveyActivity extends AppCompatActivity {
                 .noDaysNoWorkBecauseOfOwnIllness(NoDaysNoWorkBecauseOfOwnIllness)
                 .noDaysNoWorkBecauseOfIllnessFamilyMembers(NoDaysNoWorkBecauseOfIllnessFamilyMembers)
                 .moneySpentMedicalTreatmentLast4weeks(MoneySpentMedicalTreatmentLast4weeks)
-                .waterTreatment24Hours(WaterTreatment24Hours)
-                .mainReasonNoWaterTreatment24Hour(MainReasonNoWaterTreatment24Hour)
-                .waterTreatment24HourMethod(WaterTreatment24HourMethod)
                 .completed(completed)
                 .lat(lat)
                 .lng(lng)

@@ -47,10 +47,11 @@ query SyncInitialSurveys(
       WaterTreatmentBeforeDrinking
       MainReasonNoWaterTreatmentBeforeDrinking
       WaterTreatmentMethod
-      HowLongUsingWaterTreatment
       FrequencyWaterTreatment
-      WaterStorageAtHome
-      WaterStorageContainerHaveLid
+      LastTimeTreatedHouseholdWaterWithChlorine
+      WhereDidYouGetChlorineToTreatHouseholdWater
+      AmountSpendPerWeekForChlorineToTreatWater
+      HowDifficultToObtainChlorine
       TakingWaterFromStorage
       RubbishDisposal
       HouseholdDefecationMethod
@@ -123,10 +124,11 @@ query GetInitialSurvey($id: ID!) {
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
     WaterTreatmentMethod
-    HowLongUsingWaterTreatment
     FrequencyWaterTreatment
-    WaterStorageAtHome
-    WaterStorageContainerHaveLid
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     TakingWaterFromStorage
     RubbishDisposal
     HouseholdDefecationMethod
@@ -201,10 +203,11 @@ query ListInitialSurveys(
       WaterTreatmentBeforeDrinking
       MainReasonNoWaterTreatmentBeforeDrinking
       WaterTreatmentMethod
-      HowLongUsingWaterTreatment
       FrequencyWaterTreatment
-      WaterStorageAtHome
-      WaterStorageContainerHaveLid
+      LastTimeTreatedHouseholdWaterWithChlorine
+      WhereDidYouGetChlorineToTreatHouseholdWater
+      AmountSpendPerWeekForChlorineToTreatWater
+      HowDifficultToObtainChlorine
       TakingWaterFromStorage
       RubbishDisposal
       HouseholdDefecationMethod
@@ -260,17 +263,16 @@ query SyncFollowUpSurveys(
       SurveyId
       date
       HeadHouseholdName
-      MainSourceDrinkingWater
       PersonBeingInterviewed
       WaterTreatmentBeforeDrinking
       MainReasonNoWaterTreatmentBeforeDrinking
       WaterTreatmentMethod
-      HowLongUsingWaterTreatment
       FrequencyWaterTreatment
-      WaterStorageAtHome
-      WaterStorageContainerHaveLid
+      LastTimeTreatedHouseholdWaterWithChlorine
+      WhereDidYouGetChlorineToTreatHouseholdWater
+      AmountSpendPerWeekForChlorineToTreatWater
+      HowDifficultToObtainChlorine
       TakingWaterFromStorage
-      WashedHandsIn24Hours
       WhenWashedHandsIn24Hours
       WhatUsedToWashYourHands
       CommonIllnessAffectingAllChildrenInHousehold
@@ -309,17 +311,16 @@ query GetFollowUpSurvey($id: ID!) {
     SurveyId
     date
     HeadHouseholdName
-    MainSourceDrinkingWater
     PersonBeingInterviewed
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
     WaterTreatmentMethod
-    HowLongUsingWaterTreatment
     FrequencyWaterTreatment
-    WaterStorageAtHome
-    WaterStorageContainerHaveLid
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     TakingWaterFromStorage
-    WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
     CommonIllnessAffectingAllChildrenInHousehold
@@ -360,17 +361,16 @@ query ListFollowUpSurveys(
       SurveyId
       date
       HeadHouseholdName
-      MainSourceDrinkingWater
       PersonBeingInterviewed
       WaterTreatmentBeforeDrinking
       MainReasonNoWaterTreatmentBeforeDrinking
       WaterTreatmentMethod
-      HowLongUsingWaterTreatment
       FrequencyWaterTreatment
-      WaterStorageAtHome
-      WaterStorageContainerHaveLid
+      LastTimeTreatedHouseholdWaterWithChlorine
+      WhereDidYouGetChlorineToTreatHouseholdWater
+      AmountSpendPerWeekForChlorineToTreatWater
+      HowDifficultToObtainChlorine
       TakingWaterFromStorage
-      WashedHandsIn24Hours
       WhenWashedHandsIn24Hours
       WhatUsedToWashYourHands
       CommonIllnessAffectingAllChildrenInHousehold
@@ -421,6 +421,10 @@ query SyncHealthCheckSurveys(
       date
       HeadHouseholdName
       PersonBeingInterviewed
+      LastTimeTreatedHouseholdWaterWithChlorine
+      WhereDidYouGetChlorineToTreatHouseholdWater
+      AmountSpendPerWeekForChlorineToTreatWater
+      HowDifficultToObtainChlorine
       WasteDisposalYoungestChild
       WashedHandsIn24Hours
       WhenWashedHandsIn24Hours
@@ -435,9 +439,6 @@ query SyncHealthCheckSurveys(
       NoDaysNoWorkBecauseOfOwnIllness
       NoDaysNoWorkBecauseOfIllnessFamilyMembers
       MoneySpentMedicalTreatmentLast4weeks
-      WaterTreatment24Hours
-      MainReasonNoWaterTreatment24Hour
-      WaterTreatment24HourMethod
       Completed
       Lat
       Lng
@@ -461,6 +462,10 @@ query GetHealthCheckSurvey($id: ID!) {
     date
     HeadHouseholdName
     PersonBeingInterviewed
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     WasteDisposalYoungestChild
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
@@ -475,9 +480,6 @@ query GetHealthCheckSurvey($id: ID!) {
     NoDaysNoWorkBecauseOfOwnIllness
     NoDaysNoWorkBecauseOfIllnessFamilyMembers
     MoneySpentMedicalTreatmentLast4weeks
-    WaterTreatment24Hours
-    MainReasonNoWaterTreatment24Hour
-    WaterTreatment24HourMethod
     Completed
     Lat
     Lng
@@ -507,6 +509,10 @@ query ListHealthCheckSurveys(
       date
       HeadHouseholdName
       PersonBeingInterviewed
+      LastTimeTreatedHouseholdWaterWithChlorine
+      WhereDidYouGetChlorineToTreatHouseholdWater
+      AmountSpendPerWeekForChlorineToTreatWater
+      HowDifficultToObtainChlorine
       WasteDisposalYoungestChild
       WashedHandsIn24Hours
       WhenWashedHandsIn24Hours
@@ -521,9 +527,6 @@ query ListHealthCheckSurveys(
       NoDaysNoWorkBecauseOfOwnIllness
       NoDaysNoWorkBecauseOfIllnessFamilyMembers
       MoneySpentMedicalTreatmentLast4weeks
-      WaterTreatment24Hours
-      MainReasonNoWaterTreatment24Hour
-      WaterTreatment24HourMethod
       Completed
       Lat
       Lng

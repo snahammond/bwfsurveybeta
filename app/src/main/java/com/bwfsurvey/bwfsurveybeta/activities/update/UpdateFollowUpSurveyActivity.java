@@ -261,17 +261,16 @@ public class UpdateFollowUpSurveyActivity extends AppCompatActivity {
         Integer SurveyId = theFollowUpSurvey.getSurveyId();
         Temporal.Date date = new Temporal.Date(date_s);
         String HeadHouseholdName = (String) theFollowUpSurvey.getHeadHouseholdName();
-        String MainSourceDrinkingWater = (String) InterchangeUtils.getInterchangeAns("MainSourceDrinkingWater",validatedInterchangesWithAns);
         String PersonBeingInterviewed = (String) getInterchangeAns("PersonBeingInterviewed",validatedInterchangesWithAns);
         String WaterTreatmentBeforeDrinking = (String) getInterchangeAns("WaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
         String MainReasonNoWaterTreatmentBeforeDrinking = (String) getInterchangeAns("MainReasonNoWaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
         String WaterTreatmentMethod = (String) getInterchangeAns("WaterTreatmentMethod",validatedInterchangesWithAns);
-        String HowLongUsingWaterTreatment = (String) getInterchangeAns("HowLongUsingWaterTreatment",validatedInterchangesWithAns);
         String FrequencyWaterTreatment = (String) getInterchangeAns("FrequencyWaterTreatment",validatedInterchangesWithAns);
-        String WaterStorageAtHome = (String) getInterchangeAns("WaterStorageAtHome",validatedInterchangesWithAns);
-        String WaterStorageContainerHaveLid = (String) getInterchangeAns("WaterStorageContainerHaveLid",validatedInterchangesWithAns);
-        String TakingWaterFromStorage = (String) getInterchangeAns("TakingWaterFromStorage",validatedInterchangesWithAns);
-        String WashedHandsIn24Hours = (String) getInterchangeAns("WashedHandsIn24Hours",validatedInterchangesWithAns);
+        String LastTimeTreatedHouseholdWaterWithChlorine = (String) InterchangeUtils.getInterchangeAns("LastTimeTreatedHouseholdWaterWithChlorine",validatedInterchangesWithAns);
+        String WhereDidYouGetChlorineToTreatHouseholdWater = (String) InterchangeUtils.getInterchangeAns("WhereDidYouGetChlorineToTreatHouseholdWater",validatedInterchangesWithAns);
+        Integer AmountSpendPerWeekForChlorineToTreatWater = parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("AmountSpendPerWeekForChlorineToTreatWater", validatedInterchangesWithAns),0);
+        String HowDifficultToObtainChlorine = (String) InterchangeUtils.getInterchangeAns("HowDifficultToObtainChlorine",validatedInterchangesWithAns);
+        String TakingWaterFromStorage = (String) InterchangeUtils.getInterchangeAns("TakingWaterFromStorage",validatedInterchangesWithAns);
         String WhenWashedHandsIn24Hours = (String) getInterchangeAns("WhenWashedHandsIn24Hours",validatedInterchangesWithAns);
         String WhatUsedToWashYourHands = (String) getInterchangeAns("WhatUsedToWashYourHands",validatedInterchangesWithAns);
         String CommonIllnessAffectingAllChildrenInHousehold = (String) getInterchangeAns("CommonIllnessAffectingAllChildrenInHousehold",validatedInterchangesWithAns);
@@ -295,17 +294,16 @@ public class UpdateFollowUpSurveyActivity extends AppCompatActivity {
                 .community(Community)
                 .surveyId(SurveyId)
                 .headHouseholdName(HeadHouseholdName)
-                .mainSourceDrinkingWater(MainSourceDrinkingWater)
                 .personBeingInterviewed(PersonBeingInterviewed)
                 .waterTreatmentBeforeDrinking(WaterTreatmentBeforeDrinking)
                 .mainReasonNoWaterTreatmentBeforeDrinking(MainReasonNoWaterTreatmentBeforeDrinking)
                 .waterTreatmentMethod(WaterTreatmentMethod)
-                .howLongUsingWaterTreatment(HowLongUsingWaterTreatment)
                 .frequencyWaterTreatment(FrequencyWaterTreatment)
-                .waterStorageAtHome(WaterStorageAtHome)
-                .waterStorageContainerHaveLid(WaterStorageContainerHaveLid)
+                .lastTimeTreatedHouseholdWaterWithChlorine(LastTimeTreatedHouseholdWaterWithChlorine)
+                .whereDidYouGetChlorineToTreatHouseholdWater(WhereDidYouGetChlorineToTreatHouseholdWater)
+                .amountSpendPerWeekForChlorineToTreatWater(AmountSpendPerWeekForChlorineToTreatWater)
+                .howDifficultToObtainChlorine(HowDifficultToObtainChlorine)
                 .takingWaterFromStorage(TakingWaterFromStorage)
-                .washedHandsIn24Hours(WashedHandsIn24Hours)
                 .whenWashedHandsIn24Hours(WhenWashedHandsIn24Hours)
                 .whatUsedToWashYourHands(WhatUsedToWashYourHands)
                 .commonIllnessAffectingAllChildrenInHousehold(CommonIllnessAffectingAllChildrenInHousehold)

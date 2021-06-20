@@ -33,6 +33,10 @@ public final class HealthCheckSurvey implements Model {
   public static final QueryField DATE = field("date");
   public static final QueryField HEAD_HOUSEHOLD_NAME = field("HeadHouseholdName");
   public static final QueryField PERSON_BEING_INTERVIEWED = field("PersonBeingInterviewed");
+  public static final QueryField LAST_TIME_TREATED_HOUSEHOLD_WATER_WITH_CHLORINE = field("LastTimeTreatedHouseholdWaterWithChlorine");
+  public static final QueryField WHERE_DID_YOU_GET_CHLORINE_TO_TREAT_HOUSEHOLD_WATER = field("WhereDidYouGetChlorineToTreatHouseholdWater");
+  public static final QueryField AMOUNT_SPEND_PER_WEEK_FOR_CHLORINE_TO_TREAT_WATER = field("AmountSpendPerWeekForChlorineToTreatWater");
+  public static final QueryField HOW_DIFFICULT_TO_OBTAIN_CHLORINE = field("HowDifficultToObtainChlorine");
   public static final QueryField WASTE_DISPOSAL_YOUNGEST_CHILD = field("WasteDisposalYoungestChild");
   public static final QueryField WASHED_HANDS_IN24_HOURS = field("WashedHandsIn24Hours");
   public static final QueryField WHEN_WASHED_HANDS_IN24_HOURS = field("WhenWashedHandsIn24Hours");
@@ -47,9 +51,6 @@ public final class HealthCheckSurvey implements Model {
   public static final QueryField NO_DAYS_NO_WORK_BECAUSE_OF_OWN_ILLNESS = field("NoDaysNoWorkBecauseOfOwnIllness");
   public static final QueryField NO_DAYS_NO_WORK_BECAUSE_OF_ILLNESS_FAMILY_MEMBERS = field("NoDaysNoWorkBecauseOfIllnessFamilyMembers");
   public static final QueryField MONEY_SPENT_MEDICAL_TREATMENT_LAST4WEEKS = field("MoneySpentMedicalTreatmentLast4weeks");
-  public static final QueryField WATER_TREATMENT24_HOURS = field("WaterTreatment24Hours");
-  public static final QueryField MAIN_REASON_NO_WATER_TREATMENT24_HOUR = field("MainReasonNoWaterTreatment24Hour");
-  public static final QueryField WATER_TREATMENT24_HOUR_METHOD = field("WaterTreatment24HourMethod");
   public static final QueryField COMPLETED = field("Completed");
   public static final QueryField LAT = field("Lat");
   public static final QueryField LNG = field("Lng");
@@ -61,6 +62,10 @@ public final class HealthCheckSurvey implements Model {
   private final @ModelField(targetType="AWSDate") Temporal.Date date;
   private final @ModelField(targetType="String", isRequired = true) String HeadHouseholdName;
   private final @ModelField(targetType="String", isRequired = true) String PersonBeingInterviewed;
+  private final @ModelField(targetType="String", isRequired = true) String LastTimeTreatedHouseholdWaterWithChlorine;
+  private final @ModelField(targetType="String", isRequired = true) String WhereDidYouGetChlorineToTreatHouseholdWater;
+  private final @ModelField(targetType="Int", isRequired = true) Integer AmountSpendPerWeekForChlorineToTreatWater;
+  private final @ModelField(targetType="String", isRequired = true) String HowDifficultToObtainChlorine;
   private final @ModelField(targetType="String", isRequired = true) String WasteDisposalYoungestChild;
   private final @ModelField(targetType="String", isRequired = true) String WashedHandsIn24Hours;
   private final @ModelField(targetType="String", isRequired = true) String WhenWashedHandsIn24Hours;
@@ -75,9 +80,6 @@ public final class HealthCheckSurvey implements Model {
   private final @ModelField(targetType="Int", isRequired = true) Integer NoDaysNoWorkBecauseOfOwnIllness;
   private final @ModelField(targetType="Int", isRequired = true) Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers;
   private final @ModelField(targetType="Int", isRequired = true) Integer MoneySpentMedicalTreatmentLast4weeks;
-  private final @ModelField(targetType="String", isRequired = true) String WaterTreatment24Hours;
-  private final @ModelField(targetType="String", isRequired = true) String MainReasonNoWaterTreatment24Hour;
-  private final @ModelField(targetType="String", isRequired = true) String WaterTreatment24HourMethod;
   private final @ModelField(targetType="Int", isRequired = true) Integer Completed;
   private final @ModelField(targetType="String", isRequired = true) String Lat;
   private final @ModelField(targetType="String", isRequired = true) String Lng;
@@ -111,6 +113,22 @@ public final class HealthCheckSurvey implements Model {
   
   public String getPersonBeingInterviewed() {
       return PersonBeingInterviewed;
+  }
+  
+  public String getLastTimeTreatedHouseholdWaterWithChlorine() {
+      return LastTimeTreatedHouseholdWaterWithChlorine;
+  }
+  
+  public String getWhereDidYouGetChlorineToTreatHouseholdWater() {
+      return WhereDidYouGetChlorineToTreatHouseholdWater;
+  }
+  
+  public Integer getAmountSpendPerWeekForChlorineToTreatWater() {
+      return AmountSpendPerWeekForChlorineToTreatWater;
+  }
+  
+  public String getHowDifficultToObtainChlorine() {
+      return HowDifficultToObtainChlorine;
   }
   
   public String getWasteDisposalYoungestChild() {
@@ -153,7 +171,7 @@ public final class HealthCheckSurvey implements Model {
       return SickChildrenBreastfeeding;
   }
   
-  public String getOutcomeMostRecentVomiting_DiarrheaAtHospital() {
+  public String getOutcomeMostRecentVomitingDiarrheaAtHospital() {
       return OutcomeMostRecentVomiting_DiarrheaAtHospital;
   }
   
@@ -169,18 +187,6 @@ public final class HealthCheckSurvey implements Model {
       return MoneySpentMedicalTreatmentLast4weeks;
   }
   
-  public String getWaterTreatment24Hours() {
-      return WaterTreatment24Hours;
-  }
-  
-  public String getMainReasonNoWaterTreatment24Hour() {
-      return MainReasonNoWaterTreatment24Hour;
-  }
-  
-  public String getWaterTreatment24HourMethod() {
-      return WaterTreatment24HourMethod;
-  }
-  
   public Integer getCompleted() {
       return Completed;
   }
@@ -193,7 +199,7 @@ public final class HealthCheckSurvey implements Model {
       return Lng;
   }
   
-  private HealthCheckSurvey(String id, String Namebwe, String Country, String Community, Integer SurveyId, Temporal.Date date, String HeadHouseholdName, String PersonBeingInterviewed, String WasteDisposalYoungestChild, String WashedHandsIn24Hours, String WhenWashedHandsIn24Hours, String WhatUsedToWashYourHands, Integer NoChildrenWithVomitingOrDiarrheaIn14days, Integer NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer NoChildrenWithVomitingOrDiarrheaIn7days, String DidSickChildrenGoToHospital, String DidSickChildrenGoToHospitalYes, String SickChildrenBreastfeeding, String OutcomeMostRecentVomiting_DiarrheaAtHospital, Integer NoDaysNoWorkBecauseOfOwnIllness, Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers, Integer MoneySpentMedicalTreatmentLast4weeks, String WaterTreatment24Hours, String MainReasonNoWaterTreatment24Hour, String WaterTreatment24HourMethod, Integer Completed, String Lat, String Lng) {
+  private HealthCheckSurvey(String id, String Namebwe, String Country, String Community, Integer SurveyId, Temporal.Date date, String HeadHouseholdName, String PersonBeingInterviewed, String LastTimeTreatedHouseholdWaterWithChlorine, String WhereDidYouGetChlorineToTreatHouseholdWater, Integer AmountSpendPerWeekForChlorineToTreatWater, String HowDifficultToObtainChlorine, String WasteDisposalYoungestChild, String WashedHandsIn24Hours, String WhenWashedHandsIn24Hours, String WhatUsedToWashYourHands, Integer NoChildrenWithVomitingOrDiarrheaIn14days, Integer NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer NoChildrenWithVomitingOrDiarrheaIn7days, String DidSickChildrenGoToHospital, String DidSickChildrenGoToHospitalYes, String SickChildrenBreastfeeding, String OutcomeMostRecentVomiting_DiarrheaAtHospital, Integer NoDaysNoWorkBecauseOfOwnIllness, Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers, Integer MoneySpentMedicalTreatmentLast4weeks, Integer Completed, String Lat, String Lng) {
     this.id = id;
     this.Namebwe = Namebwe;
     this.Country = Country;
@@ -202,6 +208,10 @@ public final class HealthCheckSurvey implements Model {
     this.date = date;
     this.HeadHouseholdName = HeadHouseholdName;
     this.PersonBeingInterviewed = PersonBeingInterviewed;
+    this.LastTimeTreatedHouseholdWaterWithChlorine = LastTimeTreatedHouseholdWaterWithChlorine;
+    this.WhereDidYouGetChlorineToTreatHouseholdWater = WhereDidYouGetChlorineToTreatHouseholdWater;
+    this.AmountSpendPerWeekForChlorineToTreatWater = AmountSpendPerWeekForChlorineToTreatWater;
+    this.HowDifficultToObtainChlorine = HowDifficultToObtainChlorine;
     this.WasteDisposalYoungestChild = WasteDisposalYoungestChild;
     this.WashedHandsIn24Hours = WashedHandsIn24Hours;
     this.WhenWashedHandsIn24Hours = WhenWashedHandsIn24Hours;
@@ -216,9 +226,6 @@ public final class HealthCheckSurvey implements Model {
     this.NoDaysNoWorkBecauseOfOwnIllness = NoDaysNoWorkBecauseOfOwnIllness;
     this.NoDaysNoWorkBecauseOfIllnessFamilyMembers = NoDaysNoWorkBecauseOfIllnessFamilyMembers;
     this.MoneySpentMedicalTreatmentLast4weeks = MoneySpentMedicalTreatmentLast4weeks;
-    this.WaterTreatment24Hours = WaterTreatment24Hours;
-    this.MainReasonNoWaterTreatment24Hour = MainReasonNoWaterTreatment24Hour;
-    this.WaterTreatment24HourMethod = WaterTreatment24HourMethod;
     this.Completed = Completed;
     this.Lat = Lat;
     this.Lng = Lng;
@@ -240,6 +247,10 @@ public final class HealthCheckSurvey implements Model {
               ObjectsCompat.equals(getDate(), healthCheckSurvey.getDate()) &&
               ObjectsCompat.equals(getHeadHouseholdName(), healthCheckSurvey.getHeadHouseholdName()) &&
               ObjectsCompat.equals(getPersonBeingInterviewed(), healthCheckSurvey.getPersonBeingInterviewed()) &&
+              ObjectsCompat.equals(getLastTimeTreatedHouseholdWaterWithChlorine(), healthCheckSurvey.getLastTimeTreatedHouseholdWaterWithChlorine()) &&
+              ObjectsCompat.equals(getWhereDidYouGetChlorineToTreatHouseholdWater(), healthCheckSurvey.getWhereDidYouGetChlorineToTreatHouseholdWater()) &&
+              ObjectsCompat.equals(getAmountSpendPerWeekForChlorineToTreatWater(), healthCheckSurvey.getAmountSpendPerWeekForChlorineToTreatWater()) &&
+              ObjectsCompat.equals(getHowDifficultToObtainChlorine(), healthCheckSurvey.getHowDifficultToObtainChlorine()) &&
               ObjectsCompat.equals(getWasteDisposalYoungestChild(), healthCheckSurvey.getWasteDisposalYoungestChild()) &&
               ObjectsCompat.equals(getWashedHandsIn24Hours(), healthCheckSurvey.getWashedHandsIn24Hours()) &&
               ObjectsCompat.equals(getWhenWashedHandsIn24Hours(), healthCheckSurvey.getWhenWashedHandsIn24Hours()) &&
@@ -250,13 +261,10 @@ public final class HealthCheckSurvey implements Model {
               ObjectsCompat.equals(getDidSickChildrenGoToHospital(), healthCheckSurvey.getDidSickChildrenGoToHospital()) &&
               ObjectsCompat.equals(getDidSickChildrenGoToHospitalYes(), healthCheckSurvey.getDidSickChildrenGoToHospitalYes()) &&
               ObjectsCompat.equals(getSickChildrenBreastfeeding(), healthCheckSurvey.getSickChildrenBreastfeeding()) &&
-              ObjectsCompat.equals(getOutcomeMostRecentVomiting_DiarrheaAtHospital(), healthCheckSurvey.getOutcomeMostRecentVomiting_DiarrheaAtHospital()) &&
+              ObjectsCompat.equals(getOutcomeMostRecentVomitingDiarrheaAtHospital(), healthCheckSurvey.getOutcomeMostRecentVomitingDiarrheaAtHospital()) &&
               ObjectsCompat.equals(getNoDaysNoWorkBecauseOfOwnIllness(), healthCheckSurvey.getNoDaysNoWorkBecauseOfOwnIllness()) &&
               ObjectsCompat.equals(getNoDaysNoWorkBecauseOfIllnessFamilyMembers(), healthCheckSurvey.getNoDaysNoWorkBecauseOfIllnessFamilyMembers()) &&
               ObjectsCompat.equals(getMoneySpentMedicalTreatmentLast4weeks(), healthCheckSurvey.getMoneySpentMedicalTreatmentLast4weeks()) &&
-              ObjectsCompat.equals(getWaterTreatment24Hours(), healthCheckSurvey.getWaterTreatment24Hours()) &&
-              ObjectsCompat.equals(getMainReasonNoWaterTreatment24Hour(), healthCheckSurvey.getMainReasonNoWaterTreatment24Hour()) &&
-              ObjectsCompat.equals(getWaterTreatment24HourMethod(), healthCheckSurvey.getWaterTreatment24HourMethod()) &&
               ObjectsCompat.equals(getCompleted(), healthCheckSurvey.getCompleted()) &&
               ObjectsCompat.equals(getLat(), healthCheckSurvey.getLat()) &&
               ObjectsCompat.equals(getLng(), healthCheckSurvey.getLng());
@@ -274,6 +282,10 @@ public final class HealthCheckSurvey implements Model {
       .append(getDate())
       .append(getHeadHouseholdName())
       .append(getPersonBeingInterviewed())
+      .append(getLastTimeTreatedHouseholdWaterWithChlorine())
+      .append(getWhereDidYouGetChlorineToTreatHouseholdWater())
+      .append(getAmountSpendPerWeekForChlorineToTreatWater())
+      .append(getHowDifficultToObtainChlorine())
       .append(getWasteDisposalYoungestChild())
       .append(getWashedHandsIn24Hours())
       .append(getWhenWashedHandsIn24Hours())
@@ -284,13 +296,10 @@ public final class HealthCheckSurvey implements Model {
       .append(getDidSickChildrenGoToHospital())
       .append(getDidSickChildrenGoToHospitalYes())
       .append(getSickChildrenBreastfeeding())
-      .append(getOutcomeMostRecentVomiting_DiarrheaAtHospital())
+      .append(getOutcomeMostRecentVomitingDiarrheaAtHospital())
       .append(getNoDaysNoWorkBecauseOfOwnIllness())
       .append(getNoDaysNoWorkBecauseOfIllnessFamilyMembers())
       .append(getMoneySpentMedicalTreatmentLast4weeks())
-      .append(getWaterTreatment24Hours())
-      .append(getMainReasonNoWaterTreatment24Hour())
-      .append(getWaterTreatment24HourMethod())
       .append(getCompleted())
       .append(getLat())
       .append(getLng())
@@ -310,6 +319,10 @@ public final class HealthCheckSurvey implements Model {
       .append("date=" + String.valueOf(getDate()) + ", ")
       .append("HeadHouseholdName=" + String.valueOf(getHeadHouseholdName()) + ", ")
       .append("PersonBeingInterviewed=" + String.valueOf(getPersonBeingInterviewed()) + ", ")
+      .append("LastTimeTreatedHouseholdWaterWithChlorine=" + String.valueOf(getLastTimeTreatedHouseholdWaterWithChlorine()) + ", ")
+      .append("WhereDidYouGetChlorineToTreatHouseholdWater=" + String.valueOf(getWhereDidYouGetChlorineToTreatHouseholdWater()) + ", ")
+      .append("AmountSpendPerWeekForChlorineToTreatWater=" + String.valueOf(getAmountSpendPerWeekForChlorineToTreatWater()) + ", ")
+      .append("HowDifficultToObtainChlorine=" + String.valueOf(getHowDifficultToObtainChlorine()) + ", ")
       .append("WasteDisposalYoungestChild=" + String.valueOf(getWasteDisposalYoungestChild()) + ", ")
       .append("WashedHandsIn24Hours=" + String.valueOf(getWashedHandsIn24Hours()) + ", ")
       .append("WhenWashedHandsIn24Hours=" + String.valueOf(getWhenWashedHandsIn24Hours()) + ", ")
@@ -320,13 +333,10 @@ public final class HealthCheckSurvey implements Model {
       .append("DidSickChildrenGoToHospital=" + String.valueOf(getDidSickChildrenGoToHospital()) + ", ")
       .append("DidSickChildrenGoToHospitalYes=" + String.valueOf(getDidSickChildrenGoToHospitalYes()) + ", ")
       .append("SickChildrenBreastfeeding=" + String.valueOf(getSickChildrenBreastfeeding()) + ", ")
-      .append("OutcomeMostRecentVomiting_DiarrheaAtHospital=" + String.valueOf(getOutcomeMostRecentVomiting_DiarrheaAtHospital()) + ", ")
+      .append("OutcomeMostRecentVomiting_DiarrheaAtHospital=" + String.valueOf(getOutcomeMostRecentVomitingDiarrheaAtHospital()) + ", ")
       .append("NoDaysNoWorkBecauseOfOwnIllness=" + String.valueOf(getNoDaysNoWorkBecauseOfOwnIllness()) + ", ")
       .append("NoDaysNoWorkBecauseOfIllnessFamilyMembers=" + String.valueOf(getNoDaysNoWorkBecauseOfIllnessFamilyMembers()) + ", ")
       .append("MoneySpentMedicalTreatmentLast4weeks=" + String.valueOf(getMoneySpentMedicalTreatmentLast4weeks()) + ", ")
-      .append("WaterTreatment24Hours=" + String.valueOf(getWaterTreatment24Hours()) + ", ")
-      .append("MainReasonNoWaterTreatment24Hour=" + String.valueOf(getMainReasonNoWaterTreatment24Hour()) + ", ")
-      .append("WaterTreatment24HourMethod=" + String.valueOf(getWaterTreatment24HourMethod()) + ", ")
       .append("Completed=" + String.valueOf(getCompleted()) + ", ")
       .append("Lat=" + String.valueOf(getLat()) + ", ")
       .append("Lng=" + String.valueOf(getLng()))
@@ -385,6 +395,7 @@ public final class HealthCheckSurvey implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
@@ -398,6 +409,10 @@ public final class HealthCheckSurvey implements Model {
       date,
       HeadHouseholdName,
       PersonBeingInterviewed,
+      LastTimeTreatedHouseholdWaterWithChlorine,
+      WhereDidYouGetChlorineToTreatHouseholdWater,
+      AmountSpendPerWeekForChlorineToTreatWater,
+      HowDifficultToObtainChlorine,
       WasteDisposalYoungestChild,
       WashedHandsIn24Hours,
       WhenWashedHandsIn24Hours,
@@ -412,9 +427,6 @@ public final class HealthCheckSurvey implements Model {
       NoDaysNoWorkBecauseOfOwnIllness,
       NoDaysNoWorkBecauseOfIllnessFamilyMembers,
       MoneySpentMedicalTreatmentLast4weeks,
-      WaterTreatment24Hours,
-      MainReasonNoWaterTreatment24Hour,
-      WaterTreatment24HourMethod,
       Completed,
       Lat,
       Lng);
@@ -445,7 +457,27 @@ public final class HealthCheckSurvey implements Model {
   
 
   public interface PersonBeingInterviewedStep {
-    WasteDisposalYoungestChildStep personBeingInterviewed(String personBeingInterviewed);
+    LastTimeTreatedHouseholdWaterWithChlorineStep personBeingInterviewed(String personBeingInterviewed);
+  }
+  
+
+  public interface LastTimeTreatedHouseholdWaterWithChlorineStep {
+    WhereDidYouGetChlorineToTreatHouseholdWaterStep lastTimeTreatedHouseholdWaterWithChlorine(String lastTimeTreatedHouseholdWaterWithChlorine);
+  }
+  
+
+  public interface WhereDidYouGetChlorineToTreatHouseholdWaterStep {
+    AmountSpendPerWeekForChlorineToTreatWaterStep whereDidYouGetChlorineToTreatHouseholdWater(String whereDidYouGetChlorineToTreatHouseholdWater);
+  }
+  
+
+  public interface AmountSpendPerWeekForChlorineToTreatWaterStep {
+    HowDifficultToObtainChlorineStep amountSpendPerWeekForChlorineToTreatWater(Integer amountSpendPerWeekForChlorineToTreatWater);
+  }
+  
+
+  public interface HowDifficultToObtainChlorineStep {
+    WasteDisposalYoungestChildStep howDifficultToObtainChlorine(String howDifficultToObtainChlorine);
   }
   
 
@@ -515,22 +547,7 @@ public final class HealthCheckSurvey implements Model {
   
 
   public interface MoneySpentMedicalTreatmentLast4weeksStep {
-    WaterTreatment24HoursStep moneySpentMedicalTreatmentLast4weeks(Integer moneySpentMedicalTreatmentLast4weeks);
-  }
-  
-
-  public interface WaterTreatment24HoursStep {
-    MainReasonNoWaterTreatment24HourStep waterTreatment24Hours(String waterTreatment24Hours);
-  }
-  
-
-  public interface MainReasonNoWaterTreatment24HourStep {
-    WaterTreatment24HourMethodStep mainReasonNoWaterTreatment24Hour(String mainReasonNoWaterTreatment24Hour);
-  }
-  
-
-  public interface WaterTreatment24HourMethodStep {
-    CompletedStep waterTreatment24HourMethod(String waterTreatment24HourMethod);
+    CompletedStep moneySpentMedicalTreatmentLast4weeks(Integer moneySpentMedicalTreatmentLast4weeks);
   }
   
 
@@ -556,7 +573,7 @@ public final class HealthCheckSurvey implements Model {
   }
   
 
-  public static class Builder implements NamebweStep, CountryStep, CommunityStep, SurveyIdStep, HeadHouseholdNameStep, PersonBeingInterviewedStep, WasteDisposalYoungestChildStep, WashedHandsIn24HoursStep, WhenWashedHandsIn24HoursStep, WhatUsedToWashYourHandsStep, NoChildrenWithVomitingOrDiarrheaIn14daysStep, NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep, NoChildrenWithVomitingOrDiarrheaIn7daysStep, DidSickChildrenGoToHospitalStep, DidSickChildrenGoToHospitalYesStep, SickChildrenBreastfeedingStep, OutcomeMostRecentVomitingDiarrheaAtHospitalStep, NoDaysNoWorkBecauseOfOwnIllnessStep, NoDaysNoWorkBecauseOfIllnessFamilyMembersStep, MoneySpentMedicalTreatmentLast4weeksStep, WaterTreatment24HoursStep, MainReasonNoWaterTreatment24HourStep, WaterTreatment24HourMethodStep, CompletedStep, LatStep, LngStep, BuildStep {
+  public static class Builder implements NamebweStep, CountryStep, CommunityStep, SurveyIdStep, HeadHouseholdNameStep, PersonBeingInterviewedStep, LastTimeTreatedHouseholdWaterWithChlorineStep, WhereDidYouGetChlorineToTreatHouseholdWaterStep, AmountSpendPerWeekForChlorineToTreatWaterStep, HowDifficultToObtainChlorineStep, WasteDisposalYoungestChildStep, WashedHandsIn24HoursStep, WhenWashedHandsIn24HoursStep, WhatUsedToWashYourHandsStep, NoChildrenWithVomitingOrDiarrheaIn14daysStep, NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep, NoChildrenWithVomitingOrDiarrheaIn7daysStep, DidSickChildrenGoToHospitalStep, DidSickChildrenGoToHospitalYesStep, SickChildrenBreastfeedingStep, OutcomeMostRecentVomitingDiarrheaAtHospitalStep, NoDaysNoWorkBecauseOfOwnIllnessStep, NoDaysNoWorkBecauseOfIllnessFamilyMembersStep, MoneySpentMedicalTreatmentLast4weeksStep, CompletedStep, LatStep, LngStep, BuildStep {
     private String id;
     private String Namebwe;
     private String Country;
@@ -564,6 +581,10 @@ public final class HealthCheckSurvey implements Model {
     private Integer SurveyId;
     private String HeadHouseholdName;
     private String PersonBeingInterviewed;
+    private String LastTimeTreatedHouseholdWaterWithChlorine;
+    private String WhereDidYouGetChlorineToTreatHouseholdWater;
+    private Integer AmountSpendPerWeekForChlorineToTreatWater;
+    private String HowDifficultToObtainChlorine;
     private String WasteDisposalYoungestChild;
     private String WashedHandsIn24Hours;
     private String WhenWashedHandsIn24Hours;
@@ -578,9 +599,6 @@ public final class HealthCheckSurvey implements Model {
     private Integer NoDaysNoWorkBecauseOfOwnIllness;
     private Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers;
     private Integer MoneySpentMedicalTreatmentLast4weeks;
-    private String WaterTreatment24Hours;
-    private String MainReasonNoWaterTreatment24Hour;
-    private String WaterTreatment24HourMethod;
     private Integer Completed;
     private String Lat;
     private String Lng;
@@ -598,6 +616,10 @@ public final class HealthCheckSurvey implements Model {
           date,
           HeadHouseholdName,
           PersonBeingInterviewed,
+          LastTimeTreatedHouseholdWaterWithChlorine,
+          WhereDidYouGetChlorineToTreatHouseholdWater,
+          AmountSpendPerWeekForChlorineToTreatWater,
+          HowDifficultToObtainChlorine,
           WasteDisposalYoungestChild,
           WashedHandsIn24Hours,
           WhenWashedHandsIn24Hours,
@@ -612,9 +634,6 @@ public final class HealthCheckSurvey implements Model {
           NoDaysNoWorkBecauseOfOwnIllness,
           NoDaysNoWorkBecauseOfIllnessFamilyMembers,
           MoneySpentMedicalTreatmentLast4weeks,
-          WaterTreatment24Hours,
-          MainReasonNoWaterTreatment24Hour,
-          WaterTreatment24HourMethod,
           Completed,
           Lat,
           Lng);
@@ -656,9 +675,37 @@ public final class HealthCheckSurvey implements Model {
     }
     
     @Override
-     public WasteDisposalYoungestChildStep personBeingInterviewed(String personBeingInterviewed) {
+     public LastTimeTreatedHouseholdWaterWithChlorineStep personBeingInterviewed(String personBeingInterviewed) {
         Objects.requireNonNull(personBeingInterviewed);
         this.PersonBeingInterviewed = personBeingInterviewed;
+        return this;
+    }
+    
+    @Override
+     public WhereDidYouGetChlorineToTreatHouseholdWaterStep lastTimeTreatedHouseholdWaterWithChlorine(String lastTimeTreatedHouseholdWaterWithChlorine) {
+        Objects.requireNonNull(lastTimeTreatedHouseholdWaterWithChlorine);
+        this.LastTimeTreatedHouseholdWaterWithChlorine = lastTimeTreatedHouseholdWaterWithChlorine;
+        return this;
+    }
+    
+    @Override
+     public AmountSpendPerWeekForChlorineToTreatWaterStep whereDidYouGetChlorineToTreatHouseholdWater(String whereDidYouGetChlorineToTreatHouseholdWater) {
+        Objects.requireNonNull(whereDidYouGetChlorineToTreatHouseholdWater);
+        this.WhereDidYouGetChlorineToTreatHouseholdWater = whereDidYouGetChlorineToTreatHouseholdWater;
+        return this;
+    }
+    
+    @Override
+     public HowDifficultToObtainChlorineStep amountSpendPerWeekForChlorineToTreatWater(Integer amountSpendPerWeekForChlorineToTreatWater) {
+        Objects.requireNonNull(amountSpendPerWeekForChlorineToTreatWater);
+        this.AmountSpendPerWeekForChlorineToTreatWater = amountSpendPerWeekForChlorineToTreatWater;
+        return this;
+    }
+    
+    @Override
+     public WasteDisposalYoungestChildStep howDifficultToObtainChlorine(String howDifficultToObtainChlorine) {
+        Objects.requireNonNull(howDifficultToObtainChlorine);
+        this.HowDifficultToObtainChlorine = howDifficultToObtainChlorine;
         return this;
     }
     
@@ -754,30 +801,9 @@ public final class HealthCheckSurvey implements Model {
     }
     
     @Override
-     public WaterTreatment24HoursStep moneySpentMedicalTreatmentLast4weeks(Integer moneySpentMedicalTreatmentLast4weeks) {
+     public CompletedStep moneySpentMedicalTreatmentLast4weeks(Integer moneySpentMedicalTreatmentLast4weeks) {
         Objects.requireNonNull(moneySpentMedicalTreatmentLast4weeks);
         this.MoneySpentMedicalTreatmentLast4weeks = moneySpentMedicalTreatmentLast4weeks;
-        return this;
-    }
-    
-    @Override
-     public MainReasonNoWaterTreatment24HourStep waterTreatment24Hours(String waterTreatment24Hours) {
-        Objects.requireNonNull(waterTreatment24Hours);
-        this.WaterTreatment24Hours = waterTreatment24Hours;
-        return this;
-    }
-    
-    @Override
-     public WaterTreatment24HourMethodStep mainReasonNoWaterTreatment24Hour(String mainReasonNoWaterTreatment24Hour) {
-        Objects.requireNonNull(mainReasonNoWaterTreatment24Hour);
-        this.MainReasonNoWaterTreatment24Hour = mainReasonNoWaterTreatment24Hour;
-        return this;
-    }
-    
-    @Override
-     public CompletedStep waterTreatment24HourMethod(String waterTreatment24HourMethod) {
-        Objects.requireNonNull(waterTreatment24HourMethod);
-        this.WaterTreatment24HourMethod = waterTreatment24HourMethod;
         return this;
     }
     
@@ -831,7 +857,7 @@ public final class HealthCheckSurvey implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String namebwe, String country, String community, Integer surveyId, Temporal.Date date, String headHouseholdName, String personBeingInterviewed, String wasteDisposalYoungestChild, String washedHandsIn24Hours, String whenWashedHandsIn24Hours, String whatUsedToWashYourHands, Integer noChildrenWithVomitingOrDiarrheaIn14days, Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer noChildrenWithVomitingOrDiarrheaIn7days, String didSickChildrenGoToHospital, String didSickChildrenGoToHospitalYes, String sickChildrenBreastfeeding, String outcomeMostRecentVomitingDiarrheaAtHospital, Integer noDaysNoWorkBecauseOfOwnIllness, Integer noDaysNoWorkBecauseOfIllnessFamilyMembers, Integer moneySpentMedicalTreatmentLast4weeks, String waterTreatment24Hours, String mainReasonNoWaterTreatment24Hour, String waterTreatment24HourMethod, Integer completed, String lat, String lng) {
+    private CopyOfBuilder(String id, String namebwe, String country, String community, Integer surveyId, Temporal.Date date, String headHouseholdName, String personBeingInterviewed, String lastTimeTreatedHouseholdWaterWithChlorine, String whereDidYouGetChlorineToTreatHouseholdWater, Integer amountSpendPerWeekForChlorineToTreatWater, String howDifficultToObtainChlorine, String wasteDisposalYoungestChild, String washedHandsIn24Hours, String whenWashedHandsIn24Hours, String whatUsedToWashYourHands, Integer noChildrenWithVomitingOrDiarrheaIn14days, Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer noChildrenWithVomitingOrDiarrheaIn7days, String didSickChildrenGoToHospital, String didSickChildrenGoToHospitalYes, String sickChildrenBreastfeeding, String outcomeMostRecentVomitingDiarrheaAtHospital, Integer noDaysNoWorkBecauseOfOwnIllness, Integer noDaysNoWorkBecauseOfIllnessFamilyMembers, Integer moneySpentMedicalTreatmentLast4weeks, Integer completed, String lat, String lng) {
       super.id(id);
       super.namebwe(namebwe)
         .country(country)
@@ -839,6 +865,10 @@ public final class HealthCheckSurvey implements Model {
         .surveyId(surveyId)
         .headHouseholdName(headHouseholdName)
         .personBeingInterviewed(personBeingInterviewed)
+        .lastTimeTreatedHouseholdWaterWithChlorine(lastTimeTreatedHouseholdWaterWithChlorine)
+        .whereDidYouGetChlorineToTreatHouseholdWater(whereDidYouGetChlorineToTreatHouseholdWater)
+        .amountSpendPerWeekForChlorineToTreatWater(amountSpendPerWeekForChlorineToTreatWater)
+        .howDifficultToObtainChlorine(howDifficultToObtainChlorine)
         .wasteDisposalYoungestChild(wasteDisposalYoungestChild)
         .washedHandsIn24Hours(washedHandsIn24Hours)
         .whenWashedHandsIn24Hours(whenWashedHandsIn24Hours)
@@ -853,9 +883,6 @@ public final class HealthCheckSurvey implements Model {
         .noDaysNoWorkBecauseOfOwnIllness(noDaysNoWorkBecauseOfOwnIllness)
         .noDaysNoWorkBecauseOfIllnessFamilyMembers(noDaysNoWorkBecauseOfIllnessFamilyMembers)
         .moneySpentMedicalTreatmentLast4weeks(moneySpentMedicalTreatmentLast4weeks)
-        .waterTreatment24Hours(waterTreatment24Hours)
-        .mainReasonNoWaterTreatment24Hour(mainReasonNoWaterTreatment24Hour)
-        .waterTreatment24HourMethod(waterTreatment24HourMethod)
         .completed(completed)
         .lat(lat)
         .lng(lng)
@@ -890,6 +917,26 @@ public final class HealthCheckSurvey implements Model {
     @Override
      public CopyOfBuilder personBeingInterviewed(String personBeingInterviewed) {
       return (CopyOfBuilder) super.personBeingInterviewed(personBeingInterviewed);
+    }
+    
+    @Override
+     public CopyOfBuilder lastTimeTreatedHouseholdWaterWithChlorine(String lastTimeTreatedHouseholdWaterWithChlorine) {
+      return (CopyOfBuilder) super.lastTimeTreatedHouseholdWaterWithChlorine(lastTimeTreatedHouseholdWaterWithChlorine);
+    }
+    
+    @Override
+     public CopyOfBuilder whereDidYouGetChlorineToTreatHouseholdWater(String whereDidYouGetChlorineToTreatHouseholdWater) {
+      return (CopyOfBuilder) super.whereDidYouGetChlorineToTreatHouseholdWater(whereDidYouGetChlorineToTreatHouseholdWater);
+    }
+    
+    @Override
+     public CopyOfBuilder amountSpendPerWeekForChlorineToTreatWater(Integer amountSpendPerWeekForChlorineToTreatWater) {
+      return (CopyOfBuilder) super.amountSpendPerWeekForChlorineToTreatWater(amountSpendPerWeekForChlorineToTreatWater);
+    }
+    
+    @Override
+     public CopyOfBuilder howDifficultToObtainChlorine(String howDifficultToObtainChlorine) {
+      return (CopyOfBuilder) super.howDifficultToObtainChlorine(howDifficultToObtainChlorine);
     }
     
     @Override
@@ -960,21 +1007,6 @@ public final class HealthCheckSurvey implements Model {
     @Override
      public CopyOfBuilder moneySpentMedicalTreatmentLast4weeks(Integer moneySpentMedicalTreatmentLast4weeks) {
       return (CopyOfBuilder) super.moneySpentMedicalTreatmentLast4weeks(moneySpentMedicalTreatmentLast4weeks);
-    }
-    
-    @Override
-     public CopyOfBuilder waterTreatment24Hours(String waterTreatment24Hours) {
-      return (CopyOfBuilder) super.waterTreatment24Hours(waterTreatment24Hours);
-    }
-    
-    @Override
-     public CopyOfBuilder mainReasonNoWaterTreatment24Hour(String mainReasonNoWaterTreatment24Hour) {
-      return (CopyOfBuilder) super.mainReasonNoWaterTreatment24Hour(mainReasonNoWaterTreatment24Hour);
-    }
-    
-    @Override
-     public CopyOfBuilder waterTreatment24HourMethod(String waterTreatment24HourMethod) {
-      return (CopyOfBuilder) super.waterTreatment24HourMethod(waterTreatment24HourMethod);
     }
     
     @Override

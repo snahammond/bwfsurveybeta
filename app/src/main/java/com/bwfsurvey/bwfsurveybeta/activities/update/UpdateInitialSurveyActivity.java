@@ -286,10 +286,11 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
         String WaterTreatmentBeforeDrinking = (String) getInterchangeAns("WaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
         String MainReasonNoWaterTreatmentBeforeDrinking = (String) getInterchangeAns("MainReasonNoWaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
         String WaterTreatmentMethod = (String) getInterchangeAns("WaterTreatmentMethod",validatedInterchangesWithAns);
-        String HowLongUsingWaterTreatment = (String) getInterchangeAns("HowLongUsingWaterTreatment",validatedInterchangesWithAns);
         String FrequencyWaterTreatment = (String) getInterchangeAns("FrequencyWaterTreatment",validatedInterchangesWithAns);
-        String WaterStorageAtHome = (String) getInterchangeAns("WaterStorageAtHome",validatedInterchangesWithAns);
-        String WaterStorageContainerHaveLid = (String) getInterchangeAns("WaterStorageContainerHaveLid",validatedInterchangesWithAns);
+        String LastTimeTreatedHouseholdWaterWithChlorine = (String) InterchangeUtils.getInterchangeAns("LastTimeTreatedHouseholdWaterWithChlorine",validatedInterchangesWithAns);
+        String WhereDidYouGetChlorineToTreatHouseholdWater = (String) InterchangeUtils.getInterchangeAns("WhereDidYouGetChlorineToTreatHouseholdWater",validatedInterchangesWithAns);
+        Integer AmountSpendPerWeekForChlorineToTreatWater = parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("AmountSpendPerWeekForChlorineToTreatWater", validatedInterchangesWithAns),0);
+        String HowDifficultToObtainChlorine = (String) InterchangeUtils.getInterchangeAns("HowDifficultToObtainChlorine",validatedInterchangesWithAns);
         String TakingWaterFromStorage = (String) getInterchangeAns("TakingWaterFromStorage",validatedInterchangesWithAns);
         String RubbishDisposal = (String) getInterchangeAns("RubbishDisposal",validatedInterchangesWithAns);
         String HouseholdDefecationMethod = (String) getInterchangeAns("HouseholdDefecationMethod",validatedInterchangesWithAns);
@@ -348,10 +349,11 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
                 .waterTreatmentBeforeDrinking(WaterTreatmentBeforeDrinking)
                 .mainReasonNoWaterTreatmentBeforeDrinking(MainReasonNoWaterTreatmentBeforeDrinking)
                 .waterTreatmentMethod(WaterTreatmentMethod)
-                .howLongUsingWaterTreatment(HowLongUsingWaterTreatment)
                 .frequencyWaterTreatment(FrequencyWaterTreatment)
-                .waterStorageAtHome(WaterStorageAtHome)
-                .waterStorageContainerHaveLid(WaterStorageContainerHaveLid)
+                .lastTimeTreatedHouseholdWaterWithChlorine(LastTimeTreatedHouseholdWaterWithChlorine)
+                .whereDidYouGetChlorineToTreatHouseholdWater(WhereDidYouGetChlorineToTreatHouseholdWater)
+                .amountSpendPerWeekForChlorineToTreatWater(AmountSpendPerWeekForChlorineToTreatWater)
+                .howDifficultToObtainChlorine(HowDifficultToObtainChlorine)
                 .takingWaterFromStorage(TakingWaterFromStorage)
                 .rubbishDisposal(RubbishDisposal)
                 .householdDefecationMethod(HouseholdDefecationMethod)

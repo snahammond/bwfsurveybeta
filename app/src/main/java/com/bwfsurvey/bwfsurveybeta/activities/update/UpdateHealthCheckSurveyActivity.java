@@ -337,6 +337,10 @@ public class UpdateHealthCheckSurveyActivity extends AppCompatActivity {
         Temporal.Date date = new Temporal.Date(date_s);
         String HeadHouseholdName = (String) theHealthCheckSurvey.getHeadHouseholdName();
         String PersonBeingInterviewed = (String) InterchangeUtils.getInterchangeAns("PersonBeingInterviewed",validatedInterchangesWithAns);
+        String LastTimeTreatedHouseholdWaterWithChlorine = (String) InterchangeUtils.getInterchangeAns("LastTimeTreatedHouseholdWaterWithChlorine",validatedInterchangesWithAns);
+        String WhereDidYouGetChlorineToTreatHouseholdWater = (String) InterchangeUtils.getInterchangeAns("WhereDidYouGetChlorineToTreatHouseholdWater",validatedInterchangesWithAns);
+        Integer AmountSpendPerWeekForChlorineToTreatWater = IntegerUtils.parseIntegerWithDefault(InterchangeUtils.getInterchangeAns("AmountSpendPerWeekForChlorineToTreatWater", validatedInterchangesWithAns),0);
+        String HowDifficultToObtainChlorine = (String) InterchangeUtils.getInterchangeAns("HowDifficultToObtainChlorine",validatedInterchangesWithAns);
         String WasteDisposalYoungestChild = (String) InterchangeUtils.getInterchangeAns("WasteDisposalYoungestChild",validatedInterchangesWithAns);
         String WashedHandsIn24Hours = (String) InterchangeUtils.getInterchangeAns("WashedHandsIn24Hours",validatedInterchangesWithAns);
         String WhenWashedHandsIn24Hours = (String) InterchangeUtils.getInterchangeAns("WhenWashedHandsIn24Hours",validatedInterchangesWithAns);
@@ -351,9 +355,6 @@ public class UpdateHealthCheckSurveyActivity extends AppCompatActivity {
         Integer NoDaysNoWorkBecauseOfOwnIllness = IntegerUtils.parseIntegerWithDefault(InterchangeUtils.getInterchangeAns("NoDaysNoWorkBecauseOfOwnIllness",validatedInterchangesWithAns),0);
         Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers = IntegerUtils.parseIntegerWithDefault(InterchangeUtils.getInterchangeAns("NoDaysNoWorkBecauseOfIllnessFamilyMembers",validatedInterchangesWithAns),0);
         Integer MoneySpentMedicalTreatmentLast4weeks = IntegerUtils.parseIntegerWithDefault(InterchangeUtils.getInterchangeAns("MoneySpentMedicalTreatmentLast4weeks",validatedInterchangesWithAns),0);
-        String WaterTreatment24Hours = (String) InterchangeUtils.getInterchangeAns("WaterTreatment24Hours",validatedInterchangesWithAns);
-        String MainReasonNoWaterTreatment24Hour = (String) InterchangeUtils.getInterchangeAns("MainReasonNoWaterTreatment24Hour",validatedInterchangesWithAns);
-        String WaterTreatment24HourMethod = (String) InterchangeUtils.getInterchangeAns("WaterTreatment24HourMethod",validatedInterchangesWithAns);
 
         HealthCheckSurvey healthCheckSurvey = HealthCheckSurvey.builder()
                 .namebwe(Namebwe)
@@ -362,6 +363,10 @@ public class UpdateHealthCheckSurveyActivity extends AppCompatActivity {
                 .surveyId(SurveyId)
                 .headHouseholdName(HeadHouseholdName)
                 .personBeingInterviewed(PersonBeingInterviewed)
+                .lastTimeTreatedHouseholdWaterWithChlorine(LastTimeTreatedHouseholdWaterWithChlorine)
+                .whereDidYouGetChlorineToTreatHouseholdWater(WhereDidYouGetChlorineToTreatHouseholdWater)
+                .amountSpendPerWeekForChlorineToTreatWater(AmountSpendPerWeekForChlorineToTreatWater)
+                .howDifficultToObtainChlorine(HowDifficultToObtainChlorine)
                 .wasteDisposalYoungestChild(WasteDisposalYoungestChild)
                 .washedHandsIn24Hours(WashedHandsIn24Hours)
                 .whenWashedHandsIn24Hours(WhenWashedHandsIn24Hours)
@@ -376,9 +381,6 @@ public class UpdateHealthCheckSurveyActivity extends AppCompatActivity {
                 .noDaysNoWorkBecauseOfOwnIllness(NoDaysNoWorkBecauseOfOwnIllness)
                 .noDaysNoWorkBecauseOfIllnessFamilyMembers(NoDaysNoWorkBecauseOfIllnessFamilyMembers)
                 .moneySpentMedicalTreatmentLast4weeks(MoneySpentMedicalTreatmentLast4weeks)
-                .waterTreatment24Hours(WaterTreatment24Hours)
-                .mainReasonNoWaterTreatment24Hour(MainReasonNoWaterTreatment24Hour)
-                .waterTreatment24HourMethod(WaterTreatment24HourMethod)
                 .completed(completed)
                 .lat(lat)
                 .lng(lng)

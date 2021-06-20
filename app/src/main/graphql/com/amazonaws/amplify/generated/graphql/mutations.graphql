@@ -39,10 +39,11 @@ mutation CreateInitialSurvey(
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
     WaterTreatmentMethod
-    HowLongUsingWaterTreatment
     FrequencyWaterTreatment
-    WaterStorageAtHome
-    WaterStorageContainerHaveLid
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     TakingWaterFromStorage
     RubbishDisposal
     HouseholdDefecationMethod
@@ -115,10 +116,11 @@ mutation UpdateInitialSurvey(
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
     WaterTreatmentMethod
-    HowLongUsingWaterTreatment
     FrequencyWaterTreatment
-    WaterStorageAtHome
-    WaterStorageContainerHaveLid
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     TakingWaterFromStorage
     RubbishDisposal
     HouseholdDefecationMethod
@@ -191,10 +193,11 @@ mutation DeleteInitialSurvey(
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
     WaterTreatmentMethod
-    HowLongUsingWaterTreatment
     FrequencyWaterTreatment
-    WaterStorageAtHome
-    WaterStorageContainerHaveLid
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     TakingWaterFromStorage
     RubbishDisposal
     HouseholdDefecationMethod
@@ -239,17 +242,16 @@ mutation CreateFollowUpSurvey(
     SurveyId
     date
     HeadHouseholdName
-    MainSourceDrinkingWater
     PersonBeingInterviewed
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
     WaterTreatmentMethod
-    HowLongUsingWaterTreatment
     FrequencyWaterTreatment
-    WaterStorageAtHome
-    WaterStorageContainerHaveLid
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     TakingWaterFromStorage
-    WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
     CommonIllnessAffectingAllChildrenInHousehold
@@ -288,17 +290,16 @@ mutation UpdateFollowUpSurvey(
     SurveyId
     date
     HeadHouseholdName
-    MainSourceDrinkingWater
     PersonBeingInterviewed
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
     WaterTreatmentMethod
-    HowLongUsingWaterTreatment
     FrequencyWaterTreatment
-    WaterStorageAtHome
-    WaterStorageContainerHaveLid
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     TakingWaterFromStorage
-    WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
     CommonIllnessAffectingAllChildrenInHousehold
@@ -337,17 +338,16 @@ mutation DeleteFollowUpSurvey(
     SurveyId
     date
     HeadHouseholdName
-    MainSourceDrinkingWater
     PersonBeingInterviewed
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
     WaterTreatmentMethod
-    HowLongUsingWaterTreatment
     FrequencyWaterTreatment
-    WaterStorageAtHome
-    WaterStorageContainerHaveLid
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     TakingWaterFromStorage
-    WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
     CommonIllnessAffectingAllChildrenInHousehold
@@ -387,6 +387,10 @@ mutation CreateHealthCheckSurvey(
     date
     HeadHouseholdName
     PersonBeingInterviewed
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     WasteDisposalYoungestChild
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
@@ -401,9 +405,6 @@ mutation CreateHealthCheckSurvey(
     NoDaysNoWorkBecauseOfOwnIllness
     NoDaysNoWorkBecauseOfIllnessFamilyMembers
     MoneySpentMedicalTreatmentLast4weeks
-    WaterTreatment24Hours
-    MainReasonNoWaterTreatment24Hour
-    WaterTreatment24HourMethod
     Completed
     Lat
     Lng
@@ -427,6 +428,10 @@ mutation UpdateHealthCheckSurvey(
     date
     HeadHouseholdName
     PersonBeingInterviewed
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     WasteDisposalYoungestChild
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
@@ -441,9 +446,6 @@ mutation UpdateHealthCheckSurvey(
     NoDaysNoWorkBecauseOfOwnIllness
     NoDaysNoWorkBecauseOfIllnessFamilyMembers
     MoneySpentMedicalTreatmentLast4weeks
-    WaterTreatment24Hours
-    MainReasonNoWaterTreatment24Hour
-    WaterTreatment24HourMethod
     Completed
     Lat
     Lng
@@ -467,6 +469,10 @@ mutation DeleteHealthCheckSurvey(
     date
     HeadHouseholdName
     PersonBeingInterviewed
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     WasteDisposalYoungestChild
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
@@ -481,9 +487,6 @@ mutation DeleteHealthCheckSurvey(
     NoDaysNoWorkBecauseOfOwnIllness
     NoDaysNoWorkBecauseOfIllnessFamilyMembers
     MoneySpentMedicalTreatmentLast4weeks
-    WaterTreatment24Hours
-    MainReasonNoWaterTreatment24Hour
-    WaterTreatment24HourMethod
     Completed
     Lat
     Lng

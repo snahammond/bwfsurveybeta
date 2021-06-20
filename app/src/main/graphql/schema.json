@@ -1977,16 +1977,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "HowLongUsingWaterTreatment",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "FrequencyWaterTreatment",
                         "description": null,
                         "type": {
@@ -1997,7 +1987,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageAtHome",
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -2007,7 +1997,27 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageContainerHaveLid",
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -3523,22 +3533,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "HowLongUsingWaterTreatment",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "FrequencyWaterTreatment",
                         "description": null,
                         "args": [],
@@ -3555,7 +3549,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "WaterStorageAtHome",
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
                         "description": null,
                         "args": [],
                         "type": {
@@ -3571,7 +3565,39 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "WaterStorageContainerHaveLid",
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
                         "description": null,
                         "args": [],
                         "type": {
@@ -4165,16 +4191,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "MainSourceDrinkingWater",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "PersonBeingInterviewed",
                         "description": null,
                         "type": {
@@ -4215,16 +4231,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "HowLongUsingWaterTreatment",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "FrequencyWaterTreatment",
                         "description": null,
                         "type": {
@@ -4235,7 +4241,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageAtHome",
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -4245,7 +4251,27 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageContainerHaveLid",
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -4256,16 +4282,6 @@
                     },
                     {
                         "name": "TakingWaterFromStorage",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "WashedHandsIn24Hours",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -4672,22 +4688,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "MainSourceDrinkingWater",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "PersonBeingInterviewed",
                         "description": null,
                         "args": [],
@@ -4752,22 +4752,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "HowLongUsingWaterTreatment",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "FrequencyWaterTreatment",
                         "description": null,
                         "args": [],
@@ -4784,7 +4768,7 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "WaterStorageAtHome",
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
                         "description": null,
                         "args": [],
                         "type": {
@@ -4800,7 +4784,39 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "WaterStorageContainerHaveLid",
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
                         "description": null,
                         "args": [],
                         "type": {
@@ -4817,22 +4833,6 @@
                     },
                     {
                         "name": "TakingWaterFromStorage",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "WashedHandsIn24Hours",
                         "description": null,
                         "args": [],
                         "type": {
@@ -5320,6 +5320,46 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "WasteDisposalYoungestChild",
                         "description": null,
                         "type": {
@@ -5455,36 +5495,6 @@
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "WaterTreatment24Hours",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "MainReasonNoWaterTreatment24Hour",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "WaterTreatment24HourMethod",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -5743,6 +5753,70 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "WasteDisposalYoungestChild",
                         "description": null,
                         "args": [],
@@ -5960,54 +6034,6 @@
                             "ofType": {
                                 "kind": "SCALAR",
                                 "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "WaterTreatment24Hours",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "MainReasonNoWaterTreatment24Hour",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "WaterTreatment24HourMethod",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
                                 "ofType": null
                             }
                         },
@@ -13299,20 +13325,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "HowLongUsingWaterTreatment",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "FrequencyWaterTreatment",
                         "description": null,
                         "type": {
@@ -13327,7 +13339,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageAtHome",
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -13341,7 +13353,35 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageContainerHaveLid",
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -14066,16 +14106,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "HowLongUsingWaterTreatment",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "FrequencyWaterTreatment",
                         "description": null,
                         "type": {
@@ -14086,7 +14116,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageAtHome",
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -14096,7 +14126,27 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageContainerHaveLid",
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -14759,16 +14809,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "HowLongUsingWaterTreatment",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "FrequencyWaterTreatment",
                         "description": null,
                         "type": {
@@ -14779,7 +14819,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageAtHome",
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -14789,7 +14829,27 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageContainerHaveLid",
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -15191,20 +15251,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "MainSourceDrinkingWater",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "PersonBeingInterviewed",
                         "description": null,
                         "type": {
@@ -15261,20 +15307,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "HowLongUsingWaterTreatment",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "FrequencyWaterTreatment",
                         "description": null,
                         "type": {
@@ -15289,7 +15321,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageAtHome",
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -15303,7 +15335,35 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageContainerHaveLid",
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -15318,20 +15378,6 @@
                     },
                     {
                         "name": "TakingWaterFromStorage",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "WashedHandsIn24Hours",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
@@ -15692,16 +15738,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "MainSourceDrinkingWater",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "PersonBeingInterviewed",
                         "description": null,
                         "type": {
@@ -15742,16 +15778,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "HowLongUsingWaterTreatment",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "FrequencyWaterTreatment",
                         "description": null,
                         "type": {
@@ -15762,7 +15788,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageAtHome",
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -15772,7 +15798,27 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageContainerHaveLid",
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -15783,16 +15829,6 @@
                     },
                     {
                         "name": "TakingWaterFromStorage",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "WashedHandsIn24Hours",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -16115,16 +16151,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "MainSourceDrinkingWater",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "PersonBeingInterviewed",
                         "description": null,
                         "type": {
@@ -16165,16 +16191,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "HowLongUsingWaterTreatment",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "FrequencyWaterTreatment",
                         "description": null,
                         "type": {
@@ -16185,7 +16201,7 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageAtHome",
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -16195,7 +16211,27 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "WaterStorageContainerHaveLid",
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -16206,16 +16242,6 @@
                     },
                     {
                         "name": "TakingWaterFromStorage",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "WashedHandsIn24Hours",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -16571,6 +16597,62 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "WasteDisposalYoungestChild",
                         "description": null,
                         "type": {
@@ -16761,48 +16843,6 @@
                             "ofType": {
                                 "kind": "SCALAR",
                                 "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "WaterTreatment24Hours",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "MainReasonNoWaterTreatment24Hour",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "WaterTreatment24HourMethod",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
                                 "ofType": null
                             }
                         },
@@ -16942,6 +16982,46 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelIntInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "WasteDisposalYoungestChild",
                         "description": null,
                         "type": {
@@ -17077,36 +17157,6 @@
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "WaterTreatment24Hours",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "MainReasonNoWaterTreatment24Hour",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "WaterTreatment24HourMethod",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelStringInput",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -17275,6 +17325,46 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "LastTimeTreatedHouseholdWaterWithChlorine",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "WhereDidYouGetChlorineToTreatHouseholdWater",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "AmountSpendPerWeekForChlorineToTreatWater",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "HowDifficultToObtainChlorine",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "WasteDisposalYoungestChild",
                         "description": null,
                         "type": {
@@ -17410,36 +17500,6 @@
                         "type": {
                             "kind": "SCALAR",
                             "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "WaterTreatment24Hours",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "MainReasonNoWaterTreatment24Hour",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "WaterTreatment24HourMethod",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
                             "ofType": null
                         },
                         "defaultValue": null

@@ -36,10 +36,11 @@ subscription OnCreateInitialSurvey {
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
     WaterTreatmentMethod
-    HowLongUsingWaterTreatment
     FrequencyWaterTreatment
-    WaterStorageAtHome
-    WaterStorageContainerHaveLid
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     TakingWaterFromStorage
     RubbishDisposal
     HouseholdDefecationMethod
@@ -109,10 +110,11 @@ subscription OnUpdateInitialSurvey {
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
     WaterTreatmentMethod
-    HowLongUsingWaterTreatment
     FrequencyWaterTreatment
-    WaterStorageAtHome
-    WaterStorageContainerHaveLid
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     TakingWaterFromStorage
     RubbishDisposal
     HouseholdDefecationMethod
@@ -182,10 +184,11 @@ subscription OnDeleteInitialSurvey {
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
     WaterTreatmentMethod
-    HowLongUsingWaterTreatment
     FrequencyWaterTreatment
-    WaterStorageAtHome
-    WaterStorageContainerHaveLid
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     TakingWaterFromStorage
     RubbishDisposal
     HouseholdDefecationMethod
@@ -227,17 +230,16 @@ subscription OnCreateFollowUpSurvey {
     SurveyId
     date
     HeadHouseholdName
-    MainSourceDrinkingWater
     PersonBeingInterviewed
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
     WaterTreatmentMethod
-    HowLongUsingWaterTreatment
     FrequencyWaterTreatment
-    WaterStorageAtHome
-    WaterStorageContainerHaveLid
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     TakingWaterFromStorage
-    WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
     CommonIllnessAffectingAllChildrenInHousehold
@@ -273,17 +275,16 @@ subscription OnUpdateFollowUpSurvey {
     SurveyId
     date
     HeadHouseholdName
-    MainSourceDrinkingWater
     PersonBeingInterviewed
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
     WaterTreatmentMethod
-    HowLongUsingWaterTreatment
     FrequencyWaterTreatment
-    WaterStorageAtHome
-    WaterStorageContainerHaveLid
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     TakingWaterFromStorage
-    WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
     CommonIllnessAffectingAllChildrenInHousehold
@@ -319,17 +320,16 @@ subscription OnDeleteFollowUpSurvey {
     SurveyId
     date
     HeadHouseholdName
-    MainSourceDrinkingWater
     PersonBeingInterviewed
     WaterTreatmentBeforeDrinking
     MainReasonNoWaterTreatmentBeforeDrinking
     WaterTreatmentMethod
-    HowLongUsingWaterTreatment
     FrequencyWaterTreatment
-    WaterStorageAtHome
-    WaterStorageContainerHaveLid
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     TakingWaterFromStorage
-    WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
     WhatUsedToWashYourHands
     CommonIllnessAffectingAllChildrenInHousehold
@@ -366,6 +366,10 @@ subscription OnCreateHealthCheckSurvey {
     date
     HeadHouseholdName
     PersonBeingInterviewed
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     WasteDisposalYoungestChild
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
@@ -380,9 +384,6 @@ subscription OnCreateHealthCheckSurvey {
     NoDaysNoWorkBecauseOfOwnIllness
     NoDaysNoWorkBecauseOfIllnessFamilyMembers
     MoneySpentMedicalTreatmentLast4weeks
-    WaterTreatment24Hours
-    MainReasonNoWaterTreatment24Hour
-    WaterTreatment24HourMethod
     Completed
     Lat
     Lng
@@ -403,6 +404,10 @@ subscription OnUpdateHealthCheckSurvey {
     date
     HeadHouseholdName
     PersonBeingInterviewed
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     WasteDisposalYoungestChild
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
@@ -417,9 +422,6 @@ subscription OnUpdateHealthCheckSurvey {
     NoDaysNoWorkBecauseOfOwnIllness
     NoDaysNoWorkBecauseOfIllnessFamilyMembers
     MoneySpentMedicalTreatmentLast4weeks
-    WaterTreatment24Hours
-    MainReasonNoWaterTreatment24Hour
-    WaterTreatment24HourMethod
     Completed
     Lat
     Lng
@@ -440,6 +442,10 @@ subscription OnDeleteHealthCheckSurvey {
     date
     HeadHouseholdName
     PersonBeingInterviewed
+    LastTimeTreatedHouseholdWaterWithChlorine
+    WhereDidYouGetChlorineToTreatHouseholdWater
+    AmountSpendPerWeekForChlorineToTreatWater
+    HowDifficultToObtainChlorine
     WasteDisposalYoungestChild
     WashedHandsIn24Hours
     WhenWashedHandsIn24Hours
@@ -454,9 +460,6 @@ subscription OnDeleteHealthCheckSurvey {
     NoDaysNoWorkBecauseOfOwnIllness
     NoDaysNoWorkBecauseOfIllnessFamilyMembers
     MoneySpentMedicalTreatmentLast4weeks
-    WaterTreatment24Hours
-    MainReasonNoWaterTreatment24Hour
-    WaterTreatment24HourMethod
     Completed
     Lat
     Lng
