@@ -3,18 +3,6 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc>The app version</desc>
-    <name>AppVersion</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>APP</type>
-    <value>0</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
-    <childvalue></childvalue>
     <desc></desc>
     <name>PetrifilmDateTested</name>
     <parentdesc></parentdesc>
@@ -2786,7 +2774,7 @@
   <config>
     <childdesc></childdesc>
     <childname>I</childname>
-    <childvalue>[12,33,34,35,36,37,38,39,40,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60]</childvalue>
+    <childvalue>[12,27,33,34,35,36,37,38,39,40,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60]</childvalue>
     <desc>FOLLOW UP SURVEY</desc>
     <name>FOLLOWUPSURVEY</name>
     <parentdesc></parentdesc>
@@ -4240,18 +4228,6 @@
     <childname></childname>
     <childvalue></childvalue>
     <desc></desc>
-    <name>HouseholdFrequencyAtWaterSource</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>I</type>
-    <value>30</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
-    <childvalue></childvalue>
-    <desc></desc>
     <name>NoDaysNoWorkBecauseOfIllnessFamilyMembers</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -4761,6 +4737,18 @@
     <parentname></parentname>
     <parentvalue></parentvalue>
     <type>V</type>
+    <value>1</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue></childvalue>
+    <desc>The app version</desc>
+    <name>AppVersion</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>APP</type>
     <value>1</value>
   </config>
   <config>
@@ -5439,6 +5427,18 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
+    <desc></desc>
+    <name>HouseholdFrequencyAtWaterSource</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>I</type>
+    <value>30</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue></childvalue>
     <desc>In the last two weeks, how many days have you personally been unable to do work due to your own stomach pain/diarrhea illness?</desc>
     <name>NoDaysNoWorkBecauseOfOwnIllness</name>
     <parentdesc></parentdesc>
@@ -5566,18 +5566,6 @@
     <parentvalue></parentvalue>
     <type>AV</type>
     <value>HIV_AIDS</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname>I</childname>
-    <childvalue>[100,150,151,152,153,154,155,156,157,158,159,160,161,162]</childvalue>
-    <desc>VOLUNTEER SUMMARY</desc>
-    <name>VOLUNTEERSUMMARY</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>S</type>
-    <value>VOLUNTEERSUMMARY</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -6364,18 +6352,6 @@
     <childname></childname>
     <childvalue></childvalue>
     <desc></desc>
-    <name>BenefitSWP</name>
-    <parentdesc></parentdesc>
-    <parentname></parentname>
-    <parentvalue></parentvalue>
-    <type>AD</type>
-    <value>ENUMVALUE</value>
-  </config>
-  <config>
-    <childdesc></childdesc>
-    <childname></childname>
-    <childvalue></childvalue>
-    <desc></desc>
     <name>CommonIllnessAffectingAllChildrenInHousehold</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
@@ -6730,6 +6706,18 @@
     <parentvalue></parentvalue>
     <type>Q</type>
     <value>HowLongUsingWaterTreatment</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname>I</childname>
+    <childvalue>[100,150,151,152,153,154,155,156,157,158,159,160,161,162]</childvalue>
+    <desc>VOLUNTEER SUMMARY</desc>
+    <name>VOLUNTEERSUMMARY</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>S</type>
+    <value>VOLUNTEERSUMMARY</value>
   </config>
   <config>
     <childdesc></childdesc>
@@ -7426,6 +7414,18 @@
     <parentvalue></parentvalue>
     <type>V</type>
     <value>0</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
+    <childname></childname>
+    <childvalue></childvalue>
+    <desc></desc>
+    <name>BenefitSWP</name>
+    <parentdesc></parentdesc>
+    <parentname></parentname>
+    <parentvalue></parentvalue>
+    <type>AD</type>
+    <value>ENUMVALUE</value>
   </config>
   <config>
     <childdesc></childdesc>
