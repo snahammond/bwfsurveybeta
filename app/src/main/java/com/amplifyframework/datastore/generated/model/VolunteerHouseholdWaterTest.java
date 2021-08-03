@@ -39,6 +39,8 @@ public final class VolunteerHouseholdWaterTest implements Model {
   public static final QueryField PETRIFILM_DATE_TESTED = field("PetrifilmDateTested");
   public static final QueryField PETRIFILM_DATE_READ = field("PetrifilmDateRead");
   public static final QueryField PETRIFILM_TEST_RESULT = field("PetrifilmTestResult");
+  public static final QueryField CHLORINE_DATE_TESTED = field("ChlorineDateTested");
+  public static final QueryField CHLORINE_TEST_RESULT = field("ChlorineTestResult");
   public static final QueryField COMPLETED = field("Completed");
   public static final QueryField LAT = field("Lat");
   public static final QueryField LNG = field("Lng");
@@ -56,6 +58,8 @@ public final class VolunteerHouseholdWaterTest implements Model {
   private final @ModelField(targetType="AWSDate", isRequired = true) Temporal.Date PetrifilmDateTested;
   private final @ModelField(targetType="AWSDate", isRequired = true) Temporal.Date PetrifilmDateRead;
   private final @ModelField(targetType="String", isRequired = true) String PetrifilmTestResult;
+  private final @ModelField(targetType="AWSDate", isRequired = true) Temporal.Date ChlorineDateTested;
+  private final @ModelField(targetType="String", isRequired = true) String ChlorineTestResult;
   private final @ModelField(targetType="Int", isRequired = true) Integer Completed;
   private final @ModelField(targetType="String", isRequired = true) String Lat;
   private final @ModelField(targetType="String", isRequired = true) String Lng;
@@ -115,6 +119,14 @@ public final class VolunteerHouseholdWaterTest implements Model {
       return PetrifilmTestResult;
   }
   
+  public Temporal.Date getChlorineDateTested() {
+      return ChlorineDateTested;
+  }
+  
+  public String getChlorineTestResult() {
+      return ChlorineTestResult;
+  }
+  
   public Integer getCompleted() {
       return Completed;
   }
@@ -127,7 +139,7 @@ public final class VolunteerHouseholdWaterTest implements Model {
       return Lng;
   }
   
-  private VolunteerHouseholdWaterTest(String id, String Namebwe, String Namevol, Temporal.Date date, String Country, String Community, String HeadHouseholdName, String HouseholdLocation, Temporal.Date ColilertDateTested, Temporal.Date ColilertDateRead, String ColilertTestResult, Temporal.Date PetrifilmDateTested, Temporal.Date PetrifilmDateRead, String PetrifilmTestResult, Integer Completed, String Lat, String Lng) {
+  private VolunteerHouseholdWaterTest(String id, String Namebwe, String Namevol, Temporal.Date date, String Country, String Community, String HeadHouseholdName, String HouseholdLocation, Temporal.Date ColilertDateTested, Temporal.Date ColilertDateRead, String ColilertTestResult, Temporal.Date PetrifilmDateTested, Temporal.Date PetrifilmDateRead, String PetrifilmTestResult, Temporal.Date ChlorineDateTested, String ChlorineTestResult, Integer Completed, String Lat, String Lng) {
     this.id = id;
     this.Namebwe = Namebwe;
     this.Namevol = Namevol;
@@ -142,6 +154,8 @@ public final class VolunteerHouseholdWaterTest implements Model {
     this.PetrifilmDateTested = PetrifilmDateTested;
     this.PetrifilmDateRead = PetrifilmDateRead;
     this.PetrifilmTestResult = PetrifilmTestResult;
+    this.ChlorineDateTested = ChlorineDateTested;
+    this.ChlorineTestResult = ChlorineTestResult;
     this.Completed = Completed;
     this.Lat = Lat;
     this.Lng = Lng;
@@ -169,6 +183,8 @@ public final class VolunteerHouseholdWaterTest implements Model {
               ObjectsCompat.equals(getPetrifilmDateTested(), volunteerHouseholdWaterTest.getPetrifilmDateTested()) &&
               ObjectsCompat.equals(getPetrifilmDateRead(), volunteerHouseholdWaterTest.getPetrifilmDateRead()) &&
               ObjectsCompat.equals(getPetrifilmTestResult(), volunteerHouseholdWaterTest.getPetrifilmTestResult()) &&
+              ObjectsCompat.equals(getChlorineDateTested(), volunteerHouseholdWaterTest.getChlorineDateTested()) &&
+              ObjectsCompat.equals(getChlorineTestResult(), volunteerHouseholdWaterTest.getChlorineTestResult()) &&
               ObjectsCompat.equals(getCompleted(), volunteerHouseholdWaterTest.getCompleted()) &&
               ObjectsCompat.equals(getLat(), volunteerHouseholdWaterTest.getLat()) &&
               ObjectsCompat.equals(getLng(), volunteerHouseholdWaterTest.getLng());
@@ -192,6 +208,8 @@ public final class VolunteerHouseholdWaterTest implements Model {
       .append(getPetrifilmDateTested())
       .append(getPetrifilmDateRead())
       .append(getPetrifilmTestResult())
+      .append(getChlorineDateTested())
+      .append(getChlorineTestResult())
       .append(getCompleted())
       .append(getLat())
       .append(getLng())
@@ -217,6 +235,8 @@ public final class VolunteerHouseholdWaterTest implements Model {
       .append("PetrifilmDateTested=" + String.valueOf(getPetrifilmDateTested()) + ", ")
       .append("PetrifilmDateRead=" + String.valueOf(getPetrifilmDateRead()) + ", ")
       .append("PetrifilmTestResult=" + String.valueOf(getPetrifilmTestResult()) + ", ")
+      .append("ChlorineDateTested=" + String.valueOf(getChlorineDateTested()) + ", ")
+      .append("ChlorineTestResult=" + String.valueOf(getChlorineTestResult()) + ", ")
       .append("Completed=" + String.valueOf(getCompleted()) + ", ")
       .append("Lat=" + String.valueOf(getLat()) + ", ")
       .append("Lng=" + String.valueOf(getLng()))
@@ -264,6 +284,8 @@ public final class VolunteerHouseholdWaterTest implements Model {
       null,
       null,
       null,
+      null,
+      null,
       null
     );
   }
@@ -283,6 +305,8 @@ public final class VolunteerHouseholdWaterTest implements Model {
       PetrifilmDateTested,
       PetrifilmDateRead,
       PetrifilmTestResult,
+      ChlorineDateTested,
+      ChlorineTestResult,
       Completed,
       Lat,
       Lng);
@@ -343,7 +367,17 @@ public final class VolunteerHouseholdWaterTest implements Model {
   
 
   public interface PetrifilmTestResultStep {
-    CompletedStep petrifilmTestResult(String petrifilmTestResult);
+    ChlorineDateTestedStep petrifilmTestResult(String petrifilmTestResult);
+  }
+  
+
+  public interface ChlorineDateTestedStep {
+    ChlorineTestResultStep chlorineDateTested(Temporal.Date chlorineDateTested);
+  }
+  
+
+  public interface ChlorineTestResultStep {
+    CompletedStep chlorineTestResult(String chlorineTestResult);
   }
   
 
@@ -369,7 +403,7 @@ public final class VolunteerHouseholdWaterTest implements Model {
   }
   
 
-  public static class Builder implements NamebweStep, NamevolStep, CountryStep, CommunityStep, HeadHouseholdNameStep, HouseholdLocationStep, ColilertDateTestedStep, ColilertDateReadStep, ColilertTestResultStep, PetrifilmDateTestedStep, PetrifilmDateReadStep, PetrifilmTestResultStep, CompletedStep, LatStep, LngStep, BuildStep {
+  public static class Builder implements NamebweStep, NamevolStep, CountryStep, CommunityStep, HeadHouseholdNameStep, HouseholdLocationStep, ColilertDateTestedStep, ColilertDateReadStep, ColilertTestResultStep, PetrifilmDateTestedStep, PetrifilmDateReadStep, PetrifilmTestResultStep, ChlorineDateTestedStep, ChlorineTestResultStep, CompletedStep, LatStep, LngStep, BuildStep {
     private String id;
     private String Namebwe;
     private String Namevol;
@@ -383,6 +417,8 @@ public final class VolunteerHouseholdWaterTest implements Model {
     private Temporal.Date PetrifilmDateTested;
     private Temporal.Date PetrifilmDateRead;
     private String PetrifilmTestResult;
+    private Temporal.Date ChlorineDateTested;
+    private String ChlorineTestResult;
     private Integer Completed;
     private String Lat;
     private String Lng;
@@ -406,6 +442,8 @@ public final class VolunteerHouseholdWaterTest implements Model {
           PetrifilmDateTested,
           PetrifilmDateRead,
           PetrifilmTestResult,
+          ChlorineDateTested,
+          ChlorineTestResult,
           Completed,
           Lat,
           Lng);
@@ -489,9 +527,23 @@ public final class VolunteerHouseholdWaterTest implements Model {
     }
     
     @Override
-     public CompletedStep petrifilmTestResult(String petrifilmTestResult) {
+     public ChlorineDateTestedStep petrifilmTestResult(String petrifilmTestResult) {
         Objects.requireNonNull(petrifilmTestResult);
         this.PetrifilmTestResult = petrifilmTestResult;
+        return this;
+    }
+    
+    @Override
+     public ChlorineTestResultStep chlorineDateTested(Temporal.Date chlorineDateTested) {
+        Objects.requireNonNull(chlorineDateTested);
+        this.ChlorineDateTested = chlorineDateTested;
+        return this;
+    }
+    
+    @Override
+     public CompletedStep chlorineTestResult(String chlorineTestResult) {
+        Objects.requireNonNull(chlorineTestResult);
+        this.ChlorineTestResult = chlorineTestResult;
         return this;
     }
     
@@ -545,7 +597,7 @@ public final class VolunteerHouseholdWaterTest implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String namebwe, String namevol, Temporal.Date date, String country, String community, String headHouseholdName, String householdLocation, Temporal.Date colilertDateTested, Temporal.Date colilertDateRead, String colilertTestResult, Temporal.Date petrifilmDateTested, Temporal.Date petrifilmDateRead, String petrifilmTestResult, Integer completed, String lat, String lng) {
+    private CopyOfBuilder(String id, String namebwe, String namevol, Temporal.Date date, String country, String community, String headHouseholdName, String householdLocation, Temporal.Date colilertDateTested, Temporal.Date colilertDateRead, String colilertTestResult, Temporal.Date petrifilmDateTested, Temporal.Date petrifilmDateRead, String petrifilmTestResult, Temporal.Date chlorineDateTested, String chlorineTestResult, Integer completed, String lat, String lng) {
       super.id(id);
       super.namebwe(namebwe)
         .namevol(namevol)
@@ -559,6 +611,8 @@ public final class VolunteerHouseholdWaterTest implements Model {
         .petrifilmDateTested(petrifilmDateTested)
         .petrifilmDateRead(petrifilmDateRead)
         .petrifilmTestResult(petrifilmTestResult)
+        .chlorineDateTested(chlorineDateTested)
+        .chlorineTestResult(chlorineTestResult)
         .completed(completed)
         .lat(lat)
         .lng(lng)
@@ -623,6 +677,16 @@ public final class VolunteerHouseholdWaterTest implements Model {
     @Override
      public CopyOfBuilder petrifilmTestResult(String petrifilmTestResult) {
       return (CopyOfBuilder) super.petrifilmTestResult(petrifilmTestResult);
+    }
+    
+    @Override
+     public CopyOfBuilder chlorineDateTested(Temporal.Date chlorineDateTested) {
+      return (CopyOfBuilder) super.chlorineDateTested(chlorineDateTested);
+    }
+    
+    @Override
+     public CopyOfBuilder chlorineTestResult(String chlorineTestResult) {
+      return (CopyOfBuilder) super.chlorineTestResult(chlorineTestResult);
     }
     
     @Override

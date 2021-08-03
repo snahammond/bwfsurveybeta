@@ -294,6 +294,8 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
         Temporal.Date PetrifilmDateTested = DateUtils.parseDateWithDefault(InterchangeUtils.getInterchangeAns("PetrifilmDateTested",interchangesWithUserAns));
         Temporal.Date PetrifilmDateRead = DateUtils.parseDateWithDefault(InterchangeUtils.getInterchangeAns("PetrifilmDateRead",interchangesWithUserAns));
         String PetrifilmTestResult = (String) InterchangeUtils.getInterchangeAns("PetrifilmTestResult",interchangesWithUserAns);
+        Temporal.Date ChlorineDateTested = DateUtils.parseDateWithDefault(InterchangeUtils.getInterchangeAns("ChlorineDateTested",interchangesWithUserAns));
+        String ChlorineTestResult = (String) InterchangeUtils.getInterchangeAns("ChlorineTestResult",interchangesWithUserAns);
         Temporal.Date date = new Temporal.Date(date_s);
 
         HouseholdWaterTest householdWaterTest = HouseholdWaterTest.builder()
@@ -307,6 +309,8 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
                 .petrifilmDateTested(PetrifilmDateTested)
                 .petrifilmDateRead(PetrifilmDateRead)
                 .petrifilmTestResult(PetrifilmTestResult)
+                .chlorineDateTested(ChlorineDateTested)
+                .chlorineTestResult(ChlorineTestResult)
                 .completed(completed)
                 .lat(lat)
                 .lng(lng)

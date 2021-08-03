@@ -194,6 +194,8 @@ ColilertTestResult: String!
 PetrifilmDateTested: AWSDate!
 PetrifilmDateRead: AWSDate!
 PetrifilmTestResult: String!
+ChlorineDateTested: AWSDate!
+ChlorineTestResult: String!
 Completed: Int!
 Lat: String!
 Lng: String!
@@ -264,6 +266,8 @@ ColilertTestResult: String!
 PetrifilmDateTested: AWSDate!
 PetrifilmDateRead: AWSDate!
 PetrifilmTestResult: String!
+ChlorineDateTested: AWSDate!
+ChlorineTestResult: String!
 Completed: Int!
 Lat: String!
 Lng: String!

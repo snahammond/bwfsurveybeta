@@ -22,6 +22,8 @@ import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
+import com.bwfsurvey.bwfsurveybeta.utils.DateUtils;
+import com.bwfsurvey.bwfsurveybeta.utils.InterchangeUtils;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
 import com.example.bwfsurveybeta.R;
 
@@ -339,6 +341,8 @@ public class UpdateHouseholdWaterTestActivity extends AppCompatActivity {
         Temporal.Date PetrifilmDateTested = parseDateWithDefault(getInterchangeAns("PetrifilmDateTested",interchangesWithUserAns));
         Temporal.Date PetrifilmDateRead = parseDateWithDefault(getInterchangeAns("PetrifilmDateRead",interchangesWithUserAns));
         String PetrifilmTestResult = (String) getInterchangeAns("PetrifilmTestResult",interchangesWithUserAns);
+        Temporal.Date ChlorineDateTested = DateUtils.parseDateWithDefault(InterchangeUtils.getInterchangeAns("ChlorineDateTested",interchangesWithUserAns));
+        String ChlorineTestResult = (String) InterchangeUtils.getInterchangeAns("ChlorineTestResult",interchangesWithUserAns);
         Temporal.Date date = new Temporal.Date(date_s);
 
         HouseholdWaterTest householdWaterTest = HouseholdWaterTest.builder()
@@ -352,6 +356,8 @@ public class UpdateHouseholdWaterTestActivity extends AppCompatActivity {
                 .petrifilmDateTested(PetrifilmDateTested)
                 .petrifilmDateRead(PetrifilmDateRead)
                 .petrifilmTestResult(PetrifilmTestResult)
+                .chlorineDateTested(ChlorineDateTested)
+                .chlorineTestResult(ChlorineTestResult)
                 .completed(completed)
                 .lat(lat)
                 .lng(lng)

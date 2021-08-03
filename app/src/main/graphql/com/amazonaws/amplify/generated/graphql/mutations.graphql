@@ -625,6 +625,8 @@ mutation CreateHouseholdWaterTest(
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    ChlorineDateTested
+    ChlorineTestResult
     Completed
     Lat
     Lng
@@ -652,6 +654,8 @@ mutation UpdateHouseholdWaterTest(
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    ChlorineDateTested
+    ChlorineTestResult
     Completed
     Lat
     Lng
@@ -679,6 +683,8 @@ mutation DeleteHouseholdWaterTest(
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    ChlorineDateTested
+    ChlorineTestResult
     Completed
     Lat
     Lng
@@ -966,6 +972,8 @@ mutation CreateVolunteerHouseholdWaterTest(
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    ChlorineDateTested
+    ChlorineTestResult
     Completed
     Lat
     Lng
@@ -995,6 +1003,8 @@ mutation UpdateVolunteerHouseholdWaterTest(
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    ChlorineDateTested
+    ChlorineTestResult
     Completed
     Lat
     Lng
@@ -1024,6 +1034,8 @@ mutation DeleteVolunteerHouseholdWaterTest(
     PetrifilmDateTested
     PetrifilmDateRead
     PetrifilmTestResult
+    ChlorineDateTested
+    ChlorineTestResult
     Completed
     Lat
     Lng
