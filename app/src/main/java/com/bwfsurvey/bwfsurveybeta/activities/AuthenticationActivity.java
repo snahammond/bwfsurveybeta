@@ -1,12 +1,14 @@
 package com.bwfsurvey.bwfsurveybeta.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -249,12 +251,50 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                     spinnerCountry.setVisibility(View.VISIBLE);
                     forgotPasswordLayout.setVisibility(View.GONE);
 
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(AuthenticationActivity.this,android.R.layout.simple_spinner_item, getCountryListByLocale().toArray(new String[0]));
+                    ArrayList<String> countries = new ArrayList<>();
+                    countries.add("Select your country...");
+                    String[] countryList = getCountryListByLocale().toArray(new String[0]);
+                    for(String country: countryList){
+                        countries.add(country);
+                    }
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(AuthenticationActivity.this,R.layout.spinner_country_text_item, countries){
+                        @Override
+                        public boolean isEnabled(int position){
+                            if(position == 0)
+                            {
+                                // Disable the first item from Spinner
+                                // First item will be use for hint
+                                return false;
+                            }
+                            else
+                            {
+                                return true;
+                            }
+                        }
+                        @Override
+                        public View getDropDownView(int position, View convertView,
+                                                    ViewGroup parent) {
+                            View view = super.getDropDownView(position, convertView, parent);
+                            TextView tv = (TextView) view;
+                            if(position == 0){
+                                // Set the hint text color gray
+                                tv.setTextColor(Color.GRAY);
+                            }
+                            else {
+                                tv.setTextColor(Color.BLACK);
+                            }
+                            return view;
+                        }
+                    };
                     spinnerCountry.setAdapter(adapter);
                     spinnerCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            SWECountry = (String)parent.getItemAtPosition(position);
+                            String selectedCountry = (String)parent.getItemAtPosition(position);
+                            if(position > 0){
+                                SWECountry = selectedCountry;
+                            }
                         }
 
                         @Override

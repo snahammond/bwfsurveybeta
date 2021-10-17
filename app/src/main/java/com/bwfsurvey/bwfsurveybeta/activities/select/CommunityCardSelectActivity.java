@@ -100,6 +100,28 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
                     },
                     failure ->{
                         Log.e("Tutorials", "numberOfInitialSurvey Query failed.", failure);
+                        surveyIdForInitialSurvey = 0;
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                //save the initialSurvey object
+                                progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
+                                TextView progressBarText = (TextView) findViewById(R.id.pbText);
+                                progressBarText.setText("Please wait... Setting Up!");
+                                progressBar.setVisibility(View.VISIBLE);
+                                CountDownTimer countDownTimer = new CountDownTimer(BwfSurveyAmplifyApplication.manualTimer,1000) {
+                                    @Override
+                                    public void onTick(long millisUntilFinished) {
+                                    }
+
+                                    @Override
+                                    public void onFinish() {
+                                        progressBar.setVisibility(View.GONE);
+                                        createCommunityCardSelectList();
+                                    }
+                                };
+                                countDownTimer.start();
+                            }
+                        });
                     }
             );
         }else{

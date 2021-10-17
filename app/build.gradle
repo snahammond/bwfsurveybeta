@@ -10,8 +10,8 @@ android {
         applicationId "com.bwfsurvey.bwfsurveybeta"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 17
-        versionName "5.92"
+        versionCode 19
+        versionName "5.94"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
