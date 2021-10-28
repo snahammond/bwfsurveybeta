@@ -221,6 +221,42 @@ subscription OnDeleteInitialSurvey {
     updatedAt
   }
 }
+subscription OnCreateInitialSurveyDeleteControl {
+  onCreateInitialSurveyDeleteControl {
+    id
+    Namebwe
+    Completed
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateInitialSurveyDeleteControl {
+  onUpdateInitialSurveyDeleteControl {
+    id
+    Namebwe
+    Completed
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteInitialSurveyDeleteControl {
+  onDeleteInitialSurveyDeleteControl {
+    id
+    Namebwe
+    Completed
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
 subscription OnCreateFollowUpSurvey {
   onCreateFollowUpSurvey {
     id

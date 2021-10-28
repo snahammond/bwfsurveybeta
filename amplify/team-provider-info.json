@@ -20,6 +20,12 @@
           "appId": "d359f9rv2w9w2o",
           "type": "manual"
         }
+      },
+      "function": {
+        "AdminQueries8e00fd77": {
+          "deploymentBucketName": "amplify-bwfsurveybetadev-dev-121946-deployment",
+          "s3Key": "amplify-builds/AdminQueries8e00fd77-4b6e635a4f525a596138-build.zip"
+        }
       }
     }
   }
