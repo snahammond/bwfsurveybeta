@@ -257,15 +257,28 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
 
         void setQuestionNumberAnsDetails(Interchange interchange,int position) {
+            View card = (View)txtQuestion.getParent();
+            card.setVisibility(View.VISIBLE);
+
             this.setInterchangePosition(position);
             interchangeNumber.setText(Integer.toString(interchange.getInterchangeNumber()));
             txtQuestion.setText(interchange.getQuestion().getQuestionText());
             editAnswer.setEnabled(true);
+
             if(interchange.getAnswer().getAns()!=null){
                 editAnswer.setText(interchange.getAnswer().getAns().toString());
             }else{
                 editAnswer.setText("0");
                 _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns(0);
+            }
+
+            if(interchange.getName().contentEquals("AmountSpendPerWeekForChlorineToTreatWater")){
+                String ltthwwcAns = getInterchangeStringAns("LastTimeTreatedHouseholdWaterWithChlorine");
+                if(ltthwwcAns.contentEquals("DONOTUSECHLORINETOTREATWATER")||ltthwwcAns.contentEquals("DONTKNOW")){
+                    Log.i("custom","Custom code on 39 AmountSpendPerWeekForChlorineToTreatWater ltthwwcAns is "+ltthwwcAns);
+                    card.setVisibility(View.GONE);
+                    hideChlorineDependent();
+                }
             }
 
             if(interchange.getName().contentEquals("TotalNoPeopleHousehold")){
@@ -288,16 +301,16 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         private void updateTotalNoPeopleHousehold(){
             for(Interchange interchange : _retInterchangesWithAns){
                 if(interchange.getName().contentEquals("TotalNoPeopleHousehold")){
-                    Integer NoHouseholdMale0_1Year = getInterchangeAns("NoHouseholdMale0_1Year");
-                    Integer NoHouseholdFemale0_1Year = getInterchangeAns("NoHouseholdFemale0_1Year");
-                    Integer NoHouseholdMale1_5Year = getInterchangeAns("NoHouseholdMale1_5Year");
-                    Integer NoHouseholdFemale1_5Year = getInterchangeAns("NoHouseholdFemale1_5Year");
-                    Integer NoHouseholdMale5_12Year = getInterchangeAns("NoHouseholdMale5_12Year");
-                    Integer NoHouseholdFemale5_12Year = getInterchangeAns("NoHouseholdFemale5_12Year");
-                    Integer NoHouseholdMale13_17Year = getInterchangeAns("NoHouseholdMale13_17Year");
-                    Integer NoHouseholdFemale13_17Year = getInterchangeAns("NoHouseholdFemale13_17Year");
-                    Integer NoHouseholdMale18_Year = getInterchangeAns("NoHouseholdMale18_Year");
-                    Integer NoHouseholdFemale18_Year = getInterchangeAns("NoHouseholdFemale18_Year");
+                    Integer NoHouseholdMale0_1Year = getInterchangeIntAns("NoHouseholdMale0_1Year");
+                    Integer NoHouseholdFemale0_1Year = getInterchangeIntAns("NoHouseholdFemale0_1Year");
+                    Integer NoHouseholdMale1_5Year = getInterchangeIntAns("NoHouseholdMale1_5Year");
+                    Integer NoHouseholdFemale1_5Year = getInterchangeIntAns("NoHouseholdFemale1_5Year");
+                    Integer NoHouseholdMale5_12Year = getInterchangeIntAns("NoHouseholdMale5_12Year");
+                    Integer NoHouseholdFemale5_12Year = getInterchangeIntAns("NoHouseholdFemale5_12Year");
+                    Integer NoHouseholdMale13_17Year = getInterchangeIntAns("NoHouseholdMale13_17Year");
+                    Integer NoHouseholdFemale13_17Year = getInterchangeIntAns("NoHouseholdFemale13_17Year");
+                    Integer NoHouseholdMale18_Year = getInterchangeIntAns("NoHouseholdMale18_Year");
+                    Integer NoHouseholdFemale18_Year = getInterchangeIntAns("NoHouseholdFemale18_Year");
 
                     int TotalNoPeopleHousehold = NoHouseholdMale0_1Year + NoHouseholdFemale0_1Year
                             + NoHouseholdMale1_5Year + NoHouseholdFemale1_5Year
@@ -326,10 +339,10 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         private void updateTotalNoPersonsTaught(){
             for(Interchange interchange : _retInterchangesWithAns){
                 if(interchange.getName().contentEquals("NoPersonsTaught")){
-                    Integer NoPersonsTaughtLesson1 = getInterchangeAns("NoPersonsTaughtLesson1");
-                    Integer NoPersonsTaughtLesson2 = getInterchangeAns("NoPersonsTaughtLesson2");
-                    Integer NoPersonsTaughtLesson3 = getInterchangeAns("NoPersonsTaughtLesson3");
-                    Integer NoPersonsTaughtLesson4 = getInterchangeAns("NoPersonsTaughtLesson4");
+                    Integer NoPersonsTaughtLesson1 = getInterchangeIntAns("NoPersonsTaughtLesson1");
+                    Integer NoPersonsTaughtLesson2 = getInterchangeIntAns("NoPersonsTaughtLesson2");
+                    Integer NoPersonsTaughtLesson3 = getInterchangeIntAns("NoPersonsTaughtLesson3");
+                    Integer NoPersonsTaughtLesson4 = getInterchangeIntAns("NoPersonsTaughtLesson4");
 
                     int NoPersonsTaught = NoPersonsTaughtLesson1 + NoPersonsTaughtLesson2
                             + NoPersonsTaughtLesson3 + NoPersonsTaughtLesson4;
@@ -355,10 +368,10 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         private void updateTotalNoPersonsTaughtByVol(){
             for(Interchange interchange : _retInterchangesWithAns){
                 if(interchange.getName().contentEquals("NoPersonsTaughtByVol")){
-                    Integer NoPersonsTaughtLesson1ByVol = getInterchangeAns("NoPersonsTaughtLesson1ByVol");
-                    Integer NoPersonsTaughtLesson2ByVol = getInterchangeAns("NoPersonsTaughtLesson2ByVol");
-                    Integer NoPersonsTaughtLesson3ByVol = getInterchangeAns("NoPersonsTaughtLesson3ByVol");
-                    Integer NoPersonsTaughtLesson4ByVol = getInterchangeAns("NoPersonsTaughtLesson4ByVol");
+                    Integer NoPersonsTaughtLesson1ByVol = getInterchangeIntAns("NoPersonsTaughtLesson1ByVol");
+                    Integer NoPersonsTaughtLesson2ByVol = getInterchangeIntAns("NoPersonsTaughtLesson2ByVol");
+                    Integer NoPersonsTaughtLesson3ByVol = getInterchangeIntAns("NoPersonsTaughtLesson3ByVol");
+                    Integer NoPersonsTaughtLesson4ByVol = getInterchangeIntAns("NoPersonsTaughtLesson4ByVol");
 
                     int NoPersonsTaughtByVol = NoPersonsTaughtLesson1ByVol + NoPersonsTaughtLesson2ByVol
                             + NoPersonsTaughtLesson3ByVol + NoPersonsTaughtLesson4ByVol;
@@ -379,22 +392,6 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     }
                 }
             }
-        }
-
-        private int getInterchangeAns(String interchangeName){
-            int ans = 0;
-            for(Interchange interchange : _retInterchangesWithAns){
-                if(interchange.getName().contentEquals(interchangeName)){
-                    if(interchange.getAnswer()!=null && interchange.getAnswer().getAns()!=null){
-                        try{
-                            ans = (int)interchange.getAnswer().getAns();
-                        }catch (Exception x){
-                            ans = 0;
-                        }
-                    }
-                }
-            }
-            return ans;
         }
 
     }
@@ -441,6 +438,11 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 public void onClick(View v) {
                     String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
                     _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                    //custom code
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("LastTimeTreatedHouseholdWaterWithChlorine")){
+                        showChlorineDependent();
+                    }
+                    //custom
                 }
             });
             radio_2 = (RadioButton)itemView.findViewById(R.id.radio_2);
@@ -449,6 +451,11 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 public void onClick(View v) {
                     String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
                     _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+                    //custom code
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("LastTimeTreatedHouseholdWaterWithChlorine")){
+                        showChlorineDependent();
+                    }
+                    //custom
                 }
             });
             radio_3 = (RadioButton)itemView.findViewById(R.id.radio_3);
@@ -457,6 +464,12 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 public void onClick(View v) {
                     String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
                     _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+
+                    //custom code
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("LastTimeTreatedHouseholdWaterWithChlorine")){
+                        showChlorineDependent();
+                    }
+                    //custom
                 }
             });
             radio_4 = (RadioButton)itemView.findViewById(R.id.radio_4);
@@ -465,6 +478,12 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 public void onClick(View v) {
                     String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
                     _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+
+                    //custom code
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("LastTimeTreatedHouseholdWaterWithChlorine")){
+                        showChlorineDependent();
+                    }
+                    //custom
                 }
             });
             radio_5 = (RadioButton)itemView.findViewById(R.id.radio_5);
@@ -473,6 +492,12 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 public void onClick(View v) {
                     String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
                     _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+
+                    //custom code
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("LastTimeTreatedHouseholdWaterWithChlorine")){
+                        hideChlorineDependent();
+                    }
+                    //custom
                 }
             });
             radio_6 = (RadioButton)itemView.findViewById(R.id.radio_6);
@@ -481,6 +506,12 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 public void onClick(View v) {
                     String selectedRadioEnumStrValue = ((RadioButton)v).getHint().toString();
                     _retInterchangesWithAns.get(getInterchangePosition()).getAnswer().setAns((String)selectedRadioEnumStrValue);
+
+                    //custom code
+                    if(_retInterchangesWithAns.get(getInterchangePosition()).getName().contentEquals("LastTimeTreatedHouseholdWaterWithChlorine")){
+                        hideChlorineDependent();
+                    }
+                    //custom
                 }
             });
             radio_7 = (RadioButton)itemView.findViewById(R.id.radio_7);
@@ -558,6 +589,9 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
 
         void setQuestionEnumAnsDetails(Interchange interchange, int position) {
+            View card = (View)txtQuestion.getParent();
+            card.setVisibility(View.VISIBLE);
+
             this.setInterchangePosition(position);
             interchangeNumber.setText(Integer.toString(interchange.getInterchangeNumber()));
             txtQuestion.setText(interchange.getQuestion().getQuestionText());
@@ -576,6 +610,28 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             }
             //this.setSelectedValue(selectedOptionStr);
             addRadioButtons(interchange.getAnswer().getAnswerValArrayList(),position,selectedOptionStr);
+
+            //custom code
+            if(interchange.getName().contentEquals("WhereDidYouGetChlorineToTreatHouseholdWater")){
+                Log.i("custom","bounded WhereDidYouGetChlorineToTreatHouseholdWater to recycler");
+                String ltthwwcAns = getInterchangeStringAns("LastTimeTreatedHouseholdWaterWithChlorine");
+                if(ltthwwcAns.contentEquals("DONOTUSECHLORINETOTREATWATER")||ltthwwcAns.contentEquals("DONTKNOW")){
+                    Log.i("custom","Custom code on 38 WhereDidYouGetChlorineToTreatHouseholdWater ltthwwcAns is "+ltthwwcAns);
+                    card.setVisibility(View.GONE);
+                    hideChlorineDependent();
+                }
+            }
+
+            if(interchange.getName().contentEquals("HowDifficultToObtainChlorine")){
+                Log.i("custom","bounded HowDifficultToObtainChlorine to recycler");
+                String ltthwwcAns = getInterchangeStringAns("LastTimeTreatedHouseholdWaterWithChlorine");
+                if(ltthwwcAns.contentEquals("DONOTUSECHLORINETOTREATWATER")||ltthwwcAns.contentEquals("DONTKNOW")){
+                    Log.i("custom","Custom code on 40 HowDifficultToObtainChlorine ltthwwcAns is "+ltthwwcAns);
+                    card.setVisibility(View.GONE);
+                    hideChlorineDependent();
+                }
+            }
+
         }
 
         public void addRadioButtons(ArrayList<AnswerValue> possibleAnss, int position, String selectedOption) {
@@ -768,6 +824,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             }
 
         }
+
     }
 
     class InterchangeSpinnerAnsViewHolder extends RecyclerView.ViewHolder {
@@ -1515,5 +1572,102 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public ArrayList<Interchange> retrieveData()
     {
         return _retInterchangesWithAns;
+    }
+
+    private String getInterchangeStringAns(String interchangeName){
+        String ans = "";
+        for(Interchange interchange : _retInterchangesWithAns){
+            if(interchange.getName().contentEquals(interchangeName)){
+                if(interchange.getAnswer()!=null && interchange.getAnswer().getAns()!=null){
+                    try{
+                        ans = (String)interchange.getAnswer().getAns();
+                    }catch (Exception x){
+                        ans = "";
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+
+    private int getInterchangeIntAns(String interchangeName){
+        int ans = 0;
+        for(Interchange interchange : _retInterchangesWithAns){
+            if(interchange.getName().contentEquals(interchangeName)){
+                if(interchange.getAnswer()!=null && interchange.getAnswer().getAns()!=null){
+                    try{
+                        ans = (int)interchange.getAnswer().getAns();
+                    }catch (Exception x){
+                        ans = 0;
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+
+    void hideChlorineDependent(){
+
+        RecyclerView.ViewHolder wgctthwViewHolder = mRecyclerView.findViewHolderForLayoutPosition(33);
+        RecyclerView.ViewHolder spwfcttwViewHolder = mRecyclerView.findViewHolderForLayoutPosition(34);
+        RecyclerView.ViewHolder hdtocttwViewHolder = mRecyclerView.findViewHolderForLayoutPosition(35);
+
+        if(wgctthwViewHolder!=null){
+            TextView txtQuestion = (TextView)wgctthwViewHolder.itemView.findViewById(R.id.txtQuestion);
+            Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
+            View card = (View)txtQuestion.getParent();
+            card.setVisibility(View.GONE);
+        }else{
+            Log.i("Tutorial", "wgctthwViewHolder is null" );
+        }
+
+        if(spwfcttwViewHolder!=null){
+            TextView txtQuestion = (TextView)spwfcttwViewHolder.itemView.findViewById(R.id.txtQuestion);
+            Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
+            View card = (View)txtQuestion.getParent();
+            card.setVisibility(View.GONE);
+        }else{
+            Log.i("Tutorial", "spwfcttwViewHolder is null" );
+
+        }
+
+        if(hdtocttwViewHolder!=null){
+            TextView txtQuestion = (TextView)hdtocttwViewHolder.itemView.findViewById(R.id.txtQuestion);
+            Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
+            View card = (View)txtQuestion.getParent();
+            card.setVisibility(View.GONE);
+        }else{
+            Log.i("Tutorial", "hdtocttwViewHolder is null" );
+        }
+
+    }
+
+    void showChlorineDependent(){
+
+        RecyclerView.ViewHolder wgctthwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(33);
+        RecyclerView.ViewHolder spwfcttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(34);
+        RecyclerView.ViewHolder hdtocttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(35);
+
+        if(wgctthwViewHolder!=null){
+            TextView txtQuestion = (TextView)wgctthwViewHolder.itemView.findViewById(R.id.txtQuestion);
+            Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
+            View card = (View)txtQuestion.getParent();
+            card.setVisibility(View.VISIBLE);
+        }
+
+        if(spwfcttwViewHolder!=null){
+            TextView txtQuestion = (TextView)spwfcttwViewHolder.itemView.findViewById(R.id.txtQuestion);
+            Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
+            View card = (View)txtQuestion.getParent();
+            card.setVisibility(View.VISIBLE);
+        }
+
+        if(hdtocttwViewHolder!=null){
+            TextView txtQuestion = (TextView)hdtocttwViewHolder.itemView.findViewById(R.id.txtQuestion);
+            Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
+            View card = (View)txtQuestion.getParent();
+            card.setVisibility(View.VISIBLE);
+        }
+
     }
 }
