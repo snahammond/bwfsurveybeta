@@ -23,6 +23,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.AnswerType;
+import com.bwfsurvey.bwfsurveybeta.activities.collect.FollowUpSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.collect.HealthCheckSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.collect.InitialSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.types.AnswerValue;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.example.bwfsurveybeta.R;
@@ -1607,16 +1610,30 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
     void hideChlorineDependent(){
-
-        RecyclerView.ViewHolder wgctthwViewHolder = mRecyclerView.findViewHolderForLayoutPosition(33);
-        RecyclerView.ViewHolder spwfcttwViewHolder = mRecyclerView.findViewHolderForLayoutPosition(34);
-        RecyclerView.ViewHolder hdtocttwViewHolder = mRecyclerView.findViewHolderForLayoutPosition(35);
+        RecyclerView.ViewHolder wgctthwViewHolder = null;
+        RecyclerView.ViewHolder spwfcttwViewHolder = null;
+        RecyclerView.ViewHolder hdtocttwViewHolder = null;
+        if(this.context instanceof InitialSurveyActivity){
+            wgctthwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(33);
+            spwfcttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(34);
+            hdtocttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(35);
+        }else if(this.context instanceof FollowUpSurveyActivity){
+            wgctthwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(6);
+            spwfcttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(7);
+            hdtocttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(8);
+        }else if(this.context instanceof HealthCheckSurveyActivity){
+            wgctthwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(2);
+            spwfcttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(3);
+            hdtocttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(4);
+        }
 
         if(wgctthwViewHolder!=null){
             TextView txtQuestion = (TextView)wgctthwViewHolder.itemView.findViewById(R.id.txtQuestion);
             Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
-            View card = (View)txtQuestion.getParent();
-            card.setVisibility(View.GONE);
+            if(txtQuestion.getText().toString().contains("Where did you get the chlorine")){
+                View card = (View)txtQuestion.getParent();
+                card.setVisibility(View.GONE);
+            }
         }else{
             Log.i("Tutorial", "wgctthwViewHolder is null" );
         }
@@ -1624,18 +1641,21 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         if(spwfcttwViewHolder!=null){
             TextView txtQuestion = (TextView)spwfcttwViewHolder.itemView.findViewById(R.id.txtQuestion);
             Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
-            View card = (View)txtQuestion.getParent();
-            card.setVisibility(View.GONE);
+            if(txtQuestion.getText().toString().contains("How much do you spend per week for chlorine")) {
+                View card = (View)txtQuestion.getParent();
+                card.setVisibility(View.GONE);
+            }
         }else{
             Log.i("Tutorial", "spwfcttwViewHolder is null" );
-
         }
 
         if(hdtocttwViewHolder!=null){
             TextView txtQuestion = (TextView)hdtocttwViewHolder.itemView.findViewById(R.id.txtQuestion);
             Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
-            View card = (View)txtQuestion.getParent();
-            card.setVisibility(View.GONE);
+            if(txtQuestion.getText().toString().contains("How difficult is it for you to obtain chlorine")) {
+                View card = (View)txtQuestion.getParent();
+                card.setVisibility(View.GONE);
+            }
         }else{
             Log.i("Tutorial", "hdtocttwViewHolder is null" );
         }
@@ -1643,30 +1663,49 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
     void showChlorineDependent(){
+        RecyclerView.ViewHolder wgctthwViewHolder = null;
+        RecyclerView.ViewHolder spwfcttwViewHolder = null;
+        RecyclerView.ViewHolder hdtocttwViewHolder = null;
 
-        RecyclerView.ViewHolder wgctthwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(33);
-        RecyclerView.ViewHolder spwfcttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(34);
-        RecyclerView.ViewHolder hdtocttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(35);
+        if(this.context instanceof InitialSurveyActivity){
+            wgctthwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(33);
+            spwfcttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(34);
+            hdtocttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(35);
+        }else if(this.context instanceof FollowUpSurveyActivity){
+            wgctthwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(6);
+            spwfcttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(7);
+            hdtocttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(8);
+        }else if(this.context instanceof HealthCheckSurveyActivity){
+            wgctthwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(2);
+            spwfcttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(3);
+            hdtocttwViewHolder = mRecyclerView.findViewHolderForAdapterPosition(4);
+        }
 
         if(wgctthwViewHolder!=null){
             TextView txtQuestion = (TextView)wgctthwViewHolder.itemView.findViewById(R.id.txtQuestion);
             Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
-            View card = (View)txtQuestion.getParent();
-            card.setVisibility(View.VISIBLE);
+            if(txtQuestion.getText().toString().contains("Where did you get the chlorine")){
+                View card = (View)txtQuestion.getParent();
+                card.setVisibility(View.VISIBLE);
+            }
         }
 
         if(spwfcttwViewHolder!=null){
             TextView txtQuestion = (TextView)spwfcttwViewHolder.itemView.findViewById(R.id.txtQuestion);
             Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
-            View card = (View)txtQuestion.getParent();
-            card.setVisibility(View.VISIBLE);
+            if(txtQuestion.getText().toString().contains("How much do you spend per week for chlorine")) {
+                View card = (View)txtQuestion.getParent();
+                card.setVisibility(View.VISIBLE);
+            }
         }
 
         if(hdtocttwViewHolder!=null){
             TextView txtQuestion = (TextView)hdtocttwViewHolder.itemView.findViewById(R.id.txtQuestion);
             Log.i("Tutorial", "txtQuestion : "+ txtQuestion.getText().toString() );
-            View card = (View)txtQuestion.getParent();
-            card.setVisibility(View.VISIBLE);
+            if(txtQuestion.getText().toString().contains("How difficult is it for you to obtain chlorine")) {
+                View card = (View)txtQuestion.getParent();
+                card.setVisibility(View.VISIBLE);
+            }
         }
 
     }
