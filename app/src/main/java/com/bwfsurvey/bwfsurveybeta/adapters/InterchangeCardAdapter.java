@@ -1231,7 +1231,10 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             boolean checked = ((CheckBox) v).isChecked();
             if(checked){
                 if(ansAlreadyPresent!=null){
-                    ansAlreadyPresent = ansAlreadyPresent + selectedEnumMulStrValue + ",";
+                    if(ansAlreadyPresent.contains(","))
+                        ansAlreadyPresent = ansAlreadyPresent + selectedEnumMulStrValue + ",";
+                    else
+                        ansAlreadyPresent = ansAlreadyPresent + "," + selectedEnumMulStrValue + ",";
                 }else{
                     ansAlreadyPresent = selectedEnumMulStrValue + ",";
                 }
