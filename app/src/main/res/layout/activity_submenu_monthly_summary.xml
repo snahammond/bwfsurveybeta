@@ -74,6 +74,20 @@
                             android:shadowColor="#FFFFFF"
                             android:text="SWE Monthly Summary"
                             android:textColor="#3F51B5"
+                            app:backgroundTint="#FFFFFF"
+                            android:visibility="gone"/>
+
+                        <Button
+                            android:id="@+id/button_SWESubMonthlyEducationSummary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:gravity="start"
+                            android:shadowColor="#FFFFFF"
+                            android:text="SWE Monthly Education Summary"
+                            android:textColor="#3F51B5"
                             app:backgroundTint="#FFFFFF"/>
 
                         <Button
@@ -87,7 +101,8 @@
                             android:shadowColor="#FFFFFF"
                             android:text="Volunteer Monthly Summary"
                             android:textColor="#3F51B5"
-                            app:backgroundTint="#FFFFFF" />
+                            app:backgroundTint="#FFFFFF"
+                            android:visibility="gone"/>
 
                     </LinearLayout>
 

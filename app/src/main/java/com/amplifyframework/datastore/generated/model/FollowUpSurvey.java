@@ -22,7 +22,7 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 /** This is an auto generated class representing the FollowUpSurvey type in your schema. */
 @SuppressWarnings("all")
 @ModelConfig(pluralName = "FollowUpSurveys", authRules = {
-        @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
+  @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
 })
 public final class FollowUpSurvey implements Model {
   public static final QueryField ID = field("id");
@@ -98,149 +98,149 @@ public final class FollowUpSurvey implements Model {
   private final @ModelField(targetType="String", isRequired = true) String Lat;
   private final @ModelField(targetType="String", isRequired = true) String Lng;
   public String getId() {
-    return id;
+      return id;
   }
-
+  
   public String getNamebwe() {
-    return Namebwe;
+      return Namebwe;
   }
-
+  
   public String getCountry() {
-    return Country;
+      return Country;
   }
-
+  
   public String getCommunity() {
-    return Community;
+      return Community;
   }
-
+  
   public Integer getSurveyId() {
-    return SurveyId;
+      return SurveyId;
   }
-
+  
   public Temporal.Date getDate() {
-    return date;
+      return date;
   }
-
+  
   public String getHeadHouseholdName() {
-    return HeadHouseholdName;
+      return HeadHouseholdName;
   }
-
+  
   public String getPersonBeingInterviewed() {
-    return PersonBeingInterviewed;
+      return PersonBeingInterviewed;
   }
-
+  
   public String getWaterTreatmentBeforeDrinking() {
-    return WaterTreatmentBeforeDrinking;
+      return WaterTreatmentBeforeDrinking;
   }
-
+  
   public String getMainReasonNoWaterTreatmentBeforeDrinking() {
-    return MainReasonNoWaterTreatmentBeforeDrinking;
+      return MainReasonNoWaterTreatmentBeforeDrinking;
   }
-
+  
   public String getWaterTreatmentMethod() {
-    return WaterTreatmentMethod;
+      return WaterTreatmentMethod;
   }
-
+  
   public String getFrequencyWaterTreatment() {
-    return FrequencyWaterTreatment;
+      return FrequencyWaterTreatment;
   }
-
+  
   public String getLastTimeTreatedHouseholdWaterWithChlorine() {
-    return LastTimeTreatedHouseholdWaterWithChlorine;
+      return LastTimeTreatedHouseholdWaterWithChlorine;
   }
-
+  
   public String getWhereDidYouGetChlorineToTreatHouseholdWater() {
-    return WhereDidYouGetChlorineToTreatHouseholdWater;
+      return WhereDidYouGetChlorineToTreatHouseholdWater;
   }
-
+  
   public Integer getAmountSpendPerWeekForChlorineToTreatWater() {
-    return AmountSpendPerWeekForChlorineToTreatWater;
+      return AmountSpendPerWeekForChlorineToTreatWater;
   }
-
+  
   public String getHowDifficultToObtainChlorine() {
-    return HowDifficultToObtainChlorine;
+      return HowDifficultToObtainChlorine;
   }
-
+  
   public String getTakingWaterFromStorage() {
-    return TakingWaterFromStorage;
+      return TakingWaterFromStorage;
   }
-
+  
   public String getWhenWashedHandsIn24Hours() {
-    return WhenWashedHandsIn24Hours;
+      return WhenWashedHandsIn24Hours;
   }
-
+  
   public String getWhatUsedToWashYourHands() {
-    return WhatUsedToWashYourHands;
+      return WhatUsedToWashYourHands;
   }
-
+  
   public String getCommonIllnessAffectingAllChildrenInHousehold() {
-    return CommonIllnessAffectingAllChildrenInHousehold;
+      return CommonIllnessAffectingAllChildrenInHousehold;
   }
-
+  
   public Integer getNoChildrenWithVomitingOrDiarrheaIn14days() {
-    return NoChildrenWithVomitingOrDiarrheaIn14days;
+      return NoChildrenWithVomitingOrDiarrheaIn14days;
   }
-
+  
   public Integer getNoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek() {
-    return NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek;
+      return NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek;
   }
-
+  
   public Integer getNoChildrenWithVomitingOrDiarrheaIn7days() {
-    return NoChildrenWithVomitingOrDiarrheaIn7days;
+      return NoChildrenWithVomitingOrDiarrheaIn7days;
   }
-
+  
   public String getDidSickChildrenGoToHospital() {
-    return DidSickChildrenGoToHospital;
+      return DidSickChildrenGoToHospital;
   }
-
+  
   public String getDidSickChildrenGoToHospitalYes() {
-    return DidSickChildrenGoToHospitalYes;
+      return DidSickChildrenGoToHospitalYes;
   }
-
+  
   public String getSickChildrenBreastfeeding() {
-    return SickChildrenBreastfeeding;
+      return SickChildrenBreastfeeding;
   }
-
-  public String getOutcomeMostRecentVomiting_DiarrheaAtHospital() {
-    return OutcomeMostRecentVomiting_DiarrheaAtHospital;
+  
+  public String getOutcomeMostRecentVomitingDiarrheaAtHospital() {
+      return OutcomeMostRecentVomiting_DiarrheaAtHospital;
   }
-
+  
   public Integer getNoDaysNoWorkBecauseOfOwnIllness() {
-    return NoDaysNoWorkBecauseOfOwnIllness;
+      return NoDaysNoWorkBecauseOfOwnIllness;
   }
-
+  
   public Integer getNoDaysNoWorkBecauseOfIllnessFamilyMembers() {
-    return NoDaysNoWorkBecauseOfIllnessFamilyMembers;
+      return NoDaysNoWorkBecauseOfIllnessFamilyMembers;
   }
-
+  
   public Integer getMoneySpentMedicalTreatmentLast4weeks() {
-    return MoneySpentMedicalTreatmentLast4weeks;
+      return MoneySpentMedicalTreatmentLast4weeks;
   }
-
+  
   public String getHealthChangeInAYear() {
-    return HealthChangeInAYear;
+      return HealthChangeInAYear;
   }
-
+  
   public String getHealthChangeFamilyInAYear() {
-    return HealthChangeFamilyInAYear;
+      return HealthChangeFamilyInAYear;
   }
-
-  public String getBenefitSWP() {
-    return BenefitSWP;
+  
+  public String getBenefitSwp() {
+      return BenefitSWP;
   }
-
+  
   public Integer getCompleted() {
-    return Completed;
+      return Completed;
   }
-
+  
   public String getLat() {
-    return Lat;
+      return Lat;
   }
-
+  
   public String getLng() {
-    return Lng;
+      return Lng;
   }
-
+  
   private FollowUpSurvey(String id, String Namebwe, String Country, String Community, Integer SurveyId, Temporal.Date date, String HeadHouseholdName, String PersonBeingInterviewed, String WaterTreatmentBeforeDrinking, String MainReasonNoWaterTreatmentBeforeDrinking, String WaterTreatmentMethod, String FrequencyWaterTreatment, String LastTimeTreatedHouseholdWaterWithChlorine, String WhereDidYouGetChlorineToTreatHouseholdWater, Integer AmountSpendPerWeekForChlorineToTreatWater, String HowDifficultToObtainChlorine, String TakingWaterFromStorage, String WhenWashedHandsIn24Hours, String WhatUsedToWashYourHands, String CommonIllnessAffectingAllChildrenInHousehold, Integer NoChildrenWithVomitingOrDiarrheaIn14days, Integer NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer NoChildrenWithVomitingOrDiarrheaIn7days, String DidSickChildrenGoToHospital, String DidSickChildrenGoToHospitalYes, String SickChildrenBreastfeeding, String OutcomeMostRecentVomiting_DiarrheaAtHospital, Integer NoDaysNoWorkBecauseOfOwnIllness, Integer NoDaysNoWorkBecauseOfIllnessFamilyMembers, Integer MoneySpentMedicalTreatmentLast4weeks, String HealthChangeInAYear, String HealthChangeFamilyInAYear, String BenefitSWP, Integer Completed, String Lat, String Lng) {
     this.id = id;
     this.Namebwe = Namebwe;
@@ -279,14 +279,14 @@ public final class FollowUpSurvey implements Model {
     this.Lat = Lat;
     this.Lng = Lng;
   }
-
+  
   @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    } else if(obj == null || getClass() != obj.getClass()) {
-      return false;
-    } else {
+   public boolean equals(Object obj) {
+      if (this == obj) {
+        return true;
+      } else if(obj == null || getClass() != obj.getClass()) {
+        return false;
+      } else {
       FollowUpSurvey followUpSurvey = (FollowUpSurvey) obj;
       return ObjectsCompat.equals(getId(), followUpSurvey.getId()) &&
               ObjectsCompat.equals(getNamebwe(), followUpSurvey.getNamebwe()) &&
@@ -314,111 +314,111 @@ public final class FollowUpSurvey implements Model {
               ObjectsCompat.equals(getDidSickChildrenGoToHospital(), followUpSurvey.getDidSickChildrenGoToHospital()) &&
               ObjectsCompat.equals(getDidSickChildrenGoToHospitalYes(), followUpSurvey.getDidSickChildrenGoToHospitalYes()) &&
               ObjectsCompat.equals(getSickChildrenBreastfeeding(), followUpSurvey.getSickChildrenBreastfeeding()) &&
-              ObjectsCompat.equals(getOutcomeMostRecentVomiting_DiarrheaAtHospital(), followUpSurvey.getOutcomeMostRecentVomiting_DiarrheaAtHospital()) &&
+              ObjectsCompat.equals(getOutcomeMostRecentVomitingDiarrheaAtHospital(), followUpSurvey.getOutcomeMostRecentVomitingDiarrheaAtHospital()) &&
               ObjectsCompat.equals(getNoDaysNoWorkBecauseOfOwnIllness(), followUpSurvey.getNoDaysNoWorkBecauseOfOwnIllness()) &&
               ObjectsCompat.equals(getNoDaysNoWorkBecauseOfIllnessFamilyMembers(), followUpSurvey.getNoDaysNoWorkBecauseOfIllnessFamilyMembers()) &&
               ObjectsCompat.equals(getMoneySpentMedicalTreatmentLast4weeks(), followUpSurvey.getMoneySpentMedicalTreatmentLast4weeks()) &&
               ObjectsCompat.equals(getHealthChangeInAYear(), followUpSurvey.getHealthChangeInAYear()) &&
               ObjectsCompat.equals(getHealthChangeFamilyInAYear(), followUpSurvey.getHealthChangeFamilyInAYear()) &&
-              ObjectsCompat.equals(getBenefitSWP(), followUpSurvey.getBenefitSWP()) &&
+              ObjectsCompat.equals(getBenefitSwp(), followUpSurvey.getBenefitSwp()) &&
               ObjectsCompat.equals(getCompleted(), followUpSurvey.getCompleted()) &&
               ObjectsCompat.equals(getLat(), followUpSurvey.getLat()) &&
               ObjectsCompat.equals(getLng(), followUpSurvey.getLng());
-    }
+      }
   }
-
+  
   @Override
-  public int hashCode() {
+   public int hashCode() {
     return new StringBuilder()
-            .append(getId())
-            .append(getNamebwe())
-            .append(getCountry())
-            .append(getCommunity())
-            .append(getSurveyId())
-            .append(getDate())
-            .append(getHeadHouseholdName())
-            .append(getPersonBeingInterviewed())
-            .append(getWaterTreatmentBeforeDrinking())
-            .append(getMainReasonNoWaterTreatmentBeforeDrinking())
-            .append(getWaterTreatmentMethod())
-            .append(getFrequencyWaterTreatment())
-            .append(getLastTimeTreatedHouseholdWaterWithChlorine())
-            .append(getWhereDidYouGetChlorineToTreatHouseholdWater())
-            .append(getAmountSpendPerWeekForChlorineToTreatWater())
-            .append(getHowDifficultToObtainChlorine())
-            .append(getTakingWaterFromStorage())
-            .append(getWhenWashedHandsIn24Hours())
-            .append(getWhatUsedToWashYourHands())
-            .append(getCommonIllnessAffectingAllChildrenInHousehold())
-            .append(getNoChildrenWithVomitingOrDiarrheaIn14days())
-            .append(getNoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek())
-            .append(getNoChildrenWithVomitingOrDiarrheaIn7days())
-            .append(getDidSickChildrenGoToHospital())
-            .append(getDidSickChildrenGoToHospitalYes())
-            .append(getSickChildrenBreastfeeding())
-            .append(getOutcomeMostRecentVomiting_DiarrheaAtHospital())
-            .append(getNoDaysNoWorkBecauseOfOwnIllness())
-            .append(getNoDaysNoWorkBecauseOfIllnessFamilyMembers())
-            .append(getMoneySpentMedicalTreatmentLast4weeks())
-            .append(getHealthChangeInAYear())
-            .append(getHealthChangeFamilyInAYear())
-            .append(getBenefitSWP())
-            .append(getCompleted())
-            .append(getLat())
-            .append(getLng())
-            .toString()
-            .hashCode();
+      .append(getId())
+      .append(getNamebwe())
+      .append(getCountry())
+      .append(getCommunity())
+      .append(getSurveyId())
+      .append(getDate())
+      .append(getHeadHouseholdName())
+      .append(getPersonBeingInterviewed())
+      .append(getWaterTreatmentBeforeDrinking())
+      .append(getMainReasonNoWaterTreatmentBeforeDrinking())
+      .append(getWaterTreatmentMethod())
+      .append(getFrequencyWaterTreatment())
+      .append(getLastTimeTreatedHouseholdWaterWithChlorine())
+      .append(getWhereDidYouGetChlorineToTreatHouseholdWater())
+      .append(getAmountSpendPerWeekForChlorineToTreatWater())
+      .append(getHowDifficultToObtainChlorine())
+      .append(getTakingWaterFromStorage())
+      .append(getWhenWashedHandsIn24Hours())
+      .append(getWhatUsedToWashYourHands())
+      .append(getCommonIllnessAffectingAllChildrenInHousehold())
+      .append(getNoChildrenWithVomitingOrDiarrheaIn14days())
+      .append(getNoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek())
+      .append(getNoChildrenWithVomitingOrDiarrheaIn7days())
+      .append(getDidSickChildrenGoToHospital())
+      .append(getDidSickChildrenGoToHospitalYes())
+      .append(getSickChildrenBreastfeeding())
+      .append(getOutcomeMostRecentVomitingDiarrheaAtHospital())
+      .append(getNoDaysNoWorkBecauseOfOwnIllness())
+      .append(getNoDaysNoWorkBecauseOfIllnessFamilyMembers())
+      .append(getMoneySpentMedicalTreatmentLast4weeks())
+      .append(getHealthChangeInAYear())
+      .append(getHealthChangeFamilyInAYear())
+      .append(getBenefitSwp())
+      .append(getCompleted())
+      .append(getLat())
+      .append(getLng())
+      .toString()
+      .hashCode();
   }
-
+  
   @Override
-  public String toString() {
+   public String toString() {
     return new StringBuilder()
-            .append("FollowUpSurvey {")
-            .append("id=" + String.valueOf(getId()) + ", ")
-            .append("Namebwe=" + String.valueOf(getNamebwe()) + ", ")
-            .append("Country=" + String.valueOf(getCountry()) + ", ")
-            .append("Community=" + String.valueOf(getCommunity()) + ", ")
-            .append("SurveyId=" + String.valueOf(getSurveyId()) + ", ")
-            .append("date=" + String.valueOf(getDate()) + ", ")
-            .append("HeadHouseholdName=" + String.valueOf(getHeadHouseholdName()) + ", ")
-            .append("PersonBeingInterviewed=" + String.valueOf(getPersonBeingInterviewed()) + ", ")
-            .append("WaterTreatmentBeforeDrinking=" + String.valueOf(getWaterTreatmentBeforeDrinking()) + ", ")
-            .append("MainReasonNoWaterTreatmentBeforeDrinking=" + String.valueOf(getMainReasonNoWaterTreatmentBeforeDrinking()) + ", ")
-            .append("WaterTreatmentMethod=" + String.valueOf(getWaterTreatmentMethod()) + ", ")
-            .append("FrequencyWaterTreatment=" + String.valueOf(getFrequencyWaterTreatment()) + ", ")
-            .append("LastTimeTreatedHouseholdWaterWithChlorine=" + String.valueOf(getLastTimeTreatedHouseholdWaterWithChlorine()) + ", ")
-            .append("WhereDidYouGetChlorineToTreatHouseholdWater=" + String.valueOf(getWhereDidYouGetChlorineToTreatHouseholdWater()) + ", ")
-            .append("AmountSpendPerWeekForChlorineToTreatWater=" + String.valueOf(getAmountSpendPerWeekForChlorineToTreatWater()) + ", ")
-            .append("HowDifficultToObtainChlorine=" + String.valueOf(getHowDifficultToObtainChlorine()) + ", ")
-            .append("TakingWaterFromStorage=" + String.valueOf(getTakingWaterFromStorage()) + ", ")
-            .append("WhenWashedHandsIn24Hours=" + String.valueOf(getWhenWashedHandsIn24Hours()) + ", ")
-            .append("WhatUsedToWashYourHands=" + String.valueOf(getWhatUsedToWashYourHands()) + ", ")
-            .append("CommonIllnessAffectingAllChildrenInHousehold=" + String.valueOf(getCommonIllnessAffectingAllChildrenInHousehold()) + ", ")
-            .append("NoChildrenWithVomitingOrDiarrheaIn14days=" + String.valueOf(getNoChildrenWithVomitingOrDiarrheaIn14days()) + ", ")
-            .append("NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek=" + String.valueOf(getNoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek()) + ", ")
-            .append("NoChildrenWithVomitingOrDiarrheaIn7days=" + String.valueOf(getNoChildrenWithVomitingOrDiarrheaIn7days()) + ", ")
-            .append("DidSickChildrenGoToHospital=" + String.valueOf(getDidSickChildrenGoToHospital()) + ", ")
-            .append("DidSickChildrenGoToHospitalYes=" + String.valueOf(getDidSickChildrenGoToHospitalYes()) + ", ")
-            .append("SickChildrenBreastfeeding=" + String.valueOf(getSickChildrenBreastfeeding()) + ", ")
-            .append("OutcomeMostRecentVomiting_DiarrheaAtHospital=" + String.valueOf(getOutcomeMostRecentVomiting_DiarrheaAtHospital()) + ", ")
-            .append("NoDaysNoWorkBecauseOfOwnIllness=" + String.valueOf(getNoDaysNoWorkBecauseOfOwnIllness()) + ", ")
-            .append("NoDaysNoWorkBecauseOfIllnessFamilyMembers=" + String.valueOf(getNoDaysNoWorkBecauseOfIllnessFamilyMembers()) + ", ")
-            .append("MoneySpentMedicalTreatmentLast4weeks=" + String.valueOf(getMoneySpentMedicalTreatmentLast4weeks()) + ", ")
-            .append("HealthChangeInAYear=" + String.valueOf(getHealthChangeInAYear()) + ", ")
-            .append("HealthChangeFamilyInAYear=" + String.valueOf(getHealthChangeFamilyInAYear()) + ", ")
-            .append("BenefitSWP=" + String.valueOf(getBenefitSWP()) + ", ")
-            .append("Completed=" + String.valueOf(getCompleted()) + ", ")
-            .append("Lat=" + String.valueOf(getLat()) + ", ")
-            .append("Lng=" + String.valueOf(getLng()))
-            .append("}")
-            .toString();
+      .append("FollowUpSurvey {")
+      .append("id=" + String.valueOf(getId()) + ", ")
+      .append("Namebwe=" + String.valueOf(getNamebwe()) + ", ")
+      .append("Country=" + String.valueOf(getCountry()) + ", ")
+      .append("Community=" + String.valueOf(getCommunity()) + ", ")
+      .append("SurveyId=" + String.valueOf(getSurveyId()) + ", ")
+      .append("date=" + String.valueOf(getDate()) + ", ")
+      .append("HeadHouseholdName=" + String.valueOf(getHeadHouseholdName()) + ", ")
+      .append("PersonBeingInterviewed=" + String.valueOf(getPersonBeingInterviewed()) + ", ")
+      .append("WaterTreatmentBeforeDrinking=" + String.valueOf(getWaterTreatmentBeforeDrinking()) + ", ")
+      .append("MainReasonNoWaterTreatmentBeforeDrinking=" + String.valueOf(getMainReasonNoWaterTreatmentBeforeDrinking()) + ", ")
+      .append("WaterTreatmentMethod=" + String.valueOf(getWaterTreatmentMethod()) + ", ")
+      .append("FrequencyWaterTreatment=" + String.valueOf(getFrequencyWaterTreatment()) + ", ")
+      .append("LastTimeTreatedHouseholdWaterWithChlorine=" + String.valueOf(getLastTimeTreatedHouseholdWaterWithChlorine()) + ", ")
+      .append("WhereDidYouGetChlorineToTreatHouseholdWater=" + String.valueOf(getWhereDidYouGetChlorineToTreatHouseholdWater()) + ", ")
+      .append("AmountSpendPerWeekForChlorineToTreatWater=" + String.valueOf(getAmountSpendPerWeekForChlorineToTreatWater()) + ", ")
+      .append("HowDifficultToObtainChlorine=" + String.valueOf(getHowDifficultToObtainChlorine()) + ", ")
+      .append("TakingWaterFromStorage=" + String.valueOf(getTakingWaterFromStorage()) + ", ")
+      .append("WhenWashedHandsIn24Hours=" + String.valueOf(getWhenWashedHandsIn24Hours()) + ", ")
+      .append("WhatUsedToWashYourHands=" + String.valueOf(getWhatUsedToWashYourHands()) + ", ")
+      .append("CommonIllnessAffectingAllChildrenInHousehold=" + String.valueOf(getCommonIllnessAffectingAllChildrenInHousehold()) + ", ")
+      .append("NoChildrenWithVomitingOrDiarrheaIn14days=" + String.valueOf(getNoChildrenWithVomitingOrDiarrheaIn14days()) + ", ")
+      .append("NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek=" + String.valueOf(getNoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek()) + ", ")
+      .append("NoChildrenWithVomitingOrDiarrheaIn7days=" + String.valueOf(getNoChildrenWithVomitingOrDiarrheaIn7days()) + ", ")
+      .append("DidSickChildrenGoToHospital=" + String.valueOf(getDidSickChildrenGoToHospital()) + ", ")
+      .append("DidSickChildrenGoToHospitalYes=" + String.valueOf(getDidSickChildrenGoToHospitalYes()) + ", ")
+      .append("SickChildrenBreastfeeding=" + String.valueOf(getSickChildrenBreastfeeding()) + ", ")
+      .append("OutcomeMostRecentVomiting_DiarrheaAtHospital=" + String.valueOf(getOutcomeMostRecentVomitingDiarrheaAtHospital()) + ", ")
+      .append("NoDaysNoWorkBecauseOfOwnIllness=" + String.valueOf(getNoDaysNoWorkBecauseOfOwnIllness()) + ", ")
+      .append("NoDaysNoWorkBecauseOfIllnessFamilyMembers=" + String.valueOf(getNoDaysNoWorkBecauseOfIllnessFamilyMembers()) + ", ")
+      .append("MoneySpentMedicalTreatmentLast4weeks=" + String.valueOf(getMoneySpentMedicalTreatmentLast4weeks()) + ", ")
+      .append("HealthChangeInAYear=" + String.valueOf(getHealthChangeInAYear()) + ", ")
+      .append("HealthChangeFamilyInAYear=" + String.valueOf(getHealthChangeFamilyInAYear()) + ", ")
+      .append("BenefitSWP=" + String.valueOf(getBenefitSwp()) + ", ")
+      .append("Completed=" + String.valueOf(getCompleted()) + ", ")
+      .append("Lat=" + String.valueOf(getLat()) + ", ")
+      .append("Lng=" + String.valueOf(getLng()))
+      .append("}")
+      .toString();
   }
-
+  
   public static NamebweStep builder() {
-    return new Builder();
+      return new Builder();
   }
-
-  /**
+  
+  /** 
    * WARNING: This method should not be used to build an instance of this object for a CREATE mutation.
    * This is a convenience method to return an instance of the object with only its ID populated
    * to be used in the context of a parameter in a delete mutation or referencing a foreign key
@@ -433,264 +433,264 @@ public final class FollowUpSurvey implements Model {
     } catch (Exception exception) {
       throw new IllegalArgumentException(
               "Model IDs must be unique in the format of UUID. This method is for creating instances " +
-                      "of an existing object with only its ID field for sending as a mutation parameter. When " +
-                      "creating a new object, use the standard builder method and leave the ID field blank."
+              "of an existing object with only its ID field for sending as a mutation parameter. When " +
+              "creating a new object, use the standard builder method and leave the ID field blank."
       );
     }
     return new FollowUpSurvey(
-            id,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+      id,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
     );
   }
-
+  
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
-            Namebwe,
-            Country,
-            Community,
-            SurveyId,
-            date,
-            HeadHouseholdName,
-            PersonBeingInterviewed,
-            WaterTreatmentBeforeDrinking,
-            MainReasonNoWaterTreatmentBeforeDrinking,
-            WaterTreatmentMethod,
-            FrequencyWaterTreatment,
-            LastTimeTreatedHouseholdWaterWithChlorine,
-            WhereDidYouGetChlorineToTreatHouseholdWater,
-            AmountSpendPerWeekForChlorineToTreatWater,
-            HowDifficultToObtainChlorine,
-            TakingWaterFromStorage,
-            WhenWashedHandsIn24Hours,
-            WhatUsedToWashYourHands,
-            CommonIllnessAffectingAllChildrenInHousehold,
-            NoChildrenWithVomitingOrDiarrheaIn14days,
-            NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek,
-            NoChildrenWithVomitingOrDiarrheaIn7days,
-            DidSickChildrenGoToHospital,
-            DidSickChildrenGoToHospitalYes,
-            SickChildrenBreastfeeding,
-            OutcomeMostRecentVomiting_DiarrheaAtHospital,
-            NoDaysNoWorkBecauseOfOwnIllness,
-            NoDaysNoWorkBecauseOfIllnessFamilyMembers,
-            MoneySpentMedicalTreatmentLast4weeks,
-            HealthChangeInAYear,
-            HealthChangeFamilyInAYear,
-            BenefitSWP,
-            Completed,
-            Lat,
-            Lng);
+      Namebwe,
+      Country,
+      Community,
+      SurveyId,
+      date,
+      HeadHouseholdName,
+      PersonBeingInterviewed,
+      WaterTreatmentBeforeDrinking,
+      MainReasonNoWaterTreatmentBeforeDrinking,
+      WaterTreatmentMethod,
+      FrequencyWaterTreatment,
+      LastTimeTreatedHouseholdWaterWithChlorine,
+      WhereDidYouGetChlorineToTreatHouseholdWater,
+      AmountSpendPerWeekForChlorineToTreatWater,
+      HowDifficultToObtainChlorine,
+      TakingWaterFromStorage,
+      WhenWashedHandsIn24Hours,
+      WhatUsedToWashYourHands,
+      CommonIllnessAffectingAllChildrenInHousehold,
+      NoChildrenWithVomitingOrDiarrheaIn14days,
+      NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek,
+      NoChildrenWithVomitingOrDiarrheaIn7days,
+      DidSickChildrenGoToHospital,
+      DidSickChildrenGoToHospitalYes,
+      SickChildrenBreastfeeding,
+      OutcomeMostRecentVomiting_DiarrheaAtHospital,
+      NoDaysNoWorkBecauseOfOwnIllness,
+      NoDaysNoWorkBecauseOfIllnessFamilyMembers,
+      MoneySpentMedicalTreatmentLast4weeks,
+      HealthChangeInAYear,
+      HealthChangeFamilyInAYear,
+      BenefitSWP,
+      Completed,
+      Lat,
+      Lng);
   }
   public interface NamebweStep {
     CountryStep namebwe(String namebwe);
   }
-
+  
 
   public interface CountryStep {
     CommunityStep country(String country);
   }
-
+  
 
   public interface CommunityStep {
     SurveyIdStep community(String community);
   }
-
+  
 
   public interface SurveyIdStep {
     HeadHouseholdNameStep surveyId(Integer surveyId);
   }
-
+  
 
   public interface HeadHouseholdNameStep {
     PersonBeingInterviewedStep headHouseholdName(String headHouseholdName);
   }
-
+  
 
   public interface PersonBeingInterviewedStep {
     WaterTreatmentBeforeDrinkingStep personBeingInterviewed(String personBeingInterviewed);
   }
-
+  
 
   public interface WaterTreatmentBeforeDrinkingStep {
     MainReasonNoWaterTreatmentBeforeDrinkingStep waterTreatmentBeforeDrinking(String waterTreatmentBeforeDrinking);
   }
-
+  
 
   public interface MainReasonNoWaterTreatmentBeforeDrinkingStep {
     WaterTreatmentMethodStep mainReasonNoWaterTreatmentBeforeDrinking(String mainReasonNoWaterTreatmentBeforeDrinking);
   }
-
+  
 
   public interface WaterTreatmentMethodStep {
     FrequencyWaterTreatmentStep waterTreatmentMethod(String waterTreatmentMethod);
   }
-
+  
 
   public interface FrequencyWaterTreatmentStep {
     LastTimeTreatedHouseholdWaterWithChlorineStep frequencyWaterTreatment(String frequencyWaterTreatment);
   }
-
+  
 
   public interface LastTimeTreatedHouseholdWaterWithChlorineStep {
     WhereDidYouGetChlorineToTreatHouseholdWaterStep lastTimeTreatedHouseholdWaterWithChlorine(String lastTimeTreatedHouseholdWaterWithChlorine);
   }
-
+  
 
   public interface WhereDidYouGetChlorineToTreatHouseholdWaterStep {
     AmountSpendPerWeekForChlorineToTreatWaterStep whereDidYouGetChlorineToTreatHouseholdWater(String whereDidYouGetChlorineToTreatHouseholdWater);
   }
-
+  
 
   public interface AmountSpendPerWeekForChlorineToTreatWaterStep {
     HowDifficultToObtainChlorineStep amountSpendPerWeekForChlorineToTreatWater(Integer amountSpendPerWeekForChlorineToTreatWater);
   }
-
+  
 
   public interface HowDifficultToObtainChlorineStep {
     TakingWaterFromStorageStep howDifficultToObtainChlorine(String howDifficultToObtainChlorine);
   }
-
+  
 
   public interface TakingWaterFromStorageStep {
     WhenWashedHandsIn24HoursStep takingWaterFromStorage(String takingWaterFromStorage);
   }
-
+  
 
   public interface WhenWashedHandsIn24HoursStep {
     WhatUsedToWashYourHandsStep whenWashedHandsIn24Hours(String whenWashedHandsIn24Hours);
   }
-
+  
 
   public interface WhatUsedToWashYourHandsStep {
     CommonIllnessAffectingAllChildrenInHouseholdStep whatUsedToWashYourHands(String whatUsedToWashYourHands);
   }
-
+  
 
   public interface CommonIllnessAffectingAllChildrenInHouseholdStep {
     NoChildrenWithVomitingOrDiarrheaIn14daysStep commonIllnessAffectingAllChildrenInHousehold(String commonIllnessAffectingAllChildrenInHousehold);
   }
-
+  
 
   public interface NoChildrenWithVomitingOrDiarrheaIn14daysStep {
     NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep noChildrenWithVomitingOrDiarrheaIn14days(Integer noChildrenWithVomitingOrDiarrheaIn14days);
   }
-
+  
 
   public interface NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep {
     NoChildrenWithVomitingOrDiarrheaIn7daysStep noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek);
   }
-
+  
 
   public interface NoChildrenWithVomitingOrDiarrheaIn7daysStep {
     DidSickChildrenGoToHospitalStep noChildrenWithVomitingOrDiarrheaIn7days(Integer noChildrenWithVomitingOrDiarrheaIn7days);
   }
-
+  
 
   public interface DidSickChildrenGoToHospitalStep {
     DidSickChildrenGoToHospitalYesStep didSickChildrenGoToHospital(String didSickChildrenGoToHospital);
   }
-
+  
 
   public interface DidSickChildrenGoToHospitalYesStep {
     SickChildrenBreastfeedingStep didSickChildrenGoToHospitalYes(String didSickChildrenGoToHospitalYes);
   }
-
+  
 
   public interface SickChildrenBreastfeedingStep {
     OutcomeMostRecentVomitingDiarrheaAtHospitalStep sickChildrenBreastfeeding(String sickChildrenBreastfeeding);
   }
-
+  
 
   public interface OutcomeMostRecentVomitingDiarrheaAtHospitalStep {
     NoDaysNoWorkBecauseOfOwnIllnessStep outcomeMostRecentVomitingDiarrheaAtHospital(String outcomeMostRecentVomitingDiarrheaAtHospital);
   }
-
+  
 
   public interface NoDaysNoWorkBecauseOfOwnIllnessStep {
     NoDaysNoWorkBecauseOfIllnessFamilyMembersStep noDaysNoWorkBecauseOfOwnIllness(Integer noDaysNoWorkBecauseOfOwnIllness);
   }
-
+  
 
   public interface NoDaysNoWorkBecauseOfIllnessFamilyMembersStep {
     MoneySpentMedicalTreatmentLast4weeksStep noDaysNoWorkBecauseOfIllnessFamilyMembers(Integer noDaysNoWorkBecauseOfIllnessFamilyMembers);
   }
-
+  
 
   public interface MoneySpentMedicalTreatmentLast4weeksStep {
     HealthChangeInAYearStep moneySpentMedicalTreatmentLast4weeks(Integer moneySpentMedicalTreatmentLast4weeks);
   }
-
+  
 
   public interface HealthChangeInAYearStep {
     HealthChangeFamilyInAYearStep healthChangeInAYear(String healthChangeInAYear);
   }
-
+  
 
   public interface HealthChangeFamilyInAYearStep {
     BenefitSwpStep healthChangeFamilyInAYear(String healthChangeFamilyInAYear);
   }
-
+  
 
   public interface BenefitSwpStep {
     CompletedStep benefitSwp(String benefitSwp);
   }
-
+  
 
   public interface CompletedStep {
     LatStep completed(Integer completed);
   }
-
+  
 
   public interface LatStep {
     LngStep lat(String lat);
   }
-
+  
 
   public interface LngStep {
     BuildStep lng(String lng);
   }
-
+  
 
   public interface BuildStep {
     FollowUpSurvey build();
     BuildStep id(String id) throws IllegalArgumentException;
     BuildStep date(Temporal.Date date);
   }
-
+  
 
   public static class Builder implements NamebweStep, CountryStep, CommunityStep, SurveyIdStep, HeadHouseholdNameStep, PersonBeingInterviewedStep, WaterTreatmentBeforeDrinkingStep, MainReasonNoWaterTreatmentBeforeDrinkingStep, WaterTreatmentMethodStep, FrequencyWaterTreatmentStep, LastTimeTreatedHouseholdWaterWithChlorineStep, WhereDidYouGetChlorineToTreatHouseholdWaterStep, AmountSpendPerWeekForChlorineToTreatWaterStep, HowDifficultToObtainChlorineStep, TakingWaterFromStorageStep, WhenWashedHandsIn24HoursStep, WhatUsedToWashYourHandsStep, CommonIllnessAffectingAllChildrenInHouseholdStep, NoChildrenWithVomitingOrDiarrheaIn14daysStep, NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep, NoChildrenWithVomitingOrDiarrheaIn7daysStep, DidSickChildrenGoToHospitalStep, DidSickChildrenGoToHospitalYesStep, SickChildrenBreastfeedingStep, OutcomeMostRecentVomitingDiarrheaAtHospitalStep, NoDaysNoWorkBecauseOfOwnIllnessStep, NoDaysNoWorkBecauseOfIllnessFamilyMembersStep, MoneySpentMedicalTreatmentLast4weeksStep, HealthChangeInAYearStep, HealthChangeFamilyInAYearStep, BenefitSwpStep, CompletedStep, LatStep, LngStep, BuildStep {
     private String id;
@@ -730,293 +730,293 @@ public final class FollowUpSurvey implements Model {
     private String Lng;
     private Temporal.Date date;
     @Override
-    public FollowUpSurvey build() {
-      String id = this.id != null ? this.id : UUID.randomUUID().toString();
-
-      return new FollowUpSurvey(
-              id,
-              Namebwe,
-              Country,
-              Community,
-              SurveyId,
-              date,
-              HeadHouseholdName,
-              PersonBeingInterviewed,
-              WaterTreatmentBeforeDrinking,
-              MainReasonNoWaterTreatmentBeforeDrinking,
-              WaterTreatmentMethod,
-              FrequencyWaterTreatment,
-              LastTimeTreatedHouseholdWaterWithChlorine,
-              WhereDidYouGetChlorineToTreatHouseholdWater,
-              AmountSpendPerWeekForChlorineToTreatWater,
-              HowDifficultToObtainChlorine,
-              TakingWaterFromStorage,
-              WhenWashedHandsIn24Hours,
-              WhatUsedToWashYourHands,
-              CommonIllnessAffectingAllChildrenInHousehold,
-              NoChildrenWithVomitingOrDiarrheaIn14days,
-              NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek,
-              NoChildrenWithVomitingOrDiarrheaIn7days,
-              DidSickChildrenGoToHospital,
-              DidSickChildrenGoToHospitalYes,
-              SickChildrenBreastfeeding,
-              OutcomeMostRecentVomiting_DiarrheaAtHospital,
-              NoDaysNoWorkBecauseOfOwnIllness,
-              NoDaysNoWorkBecauseOfIllnessFamilyMembers,
-              MoneySpentMedicalTreatmentLast4weeks,
-              HealthChangeInAYear,
-              HealthChangeFamilyInAYear,
-              BenefitSWP,
-              Completed,
-              Lat,
-              Lng);
+     public FollowUpSurvey build() {
+        String id = this.id != null ? this.id : UUID.randomUUID().toString();
+        
+        return new FollowUpSurvey(
+          id,
+          Namebwe,
+          Country,
+          Community,
+          SurveyId,
+          date,
+          HeadHouseholdName,
+          PersonBeingInterviewed,
+          WaterTreatmentBeforeDrinking,
+          MainReasonNoWaterTreatmentBeforeDrinking,
+          WaterTreatmentMethod,
+          FrequencyWaterTreatment,
+          LastTimeTreatedHouseholdWaterWithChlorine,
+          WhereDidYouGetChlorineToTreatHouseholdWater,
+          AmountSpendPerWeekForChlorineToTreatWater,
+          HowDifficultToObtainChlorine,
+          TakingWaterFromStorage,
+          WhenWashedHandsIn24Hours,
+          WhatUsedToWashYourHands,
+          CommonIllnessAffectingAllChildrenInHousehold,
+          NoChildrenWithVomitingOrDiarrheaIn14days,
+          NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek,
+          NoChildrenWithVomitingOrDiarrheaIn7days,
+          DidSickChildrenGoToHospital,
+          DidSickChildrenGoToHospitalYes,
+          SickChildrenBreastfeeding,
+          OutcomeMostRecentVomiting_DiarrheaAtHospital,
+          NoDaysNoWorkBecauseOfOwnIllness,
+          NoDaysNoWorkBecauseOfIllnessFamilyMembers,
+          MoneySpentMedicalTreatmentLast4weeks,
+          HealthChangeInAYear,
+          HealthChangeFamilyInAYear,
+          BenefitSWP,
+          Completed,
+          Lat,
+          Lng);
     }
-
+    
     @Override
-    public CountryStep namebwe(String namebwe) {
-      Objects.requireNonNull(namebwe);
-      this.Namebwe = namebwe;
-      return this;
+     public CountryStep namebwe(String namebwe) {
+        Objects.requireNonNull(namebwe);
+        this.Namebwe = namebwe;
+        return this;
     }
-
+    
     @Override
-    public CommunityStep country(String country) {
-      Objects.requireNonNull(country);
-      this.Country = country;
-      return this;
+     public CommunityStep country(String country) {
+        Objects.requireNonNull(country);
+        this.Country = country;
+        return this;
     }
-
+    
     @Override
-    public SurveyIdStep community(String community) {
-      Objects.requireNonNull(community);
-      this.Community = community;
-      return this;
+     public SurveyIdStep community(String community) {
+        Objects.requireNonNull(community);
+        this.Community = community;
+        return this;
     }
-
+    
     @Override
-    public HeadHouseholdNameStep surveyId(Integer surveyId) {
-      Objects.requireNonNull(surveyId);
-      this.SurveyId = surveyId;
-      return this;
+     public HeadHouseholdNameStep surveyId(Integer surveyId) {
+        Objects.requireNonNull(surveyId);
+        this.SurveyId = surveyId;
+        return this;
     }
-
+    
     @Override
-    public PersonBeingInterviewedStep headHouseholdName(String headHouseholdName) {
-      Objects.requireNonNull(headHouseholdName);
-      this.HeadHouseholdName = headHouseholdName;
-      return this;
+     public PersonBeingInterviewedStep headHouseholdName(String headHouseholdName) {
+        Objects.requireNonNull(headHouseholdName);
+        this.HeadHouseholdName = headHouseholdName;
+        return this;
     }
-
+    
     @Override
-    public WaterTreatmentBeforeDrinkingStep personBeingInterviewed(String personBeingInterviewed) {
-      Objects.requireNonNull(personBeingInterviewed);
-      this.PersonBeingInterviewed = personBeingInterviewed;
-      return this;
+     public WaterTreatmentBeforeDrinkingStep personBeingInterviewed(String personBeingInterviewed) {
+        Objects.requireNonNull(personBeingInterviewed);
+        this.PersonBeingInterviewed = personBeingInterviewed;
+        return this;
     }
-
+    
     @Override
-    public MainReasonNoWaterTreatmentBeforeDrinkingStep waterTreatmentBeforeDrinking(String waterTreatmentBeforeDrinking) {
-      Objects.requireNonNull(waterTreatmentBeforeDrinking);
-      this.WaterTreatmentBeforeDrinking = waterTreatmentBeforeDrinking;
-      return this;
+     public MainReasonNoWaterTreatmentBeforeDrinkingStep waterTreatmentBeforeDrinking(String waterTreatmentBeforeDrinking) {
+        Objects.requireNonNull(waterTreatmentBeforeDrinking);
+        this.WaterTreatmentBeforeDrinking = waterTreatmentBeforeDrinking;
+        return this;
     }
-
+    
     @Override
-    public WaterTreatmentMethodStep mainReasonNoWaterTreatmentBeforeDrinking(String mainReasonNoWaterTreatmentBeforeDrinking) {
-      Objects.requireNonNull(mainReasonNoWaterTreatmentBeforeDrinking);
-      this.MainReasonNoWaterTreatmentBeforeDrinking = mainReasonNoWaterTreatmentBeforeDrinking;
-      return this;
+     public WaterTreatmentMethodStep mainReasonNoWaterTreatmentBeforeDrinking(String mainReasonNoWaterTreatmentBeforeDrinking) {
+        Objects.requireNonNull(mainReasonNoWaterTreatmentBeforeDrinking);
+        this.MainReasonNoWaterTreatmentBeforeDrinking = mainReasonNoWaterTreatmentBeforeDrinking;
+        return this;
     }
-
+    
     @Override
-    public FrequencyWaterTreatmentStep waterTreatmentMethod(String waterTreatmentMethod) {
-      Objects.requireNonNull(waterTreatmentMethod);
-      this.WaterTreatmentMethod = waterTreatmentMethod;
-      return this;
+     public FrequencyWaterTreatmentStep waterTreatmentMethod(String waterTreatmentMethod) {
+        Objects.requireNonNull(waterTreatmentMethod);
+        this.WaterTreatmentMethod = waterTreatmentMethod;
+        return this;
     }
-
+    
     @Override
-    public LastTimeTreatedHouseholdWaterWithChlorineStep frequencyWaterTreatment(String frequencyWaterTreatment) {
-      Objects.requireNonNull(frequencyWaterTreatment);
-      this.FrequencyWaterTreatment = frequencyWaterTreatment;
-      return this;
+     public LastTimeTreatedHouseholdWaterWithChlorineStep frequencyWaterTreatment(String frequencyWaterTreatment) {
+        Objects.requireNonNull(frequencyWaterTreatment);
+        this.FrequencyWaterTreatment = frequencyWaterTreatment;
+        return this;
     }
-
+    
     @Override
-    public WhereDidYouGetChlorineToTreatHouseholdWaterStep lastTimeTreatedHouseholdWaterWithChlorine(String lastTimeTreatedHouseholdWaterWithChlorine) {
-      Objects.requireNonNull(lastTimeTreatedHouseholdWaterWithChlorine);
-      this.LastTimeTreatedHouseholdWaterWithChlorine = lastTimeTreatedHouseholdWaterWithChlorine;
-      return this;
+     public WhereDidYouGetChlorineToTreatHouseholdWaterStep lastTimeTreatedHouseholdWaterWithChlorine(String lastTimeTreatedHouseholdWaterWithChlorine) {
+        Objects.requireNonNull(lastTimeTreatedHouseholdWaterWithChlorine);
+        this.LastTimeTreatedHouseholdWaterWithChlorine = lastTimeTreatedHouseholdWaterWithChlorine;
+        return this;
     }
-
+    
     @Override
-    public AmountSpendPerWeekForChlorineToTreatWaterStep whereDidYouGetChlorineToTreatHouseholdWater(String whereDidYouGetChlorineToTreatHouseholdWater) {
-      Objects.requireNonNull(whereDidYouGetChlorineToTreatHouseholdWater);
-      this.WhereDidYouGetChlorineToTreatHouseholdWater = whereDidYouGetChlorineToTreatHouseholdWater;
-      return this;
+     public AmountSpendPerWeekForChlorineToTreatWaterStep whereDidYouGetChlorineToTreatHouseholdWater(String whereDidYouGetChlorineToTreatHouseholdWater) {
+        Objects.requireNonNull(whereDidYouGetChlorineToTreatHouseholdWater);
+        this.WhereDidYouGetChlorineToTreatHouseholdWater = whereDidYouGetChlorineToTreatHouseholdWater;
+        return this;
     }
-
+    
     @Override
-    public HowDifficultToObtainChlorineStep amountSpendPerWeekForChlorineToTreatWater(Integer amountSpendPerWeekForChlorineToTreatWater) {
-      Objects.requireNonNull(amountSpendPerWeekForChlorineToTreatWater);
-      this.AmountSpendPerWeekForChlorineToTreatWater = amountSpendPerWeekForChlorineToTreatWater;
-      return this;
+     public HowDifficultToObtainChlorineStep amountSpendPerWeekForChlorineToTreatWater(Integer amountSpendPerWeekForChlorineToTreatWater) {
+        Objects.requireNonNull(amountSpendPerWeekForChlorineToTreatWater);
+        this.AmountSpendPerWeekForChlorineToTreatWater = amountSpendPerWeekForChlorineToTreatWater;
+        return this;
     }
-
+    
     @Override
-    public TakingWaterFromStorageStep howDifficultToObtainChlorine(String howDifficultToObtainChlorine) {
-      Objects.requireNonNull(howDifficultToObtainChlorine);
-      this.HowDifficultToObtainChlorine = howDifficultToObtainChlorine;
-      return this;
+     public TakingWaterFromStorageStep howDifficultToObtainChlorine(String howDifficultToObtainChlorine) {
+        Objects.requireNonNull(howDifficultToObtainChlorine);
+        this.HowDifficultToObtainChlorine = howDifficultToObtainChlorine;
+        return this;
     }
-
+    
     @Override
-    public WhenWashedHandsIn24HoursStep takingWaterFromStorage(String takingWaterFromStorage) {
-      Objects.requireNonNull(takingWaterFromStorage);
-      this.TakingWaterFromStorage = takingWaterFromStorage;
-      return this;
+     public WhenWashedHandsIn24HoursStep takingWaterFromStorage(String takingWaterFromStorage) {
+        Objects.requireNonNull(takingWaterFromStorage);
+        this.TakingWaterFromStorage = takingWaterFromStorage;
+        return this;
     }
-
+    
     @Override
-    public WhatUsedToWashYourHandsStep whenWashedHandsIn24Hours(String whenWashedHandsIn24Hours) {
-      Objects.requireNonNull(whenWashedHandsIn24Hours);
-      this.WhenWashedHandsIn24Hours = whenWashedHandsIn24Hours;
-      return this;
+     public WhatUsedToWashYourHandsStep whenWashedHandsIn24Hours(String whenWashedHandsIn24Hours) {
+        Objects.requireNonNull(whenWashedHandsIn24Hours);
+        this.WhenWashedHandsIn24Hours = whenWashedHandsIn24Hours;
+        return this;
     }
-
+    
     @Override
-    public CommonIllnessAffectingAllChildrenInHouseholdStep whatUsedToWashYourHands(String whatUsedToWashYourHands) {
-      Objects.requireNonNull(whatUsedToWashYourHands);
-      this.WhatUsedToWashYourHands = whatUsedToWashYourHands;
-      return this;
+     public CommonIllnessAffectingAllChildrenInHouseholdStep whatUsedToWashYourHands(String whatUsedToWashYourHands) {
+        Objects.requireNonNull(whatUsedToWashYourHands);
+        this.WhatUsedToWashYourHands = whatUsedToWashYourHands;
+        return this;
     }
-
+    
     @Override
-    public NoChildrenWithVomitingOrDiarrheaIn14daysStep commonIllnessAffectingAllChildrenInHousehold(String commonIllnessAffectingAllChildrenInHousehold) {
-      Objects.requireNonNull(commonIllnessAffectingAllChildrenInHousehold);
-      this.CommonIllnessAffectingAllChildrenInHousehold = commonIllnessAffectingAllChildrenInHousehold;
-      return this;
+     public NoChildrenWithVomitingOrDiarrheaIn14daysStep commonIllnessAffectingAllChildrenInHousehold(String commonIllnessAffectingAllChildrenInHousehold) {
+        Objects.requireNonNull(commonIllnessAffectingAllChildrenInHousehold);
+        this.CommonIllnessAffectingAllChildrenInHousehold = commonIllnessAffectingAllChildrenInHousehold;
+        return this;
     }
-
+    
     @Override
-    public NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep noChildrenWithVomitingOrDiarrheaIn14days(Integer noChildrenWithVomitingOrDiarrheaIn14days) {
-      Objects.requireNonNull(noChildrenWithVomitingOrDiarrheaIn14days);
-      this.NoChildrenWithVomitingOrDiarrheaIn14days = noChildrenWithVomitingOrDiarrheaIn14days;
-      return this;
+     public NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeekStep noChildrenWithVomitingOrDiarrheaIn14days(Integer noChildrenWithVomitingOrDiarrheaIn14days) {
+        Objects.requireNonNull(noChildrenWithVomitingOrDiarrheaIn14days);
+        this.NoChildrenWithVomitingOrDiarrheaIn14days = noChildrenWithVomitingOrDiarrheaIn14days;
+        return this;
     }
-
+    
     @Override
-    public NoChildrenWithVomitingOrDiarrheaIn7daysStep noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek) {
-      Objects.requireNonNull(noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek);
-      this.NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek = noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek;
-      return this;
+     public NoChildrenWithVomitingOrDiarrheaIn7daysStep noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek) {
+        Objects.requireNonNull(noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek);
+        this.NoTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek = noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek;
+        return this;
     }
-
+    
     @Override
-    public DidSickChildrenGoToHospitalStep noChildrenWithVomitingOrDiarrheaIn7days(Integer noChildrenWithVomitingOrDiarrheaIn7days) {
-      Objects.requireNonNull(noChildrenWithVomitingOrDiarrheaIn7days);
-      this.NoChildrenWithVomitingOrDiarrheaIn7days = noChildrenWithVomitingOrDiarrheaIn7days;
-      return this;
+     public DidSickChildrenGoToHospitalStep noChildrenWithVomitingOrDiarrheaIn7days(Integer noChildrenWithVomitingOrDiarrheaIn7days) {
+        Objects.requireNonNull(noChildrenWithVomitingOrDiarrheaIn7days);
+        this.NoChildrenWithVomitingOrDiarrheaIn7days = noChildrenWithVomitingOrDiarrheaIn7days;
+        return this;
     }
-
+    
     @Override
-    public DidSickChildrenGoToHospitalYesStep didSickChildrenGoToHospital(String didSickChildrenGoToHospital) {
-      Objects.requireNonNull(didSickChildrenGoToHospital);
-      this.DidSickChildrenGoToHospital = didSickChildrenGoToHospital;
-      return this;
+     public DidSickChildrenGoToHospitalYesStep didSickChildrenGoToHospital(String didSickChildrenGoToHospital) {
+        Objects.requireNonNull(didSickChildrenGoToHospital);
+        this.DidSickChildrenGoToHospital = didSickChildrenGoToHospital;
+        return this;
     }
-
+    
     @Override
-    public SickChildrenBreastfeedingStep didSickChildrenGoToHospitalYes(String didSickChildrenGoToHospitalYes) {
-      Objects.requireNonNull(didSickChildrenGoToHospitalYes);
-      this.DidSickChildrenGoToHospitalYes = didSickChildrenGoToHospitalYes;
-      return this;
+     public SickChildrenBreastfeedingStep didSickChildrenGoToHospitalYes(String didSickChildrenGoToHospitalYes) {
+        Objects.requireNonNull(didSickChildrenGoToHospitalYes);
+        this.DidSickChildrenGoToHospitalYes = didSickChildrenGoToHospitalYes;
+        return this;
     }
-
+    
     @Override
-    public OutcomeMostRecentVomitingDiarrheaAtHospitalStep sickChildrenBreastfeeding(String sickChildrenBreastfeeding) {
-      Objects.requireNonNull(sickChildrenBreastfeeding);
-      this.SickChildrenBreastfeeding = sickChildrenBreastfeeding;
-      return this;
+     public OutcomeMostRecentVomitingDiarrheaAtHospitalStep sickChildrenBreastfeeding(String sickChildrenBreastfeeding) {
+        Objects.requireNonNull(sickChildrenBreastfeeding);
+        this.SickChildrenBreastfeeding = sickChildrenBreastfeeding;
+        return this;
     }
-
+    
     @Override
-    public NoDaysNoWorkBecauseOfOwnIllnessStep outcomeMostRecentVomitingDiarrheaAtHospital(String outcomeMostRecentVomitingDiarrheaAtHospital) {
-      Objects.requireNonNull(outcomeMostRecentVomitingDiarrheaAtHospital);
-      this.OutcomeMostRecentVomiting_DiarrheaAtHospital = outcomeMostRecentVomitingDiarrheaAtHospital;
-      return this;
+     public NoDaysNoWorkBecauseOfOwnIllnessStep outcomeMostRecentVomitingDiarrheaAtHospital(String outcomeMostRecentVomitingDiarrheaAtHospital) {
+        Objects.requireNonNull(outcomeMostRecentVomitingDiarrheaAtHospital);
+        this.OutcomeMostRecentVomiting_DiarrheaAtHospital = outcomeMostRecentVomitingDiarrheaAtHospital;
+        return this;
     }
-
+    
     @Override
-    public NoDaysNoWorkBecauseOfIllnessFamilyMembersStep noDaysNoWorkBecauseOfOwnIllness(Integer noDaysNoWorkBecauseOfOwnIllness) {
-      Objects.requireNonNull(noDaysNoWorkBecauseOfOwnIllness);
-      this.NoDaysNoWorkBecauseOfOwnIllness = noDaysNoWorkBecauseOfOwnIllness;
-      return this;
+     public NoDaysNoWorkBecauseOfIllnessFamilyMembersStep noDaysNoWorkBecauseOfOwnIllness(Integer noDaysNoWorkBecauseOfOwnIllness) {
+        Objects.requireNonNull(noDaysNoWorkBecauseOfOwnIllness);
+        this.NoDaysNoWorkBecauseOfOwnIllness = noDaysNoWorkBecauseOfOwnIllness;
+        return this;
     }
-
+    
     @Override
-    public MoneySpentMedicalTreatmentLast4weeksStep noDaysNoWorkBecauseOfIllnessFamilyMembers(Integer noDaysNoWorkBecauseOfIllnessFamilyMembers) {
-      Objects.requireNonNull(noDaysNoWorkBecauseOfIllnessFamilyMembers);
-      this.NoDaysNoWorkBecauseOfIllnessFamilyMembers = noDaysNoWorkBecauseOfIllnessFamilyMembers;
-      return this;
+     public MoneySpentMedicalTreatmentLast4weeksStep noDaysNoWorkBecauseOfIllnessFamilyMembers(Integer noDaysNoWorkBecauseOfIllnessFamilyMembers) {
+        Objects.requireNonNull(noDaysNoWorkBecauseOfIllnessFamilyMembers);
+        this.NoDaysNoWorkBecauseOfIllnessFamilyMembers = noDaysNoWorkBecauseOfIllnessFamilyMembers;
+        return this;
     }
-
+    
     @Override
-    public HealthChangeInAYearStep moneySpentMedicalTreatmentLast4weeks(Integer moneySpentMedicalTreatmentLast4weeks) {
-      Objects.requireNonNull(moneySpentMedicalTreatmentLast4weeks);
-      this.MoneySpentMedicalTreatmentLast4weeks = moneySpentMedicalTreatmentLast4weeks;
-      return this;
+     public HealthChangeInAYearStep moneySpentMedicalTreatmentLast4weeks(Integer moneySpentMedicalTreatmentLast4weeks) {
+        Objects.requireNonNull(moneySpentMedicalTreatmentLast4weeks);
+        this.MoneySpentMedicalTreatmentLast4weeks = moneySpentMedicalTreatmentLast4weeks;
+        return this;
     }
-
+    
     @Override
-    public HealthChangeFamilyInAYearStep healthChangeInAYear(String healthChangeInAYear) {
-      Objects.requireNonNull(healthChangeInAYear);
-      this.HealthChangeInAYear = healthChangeInAYear;
-      return this;
+     public HealthChangeFamilyInAYearStep healthChangeInAYear(String healthChangeInAYear) {
+        Objects.requireNonNull(healthChangeInAYear);
+        this.HealthChangeInAYear = healthChangeInAYear;
+        return this;
     }
-
+    
     @Override
-    public BenefitSwpStep healthChangeFamilyInAYear(String healthChangeFamilyInAYear) {
-      Objects.requireNonNull(healthChangeFamilyInAYear);
-      this.HealthChangeFamilyInAYear = healthChangeFamilyInAYear;
-      return this;
+     public BenefitSwpStep healthChangeFamilyInAYear(String healthChangeFamilyInAYear) {
+        Objects.requireNonNull(healthChangeFamilyInAYear);
+        this.HealthChangeFamilyInAYear = healthChangeFamilyInAYear;
+        return this;
     }
-
+    
     @Override
-    public CompletedStep benefitSwp(String benefitSwp) {
-      Objects.requireNonNull(benefitSwp);
-      this.BenefitSWP = benefitSwp;
-      return this;
+     public CompletedStep benefitSwp(String benefitSwp) {
+        Objects.requireNonNull(benefitSwp);
+        this.BenefitSWP = benefitSwp;
+        return this;
     }
-
+    
     @Override
-    public LatStep completed(Integer completed) {
-      Objects.requireNonNull(completed);
-      this.Completed = completed;
-      return this;
+     public LatStep completed(Integer completed) {
+        Objects.requireNonNull(completed);
+        this.Completed = completed;
+        return this;
     }
-
+    
     @Override
-    public LngStep lat(String lat) {
-      Objects.requireNonNull(lat);
-      this.Lat = lat;
-      return this;
+     public LngStep lat(String lat) {
+        Objects.requireNonNull(lat);
+        this.Lat = lat;
+        return this;
     }
-
+    
     @Override
-    public BuildStep lng(String lng) {
-      Objects.requireNonNull(lng);
-      this.Lng = lng;
-      return this;
+     public BuildStep lng(String lng) {
+        Objects.requireNonNull(lng);
+        this.Lng = lng;
+        return this;
     }
-
+    
     @Override
-    public BuildStep date(Temporal.Date date) {
-      this.date = date;
-      return this;
+     public BuildStep date(Temporal.Date date) {
+        this.date = date;
+        return this;
     }
-
-    /**
+    
+    /** 
      * WARNING: Do not set ID when creating a new object. Leave this blank and one will be auto generated for you.
      * This should only be set when referring to an already existing object.
      * @param id id
@@ -1024,234 +1024,234 @@ public final class FollowUpSurvey implements Model {
      * @throws IllegalArgumentException Checks that ID is in the proper format
      */
     public BuildStep id(String id) throws IllegalArgumentException {
-      this.id = id;
-
-      try {
-        UUID.fromString(id); // Check that ID is in the UUID format - if not an exception is thrown
-      } catch (Exception exception) {
-        throw new IllegalArgumentException("Model IDs must be unique in the format of UUID.",
-                exception);
-      }
-
-      return this;
+        this.id = id;
+        
+        try {
+            UUID.fromString(id); // Check that ID is in the UUID format - if not an exception is thrown
+        } catch (Exception exception) {
+          throw new IllegalArgumentException("Model IDs must be unique in the format of UUID.",
+                    exception);
+        }
+        
+        return this;
     }
   }
-
+  
 
   public final class CopyOfBuilder extends Builder {
     private CopyOfBuilder(String id, String namebwe, String country, String community, Integer surveyId, Temporal.Date date, String headHouseholdName, String personBeingInterviewed, String waterTreatmentBeforeDrinking, String mainReasonNoWaterTreatmentBeforeDrinking, String waterTreatmentMethod, String frequencyWaterTreatment, String lastTimeTreatedHouseholdWaterWithChlorine, String whereDidYouGetChlorineToTreatHouseholdWater, Integer amountSpendPerWeekForChlorineToTreatWater, String howDifficultToObtainChlorine, String takingWaterFromStorage, String whenWashedHandsIn24Hours, String whatUsedToWashYourHands, String commonIllnessAffectingAllChildrenInHousehold, Integer noChildrenWithVomitingOrDiarrheaIn14days, Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek, Integer noChildrenWithVomitingOrDiarrheaIn7days, String didSickChildrenGoToHospital, String didSickChildrenGoToHospitalYes, String sickChildrenBreastfeeding, String outcomeMostRecentVomitingDiarrheaAtHospital, Integer noDaysNoWorkBecauseOfOwnIllness, Integer noDaysNoWorkBecauseOfIllnessFamilyMembers, Integer moneySpentMedicalTreatmentLast4weeks, String healthChangeInAYear, String healthChangeFamilyInAYear, String benefitSwp, Integer completed, String lat, String lng) {
       super.id(id);
       super.namebwe(namebwe)
-              .country(country)
-              .community(community)
-              .surveyId(surveyId)
-              .headHouseholdName(headHouseholdName)
-              .personBeingInterviewed(personBeingInterviewed)
-              .waterTreatmentBeforeDrinking(waterTreatmentBeforeDrinking)
-              .mainReasonNoWaterTreatmentBeforeDrinking(mainReasonNoWaterTreatmentBeforeDrinking)
-              .waterTreatmentMethod(waterTreatmentMethod)
-              .frequencyWaterTreatment(frequencyWaterTreatment)
-              .lastTimeTreatedHouseholdWaterWithChlorine(lastTimeTreatedHouseholdWaterWithChlorine)
-              .whereDidYouGetChlorineToTreatHouseholdWater(whereDidYouGetChlorineToTreatHouseholdWater)
-              .amountSpendPerWeekForChlorineToTreatWater(amountSpendPerWeekForChlorineToTreatWater)
-              .howDifficultToObtainChlorine(howDifficultToObtainChlorine)
-              .takingWaterFromStorage(takingWaterFromStorage)
-              .whenWashedHandsIn24Hours(whenWashedHandsIn24Hours)
-              .whatUsedToWashYourHands(whatUsedToWashYourHands)
-              .commonIllnessAffectingAllChildrenInHousehold(commonIllnessAffectingAllChildrenInHousehold)
-              .noChildrenWithVomitingOrDiarrheaIn14days(noChildrenWithVomitingOrDiarrheaIn14days)
-              .noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek)
-              .noChildrenWithVomitingOrDiarrheaIn7days(noChildrenWithVomitingOrDiarrheaIn7days)
-              .didSickChildrenGoToHospital(didSickChildrenGoToHospital)
-              .didSickChildrenGoToHospitalYes(didSickChildrenGoToHospitalYes)
-              .sickChildrenBreastfeeding(sickChildrenBreastfeeding)
-              .outcomeMostRecentVomitingDiarrheaAtHospital(outcomeMostRecentVomitingDiarrheaAtHospital)
-              .noDaysNoWorkBecauseOfOwnIllness(noDaysNoWorkBecauseOfOwnIllness)
-              .noDaysNoWorkBecauseOfIllnessFamilyMembers(noDaysNoWorkBecauseOfIllnessFamilyMembers)
-              .moneySpentMedicalTreatmentLast4weeks(moneySpentMedicalTreatmentLast4weeks)
-              .healthChangeInAYear(healthChangeInAYear)
-              .healthChangeFamilyInAYear(healthChangeFamilyInAYear)
-              .benefitSwp(benefitSwp)
-              .completed(completed)
-              .lat(lat)
-              .lng(lng)
-              .date(date);
+        .country(country)
+        .community(community)
+        .surveyId(surveyId)
+        .headHouseholdName(headHouseholdName)
+        .personBeingInterviewed(personBeingInterviewed)
+        .waterTreatmentBeforeDrinking(waterTreatmentBeforeDrinking)
+        .mainReasonNoWaterTreatmentBeforeDrinking(mainReasonNoWaterTreatmentBeforeDrinking)
+        .waterTreatmentMethod(waterTreatmentMethod)
+        .frequencyWaterTreatment(frequencyWaterTreatment)
+        .lastTimeTreatedHouseholdWaterWithChlorine(lastTimeTreatedHouseholdWaterWithChlorine)
+        .whereDidYouGetChlorineToTreatHouseholdWater(whereDidYouGetChlorineToTreatHouseholdWater)
+        .amountSpendPerWeekForChlorineToTreatWater(amountSpendPerWeekForChlorineToTreatWater)
+        .howDifficultToObtainChlorine(howDifficultToObtainChlorine)
+        .takingWaterFromStorage(takingWaterFromStorage)
+        .whenWashedHandsIn24Hours(whenWashedHandsIn24Hours)
+        .whatUsedToWashYourHands(whatUsedToWashYourHands)
+        .commonIllnessAffectingAllChildrenInHousehold(commonIllnessAffectingAllChildrenInHousehold)
+        .noChildrenWithVomitingOrDiarrheaIn14days(noChildrenWithVomitingOrDiarrheaIn14days)
+        .noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek)
+        .noChildrenWithVomitingOrDiarrheaIn7days(noChildrenWithVomitingOrDiarrheaIn7days)
+        .didSickChildrenGoToHospital(didSickChildrenGoToHospital)
+        .didSickChildrenGoToHospitalYes(didSickChildrenGoToHospitalYes)
+        .sickChildrenBreastfeeding(sickChildrenBreastfeeding)
+        .outcomeMostRecentVomitingDiarrheaAtHospital(outcomeMostRecentVomitingDiarrheaAtHospital)
+        .noDaysNoWorkBecauseOfOwnIllness(noDaysNoWorkBecauseOfOwnIllness)
+        .noDaysNoWorkBecauseOfIllnessFamilyMembers(noDaysNoWorkBecauseOfIllnessFamilyMembers)
+        .moneySpentMedicalTreatmentLast4weeks(moneySpentMedicalTreatmentLast4weeks)
+        .healthChangeInAYear(healthChangeInAYear)
+        .healthChangeFamilyInAYear(healthChangeFamilyInAYear)
+        .benefitSwp(benefitSwp)
+        .completed(completed)
+        .lat(lat)
+        .lng(lng)
+        .date(date);
     }
-
+    
     @Override
-    public CopyOfBuilder namebwe(String namebwe) {
+     public CopyOfBuilder namebwe(String namebwe) {
       return (CopyOfBuilder) super.namebwe(namebwe);
     }
-
+    
     @Override
-    public CopyOfBuilder country(String country) {
+     public CopyOfBuilder country(String country) {
       return (CopyOfBuilder) super.country(country);
     }
-
+    
     @Override
-    public CopyOfBuilder community(String community) {
+     public CopyOfBuilder community(String community) {
       return (CopyOfBuilder) super.community(community);
     }
-
+    
     @Override
-    public CopyOfBuilder surveyId(Integer surveyId) {
+     public CopyOfBuilder surveyId(Integer surveyId) {
       return (CopyOfBuilder) super.surveyId(surveyId);
     }
-
+    
     @Override
-    public CopyOfBuilder headHouseholdName(String headHouseholdName) {
+     public CopyOfBuilder headHouseholdName(String headHouseholdName) {
       return (CopyOfBuilder) super.headHouseholdName(headHouseholdName);
     }
-
+    
     @Override
-    public CopyOfBuilder personBeingInterviewed(String personBeingInterviewed) {
+     public CopyOfBuilder personBeingInterviewed(String personBeingInterviewed) {
       return (CopyOfBuilder) super.personBeingInterviewed(personBeingInterviewed);
     }
-
+    
     @Override
-    public CopyOfBuilder waterTreatmentBeforeDrinking(String waterTreatmentBeforeDrinking) {
+     public CopyOfBuilder waterTreatmentBeforeDrinking(String waterTreatmentBeforeDrinking) {
       return (CopyOfBuilder) super.waterTreatmentBeforeDrinking(waterTreatmentBeforeDrinking);
     }
-
+    
     @Override
-    public CopyOfBuilder mainReasonNoWaterTreatmentBeforeDrinking(String mainReasonNoWaterTreatmentBeforeDrinking) {
+     public CopyOfBuilder mainReasonNoWaterTreatmentBeforeDrinking(String mainReasonNoWaterTreatmentBeforeDrinking) {
       return (CopyOfBuilder) super.mainReasonNoWaterTreatmentBeforeDrinking(mainReasonNoWaterTreatmentBeforeDrinking);
     }
-
+    
     @Override
-    public CopyOfBuilder waterTreatmentMethod(String waterTreatmentMethod) {
+     public CopyOfBuilder waterTreatmentMethod(String waterTreatmentMethod) {
       return (CopyOfBuilder) super.waterTreatmentMethod(waterTreatmentMethod);
     }
-
+    
     @Override
-    public CopyOfBuilder frequencyWaterTreatment(String frequencyWaterTreatment) {
+     public CopyOfBuilder frequencyWaterTreatment(String frequencyWaterTreatment) {
       return (CopyOfBuilder) super.frequencyWaterTreatment(frequencyWaterTreatment);
     }
-
+    
     @Override
-    public CopyOfBuilder lastTimeTreatedHouseholdWaterWithChlorine(String lastTimeTreatedHouseholdWaterWithChlorine) {
+     public CopyOfBuilder lastTimeTreatedHouseholdWaterWithChlorine(String lastTimeTreatedHouseholdWaterWithChlorine) {
       return (CopyOfBuilder) super.lastTimeTreatedHouseholdWaterWithChlorine(lastTimeTreatedHouseholdWaterWithChlorine);
     }
-
+    
     @Override
-    public CopyOfBuilder whereDidYouGetChlorineToTreatHouseholdWater(String whereDidYouGetChlorineToTreatHouseholdWater) {
+     public CopyOfBuilder whereDidYouGetChlorineToTreatHouseholdWater(String whereDidYouGetChlorineToTreatHouseholdWater) {
       return (CopyOfBuilder) super.whereDidYouGetChlorineToTreatHouseholdWater(whereDidYouGetChlorineToTreatHouseholdWater);
     }
-
+    
     @Override
-    public CopyOfBuilder amountSpendPerWeekForChlorineToTreatWater(Integer amountSpendPerWeekForChlorineToTreatWater) {
+     public CopyOfBuilder amountSpendPerWeekForChlorineToTreatWater(Integer amountSpendPerWeekForChlorineToTreatWater) {
       return (CopyOfBuilder) super.amountSpendPerWeekForChlorineToTreatWater(amountSpendPerWeekForChlorineToTreatWater);
     }
-
+    
     @Override
-    public CopyOfBuilder howDifficultToObtainChlorine(String howDifficultToObtainChlorine) {
+     public CopyOfBuilder howDifficultToObtainChlorine(String howDifficultToObtainChlorine) {
       return (CopyOfBuilder) super.howDifficultToObtainChlorine(howDifficultToObtainChlorine);
     }
-
+    
     @Override
-    public CopyOfBuilder takingWaterFromStorage(String takingWaterFromStorage) {
+     public CopyOfBuilder takingWaterFromStorage(String takingWaterFromStorage) {
       return (CopyOfBuilder) super.takingWaterFromStorage(takingWaterFromStorage);
     }
-
+    
     @Override
-    public CopyOfBuilder whenWashedHandsIn24Hours(String whenWashedHandsIn24Hours) {
+     public CopyOfBuilder whenWashedHandsIn24Hours(String whenWashedHandsIn24Hours) {
       return (CopyOfBuilder) super.whenWashedHandsIn24Hours(whenWashedHandsIn24Hours);
     }
-
+    
     @Override
-    public CopyOfBuilder whatUsedToWashYourHands(String whatUsedToWashYourHands) {
+     public CopyOfBuilder whatUsedToWashYourHands(String whatUsedToWashYourHands) {
       return (CopyOfBuilder) super.whatUsedToWashYourHands(whatUsedToWashYourHands);
     }
-
+    
     @Override
-    public CopyOfBuilder commonIllnessAffectingAllChildrenInHousehold(String commonIllnessAffectingAllChildrenInHousehold) {
+     public CopyOfBuilder commonIllnessAffectingAllChildrenInHousehold(String commonIllnessAffectingAllChildrenInHousehold) {
       return (CopyOfBuilder) super.commonIllnessAffectingAllChildrenInHousehold(commonIllnessAffectingAllChildrenInHousehold);
     }
-
+    
     @Override
-    public CopyOfBuilder noChildrenWithVomitingOrDiarrheaIn14days(Integer noChildrenWithVomitingOrDiarrheaIn14days) {
+     public CopyOfBuilder noChildrenWithVomitingOrDiarrheaIn14days(Integer noChildrenWithVomitingOrDiarrheaIn14days) {
       return (CopyOfBuilder) super.noChildrenWithVomitingOrDiarrheaIn14days(noChildrenWithVomitingOrDiarrheaIn14days);
     }
-
+    
     @Override
-    public CopyOfBuilder noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek) {
+     public CopyOfBuilder noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(Integer noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek) {
       return (CopyOfBuilder) super.noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek(noTotalSchoolDaysMissedBySchoolAgeChildrenIn2LastWeek);
     }
-
+    
     @Override
-    public CopyOfBuilder noChildrenWithVomitingOrDiarrheaIn7days(Integer noChildrenWithVomitingOrDiarrheaIn7days) {
+     public CopyOfBuilder noChildrenWithVomitingOrDiarrheaIn7days(Integer noChildrenWithVomitingOrDiarrheaIn7days) {
       return (CopyOfBuilder) super.noChildrenWithVomitingOrDiarrheaIn7days(noChildrenWithVomitingOrDiarrheaIn7days);
     }
-
+    
     @Override
-    public CopyOfBuilder didSickChildrenGoToHospital(String didSickChildrenGoToHospital) {
+     public CopyOfBuilder didSickChildrenGoToHospital(String didSickChildrenGoToHospital) {
       return (CopyOfBuilder) super.didSickChildrenGoToHospital(didSickChildrenGoToHospital);
     }
-
+    
     @Override
-    public CopyOfBuilder didSickChildrenGoToHospitalYes(String didSickChildrenGoToHospitalYes) {
+     public CopyOfBuilder didSickChildrenGoToHospitalYes(String didSickChildrenGoToHospitalYes) {
       return (CopyOfBuilder) super.didSickChildrenGoToHospitalYes(didSickChildrenGoToHospitalYes);
     }
-
+    
     @Override
-    public CopyOfBuilder sickChildrenBreastfeeding(String sickChildrenBreastfeeding) {
+     public CopyOfBuilder sickChildrenBreastfeeding(String sickChildrenBreastfeeding) {
       return (CopyOfBuilder) super.sickChildrenBreastfeeding(sickChildrenBreastfeeding);
     }
-
+    
     @Override
-    public CopyOfBuilder outcomeMostRecentVomitingDiarrheaAtHospital(String outcomeMostRecentVomitingDiarrheaAtHospital) {
+     public CopyOfBuilder outcomeMostRecentVomitingDiarrheaAtHospital(String outcomeMostRecentVomitingDiarrheaAtHospital) {
       return (CopyOfBuilder) super.outcomeMostRecentVomitingDiarrheaAtHospital(outcomeMostRecentVomitingDiarrheaAtHospital);
     }
-
+    
     @Override
-    public CopyOfBuilder noDaysNoWorkBecauseOfOwnIllness(Integer noDaysNoWorkBecauseOfOwnIllness) {
+     public CopyOfBuilder noDaysNoWorkBecauseOfOwnIllness(Integer noDaysNoWorkBecauseOfOwnIllness) {
       return (CopyOfBuilder) super.noDaysNoWorkBecauseOfOwnIllness(noDaysNoWorkBecauseOfOwnIllness);
     }
-
+    
     @Override
-    public CopyOfBuilder noDaysNoWorkBecauseOfIllnessFamilyMembers(Integer noDaysNoWorkBecauseOfIllnessFamilyMembers) {
+     public CopyOfBuilder noDaysNoWorkBecauseOfIllnessFamilyMembers(Integer noDaysNoWorkBecauseOfIllnessFamilyMembers) {
       return (CopyOfBuilder) super.noDaysNoWorkBecauseOfIllnessFamilyMembers(noDaysNoWorkBecauseOfIllnessFamilyMembers);
     }
-
+    
     @Override
-    public CopyOfBuilder moneySpentMedicalTreatmentLast4weeks(Integer moneySpentMedicalTreatmentLast4weeks) {
+     public CopyOfBuilder moneySpentMedicalTreatmentLast4weeks(Integer moneySpentMedicalTreatmentLast4weeks) {
       return (CopyOfBuilder) super.moneySpentMedicalTreatmentLast4weeks(moneySpentMedicalTreatmentLast4weeks);
     }
-
+    
     @Override
-    public CopyOfBuilder healthChangeInAYear(String healthChangeInAYear) {
+     public CopyOfBuilder healthChangeInAYear(String healthChangeInAYear) {
       return (CopyOfBuilder) super.healthChangeInAYear(healthChangeInAYear);
     }
-
+    
     @Override
-    public CopyOfBuilder healthChangeFamilyInAYear(String healthChangeFamilyInAYear) {
+     public CopyOfBuilder healthChangeFamilyInAYear(String healthChangeFamilyInAYear) {
       return (CopyOfBuilder) super.healthChangeFamilyInAYear(healthChangeFamilyInAYear);
     }
-
+    
     @Override
-    public CopyOfBuilder benefitSwp(String benefitSwp) {
+     public CopyOfBuilder benefitSwp(String benefitSwp) {
       return (CopyOfBuilder) super.benefitSwp(benefitSwp);
     }
-
+    
     @Override
-    public CopyOfBuilder completed(Integer completed) {
+     public CopyOfBuilder completed(Integer completed) {
       return (CopyOfBuilder) super.completed(completed);
     }
-
+    
     @Override
-    public CopyOfBuilder lat(String lat) {
+     public CopyOfBuilder lat(String lat) {
       return (CopyOfBuilder) super.lat(lat);
     }
-
+    
     @Override
-    public CopyOfBuilder lng(String lng) {
+     public CopyOfBuilder lng(String lng) {
       return (CopyOfBuilder) super.lng(lng);
     }
-
+    
     @Override
-    public CopyOfBuilder date(Temporal.Date date) {
+     public CopyOfBuilder date(Temporal.Date date) {
       return (CopyOfBuilder) super.date(date);
     }
   }
-
+  
 }

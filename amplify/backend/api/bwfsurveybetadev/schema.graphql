@@ -320,3 +320,23 @@ Completed: Int!
 Lat: String!
 Lng: String!
 }
+
+type Meeting @model @auth(rules: [{ allow: public,provider: apiKey }]){
+id: ID!
+Country: String!
+Community: String!
+Namebwe: String!
+date: AWSDate
+Namevol: String!
+DiscussionsTaught: String!
+}
+
+type HouseholdAttendingMeeting @model @auth(rules: [{ allow: public,provider: apiKey }]){
+id: ID!
+HeadHouseholdName: String!
+HeadHouseholdPhoneNumber: String!
+NumberOfAdults: Int!
+CommitedToUseAquatabs: String!
+NumberOfAquaTabsReceived: Int!
+MeetingID: String!
+}

@@ -9,11 +9,14 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.MeetingCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerCardSelectActivity;
 import com.example.bwfsurveybeta.R;
 
 public class SubMenuMonthlySummaryActivity extends AppCompatActivity {
     String namebwe = null;
+    String countrybwe = null;
     String lat = null;
     String lng = null;
 
@@ -25,6 +28,8 @@ public class SubMenuMonthlySummaryActivity extends AppCompatActivity {
 
         if(getIntent().getStringExtra("NAME_BWE")!=null)
             namebwe = getIntent().getStringExtra("NAME_BWE");
+        if(getIntent().getStringExtra("COUNTRY_BWE")!=null)
+            countrybwe = getIntent().getStringExtra("COUNTRY_BWE");
 
         if(getIntent().getStringExtra("LAT")!=null)
             lat = getIntent().getStringExtra("LAT");
@@ -41,6 +46,21 @@ public class SubMenuMonthlySummaryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), SWEMonthlySummaryActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("POSITION_BWE", "Educator");
+                i.putExtra("SURVEY_TYPE","SWESUMMARY");
+                i.putExtra("OPERATION","CREATE");
+                i.putExtra("LAT",lat);
+                i.putExtra("LNG",lng);
+                startActivity(i);
+            }
+        });
+
+        Button sweMonthlyEducationSummary = (Button) findViewById(R.id.button_SWESubMonthlyEducationSummary);
+        sweMonthlyEducationSummary.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MeetingCardSelectActivity.class);
+                i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("COUNTRY_BWE", countrybwe);
                 i.putExtra("POSITION_BWE", "Educator");
                 i.putExtra("SURVEY_TYPE","SWESUMMARY");
                 i.putExtra("OPERATION","CREATE");

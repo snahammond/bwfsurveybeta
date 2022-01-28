@@ -323,6 +323,13 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.MeetingCardSelectActivity"
+            android:label="Select or create meeting"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

@@ -1304,3 +1304,117 @@ mutation DeleteVolunteerMonthlySummary(
     updatedAt
   }
 }
+mutation CreateMeeting(
+  $input: CreateMeetingInput!
+  $condition: ModelMeetingConditionInput
+) {
+  createMeeting(input: $input, condition: $condition) {
+    id
+    Country
+    Community
+    Namebwe
+    date
+    Namevol
+    DiscussionsTaught
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateMeeting(
+  $input: UpdateMeetingInput!
+  $condition: ModelMeetingConditionInput
+) {
+  updateMeeting(input: $input, condition: $condition) {
+    id
+    Country
+    Community
+    Namebwe
+    date
+    Namevol
+    DiscussionsTaught
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteMeeting(
+  $input: DeleteMeetingInput!
+  $condition: ModelMeetingConditionInput
+) {
+  deleteMeeting(input: $input, condition: $condition) {
+    id
+    Country
+    Community
+    Namebwe
+    date
+    Namevol
+    DiscussionsTaught
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateHouseholdAttendingMeeting(
+  $input: CreateHouseholdAttendingMeetingInput!
+  $condition: ModelHouseholdAttendingMeetingConditionInput
+) {
+  createHouseholdAttendingMeeting(input: $input, condition: $condition) {
+    id
+    HeadHouseholdName
+    HeadHouseholdPhoneNumber
+    NumberOfAdults
+    CommitedToUseAquatabs
+    NumberOfAquaTabsReceived
+    MeetingID
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateHouseholdAttendingMeeting(
+  $input: UpdateHouseholdAttendingMeetingInput!
+  $condition: ModelHouseholdAttendingMeetingConditionInput
+) {
+  updateHouseholdAttendingMeeting(input: $input, condition: $condition) {
+    id
+    HeadHouseholdName
+    HeadHouseholdPhoneNumber
+    NumberOfAdults
+    CommitedToUseAquatabs
+    NumberOfAquaTabsReceived
+    MeetingID
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteHouseholdAttendingMeeting(
+  $input: DeleteHouseholdAttendingMeetingInput!
+  $condition: ModelHouseholdAttendingMeetingConditionInput
+) {
+  deleteHouseholdAttendingMeeting(input: $input, condition: $condition) {
+    id
+    HeadHouseholdName
+    HeadHouseholdPhoneNumber
+    NumberOfAdults
+    CommitedToUseAquatabs
+    NumberOfAquaTabsReceived
+    MeetingID
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

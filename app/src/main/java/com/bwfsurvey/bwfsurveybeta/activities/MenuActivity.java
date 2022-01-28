@@ -352,6 +352,7 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), SubMenuMonthlySummaryActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("COUNTRY_BWE", countrybwe);
                 i.putExtra("POSITION_BWE", positionbwe);
                 i.putExtra("SURVEY_TYPE","SWESUMMARY");
                 i.putExtra("OPERATION","CREATE");

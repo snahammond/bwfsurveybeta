@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bwfsurvey.bwfsurveybeta.activities.collect.InitialSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.collect.CommunityWaterSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.MeetingCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.example.bwfsurveybeta.R;
 

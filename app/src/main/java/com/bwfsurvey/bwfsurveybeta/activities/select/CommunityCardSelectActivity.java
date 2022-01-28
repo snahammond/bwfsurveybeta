@@ -128,6 +128,7 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
             createCommunityCardSelectList();
         }
 
+
     }
 
     private void createCommunityCardSelectList() {
