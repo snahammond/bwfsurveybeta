@@ -19,85 +19,74 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.DataStoreChannelEventName;
-import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
-import com.amplifyframework.datastore.generated.model.Meeting;
+import com.amplifyframework.datastore.generated.model.HouseholdAttendingMeeting;
 import com.amplifyframework.datastore.generated.model.Volunteer;
 import com.amplifyframework.datastore.syncengine.OutboxMutationEvent;
 import com.amplifyframework.hub.HubChannel;
 import com.amplifyframework.hub.SubscriptionToken;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
-import com.bwfsurvey.bwfsurveybeta.adapters.FollowUpSurveyCardAdapter;
-import com.bwfsurvey.bwfsurveybeta.adapters.MeetingCardAdapter;
-import com.bwfsurvey.bwfsurveybeta.adapters.VolunteerCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.adapters.HouseholdAttendingMeetingCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewHouseholdAttendingMeeting;
 import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewMeeting;
-import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewVolunteer;
-import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;
 import com.example.bwfsurveybeta.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collections;
 
-public class MeetingCardSelectActivity extends AppCompatActivity implements CreateNewMeeting.CreateNewMeetingListener{
-    private static ArrayList<Meeting> listOfMeetings;
+public class HouseholdAttendingMeetingCardSelectActivity extends AppCompatActivity implements CreateNewHouseholdAttendingMeeting.CreateNewHouseholdAttendingMeetingListener{
+    private static ArrayList<HouseholdAttendingMeeting> listOfHouseholdAttendingMeeting;
     private RecyclerView recyclerView;
-    private MeetingCardAdapter adapter;
-    private String namebwe = null;
-    private String countrybwe = null;
-    private String surveyType = null;
+    private HouseholdAttendingMeetingCardAdapter adapter;
     private String operation = null;
+    private String uuidMeeting = null;
 
     private LinearLayout progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getIntent().getStringExtra("NAME_BWE")!=null)
-            namebwe = getIntent().getStringExtra("NAME_BWE");
-        Log.i("Tutorials", "namebwe: " + namebwe);
-        if(getIntent().getStringExtra("COUNTRY_BWE")!=null)
-            countrybwe = getIntent().getStringExtra("COUNTRY_BWE");
-        if(getIntent().getStringExtra("SURVEY_TYPE")!=null)
-            surveyType = getIntent().getStringExtra("SURVEY_TYPE");
+
         if(getIntent().getStringExtra("OPERATION")!=null)
             operation = getIntent().getStringExtra("OPERATION");
         Log.i("Tutorials", "operation: " + operation);
-
+        if(getIntent().getStringExtra("UUID")!=null)
+            uuidMeeting = getIntent().getStringExtra("UUID");
 
         if(operation.contentEquals("CREATE"))
-            setTitle("Select or create new Meeting");
+            setTitle("Households that attended meeting");
 
         initView();
     }
 
     private void initView() {
         setContentView(R.layout.activity_recycler);
-        createMeetingCardSelectList();
+        createHouseholdAttendingMeetingCardSelectList();
     }
 
-    private void createMeetingCardSelectList() {
-        downloadMeetingListAndShowOnRecyclerView();
+    private void createHouseholdAttendingMeetingCardSelectList() {
+        downloadHouseholdAttendingMeetingListAndShowOnRecyclerView();
     }
 
-    private void downloadMeetingListAndShowOnRecyclerView() {
-        Log.i("Tutorials", "going to downloadMeetingListAndShowOnRecyclerView");
+    private void downloadHouseholdAttendingMeetingListAndShowOnRecyclerView() {
+        Log.i("Tutorials", "going to downloadHouseholdAttendingMeetingListAndShowOnRecyclerView");
         try{
 
-            listOfMeetings = new ArrayList<>();
+            listOfHouseholdAttendingMeeting = new ArrayList<>();
             Amplify.DataStore.query(
-                    Meeting.class,
-                    allMeetings -> {
+                    HouseholdAttendingMeeting.class,
+                    Where.matches(HouseholdAttendingMeeting.MEETING_ID.eq(uuidMeeting)),
+                    allHouseholdsAttendingMeeting -> {
                         Log.i("Tutorials", "DataStore is queried.");
-                        while (allMeetings.hasNext()) {
-                            Meeting aMeeting = allMeetings.next();
-                            listOfMeetings.add(aMeeting);
-                            Log.i("Tutorials", "Title: " + aMeeting.getNamevol());
+                        while (allHouseholdsAttendingMeeting.hasNext()) {
+                            HouseholdAttendingMeeting aHouseholdAttendingMeeting = allHouseholdsAttendingMeeting.next();
+                            listOfHouseholdAttendingMeeting.add(aHouseholdAttendingMeeting);
+                            Log.i("Tutorials", "Title: " + aHouseholdAttendingMeeting.getHeadHouseholdName());
                             //try to send all the Meeting by forcefully pushing
                             Amplify.API.mutate(
-                                    ModelMutation.create(aMeeting),
+                                    ModelMutation.create(aHouseholdAttendingMeeting),
                                     response -> {
                                     },
                                     error -> {
@@ -107,7 +96,7 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
                         Log.i("Tutorials", "Queried");
                         runOnUiThread(new Runnable() {
                             public void run() {
-                                showListOfMeetings();
+                                showListOfHouseholdsAttendingMeeting();
                             }
                         });
                     },
@@ -131,8 +120,8 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
         }
     }
 
-    private void showListOfMeetings() {
-        if(listOfMeetings.size()>0){
+    private void showListOfHouseholdsAttendingMeeting() {
+        if(listOfHouseholdAttendingMeeting.size()>0){
             //wait a lil bit so that if we are offline things will settle
             //this is for the progress bar
             progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
@@ -152,15 +141,15 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
             };
             countDownTimer.start();
         }else{
-            String msg = "No meeting found, please create new meeting";
-            ListUtils.showZeroListAlert(msg,MeetingCardSelectActivity.this);
+            String msg = "No household found, please create new household";
+            ListUtils.showZeroListAlert(msg,HouseholdAttendingMeetingCardSelectActivity.this);
         }
     }
 
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MeetingCardAdapter(MeetingCardSelectActivity.this, MeetingCardSelectActivity.listOfMeetings,namebwe,countrybwe,surveyType,operation);
+        adapter = new HouseholdAttendingMeetingCardAdapter(HouseholdAttendingMeetingCardSelectActivity.this, HouseholdAttendingMeetingCardSelectActivity.listOfHouseholdAttendingMeeting,operation);
         recyclerView.setAdapter(adapter);
     }
 
@@ -169,7 +158,7 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
         // R.menu.mymenu is a reference to an xml file named mymenu.xml which should be inside your res/menu directory.
         // If you don't have res/menu, just create a directory named "menu" inside res
         if(operation.contentEquals("CREATE"))
-            getMenuInflater().inflate(R.menu.menu_meeting, menu);
+            getMenuInflater().inflate(R.menu.menu_household_attending_meeting, menu);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -178,70 +167,33 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.newMeeting) {
-            //get list of all volunteers
-            ArrayList<Volunteer> listOfVolunteers = new ArrayList<>();
-            Amplify.DataStore.query(
-                    Volunteer.class,
-                    allVolunteers -> {
-                        Log.i("Tutorials", "DataStore is queried.");
-                        while (allVolunteers.hasNext()) {
-                            Volunteer aVolunteer = allVolunteers.next();
-                            listOfVolunteers.add(aVolunteer);
-                            Log.i("Tutorials", "Title: " + aVolunteer.getNamevol());
-                        }
-                        if(countrybwe==null){
-                            Log.i("bwfsurveybeta", "countrybwe is null" );
-                            ArrayList<String> listOfCountries = BwfSurveyAmplifyApplication.getCountries();
-                            DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
-                                @Override
-                                public void onSelectedCountry(String countryName) {
-                                    countrybwe = countryName;
-                                    Log.i("Tutorials", "country selected is " + countrybwe );
-                                    runOnUiThread(new Runnable() {
-                                        public void run() {
-                                            ArrayList<Community> listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
-                                            showCreateNewMeeting(MeetingCardSelectActivity.this,listOfCommunities,listOfVolunteers);
-                                        }
-                                    });
-                                }
-                            });
-                            dialog.show(getSupportFragmentManager(), "countries");
-                        }else {
-                            ArrayList<Community> listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
-                            showCreateNewMeeting(MeetingCardSelectActivity.this,listOfCommunities,listOfVolunteers);
-                        }
-                    },
-                    failure ->{
-                        Log.e("Tutorials", "Query failed.", failure);
-                    });
-
-
+        if (id == R.id.newHouseholdAttendingMeeting) {
+            showCreateNewHouseholdAttendingMeeting(HouseholdAttendingMeetingCardSelectActivity.this,uuidMeeting);
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private DialogFragment createNewMeeting;
-    public void showCreateNewMeeting(Activity activity, ArrayList<Community> communities, ArrayList<Volunteer> volunteers) {
-        createNewMeeting = new CreateNewMeeting(activity,communities,volunteers,namebwe,countrybwe);
-        createNewMeeting.show(getSupportFragmentManager(), "createNewMeeting");
-        createNewMeeting.setCancelable(false);
+    private DialogFragment createNewHouseholdAttendingMeeting;
+    public void showCreateNewHouseholdAttendingMeeting(Activity activity, String uuidMeeting) {
+        createNewHouseholdAttendingMeeting = new CreateNewHouseholdAttendingMeeting(activity,uuidMeeting);
+        createNewHouseholdAttendingMeeting.show(getSupportFragmentManager(), "createNewHouseholdAttendingMeeting");
+        createNewHouseholdAttendingMeeting.setCancelable(false);
     }
 
     SubscriptionToken checkToken = null;
     @Override
-    public void onDialogPositiveClick(DialogFragment dialog, Meeting newMeeting) {
-        Log.i("Tutorials", "newMeeting " + newMeeting.toString() );
+    public void onDialogPositiveClick(DialogFragment dialog, HouseholdAttendingMeeting newHouseholdAttendingMeeting) {
+        Log.i("Tutorials", "newHouseholdAttendingMeeting " + newHouseholdAttendingMeeting.toString() );
 
         checkToken = Amplify.Hub.subscribe(
                 HubChannel.DATASTORE,
                 hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
-                    Log.i("bwfSurveyAmplify", " Meeting "+event.getModelName());
-                    if(event.getModelName().contentEquals("Meeting")){
-                        if(event.getElement().getModel().equals(newMeeting)){
+                    Log.i("bwfSurveyAmplify", " HouseholdAttendingMeeting "+event.getModelName());
+                    if(event.getModelName().contentEquals("HouseholdAttendingMeeting")){
+                        if(event.getElement().getModel().equals(newHouseholdAttendingMeeting)){
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
@@ -252,7 +204,7 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
                     }
                 }
         );
-        Amplify.DataStore.save(newMeeting,
+        Amplify.DataStore.save(newHouseholdAttendingMeeting,
                 update -> {
                     Log.i("Tutorial", "Saved Successfully ");
 
@@ -279,15 +231,15 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
     }
 
     private void showSavedSuccessfulAlert(){
-        new AlertDialog.Builder(MeetingCardSelectActivity.this)
+        new AlertDialog.Builder(HouseholdAttendingMeetingCardSelectActivity.this)
                 .setTitle("Saved Succussfully")
-                .setMessage("Meeting created Succussfully \n" )
+                .setMessage("Household created Succussfully \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
                 .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //reload the Cards again
-                        downloadMeetingListAndShowOnRecyclerView();
+                        downloadHouseholdAttendingMeetingListAndShowOnRecyclerView();
                         //instead of reloading cards open HouseholdAttendingMeetingCardSelect and pass uuid
                     }
                 })
@@ -299,9 +251,9 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
     private void showSaveFailedAlert(){
         runOnUiThread(new Runnable() {
             public void run() {
-                new AlertDialog.Builder(MeetingCardSelectActivity.this)
+                new AlertDialog.Builder(HouseholdAttendingMeetingCardSelectActivity.this)
                         .setTitle("Save Failed")
-                        .setMessage("Meeting creation Failed Please try again\n" )
+                        .setMessage("Household creation Failed Please try again\n" )
                         // A null listener allows the button to dismiss the dialog and take no further action.
                         .setNegativeButton(android.R.string.ok, null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
@@ -310,7 +262,6 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
             }
         });
     }
-
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
 

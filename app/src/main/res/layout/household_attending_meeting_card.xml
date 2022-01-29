@@ -7,7 +7,7 @@
     android:orientation="vertical"
     app:cardCornerRadius="8dp"
     app:cardElevation="6dp"
-    android:id="@+id/meetingCard"
+    android:id="@+id/householdAttendingMeetingCard"
     android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true">
 
@@ -25,16 +25,16 @@
             android:background="?android:attr/listDivider" />
 
         <TextView
-            android:id="@+id/textMeetingDateDesc"
+            android:id="@+id/textHeadHouseholdNameDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:text="Meeting Date"
+            android:text="Head of household name"
             android:textSize="10sp"
             android:layout_marginTop="10dp"/>
 
         <TextView
-            android:id="@+id/txtMeetingDate"
+            android:id="@+id/txtHeadHouseholdName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="1dp"
@@ -42,16 +42,16 @@
             android:textSize="18sp"/>
 
         <TextView
-            android:id="@+id/textMeetingCommunityDesc"
+            android:id="@+id/textPhoneNumberDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:text="Meeting Community"
+            android:text="Phone number"
             android:textSize="10sp"
             android:layout_marginTop="10dp"/>
 
         <TextView
-            android:id="@+id/txtCommunity"
+            android:id="@+id/txtPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="1dp"
@@ -59,16 +59,16 @@
             android:textSize="18sp"/>
 
         <TextView
-            android:id="@+id/textLessonsTaughtDesc"
+            android:id="@+id/textNumberOfAdultPresentDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:text="Discussions Taught"
+            android:text="Number of adults in household"
             android:textSize="10sp"
             android:layout_marginTop="10dp"/>
 
         <TextView
-            android:id="@+id/txtLessonsTaught"
+            android:id="@+id/txtNumberOfAdultPresent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="1dp"
@@ -76,24 +76,38 @@
             android:textSize="18sp"/>
 
         <TextView
-            android:id="@+id/textVolunteerAssistingDesc"
+            android:id="@+id/textCommittedToUseAquaTabsDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:text="Volunteer Assisting"
+            android:text="Committed to use Aquatabs"
             android:textSize="10sp"
-            android:layout_marginTop="10dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="10dp"/>
 
         <TextView
-            android:id="@+id/textVolunteerAssisting"
+            android:id="@+id/txtCommittedToUseAquaTabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="1dp"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            android:visibility="gone"/>
+            android:textSize="18sp"/>
 
+        <TextView
+            android:id="@+id/textNumberOfAquatabsReceivedDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Number of Aquatabs received"
+            android:textSize="10sp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/textNumberOfAquatabsReceived"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

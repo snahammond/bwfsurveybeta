@@ -21,6 +21,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 
@@ -271,7 +272,9 @@ public class CreateNewMeeting extends DialogFragment {
         builder.setView(layoutView)
                 .setPositiveButton("Create", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        if(selectedCommunity!=null && selectedDate != null && selectedVolunteer!=null && discussionsTaught!=null && !discussionsTaught.isEmpty() && !discussionsTaught.contentEquals(",")){
+                        if(selectedCommunity!=null && selectedDate != null && discussionsTaught!=null && !discussionsTaught.isEmpty() && !discussionsTaught.contentEquals(",")){
+                            if(selectedVolunteer==null)
+                                selectedVolunteer = "";
                             Meeting newMeeting = Meeting.builder()
                                     .country(country)
                                     .community(selectedCommunity)
@@ -287,7 +290,7 @@ public class CreateNewMeeting extends DialogFragment {
                                 public void run() {
                                     new androidx.appcompat.app.AlertDialog.Builder(context)
                                             .setTitle("Invalid Meeting creation")
-                                            .setMessage("Please fill out all fields on the form\n" )
+                                            .setMessage("Please fill out all fields on the form.\n" )
                                             // A null listener allows the button to dismiss the dialog and take no further action.
                                             .setNegativeButton(android.R.string.ok, null)
                                             .setIcon(android.R.drawable.ic_dialog_alert)
@@ -303,7 +306,7 @@ public class CreateNewMeeting extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
 
                     }
-                });;
+                });
         // Create the AlertDialog object and return it
         return builder.create();
     }
