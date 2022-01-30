@@ -1367,6 +1367,7 @@ mutation CreateHouseholdAttendingMeeting(
 ) {
   createHouseholdAttendingMeeting(input: $input, condition: $condition) {
     id
+    Namebwe
     HeadHouseholdName
     HeadHouseholdPhoneNumber
     NumberOfAdults
@@ -1386,6 +1387,7 @@ mutation UpdateHouseholdAttendingMeeting(
 ) {
   updateHouseholdAttendingMeeting(input: $input, condition: $condition) {
     id
+    Namebwe
     HeadHouseholdName
     HeadHouseholdPhoneNumber
     NumberOfAdults
@@ -1405,12 +1407,88 @@ mutation DeleteHouseholdAttendingMeeting(
 ) {
   deleteHouseholdAttendingMeeting(input: $input, condition: $condition) {
     id
+    Namebwe
     HeadHouseholdName
     HeadHouseholdPhoneNumber
     NumberOfAdults
     CommitedToUseAquatabs
     NumberOfAquaTabsReceived
     MeetingID
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateSweMonthlyTotalSummary(
+  $input: CreateSWEMonthlyTotalSummaryInput!
+  $condition: ModelSWEMonthlyTotalSummaryConditionInput
+) {
+  createSWEMonthlyTotalSummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoHealthCheck
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateSweMonthlyTotalSummary(
+  $input: UpdateSWEMonthlyTotalSummaryInput!
+  $condition: ModelSWEMonthlyTotalSummaryConditionInput
+) {
+  updateSWEMonthlyTotalSummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoHealthCheck
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteSweMonthlyTotalSummary(
+  $input: DeleteSWEMonthlyTotalSummaryInput!
+  $condition: ModelSWEMonthlyTotalSummaryConditionInput
+) {
+  deleteSWEMonthlyTotalSummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoHealthCheck
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt

@@ -74,9 +74,7 @@ public class MeetingCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 public void onClick(View v) {
                     // do whatever you want to do on click (to launch any fragment or activity you need to put intent here.)
                     Log.i("Tutorials", "Meeting name: " + txtMeetingDate.getText());
-                    if(operation.contentEquals("CREATE")){
-                        startHouseholdAttendingActivity(uuidMeeting);
-                    }
+                    startHouseholdAttendingActivity(uuidMeeting);
                 }
             });
         }
@@ -128,6 +126,7 @@ public class MeetingCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         Intent i = new Intent(context, HouseholdAttendingMeetingCardSelectActivity.class);
         i.putExtra("UUID", uuidMeeting);
         i.putExtra("OPERATION", operation);
+        i.putExtra("NAME_BWE", namebwe);
         context.startActivity(i);
     }
 

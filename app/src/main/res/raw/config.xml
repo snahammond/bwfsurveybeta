@@ -1,6 +1,18 @@
 <configs>
   <config>
     <childdesc></childdesc>
+    <childname>I</childname>
+    <childvalue>[100,101,102,115,116,117]</childvalue>
+    <desc>SWE SUMMARY</desc>
+    <name>SWESUMMARY</name>
+    <parentdesc></parentdesc>
+    <parentname>Country</parentname>
+    <parentvalue>GHANA</parentvalue>
+    <type>S</type>
+    <value>SWESUMMARY</value>
+  </config>
+  <config>
+    <childdesc></childdesc>
     <childname></childname>
     <childvalue>3</childvalue>
     <desc>Several ways are used for taking water from the storage container</desc>

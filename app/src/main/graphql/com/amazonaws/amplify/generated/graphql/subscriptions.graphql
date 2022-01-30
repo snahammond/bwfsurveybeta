@@ -1229,6 +1229,7 @@ subscription OnDeleteMeeting {
 subscription OnCreateHouseholdAttendingMeeting {
   onCreateHouseholdAttendingMeeting {
     id
+    Namebwe
     HeadHouseholdName
     HeadHouseholdPhoneNumber
     NumberOfAdults
@@ -1245,6 +1246,7 @@ subscription OnCreateHouseholdAttendingMeeting {
 subscription OnUpdateHouseholdAttendingMeeting {
   onUpdateHouseholdAttendingMeeting {
     id
+    Namebwe
     HeadHouseholdName
     HeadHouseholdPhoneNumber
     NumberOfAdults
@@ -1261,12 +1263,79 @@ subscription OnUpdateHouseholdAttendingMeeting {
 subscription OnDeleteHouseholdAttendingMeeting {
   onDeleteHouseholdAttendingMeeting {
     id
+    Namebwe
     HeadHouseholdName
     HeadHouseholdPhoneNumber
     NumberOfAdults
     CommitedToUseAquatabs
     NumberOfAquaTabsReceived
     MeetingID
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateSweMonthlyTotalSummary {
+  onCreateSWEMonthlyTotalSummary {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoHealthCheck
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateSweMonthlyTotalSummary {
+  onUpdateSWEMonthlyTotalSummary {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoHealthCheck
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteSweMonthlyTotalSummary {
+  onDeleteSWEMonthlyTotalSummary {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoHealthCheck
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
+    Completed
+    Lat
+    Lng
     _version
     _deleted
     _lastChangedAt

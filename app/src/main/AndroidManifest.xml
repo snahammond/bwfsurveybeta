@@ -325,17 +325,39 @@
 
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.select.MeetingCardSelectActivity"
-            android:label="Select or create meeting"
+            android:label="Select meeting"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdAttendingMeetingCardSelectActivity"
-            android:label="Select or create household"
+            android:label="Households that attended meeting"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.SWEMonthlyTotalSummaryActivity"
+            android:label="SWE Monthly Total Summary"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.SWEMonthlyTotalSummaryCardSelectActivity"
+            android:label="Select monthly total"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewSWEMonthlyTotalSummaryActivity"
+            android:label="View Details"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
 
     </application>
 

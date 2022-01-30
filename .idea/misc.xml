@@ -6,10 +6,10 @@
         <entry key="..\:/Users/niipa/AppData/Local/Android/Sdk/platforms/android-29/data/res/layout/simple_spinner_dropdown_item.xml" value="0.2015625" />
         <entry key="..\:/Users/niipa/AppData/Local/Android/Sdk/platforms/android-29/data/res/layout/simple_spinner_item.xml" value="0.1265625" />
         <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/activity_authentication.xml" value="0.2" />
-        <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/activity_menu.xml" value="0.25" />
+        <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/activity_menu.xml" value="0.1" />
         <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/activity_no_family.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/activity_recycler.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/activity_submenu_monthly_summary.xml" value="0.264" />
+        <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/activity_submenu_monthly_summary.xml" value="0.24561403508771928" />
         <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/card_question.xml" value="0.11875" />
         <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/dialog_create_community_water_source.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/dialog_create_household_attending_meeting.xml" value="0.11875" />
@@ -20,6 +20,7 @@
         <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/meeting_card.xml" value="0.1" />
         <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/monthly_summary_card.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/monthly_summary_card_vol.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/monthly_total_summary_card.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/question_card_date.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/question_card_enum.xml" value="0.11875" />
         <entry key="..\:/Users/niipa/OneDrive/Documents/personalThings/homeProgramming/BWF/AppBeta/AndroidApp/app/src/main/res/layout/question_card_enum_mul.xml" value="0.2015625" />

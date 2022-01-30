@@ -25,6 +25,7 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 })
 public final class HouseholdAttendingMeeting implements Model {
   public static final QueryField ID = field("id");
+  public static final QueryField NAMEBWE = field("Namebwe");
   public static final QueryField HEAD_HOUSEHOLD_NAME = field("HeadHouseholdName");
   public static final QueryField HEAD_HOUSEHOLD_PHONE_NUMBER = field("HeadHouseholdPhoneNumber");
   public static final QueryField NUMBER_OF_ADULTS = field("NumberOfAdults");
@@ -32,6 +33,7 @@ public final class HouseholdAttendingMeeting implements Model {
   public static final QueryField NUMBER_OF_AQUA_TABS_RECEIVED = field("NumberOfAquaTabsReceived");
   public static final QueryField MEETING_ID = field("MeetingID");
   private final @ModelField(targetType="ID", isRequired = true) String id;
+  private final @ModelField(targetType="String", isRequired = true) String Namebwe;
   private final @ModelField(targetType="String", isRequired = true) String HeadHouseholdName;
   private final @ModelField(targetType="String", isRequired = true) String HeadHouseholdPhoneNumber;
   private final @ModelField(targetType="Int", isRequired = true) Integer NumberOfAdults;
@@ -40,6 +42,10 @@ public final class HouseholdAttendingMeeting implements Model {
   private final @ModelField(targetType="String", isRequired = true) String MeetingID;
   public String getId() {
       return id;
+  }
+  
+  public String getNamebwe() {
+      return Namebwe;
   }
   
   public String getHeadHouseholdName() {
@@ -66,8 +72,9 @@ public final class HouseholdAttendingMeeting implements Model {
       return MeetingID;
   }
   
-  private HouseholdAttendingMeeting(String id, String HeadHouseholdName, String HeadHouseholdPhoneNumber, Integer NumberOfAdults, String CommitedToUseAquatabs, Integer NumberOfAquaTabsReceived, String MeetingID) {
+  private HouseholdAttendingMeeting(String id, String Namebwe, String HeadHouseholdName, String HeadHouseholdPhoneNumber, Integer NumberOfAdults, String CommitedToUseAquatabs, Integer NumberOfAquaTabsReceived, String MeetingID) {
     this.id = id;
+    this.Namebwe = Namebwe;
     this.HeadHouseholdName = HeadHouseholdName;
     this.HeadHouseholdPhoneNumber = HeadHouseholdPhoneNumber;
     this.NumberOfAdults = NumberOfAdults;
@@ -85,6 +92,7 @@ public final class HouseholdAttendingMeeting implements Model {
       } else {
       HouseholdAttendingMeeting householdAttendingMeeting = (HouseholdAttendingMeeting) obj;
       return ObjectsCompat.equals(getId(), householdAttendingMeeting.getId()) &&
+              ObjectsCompat.equals(getNamebwe(), householdAttendingMeeting.getNamebwe()) &&
               ObjectsCompat.equals(getHeadHouseholdName(), householdAttendingMeeting.getHeadHouseholdName()) &&
               ObjectsCompat.equals(getHeadHouseholdPhoneNumber(), householdAttendingMeeting.getHeadHouseholdPhoneNumber()) &&
               ObjectsCompat.equals(getNumberOfAdults(), householdAttendingMeeting.getNumberOfAdults()) &&
@@ -98,6 +106,7 @@ public final class HouseholdAttendingMeeting implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
+      .append(getNamebwe())
       .append(getHeadHouseholdName())
       .append(getHeadHouseholdPhoneNumber())
       .append(getNumberOfAdults())
@@ -113,6 +122,7 @@ public final class HouseholdAttendingMeeting implements Model {
     return new StringBuilder()
       .append("HouseholdAttendingMeeting {")
       .append("id=" + String.valueOf(getId()) + ", ")
+      .append("Namebwe=" + String.valueOf(getNamebwe()) + ", ")
       .append("HeadHouseholdName=" + String.valueOf(getHeadHouseholdName()) + ", ")
       .append("HeadHouseholdPhoneNumber=" + String.valueOf(getHeadHouseholdPhoneNumber()) + ", ")
       .append("NumberOfAdults=" + String.valueOf(getNumberOfAdults()) + ", ")
@@ -123,7 +133,7 @@ public final class HouseholdAttendingMeeting implements Model {
       .toString();
   }
   
-  public static HeadHouseholdNameStep builder() {
+  public static NamebweStep builder() {
       return new Builder();
   }
   
@@ -153,12 +163,14 @@ public final class HouseholdAttendingMeeting implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
+      Namebwe,
       HeadHouseholdName,
       HeadHouseholdPhoneNumber,
       NumberOfAdults,
@@ -166,6 +178,11 @@ public final class HouseholdAttendingMeeting implements Model {
       NumberOfAquaTabsReceived,
       MeetingID);
   }
+  public interface NamebweStep {
+    HeadHouseholdNameStep namebwe(String namebwe);
+  }
+  
+
   public interface HeadHouseholdNameStep {
     HeadHouseholdPhoneNumberStep headHouseholdName(String headHouseholdName);
   }
@@ -202,8 +219,9 @@ public final class HouseholdAttendingMeeting implements Model {
   }
   
 
-  public static class Builder implements HeadHouseholdNameStep, HeadHouseholdPhoneNumberStep, NumberOfAdultsStep, CommitedToUseAquatabsStep, NumberOfAquaTabsReceivedStep, MeetingIdStep, BuildStep {
+  public static class Builder implements NamebweStep, HeadHouseholdNameStep, HeadHouseholdPhoneNumberStep, NumberOfAdultsStep, CommitedToUseAquatabsStep, NumberOfAquaTabsReceivedStep, MeetingIdStep, BuildStep {
     private String id;
+    private String Namebwe;
     private String HeadHouseholdName;
     private String HeadHouseholdPhoneNumber;
     private Integer NumberOfAdults;
@@ -216,12 +234,20 @@ public final class HouseholdAttendingMeeting implements Model {
         
         return new HouseholdAttendingMeeting(
           id,
+          Namebwe,
           HeadHouseholdName,
           HeadHouseholdPhoneNumber,
           NumberOfAdults,
           CommitedToUseAquatabs,
           NumberOfAquaTabsReceived,
           MeetingID);
+    }
+    
+    @Override
+     public HeadHouseholdNameStep namebwe(String namebwe) {
+        Objects.requireNonNull(namebwe);
+        this.Namebwe = namebwe;
+        return this;
     }
     
     @Override
@@ -289,14 +315,20 @@ public final class HouseholdAttendingMeeting implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String headHouseholdName, String headHouseholdPhoneNumber, Integer numberOfAdults, String commitedToUseAquatabs, Integer numberOfAquaTabsReceived, String meetingId) {
+    private CopyOfBuilder(String id, String namebwe, String headHouseholdName, String headHouseholdPhoneNumber, Integer numberOfAdults, String commitedToUseAquatabs, Integer numberOfAquaTabsReceived, String meetingId) {
       super.id(id);
-      super.headHouseholdName(headHouseholdName)
+      super.namebwe(namebwe)
+        .headHouseholdName(headHouseholdName)
         .headHouseholdPhoneNumber(headHouseholdPhoneNumber)
         .numberOfAdults(numberOfAdults)
         .commitedToUseAquatabs(commitedToUseAquatabs)
         .numberOfAquaTabsReceived(numberOfAquaTabsReceived)
         .meetingId(meetingId);
+    }
+    
+    @Override
+     public CopyOfBuilder namebwe(String namebwe) {
+      return (CopyOfBuilder) super.namebwe(namebwe);
     }
     
     @Override

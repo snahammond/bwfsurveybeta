@@ -78,6 +78,20 @@
                             android:visibility="gone"/>
 
                         <Button
+                            android:id="@+id/button_VolSubMonthlySummary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:gravity="start"
+                            android:shadowColor="#FFFFFF"
+                            android:text="Volunteer Monthly Summary"
+                            android:textColor="#3F51B5"
+                            app:backgroundTint="#FFFFFF"
+                            android:visibility="gone"/>
+
+                        <Button
                             android:id="@+id/button_SWESubMonthlyEducationSummary"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -91,7 +105,7 @@
                             app:backgroundTint="#FFFFFF"/>
 
                         <Button
-                            android:id="@+id/button_VolSubMonthlySummary"
+                            android:id="@+id/button_SWESubMonthlyTotalSummary"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -99,10 +113,9 @@
                             android:background="?android:attr/selectableItemBackground"
                             android:gravity="start"
                             android:shadowColor="#FFFFFF"
-                            android:text="Volunteer Monthly Summary"
+                            android:text="SWE Monthly Total Summary"
                             android:textColor="#3F51B5"
-                            app:backgroundTint="#FFFFFF"
-                            android:visibility="gone"/>
+                            app:backgroundTint="#FFFFFF"/>
 
                     </LinearLayout>
 

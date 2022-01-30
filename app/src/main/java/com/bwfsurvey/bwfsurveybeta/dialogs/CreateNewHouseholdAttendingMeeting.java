@@ -40,12 +40,14 @@ public class CreateNewHouseholdAttendingMeeting extends DialogFragment {
     private String committedToUseAquatabs = null;
     private int numberOfAquatabsReceived = 0;
     private String uuidMeeting;
+    private String nameSWE;
 
     private Context context;
 
-    public CreateNewHouseholdAttendingMeeting(Activity activity, String uuidMeeting) {
+    public CreateNewHouseholdAttendingMeeting(Activity activity, String uuidMeeting, String nameSWE) {
         this.context = activity;
         this.uuidMeeting = uuidMeeting;
+        this.nameSWE = nameSWE;
     }
 
     public interface CreateNewHouseholdAttendingMeetingListener {
@@ -131,6 +133,7 @@ public class CreateNewHouseholdAttendingMeeting extends DialogFragment {
                            numberOfAquatabsReceived != 0){
 
                             HouseholdAttendingMeeting newHouseholdAttendingMeeting = HouseholdAttendingMeeting.builder()
+                                    .namebwe(nameSWE)
                                     .headHouseholdName(householdAttendingMeetingName)
                                     .headHouseholdPhoneNumber(phoneNumber)
                                     .numberOfAdults(numberOfAdultAttendingMeeting)

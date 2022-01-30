@@ -16,9 +16,12 @@ import com.amplifyframework.datastore.generated.model.CommunityWater;
 import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
+import com.amplifyframework.datastore.generated.model.HouseholdAttendingMeeting;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
+import com.amplifyframework.datastore.generated.model.Meeting;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
+import com.amplifyframework.datastore.generated.model.SWEMonthlyTotalSummary;
 import com.amplifyframework.datastore.generated.model.Volunteer;
 import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
 import com.amplifyframework.datastore.generated.model.VolunteerHouseholdWaterTest;
@@ -48,7 +51,7 @@ public class BwfSurveyAmplifyApplication extends Application {
     public static ArrayList<Config> configs;
     public static ArrayList<Interchange> interchangePool;
     public static String namebwe = "";
-    public static Long manualTimer = Long.valueOf(5000);
+    public static Long manualTimer = Long.valueOf(1000);
 
 
     @Override
@@ -103,6 +106,18 @@ public class BwfSurveyAmplifyApplication extends Application {
                     .syncExpression(
                             VolunteerMonthlySummary.class,
                             () -> VolunteerMonthlySummary.NAMEBWE.eq(namebwe)
+                    )
+                    .syncExpression(
+                            Meeting.class,
+                            () -> Meeting.NAMEBWE.eq(namebwe)
+                    )
+                    .syncExpression(
+                            HouseholdAttendingMeeting.class,
+                            () -> HouseholdAttendingMeeting.NAMEBWE.eq(namebwe)
+                    )
+                    .syncExpression(
+                            SWEMonthlyTotalSummary.class,
+                            () -> SWEMonthlyTotalSummary.NAMEBWE.eq(namebwe)
                     )
                     .build()));
             Amplify.addPlugin(new AWSApiPlugin());

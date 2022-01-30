@@ -41,10 +41,10 @@ public class SubMenuMonthlySummaryActivity extends AppCompatActivity {
 
     private void initView() {
 
-        Button sweMonthlySummary = (Button) findViewById(R.id.button_SWESubMonthlySummary);
-        sweMonthlySummary.setOnClickListener(new View.OnClickListener() {
+        Button sweMonthlyTotalSummary = (Button) findViewById(R.id.button_SWESubMonthlyTotalSummary);
+        sweMonthlyTotalSummary.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SWEMonthlySummaryActivity.class);
+                Intent i = new Intent(getApplicationContext(), SWEMonthlyTotalSummaryActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
                 i.putExtra("POSITION_BWE", "Educator");
                 i.putExtra("SURVEY_TYPE","SWESUMMARY");
@@ -54,6 +54,22 @@ public class SubMenuMonthlySummaryActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+
+        Button volMonthlySummary = (Button) findViewById(R.id.button_VolSubMonthlySummary);
+        volMonthlySummary.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), VolunteerCardSelectActivity.class);
+                i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("POSITION_BWE", "Volunteer");
+                i.putExtra("SURVEY_TYPE","VOLUNTEERSUMMARY");
+                i.putExtra("OPERATION","CREATE");
+                i.putExtra("LAT",lat);
+                i.putExtra("LNG",lng);
+                startActivity(i);
+            }
+        });
+
 
         Button sweMonthlyEducationSummary = (Button) findViewById(R.id.button_SWESubMonthlyEducationSummary);
         sweMonthlyEducationSummary.setOnClickListener(new View.OnClickListener() {
@@ -70,19 +86,18 @@ public class SubMenuMonthlySummaryActivity extends AppCompatActivity {
             }
         });
 
-        Button volMonthlySummary = (Button) findViewById(R.id.button_VolSubMonthlySummary);
-        volMonthlySummary.setOnClickListener(new View.OnClickListener() {
+        Button sweSubMonthlyTotalSummary = (Button) findViewById(R.id.button_SWESubMonthlyTotalSummary);
+        sweSubMonthlyTotalSummary.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), VolunteerCardSelectActivity.class);
+                Intent i = new Intent(getApplicationContext(), SWEMonthlyTotalSummaryActivity.class);
                 i.putExtra("NAME_BWE", namebwe);
-                i.putExtra("POSITION_BWE", "Volunteer");
-                i.putExtra("SURVEY_TYPE","VOLUNTEERSUMMARY");
+                i.putExtra("POSITION_BWE", "Educator");
+                i.putExtra("SURVEY_TYPE","SWETOTALSUMMARY");
                 i.putExtra("OPERATION","CREATE");
                 i.putExtra("LAT",lat);
                 i.putExtra("LNG",lng);
                 startActivity(i);
             }
         });
-
     }
 }

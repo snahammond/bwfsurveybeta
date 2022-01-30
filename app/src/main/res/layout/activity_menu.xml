@@ -468,7 +468,8 @@
                                     android:shadowColor="#FFFFFF"
                                     android:text="@string/SWEMonthlySummary"
                                     android:textColor="#3F51B5"
-                                    app:backgroundTint="#FFFFFF"/>
+                                    app:backgroundTint="#FFFFFF"
+                                    android:visibility="gone"/>
                             </LinearLayout>
                         </ScrollView>
                     </LinearLayout>

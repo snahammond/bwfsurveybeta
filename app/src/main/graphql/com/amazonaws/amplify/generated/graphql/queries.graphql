@@ -1606,6 +1606,7 @@ query SyncHouseholdAttendingMeetings(
   ) {
     items {
       id
+      Namebwe
       HeadHouseholdName
       HeadHouseholdPhoneNumber
       NumberOfAdults
@@ -1625,6 +1626,7 @@ query SyncHouseholdAttendingMeetings(
 query GetHouseholdAttendingMeeting($id: ID!) {
   getHouseholdAttendingMeeting(id: $id) {
     id
+    Namebwe
     HeadHouseholdName
     HeadHouseholdPhoneNumber
     NumberOfAdults
@@ -1650,12 +1652,105 @@ query ListHouseholdAttendingMeetings(
   ) {
     items {
       id
+      Namebwe
       HeadHouseholdName
       HeadHouseholdPhoneNumber
       NumberOfAdults
       CommitedToUseAquatabs
       NumberOfAquaTabsReceived
       MeetingID
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncSweMonthlyTotalSummaries(
+  $filter: ModelSWEMonthlyTotalSummaryFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncSWEMonthlyTotalSummaries(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      Namebwe
+      date
+      SWEPosition
+      NoWaterSampleTaken
+      NoSurveysCompleted
+      NoHealthCheck
+      NoWaterStorageContainersDistributed
+      NoSchoolVisits
+      NoPublicServiceMessagesAired
+      Completed
+      Lat
+      Lng
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetSweMonthlyTotalSummary($id: ID!) {
+  getSWEMonthlyTotalSummary(id: $id) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoWaterSampleTaken
+    NoSurveysCompleted
+    NoHealthCheck
+    NoWaterStorageContainersDistributed
+    NoSchoolVisits
+    NoPublicServiceMessagesAired
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListSweMonthlyTotalSummarys(
+  $filter: ModelSWEMonthlyTotalSummaryFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listSWEMonthlyTotalSummarys(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      Namebwe
+      date
+      SWEPosition
+      NoWaterSampleTaken
+      NoSurveysCompleted
+      NoHealthCheck
+      NoWaterStorageContainersDistributed
+      NoSchoolVisits
+      NoPublicServiceMessagesAired
+      Completed
+      Lat
+      Lng
       _version
       _deleted
       _lastChangedAt

@@ -42,6 +42,7 @@ public class HouseholdAttendingMeetingCardSelectActivity extends AppCompatActivi
     private HouseholdAttendingMeetingCardAdapter adapter;
     private String operation = null;
     private String uuidMeeting = null;
+    private String nameBWE = null;
 
     private LinearLayout progressBar;
 
@@ -54,6 +55,9 @@ public class HouseholdAttendingMeetingCardSelectActivity extends AppCompatActivi
         Log.i("Tutorials", "operation: " + operation);
         if(getIntent().getStringExtra("UUID")!=null)
             uuidMeeting = getIntent().getStringExtra("UUID");
+        if(getIntent().getStringExtra("NAME_BWE")!=null)
+            nameBWE = getIntent().getStringExtra("NAME_BWE");
+        Log.i("Tutorials", "nameBWE: " + nameBWE);
 
         if(operation.contentEquals("CREATE"))
             setTitle("Households that attended meeting");
@@ -141,7 +145,7 @@ public class HouseholdAttendingMeetingCardSelectActivity extends AppCompatActivi
             };
             countDownTimer.start();
         }else{
-            String msg = "No household found, please create new household";
+            String msg = "Please add new household";
             ListUtils.showZeroListAlert(msg,HouseholdAttendingMeetingCardSelectActivity.this);
         }
     }
@@ -168,15 +172,15 @@ public class HouseholdAttendingMeetingCardSelectActivity extends AppCompatActivi
         int id = item.getItemId();
 
         if (id == R.id.newHouseholdAttendingMeeting) {
-            showCreateNewHouseholdAttendingMeeting(HouseholdAttendingMeetingCardSelectActivity.this,uuidMeeting);
+            showCreateNewHouseholdAttendingMeeting(HouseholdAttendingMeetingCardSelectActivity.this,uuidMeeting,nameBWE);
         }
 
         return super.onOptionsItemSelected(item);
     }
 
     private DialogFragment createNewHouseholdAttendingMeeting;
-    public void showCreateNewHouseholdAttendingMeeting(Activity activity, String uuidMeeting) {
-        createNewHouseholdAttendingMeeting = new CreateNewHouseholdAttendingMeeting(activity,uuidMeeting);
+    public void showCreateNewHouseholdAttendingMeeting(Activity activity, String uuidMeeting, String nameSWE) {
+        createNewHouseholdAttendingMeeting = new CreateNewHouseholdAttendingMeeting(activity,uuidMeeting,nameSWE);
         createNewHouseholdAttendingMeeting.show(getSupportFragmentManager(), "createNewHouseholdAttendingMeeting");
         createNewHouseholdAttendingMeeting.setCancelable(false);
     }

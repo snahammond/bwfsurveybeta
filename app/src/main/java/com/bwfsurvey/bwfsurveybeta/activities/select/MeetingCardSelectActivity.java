@@ -2,6 +2,7 @@ package com.bwfsurvey.bwfsurveybeta.activities.select;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -52,6 +53,8 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
 
     private LinearLayout progressBar;
 
+    //this is set when new meeting is created
+    private static String uuidNewMeeting = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +74,12 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
             setTitle("Select or create new Meeting");
 
         initView();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        uuidNewMeeting = null;
     }
 
     private void initView() {
@@ -162,6 +171,9 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MeetingCardAdapter(MeetingCardSelectActivity.this, MeetingCardSelectActivity.listOfMeetings,namebwe,countrybwe,surveyType,operation);
         recyclerView.setAdapter(adapter);
+        if(uuidNewMeeting!=null&&!uuidNewMeeting.isEmpty()){
+            startHouseholdAttendingActivity(uuidNewMeeting);
+        }
     }
 
     @Override
@@ -245,6 +257,7 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
+                                    uuidNewMeeting = newMeeting.getId();
                                     showSavedSuccessfulAlert();
                                 }
                             });
@@ -286,14 +299,22 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
                 .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //reload the Cards again
+                        //reload the Cards again on show on the recycler is we find a new meeting uuid we will
+                        //open householdAttending meeting Card select
                         downloadMeetingListAndShowOnRecyclerView();
-                        //instead of reloading cards open HouseholdAttendingMeetingCardSelect and pass uuid
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .show()
                 .setCanceledOnTouchOutside(false);
+    }
+
+    private void startHouseholdAttendingActivity(String uuidMeeting) {
+        Intent i = new Intent(MeetingCardSelectActivity.this, HouseholdAttendingMeetingCardSelectActivity.class);
+        i.putExtra("UUID", uuidMeeting);
+        i.putExtra("OPERATION", operation);
+        i.putExtra("NAME_BWE", namebwe);
+        MeetingCardSelectActivity.this.startActivity(i);
     }
 
     private void showSaveFailedAlert(){

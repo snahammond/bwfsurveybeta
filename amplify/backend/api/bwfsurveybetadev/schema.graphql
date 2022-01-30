@@ -333,10 +333,27 @@ DiscussionsTaught: String!
 
 type HouseholdAttendingMeeting @model @auth(rules: [{ allow: public,provider: apiKey }]){
 id: ID!
+Namebwe: String!
 HeadHouseholdName: String!
 HeadHouseholdPhoneNumber: String!
 NumberOfAdults: Int!
 CommitedToUseAquatabs: String!
 NumberOfAquaTabsReceived: Int!
 MeetingID: String!
+}
+
+type SWEMonthlyTotalSummary @model @auth(rules: [{ allow: public,provider: apiKey }]){
+id: ID!
+Namebwe: String!
+date: AWSDate
+SWEPosition: String!
+NoWaterSampleTaken: Int!
+NoSurveysCompleted: Int!
+NoHealthCheck: Int!
+NoWaterStorageContainersDistributed: Int!
+NoSchoolVisits: Int!
+NoPublicServiceMessagesAired: Int!
+Completed: Int!
+Lat: String!
+Lng: String!
 }

@@ -15,17 +15,19 @@ import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
+import com.amplifyframework.datastore.generated.model.SWEMonthlyTotalSummary;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.SWEMonthlySummaryCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.adapters.SWEMonthlyTotalSummaryCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
 
-public class SWEMonthlySummaryCardSelectActivity extends AppCompatActivity {
-    private static ArrayList<SWEMonthlySummary> listOfSWEMonthlySummarys;
+public class SWEMonthlyTotalSummaryCardSelectActivity extends AppCompatActivity {
+    private static ArrayList<SWEMonthlyTotalSummary> listOfSWEMonthlyTotalSummarys;
     private RecyclerView recyclerView;
-    private SWEMonthlySummaryCardAdapter adapter;
+    private SWEMonthlyTotalSummaryCardAdapter adapter;
     private String namebwe = null;
     private String countrybwe = null;
     private String surveyType = null;
@@ -56,15 +58,15 @@ public class SWEMonthlySummaryCardSelectActivity extends AppCompatActivity {
 
     private void initView() {
         setContentView(R.layout.activity_recycler);
-        createSWEMonthlySummaryCardSelectList();
+        createSWEMonthlyTotalSummaryCardSelectList();
     }
 
-    private void createSWEMonthlySummaryCardSelectList() {
-        listOfSWEMonthlySummarys = new ArrayList<>();
-        downloadSWEMonthlySummaryListAndShowOnRecyclerView();
+    private void createSWEMonthlyTotalSummaryCardSelectList() {
+        listOfSWEMonthlyTotalSummarys = new ArrayList<>();
+        downloadSWEMonthlyTotalSummaryListAndShowOnRecyclerView();
     }
 
-    private void downloadSWEMonthlySummaryListAndShowOnRecyclerView() {
+    private void downloadSWEMonthlyTotalSummaryListAndShowOnRecyclerView() {
         try{
             int completedL = 0;
             int completedR = 1;
@@ -79,17 +81,17 @@ public class SWEMonthlySummaryCardSelectActivity extends AppCompatActivity {
                 completedR = 1;
             }
             Amplify.DataStore.query(
-                    SWEMonthlySummary.class,
-                    Where.matches(SWEMonthlySummary.COMPLETED.eq(completedL).or(SWEMonthlySummary.COMPLETED.eq(completedR))),
-                    allSWEMonthlySummarys -> {
+                    SWEMonthlyTotalSummary.class,
+                    Where.matches(SWEMonthlyTotalSummary.COMPLETED.eq(completedL).or(SWEMonthlyTotalSummary.COMPLETED.eq(completedR))),
+                    allSWEMonthlyTotalSummarys -> {
                         Log.i("Tutorials", "DataStore is queried.");
-                        while (allSWEMonthlySummarys.hasNext()) {
-                            SWEMonthlySummary aSWEMonthlySummary = allSWEMonthlySummarys.next();
-                            listOfSWEMonthlySummarys.add(aSWEMonthlySummary);
-                            Log.i("Tutorials", "Title: " + aSWEMonthlySummary.getNamebwe());
+                        while (allSWEMonthlyTotalSummarys.hasNext()) {
+                            SWEMonthlyTotalSummary aSWEMonthlyTotalSummary = allSWEMonthlyTotalSummarys.next();
+                            listOfSWEMonthlyTotalSummarys.add(aSWEMonthlyTotalSummary);
+                            Log.i("Tutorials", "Title: " + aSWEMonthlyTotalSummary.getNamebwe());
                             //try to send all the InitialSurveys by forcefully pushing
                             Amplify.API.mutate(
-                                    ModelMutation.create(aSWEMonthlySummary),
+                                    ModelMutation.create(aSWEMonthlyTotalSummary),
                                     response -> {
                                     },
                                     error -> {
@@ -99,7 +101,7 @@ public class SWEMonthlySummaryCardSelectActivity extends AppCompatActivity {
 
                         runOnUiThread(new Runnable() {
                             public void run() {
-                                showListOfSWEMonthlySummarys();
+                                showListOfSWEMonthlyTotalSummarys();
                             }
                         });
                     },
@@ -123,8 +125,8 @@ public class SWEMonthlySummaryCardSelectActivity extends AppCompatActivity {
         }
     }
 
-    private void showListOfSWEMonthlySummarys() {
-        if(listOfSWEMonthlySummarys.size()>0){
+    private void showListOfSWEMonthlyTotalSummarys() {
+        if(listOfSWEMonthlyTotalSummarys.size()>0){
             //wait a lil bit so that if we are offline things will settle
             //this is for the progress bar
             progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
@@ -150,7 +152,7 @@ public class SWEMonthlySummaryCardSelectActivity extends AppCompatActivity {
             }else if(operation.contentEquals("VIEW")){
                 msg = "No data for SWE Monthly Summary found.";
             }
-            ListUtils.showZeroListAlert(msg,SWEMonthlySummaryCardSelectActivity.this);
+            ListUtils.showZeroListAlert(msg,SWEMonthlyTotalSummaryCardSelectActivity.this);
         }
 
     }
@@ -158,7 +160,7 @@ public class SWEMonthlySummaryCardSelectActivity extends AppCompatActivity {
     private void initViewElements() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new SWEMonthlySummaryCardAdapter(SWEMonthlySummaryCardSelectActivity.this, listOfSWEMonthlySummarys,namebwe,countrybwe,surveyType,operation,lat,lng);
+        adapter = new SWEMonthlyTotalSummaryCardAdapter(SWEMonthlyTotalSummaryCardSelectActivity.this, listOfSWEMonthlyTotalSummarys,namebwe,countrybwe,surveyType,operation,lat,lng);
         recyclerView.setAdapter(adapter);
     }
 }
