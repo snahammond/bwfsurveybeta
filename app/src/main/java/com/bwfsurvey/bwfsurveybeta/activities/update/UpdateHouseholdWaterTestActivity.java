@@ -103,7 +103,8 @@ public class UpdateHouseholdWaterTestActivity extends AppCompatActivity {
                     try {
                         method = theHouseholdWaterTest.getClass().getMethod(methodName);
                         Object ansObject = method.invoke(theHouseholdWaterTest);
-                        answer = ansObject.toString();
+                        if(ansObject!=null)
+                            answer = ansObject.toString();
                     } catch (Exception e) {
                         Log.e("Tutorials", "Could not get answer " + nameOfAns);
                     }
@@ -377,7 +378,8 @@ public class UpdateHouseholdWaterTestActivity extends AppCompatActivity {
             }
         }
         if(ans==null){
-            ans = foundInterchange.getValidation().getDefaultValue();
+            if(foundInterchange!=null)
+                ans = foundInterchange.getValidation().getDefaultValue();
         }
         return ans;
     }

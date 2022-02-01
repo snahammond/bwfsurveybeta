@@ -91,6 +91,7 @@ public class ViewVolunteerHouseholdWaterTestActivity extends AppCompatActivity {
                 try {
                     method = theVolunteerHouseholdWaterTest.getClass().getMethod(methodName);
                     Object ansObject = method.invoke(theVolunteerHouseholdWaterTest);
+                    if(ansObject!=null)
                     answer = ansObject.toString();
                     //answer is a programmer 1, convert it to a user friendly one
                     if(interchange.getAnswer().getAnswerDef().getType()== AnswerType.ENUMVALUE){
@@ -131,12 +132,16 @@ public class ViewVolunteerHouseholdWaterTestActivity extends AppCompatActivity {
                             Date date_ = null;
                             try {
                                 date_ = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
-                                String dateToShow = new SimpleDateFormat("dd/MM/yyyy").format(date_);
+                                if(date_!=null){
+                                    String dateToShow = new SimpleDateFormat("dd/MM/yyyy").format(date_);
 
-                                if(!dateToShow.contentEquals("01/01/1900"))
-                                    ansToWrite = dateToShow;
-                                else
+                                    if(!dateToShow.contentEquals("01/01/1900"))
+                                        ansToWrite = dateToShow;
+                                    else
+                                        ansToWrite = "";
+                                }else{
                                     ansToWrite = "";
+                                }
 
                             } catch (Exception e) {
                                 ansToWrite = "";

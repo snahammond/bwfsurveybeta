@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.bwfsurveybeta.R;
@@ -27,7 +28,7 @@ public class ConfirmSignUp extends DialogFragment {
 
     // Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         // Verify that the host activity implements the callback interface
         try {
@@ -39,6 +40,7 @@ public class ConfirmSignUp extends DialogFragment {
         }
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -59,7 +61,7 @@ public class ConfirmSignUp extends DialogFragment {
                         // Send the negative button event back to the host activity
                         listener.onConfirmSignUpDialogNegativeClick(ConfirmSignUp.this);
                     }
-                });;
+                });
         // Create the AlertDialog object and return it
         return builder.create();
     }

@@ -1689,8 +1689,6 @@ query SyncSweMonthlyTotalSummaries(
       NoWaterSampleTaken
       NoSurveysCompleted
       NoHealthCheck
-      NoWaterStorageContainersDistributed
-      NoSchoolVisits
       NoPublicServiceMessagesAired
       Completed
       Lat
@@ -1714,8 +1712,6 @@ query GetSweMonthlyTotalSummary($id: ID!) {
     NoWaterSampleTaken
     NoSurveysCompleted
     NoHealthCheck
-    NoWaterStorageContainersDistributed
-    NoSchoolVisits
     NoPublicServiceMessagesAired
     Completed
     Lat
@@ -1745,8 +1741,6 @@ query ListSweMonthlyTotalSummarys(
       NoWaterSampleTaken
       NoSurveysCompleted
       NoHealthCheck
-      NoWaterStorageContainersDistributed
-      NoSchoolVisits
       NoPublicServiceMessagesAired
       Completed
       Lat

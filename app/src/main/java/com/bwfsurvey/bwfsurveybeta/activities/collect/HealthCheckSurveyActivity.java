@@ -34,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Objects;
 
 public class HealthCheckSurveyActivity extends AppCompatActivity {
 
@@ -78,7 +79,7 @@ public class HealthCheckSurveyActivity extends AppCompatActivity {
 
         Log.i("Tutorials", "Selected family follow up survey class: " + surveyId);
         setContentView(R.layout.activity_recycler);
-        getSupportActionBar().setTitle((CharSequence) "Health Check Survey; "+householdName);
+        Objects.requireNonNull(getSupportActionBar()).setTitle((CharSequence) "Health Check Survey; "+householdName);
         initView();
     }
 
@@ -189,7 +190,7 @@ public class HealthCheckSurveyActivity extends AppCompatActivity {
                 hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
-                    if(event.getModelName().contentEquals("HealthCheckSurvey")){
+                    if(event!=null && event.getModelName().contentEquals("HealthCheckSurvey")){
                         if(event.getElement().getModel().equals(healthCheckSurveyToSave)){
                             runOnUiThread(new Runnable() {
                                 public void run() {
@@ -197,7 +198,11 @@ public class HealthCheckSurveyActivity extends AppCompatActivity {
                                     showSavedSuccessfulAlert();
                                 }
                             });
+                        }else{
+                            progressBar.setVisibility(View.GONE);
                         }
+                    }else{
+                        progressBar.setVisibility(View.GONE);
                     }
                 }
         );

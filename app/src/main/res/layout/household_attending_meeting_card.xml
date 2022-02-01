@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:text="Committed to use Aquatabs"
+            android:text="Committed to use chlorine tablets"
             android:textSize="10sp"
             android:layout_marginTop="10dp"/>
 
@@ -97,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:text="Number of Aquatabs received"
+            android:text="Number of chlorine tablets received"
             android:textSize="10sp"
             android:layout_marginTop="10dp"/>
 

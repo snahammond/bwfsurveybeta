@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
@@ -37,15 +38,14 @@ import com.bwfsurvey.bwfsurveybeta.dialogs.ResetPasswordUsername;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class AuthenticationActivity extends FragmentActivity implements ConfirmSignUp.ConfirmSignUpListener, ResetPasswordUsername.ResetPasswordUsernameListener, ResetPasswordConfirmation.ResetPasswordConfirmationListener {
-    private static final String SHOWING_CONFIRMATION_DIALOG = "showing_confirmation_dialog";
-    private static final String STRING_CONFIRMATION_CODE = "string_confirmation_code";
-
     private LinearLayout progressBar;
     private TextView progressBarText;
 
@@ -113,11 +113,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
 
     public void doAuthentication(){
         //do the progress
-        runOnUiThread(new Runnable() {
-            public void run() {
-                startProgress("Please wait... Starting up!");
-            }
-        });
+        runOnUiThread(() -> startProgress("Please wait... Starting up!"));
 
         //get the current authenticated user from local
         AuthUser authUser = Amplify.Auth.getCurrentUser();
@@ -162,24 +158,20 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                 },
                 error ->{
                     Log.i("Tutorials", "user offline uniqueBWEName: " + uniqueBWEName + " authenticatedName: " +authenticatedName);
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            endProgress();
-                            //the user is offline
-                            authenticatedName = uniqueBWEName;
-                            startAuthenticatedScreen(false);
-                        }
+                    runOnUiThread(() -> {
+                        endProgress();
+                        //the user is offline
+                        authenticatedName = uniqueBWEName;
+                        startAuthenticatedScreen(false);
                     });
                 });
         }else{
             //user is not sign-in
             Log.i("Tutorials", "user not signed in" );
             //ask the user to log in or sign up if he is a new user
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    endProgress();
-                    showAuthenticationScreen();
-                }
+            runOnUiThread(() -> {
+                endProgress();
+                showAuthenticationScreen();
             });
         }
 
@@ -187,63 +179,55 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
 
     public void showAuthenticatedScreen(String authenticatedName,Boolean calledAMPStart){
         setContentView(R.layout.activity_authenticated);
-        TextView textAuthenticated = (TextView) findViewById(R.id.textAuthenticated);
+        TextView textAuthenticated = findViewById(R.id.textAuthenticated);
         textAuthenticated.setText(authenticatedName);
 
-        Button button_continueAs = (Button) findViewById(R.id.button_continueAs);
-        button_continueAs.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //go to menu screen
-                Intent i = new Intent(getApplicationContext(), MenuActivity.class);
-                i.putExtra("NAME_BWE", uniqueBWEName);
-                i.putExtra("COUNTRY_BWE", SWECountry);
-                i.putExtra("POSITION_BWE", SWEPosition);
-                i.putExtra("CALLED_AMPSTART", calledAMPStart);
-                startActivity(i);
-            }
+        Button button_continueAs = findViewById(R.id.button_continueAs);
+        button_continueAs.setOnClickListener(v -> {
+            //go to menu screen
+            Intent i = new Intent(getApplicationContext(), MenuActivity.class);
+            i.putExtra("NAME_BWE", uniqueBWEName);
+            i.putExtra("COUNTRY_BWE", SWECountry);
+            i.putExtra("POSITION_BWE", SWEPosition);
+            i.putExtra("CALLED_AMPSTART", calledAMPStart);
+            startActivity(i);
         });
 
-        Button button_signOut = (Button) findViewById(R.id.button_signOut);
-        button_signOut.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //sign out of cognito, move back to authentication screen
-                Log.i("Tutorials", "sign out of cognito, move back to authentication screen" );
-                signout();
-            }
+        Button button_signOut = findViewById(R.id.button_signOut);
+        button_signOut.setOnClickListener(v -> {
+            //sign out of cognito, move back to authentication screen
+            Log.i("Tutorials", "sign out of cognito, move back to authentication screen" );
+            signout();
         });
 
-        runOnUiThread(new Runnable() {
-            public void run() {
-                endProgress();
-            }
-        });
+        runOnUiThread(() -> endProgress());
     }
 
     private void showAuthenticationScreen() {
         setContentView(R.layout.activity_authentication);
-        editTextUserfamilyname = (EditText) findViewById(R.id.editTextUserfamilyname);
-        editTextUsergivenname = (EditText) findViewById(R.id.editTextUsergivenname);
-        editTextEmailAddress = (EditText) findViewById(R.id.editTextEmailAddress);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        spinnerCountry = (Spinner) findViewById(R.id.spinnerCountry);
-        radioSWEPosition = (RadioGroup) findViewById(R.id.radioSWEPosition);
-        radioEducator = (RadioButton) findViewById(R.id.Educator);
-        radioVolunteer = (RadioButton) findViewById(R.id.Volunteer);
+        editTextUserfamilyname = findViewById(R.id.editTextUserfamilyname);
+        editTextUsergivenname = findViewById(R.id.editTextUsergivenname);
+        editTextEmailAddress = findViewById(R.id.editTextEmailAddress);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        spinnerCountry = findViewById(R.id.spinnerCountry);
+        radioSWEPosition = findViewById(R.id.radioSWEPosition);
+        radioEducator = findViewById(R.id.Educator);
+        radioVolunteer = findViewById(R.id.Volunteer);
 
-        progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
-        progressBarText = (TextView) findViewById(R.id.pbText);
+        progressBar = findViewById(R.id.llProgressBar);
+        progressBarText = findViewById(R.id.pbText);
 
-        forgotPasswordLayout = (LinearLayout) findViewById(R.id.forgotPasswordLayout);
+        forgotPasswordLayout = findViewById(R.id.forgotPasswordLayout);
 
-        TextView newUserOrAlreadySignUpPrompt = (TextView) findViewById(R.id.newUserOrAlreadySignUpPrompt);
-        Button button_login = (Button) findViewById(R.id.button_login);
-        Button button_signup = (Button) findViewById(R.id.button_signup);
-        Button button_resetPassword = (Button) findViewById(R.id.button_resetPassword);
+        TextView newUserOrAlreadySignUpPrompt = findViewById(R.id.newUserOrAlreadySignUpPrompt);
+        Button button_login = findViewById(R.id.button_login);
+        Button button_signup = findViewById(R.id.button_signup);
+        Button button_resetPassword = findViewById(R.id.button_resetPassword);
 
         button_signup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //when signup is clicked
-                if(AuthenticationState=="LOGIN"){
+                if(AuthenticationState.equals("LOGIN")){
                     AuthenticationState = "SIGNUP";
 
                     editTextUserfamilyname.setVisibility(View.VISIBLE);
@@ -254,27 +238,18 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                     ArrayList<String> countries = new ArrayList<>();
                     countries.add("Select your country...");
                     String[] countryList = getCountryListByLocale().toArray(new String[0]);
-                    for(String country: countryList){
-                        countries.add(country);
-                    }
+                    Collections.addAll(countries, countryList);
 
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(AuthenticationActivity.this,R.layout.spinner_country_text_item, countries){
                         @Override
                         public boolean isEnabled(int position){
-                            if(position == 0)
-                            {
-                                // Disable the first item from Spinner
-                                // First item will be use for hint
-                                return false;
-                            }
-                            else
-                            {
-                                return true;
-                            }
+                            // Disable the first item from Spinner
+                            // First item will be use for hint
+                            return position != 0;
                         }
                         @Override
                         public View getDropDownView(int position, View convertView,
-                                                    ViewGroup parent) {
+                                                    @NonNull ViewGroup parent) {
                             View view = super.getDropDownView(position, convertView, parent);
                             TextView tv = (TextView) view;
                             if(position == 0){
@@ -304,23 +279,13 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                     });
 
                     radioSWEPosition.setVisibility(View.VISIBLE);
-                    radioEducator.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            SWEPosition = ((RadioButton)v).getText().toString();
-                        }
-                    });
-                    radioVolunteer.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            SWEPosition = ((RadioButton)v).getText().toString();
-                        }
-                    });
+                    radioEducator.setOnClickListener(v1 -> SWEPosition = ((RadioButton) v1).getText().toString());
+                    radioVolunteer.setOnClickListener(v12 -> SWEPosition = ((RadioButton) v12).getText().toString());
 
                     button_login.setText(R.string.signup);
                     button_signup.setText(R.string.Login);
                     newUserOrAlreadySignUpPrompt.setText("Already Signed Up?");
-                }else if(AuthenticationState=="SIGNUP"){
+                }else if(AuthenticationState.equals("SIGNUP")){
                     AuthenticationState = "LOGIN";
 
                     editTextUserfamilyname.setVisibility(View.GONE);
@@ -336,53 +301,42 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
             }
         });
 
-        button_login.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        button_login.setOnClickListener(v -> {
 
-                email = editTextEmailAddress.getText().toString();
-                password = editTextPassword.getText().toString();
-                if(AuthenticationState=="LOGIN"){
-                    signin(email,password);
-                }else{
-                    surname = editTextUserfamilyname.getText().toString();
-                    firstname = editTextUsergivenname.getText().toString();
-                    if(authenticationDataValid()){
-                        signup();
-                        Log.i("Tutorials", "going to sign up all values are correct" );
-                        Log.i("Tutorials", "surname " +surname +" firstname " +firstname+ " email " +email+" password " +password+" SWECountry " +SWECountry+" SWEPosition " +SWEPosition);
-                    }
-
-                    else
-                        //showInvalidDataAlert();
-                        showTitleMessageAlert("Validation Error", "Please fill in all details");
+            email = editTextEmailAddress.getText().toString();
+            password = editTextPassword.getText().toString();
+            if(AuthenticationState.equals("LOGIN")){
+                signin(email,password);
+            }else{
+                surname = editTextUserfamilyname.getText().toString();
+                firstname = editTextUsergivenname.getText().toString();
+                if(authenticationDataValid()){
+                    signup();
+                    Log.i("Tutorials", "going to sign up all values are correct" );
+                    Log.i("Tutorials", "surname " +surname +" firstname " +firstname+ " email " +email+" password " +password+" SWECountry " +SWECountry+" SWEPosition " +SWEPosition);
                 }
 
+                else
+                    //showInvalidDataAlert();
+                    showTitleMessageAlert("Validation Error", "Please fill in all details");
             }
+
         });
 
-        button_resetPassword.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                showResetPasswordUsernameDialog();
-            }
-        });
+        button_resetPassword.setOnClickListener(v -> showResetPasswordUsernameDialog());
     }
 
     private void showTitleMessageAlert(String title, String message) {
-        runOnUiThread(new Runnable() {
-            public void run() {
-                new AlertDialog.Builder(AuthenticationActivity.this)
-                        .setTitle(title)
-                        .setMessage(message + "\n" )
-                        // A null listener allows the button to dismiss the dialog and take no further action.
-                        .setNegativeButton(android.R.string.ok, null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
-            }
-        });
+        runOnUiThread(() -> new AlertDialog.Builder(AuthenticationActivity.this)
+                .setTitle(title)
+                .setMessage(message + "\n" )
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.ok, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show());
     }
 
     private boolean authenticationDataValid() {
-        boolean validity = false;
         if(firstname!=null)
             if(!firstname.isEmpty())
                 if(surname!=null)
@@ -394,9 +348,8 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                                         if(SWECountry!=null)
                                             if(!SWECountry.isEmpty())
                                                 if(SWEPosition!=null)
-                                                    if(!SWEPosition.isEmpty())
-                                                        return true;
-        return validity;
+                                                    return !SWEPosition.isEmpty();
+        return false;
     }
 
     public void ShowHidePass(View view){
@@ -439,31 +392,19 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
     @Override
     public void onConfirmSignUpDialogPositiveClick(DialogFragment dialog,String confirmationCode) {
         //do progress thing here
-        runOnUiThread(new Runnable() {
-            public void run() {
-                startProgress("Please wait... Comfirming!");
-            }
-        });
+        runOnUiThread(() -> startProgress("Please wait... Comfirming!"));
 
 
         Amplify.Auth.confirmSignUp(
                 editTextEmailAddress.getText().toString(),
                 confirmationCode,
                 result -> {
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            endProgress();
-                        }
-                    });
+                    runOnUiThread(() -> endProgress());
                     //go to menu screen //sign in automatically and move to next screen
                     signin(email,password);
                 },
                 error -> {
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            endProgress();
-                        }
-                    });
+                    runOnUiThread(() -> endProgress());
                     showTitleMessageAlert("Confirmation Error", "Please check the code and try again.");
                     Log.e("Tutorials", "Confirm signUp " + error.toString());
                 }
@@ -472,16 +413,12 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
 
     @Override
     public void onConfirmSignUpDialogNegativeClick(DialogFragment dialog) {
-        dialog.getDialog().cancel();
+        Objects.requireNonNull(dialog.getDialog()).cancel();
     }
 
 
     public void signin(String email,String password){
-        runOnUiThread(new Runnable() {
-            public void run() {
-                startProgress("Please wait... signing in!");
-            }
-        });
+        runOnUiThread(() -> startProgress("Please wait... signing in!"));
         Amplify.Auth.signIn(
             email,
             password,
@@ -490,31 +427,19 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                     UserState = "SIGNED_IN";
                     Log.i("Tutorial","User state after sign in " + UserState);
 
-                    if(UserState=="SIGNED_IN"){
+                    if(UserState.equals("SIGNED_IN")){
                         doAuthentication();
                     }
                 }else{
 
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            endProgress();
-                        }
-                    });
+                    runOnUiThread(() -> endProgress());
 
-                    AuthenticationActivity.this.runOnUiThread(new Runnable() {
-                        public void run() {
-                            Toast.makeText(AuthenticationActivity.this, "Log in failed Please check, if you are a new user please sign up", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    AuthenticationActivity.this.runOnUiThread(() -> Toast.makeText(AuthenticationActivity.this, "Log in failed Please check, if you are a new user please sign up", Toast.LENGTH_SHORT).show());
                 }
             },
             error -> {
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        endProgress();
-                    }
-                });
-                if(error.getMessage()=="User not confirmed in the system."){
+                runOnUiThread(() -> endProgress());
+                if( error.getMessage()!=null && error.getMessage().equals("User not confirmed in the system.")){
                     showConfirmSignUp();
                 }else{
                     Log.e("Tutorial", error.toString());
@@ -535,11 +460,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
         AuthUserAttribute swePositionAttr =  new AuthUserAttribute(AuthUserAttributeKey.custom("custom:Position"),SWEPosition);
         attributes.add(swePositionAttr);
         //start a progress thing here
-        runOnUiThread(new Runnable() {
-            public void run() {
-                startProgress("Please wait... Signing Up!");
-            }
-        });
+        runOnUiThread(() -> startProgress("Please wait... Signing Up!"));
         try{
             Amplify.Auth.signUp(
                     email,
@@ -550,65 +471,43 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
                             .build(),
                     result ->{
                         Log.i("Tutorials", "Sign up Result: " + result.toString());
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                endProgress();
-                            }
-                        });
+                        runOnUiThread(() -> endProgress());
                         showConfirmSignUp();
                     },
                     error -> {
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                endProgress();
-                            }
-                        });
+                        runOnUiThread(() -> endProgress());
                         showTitleMessageAlert("Sign Up Error", error.getMessage());
                         Log.e("Tutorials", "Sign up failed", error);
                     }
             );
         }catch (Exception x){
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    endProgress();
-                }
-            });
+            runOnUiThread(() -> endProgress());
             showTitleMessageAlert("Sign Up Error", x.getMessage());
         }
 
     }
 
     public void signout(){
-        runOnUiThread(new Runnable() {
-            public void run() {
-                startProgress("Signing out!");
-            }
-        });
+        runOnUiThread(() -> startProgress("Signing out!"));
 
         Amplify.Auth.signOut(
             () -> {
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        endProgress();
-                    }
-                });
+                runOnUiThread(() -> endProgress());
                 doAuthentication();
                 Log.i("Tutorials", "Signed out successfully");
             },
-            error -> {
-                Log.e("Tutorials", error.toString());
-            }
+            error -> Log.e("Tutorials", error.toString())
         );
     }
 
     private void startProgress(String s) {
         Log.i("Tutorials", "Going to show progress " + s );
         if(progressBar==null){
-            progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
+            progressBar = findViewById(R.id.llProgressBar);
             Log.i("Tutorials", "Progress bar was null " + s );
         }
         if(progressBarText==null){
-            progressBarText = (TextView) findViewById(R.id.pbText);
+            progressBarText = findViewById(R.id.pbText);
         }
 
         progressBarText.setText(s);
@@ -618,7 +517,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
     private void endProgress() {
         Log.i("Tutorials", "Done showing progress" );
         if(progressBar==null)
-            progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
+            progressBar = findViewById(R.id.llProgressBar);
 
         progressBar.setVisibility(View.GONE);
     }
@@ -650,11 +549,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
     }
 
     private void startAuthenticatedScreen(boolean calledAMPStart){
-        AuthenticationActivity.this.runOnUiThread(new Runnable() {
-            public void run() {
-                showAuthenticatedScreen(authenticatedName,calledAMPStart);
-            }
-        });
+        AuthenticationActivity.this.runOnUiThread(() -> showAuthenticatedScreen(authenticatedName,calledAMPStart));
     }
 
     private DialogFragment resetPasswordUsernameDialog;
@@ -669,29 +564,19 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
     public void onResetPasswordUsernameDialogPositiveClick(DialogFragment dialog, String email) {
         resetPasswordEmail = email;
         //do progress thing here
-        runOnUiThread(new Runnable() {
-            public void run() {
-                startProgress("Please wait... Sending reset code to email!");
-            }
-        });
+        runOnUiThread(() -> startProgress("Please wait... Sending reset code to email!"));
 
         Amplify.Auth.resetPassword(
                 email,
-                result -> {
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            endProgress();
-                            showResetPasswordConfirmationDialog();
-                        }
-                    });
-                },
+                result -> runOnUiThread(() -> {
+                    endProgress();
+                    showResetPasswordConfirmationDialog();
+                }),
                 error -> {
 
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            endProgress();
-                            showTitleMessageAlert("Password Reset Error", "Password reset unsucessful, Please try again later");
-                        }
+                    runOnUiThread(() -> {
+                        endProgress();
+                        showTitleMessageAlert("Password Reset Error", "Password reset unsucessful, Please try again later");
                     });
                     Log.e("Tutorials", "Reset Password username Error " + error.toString());
                 }
@@ -701,7 +586,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
 
     @Override
     public void onResetPasswordUsernameDialogNegativeClick(DialogFragment dialog) {
-        dialog.getDialog().cancel();
+        Objects.requireNonNull(dialog.getDialog()).cancel();
     }
 
     private DialogFragment resetPasswordConfirmationDialog;
@@ -716,18 +601,14 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
         Amplify.Auth.confirmResetPassword(
                 newPassword,
                 confirmationCode,
-                () -> {
-                    signin(resetPasswordEmail,newPassword);
-                },
-                error -> {
-                    Log.e("Tutorials", "Reset Password username Error " + error.toString());
-                }
+                () -> signin(resetPasswordEmail,newPassword),
+                error -> Log.e("Tutorials", "Reset Password username Error " + error.toString())
         );
     }
 
     @Override
     public void onResetPasswordConfirmationDialogNegativeClick(DialogFragment dialog) {
-        dialog.getDialog().cancel();
+        Objects.requireNonNull(dialog.getDialog()).cancel();
     }
 
     /*
@@ -740,17 +621,6 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
             outState.putString(STRING_CONFIRMATION_CODE, ((EditText)confirmSignUp.getDialog().findViewById(R.id.confirmation_code)).getText().toString());
         //}
         super.onSaveInstanceState(outState);
-    }
-    */
-    /*
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        Log.i("Tutorials", "Confirmation pop is going to come on" );
-        boolean showingDialog = savedInstanceState.getBoolean(SHOWING_CONFIRMATION_DIALOG);
-        if (showingDialog) {
-            Log.i("Tutorials", "Confirmation pop is going to come on inside" );
-            showConfirmSignUp();
-        }
     }
     */
 

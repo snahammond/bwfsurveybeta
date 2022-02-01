@@ -202,14 +202,14 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
     public void onDialogPositiveClick(DialogFragment dialog, VolunteerHousehold newVolunteerHousehold) {
         Log.i("Tutorials", "newVolunteerHousehold " + newVolunteerHousehold.getCommunity() + " " +newVolunteerHousehold.getHeadHouseholdName() + " " + newVolunteerHousehold.getHouseholdLocation() );
 
-        if (newVolunteerHousehold.getHeadHouseholdName()!=null&&newVolunteerHousehold.getHeadHouseholdName()!=""){
+        if (newVolunteerHousehold.getHeadHouseholdName()!=null&& !newVolunteerHousehold.getHeadHouseholdName().equals("")){
             checkToken = Amplify.Hub.subscribe(
                     HubChannel.DATASTORE,
                     hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
                     hubEvent -> {
                         OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
-                        Log.i("bwfSurveyAmplify", " VolunteerHousehold "+event.getModelName());
-                        if(event.getModelName().contentEquals("VolunteerHousehold")){
+                        //Log.i("bwfSurveyAmplify", " VolunteerHousehold "+event.getModelName());
+                        if(event!=null && event.getModelName().contentEquals("VolunteerHousehold")){
                             if(event.getElement().getModel().equals(newVolunteerHousehold)){
                                 runOnUiThread(new Runnable() {
                                     public void run() {
@@ -217,7 +217,11 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
                                         showSavedSuccessfulAlert();
                                     }
                                 });
+                            }else{
+                                progressBar.setVisibility(View.GONE);
                             }
+                        }else{
+                            progressBar.setVisibility(View.GONE);
                         }
                     }
             );

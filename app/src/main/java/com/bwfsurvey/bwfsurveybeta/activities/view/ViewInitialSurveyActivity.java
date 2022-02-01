@@ -91,6 +91,7 @@ public class ViewInitialSurveyActivity extends AppCompatActivity {
                 try {
                     method = theInitialSurvey.getClass().getMethod(methodName);
                     Object ansObject = method.invoke(theInitialSurvey);
+                    if(ansObject!=null)
                     answer = ansObject.toString();
                     //answer is a programmer 1, convert it to a user friendly one
                     if(interchange.getAnswer().getAnswerDef().getType()== AnswerType.ENUMVALUE){
@@ -128,15 +129,19 @@ public class ViewInitialSurveyActivity extends AppCompatActivity {
                             dateStr = dateStr.substring( 1, dateStr.length() - 1 );
                             Log.i("Tutorial", "index dateStr: "+dateStr);
 
-                            Date date_ = null;
+                            Date date_;
                             try {
                                 date_ = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
-                                String dateToShow = new SimpleDateFormat("dd/MM/yyyy").format(date_);
+                                if(date_!=null){
+                                    String dateToShow = new SimpleDateFormat("dd/MM/yyyy").format(date_);
 
-                                if(!dateToShow.contentEquals("01/01/1900"))
-                                    ansToWrite = dateToShow;
-                                else
+                                    if(!dateToShow.contentEquals("01/01/1900"))
+                                        ansToWrite = dateToShow;
+                                    else
+                                        ansToWrite = "";
+                                }else{
                                     ansToWrite = "";
+                                }
 
                             } catch (Exception e) {
                                 ansToWrite = "";

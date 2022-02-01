@@ -2,7 +2,6 @@ package com.bwfsurvey.bwfsurveybeta.activities.collect;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,6 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Objects;
 
 public class CommunityWaterSurveyActivity extends AppCompatActivity {
     private String namebwe = null;
@@ -41,7 +41,6 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
     private String countrybwe = null;
     private String community = null;
     private String communityWaterLoc = null;
-    private String householdName = null;
 
     private static ArrayList<Interchange> interchanges;
     private RecyclerView recyclerView;
@@ -72,13 +71,13 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
             lng = getIntent().getStringExtra("LNG");
 
         setContentView(R.layout.activity_recycler);
-        getSupportActionBar().setTitle((CharSequence) "Community Water Test; "+community);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Community Water Test; " +community);
         initView();
     }
 
     private void initView() {
         createCommunityWaterSurveyQuestionaire();
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new InterchangeCardAdapter(CommunityWaterSurveyActivity.this, CommunityWaterSurveyActivity.interchanges);
         recyclerView.setAdapter(adapter);
@@ -185,15 +184,17 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                 hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
-                    if(event.getModelName().contentEquals("CommunityWaterTest")){
+                    if(event!=null && event.getModelName().contentEquals("CommunityWaterTest")){
                         if(event.getElement().getModel().equals(communityWaterTestToSave)){
-                            runOnUiThread(new Runnable() {
-                                public void run() {
-                                    progressBar.setVisibility(View.GONE);
-                                    showSavedSuccessfulAlert();
-                                }
+                            runOnUiThread(() -> {
+                                progressBar.setVisibility(View.GONE);
+                                showSavedSuccessfulAlert();
                             });
+                        }else{
+                            progressBar.setVisibility(View.GONE);
                         }
+                    }else{
+                        progressBar.setVisibility(View.GONE);
                     }
                 }
         );
@@ -201,11 +202,7 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                 update -> {
                     Log.i("Tutorial", "Saved Successfully ");
 
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            doSyncWaitAndShowSavedSuccessfulAlert();
-                        }
-                    });
+                    runOnUiThread(() -> doSyncWaitAndShowSavedSuccessfulAlert());
                 },
                 failure -> {
                     Log.i("Tutorial", "Save Failed ");
@@ -215,41 +212,23 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
     }
 
     private void showSaveFailedAlert(){
-        runOnUiThread(new Runnable() {
-            public void run() {
-                new AlertDialog.Builder(CommunityWaterSurveyActivity.this)
-                        .setTitle("Save Failed")
-                        .setMessage("Community Water Test Save Failed! Please try again\n" )
-                        // A null listener allows the button to dismiss the dialog and take no further action.
-                        .setNegativeButton(android.R.string.ok, null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show()
-                        .setCanceledOnTouchOutside(false);
-            }
-        });
+        runOnUiThread(() -> new AlertDialog.Builder(CommunityWaterSurveyActivity.this)
+                .setTitle("Save Failed")
+                .setMessage("Community Water Test Save Failed! Please try again\n" )
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.ok, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show()
+                .setCanceledOnTouchOutside(false));
     }
 
     private void doSyncWaitAndShowSavedSuccessfulAlert(){
         //show progress bar so that if user is offline, the save will go into pending to be shot into cloud
         //this is for the progress bar
-        progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
-        TextView progressBarText = (TextView) findViewById(R.id.pbText);
+        progressBar = findViewById(R.id.llProgressBar);
+        TextView progressBarText = findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Syncing Up!");
         progressBar.setVisibility(View.VISIBLE);
-        /*
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
-
-            @Override
-            public void onFinish() {
-                progressBar.setVisibility(View.GONE);
-                showSavedSuccessfulAlert();
-            }
-        };
-        countDownTimer.start();
-         */
     }
 
     private void showSavedSuccessfulAlert(){
@@ -259,16 +238,12 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                 .setTitle("Saved Succussfully")
                 .setMessage("Community Water Test Saved Succussfully \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
-                .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //reset all the user answers
-                        for(Interchange interchange: CommunityWaterSurveyActivity.interchanges){
-                            interchange.getAnswer().setAns(null);
-                        }
-                        CommunityWaterSurveyActivity.this.finish();
+                .setNegativeButton(android.R.string.ok, (dialog, which) -> {
+                    //reset all the user answers
+                    for(Interchange interchange: CommunityWaterSurveyActivity.interchanges){
+                        interchange.getAnswer().setAns(null);
                     }
+                    CommunityWaterSurveyActivity.this.finish();
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .show()
@@ -281,9 +256,9 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
         String date_s = dateFormat.format(calendar.getTime());
 
         String Namebwe = namebwe;
-        String Country = (String) countrybwe;
-        String Community = (String) community;
-        String CommunityWaterLoc = (String) communityWaterLoc;
+        String Country = countrybwe;
+        String Community = community;
+        String CommunityWaterLoc = communityWaterLoc;
         Temporal.Date  ColilertDateTested = DateUtils.parseDateWithDefault(InterchangeUtils.getInterchangeAns("ColilertDateTested",interchangesWithUserAns));
         Temporal.Date ColilertDateRead = DateUtils.parseDateWithDefault(InterchangeUtils.getInterchangeAns("ColilertDateRead",interchangesWithUserAns));
         String ColilertTestResult = (String) InterchangeUtils.getInterchangeAns("ColilertTestResult",interchangesWithUserAns);
@@ -292,7 +267,7 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
         String PetrifilmTestResult = (String) InterchangeUtils.getInterchangeAns("PetrifilmTestResult",interchangesWithUserAns);
         Temporal.Date date = new Temporal.Date(date_s);
 
-        CommunityWaterTest communityWaterTest = CommunityWaterTest.builder()
+        return CommunityWaterTest.builder()
                 .namebwe(Namebwe)
                 .country(Country)
                 .community(Community)
@@ -308,7 +283,6 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                 .lng(lng)
                 .date(date)
                 .build();
-        return communityWaterTest;
     }
 
 

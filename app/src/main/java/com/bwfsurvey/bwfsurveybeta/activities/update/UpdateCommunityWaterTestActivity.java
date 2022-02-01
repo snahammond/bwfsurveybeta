@@ -100,7 +100,8 @@ public class UpdateCommunityWaterTestActivity extends AppCompatActivity {
                     try {
                         method = theCommunityWaterTest.getClass().getMethod(methodName);
                         Object ansObject = method.invoke(theCommunityWaterTest);
-                        answer = ansObject.toString();
+                        if(ansObject!=null)
+                            answer = ansObject.toString();
                     } catch (Exception e) {
                         Log.e("Tutorials", "Could not get answer " + nameOfAns);
                     }
@@ -295,7 +296,9 @@ public class UpdateCommunityWaterTestActivity extends AppCompatActivity {
             }
         }
         if(ans==null){
-            ans = foundInterchange.getValidation().getDefaultValue();
+            if(foundInterchange!=null) {
+                ans = foundInterchange.getValidation().getDefaultValue();
+            }
         }
         return ans;
     }
@@ -376,7 +379,7 @@ public class UpdateCommunityWaterTestActivity extends AppCompatActivity {
     }
 
     public static Temporal.Date parseDateWithDefault(Object s){
-        Temporal.Date dateValue = null;
+        Temporal.Date dateValue;
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         try{

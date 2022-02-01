@@ -138,28 +138,22 @@ public class SWEMonthlyTotalSummaryActivity extends AppCompatActivity {
         }
 
         if (id == R.id.suspend) {
-            ArrayList<Interchange> interchangesWithUserAns = adapter.retrieveData();
-
-            String lat_ = "";
-            String lng_ = "";
-            if(lat!=null&&lng!=null){
-                lat_= lat;
-                lng_ = lng;
-            }else{
-                //try and get it again
-                PhoneLocation phoneLocation = new PhoneLocation(SWEMonthlyTotalSummaryActivity.this);
-                String[] arraylatlng = phoneLocation.getLocation();
-                if(arraylatlng!=null){
-                    lat_ = arraylatlng[0];
-                    lng_ = arraylatlng[1];
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    new AlertDialog.Builder(SWEMonthlyTotalSummaryActivity.this)
+                            .setTitle("Info")
+                            .setMessage("Suspend not enabled \n" )
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+                            .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_info)
+                            .show()
+                            .setCanceledOnTouchOutside(false);
                 }
-            }
-            //make an InitialSurvey object
-            SWEMonthlyTotalSummary sweMonthlyTotalSummary = makeSWEMonthlyTotalSummaryObject(interchangesWithUserAns,0,lat_,lng_);
-            //save the initialSurvey object
-            saveSWEMonthlyTotalSummary(sweMonthlyTotalSummary);
-
-
+            });
         }
         return super.onOptionsItemSelected(item);
     }
@@ -171,7 +165,7 @@ public class SWEMonthlyTotalSummaryActivity extends AppCompatActivity {
                 hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
-                    if(event.getModelName().contentEquals("SWEMonthlyTotalSummary")){
+                    if(event!=null && event.getModelName().contentEquals("SWEMonthlyTotalSummary")){
                         if(event.getElement().getModel().equals(sweMonthlyTotalSummary)){
                             runOnUiThread(new Runnable() {
                                 public void run() {
@@ -179,7 +173,11 @@ public class SWEMonthlyTotalSummaryActivity extends AppCompatActivity {
                                     showSavedSuccessfulAlert();
                                 }
                             });
+                        }else{
+                            progressBar.setVisibility(View.GONE);
                         }
+                    }else{
+                        progressBar.setVisibility(View.GONE);
                     }
                 }
         );
@@ -222,20 +220,6 @@ public class SWEMonthlyTotalSummaryActivity extends AppCompatActivity {
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Syncing Up!");
         progressBar.setVisibility(View.VISIBLE);
-        /*
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
-
-            @Override
-            public void onFinish() {
-                progressBar.setVisibility(View.GONE);
-                showSavedSuccessfulAlert();
-            }
-        };
-        countDownTimer.start();
-         */
     }
 
     private void showSavedSuccessfulAlert(){
@@ -270,20 +254,6 @@ public class SWEMonthlyTotalSummaryActivity extends AppCompatActivity {
         Integer NoWaterSampleTaken = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoWaterSampleTaken",interchangesWithUserAns),0);
         Integer NoSurveysCompleted = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoSurveysCompleted",interchangesWithUserAns),0);
         Integer NoHealthCheck = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoHealthCheck",interchangesWithUserAns),0);
-        Integer NoLsn1Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn1Taught",interchangesWithUserAns),0);
-        Integer NoPersonsTaughtLesson1 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson1",interchangesWithUserAns),0);
-        Integer NoLsn2Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn2Taught",interchangesWithUserAns),0);
-        Integer NoPersonsTaughtLesson2 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson2",interchangesWithUserAns),0);
-        Integer NoLsn3Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn3Taught",interchangesWithUserAns),0);
-        Integer NoPersonsTaughtLesson3 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson3",interchangesWithUserAns),0);
-        Integer NoLsn4Taught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLsn4Taught",interchangesWithUserAns),0);
-        Integer NoPersonsTaughtLesson4 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaughtLesson4",interchangesWithUserAns),0);
-        Integer NoPersonsTaught = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPersonsTaught",interchangesWithUserAns),0);
-        Integer NoHouseholdReceivingChlorineSupplies = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoHouseholdReceivingChlorineSupplies",interchangesWithUserAns),0);
-        Integer NoLiquidChlorineDistributed = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoLiquidChlorineDistributed",interchangesWithUserAns),0);
-        Integer NoChlorineTabletsDistributed = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoChlorineTabletsDistributed",interchangesWithUserAns),0);
-        Integer NoWaterStorageContainersDistributed = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoWaterStorageContainersDistributed",interchangesWithUserAns),0);
-        Integer NoSchoolVisits = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoSchoolVisits",interchangesWithUserAns),0);
         Integer NoPublicServiceMessagesAired = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoPublicServiceMessagesAired",interchangesWithUserAns),0);
         Temporal.Date date = new Temporal.Date(date_s);
 
@@ -293,8 +263,6 @@ public class SWEMonthlyTotalSummaryActivity extends AppCompatActivity {
                 .noWaterSampleTaken(NoWaterSampleTaken)
                 .noSurveysCompleted(NoSurveysCompleted)
                 .noHealthCheck(NoHealthCheck)
-                .noWaterStorageContainersDistributed(NoWaterStorageContainersDistributed)
-                .noSchoolVisits(NoSchoolVisits)
                 .noPublicServiceMessagesAired(NoPublicServiceMessagesAired)
                 .completed(completed)
                 .lat(lat)

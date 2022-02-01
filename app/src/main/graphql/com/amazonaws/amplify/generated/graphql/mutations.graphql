@@ -1433,8 +1433,6 @@ mutation CreateSweMonthlyTotalSummary(
     NoWaterSampleTaken
     NoSurveysCompleted
     NoHealthCheck
-    NoWaterStorageContainersDistributed
-    NoSchoolVisits
     NoPublicServiceMessagesAired
     Completed
     Lat
@@ -1458,8 +1456,6 @@ mutation UpdateSweMonthlyTotalSummary(
     NoWaterSampleTaken
     NoSurveysCompleted
     NoHealthCheck
-    NoWaterStorageContainersDistributed
-    NoSchoolVisits
     NoPublicServiceMessagesAired
     Completed
     Lat
@@ -1483,8 +1479,6 @@ mutation DeleteSweMonthlyTotalSummary(
     NoWaterSampleTaken
     NoSurveysCompleted
     NoHealthCheck
-    NoWaterStorageContainersDistributed
-    NoSchoolVisits
     NoPublicServiceMessagesAired
     Completed
     Lat

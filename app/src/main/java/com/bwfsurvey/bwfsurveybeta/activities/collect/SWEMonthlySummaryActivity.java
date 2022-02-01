@@ -171,7 +171,7 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
                 hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
-                    if(event.getModelName().contentEquals("SWEMonthlySummary")){
+                    if(event!=null && event.getModelName().contentEquals("SWEMonthlySummary")){
                         if(event.getElement().getModel().equals(sweMonthlySummary)){
                             runOnUiThread(new Runnable() {
                                 public void run() {
@@ -179,7 +179,11 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
                                     showSavedSuccessfulAlert();
                                 }
                             });
+                        }else{
+                            progressBar.setVisibility(View.GONE);
                         }
+                    }else{
+                        progressBar.setVisibility(View.GONE);
                     }
                 }
         );

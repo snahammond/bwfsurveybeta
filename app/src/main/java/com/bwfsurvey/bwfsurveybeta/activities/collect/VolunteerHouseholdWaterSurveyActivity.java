@@ -34,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Objects;
 
 public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
     private String namebwe = null;
@@ -86,7 +87,7 @@ public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
 
         Log.i("Tutorials", "Selected family water survey household class: " + householdName +" country: "+ country + " community: "+community + "surveyId: " + surveyId);
         setContentView(R.layout.activity_recycler);
-        getSupportActionBar().setTitle((CharSequence) "Water Survey; "+householdName);
+        Objects.requireNonNull(getSupportActionBar()).setTitle((CharSequence) "Water Survey; "+householdName);
         initView();
     }
 

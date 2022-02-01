@@ -201,7 +201,7 @@ public class CommunityWaterCardSelectActivity extends AppCompatActivity implemen
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, CommunityWater newCommunityWaterSource) {
         Log.i("Tutorials", "newCommunityWaterSource " + newCommunityWaterSource.getCommunity() + " " +newCommunityWaterSource.getCommunityWaterLocation()  );
-        if (newCommunityWaterSource.getCommunityWaterLocation()!=null&&newCommunityWaterSource.getCommunityWaterLocation()!=""){
+        if (newCommunityWaterSource.getCommunityWaterLocation()!=null&& !newCommunityWaterSource.getCommunityWaterLocation().equals("")){
             checkToken = Amplify.Hub.subscribe(
                     HubChannel.DATASTORE,
                     hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),

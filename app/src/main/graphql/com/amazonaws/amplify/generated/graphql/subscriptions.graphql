@@ -1286,8 +1286,6 @@ subscription OnCreateSweMonthlyTotalSummary {
     NoWaterSampleTaken
     NoSurveysCompleted
     NoHealthCheck
-    NoWaterStorageContainersDistributed
-    NoSchoolVisits
     NoPublicServiceMessagesAired
     Completed
     Lat
@@ -1308,8 +1306,6 @@ subscription OnUpdateSweMonthlyTotalSummary {
     NoWaterSampleTaken
     NoSurveysCompleted
     NoHealthCheck
-    NoWaterStorageContainersDistributed
-    NoSchoolVisits
     NoPublicServiceMessagesAired
     Completed
     Lat
@@ -1330,8 +1326,6 @@ subscription OnDeleteSweMonthlyTotalSummary {
     NoWaterSampleTaken
     NoSurveysCompleted
     NoHealthCheck
-    NoWaterStorageContainersDistributed
-    NoSchoolVisits
     NoPublicServiceMessagesAired
     Completed
     Lat

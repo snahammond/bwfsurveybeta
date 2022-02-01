@@ -2,7 +2,6 @@ package com.bwfsurvey.bwfsurveybeta.activities.collect;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,14 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.DataStoreChannelEventName;
-import com.amplifyframework.datastore.events.NetworkStatusEvent;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.amplifyframework.datastore.syncengine.OutboxMutationEvent;
 import com.amplifyframework.hub.HubChannel;
 import com.amplifyframework.hub.SubscriptionToken;
-import com.bwfsurvey.bwfsurveybeta.types.Interchange;
-import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.utils.IntegerUtils;
 import com.bwfsurvey.bwfsurveybeta.utils.InterchangeUtils;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
@@ -180,8 +178,8 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                 hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
-                    Log.i("bwfSurveyAmplify", " InitialSurvey "+event.getModelName());
-                    if(event.getModelName().contentEquals("InitialSurvey")){
+                    //Log.i("bwfSurveyAmplify", " InitialSurvey "+event.getModelName());
+                    if(event!=null && event.getModelName().contentEquals("InitialSurvey")){
                         if(event.getElement().getModel().equals(initialSurveyToSave)){
                             runOnUiThread(new Runnable() {
                                 public void run() {
@@ -189,7 +187,11 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                                     showSavedSuccessfulAlert();
                                 }
                             });
+                        }else{
+                            progressBar.setVisibility(View.GONE);
                         }
+                    }else{
+                        progressBar.setVisibility(View.GONE);
                     }
                 }
         );

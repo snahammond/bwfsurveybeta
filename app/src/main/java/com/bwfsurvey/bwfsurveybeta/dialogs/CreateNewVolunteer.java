@@ -25,8 +25,8 @@ public class CreateNewVolunteer extends DialogFragment{
     }
 
     public interface CreateNewVolunteerListener {
-        public void onDialogPositiveClick(DialogFragment dialog, Volunteer newVolunteer);
-        public void onDialogNegativeClick(DialogFragment dialog);
+        void onDialogPositiveClick(DialogFragment dialog, Volunteer newVolunteer);
+        void onDialogNegativeClick(DialogFragment dialog);
     }
 
     // Use this instance of the interface to deliver action events

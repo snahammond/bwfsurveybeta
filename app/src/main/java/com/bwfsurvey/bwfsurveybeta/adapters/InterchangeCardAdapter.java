@@ -57,7 +57,7 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     RecyclerView mRecyclerView;
 
     @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
 
         mRecyclerView = recyclerView;
@@ -1038,21 +1038,26 @@ public class InterchangeCardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     Date date_ = null;
                     try {
                         date_ = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
-                        String dateToShow = new SimpleDateFormat("dd/MM/yyyy").format(date_);
+                        if(date_!=null){
+                            String dateToShow = new SimpleDateFormat("dd/MM/yyyy").format(date_);
 
-                        if(!dateToShow.contentEquals("01/01/1900")){
+                            if(!dateToShow.contentEquals("01/01/1900")){
 
-                            int dayOfMonth = Integer.parseInt(dateToShow.split("/")[0]);
-                            int monthOfYear = Integer.parseInt(dateToShow.split("/")[1]);
-                            int year = Integer.parseInt(dateToShow.split("/")[2]);
+                                int dayOfMonth = Integer.parseInt(dateToShow.split("/")[0]);
+                                int monthOfYear = Integer.parseInt(dateToShow.split("/")[1]);
+                                int year = Integer.parseInt(dateToShow.split("/")[2]);
 
-                            myCalendar.set(Calendar.YEAR, year);
-                            myCalendar.set(Calendar.MONTH, monthOfYear-1);
-                            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                            updateLabel();
-                        }
-                        else
+                                myCalendar.set(Calendar.YEAR, year);
+                                myCalendar.set(Calendar.MONTH, monthOfYear-1);
+                                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                                updateLabel();
+                            }
+                            else
+                                editAnswer.setText("");
+                        }else{
                             editAnswer.setText("");
+                        }
+
                     } catch (Exception e) {
                         editAnswer.setText("");
                     }

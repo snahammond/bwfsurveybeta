@@ -21,26 +21,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.DataStoreChannelEventName;
-import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.generated.model.Meeting;
 import com.amplifyframework.datastore.generated.model.Volunteer;
 import com.amplifyframework.datastore.syncengine.OutboxMutationEvent;
 import com.amplifyframework.hub.HubChannel;
 import com.amplifyframework.hub.SubscriptionToken;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
-import com.bwfsurvey.bwfsurveybeta.adapters.FollowUpSurveyCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.adapters.MeetingCardAdapter;
-import com.bwfsurvey.bwfsurveybeta.adapters.VolunteerCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewMeeting;
-import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewVolunteer;
 import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;
 import com.example.bwfsurveybeta.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class MeetingCardSelectActivity extends AppCompatActivity implements CreateNewMeeting.CreateNewMeetingListener{
     private static ArrayList<Meeting> listOfMeetings;
@@ -251,8 +245,8 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
                 hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
-                    Log.i("bwfSurveyAmplify", " Meeting "+event.getModelName());
-                    if(event.getModelName().contentEquals("Meeting")){
+                    //Log.i("bwfSurveyAmplify", " Meeting "+event.getModelName());
+                    if(event!=null && event.getModelName().contentEquals("Meeting")){
                         if(event.getElement().getModel().equals(newMeeting)){
                             runOnUiThread(new Runnable() {
                                 public void run() {
@@ -261,7 +255,11 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
                                     showSavedSuccessfulAlert();
                                 }
                             });
+                        }else{
+                            progressBar.setVisibility(View.GONE);
                         }
+                    }else{
+                        progressBar.setVisibility(View.GONE);
                     }
                 }
         );

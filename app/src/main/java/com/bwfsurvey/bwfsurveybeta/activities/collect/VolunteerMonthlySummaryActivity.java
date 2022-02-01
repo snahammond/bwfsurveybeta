@@ -173,7 +173,7 @@ public class VolunteerMonthlySummaryActivity extends AppCompatActivity {
                 hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
-                    if(event.getModelName().contentEquals("VolunteerMonthlySummary")){
+                    if(event!=null && event.getModelName().contentEquals("VolunteerMonthlySummary")){
                         if(event.getElement().getModel().equals(volunteerMonthlySummary)){
                             runOnUiThread(new Runnable() {
                                 public void run() {

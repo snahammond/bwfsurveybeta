@@ -108,12 +108,17 @@ public class SWEMonthlyTotalSummaryCardAdapter extends RecyclerView.Adapter<Recy
                 Date date_ = null;
                 try {
                     date_ = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
-                    String dateToShow = new SimpleDateFormat("dd/MM/yyyy").format(date_);
+                    if(date_!=null){
+                        String dateToShow = new SimpleDateFormat("dd/MM/yyyy").format(date_);
 
-                    if(!dateToShow.contentEquals("01/01/1900"))
-                        txtDate.setText(dateToShow);
-                    else
+                        if(!dateToShow.contentEquals("01/01/1900"))
+                            txtDate.setText(dateToShow);
+                        else
+                            txtDate.setText("");
+                    }else{
                         txtDate.setText("");
+                    }
+
                 } catch (Exception e) {
                     txtDate.setText("");
                 }

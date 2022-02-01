@@ -190,7 +190,7 @@ public class VolunteerCardSelectActivity extends AppCompatActivity implements Cr
     public void onDialogPositiveClick(DialogFragment dialog, Volunteer newVolunteer) {
         Log.i("Tutorials", "newVolunteer " + newVolunteer.getNamevol()  );
 
-        if (newVolunteer.getNamevol()!=null&&newVolunteer.getNamevol()!=""){
+        if (newVolunteer.getNamevol()!=null&& !newVolunteer.getNamevol().equals("")){
 
             Amplify.DataStore.save(newVolunteer,
                     update -> {

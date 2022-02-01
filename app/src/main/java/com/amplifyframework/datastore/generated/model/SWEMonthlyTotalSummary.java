@@ -32,8 +32,6 @@ public final class SWEMonthlyTotalSummary implements Model {
   public static final QueryField NO_WATER_SAMPLE_TAKEN = field("NoWaterSampleTaken");
   public static final QueryField NO_SURVEYS_COMPLETED = field("NoSurveysCompleted");
   public static final QueryField NO_HEALTH_CHECK = field("NoHealthCheck");
-  public static final QueryField NO_WATER_STORAGE_CONTAINERS_DISTRIBUTED = field("NoWaterStorageContainersDistributed");
-  public static final QueryField NO_SCHOOL_VISITS = field("NoSchoolVisits");
   public static final QueryField NO_PUBLIC_SERVICE_MESSAGES_AIRED = field("NoPublicServiceMessagesAired");
   public static final QueryField COMPLETED = field("Completed");
   public static final QueryField LAT = field("Lat");
@@ -45,8 +43,6 @@ public final class SWEMonthlyTotalSummary implements Model {
   private final @ModelField(targetType="Int", isRequired = true) Integer NoWaterSampleTaken;
   private final @ModelField(targetType="Int", isRequired = true) Integer NoSurveysCompleted;
   private final @ModelField(targetType="Int", isRequired = true) Integer NoHealthCheck;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoWaterStorageContainersDistributed;
-  private final @ModelField(targetType="Int", isRequired = true) Integer NoSchoolVisits;
   private final @ModelField(targetType="Int", isRequired = true) Integer NoPublicServiceMessagesAired;
   private final @ModelField(targetType="Int", isRequired = true) Integer Completed;
   private final @ModelField(targetType="String", isRequired = true) String Lat;
@@ -79,14 +75,6 @@ public final class SWEMonthlyTotalSummary implements Model {
       return NoHealthCheck;
   }
   
-  public Integer getNoWaterStorageContainersDistributed() {
-      return NoWaterStorageContainersDistributed;
-  }
-  
-  public Integer getNoSchoolVisits() {
-      return NoSchoolVisits;
-  }
-  
   public Integer getNoPublicServiceMessagesAired() {
       return NoPublicServiceMessagesAired;
   }
@@ -103,7 +91,7 @@ public final class SWEMonthlyTotalSummary implements Model {
       return Lng;
   }
   
-  private SWEMonthlyTotalSummary(String id, String Namebwe, Temporal.Date date, String SWEPosition, Integer NoWaterSampleTaken, Integer NoSurveysCompleted, Integer NoHealthCheck, Integer NoWaterStorageContainersDistributed, Integer NoSchoolVisits, Integer NoPublicServiceMessagesAired, Integer Completed, String Lat, String Lng) {
+  private SWEMonthlyTotalSummary(String id, String Namebwe, Temporal.Date date, String SWEPosition, Integer NoWaterSampleTaken, Integer NoSurveysCompleted, Integer NoHealthCheck, Integer NoPublicServiceMessagesAired, Integer Completed, String Lat, String Lng) {
     this.id = id;
     this.Namebwe = Namebwe;
     this.date = date;
@@ -111,8 +99,6 @@ public final class SWEMonthlyTotalSummary implements Model {
     this.NoWaterSampleTaken = NoWaterSampleTaken;
     this.NoSurveysCompleted = NoSurveysCompleted;
     this.NoHealthCheck = NoHealthCheck;
-    this.NoWaterStorageContainersDistributed = NoWaterStorageContainersDistributed;
-    this.NoSchoolVisits = NoSchoolVisits;
     this.NoPublicServiceMessagesAired = NoPublicServiceMessagesAired;
     this.Completed = Completed;
     this.Lat = Lat;
@@ -134,8 +120,6 @@ public final class SWEMonthlyTotalSummary implements Model {
               ObjectsCompat.equals(getNoWaterSampleTaken(), sweMonthlyTotalSummary.getNoWaterSampleTaken()) &&
               ObjectsCompat.equals(getNoSurveysCompleted(), sweMonthlyTotalSummary.getNoSurveysCompleted()) &&
               ObjectsCompat.equals(getNoHealthCheck(), sweMonthlyTotalSummary.getNoHealthCheck()) &&
-              ObjectsCompat.equals(getNoWaterStorageContainersDistributed(), sweMonthlyTotalSummary.getNoWaterStorageContainersDistributed()) &&
-              ObjectsCompat.equals(getNoSchoolVisits(), sweMonthlyTotalSummary.getNoSchoolVisits()) &&
               ObjectsCompat.equals(getNoPublicServiceMessagesAired(), sweMonthlyTotalSummary.getNoPublicServiceMessagesAired()) &&
               ObjectsCompat.equals(getCompleted(), sweMonthlyTotalSummary.getCompleted()) &&
               ObjectsCompat.equals(getLat(), sweMonthlyTotalSummary.getLat()) &&
@@ -153,8 +137,6 @@ public final class SWEMonthlyTotalSummary implements Model {
       .append(getNoWaterSampleTaken())
       .append(getNoSurveysCompleted())
       .append(getNoHealthCheck())
-      .append(getNoWaterStorageContainersDistributed())
-      .append(getNoSchoolVisits())
       .append(getNoPublicServiceMessagesAired())
       .append(getCompleted())
       .append(getLat())
@@ -174,8 +156,6 @@ public final class SWEMonthlyTotalSummary implements Model {
       .append("NoWaterSampleTaken=" + String.valueOf(getNoWaterSampleTaken()) + ", ")
       .append("NoSurveysCompleted=" + String.valueOf(getNoSurveysCompleted()) + ", ")
       .append("NoHealthCheck=" + String.valueOf(getNoHealthCheck()) + ", ")
-      .append("NoWaterStorageContainersDistributed=" + String.valueOf(getNoWaterStorageContainersDistributed()) + ", ")
-      .append("NoSchoolVisits=" + String.valueOf(getNoSchoolVisits()) + ", ")
       .append("NoPublicServiceMessagesAired=" + String.valueOf(getNoPublicServiceMessagesAired()) + ", ")
       .append("Completed=" + String.valueOf(getCompleted()) + ", ")
       .append("Lat=" + String.valueOf(getLat()) + ", ")
@@ -218,8 +198,6 @@ public final class SWEMonthlyTotalSummary implements Model {
       null,
       null,
       null,
-      null,
-      null,
       null
     );
   }
@@ -232,8 +210,6 @@ public final class SWEMonthlyTotalSummary implements Model {
       NoWaterSampleTaken,
       NoSurveysCompleted,
       NoHealthCheck,
-      NoWaterStorageContainersDistributed,
-      NoSchoolVisits,
       NoPublicServiceMessagesAired,
       Completed,
       Lat,
@@ -260,17 +236,7 @@ public final class SWEMonthlyTotalSummary implements Model {
   
 
   public interface NoHealthCheckStep {
-    NoWaterStorageContainersDistributedStep noHealthCheck(Integer noHealthCheck);
-  }
-  
-
-  public interface NoWaterStorageContainersDistributedStep {
-    NoSchoolVisitsStep noWaterStorageContainersDistributed(Integer noWaterStorageContainersDistributed);
-  }
-  
-
-  public interface NoSchoolVisitsStep {
-    NoPublicServiceMessagesAiredStep noSchoolVisits(Integer noSchoolVisits);
+    NoPublicServiceMessagesAiredStep noHealthCheck(Integer noHealthCheck);
   }
   
 
@@ -301,15 +267,13 @@ public final class SWEMonthlyTotalSummary implements Model {
   }
   
 
-  public static class Builder implements NamebweStep, SwePositionStep, NoWaterSampleTakenStep, NoSurveysCompletedStep, NoHealthCheckStep, NoWaterStorageContainersDistributedStep, NoSchoolVisitsStep, NoPublicServiceMessagesAiredStep, CompletedStep, LatStep, LngStep, BuildStep {
+  public static class Builder implements NamebweStep, SwePositionStep, NoWaterSampleTakenStep, NoSurveysCompletedStep, NoHealthCheckStep, NoPublicServiceMessagesAiredStep, CompletedStep, LatStep, LngStep, BuildStep {
     private String id;
     private String Namebwe;
     private String SWEPosition;
     private Integer NoWaterSampleTaken;
     private Integer NoSurveysCompleted;
     private Integer NoHealthCheck;
-    private Integer NoWaterStorageContainersDistributed;
-    private Integer NoSchoolVisits;
     private Integer NoPublicServiceMessagesAired;
     private Integer Completed;
     private String Lat;
@@ -327,8 +291,6 @@ public final class SWEMonthlyTotalSummary implements Model {
           NoWaterSampleTaken,
           NoSurveysCompleted,
           NoHealthCheck,
-          NoWaterStorageContainersDistributed,
-          NoSchoolVisits,
           NoPublicServiceMessagesAired,
           Completed,
           Lat,
@@ -364,23 +326,9 @@ public final class SWEMonthlyTotalSummary implements Model {
     }
     
     @Override
-     public NoWaterStorageContainersDistributedStep noHealthCheck(Integer noHealthCheck) {
+     public NoPublicServiceMessagesAiredStep noHealthCheck(Integer noHealthCheck) {
         Objects.requireNonNull(noHealthCheck);
         this.NoHealthCheck = noHealthCheck;
-        return this;
-    }
-    
-    @Override
-     public NoSchoolVisitsStep noWaterStorageContainersDistributed(Integer noWaterStorageContainersDistributed) {
-        Objects.requireNonNull(noWaterStorageContainersDistributed);
-        this.NoWaterStorageContainersDistributed = noWaterStorageContainersDistributed;
-        return this;
-    }
-    
-    @Override
-     public NoPublicServiceMessagesAiredStep noSchoolVisits(Integer noSchoolVisits) {
-        Objects.requireNonNull(noSchoolVisits);
-        this.NoSchoolVisits = noSchoolVisits;
         return this;
     }
     
@@ -441,15 +389,13 @@ public final class SWEMonthlyTotalSummary implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String namebwe, Temporal.Date date, String swePosition, Integer noWaterSampleTaken, Integer noSurveysCompleted, Integer noHealthCheck, Integer noWaterStorageContainersDistributed, Integer noSchoolVisits, Integer noPublicServiceMessagesAired, Integer completed, String lat, String lng) {
+    private CopyOfBuilder(String id, String namebwe, Temporal.Date date, String swePosition, Integer noWaterSampleTaken, Integer noSurveysCompleted, Integer noHealthCheck, Integer noPublicServiceMessagesAired, Integer completed, String lat, String lng) {
       super.id(id);
       super.namebwe(namebwe)
         .swePosition(swePosition)
         .noWaterSampleTaken(noWaterSampleTaken)
         .noSurveysCompleted(noSurveysCompleted)
         .noHealthCheck(noHealthCheck)
-        .noWaterStorageContainersDistributed(noWaterStorageContainersDistributed)
-        .noSchoolVisits(noSchoolVisits)
         .noPublicServiceMessagesAired(noPublicServiceMessagesAired)
         .completed(completed)
         .lat(lat)
@@ -480,16 +426,6 @@ public final class SWEMonthlyTotalSummary implements Model {
     @Override
      public CopyOfBuilder noHealthCheck(Integer noHealthCheck) {
       return (CopyOfBuilder) super.noHealthCheck(noHealthCheck);
-    }
-    
-    @Override
-     public CopyOfBuilder noWaterStorageContainersDistributed(Integer noWaterStorageContainersDistributed) {
-      return (CopyOfBuilder) super.noWaterStorageContainersDistributed(noWaterStorageContainersDistributed);
-    }
-    
-    @Override
-     public CopyOfBuilder noSchoolVisits(Integer noSchoolVisits) {
-      return (CopyOfBuilder) super.noSchoolVisits(noSchoolVisits);
     }
     
     @Override

@@ -18,6 +18,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import com.amplifyframework.core.model.temporal.Temporal;
@@ -60,7 +61,7 @@ public class CreateNewHouseholdAttendingMeeting extends DialogFragment {
 
     // Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         // Verify that the host activity implements the callback interface
         try {
@@ -72,6 +73,7 @@ public class CreateNewHouseholdAttendingMeeting extends DialogFragment {
         }
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 

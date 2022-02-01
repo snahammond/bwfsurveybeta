@@ -101,7 +101,8 @@ public class UpdateFollowUpSurveyActivity extends AppCompatActivity {
                     try {
                         method = theFollowUpSurvey.getClass().getMethod(methodName);
                         Object ansObject = method.invoke(theFollowUpSurvey);
-                        answer = ansObject.toString();
+                        if(ansObject!=null)
+                            answer = ansObject.toString();
                     } catch (Exception e) {
                         Log.e("Tutorials", "Could not get answer " + nameOfAns);
                     }
@@ -340,7 +341,9 @@ public class UpdateFollowUpSurveyActivity extends AppCompatActivity {
             }
         }
         if(ans==null){
-            ans = foundInterchange.getValidation().getDefaultValue();
+            if(foundInterchange!=null) {
+                ans = foundInterchange.getValidation().getDefaultValue();
+            }
         }
         return ans;
     }

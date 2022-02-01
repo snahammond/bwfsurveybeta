@@ -22,15 +22,12 @@ import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.DataStoreChannelEventName;
 import com.amplifyframework.datastore.generated.model.HouseholdAttendingMeeting;
-import com.amplifyframework.datastore.generated.model.Volunteer;
 import com.amplifyframework.datastore.syncengine.OutboxMutationEvent;
 import com.amplifyframework.hub.HubChannel;
 import com.amplifyframework.hub.SubscriptionToken;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.HouseholdAttendingMeetingCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewHouseholdAttendingMeeting;
-import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewMeeting;
-import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;
 import com.example.bwfsurveybeta.R;
 
@@ -195,8 +192,8 @@ public class HouseholdAttendingMeetingCardSelectActivity extends AppCompatActivi
                 hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
-                    Log.i("bwfSurveyAmplify", " HouseholdAttendingMeeting "+event.getModelName());
-                    if(event.getModelName().contentEquals("HouseholdAttendingMeeting")){
+                    //Log.i("bwfSurveyAmplify", " HouseholdAttendingMeeting "+event.getModelName());
+                    if(event!=null && event.getModelName().contentEquals("HouseholdAttendingMeeting")){
                         if(event.getElement().getModel().equals(newHouseholdAttendingMeeting)){
                             runOnUiThread(new Runnable() {
                                 public void run() {
@@ -204,7 +201,11 @@ public class HouseholdAttendingMeetingCardSelectActivity extends AppCompatActivi
                                     showSavedSuccessfulAlert();
                                 }
                             });
+                        }else{
+                            progressBar.setVisibility(View.GONE);
                         }
+                    }else{
+                        progressBar.setVisibility(View.GONE);
                     }
                 }
         );

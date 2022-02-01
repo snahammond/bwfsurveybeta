@@ -102,7 +102,8 @@ public class UpdateVolunteerMonthlySummaryActivity extends AppCompatActivity {
                     try {
                         method = theVolunteerMonthlySummary.getClass().getMethod(methodName);
                         Object ansObject = method.invoke(theVolunteerMonthlySummary);
-                        answer = ansObject.toString();
+                        if(ansObject!=null)
+                            answer = ansObject.toString();
                     } catch (Exception e) {
                         Log.e("Tutorials", "Could not get answer " + nameOfAns);
                     }
@@ -386,7 +387,9 @@ public class UpdateVolunteerMonthlySummaryActivity extends AppCompatActivity {
             }
         }
         if(ans==null){
-            ans = foundInterchange.getValidation().getDefaultValue();
+            if(foundInterchange!=null) {
+                ans = foundInterchange.getValidation().getDefaultValue();
+            }
         }
         return ans;
     }

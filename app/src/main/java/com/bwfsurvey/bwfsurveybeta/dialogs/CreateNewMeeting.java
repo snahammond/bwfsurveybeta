@@ -23,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import com.amplifyframework.core.model.temporal.Temporal;
@@ -71,7 +72,7 @@ public class CreateNewMeeting extends DialogFragment {
 
     // Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         // Verify that the host activity implements the callback interface
         try {
@@ -114,7 +115,7 @@ public class CreateNewMeeting extends DialogFragment {
             }
             @Override
             public View getDropDownView(int position, View convertView,
-                                        ViewGroup parent) {
+                                        @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView tv = (TextView) view;
                 if(position == 0){

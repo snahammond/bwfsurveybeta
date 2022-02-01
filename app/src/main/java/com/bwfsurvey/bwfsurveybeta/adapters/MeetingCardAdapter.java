@@ -92,13 +92,16 @@ public class MeetingCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 Date date_ = null;
                 try {
                     date_ = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
-                    String dateToShow = new SimpleDateFormat("dd/MM/yyyy").format(date_);
+                    if(date_!=null){
+                        String dateToShow = new SimpleDateFormat("dd/MM/yyyy").format(date_);
 
-                    if(!dateToShow.contentEquals("01/01/1900"))
-                        ansToWrite = dateToShow;
-                    else
+                        if(!dateToShow.contentEquals("01/01/1900"))
+                            ansToWrite = dateToShow;
+                        else
+                            ansToWrite = "";
+                    }else{
                         ansToWrite = "";
-
+                    }
                 } catch (Exception e) {
                     ansToWrite = "";
                 }

@@ -50,8 +50,6 @@ public class MenuActivity extends AppCompatActivity {
     private LinearLayout progressBar;
     private TextView progressBarText;
 
-    boolean adviceUser = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,8 +73,8 @@ public class MenuActivity extends AppCompatActivity {
         Log.i("Tutorials", "lat " +this.lng );
 
         setContentView(R.layout.activity_menu);
-        progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
-        progressBarText = (TextView) findViewById(R.id.pbText);
+        progressBar = findViewById(R.id.llProgressBar);
+        progressBarText = findViewById(R.id.pbText);
 
         progressBarText.setText("Please wait... Synchronizing with cloud!");
         progressBar.setVisibility(View.VISIBLE);
@@ -85,14 +83,14 @@ public class MenuActivity extends AppCompatActivity {
         Amplify.API.query(
                 ModelQuery.get(ConfigDefinitions.class, "f5ccce23-64a7-4bb6-8f79-02ac8d03a659"),
                 response -> {
-                    int remoteAppVersion = Integer.valueOf(((ConfigDefinitions) response.getData()).getValue());
+                    int remoteAppVersion = Integer.parseInt(response.getData().getValue());
                     int localFileAppVersion = BwfSurveyAmplifyApplication.APPVERSION;
                     Log.i("BwfSurveyAmplifyApp", "remoteAppVersion: "+ remoteAppVersion );
                     Log.i("BwfSurveyAmplifyApp", "localFileAppVersion: "+ localFileAppVersion );
                     if(remoteAppVersion>localFileAppVersion){
                         //we need to get ready to do sync, but first lets check local storage if we have the correct app version
-                        ArrayList<Config> configsInner = new ArrayList<Config>();
-                        ArrayList<ConfigDefinitions> configsInnerFromLocalStore = new ArrayList<ConfigDefinitions>();
+                        ArrayList<Config> configsInner = new ArrayList<>();
+                        ArrayList<ConfigDefinitions> configsInnerFromLocalStore = new ArrayList<>();
                         Amplify.DataStore.query(
                                 ConfigDefinitions.class,
                                 allConfigDefinitions -> {
@@ -132,53 +130,33 @@ public class MenuActivity extends AppCompatActivity {
                                                                         //check if all things are ok
                                                                         if(!configDefFromRemote.equals(configFromLocalStore)){
                                                                             Amplify.DataStore.save(configDefFromRemote,
-                                                                                    updateDS -> {
-                                                                                        Log.i("BwfSurveyAmplifyApp", "Manaul Config Saved Successfully ");
-                                                                                    },
-                                                                                    failureDS -> {
-                                                                                        Log.e("BwfSurveyAmplifyApp", "Manaul Config Save Failed "+ failureDS.getMessage());
-                                                                                    }
+                                                                                    updateDS -> Log.i("BwfSurveyAmplifyApp", "Manaul Config Saved Successfully "),
+                                                                                    failureDS -> Log.e("BwfSurveyAmplifyApp", "Manaul Config Save Failed "+ failureDS.getMessage())
                                                                             );
                                                                         }
                                                                     }
                                                                 }
                                                                 if(!found){
                                                                     Amplify.DataStore.save(configDefFromRemote,
-                                                                            updateDS -> {
-                                                                                Log.i("BwfSurveyAmplifyApp", "Manaul Config Saved Successfully ");
-                                                                            },
-                                                                            failureDS -> {
-                                                                                Log.e("BwfSurveyAmplifyApp", "Manaul Config Save Failed "+ failureDS.getMessage());
-                                                                            }
+                                                                            updateDS -> Log.i("BwfSurveyAmplifyApp", "Manaul Config Saved Successfully "),
+                                                                            failureDS -> Log.e("BwfSurveyAmplifyApp", "Manaul Config Save Failed "+ failureDS.getMessage())
                                                                     );
                                                                 }
                                                             }
                                                         }
                                                         //everything looks ok we can show the menu
-                                                        runOnUiThread(new Runnable() {
-                                                            public void run() {
-                                                                showMenu();
-                                                            }
-                                                        });
+                                                        runOnUiThread(() -> showMenu());
                                                     },
                                                     failureinner ->{
                                                         //we failed when trying to pull down the remote configs
-                                                        runOnUiThread(new Runnable() {
-                                                            public void run() {
-                                                                showMenu();
-                                                            }
-                                                        });
+                                                        runOnUiThread(() -> showMenu());
                                                         Log.e("BwfSurveyAmplifyApp", "Manaul Fetch list "+ failureinner.getMessage());
                                                     }
                                             );
                                         }
                                         else{
                                             //everything looks ok we can show the menu
-                                            runOnUiThread(new Runnable() {
-                                                public void run() {
-                                                    showMenu();
-                                                }
-                                            });
+                                            runOnUiThread(() -> showMenu());
                                             Log.i("BwfSurveyAmplifyApp", "remoteAppVersion equal or less ");
                                             Log.i("BwfSurveyAmplifyApp", "remoteAppVersion: "+ remoteAppVersion );
                                             Log.i("BwfSurveyAmplifyApp", "localStoreAppVersion: "+ localStoreAppVersion );
@@ -193,27 +171,15 @@ public class MenuActivity extends AppCompatActivity {
                                                     if (responseinner.hasData()) {
                                                         for (ConfigDefinitions configDefFromRemote : responseinner.getData()) {
                                                             Amplify.DataStore.save(configDefFromRemote,
-                                                                    updateDS -> {
-                                                                        Log.i("BwfSurveyAmplifyApp", "Manaul Config Saved Successfully ");
-                                                                    },
-                                                                    failureDS -> {
-                                                                        Log.e("BwfSurveyAmplifyApp", "Manaul Config Save Failed "+ failureDS.getMessage());
-                                                                    }
+                                                                    updateDS -> Log.i("BwfSurveyAmplifyApp", "Manaul Config Saved Successfully "),
+                                                                    failureDS -> Log.e("BwfSurveyAmplifyApp", "Manaul Config Save Failed "+ failureDS.getMessage())
                                                             );
                                                         }
                                                     }
-                                                    runOnUiThread(new Runnable() {
-                                                        public void run() {
-                                                            showMenu();
-                                                        }
-                                                    });
+                                                    runOnUiThread(() -> showMenu());
                                                 },
                                                 failureinner ->{
-                                                    runOnUiThread(new Runnable() {
-                                                        public void run() {
-                                                            showMenu();
-                                                        }
-                                                    });
+                                                    runOnUiThread(() -> showMenu());
                                                     Log.e("BwfSurveyAmplifyApp", "Manaul Fetch list "+ failureinner.getMessage());
                                                 }
                                         );
@@ -231,27 +197,15 @@ public class MenuActivity extends AppCompatActivity {
                                             if (responseinner.hasData()) {
                                                 for (ConfigDefinitions configDefFromRemote : responseinner.getData()) {
                                                     Amplify.DataStore.save(configDefFromRemote,
-                                                            updateDS -> {
-                                                                Log.i("BwfSurveyAmplifyApp", "Manaul Config Saved Successfully ");
-                                                            },
-                                                            failureDS -> {
-                                                                Log.e("BwfSurveyAmplifyApp", "Manaul Config Save Failed "+ failureDS.getMessage());
-                                                            }
+                                                            updateDS -> Log.i("BwfSurveyAmplifyApp", "Manaul Config Saved Successfully "),
+                                                            failureDS -> Log.e("BwfSurveyAmplifyApp", "Manaul Config Save Failed "+ failureDS.getMessage())
                                                     );
                                                 }
                                             }
-                                            runOnUiThread(new Runnable() {
-                                                public void run() {
-                                                    showMenu();
-                                                }
-                                            });
+                                            runOnUiThread(() -> showMenu());
                                         },
                                         failureinner ->{
-                                            runOnUiThread(new Runnable() {
-                                                public void run() {
-                                                    showMenu();
-                                                }
-                                            });
+                                            runOnUiThread(() -> showMenu());
                                             Log.e("BwfSurveyAmplifyApp", "Manaul Fetch list "+ failureinner.getMessage());
                                         }
                                     );
@@ -259,22 +213,14 @@ public class MenuActivity extends AppCompatActivity {
                         );
                     }
                     else{
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                showMenu();
-                            }
-                        });
+                        runOnUiThread(() -> showMenu());
                     }
                 },
-                error -> {
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            if(progressBarText != null)
-                                progressBarText.setText("Please note that you are offline");
-                            showMenu();
-                        }
-                    });
-                }
+                error -> runOnUiThread(() -> {
+                    if(progressBarText != null)
+                        progressBarText.setText("Please note that you are offline");
+                    showMenu();
+                })
         );
 
     }
@@ -307,235 +253,193 @@ public class MenuActivity extends AppCompatActivity {
     private void initView() {
 
         //create menu items
-        Button initialFullSurvey = (Button) findViewById(R.id.button_initialFullSurvey);
-        initialFullSurvey.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), CommunityCardSelectActivity.class);
-                i.putExtra("NAME_BWE", namebwe);
-                i.putExtra("COUNTRY_BWE", countrybwe);
-                i.putExtra("POSITION_BWE", positionbwe);
-                i.putExtra("SURVEY_TYPE","INITIALSURVEY");
-                i.putExtra("LAT",lat);
-                i.putExtra("LNG",lng);
-                startActivity(i);
-            }
+        Button initialFullSurvey = findViewById(R.id.button_initialFullSurvey);
+        initialFullSurvey.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), CommunityCardSelectActivity.class);
+            i.putExtra("NAME_BWE", namebwe);
+            i.putExtra("COUNTRY_BWE", countrybwe);
+            i.putExtra("POSITION_BWE", positionbwe);
+            i.putExtra("SURVEY_TYPE","INITIALSURVEY");
+            i.putExtra("LAT",lat);
+            i.putExtra("LNG",lng);
+            startActivity(i);
         });
 
-        Button followUpSurvey = (Button) findViewById(R.id.button_followUpSurvey);
-        followUpSurvey.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
-                i.putExtra("NAME_BWE", namebwe);
-                i.putExtra("SURVEY_TYPE","FOLLOWUPSURVEY");
-                i.putExtra("OPERATION","CREATE");
-                i.putExtra("LAT",lat);
-                i.putExtra("LNG",lng);
-                startActivity(i);
-            }
+        Button followUpSurvey = findViewById(R.id.button_followUpSurvey);
+        followUpSurvey.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
+            i.putExtra("NAME_BWE", namebwe);
+            i.putExtra("SURVEY_TYPE","FOLLOWUPSURVEY");
+            i.putExtra("OPERATION","CREATE");
+            i.putExtra("LAT",lat);
+            i.putExtra("LNG",lng);
+            startActivity(i);
         });
 
-        Button healthCheckSurvey = (Button) findViewById(R.id.button_healthCheck);
-        healthCheckSurvey.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
-                i.putExtra("NAME_BWE", namebwe);
-                i.putExtra("SURVEY_TYPE","HEALTHCHECKSURVEY");
-                i.putExtra("OPERATION","CREATE");
-                i.putExtra("LAT",lat);
-                i.putExtra("LNG",lng);
-                startActivity(i);
-            }
+        Button healthCheckSurvey = findViewById(R.id.button_healthCheck);
+        healthCheckSurvey.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
+            i.putExtra("NAME_BWE", namebwe);
+            i.putExtra("SURVEY_TYPE","HEALTHCHECKSURVEY");
+            i.putExtra("OPERATION","CREATE");
+            i.putExtra("LAT",lat);
+            i.putExtra("LNG",lng);
+            startActivity(i);
         });
 
-        Button sweMonthlySummary = (Button) findViewById(R.id.button_SWEMonthlySummary);
-        sweMonthlySummary.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SubMenuMonthlySummaryActivity.class);
-                i.putExtra("NAME_BWE", namebwe);
-                i.putExtra("COUNTRY_BWE", countrybwe);
-                i.putExtra("POSITION_BWE", positionbwe);
-                i.putExtra("SURVEY_TYPE","SWESUMMARY");
-                i.putExtra("OPERATION","CREATE");
-                i.putExtra("LAT",lat);
-                i.putExtra("LNG",lng);
-                startActivity(i);
-            }
+        Button sweMonthlySummary = findViewById(R.id.button_SWEMonthlySummary);
+        sweMonthlySummary.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), SubMenuMonthlySummaryActivity.class);
+            i.putExtra("NAME_BWE", namebwe);
+            i.putExtra("COUNTRY_BWE", countrybwe);
+            i.putExtra("POSITION_BWE", positionbwe);
+            i.putExtra("SURVEY_TYPE","SWESUMMARY");
+            i.putExtra("OPERATION","CREATE");
+            i.putExtra("LAT",lat);
+            i.putExtra("LNG",lng);
+            startActivity(i);
         });
 
-        Button waterSurvey = (Button) findViewById(R.id.button_waterSurvey);
-        waterSurvey.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
-                i.putExtra("NAME_BWE", namebwe);
-                i.putExtra("COUNTRY_BWE", countrybwe);
-                i.putExtra("POSITION_BWE", positionbwe);
-                i.putExtra("SURVEY_TYPE","WATERSURVEYHOUSEHOLD");
-                i.putExtra("OPERATION","CREATE");
-                i.putExtra("LAT",lat);
-                i.putExtra("LNG",lng);
-                startActivity(i);
-            }
+        Button waterSurvey = findViewById(R.id.button_waterSurvey);
+        waterSurvey.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
+            i.putExtra("NAME_BWE", namebwe);
+            i.putExtra("COUNTRY_BWE", countrybwe);
+            i.putExtra("POSITION_BWE", positionbwe);
+            i.putExtra("SURVEY_TYPE","WATERSURVEYHOUSEHOLD");
+            i.putExtra("OPERATION","CREATE");
+            i.putExtra("LAT",lat);
+            i.putExtra("LNG",lng);
+            startActivity(i);
         });
 
-        Button waterSurveyComm = (Button) findViewById(R.id.button_waterSurveyComm);
-        waterSurveyComm.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), CommunityWaterCardSelectActivity.class);
-                i.putExtra("NAME_BWE", namebwe);
-                i.putExtra("COUNTRY_BWE", countrybwe);
-                i.putExtra("POSITION_BWE", positionbwe);
-                i.putExtra("OPERATION", "CREATE");
-                i.putExtra("SURVEY_TYPE","WATERSURVEYCOMMUNITY");
-                i.putExtra("LAT",lat);
-                i.putExtra("LNG",lng);
-                startActivity(i);
-            }
+        Button waterSurveyComm = findViewById(R.id.button_waterSurveyComm);
+        waterSurveyComm.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), CommunityWaterCardSelectActivity.class);
+            i.putExtra("NAME_BWE", namebwe);
+            i.putExtra("COUNTRY_BWE", countrybwe);
+            i.putExtra("POSITION_BWE", positionbwe);
+            i.putExtra("OPERATION", "CREATE");
+            i.putExtra("SURVEY_TYPE","WATERSURVEYCOMMUNITY");
+            i.putExtra("LAT",lat);
+            i.putExtra("LNG",lng);
+            startActivity(i);
         });
 
 
-        Button waterSurveyFromVol = (Button) findViewById(R.id.button_waterSurveyFromVol);
-        waterSurveyFromVol.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), VolunteerHouseholdCardSelectActivity.class);
-                i.putExtra("NAME_BWE", namebwe);
-                i.putExtra("COUNTRY_BWE", countrybwe);
-                i.putExtra("POSITION_BWE", positionbwe);
-                i.putExtra("SURVEY_TYPE","WATERSURVEYHOUSEHOLD");
-                i.putExtra("OPERATION","CREATE");
-                i.putExtra("LAT",lat);
-                i.putExtra("LNG",lng);
-                startActivity(i);
-            }
+        Button waterSurveyFromVol = findViewById(R.id.button_waterSurveyFromVol);
+        waterSurveyFromVol.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), VolunteerHouseholdCardSelectActivity.class);
+            i.putExtra("NAME_BWE", namebwe);
+            i.putExtra("COUNTRY_BWE", countrybwe);
+            i.putExtra("POSITION_BWE", positionbwe);
+            i.putExtra("SURVEY_TYPE","WATERSURVEYHOUSEHOLD");
+            i.putExtra("OPERATION","CREATE");
+            i.putExtra("LAT",lat);
+            i.putExtra("LNG",lng);
+            startActivity(i);
         });
 
         //view menu items
-        Button initialFullSurveyView = (Button) findViewById(R.id.button_initialFullSurveyView);
-        initialFullSurveyView.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
-                i.putExtra("OPERATION","VIEW");
-                startActivity(i);
-            }
+        Button initialFullSurveyView = findViewById(R.id.button_initialFullSurveyView);
+        initialFullSurveyView.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
+            i.putExtra("OPERATION","VIEW");
+            startActivity(i);
         });
 
-        Button followUpSurveyView = (Button) findViewById(R.id.button_followUpSurveyView);
-        followUpSurveyView.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), FollowUpSurveyCardSelectActivity.class);
-                i.putExtra("OPERATION","VIEW");
-                startActivity(i);
-            }
+        Button followUpSurveyView = findViewById(R.id.button_followUpSurveyView);
+        followUpSurveyView.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), FollowUpSurveyCardSelectActivity.class);
+            i.putExtra("OPERATION","VIEW");
+            startActivity(i);
         });
 
-        Button waterSurveyCommView = (Button) findViewById(R.id.button_waterSurveyCommView);
-        waterSurveyCommView.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), CommunityWaterTestCardSelectActivity.class);
-                i.putExtra("OPERATION","VIEW");
-                startActivity(i);
-            }
+        Button waterSurveyCommView = findViewById(R.id.button_waterSurveyCommView);
+        waterSurveyCommView.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), CommunityWaterTestCardSelectActivity.class);
+            i.putExtra("OPERATION","VIEW");
+            startActivity(i);
         });
 
-        Button waterSurveyView = (Button) findViewById(R.id.button_waterSurveyView);
-        waterSurveyView.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), HouseholdWaterTestCardSelectActivity.class);
-                i.putExtra("OPERATION","VIEW");
-                startActivity(i);
-            }
+        Button waterSurveyView = findViewById(R.id.button_waterSurveyView);
+        waterSurveyView.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), HouseholdWaterTestCardSelectActivity.class);
+            i.putExtra("OPERATION","VIEW");
+            startActivity(i);
         });
 
-        Button waterSurveyVolView = (Button) findViewById(R.id.button_waterSurveyVolView);
-        waterSurveyVolView.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), VolunteerHouseholdWaterTestCardSelectActivity.class);
-                i.putExtra("OPERATION","VIEW");
-                startActivity(i);
-            }
+        Button waterSurveyVolView = findViewById(R.id.button_waterSurveyVolView);
+        waterSurveyVolView.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), VolunteerHouseholdWaterTestCardSelectActivity.class);
+            i.putExtra("OPERATION","VIEW");
+            startActivity(i);
         });
 
-        Button healthCheckView = (Button) findViewById(R.id.button_healthCheckView);
-        healthCheckView.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), HealthCheckSurveyCardSelectActivity.class);
-                i.putExtra("OPERATION","VIEW");
-                startActivity(i);
-            }
+        Button healthCheckView = findViewById(R.id.button_healthCheckView);
+        healthCheckView.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), HealthCheckSurveyCardSelectActivity.class);
+            i.putExtra("OPERATION","VIEW");
+            startActivity(i);
         });
 
-        Button sweMonthlySummaryView = (Button) findViewById(R.id.button_SWEMonthlySummaryView);
-        sweMonthlySummaryView.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ViewSubMenuMonthlySummaryActivity.class);
-                i.putExtra("OPERATION","VIEW");
-                i.putExtra("LAT",lat);
-                i.putExtra("LNG",lng);
-                startActivity(i);
-            }
+        Button sweMonthlySummaryView = findViewById(R.id.button_SWEMonthlySummaryView);
+        sweMonthlySummaryView.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), ViewSubMenuMonthlySummaryActivity.class);
+            i.putExtra("OPERATION","VIEW");
+            i.putExtra("LAT",lat);
+            i.putExtra("LNG",lng);
+            startActivity(i);
         });
 
         //update incompleted menu items
-        Button initialFullSurveyUC = (Button) findViewById(R.id.button_initialFullSurveyUC);
-        initialFullSurveyUC.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
-                i.putExtra("OPERATION","UPDATE");
-                startActivity(i);
-            }
+        Button initialFullSurveyUC = findViewById(R.id.button_initialFullSurveyUC);
+        initialFullSurveyUC.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
+            i.putExtra("OPERATION","UPDATE");
+            startActivity(i);
         });
 
-        Button followUpSurveyUpdate = (Button) findViewById(R.id.button_followUpSurveyUC);
-        followUpSurveyUpdate.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), FollowUpSurveyCardSelectActivity.class);
-                i.putExtra("OPERATION","UPDATE");
-                startActivity(i);
-            }
+        Button followUpSurveyUpdate = findViewById(R.id.button_followUpSurveyUC);
+        followUpSurveyUpdate.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), FollowUpSurveyCardSelectActivity.class);
+            i.putExtra("OPERATION","UPDATE");
+            startActivity(i);
         });
 
-        Button waterSurveyCommUC = (Button) findViewById(R.id.button_waterSurveyCommUC);
-        waterSurveyCommUC.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), CommunityWaterTestCardSelectActivity.class);
-                i.putExtra("OPERATION","UPDATE");
-                startActivity(i);
-            }
+        Button waterSurveyCommUC = findViewById(R.id.button_waterSurveyCommUC);
+        waterSurveyCommUC.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), CommunityWaterTestCardSelectActivity.class);
+            i.putExtra("OPERATION","UPDATE");
+            startActivity(i);
         });
 
-        Button waterSurveyUC = (Button) findViewById(R.id.button_waterSurveyUC);
-        waterSurveyUC.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), HouseholdWaterTestCardSelectActivity.class);
-                i.putExtra("OPERATION","UPDATE");
-                startActivity(i);
-            }
+        Button waterSurveyUC = findViewById(R.id.button_waterSurveyUC);
+        waterSurveyUC.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), HouseholdWaterTestCardSelectActivity.class);
+            i.putExtra("OPERATION","UPDATE");
+            startActivity(i);
         });
 
-        Button waterSurveyFromVolUC = (Button) findViewById(R.id.button_waterSurveyFromVolUC);
-        waterSurveyFromVolUC.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), VolunteerHouseholdWaterTestCardSelectActivity.class);
-                i.putExtra("OPERATION","UPDATE");
-                startActivity(i);
-            }
+        Button waterSurveyFromVolUC = findViewById(R.id.button_waterSurveyFromVolUC);
+        waterSurveyFromVolUC.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), VolunteerHouseholdWaterTestCardSelectActivity.class);
+            i.putExtra("OPERATION","UPDATE");
+            startActivity(i);
         });
 
-        Button healthCheckUC = (Button) findViewById(R.id.button_healthCheckUC);
-        healthCheckUC.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), HealthCheckSurveyCardSelectActivity.class);
-                i.putExtra("OPERATION","UPDATE");
-                startActivity(i);
-            }
+        Button healthCheckUC = findViewById(R.id.button_healthCheckUC);
+        healthCheckUC.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), HealthCheckSurveyCardSelectActivity.class);
+            i.putExtra("OPERATION","UPDATE");
+            startActivity(i);
         });
 
-        Button sweMonthlySummaryUC = (Button) findViewById(R.id.button_SWEMonthlySummaryUC);
-        sweMonthlySummaryUC.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), UpdateSubMenuMonthlySummaryActivity.class);
-                i.putExtra("OPERATION","UPDATE");
-                startActivity(i);
-            }
+        Button sweMonthlySummaryUC = findViewById(R.id.button_SWEMonthlySummaryUC);
+        sweMonthlySummaryUC.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), UpdateSubMenuMonthlySummaryActivity.class);
+            i.putExtra("OPERATION","UPDATE");
+            startActivity(i);
         });
 
     }
@@ -547,27 +451,23 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void startProgress(String s) {
-        runOnUiThread(new Runnable() {
-            public void run() {
-                if(progressBar==null)
-                    progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
-                if(progressBarText==null)
-                    progressBarText = (TextView) findViewById(R.id.pbText);
+        runOnUiThread(() -> {
+            if(progressBar==null)
+                progressBar = findViewById(R.id.llProgressBar);
+            if(progressBarText==null)
+                progressBarText = findViewById(R.id.pbText);
 
-                progressBarText.setText(s);
-                progressBar.setVisibility(View.VISIBLE);
-            }
+            progressBarText.setText(s);
+            progressBar.setVisibility(View.VISIBLE);
         });
     }
 
     private void endProgress() {
-        runOnUiThread(new Runnable() {
-            public void run() {
-                if(progressBar==null)
-                    progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
+        runOnUiThread(() -> {
+            if(progressBar==null)
+                progressBar = findViewById(R.id.llProgressBar);
 
-                progressBar.setVisibility(View.GONE);
-            }
+            progressBar.setVisibility(View.GONE);
         });
 
     }
@@ -587,128 +487,12 @@ public class MenuActivity extends AppCompatActivity {
         if (id == R.id.changeSurveyCountry) {
             Log.i("Tutorials", "going to change survey country" );
             ArrayList<String> listOfCountries = BwfSurveyAmplifyApplication.getCountries();
-            DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
-                @Override
-                public void onSelectedCountry(String countryName) {
-                    countrybwe = countryName;
-                    Log.i("Tutorials", "country selected is " + countrybwe );
-                }
+            DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, countryName -> {
+                countrybwe = countryName;
+                Log.i("Tutorials", "country selected is " + countrybwe );
             });
             dialog.show(getSupportFragmentManager(), "countries");
         }
-        /*
-        if (id == R.id.syncCloud) {
-            Log.i("Tutorials", "going to sync with cloud" );
-            progressBarText.setText("Please wait... Synchronizing with cloud!");
-            progressBar.setVisibility(View.VISIBLE);
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-            Amplify.DataStore.clear(
-                    () -> {
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                            CountDownTimer countDownTimer = new CountDownTimer(10000,1000) {
-                                @Override
-                                public void onTick(long millisUntilFinished) {
-                                }
-
-                                @Override
-                                public void onFinish() {
-                                    Log.i("Tutorials", "Done clearing datastore under synchronize");
-                                    Amplify.DataStore.start(
-                                            () -> {
-                                                Log.i("Tutorials", "DataStore started");
-                                                runOnUiThread(new Runnable() {
-                                                    public void run() {
-                                                        CountDownTimer countDownTimer = new CountDownTimer(30000,1000) {
-                                                            @Override
-                                                            public void onTick(long millisUntilFinished) {
-                                                            }
-
-                                                            @Override
-                                                            public void onFinish() {
-                                                                ArrayList<Config> configsInner = new ArrayList<Config>();
-                                                                Amplify.DataStore.query(
-                                                                        ConfigDefinitions.class,
-                                                                        allConfigDefinitions -> {
-                                                                            Log.i("Tutorials", "DataStore is queried config query.");
-                                                                            while (allConfigDefinitions.hasNext()) {
-                                                                                ConfigDefinitions configDef = allConfigDefinitions.next();
-                                                                                if(configDef.getType().contentEquals("C")){
-                                                                                    Log.i("Tutorials", "country config. "+ configDef.getChildvalue());
-                                                                                }
-                                                                                configsInner.add(new Config(configDef.getType(), configDef.getName(), configDef.getValue(),configDef.getDesc(), configDef.getChildname(), configDef.getChildvalue(), configDef.getChilddesc(),configDef.getParentname(), configDef.getParentvalue(), configDef.getParentdesc()));
-                                                                            }
-                                                                            Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+configsInner.size() );
-                                                                            if(configsInner.size()>0){
-                                                                                BwfSurveyAmplifyApplication.configs = configsInner;
-                                                                                BwfSurveyAmplifyApplication.interchangePool = BwfSurveyAmplifyApplication.makeAllInterchanges();
-                                                                                Log.i("Tutorials", "DataStore is queried for configs. No of configs is "+ BwfSurveyAmplifyApplication.configs.size() );
-                                                                            }
-
-                                                                            runOnUiThread(new Runnable() {
-                                                                                public void run() {
-                                                                                    CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-                                                                                        @Override
-                                                                                        public void onTick(long millisUntilFinished) {
-                                                                                        }
-
-                                                                                        @Override
-                                                                                        public void onFinish() {
-                                                                                            progressBar.setVisibility(View.GONE);
-                                                                                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                                                                                        }
-                                                                                    };
-                                                                                    countDownTimer.start();
-                                                                                }
-                                                                            });
-
-                                                                        },
-                                                                        failure ->{
-                                                                            Log.i("Tutorials", "Query failed, going to use file " );
-                                                                            Log.e("Tutorials", "Query failed.", failure);
-                                                                            runOnUiThread(new Runnable() {
-                                                                                public void run() {
-                                                                                    progressBar.setVisibility(View.GONE);
-                                                                                }
-                                                                            });
-                                                                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                                                                        }
-                                                                );
-                                                            }
-                                                        };
-                                                        countDownTimer.start();
-                                                    }
-                                                });
-                                            },
-                                            error -> {
-                                                Log.e("Tutorials", "Error starting DataStore", error);
-                                                runOnUiThread(new Runnable() {
-                                                    public void run() {
-                                                        progressBar.setVisibility(View.GONE);
-                                                    }
-                                                });
-                                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                                            }
-                                    );
-                                }
-                            };
-                            countDownTimer.start();
-                            }
-                        });
-                    },
-                    error ->{
-                        Log.e("Tutorials", "Error clearing DataStore", error);
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                progressBar.setVisibility(View.GONE);
-                            }
-                        });
-                        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                    });
-
-
-        }
-        */
 
         return super.onOptionsItemSelected(item);
     }

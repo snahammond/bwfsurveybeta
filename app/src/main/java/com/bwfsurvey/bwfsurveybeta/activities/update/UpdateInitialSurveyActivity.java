@@ -101,7 +101,8 @@ public class UpdateInitialSurveyActivity extends AppCompatActivity {
                     try {
                         method = theInitialSurvey.getClass().getMethod(methodName);
                         Object ansObject = method.invoke(theInitialSurvey);
-                        answer = ansObject.toString();
+                        if(ansObject!=null)
+                            answer = ansObject.toString();
                     } catch (Exception e) {
                         Log.e("Tutorials", "Could not get answer " + nameOfAns);
                     }

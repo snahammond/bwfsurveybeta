@@ -1,8 +1,6 @@
 package com.bwfsurvey.bwfsurveybeta.activities.collect;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,9 +20,9 @@ import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.syncengine.OutboxMutationEvent;
 import com.amplifyframework.hub.HubChannel;
 import com.amplifyframework.hub.SubscriptionToken;
-import com.bwfsurvey.bwfsurveybeta.types.Interchange;
-import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
+import com.bwfsurvey.bwfsurveybeta.adapters.InterchangeCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.utils.IntegerUtils;
 import com.bwfsurvey.bwfsurveybeta.utils.InterchangeUtils;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
@@ -34,6 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Objects;
 
 public class FollowUpSurveyActivity extends AppCompatActivity {
     private String namebwe = null;
@@ -77,13 +76,13 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
 
         Log.i("Tutorials", "Selected family follow up survey class: " + surveyId);
         setContentView(R.layout.activity_recycler);
-        getSupportActionBar().setTitle((CharSequence) "FollowUp Survey; "+householdName);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("FollowUp Survey; " +householdName);
         initView();
     }
 
     private void initView() {
         createFollowUpSurveyQuestionaire();
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new InterchangeCardAdapter(FollowUpSurveyActivity.this, FollowUpSurveyActivity.interchanges);
         recyclerView.setAdapter(adapter);
@@ -189,15 +188,17 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                 hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
-                    if(event.getModelName().contentEquals("FollowUpSurvey")){
+                    if(event!=null && event.getModelName().contentEquals("FollowUpSurvey")){
                         if(event.getElement().getModel().equals(followUpSurveyToSave)){
-                            runOnUiThread(new Runnable() {
-                                public void run() {
-                                    progressBar.setVisibility(View.GONE);
-                                    showSavedSuccessfulAlert();
-                                }
+                            runOnUiThread(() -> {
+                                progressBar.setVisibility(View.GONE);
+                                showSavedSuccessfulAlert();
                             });
+                        }else{
+                            progressBar.setVisibility(View.GONE);
                         }
+                    }else{
+                        progressBar.setVisibility(View.GONE);
                     }
                 }
         );
@@ -205,11 +206,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                 followUpSurveyToSave,
                 update -> {
                     Log.i("Tutorial", "Saved Successfully ");
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            doSyncWaitAndShowSavedSuccessfulAlert();
-                        }
-                    });
+                    runOnUiThread(() -> doSyncWaitAndShowSavedSuccessfulAlert());
                 },
                 failure -> {
                     Log.i("Tutorial", "Save Failed ");
@@ -221,24 +218,10 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
     private void doSyncWaitAndShowSavedSuccessfulAlert() {
         //show progress bar so that if user is offline, the save will go into pending to be shot into cloud
         //this is for the progress bar
-        progressBar = (LinearLayout) findViewById(R.id.llProgressBar);
-        TextView progressBarText = (TextView) findViewById(R.id.pbText);
+        progressBar = findViewById(R.id.llProgressBar);
+        TextView progressBarText = findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Syncing Up!");
         progressBar.setVisibility(View.VISIBLE);
-        /*
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
-
-            @Override
-            public void onFinish() {
-                progressBar.setVisibility(View.GONE);
-                showSavedSuccessfulAlert();
-            }
-        };
-        countDownTimer.start();
-         */
     }
 
     private void showSavedSuccessfulAlert(){
@@ -248,15 +231,12 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                 .setTitle("Saved Succussfully")
                 .setMessage("Follow Up Survey Saved Succussfully \n" )
                 // A null listener allows the button to dismiss the dialog and take no further action.
-                .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //reset all interchange answers
-                        for(Interchange interchange: FollowUpSurveyActivity.interchanges){
-                            interchange.getAnswer().setAns(null);
-                        }
-                        FollowUpSurveyActivity.this.finish();
+                .setNegativeButton(android.R.string.ok, (dialog, which) -> {
+                    //reset all interchange answers
+                    for(Interchange interchange: FollowUpSurveyActivity.interchanges){
+                        interchange.getAnswer().setAns(null);
                     }
+                    FollowUpSurveyActivity.this.finish();
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .show()
@@ -264,18 +244,14 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
     }
 
     private void showSaveFailedAlert(){
-        runOnUiThread(new Runnable() {
-            public void run() {
-                new AlertDialog.Builder(FollowUpSurveyActivity.this)
-                        .setTitle("Save Failed")
-                        .setMessage("Follow Up Survey Save Failed Please try again\n" )
-                        // A null listener allows the button to dismiss the dialog and take no further action.
-                        .setNegativeButton(android.R.string.ok, null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show()
-                        .setCanceledOnTouchOutside(false);
-            }
-        });
+        runOnUiThread(() -> new AlertDialog.Builder(FollowUpSurveyActivity.this)
+                .setTitle("Save Failed")
+                .setMessage("Follow Up Survey Save Failed Please try again\n" )
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.ok, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show()
+                .setCanceledOnTouchOutside(false));
     }
 
     private FollowUpSurvey makeFollowUpSurveyObject(ArrayList<Interchange> validatedInterchangesWithAns,int completed, String lat, String lng){
@@ -284,11 +260,11 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         String date_s = dateFormat.format(calendar.getTime());
 
         String Namebwe = namebwe;
-        String Country = (String) country;
-        String Community = (String) community;
+        String Country = country;
+        String Community = community;
         Integer SurveyId = surveyId;
         Temporal.Date date = new Temporal.Date(date_s);
-        String HeadHouseholdName = (String) householdName;
+        String HeadHouseholdName = householdName;
         String PersonBeingInterviewed = (String) InterchangeUtils.getInterchangeAns("PersonBeingInterviewed",validatedInterchangesWithAns);
         String WaterTreatmentBeforeDrinking = (String) InterchangeUtils.getInterchangeAns("WaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
         String MainReasonNoWaterTreatmentBeforeDrinking = (String) InterchangeUtils.getInterchangeAns("MainReasonNoWaterTreatmentBeforeDrinking",validatedInterchangesWithAns);
@@ -316,7 +292,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
         String HealthChangeFamilyInAYear = (String) InterchangeUtils.getInterchangeAns("HealthChangeFamilyInAYear",validatedInterchangesWithAns);
         String BenefitSWP = (String) InterchangeUtils.getInterchangeAns("BenefitSWP",validatedInterchangesWithAns);
 
-        FollowUpSurvey followUpSurvey = FollowUpSurvey.builder()
+        return FollowUpSurvey.builder()
                 .namebwe(Namebwe)
                 .country(Country)
                 .community(Community)
@@ -353,7 +329,6 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                 .lng(lng)
                 .date(date)
                 .build();
-        return followUpSurvey;
 
     }
 

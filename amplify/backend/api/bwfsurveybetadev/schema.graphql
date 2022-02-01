@@ -350,8 +350,6 @@ SWEPosition: String!
 NoWaterSampleTaken: Int!
 NoSurveysCompleted: Int!
 NoHealthCheck: Int!
-NoWaterStorageContainersDistributed: Int!
-NoSchoolVisits: Int!
 NoPublicServiceMessagesAired: Int!
 Completed: Int!
 Lat: String!

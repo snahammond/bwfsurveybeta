@@ -34,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Objects;
 
 public class HouseholdWaterSurveyActivity extends AppCompatActivity {
     private String namebwe = null;
@@ -78,7 +79,7 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
 
         Log.i("Tutorials", "Selected family water survey household class: " + householdName +" country: "+ country + " community: "+community + "surveyId: " + surveyId);
         setContentView(R.layout.activity_recycler);
-        getSupportActionBar().setTitle((CharSequence) "Water Survey; "+householdName);
+        Objects.requireNonNull(getSupportActionBar()).setTitle((CharSequence) "Water Survey; "+householdName);
         initView();
     }
 
@@ -189,7 +190,7 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
                 hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
-                    if(event.getModelName().contentEquals("HouseholdWaterTest")){
+                    if(event!=null && event.getModelName().contentEquals("HouseholdWaterTest")){
                         if(event.getElement().getModel().equals(householdWaterTestToSave)){
                             runOnUiThread(new Runnable() {
                                 public void run() {
@@ -197,7 +198,11 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
                                     showSavedSuccessfulAlert();
                                 }
                             });
+                        }else{
+                            progressBar.setVisibility(View.GONE);
                         }
+                    }else{
+                        progressBar.setVisibility(View.GONE);
                     }
                 }
         );

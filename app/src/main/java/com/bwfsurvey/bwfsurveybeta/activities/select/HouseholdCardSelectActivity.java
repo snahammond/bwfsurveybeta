@@ -14,15 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
-import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
-import com.amplifyframework.datastore.DataStoreChannelEventName;
-import com.amplifyframework.datastore.events.OutboxStatusEvent;
-import com.amplifyframework.datastore.generated.model.ConfigDefinitions;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
-import com.amplifyframework.datastore.syncengine.OutboxMutationEvent;
-import com.amplifyframework.hub.HubChannel;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.HouseholdCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.utils.ListUtils;

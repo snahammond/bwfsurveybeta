@@ -13080,26 +13080,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoWaterStorageContainersDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoSchoolVisits",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "NoPublicServiceMessagesAired",
                         "description": null,
                         "type": {
@@ -13332,38 +13312,6 @@
                     },
                     {
                         "name": "NoHealthCheck",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "NoWaterStorageContainersDistributed",
-                        "description": null,
-                        "args": [],
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "NoSchoolVisits",
                         "description": null,
                         "args": [],
                         "type": {
@@ -26905,34 +26853,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "NoWaterStorageContainersDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoSchoolVisits",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "NoPublicServiceMessagesAired",
                         "description": null,
                         "type": {
@@ -27061,26 +26981,6 @@
                     },
                     {
                         "name": "NoHealthCheck",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoWaterStorageContainersDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "ModelIntInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoSchoolVisits",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -27244,26 +27144,6 @@
                     },
                     {
                         "name": "NoHealthCheck",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoWaterStorageContainersDistributed",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "NoSchoolVisits",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",

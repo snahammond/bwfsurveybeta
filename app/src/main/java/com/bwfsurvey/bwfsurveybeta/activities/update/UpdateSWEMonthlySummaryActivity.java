@@ -102,7 +102,8 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
                     try {
                         method = theSWEMonthlySummary.getClass().getMethod(methodName);
                         Object ansObject = method.invoke(theSWEMonthlySummary);
-                        answer = ansObject.toString();
+                        if(ansObject!=null)
+                            answer = ansObject.toString();
                     } catch (Exception e) {
                         Log.e("Tutorials", "Could not get answer " + nameOfAns);
                     }
@@ -393,7 +394,8 @@ public class UpdateSWEMonthlySummaryActivity extends AppCompatActivity {
             }
         }
         if(ans==null){
-            ans = foundInterchange.getValidation().getDefaultValue();
+            if(foundInterchange!=null)
+                ans = foundInterchange.getValidation().getDefaultValue();
         }
         return ans;
     }

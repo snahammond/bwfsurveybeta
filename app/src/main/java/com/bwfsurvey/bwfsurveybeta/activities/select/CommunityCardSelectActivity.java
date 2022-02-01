@@ -137,7 +137,7 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
     }
 
     private void getCommunityListAndShowOnRecyclerView() {
-        if(countrybwe!=null && countrybwe!=""){
+        if(countrybwe!=null && !countrybwe.equals("")){
             listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
             showListOfCommunities();
         }
