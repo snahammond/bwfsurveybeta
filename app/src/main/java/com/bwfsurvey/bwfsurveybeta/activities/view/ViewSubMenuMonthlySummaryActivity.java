@@ -96,5 +96,20 @@ public class ViewSubMenuMonthlySummaryActivity extends AppCompatActivity {
             }
         });
 
+        Button sweSubCreateVol = (Button) findViewById(R.id.button_SWESubCreateVolunteer);
+        sweSubCreateVol.setText("View Volunteers");
+        sweSubCreateVol.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), VolunteerCardSelectActivity.class);
+                i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("POSITION_BWE", "Educator");
+                i.putExtra("SURVEY_TYPE","SWETOTALSUMMARY");
+                i.putExtra("OPERATION","VIEW");
+                i.putExtra("LAT",lat);
+                i.putExtra("LNG",lng);
+                startActivity(i);
+            }
+        });
+
     }
 }

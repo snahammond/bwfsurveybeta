@@ -253,20 +253,6 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Syncing Up!");
         progressBar.setVisibility(View.VISIBLE);
-        /*
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
-
-            @Override
-            public void onFinish() {
-                progressBar.setVisibility(View.GONE);
-                showSavedSuccessfulAlert();
-            }
-        };
-        countDownTimer.start();
-         */
     }
 
     private void showSavedSuccessfulAlert(){

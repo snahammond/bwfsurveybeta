@@ -18,7 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.DataStoreChannelEventName;
 import com.amplifyframework.datastore.generated.model.Volunteer;
+import com.amplifyframework.datastore.syncengine.OutboxMutationEvent;
+import com.amplifyframework.hub.HubChannel;
+import com.amplifyframework.hub.SubscriptionToken;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.VolunteerCardAdapter;
 import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewVolunteer;
@@ -186,12 +190,34 @@ public class VolunteerCardSelectActivity extends AppCompatActivity implements Cr
         createNewVolunteer.show(getSupportFragmentManager(), "createNewVolunteer");
     }
 
+    SubscriptionToken checkToken = null;
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, Volunteer newVolunteer) {
         Log.i("Tutorials", "newVolunteer " + newVolunteer.getNamevol()  );
 
         if (newVolunteer.getNamevol()!=null&& !newVolunteer.getNamevol().equals("")){
-
+            checkToken = Amplify.Hub.subscribe(
+                    HubChannel.DATASTORE,
+                    hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
+                    hubEvent -> {
+                        OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
+                        //Log.i("bwfSurveyAmplify", " VolunteerHousehold "+event.getModelName());
+                        if(event!=null && event.getModelName().contentEquals("Volunteer")){
+                            if(event.getElement().getModel().equals(newVolunteer)){
+                                runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        progressBar.setVisibility(View.GONE);
+                                        showSavedSuccessfulAlert();
+                                    }
+                                });
+                            }else{
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        }else{
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    }
+            );
             Amplify.DataStore.save(newVolunteer,
                     update -> {
                         Log.i("Tutorial", "Saved Successfully ");
@@ -219,18 +245,6 @@ public class VolunteerCardSelectActivity extends AppCompatActivity implements Cr
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Syncing Up!");
         progressBar.setVisibility(View.VISIBLE);
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
-
-            @Override
-            public void onFinish() {
-                progressBar.setVisibility(View.GONE);
-                showSavedSuccessfulAlert();
-            }
-        };
-        countDownTimer.start();
     }
 
     private void showSavedSuccessfulAlert(){

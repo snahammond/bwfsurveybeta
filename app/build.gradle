@@ -3,15 +3,15 @@ plugins {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.bwfsurvey.bwfsurveybeta"
         minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 19
-        versionName "5.94"
+        targetSdkVersion 30
+        versionCode 20
+        versionName "5.95"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true

@@ -758,7 +758,7 @@
   <config>
     <childdesc></childdesc>
     <childname>Community</childname>
-    <childvalue>["Abomosu","Akokum","Akwadum","Akwadusu","Amonom","Asamama","Asunafo","Ekorso","Mampong","Nkurakan","Sankebunase","Wekpeti/Abresu"]</childvalue>
+    <childvalue>["Abomosu","Akokom","Akwadum","Akwadusu","Amonom","Asamama","Asunafo","Ekorso","Mampong","Nkurakan","Sankebunase","Wekpeti/Abresu"]</childvalue>
     <desc>Ghana</desc>
     <name>GHANA</name>
     <parentdesc></parentdesc>
@@ -1863,7 +1863,7 @@
     <childdesc></childdesc>
     <childname></childname>
     <childvalue></childvalue>
-    <desc></desc>
+    <desc>Please double tab on answer</desc>
     <name>LastTimeTreatedHouseholdWaterWithChlorine</name>
     <parentdesc></parentdesc>
     <parentname></parentname>
