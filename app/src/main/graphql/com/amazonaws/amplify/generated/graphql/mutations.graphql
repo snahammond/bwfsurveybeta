@@ -1490,3 +1490,63 @@ mutation DeleteSweMonthlyTotalSummary(
     updatedAt
   }
 }
+mutation CreateVolunteerMonthlyTotalSummary(
+  $input: CreateVolunteerMonthlyTotalSummaryInput!
+  $condition: ModelVolunteerMonthlyTotalSummaryConditionInput
+) {
+  createVolunteerMonthlyTotalSummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    date
+    NoWaterSampleTaken
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateVolunteerMonthlyTotalSummary(
+  $input: UpdateVolunteerMonthlyTotalSummaryInput!
+  $condition: ModelVolunteerMonthlyTotalSummaryConditionInput
+) {
+  updateVolunteerMonthlyTotalSummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    date
+    NoWaterSampleTaken
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteVolunteerMonthlyTotalSummary(
+  $input: DeleteVolunteerMonthlyTotalSummaryInput!
+  $condition: ModelVolunteerMonthlyTotalSummaryConditionInput
+) {
+  deleteVolunteerMonthlyTotalSummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    Namevol
+    date
+    NoWaterSampleTaken
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

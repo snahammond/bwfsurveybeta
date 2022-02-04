@@ -31,6 +31,8 @@ import com.amplifyframework.datastore.generated.model.Meeting;
 import com.amplifyframework.datastore.generated.model.Volunteer;
 import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
 import com.bwfsurvey.bwfsurveybeta.activities.collect.InitialSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdAttendingMeetingCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.MeetingCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.example.bwfsurveybeta.R;
 
@@ -41,25 +43,31 @@ import java.util.Date;
 
 public class CreateNewMeeting extends DialogFragment {
 
-    private ArrayList<Community> communities;
+    private ArrayList<String> communities;
     private String selectedCommunity = null;
     private Temporal.Date selectedDate = null;
-    private ArrayList<Volunteer> volunteers;
+    private ArrayList<String> volunteers;
     private String selectedVolunteer = null;
     private String discussionsTaught = null;
     private String country;
     private String namebwe;
 
-    private Context context;
     TextView textViewMeetingDate;
     final Calendar myCalendar = Calendar.getInstance();
 
-    public CreateNewMeeting(Activity activity,ArrayList<Community> communities, ArrayList<Volunteer> volunteers, String namebwe, String country) {
-        this.communities = communities;
-        this.volunteers = volunteers;
-        this.country = country;
-        this.namebwe = namebwe;
-        this.context = activity;
+    public CreateNewMeeting() {
+    }
+
+    public static CreateNewMeeting newInstance(ArrayList<String> communities, ArrayList<String> volunteers, String namebwe, String country) {
+        Bundle args = new Bundle();
+        args.putStringArrayList("communities", communities);
+        args.putStringArrayList("volunteers", volunteers);
+        args.putString("namebwe", namebwe);
+        args.putString("country", country);
+
+        CreateNewMeeting f = new CreateNewMeeting();
+        f.setArguments(args);
+        return f;
     }
 
     public interface CreateNewMeetingListener {
@@ -87,7 +95,13 @@ public class CreateNewMeeting extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        communities = getArguments().getStringArrayList("communities");
+        volunteers = getArguments().getStringArrayList("volunteers");
+        namebwe = getArguments().getString("namebwe");
+        country = getArguments().getString("country");
+
+        final MeetingCardSelectActivity activity = (MeetingCardSelectActivity) getActivity();
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         final View layoutView = inflater.inflate(R.layout.dialog_create_meeting, null);
 
@@ -96,8 +110,8 @@ public class CreateNewMeeting extends DialogFragment {
         ArrayList<String> communities_ = new ArrayList<>();
         communities_.add("Select the community...");
         //get communities inside a arraylist
-        for(Community community : communities) {
-            communities_.add(community.getName());
+        for(String communityStr : communities) {
+            communities_.add(communityStr);
         }
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, communities_){
             @Override
@@ -162,7 +176,7 @@ public class CreateNewMeeting extends DialogFragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                new DatePickerDialog(context, date, myCalendar
+                new DatePickerDialog(activity, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -173,8 +187,8 @@ public class CreateNewMeeting extends DialogFragment {
         ArrayList<String> volunteers_ = new ArrayList<>();
         volunteers_.add("Select the volunteer...");
         //get communities inside a arraylist
-        for(Volunteer vol : volunteers) {
-            volunteers_.add(vol.getNamevol());
+        for(String vol : volunteers) {
+            volunteers_.add(vol);
         }
         ArrayAdapter<String> dataAdapterVols = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, volunteers_){
             @Override
@@ -289,7 +303,7 @@ public class CreateNewMeeting extends DialogFragment {
                             //fire error
                             runOnUiThread(new Runnable() {
                                 public void run() {
-                                    new androidx.appcompat.app.AlertDialog.Builder(context)
+                                    new androidx.appcompat.app.AlertDialog.Builder(activity)
                                             .setTitle("Invalid Meeting creation")
                                             .setMessage("Please fill out all fields on the form.\n" )
                                             // A null listener allows the button to dismiss the dialog and take no further action.

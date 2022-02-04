@@ -1755,3 +1755,80 @@ query ListSweMonthlyTotalSummarys(
     startedAt
   }
 }
+query SyncVolunteerMonthlyTotalSummaries(
+  $filter: ModelVolunteerMonthlyTotalSummaryFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncVolunteerMonthlyTotalSummaries(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      Namebwe
+      Namevol
+      date
+      NoWaterSampleTaken
+      Completed
+      Lat
+      Lng
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetVolunteerMonthlyTotalSummary($id: ID!) {
+  getVolunteerMonthlyTotalSummary(id: $id) {
+    id
+    Namebwe
+    Namevol
+    date
+    NoWaterSampleTaken
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListVolunteerMonthlyTotalSummarys(
+  $filter: ModelVolunteerMonthlyTotalSummaryFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listVolunteerMonthlyTotalSummarys(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      Namebwe
+      Namevol
+      date
+      NoWaterSampleTaken
+      Completed
+      Lat
+      Lng
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}

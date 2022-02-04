@@ -77,6 +77,14 @@
                             app:backgroundTint="#FFFFFF"
                             android:visibility="gone"/>
 
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider"
+                            android:visibility="gone"/>
+
                         <Button
                             android:id="@+id/button_VolSubMonthlySummary"
                             android:layout_width="match_parent"
@@ -91,6 +99,14 @@
                             app:backgroundTint="#FFFFFF"
                             android:visibility="gone"/>
 
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider"
+                            android:visibility="gone"/>
+
                         <Button
                             android:id="@+id/button_SWESubMonthlyEducationSummary"
                             android:layout_width="match_parent"
@@ -100,9 +116,16 @@
                             android:background="?android:attr/selectableItemBackground"
                             android:gravity="start"
                             android:shadowColor="#FFFFFF"
-                            android:text="SWE Monthly Education Summary"
+                            android:text="Monthly SWE/Vol Education Summary"
                             android:textColor="#3F51B5"
                             app:backgroundTint="#FFFFFF"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider"/>
 
                         <Button
                             android:id="@+id/button_SWESubMonthlyTotalSummary"
@@ -113,9 +136,36 @@
                             android:background="?android:attr/selectableItemBackground"
                             android:gravity="start"
                             android:shadowColor="#FFFFFF"
-                            android:text="WaterTesting, Household Survey &#38; PSA Summary"
+                            android:text="SWE Monthly Water Testing, Household Survey &#38; PSA Summary"
                             android:textColor="#3F51B5"
                             app:backgroundTint="#FFFFFF"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider"/>
+
+                        <Button
+                            android:id="@+id/button_SchWaterTreatmentActivitySummary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:gravity="start"
+                            android:shadowColor="#FFFFFF"
+                            android:text="School water treatment and activity Summary"
+                            android:textColor="#3F51B5"
+                            app:backgroundTint="#FFFFFF"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider"/>
 
                         <Button
                             android:id="@+id/button_SWESubCreateVolunteer"
@@ -129,6 +179,33 @@
                             android:text="Volunteers"
                             android:textColor="#3F51B5"
                             app:backgroundTint="#FFFFFF"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider"/>
+
+                        <Button
+                            android:id="@+id/button_VolSubMonthlyTotalSummary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:gravity="start"
+                            android:shadowColor="#FFFFFF"
+                            android:text="Volunteer Monthly Summary"
+                            android:textColor="#3F51B5"
+                            app:backgroundTint="#FFFFFF"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider"/>
 
                     </LinearLayout>
 

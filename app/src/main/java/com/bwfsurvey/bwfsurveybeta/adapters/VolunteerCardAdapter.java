@@ -14,10 +14,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.datastore.generated.model.Volunteer;
+import com.bwfsurvey.bwfsurveybeta.activities.collect.VolunteerMonthlyTotalSummaryActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.collect.VolunteerHouseholdWaterSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.collect.VolunteerMonthlySummaryActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerMonthlySummaryCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerMonthlyTotalSummaryCardSelectActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
@@ -82,9 +84,13 @@ public class VolunteerCardAdapter extends RecyclerView.Adapter {
                             startVolHouseholdWaterSurveyActivity(txtVolunteerName.getText().toString());
                         else if(surveyType.contentEquals("VOLUNTEERSUMMARY"))
                             startVolMonthlySummaryActivity(txtVolunteerName.getText().toString());
+                        else if(surveyType.contentEquals("VOLUNTEERTOTALSUMMARY"))
+                            startVolMonthlyTotalSummaryActivity(txtVolunteerName.getText().toString());
                     }else if(operation.contentEquals("VIEW")){
                         if(surveyType.contentEquals("VOLUNTEERSUMMARY"))
                             startViewVolMonthlySummaryActivity(txtVolunteerName.getText().toString());
+                        else if(surveyType.contentEquals("VOLUNTEERTOTALSUMMARY"))
+                            startViewVolMonthlyTotalSummaryActivity(txtVolunteerName.getText().toString());
                     }else if(operation.contentEquals("UPDATE")){
                         if(surveyType.contentEquals("VOLUNTEERSUMMARY"))
                             startUpdateVolMonthlySummaryActivity(txtVolunteerName.getText().toString());
@@ -142,6 +148,28 @@ public class VolunteerCardAdapter extends RecyclerView.Adapter {
         i.putExtra("COMMUNITY",community);
         i.putExtra("HHNAME",householdName);
         i.putExtra("HHLOC",householdLocation);
+        i.putExtra("NAME_VOL",volunteerName);
+        context.startActivity(i);
+        ((Activity)context).finish();
+    }
+
+    private void startVolMonthlyTotalSummaryActivity(String volunteerName) {
+        Intent i = new Intent(this.context, VolunteerMonthlyTotalSummaryActivity.class);
+        i.putExtra("NAME_BWE", namebwe);
+        i.putExtra("POSITION_BWE", "Volunteer");
+        i.putExtra("SURVEY_TYPE","VOLUNTEERTOTALSUMMARY");
+        i.putExtra("OPERATION","CREATE");
+        i.putExtra("NAME_VOL",volunteerName);
+        context.startActivity(i);
+        ((Activity)context).finish();
+    }
+
+    private void startViewVolMonthlyTotalSummaryActivity(String volunteerName) {
+        Intent i = new Intent(this.context, VolunteerMonthlyTotalSummaryCardSelectActivity.class);
+        i.putExtra("NAME_BWE", namebwe);
+        i.putExtra("POSITION_BWE", "Volunteer");
+        i.putExtra("SURVEY_TYPE","VOLUNTEERTOTALSUMMARY");
+        i.putExtra("OPERATION",operation);
         i.putExtra("NAME_VOL",volunteerName);
         context.startActivity(i);
         ((Activity)context).finish();

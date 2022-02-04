@@ -1337,3 +1337,54 @@ subscription OnDeleteSweMonthlyTotalSummary {
     updatedAt
   }
 }
+subscription OnCreateVolunteerMonthlyTotalSummary {
+  onCreateVolunteerMonthlyTotalSummary {
+    id
+    Namebwe
+    Namevol
+    date
+    NoWaterSampleTaken
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateVolunteerMonthlyTotalSummary {
+  onUpdateVolunteerMonthlyTotalSummary {
+    id
+    Namebwe
+    Namevol
+    date
+    NoWaterSampleTaken
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteVolunteerMonthlyTotalSummary {
+  onDeleteVolunteerMonthlyTotalSummary {
+    id
+    Namebwe
+    Namevol
+    date
+    NoWaterSampleTaken
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

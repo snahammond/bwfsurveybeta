@@ -28,6 +28,7 @@ import com.amplifyframework.hub.HubChannel;
 import com.amplifyframework.hub.SubscriptionToken;
 import com.bwfsurvey.bwfsurveybeta.BwfSurveyAmplifyApplication;
 import com.bwfsurvey.bwfsurveybeta.adapters.MeetingCardAdapter;
+import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewHouseholdAttendingMeeting;
 import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewMeeting;
 import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
@@ -207,7 +208,7 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
                                     runOnUiThread(new Runnable() {
                                         public void run() {
                                             ArrayList<Community> listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
-                                            showCreateNewMeeting(MeetingCardSelectActivity.this,listOfCommunities,listOfVolunteers);
+                                            showCreateNewMeeting(listOfCommunities,listOfVolunteers);
                                         }
                                     });
                                 }
@@ -215,7 +216,7 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
                             dialog.show(getSupportFragmentManager(), "countries");
                         }else {
                             ArrayList<Community> listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
-                            showCreateNewMeeting(MeetingCardSelectActivity.this,listOfCommunities,listOfVolunteers);
+                            showCreateNewMeeting(listOfCommunities,listOfVolunteers);
                         }
                     },
                     failure ->{
@@ -229,8 +230,17 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
     }
 
     private DialogFragment createNewMeeting;
-    public void showCreateNewMeeting(Activity activity, ArrayList<Community> communities, ArrayList<Volunteer> volunteers) {
-        createNewMeeting = new CreateNewMeeting(activity,communities,volunteers,namebwe,countrybwe);
+    public void showCreateNewMeeting( ArrayList<Community> communities, ArrayList<Volunteer> volunteers) {
+
+        ArrayList<String> communitiesStr = new ArrayList<>();
+        for(Community community : communities) {
+            communitiesStr.add(community.getName());
+        }
+        ArrayList<String> volunteersStr = new ArrayList<>();
+        for(Volunteer volunteer : volunteers) {
+            volunteersStr.add(volunteer.getNamevol());
+        }
+        createNewMeeting = CreateNewMeeting.newInstance(communitiesStr,volunteersStr,namebwe,countrybwe);
         createNewMeeting.show(getSupportFragmentManager(), "createNewMeeting");
         createNewMeeting.setCancelable(false);
     }

@@ -358,6 +358,20 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.VolunteerMonthlyTotalSummaryActivity"
+            android:label="Volunteer Monthly Summary"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerMonthlyTotalSummaryCardSelectActivity"
+            android:label="Volunteer Monthly Summary"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
 
     </application>
 

@@ -169,15 +169,15 @@ public class HouseholdAttendingMeetingCardSelectActivity extends AppCompatActivi
         int id = item.getItemId();
 
         if (id == R.id.newHouseholdAttendingMeeting) {
-            showCreateNewHouseholdAttendingMeeting(HouseholdAttendingMeetingCardSelectActivity.this,uuidMeeting,nameBWE);
+            showCreateNewHouseholdAttendingMeeting(uuidMeeting,nameBWE);
         }
 
         return super.onOptionsItemSelected(item);
     }
 
     private DialogFragment createNewHouseholdAttendingMeeting;
-    public void showCreateNewHouseholdAttendingMeeting(Activity activity, String uuidMeeting, String nameSWE) {
-        createNewHouseholdAttendingMeeting = new CreateNewHouseholdAttendingMeeting(activity,uuidMeeting,nameSWE);
+    public void showCreateNewHouseholdAttendingMeeting( String uuidMeeting, String nameSWE) {
+        createNewHouseholdAttendingMeeting = CreateNewHouseholdAttendingMeeting.newInstance(uuidMeeting,nameSWE);
         createNewHouseholdAttendingMeeting.show(getSupportFragmentManager(), "createNewHouseholdAttendingMeeting");
         createNewHouseholdAttendingMeeting.setCancelable(false);
     }

@@ -26,6 +26,7 @@ import com.amplifyframework.datastore.generated.model.HouseholdAttendingMeeting;
 import com.amplifyframework.datastore.generated.model.Meeting;
 import com.amplifyframework.datastore.generated.model.Volunteer;
 import com.amplifyframework.datastore.generated.model.VolunteerHousehold;
+import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdAttendingMeetingCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.example.bwfsurveybeta.R;
 
@@ -43,12 +44,16 @@ public class CreateNewHouseholdAttendingMeeting extends DialogFragment {
     private String uuidMeeting;
     private String nameSWE;
 
-    private Context context;
+    public CreateNewHouseholdAttendingMeeting() {
+    }
 
-    public CreateNewHouseholdAttendingMeeting(Activity activity, String uuidMeeting, String nameSWE) {
-        this.context = activity;
-        this.uuidMeeting = uuidMeeting;
-        this.nameSWE = nameSWE;
+    public static CreateNewHouseholdAttendingMeeting newInstance(String uuidMeeting, String nameSWE) {
+        Bundle args = new Bundle();
+        args.putString("uuidMeeting", uuidMeeting);
+        args.putString("nameSWE", nameSWE);
+        CreateNewHouseholdAttendingMeeting f = new CreateNewHouseholdAttendingMeeting();
+        f.setArguments(args);
+        return f;
     }
 
     public interface CreateNewHouseholdAttendingMeetingListener {
@@ -76,8 +81,11 @@ public class CreateNewHouseholdAttendingMeeting extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        uuidMeeting = getArguments().getString("uuidMeeting");
+        nameSWE = getArguments().getString("nameSWE");
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        final HouseholdAttendingMeetingCardSelectActivity activity = (HouseholdAttendingMeetingCardSelectActivity) getActivity();
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         final View layoutView = inflater.inflate(R.layout.dialog_create_household_attending_meeting, null);
 
@@ -148,7 +156,7 @@ public class CreateNewHouseholdAttendingMeeting extends DialogFragment {
                             //fire error
                             runOnUiThread(new Runnable() {
                                 public void run() {
-                                    new androidx.appcompat.app.AlertDialog.Builder(context)
+                                    new androidx.appcompat.app.AlertDialog.Builder(activity)
                                             .setTitle("Invalid Household creation")
                                             .setMessage("Please fill out all fields on the form.\n" )
                                             // A null listener allows the button to dismiss the dialog and take no further action.

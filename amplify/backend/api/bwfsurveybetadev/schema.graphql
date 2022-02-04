@@ -355,3 +355,14 @@ Completed: Int!
 Lat: String!
 Lng: String!
 }
+
+type VolunteerMonthlyTotalSummary @model @auth(rules: [{ allow: public,provider: apiKey }]){
+id: ID!
+Namebwe: String!
+Namevol: String!
+date: AWSDate
+NoWaterSampleTaken: Int!
+Completed: Int!
+Lat: String!
+Lng: String!
+}
