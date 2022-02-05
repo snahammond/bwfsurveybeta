@@ -33,7 +33,7 @@ import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
 
-public class CommunityWaterCardSelectActivity extends AppCompatActivity implements CreateNewCommunityWaterSource.CreateNewCommunityWaterSourceListener {
+public class CommunityWaterCardSelectActivity extends AppCompatActivity implements CreateNewCommunityWaterSource.CreateNewCommunityWaterSourceListener,SelectCountryDialogFragment.SelectCountryDialogFragmentListener {
     private static ArrayList<CommunityWater> listOfCommunityWater;
     private RecyclerView recyclerView;
     private CommunityWaterCardAdapter adapter;
@@ -167,7 +167,7 @@ public class CommunityWaterCardSelectActivity extends AppCompatActivity implemen
             if(countrybwe==null){
                 Log.i("bwfsurveybeta", "countrybwe is null" );
                 ArrayList<String> listOfCountries = BwfSurveyAmplifyApplication.getCountries();
-                DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
+                /*DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
                     @Override
                     public void onSelectedCountry(String countryName) {
                         countrybwe = countryName;
@@ -180,7 +180,8 @@ public class CommunityWaterCardSelectActivity extends AppCompatActivity implemen
                         });
                     }
                 });
-                dialog.show(getSupportFragmentManager(), "countries");
+                dialog.show(getSupportFragmentManager(), "countries");*/
+                showSelectCountry(listOfCountries);
             }else{
                 ArrayList<Community> listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
                 showCreateNewCommunityWaterSource(listOfCommunities);
@@ -193,51 +194,57 @@ public class CommunityWaterCardSelectActivity extends AppCompatActivity implemen
 
     private DialogFragment createNewCommunityWaterSource;
     public void showCreateNewCommunityWaterSource(ArrayList<Community> communities) {
-        createNewCommunityWaterSource = new CreateNewCommunityWaterSource(communities,countrybwe,namebwe);
+        ArrayList<String> communitiesStr = new ArrayList<>();
+        for(Community community : communities) {
+            communitiesStr.add(community.getName());
+        }
+        createNewCommunityWaterSource = CreateNewCommunityWaterSource.newInstance(communitiesStr,countrybwe,namebwe);
         createNewCommunityWaterSource.show(getSupportFragmentManager(), "createNewCommunityWaterSource");
+        createNewCommunityWaterSource.setCancelable(false);
     }
 
     SubscriptionToken checkToken = null;
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, CommunityWater newCommunityWaterSource) {
         Log.i("Tutorials", "newCommunityWaterSource " + newCommunityWaterSource.getCommunity() + " " +newCommunityWaterSource.getCommunityWaterLocation()  );
-        if (newCommunityWaterSource.getCommunityWaterLocation()!=null&& !newCommunityWaterSource.getCommunityWaterLocation().equals("")){
-            checkToken = Amplify.Hub.subscribe(
-                    HubChannel.DATASTORE,
-                    hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
-                    hubEvent -> {
-                        OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
-                        Log.i("bwfSurveyAmplify", " CommunityWater "+event.getModelName());
-                        if(event.getModelName().contentEquals("CommunityWater")){
-                            if(event.getElement().getModel().equals(newCommunityWaterSource)){
-                                runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        progressBar.setVisibility(View.GONE);
-                                        showSavedSuccessfulAlert();
-                                    }
-                                });
-                            }
-                        }
-                    }
-            );
-            Amplify.DataStore.save(newCommunityWaterSource,
-                    update -> {
-                        Log.i("Tutorial", "Saved Successfully ");
-
+        checkToken = Amplify.Hub.subscribe(
+            HubChannel.DATASTORE,
+            hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
+            hubEvent -> {
+                OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
+                Log.i("bwfSurveyAmplify", " CommunityWater "+event.getModelName());
+                if(event.getModelName().contentEquals("CommunityWater")){
+                    if(event.getElement().getModel().getId().equals(newCommunityWaterSource.getId())){
                         runOnUiThread(new Runnable() {
                             public void run() {
-                                doSyncWaitAndShowSavedSuccessfulAlert();
+                                progressBar.setVisibility(View.GONE);
+                                showSavedSuccessfulAlert();
                             }
                         });
-                    },
-                    failure -> {
-                        Log.i("Tutorial", "Save Failed ");
-                        showSaveFailedAlert();
+                    }else{
+                        progressBar.setVisibility(View.GONE);
                     }
-            );
-        }else{
-            Log.i("Tutorials", "newCommunityWaterSource data not valid" );
-        }
+                }else{
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+        );
+        Amplify.DataStore.save(newCommunityWaterSource,
+            update -> {
+                Log.i("Tutorial", "Saved Successfully ");
+
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        doSyncWaitAndShowSavedSuccessfulAlert();
+                    }
+                });
+            },
+            failure -> {
+                Log.i("Tutorial", "Save Failed ");
+                showSaveFailedAlert();
+            }
+        );
+
     }
 
     private void doSyncWaitAndShowSavedSuccessfulAlert() {
@@ -247,21 +254,6 @@ public class CommunityWaterCardSelectActivity extends AppCompatActivity implemen
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Syncing Up!");
         progressBar.setVisibility(View.VISIBLE);
-        /*
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
-
-            @Override
-            public void onFinish() {
-                progressBar.setVisibility(View.GONE);
-                showSavedSuccessfulAlert();
-            }
-        };
-        countDownTimer.start();
-
-         */
     }
 
     private void showSavedSuccessfulAlert() {
@@ -301,5 +293,17 @@ public class CommunityWaterCardSelectActivity extends AppCompatActivity implemen
                         .setCanceledOnTouchOutside(false);
             }
         });
+    }
+
+    private DialogFragment selectCountry;
+    public void showSelectCountry(ArrayList<String> listOfCountries) {
+        selectCountry = SelectCountryDialogFragment.newInstance(listOfCountries);
+        selectCountry.show(getSupportFragmentManager(), "selectCountry");
+        selectCountry.setCancelable(false);
+    }
+
+    @Override
+    public void onSelectedCountry(String countryName) {
+        countrybwe = countryName;
     }
 }

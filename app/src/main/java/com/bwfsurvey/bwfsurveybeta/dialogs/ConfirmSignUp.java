@@ -18,6 +18,16 @@ import com.example.bwfsurveybeta.R;
 public class ConfirmSignUp extends DialogFragment {
     public EditText confirmation_code;
 
+    public ConfirmSignUp(){
+    }
+
+    public static ConfirmSignUp newInstance() {
+        Bundle args = new Bundle();
+        ConfirmSignUp f = new ConfirmSignUp();
+        f.setArguments(args);
+        return f;
+    }
+
     public interface ConfirmSignUpListener {
         public void onConfirmSignUpDialogPositiveClick(DialogFragment dialog,String confirmationCode);
         public void onConfirmSignUpDialogNegativeClick(DialogFragment dialog);

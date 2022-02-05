@@ -186,8 +186,9 @@ public class VolunteerCardSelectActivity extends AppCompatActivity implements Cr
 
     private DialogFragment createNewVolunteer;
     public void showCreateNewVolunteer() {
-        createNewVolunteer = new CreateNewVolunteer(namebwe);
+        createNewVolunteer = CreateNewVolunteer.newInstance(namebwe);
         createNewVolunteer.show(getSupportFragmentManager(), "createNewVolunteer");
+        createNewVolunteer.setCancelable(false);
     }
 
     SubscriptionToken checkToken = null;
@@ -195,47 +196,44 @@ public class VolunteerCardSelectActivity extends AppCompatActivity implements Cr
     public void onDialogPositiveClick(DialogFragment dialog, Volunteer newVolunteer) {
         Log.i("Tutorials", "newVolunteer " + newVolunteer.getNamevol()  );
 
-        if (newVolunteer.getNamevol()!=null&& !newVolunteer.getNamevol().equals("")){
-            checkToken = Amplify.Hub.subscribe(
-                    HubChannel.DATASTORE,
-                    hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
-                    hubEvent -> {
-                        OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
-                        //Log.i("bwfSurveyAmplify", " VolunteerHousehold "+event.getModelName());
-                        if(event!=null && event.getModelName().contentEquals("Volunteer")){
-                            if(event.getElement().getModel().equals(newVolunteer)){
-                                runOnUiThread(new Runnable() {
-                                    public void run() {
-                                        progressBar.setVisibility(View.GONE);
-                                        showSavedSuccessfulAlert();
-                                    }
-                                });
-                            }else{
-                                progressBar.setVisibility(View.GONE);
-                            }
+        checkToken = Amplify.Hub.subscribe(
+                HubChannel.DATASTORE,
+                hubEvent -> DataStoreChannelEventName.OUTBOX_MUTATION_ENQUEUED.toString().equals(hubEvent.getName()),
+                hubEvent -> {
+                    OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
+                    //Log.i("bwfSurveyAmplify", " VolunteerHousehold "+event.getModelName());
+                    if(event!=null && event.getModelName().contentEquals("Volunteer")){
+                        if(event.getElement().getModel().getId().equals(newVolunteer.getId())){
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    progressBar.setVisibility(View.GONE);
+                                    showSavedSuccessfulAlert();
+                                }
+                            });
                         }else{
                             progressBar.setVisibility(View.GONE);
                         }
+                    }else{
+                        progressBar.setVisibility(View.GONE);
                     }
-            );
-            Amplify.DataStore.save(newVolunteer,
-                    update -> {
-                        Log.i("Tutorial", "Saved Successfully ");
+                }
+        );
+        Amplify.DataStore.save(newVolunteer,
+                update -> {
+                    Log.i("Tutorial", "Saved Successfully ");
 
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                doSyncWaitAndShowSavedSuccessfulAlert();
-                            }
-                        });
-                    },
-                    failure -> {
-                        Log.i("Tutorial", "Save Failed ");
-                        showSaveFailedAlert();
-                    }
-            );
-        }else{
-            Log.i("Tutorials", "newVolunteer data not valid" );
-        }
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            doSyncWaitAndShowSavedSuccessfulAlert();
+                        }
+                    });
+                },
+                failure -> {
+                    Log.i("Tutorial", "Save Failed ");
+                    showSaveFailedAlert();
+                }
+        );
+
     }
 
     private void doSyncWaitAndShowSavedSuccessfulAlert(){

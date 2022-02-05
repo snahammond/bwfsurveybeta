@@ -33,7 +33,7 @@ import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
 
-public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity implements CreateNewVolunteerHousehold.CreateNewVolunteerHouseholdListener{
+public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity implements CreateNewVolunteerHousehold.CreateNewVolunteerHouseholdListener,SelectCountryDialogFragment.SelectCountryDialogFragmentListener{
     private static ArrayList<VolunteerHousehold> listOfVolHouseholds;
     private RecyclerView recyclerView;
     private VolunteerHouseholdCardAdapter adapter;
@@ -168,7 +168,7 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
             if(countrybwe==null){
                 Log.i("bwfsurveybeta", "countrybwe is null" );
                 ArrayList<String> listOfCountries = BwfSurveyAmplifyApplication.getCountries();
-                DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
+                /*DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
                     @Override
                     public void onSelectedCountry(String countryName) {
                         countrybwe = countryName;
@@ -181,7 +181,8 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
                         });
                     }
                 });
-                dialog.show(getSupportFragmentManager(), "countries");
+                dialog.show(getSupportFragmentManager(), "countries");*/
+                showSelectCountry(listOfCountries);
             }else{
                 ArrayList<Community> listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
                 showCreateNewVolunteerHousehold(listOfCommunities);
@@ -193,8 +194,13 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
 
     private DialogFragment createNewVolunteerHousehold;
     public void showCreateNewVolunteerHousehold(ArrayList<Community> communities) {
-        createNewVolunteerHousehold = new CreateNewVolunteerHousehold(communities,countrybwe,namebwe);
+        ArrayList<String> communitiesStr = new ArrayList<>();
+        for(Community community : communities) {
+            communitiesStr.add(community.getName());
+        }
+        createNewVolunteerHousehold = CreateNewVolunteerHousehold.newInstance(communitiesStr,countrybwe,namebwe);
         createNewVolunteerHousehold.show(getSupportFragmentManager(), "createNewVolunteerHousehold");
+        createNewVolunteerHousehold.setCancelable(false);
     }
 
     SubscriptionToken checkToken = null;
@@ -210,7 +216,7 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
                         OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
                         //Log.i("bwfSurveyAmplify", " VolunteerHousehold "+event.getModelName());
                         if(event!=null && event.getModelName().contentEquals("VolunteerHousehold")){
-                            if(event.getElement().getModel().equals(newVolunteerHousehold)){
+                            if(event.getElement().getModel().getId().equals(newVolunteerHousehold.getId())){
                                 runOnUiThread(new Runnable() {
                                     public void run() {
                                         progressBar.setVisibility(View.GONE);
@@ -291,6 +297,17 @@ public class VolunteerHouseholdCardSelectActivity extends AppCompatActivity impl
 
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
+    }
 
+    private DialogFragment selectCountry;
+    public void showSelectCountry(ArrayList<String> listOfCountries) {
+        selectCountry = SelectCountryDialogFragment.newInstance(listOfCountries);
+        selectCountry.show(getSupportFragmentManager(), "selectCountry");
+        selectCountry.setCancelable(false);
+    }
+
+    @Override
+    public void onSelectedCountry(String countryName) {
+        countrybwe = countryName;
     }
 }

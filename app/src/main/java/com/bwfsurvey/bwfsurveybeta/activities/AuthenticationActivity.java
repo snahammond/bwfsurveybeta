@@ -384,7 +384,7 @@ public class AuthenticationActivity extends FragmentActivity implements ConfirmS
 
     private DialogFragment confirmSignUp;
     public void showConfirmSignUp() {
-        confirmSignUp = new ConfirmSignUp();
+        confirmSignUp = ConfirmSignUp.newInstance();
         confirmSignUp.show(getSupportFragmentManager(), "confirmSignUp");
         confirmSignUp.setCancelable(false);
     }

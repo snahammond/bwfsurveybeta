@@ -37,7 +37,7 @@ import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
 
-public class MeetingCardSelectActivity extends AppCompatActivity implements CreateNewMeeting.CreateNewMeetingListener{
+public class MeetingCardSelectActivity extends AppCompatActivity implements CreateNewMeeting.CreateNewMeetingListener,SelectCountryDialogFragment.SelectCountryDialogFragmentListener{
     private static ArrayList<Meeting> listOfMeetings;
     private RecyclerView recyclerView;
     private MeetingCardAdapter adapter;
@@ -200,7 +200,7 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
                         if(countrybwe==null){
                             Log.i("bwfsurveybeta", "countrybwe is null" );
                             ArrayList<String> listOfCountries = BwfSurveyAmplifyApplication.getCountries();
-                            DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
+                            /*DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
                                 @Override
                                 public void onSelectedCountry(String countryName) {
                                     countrybwe = countryName;
@@ -213,7 +213,8 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
                                     });
                                 }
                             });
-                            dialog.show(getSupportFragmentManager(), "countries");
+                            dialog.show(getSupportFragmentManager(), "countries");*/
+                            showSelectCountry(listOfCountries);
                         }else {
                             ArrayList<Community> listOfCommunities = BwfSurveyAmplifyApplication.getCommunities(countrybwe);
                             showCreateNewMeeting(listOfCommunities,listOfVolunteers);
@@ -257,7 +258,7 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
                     //Log.i("bwfSurveyAmplify", " Meeting "+event.getModelName());
                     if(event!=null && event.getModelName().contentEquals("Meeting")){
-                        if(event.getElement().getModel().equals(newMeeting)){
+                        if(event.getElement().getModel().getId().equals(newMeeting.getId())){
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
@@ -343,5 +344,17 @@ public class MeetingCardSelectActivity extends AppCompatActivity implements Crea
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
 
+    }
+
+    private DialogFragment selectCountry;
+    public void showSelectCountry(ArrayList<String> listOfCountries) {
+        selectCountry = SelectCountryDialogFragment.newInstance(listOfCountries);
+        selectCountry.show(getSupportFragmentManager(), "selectCountry");
+        selectCountry.setCancelable(false);
+    }
+
+    @Override
+    public void onSelectedCountry(String countryName) {
+        countrybwe = countryName;
     }
 }

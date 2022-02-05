@@ -31,14 +31,16 @@ import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdCardSelec
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerHouseholdWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateSubMenuMonthlySummaryActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewSubMenuMonthlySummaryActivity;
+import com.bwfsurvey.bwfsurveybeta.dialogs.CreateNewVolunteerHousehold;
 import com.bwfsurvey.bwfsurveybeta.dialogs.SelectCountryDialogFragment;
+import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.bwfsurvey.bwfsurveybeta.types.Config;
 import com.bwfsurvey.bwfsurveybeta.utils.PhoneLocation;
 import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity implements SelectCountryDialogFragment.SelectCountryDialogFragmentListener{
 
     String namebwe = null;
     String countrybwe = null;
@@ -487,13 +489,26 @@ public class MenuActivity extends AppCompatActivity {
         if (id == R.id.changeSurveyCountry) {
             Log.i("Tutorials", "going to change survey country" );
             ArrayList<String> listOfCountries = BwfSurveyAmplifyApplication.getCountries();
-            DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, countryName -> {
+            showSelectCountry(listOfCountries);
+            /*DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, countryName -> {
                 countrybwe = countryName;
                 Log.i("Tutorials", "country selected is " + countrybwe );
             });
-            dialog.show(getSupportFragmentManager(), "countries");
+            dialog.show(getSupportFragmentManager(), "countries");*/
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private DialogFragment selectCountry;
+    public void showSelectCountry(ArrayList<String> listOfCountries) {
+        selectCountry = SelectCountryDialogFragment.newInstance(listOfCountries);
+        selectCountry.show(getSupportFragmentManager(), "selectCountry");
+        selectCountry.setCancelable(false);
+    }
+
+    @Override
+    public void onSelectedCountry(String countryName) {
+        countrybwe = countryName;
     }
 }

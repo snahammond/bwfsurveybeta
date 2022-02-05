@@ -194,7 +194,7 @@ public class HouseholdAttendingMeetingCardSelectActivity extends AppCompatActivi
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
                     //Log.i("bwfSurveyAmplify", " HouseholdAttendingMeeting "+event.getModelName());
                     if(event!=null && event.getModelName().contentEquals("HouseholdAttendingMeeting")){
-                        if(event.getElement().getModel().equals(newHouseholdAttendingMeeting)){
+                        if(event.getElement().getModel().getId().equals(newHouseholdAttendingMeeting.getId())){
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);

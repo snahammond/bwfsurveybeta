@@ -113,7 +113,7 @@ public class CreateNewMeeting extends DialogFragment {
         for(String communityStr : communities) {
             communities_.add(communityStr);
         }
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item, communities_){
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(activity,android.R.layout.simple_spinner_item, communities_){
             @Override
             public boolean isEnabled(int position){
                 if(position == 0)

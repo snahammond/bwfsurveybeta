@@ -1,5 +1,7 @@
 package com.bwfsurvey.bwfsurveybeta.dialogs;
 
+import static com.amazonaws.mobile.auth.core.internal.util.ThreadUtils.runOnUiThread;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -12,6 +14,8 @@ import android.widget.EditText;
 import androidx.fragment.app.DialogFragment;
 
 import com.amplifyframework.datastore.generated.model.Volunteer;
+import com.bwfsurvey.bwfsurveybeta.activities.select.MeetingCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerCardSelectActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.text.SimpleDateFormat;
@@ -20,8 +24,15 @@ import java.util.Calendar;
 public class CreateNewVolunteer extends DialogFragment{
     private String namebwe;
 
-    public CreateNewVolunteer(String namebwe) {
-        this.namebwe = namebwe;
+    public CreateNewVolunteer() {
+    }
+
+    public static CreateNewVolunteer newInstance(String namebwe) {
+        Bundle args = new Bundle();
+        args.putString("namebwe", namebwe);
+        CreateNewVolunteer f = new CreateNewVolunteer();
+        f.setArguments(args);
+        return f;
     }
 
     public interface CreateNewVolunteerListener {
@@ -49,26 +60,41 @@ public class CreateNewVolunteer extends DialogFragment{
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        namebwe = getArguments().getString("namebwe");
+
+        final VolunteerCardSelectActivity activity = (VolunteerCardSelectActivity) getActivity();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         final View layoutView = inflater.inflate(R.layout.dialog_create_volunteer, null);
-
-
 
         builder.setView(layoutView)
                 .setPositiveButton("Create", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         EditText nameNewVolunteerEditText = (EditText)layoutView.findViewById(R.id.nameNewVolunteer);
+                        String nameNewVolunteerEditTextStr =nameNewVolunteerEditText.getText().toString();
+                        if(nameNewVolunteerEditTextStr!=null && !nameNewVolunteerEditTextStr.isEmpty()){
 
-                        Calendar calendar = Calendar.getInstance();
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                        String date_s = dateFormat.format(calendar.getTime());
-
-                        Volunteer newVolunteer = Volunteer.builder()
-                                .namebwe(namebwe)
-                                .namevol(nameNewVolunteerEditText.getText().toString())
-                                .build();
-                        listener.onDialogPositiveClick(CreateNewVolunteer.this,newVolunteer);
+                            Volunteer newVolunteer = Volunteer.builder()
+                                    .namebwe(namebwe)
+                                    .namevol(nameNewVolunteerEditTextStr)
+                                    .build();
+                            listener.onDialogPositiveClick(CreateNewVolunteer.this,newVolunteer);
+                        }else{
+                            //fire error
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    new androidx.appcompat.app.AlertDialog.Builder(activity)
+                                            .setTitle("Invalid Volunteer creation")
+                                            .setMessage("Please fill out all fields on the form.\n" )
+                                            // A null listener allows the button to dismiss the dialog and take no further action.
+                                            .setNegativeButton(android.R.string.ok, null)
+                                            .setIcon(android.R.drawable.ic_dialog_alert)
+                                            .show()
+                                            .setCanceledOnTouchOutside(false);
+                                }
+                            });
+                        }
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

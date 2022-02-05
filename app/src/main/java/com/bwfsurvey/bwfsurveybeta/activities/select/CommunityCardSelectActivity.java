@@ -24,7 +24,7 @@ import com.example.bwfsurveybeta.R;
 
 import java.util.ArrayList;
 
-public class CommunityCardSelectActivity extends AppCompatActivity {
+public class CommunityCardSelectActivity extends AppCompatActivity implements SelectCountryDialogFragment.SelectCountryDialogFragmentListener {
     private static ArrayList<Community> listOfCommunities;
     private RecyclerView recyclerView;
     private CommunityCardAdapter adapter;
@@ -144,7 +144,7 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
         else{
             //ask the use to select the country name, because we do not have it
             ArrayList<String> listOfCountries = BwfSurveyAmplifyApplication.getCountries();
-            DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
+            /*DialogFragment dialog = new SelectCountryDialogFragment(listOfCountries, new SelectCountryDialogFragment.SelectCountryDialogFragmentListener() {
                 @Override
                 public void onSelectedCountry(String countryName) {
                     countrybwe = countryName;
@@ -152,7 +152,8 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
                     showListOfCommunities();
                 }
             });
-            dialog.show(getSupportFragmentManager(), "countries");
+            dialog.show(getSupportFragmentManager(), "countries");*/
+            showSelectCountry(listOfCountries);
         }
 
 
@@ -173,5 +174,16 @@ public class CommunityCardSelectActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    private DialogFragment selectCountry;
+    public void showSelectCountry(ArrayList<String> listOfCountries) {
+        selectCountry = SelectCountryDialogFragment.newInstance(listOfCountries);
+        selectCountry.show(getSupportFragmentManager(), "selectCountry");
+        selectCountry.setCancelable(false);
+    }
+
+    @Override
+    public void onSelectedCountry(String countryName) {
+        countrybwe = countryName;
+    }
 
 }
