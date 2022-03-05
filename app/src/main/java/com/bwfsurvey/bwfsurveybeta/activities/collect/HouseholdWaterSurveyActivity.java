@@ -199,10 +199,18 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
                                 }
                             });
                         }else{
-                            progressBar.setVisibility(View.GONE);
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    progressBar.setVisibility(View.GONE);
+                                }
+                            });
                         }
                     }else{
-                        progressBar.setVisibility(View.GONE);
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        });
                     }
                 }
         );
