@@ -195,10 +195,18 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                                 showSavedSuccessfulAlert();
                             });
                         }else{
-                            progressBar.setVisibility(View.GONE);
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    progressBar.setVisibility(View.GONE);
+                                }
+                            });
                         }
                     }else{
-                        progressBar.setVisibility(View.GONE);
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        });
                     }
                 }
         );
