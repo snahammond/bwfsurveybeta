@@ -174,14 +174,36 @@ public class VolunteerMonthlySummaryActivity extends AppCompatActivity {
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
                     if(event!=null && event.getModelName().contentEquals("VolunteerMonthlySummary")){
-                        if(event.getElement().getModel().equals(volunteerMonthlySummary)){
+                        if(event.getElement().getModel().getId().contentEquals(volunteerMonthlySummary.getId())){
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
                                     showSavedSuccessfulAlert();
                                 }
                             });
+                        }else{
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    progressBar.setVisibility(View.GONE);
+                                    //reset all the user answers
+                                    for(Interchange interchange: VolunteerMonthlySummaryActivity.interchanges){
+                                        interchange.getAnswer().setAns(null);
+                                    }
+                                    VolunteerMonthlySummaryActivity.this.finish();
+                                }
+                            });
                         }
+                    }else{
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                progressBar.setVisibility(View.GONE);
+                                //reset all the user answers
+                                for(Interchange interchange: VolunteerMonthlySummaryActivity.interchanges){
+                                    interchange.getAnswer().setAns(null);
+                                }
+                                VolunteerMonthlySummaryActivity.this.finish();
+                            }
+                        });
                     }
                 }
         );

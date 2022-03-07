@@ -172,7 +172,7 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
                     if(event!=null && event.getModelName().contentEquals("SWEMonthlySummary")){
-                        if(event.getElement().getModel().equals(sweMonthlySummary)){
+                        if(event.getElement().getModel().getId().contentEquals(sweMonthlySummary.getId())){
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
@@ -183,6 +183,11 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
+                                    //reset all the user answers
+                                    for(Interchange interchange: SWEMonthlySummaryActivity.interchanges){
+                                        interchange.getAnswer().setAns(null);
+                                    }
+                                    SWEMonthlySummaryActivity.this.finish();
                                 }
                             });
                         }
@@ -190,6 +195,11 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 progressBar.setVisibility(View.GONE);
+                                //reset all the user answers
+                                for(Interchange interchange: SWEMonthlySummaryActivity.interchanges){
+                                    interchange.getAnswer().setAns(null);
+                                }
+                                SWEMonthlySummaryActivity.this.finish();
                             }
                         });
                     }
@@ -234,20 +244,6 @@ public class SWEMonthlySummaryActivity extends AppCompatActivity {
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Syncing Up!");
         progressBar.setVisibility(View.VISIBLE);
-        /*
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
-
-            @Override
-            public void onFinish() {
-                progressBar.setVisibility(View.GONE);
-                showSavedSuccessfulAlert();
-            }
-        };
-        countDownTimer.start();
-         */
     }
 
     private void showSavedSuccessfulAlert(){

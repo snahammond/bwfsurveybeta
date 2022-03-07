@@ -189,7 +189,7 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
                     if(event!=null && event.getModelName().contentEquals("FollowUpSurvey")){
-                        if(event.getElement().getModel().equals(followUpSurveyToSave)){
+                        if(event.getElement().getModel().getId().contentEquals(followUpSurveyToSave.getId())){
                             runOnUiThread(() -> {
                                 progressBar.setVisibility(View.GONE);
                                 showSavedSuccessfulAlert();
@@ -198,6 +198,11 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
+                                    //reset all interchange answers
+                                    for(Interchange interchange: FollowUpSurveyActivity.interchanges){
+                                        interchange.getAnswer().setAns(null);
+                                    }
+                                    FollowUpSurveyActivity.this.finish();
                                 }
                             });
                         }
@@ -205,6 +210,11 @@ public class FollowUpSurveyActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 progressBar.setVisibility(View.GONE);
+                                //reset all interchange answers
+                                for(Interchange interchange: FollowUpSurveyActivity.interchanges){
+                                    interchange.getAnswer().setAns(null);
+                                }
+                                FollowUpSurveyActivity.this.finish();
                             }
                         });
                     }

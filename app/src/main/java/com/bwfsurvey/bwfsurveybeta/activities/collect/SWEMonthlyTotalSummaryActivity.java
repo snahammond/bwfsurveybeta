@@ -166,7 +166,7 @@ public class SWEMonthlyTotalSummaryActivity extends AppCompatActivity {
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
                     if(event!=null && event.getModelName().contentEquals("SWEMonthlyTotalSummary")){
-                        if(event.getElement().getModel().equals(sweMonthlyTotalSummary)){
+                        if(event.getElement().getModel().getId().contentEquals(sweMonthlyTotalSummary.getId())){
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
@@ -177,6 +177,11 @@ public class SWEMonthlyTotalSummaryActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
+                                    //reset all the user answers
+                                    for(Interchange interchange: SWEMonthlyTotalSummaryActivity.interchanges){
+                                        interchange.getAnswer().setAns(null);
+                                    }
+                                    SWEMonthlyTotalSummaryActivity.this.finish();
                                 }
                             });
                         }
@@ -184,6 +189,11 @@ public class SWEMonthlyTotalSummaryActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 progressBar.setVisibility(View.GONE);
+                                //reset all the user answers
+                                for(Interchange interchange: SWEMonthlyTotalSummaryActivity.interchanges){
+                                    interchange.getAnswer().setAns(null);
+                                }
+                                SWEMonthlyTotalSummaryActivity.this.finish();
                             }
                         });
                     }

@@ -180,7 +180,7 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
                     //Log.i("bwfSurveyAmplify", " InitialSurvey "+event.getModelName());
                     if(event!=null && event.getModelName().contentEquals("InitialSurvey")){
-                        if(event.getElement().getModel().equals(initialSurveyToSave)){
+                        if(event.getElement().getModel().getId().contentEquals(initialSurveyToSave.getId())){
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
@@ -191,6 +191,11 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
+                                    //reset all the user answers
+                                    for(Interchange interchange: InitialSurveyActivity.interchanges){
+                                        interchange.getAnswer().setAns(null);
+                                    }
+                                    InitialSurveyActivity.this.finish();
                                 }
                             });
                         }
@@ -198,6 +203,11 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 progressBar.setVisibility(View.GONE);
+                                //reset all the user answers
+                                for(Interchange interchange: InitialSurveyActivity.interchanges){
+                                    interchange.getAnswer().setAns(null);
+                                }
+                                InitialSurveyActivity.this.finish();
                             }
                         });
                     }
@@ -227,20 +237,6 @@ public class InitialSurveyActivity extends AppCompatActivity /*implements SaveSu
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Syncing Up!");
         progressBar.setVisibility(View.VISIBLE);
-        /*
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
-
-            @Override
-            public void onFinish() {
-                progressBar.setVisibility(View.GONE);
-                showSavedSuccessfulAlert();
-            }
-        };
-        countDownTimer.start();
-        */
 
     }
 

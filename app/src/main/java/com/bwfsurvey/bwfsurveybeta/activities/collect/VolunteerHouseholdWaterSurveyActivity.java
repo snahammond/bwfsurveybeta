@@ -203,14 +203,36 @@ public class VolunteerHouseholdWaterSurveyActivity extends AppCompatActivity {
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
                     if(event.getModelName().contentEquals("VolunteerHouseholdWaterTest")){
-                        if(event.getElement().getModel().equals(volHouseholdWaterTestToSave)){
+                        if(event.getElement().getModel().getId().contentEquals(volHouseholdWaterTestToSave.getId())){
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
                                     showSavedSuccessfulAlert();
                                 }
                             });
+                        }else{
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    progressBar.setVisibility(View.GONE);
+                                    //reset all the user answers
+                                    for(Interchange interchange: VolunteerHouseholdWaterSurveyActivity.interchanges){
+                                        interchange.getAnswer().setAns(null);
+                                    }
+                                    VolunteerHouseholdWaterSurveyActivity.this.finish();
+                                }
+                            });
                         }
+                    }else{
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                progressBar.setVisibility(View.GONE);
+                                //reset all the user answers
+                                for(Interchange interchange: VolunteerHouseholdWaterSurveyActivity.interchanges){
+                                    interchange.getAnswer().setAns(null);
+                                }
+                                VolunteerHouseholdWaterSurveyActivity.this.finish();
+                            }
+                        });
                     }
                 }
         );

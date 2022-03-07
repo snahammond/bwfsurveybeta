@@ -185,7 +185,7 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
                     if(event!=null && event.getModelName().contentEquals("CommunityWaterTest")){
-                        if(event.getElement().getModel().equals(communityWaterTestToSave)){
+                        if(event.getElement().getModel().getId().contentEquals(communityWaterTestToSave.getId())){
                             runOnUiThread(() -> {
                                 progressBar.setVisibility(View.GONE);
                                 showSavedSuccessfulAlert();
@@ -194,6 +194,11 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
+                                    //reset all the user answers
+                                    for(Interchange interchange: CommunityWaterSurveyActivity.interchanges){
+                                        interchange.getAnswer().setAns(null);
+                                    }
+                                    CommunityWaterSurveyActivity.this.finish();
                                 }
                             });
                         }
@@ -201,6 +206,11 @@ public class CommunityWaterSurveyActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 progressBar.setVisibility(View.GONE);
+                                //reset all the user answers
+                                for(Interchange interchange: CommunityWaterSurveyActivity.interchanges){
+                                    interchange.getAnswer().setAns(null);
+                                }
+                                CommunityWaterSurveyActivity.this.finish();
                             }
                         });
                     }

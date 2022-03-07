@@ -191,7 +191,7 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
                 hubEvent -> {
                     OutboxMutationEvent event = (OutboxMutationEvent) hubEvent.getData();
                     if(event!=null && event.getModelName().contentEquals("HouseholdWaterTest")){
-                        if(event.getElement().getModel().equals(householdWaterTestToSave)){
+                        if(event.getElement().getModel().getId().contentEquals(householdWaterTestToSave.getId())){
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
@@ -202,6 +202,11 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     progressBar.setVisibility(View.GONE);
+                                    //reset all the user answers
+                                    for(Interchange interchange: HouseholdWaterSurveyActivity.interchanges){
+                                        interchange.getAnswer().setAns(null);
+                                    }
+                                    HouseholdWaterSurveyActivity.this.finish();
                                 }
                             });
                         }
@@ -209,6 +214,11 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 progressBar.setVisibility(View.GONE);
+                                //reset all the user answers
+                                for(Interchange interchange: HouseholdWaterSurveyActivity.interchanges){
+                                    interchange.getAnswer().setAns(null);
+                                }
+                                HouseholdWaterSurveyActivity.this.finish();
                             }
                         });
                     }
@@ -238,20 +248,7 @@ public class HouseholdWaterSurveyActivity extends AppCompatActivity {
         TextView progressBarText = (TextView) findViewById(R.id.pbText);
         progressBarText.setText("Please wait... Syncing Up!");
         progressBar.setVisibility(View.VISIBLE);
-        /*
-        CountDownTimer countDownTimer = new CountDownTimer(16000,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
 
-            @Override
-            public void onFinish() {
-                progressBar.setVisibility(View.GONE);
-                showSavedSuccessfulAlert();
-            }
-        };
-        countDownTimer.start();
-         */
     }
 
     private void showSavedSuccessfulAlert(){
