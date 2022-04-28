@@ -230,51 +230,6 @@ mutation DeleteInitialSurvey(
     updatedAt
   }
 }
-mutation CreateInitialSurveyDeleteControl(
-  $input: CreateInitialSurveyDeleteControlInput!
-  $condition: ModelInitialSurveyDeleteControlConditionInput
-) {
-  createInitialSurveyDeleteControl(input: $input, condition: $condition) {
-    id
-    Namebwe
-    Completed
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-mutation UpdateInitialSurveyDeleteControl(
-  $input: UpdateInitialSurveyDeleteControlInput!
-  $condition: ModelInitialSurveyDeleteControlConditionInput
-) {
-  updateInitialSurveyDeleteControl(input: $input, condition: $condition) {
-    id
-    Namebwe
-    Completed
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
-mutation DeleteInitialSurveyDeleteControl(
-  $input: DeleteInitialSurveyDeleteControlInput!
-  $condition: ModelInitialSurveyDeleteControlConditionInput
-) {
-  deleteInitialSurveyDeleteControl(input: $input, condition: $condition) {
-    id
-    Namebwe
-    Completed
-    _version
-    _deleted
-    _lastChangedAt
-    createdAt
-    updatedAt
-  }
-}
 mutation CreateFollowUpSurvey(
   $input: CreateFollowUpSurveyInput!
   $condition: ModelFollowUpSurveyConditionInput

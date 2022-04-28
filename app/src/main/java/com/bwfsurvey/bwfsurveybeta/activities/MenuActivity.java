@@ -346,6 +346,7 @@ public class MenuActivity extends AppCompatActivity implements SelectCountryDial
         Button initialFullSurveyView = findViewById(R.id.button_initialFullSurveyView);
         initialFullSurveyView.setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), HouseholdCardSelectActivity.class);
+            i.putExtra("NAME_BWE", namebwe);
             i.putExtra("OPERATION","VIEW");
             startActivity(i);
         });
@@ -353,6 +354,7 @@ public class MenuActivity extends AppCompatActivity implements SelectCountryDial
         Button followUpSurveyView = findViewById(R.id.button_followUpSurveyView);
         followUpSurveyView.setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), FollowUpSurveyCardSelectActivity.class);
+            i.putExtra("NAME_BWE", namebwe);
             i.putExtra("OPERATION","VIEW");
             startActivity(i);
         });
@@ -360,6 +362,7 @@ public class MenuActivity extends AppCompatActivity implements SelectCountryDial
         Button waterSurveyCommView = findViewById(R.id.button_waterSurveyCommView);
         waterSurveyCommView.setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), CommunityWaterTestCardSelectActivity.class);
+            i.putExtra("NAME_BWE", namebwe);
             i.putExtra("OPERATION","VIEW");
             startActivity(i);
         });
@@ -367,6 +370,7 @@ public class MenuActivity extends AppCompatActivity implements SelectCountryDial
         Button waterSurveyView = findViewById(R.id.button_waterSurveyView);
         waterSurveyView.setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), HouseholdWaterTestCardSelectActivity.class);
+            i.putExtra("NAME_BWE", namebwe);
             i.putExtra("OPERATION","VIEW");
             startActivity(i);
         });
@@ -374,6 +378,7 @@ public class MenuActivity extends AppCompatActivity implements SelectCountryDial
         Button waterSurveyVolView = findViewById(R.id.button_waterSurveyVolView);
         waterSurveyVolView.setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), VolunteerHouseholdWaterTestCardSelectActivity.class);
+            i.putExtra("NAME_BWE", namebwe);
             i.putExtra("OPERATION","VIEW");
             startActivity(i);
         });
@@ -381,6 +386,7 @@ public class MenuActivity extends AppCompatActivity implements SelectCountryDial
         Button healthCheckView = findViewById(R.id.button_healthCheckView);
         healthCheckView.setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), HealthCheckSurveyCardSelectActivity.class);
+            i.putExtra("NAME_BWE", namebwe);
             i.putExtra("OPERATION","VIEW");
             startActivity(i);
         });
@@ -388,6 +394,7 @@ public class MenuActivity extends AppCompatActivity implements SelectCountryDial
         Button sweMonthlySummaryView = findViewById(R.id.button_SWEMonthlySummaryView);
         sweMonthlySummaryView.setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), ViewSubMenuMonthlySummaryActivity.class);
+            i.putExtra("NAME_BWE", namebwe);
             i.putExtra("OPERATION","VIEW");
             i.putExtra("LAT",lat);
             i.putExtra("LNG",lng);

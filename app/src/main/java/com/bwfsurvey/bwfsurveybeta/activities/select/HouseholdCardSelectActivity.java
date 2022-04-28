@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
@@ -54,6 +55,7 @@ public class HouseholdCardSelectActivity extends AppCompatActivity {
             lat = getIntent().getStringExtra("LAT");
         if(getIntent().getStringExtra("LNG")!=null)
             lng = getIntent().getStringExtra("LNG");
+
         initView();
     }
 
@@ -88,6 +90,7 @@ public class HouseholdCardSelectActivity extends AppCompatActivity {
                     Where.matches(InitialSurvey.COMPLETED.eq(completedL).or(InitialSurvey.COMPLETED.eq(completedR))),
                     allInitialSurveyFamilys -> {
                         Log.i("bwfsurveybeta", "DataStore is queried.");
+
                         while (allInitialSurveyFamilys.hasNext()) {
                             InitialSurvey aFamily = allInitialSurveyFamilys.next();
                             listOfFamilys.add(aFamily);

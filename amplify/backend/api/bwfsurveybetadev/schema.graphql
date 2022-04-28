@@ -78,12 +78,6 @@ ChildrenDiedAfterBeingBornAlive: String!
 CausesOfChildrenDeath: String!
 }
 
-type InitialSurveyDeleteControl @model @auth(rules: [{ allow: public,provider: apiKey }]){
-id: ID!
-Namebwe: String!
-Completed: Int!
-}
-
 type FollowUpSurvey @model @auth(rules: [{ allow: public,provider: apiKey }]){
 id: ID!
 Namebwe: String!
