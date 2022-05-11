@@ -3,6 +3,8 @@ package com.bwfsurvey.bwfsurveybeta.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.collect.FollowUpSurveyActivity;
@@ -68,6 +72,7 @@ public class HouseholdCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         private TextView txtCountry;
         private TextView txtCommunity;
         private TextView txtHeadHousehold;
+        private TextView txtFamilySurveyOnlineStatus;
         private String uuidInitialSurvey;
 
         public HouseholdCardViewHolder(@NonNull View itemView) {
@@ -76,6 +81,7 @@ public class HouseholdCardAdapter extends RecyclerView.Adapter<RecyclerView.View
             txtCountry = (TextView) itemView.findViewById(R.id.txtCountry);
             txtCommunity = (TextView) itemView.findViewById(R.id.txtCommunity);
             txtHeadHousehold = (TextView) itemView.findViewById(R.id.txtHeadHousehold);
+            txtFamilySurveyOnlineStatus = (TextView) itemView.findViewById(R.id.txtFamilySurveyOnlineStatus);
             CardView familyCard = (CardView) itemView.findViewById(R.id.familyCard); // creating a CardView and assigning a value.
 
             familyCard.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +114,21 @@ public class HouseholdCardAdapter extends RecyclerView.Adapter<RecyclerView.View
             txtCommunity.setText(initialSurvey.getCommunity());
             txtHeadHousehold.setText(initialSurvey.getHeadHouseholdName());
             uuidInitialSurvey = initialSurvey.getId();
+            Amplify.API.query(
+                ModelQuery.get(InitialSurvey.class, uuidInitialSurvey),
+                response -> {
+                    Activity activity = (Activity) context;
+                    activity.runOnUiThread(new Runnable() {
+                        public void run() {
+                            txtFamilySurveyOnlineStatus.setVisibility(View.VISIBLE);
+                        }
+                    });
+                    Log.i("bwfsurveybeta", ((InitialSurvey) response.getData()).getHeadHouseholdName() +" is on the cloud");
+                },
+                error -> {
+                    Log.e("bwfsurveybeta", error.toString(), error);
+                }
+            );
         }
     }
 
