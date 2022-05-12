@@ -13,9 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
-import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateFollowUpSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.FollowUpSurveyCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateFollowUpSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewFollowUpSurveyActivity;
 import com.example.bwfsurveybeta.R;
 
@@ -68,6 +70,7 @@ public class FollowUpSurveyCardAdapter extends RecyclerView.Adapter<RecyclerView
         private TextView txtCommunity;
         private TextView txtHeadHousehold;
         private TextView txtDate;
+        private TextView txtFollowUpSurveyOnlineStatus;
         private String uuidFollowUpSurvey;
 
         public FollowUpSurveyCardViewHolder(View view) {
@@ -77,6 +80,7 @@ public class FollowUpSurveyCardAdapter extends RecyclerView.Adapter<RecyclerView
             txtCommunity = (TextView) itemView.findViewById(R.id.txtCommunity);
             txtHeadHousehold = (TextView) itemView.findViewById(R.id.txtHeadHousehold);
             txtDate = (TextView) itemView.findViewById(R.id.txtDate);
+            txtFollowUpSurveyOnlineStatus = (TextView) itemView.findViewById(R.id.txtFollowUpSurveyOnlineStatus);
             CardView familyCard = (CardView) itemView.findViewById(R.id.familyCard); // creating a CardView and assigning a value.
 
             familyCard.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +114,7 @@ public class FollowUpSurveyCardAdapter extends RecyclerView.Adapter<RecyclerView
             txtCountry.setText(followUpSurvey.getCountry());
             txtCommunity.setText(followUpSurvey.getCommunity());
             txtHeadHousehold.setText(followUpSurvey.getHeadHouseholdName());
+            txtFollowUpSurveyOnlineStatus.setVisibility(View.INVISIBLE);
 
             String dateStr = followUpSurvey.getDate().toString();
             if(dateStr.indexOf("{")>0&&dateStr.indexOf("}")>0){
@@ -143,6 +148,23 @@ public class FollowUpSurveyCardAdapter extends RecyclerView.Adapter<RecyclerView
             }
 
             uuidFollowUpSurvey = followUpSurvey.getId();
+            Amplify.API.query(
+                ModelQuery.get(FollowUpSurvey.class, uuidFollowUpSurvey),
+                response -> {
+                    if(response.getData()!=null && (response.getData()).getId().contentEquals(uuidFollowUpSurvey)){
+                        Activity activity = (Activity) context;
+                        activity.runOnUiThread(new Runnable() {
+                            public void run() {
+                                txtFollowUpSurveyOnlineStatus.setVisibility(View.VISIBLE);
+                            }
+                        });
+                        Log.i("bwfsurveybeta", (response.getData()).getHeadHouseholdName() +" is on the cloud");
+                    }
+                },
+                error -> {
+                    Log.e("bwfsurveybeta", error.toString(), error);
+                }
+            );
         }
     }
 

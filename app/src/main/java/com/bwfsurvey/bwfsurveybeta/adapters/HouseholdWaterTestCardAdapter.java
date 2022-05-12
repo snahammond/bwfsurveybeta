@@ -13,7 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
+import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateHouseholdWaterTestActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewHouseholdWaterTestActivity;
@@ -64,6 +67,7 @@ public class HouseholdWaterTestCardAdapter extends RecyclerView.Adapter<Recycler
         private TextView txtCountry;
         private TextView txtCommunity;
         private TextView txtHeadHousehold;
+        private TextView txtFamilySurveyOnlineStatus;
         private String uuidHouseholdWaterTest;
 
         public HouseholdWaterTestCardViewHolder(View view) {
@@ -71,6 +75,7 @@ public class HouseholdWaterTestCardAdapter extends RecyclerView.Adapter<Recycler
             txtCountry = (TextView) itemView.findViewById(R.id.txtCountry);
             txtCommunity = (TextView) itemView.findViewById(R.id.txtCommunity);
             txtHeadHousehold = (TextView) itemView.findViewById(R.id.txtHeadHousehold);
+            txtFamilySurveyOnlineStatus = (TextView) itemView.findViewById(R.id.txtFamilySurveyOnlineStatus);
             CardView familyCard = (CardView) itemView.findViewById(R.id.familyCard); // creating a CardView and assigning a value.
 
             familyCard.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +99,26 @@ public class HouseholdWaterTestCardAdapter extends RecyclerView.Adapter<Recycler
             txtCountry.setText(householdWaterTest.getCountry());
             txtCommunity.setText(householdWaterTest.getCommunity());
             txtHeadHousehold.setText(householdWaterTest.getHeadHouseholdName());
+            txtFamilySurveyOnlineStatus.setVisibility(View.INVISIBLE);
             uuidHouseholdWaterTest = householdWaterTest.getId();
+
+            Amplify.API.query(
+                ModelQuery.get(HouseholdWaterTest.class, uuidHouseholdWaterTest),
+                response -> {
+                    if(response.getData()!=null && (response.getData()).getId().contentEquals(uuidHouseholdWaterTest)){
+                        Activity activity = (Activity) context;
+                        activity.runOnUiThread(new Runnable() {
+                            public void run() {
+                                txtFamilySurveyOnlineStatus.setVisibility(View.VISIBLE);
+                            }
+                        });
+                        Log.i("bwfsurveybeta", (response.getData()).getHeadHouseholdName() +" is on the cloud");
+                    }
+                },
+                error -> {
+                    Log.e("bwfsurveybeta", error.toString(), error);
+                }
+            );
         }
     }
 

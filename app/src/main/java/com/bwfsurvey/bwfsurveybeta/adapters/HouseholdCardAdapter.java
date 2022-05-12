@@ -113,17 +113,21 @@ public class HouseholdCardAdapter extends RecyclerView.Adapter<RecyclerView.View
             txtCountry.setText(initialSurvey.getCountry());
             txtCommunity.setText(initialSurvey.getCommunity());
             txtHeadHousehold.setText(initialSurvey.getHeadHouseholdName());
+            txtFamilySurveyOnlineStatus.setVisibility(View.INVISIBLE);
             uuidInitialSurvey = initialSurvey.getId();
+
             Amplify.API.query(
                 ModelQuery.get(InitialSurvey.class, uuidInitialSurvey),
                 response -> {
-                    Activity activity = (Activity) context;
-                    activity.runOnUiThread(new Runnable() {
-                        public void run() {
-                            txtFamilySurveyOnlineStatus.setVisibility(View.VISIBLE);
-                        }
-                    });
-                    Log.i("bwfsurveybeta", ((InitialSurvey) response.getData()).getHeadHouseholdName() +" is on the cloud");
+                    if(response.getData()!=null && (response.getData()).getId().contentEquals(uuidInitialSurvey)){
+                        Activity activity = (Activity) context;
+                        activity.runOnUiThread(new Runnable() {
+                            public void run() {
+                                txtFamilySurveyOnlineStatus.setVisibility(View.VISIBLE);
+                            }
+                        });
+                        Log.i("bwfsurveybeta", (response.getData()).getHeadHouseholdName() +" is on the cloud");
+                    }
                 },
                 error -> {
                     Log.e("bwfsurveybeta", error.toString(), error);

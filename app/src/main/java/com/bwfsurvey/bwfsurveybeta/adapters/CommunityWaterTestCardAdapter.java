@@ -13,7 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.CommunityWaterTest;
+import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityWaterTestCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateCommunityWaterTestActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewCommunityWaterTestActivity;
@@ -64,6 +67,7 @@ public class CommunityWaterTestCardAdapter extends RecyclerView.Adapter<Recycler
         private TextView txtCountry;
         private TextView txtCommunity;
         private TextView txtCommunityWaterLoc;
+        private TextView txtCommunityWaterTestOnlineStatus;
         private String uuidCommunityWaterTest;
 
         public CommunityWaterTestCardViewHolder(View view) {
@@ -71,6 +75,7 @@ public class CommunityWaterTestCardAdapter extends RecyclerView.Adapter<Recycler
             txtCountry = (TextView) itemView.findViewById(R.id.txtCountry);
             txtCommunity = (TextView) itemView.findViewById(R.id.txtCommunity);
             txtCommunityWaterLoc = (TextView) itemView.findViewById(R.id.txtCommunityWaterLoc);
+            txtCommunityWaterTestOnlineStatus = (TextView) itemView.findViewById(R.id.txtCommunityWaterTestOnlineStatus);
             CardView communityWaterCard = (CardView) itemView.findViewById(R.id.volHouseholdCard); // creating a CardView and assigning a value.
 
             communityWaterCard.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +103,24 @@ public class CommunityWaterTestCardAdapter extends RecyclerView.Adapter<Recycler
             txtCommunity.setText(communityWaterTest.getCommunity());
             txtCommunityWaterLoc.setText(communityWaterTest.getCommunityWaterLocation());
             uuidCommunityWaterTest = communityWaterTest.getId();
+            txtCommunityWaterTestOnlineStatus.setVisibility(View.INVISIBLE);
+            Amplify.API.query(
+                    ModelQuery.get(CommunityWaterTest.class, uuidCommunityWaterTest),
+                    response -> {
+                        if(response.getData()!=null && (response.getData()).getId().contentEquals(uuidCommunityWaterTest)){
+                            Activity activity = (Activity) context;
+                            activity.runOnUiThread(new Runnable() {
+                                public void run() {
+                                    txtCommunityWaterTestOnlineStatus.setVisibility(View.VISIBLE);
+                                }
+                            });
+                            Log.i("bwfsurveybeta", (response.getData()).getCommunityWaterLocation() +" is on the cloud");
+                        }
+                    },
+                    error -> {
+                        Log.e("bwfsurveybeta", error.toString(), error);
+                    }
+            );
         }
     }
 

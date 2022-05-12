@@ -1,5 +1,6 @@
 package com.bwfsurvey.bwfsurveybeta.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,10 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.HouseholdAttendingMeeting;
 import com.amplifyframework.datastore.generated.model.Meeting;
 import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdAttendingMeetingCardSelectActivity;
 import com.example.bwfsurveybeta.R;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -45,6 +50,8 @@ public class HouseholdAttendingMeetingCardAdapter extends RecyclerView.Adapter<R
         private TextView txtNumberOfAdultPresent;
         private TextView txtCommittedToUseAquaTabs;
         private TextView textNumberOfAquatabsReceived;
+        private TextView txtHouseholdAttendingMeetingOnlineStatus;
+        private String uuidHouseholdAttendingMeeting;
 
         public HouseholdAttendingMeetingCardViewHolder(View view) {
             super(view);
@@ -53,6 +60,7 @@ public class HouseholdAttendingMeetingCardAdapter extends RecyclerView.Adapter<R
             txtNumberOfAdultPresent = (TextView) itemView.findViewById(R.id.txtNumberOfAdultPresent);
             txtCommittedToUseAquaTabs = (TextView) itemView.findViewById(R.id.txtCommittedToUseAquaTabs);
             textNumberOfAquatabsReceived = (TextView) itemView.findViewById(R.id.textNumberOfAquatabsReceived);
+            txtHouseholdAttendingMeetingOnlineStatus = (TextView) itemView.findViewById(R.id.txtHouseholdAttendingMeetingOnlineStatus);
             /*CardView householdAttendingMeetingCard = (CardView) itemView.findViewById(R.id.householdAttendingMeetingCard); // creating a CardView and assigning a value.
 
             meetingCard.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +81,29 @@ public class HouseholdAttendingMeetingCardAdapter extends RecyclerView.Adapter<R
             txtNumberOfAdultPresent.setText(String.valueOf(householdAttendingMeeting.getNumberOfAdults()));
             txtCommittedToUseAquaTabs.setText(householdAttendingMeeting.getCommitedToUseAquatabs());
             textNumberOfAquatabsReceived.setText(String.valueOf(householdAttendingMeeting.getNumberOfAquaTabsReceived()));
+
+            txtHouseholdAttendingMeetingOnlineStatus.setVisibility(View.INVISIBLE);
+            uuidHouseholdAttendingMeeting = householdAttendingMeeting.getId();
+
+            Amplify.API.query(
+                    ModelQuery.get(HouseholdAttendingMeeting.class, uuidHouseholdAttendingMeeting),
+                    response -> {
+                        if(response.getData()!=null){
+                            if(response.getData()!=null && (response.getData()).getId().contentEquals(uuidHouseholdAttendingMeeting)){
+                                Activity activity = (Activity) context;
+                                activity.runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        txtHouseholdAttendingMeetingOnlineStatus.setVisibility(View.VISIBLE);
+                                    }
+                                });
+                                Log.i("bwfsurveybeta", (response.getData()).getNamebwe() +"household attending meeting is on the cloud");
+                            }
+                        }
+                    },
+                    error -> {
+                        Log.e("bwfsurveybeta", error.toString(), error);
+                    }
+            );
         }
 
     }

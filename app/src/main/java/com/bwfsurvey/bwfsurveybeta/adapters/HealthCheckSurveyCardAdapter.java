@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.FollowUpSurvey;
 import com.amplifyframework.datastore.generated.model.HealthCheckSurvey;
 import com.bwfsurvey.bwfsurveybeta.activities.update.UpdateHealthCheckSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.view.ViewHealthCheckSurveyActivity;
@@ -66,6 +69,7 @@ public class HealthCheckSurveyCardAdapter extends RecyclerView.Adapter<RecyclerV
         private TextView txtCommunity;
         private TextView txtHeadHousehold;
         private TextView txtDate;
+        private TextView txtFollowUpSurveyOnlineStatus;
         private String uuidHealthCheckSurvey;
 
         public HealthCheckSurveyCardViewHolder(View view) {
@@ -75,6 +79,7 @@ public class HealthCheckSurveyCardAdapter extends RecyclerView.Adapter<RecyclerV
             txtCommunity = (TextView) itemView.findViewById(R.id.txtCommunity);
             txtHeadHousehold = (TextView) itemView.findViewById(R.id.txtHeadHousehold);
             txtDate = (TextView) itemView.findViewById(R.id.txtDate);
+            txtFollowUpSurveyOnlineStatus = (TextView) itemView.findViewById(R.id.txtFollowUpSurveyOnlineStatus);
             CardView familyCard = (CardView) itemView.findViewById(R.id.familyCard); // creating a CardView and assigning a value.
 
             familyCard.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +113,7 @@ public class HealthCheckSurveyCardAdapter extends RecyclerView.Adapter<RecyclerV
             txtCountry.setText(healthCheckSurvey.getCountry());
             txtCommunity.setText(healthCheckSurvey.getCommunity());
             txtHeadHousehold.setText(healthCheckSurvey.getHeadHouseholdName());
+            txtFollowUpSurveyOnlineStatus.setVisibility(View.INVISIBLE);
 
             String dateStr = healthCheckSurvey.getDate().toString();
             if(dateStr.indexOf("{")>0&&dateStr.indexOf("}")>0){
@@ -141,6 +147,23 @@ public class HealthCheckSurveyCardAdapter extends RecyclerView.Adapter<RecyclerV
             }
 
             uuidHealthCheckSurvey = healthCheckSurvey.getId();
+            Amplify.API.query(
+                    ModelQuery.get(HealthCheckSurvey.class, uuidHealthCheckSurvey),
+                    response -> {
+                        if(response.getData()!=null && (response.getData()).getId().contentEquals(uuidHealthCheckSurvey)){
+                            Activity activity = (Activity) context;
+                            activity.runOnUiThread(new Runnable() {
+                                public void run() {
+                                    txtFollowUpSurveyOnlineStatus.setVisibility(View.VISIBLE);
+                                }
+                            });
+                            Log.i("bwfsurveybeta", (response.getData()).getHeadHouseholdName() +" is on the cloud");
+                        }
+                    },
+                    error -> {
+                        Log.e("bwfsurveybeta", error.toString(), error);
+                    }
+            );
         }
 
     }

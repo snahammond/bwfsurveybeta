@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.amplifyframework.datastore.generated.model.Meeting;
 import com.bwfsurvey.bwfsurveybeta.activities.select.HouseholdAttendingMeetingCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.MeetingCardSelectActivity;
@@ -55,6 +58,7 @@ public class MeetingCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         private TextView txtLessonsTaught;
         private TextView textVolunteerAssistingDesc;
         private TextView textVolunteerAssisting;
+        private TextView txtMeetingSummaryOnlineStatus;
         private String uuidMeeting;
 
         public MeetingCardViewHolder(View view) {
@@ -66,6 +70,7 @@ public class MeetingCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             textVolunteerAssistingDesc.setVisibility(View.GONE);
             textVolunteerAssisting = (TextView) itemView.findViewById(R.id.textVolunteerAssisting);
             textVolunteerAssisting.setVisibility(View.GONE);
+            txtMeetingSummaryOnlineStatus = (TextView) itemView.findViewById(R.id.txtMeetingSummaryOnlineStatus);
 
             CardView meetingCard = (CardView) itemView.findViewById(R.id.meetingCard); // creating a CardView and assigning a value.
 
@@ -120,7 +125,26 @@ public class MeetingCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 textVolunteerAssisting.setVisibility(View.VISIBLE);
                 textVolunteerAssisting.setText(meeting.getNamevol());
             }
+            txtMeetingSummaryOnlineStatus.setVisibility(View.INVISIBLE);
             uuidMeeting = meeting.getId();
+
+            Amplify.API.query(
+                ModelQuery.get(Meeting.class, uuidMeeting),
+                response -> {
+                    if(response.getData()!=null && (response.getData()).getId().contentEquals(uuidMeeting)){
+                        Activity activity = (Activity) context;
+                        activity.runOnUiThread(new Runnable() {
+                            public void run() {
+                                txtMeetingSummaryOnlineStatus.setVisibility(View.VISIBLE);
+                            }
+                        });
+                        Log.i("bwfsurveybeta", (response.getData()).getNamebwe() +"meeting is on the cloud");
+                    }
+                },
+                error -> {
+                    Log.e("bwfsurveybeta", error.toString(), error);
+                }
+            );
         }
 
     }

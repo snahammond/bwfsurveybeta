@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Meeting;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
 import com.amplifyframework.datastore.generated.model.SWEMonthlyTotalSummary;
 import com.bwfsurvey.bwfsurveybeta.activities.select.SWEMonthlyTotalSummaryCardSelectActivity;
@@ -68,6 +71,7 @@ public class SWEMonthlyTotalSummaryCardAdapter extends RecyclerView.Adapter<Recy
         private TextView txtNoOfWaterSamplesTaken;
         private TextView txtNoOfSurveysCompleted;
         private TextView txtDate;
+        private TextView txtMonthlyTotalSummaryOnlineStatus;
         private String uuidSWEMonthlyTotalSummary;
 
         public SWEMonthlyTotalSummaryCardViewHolder(View view) {
@@ -75,6 +79,7 @@ public class SWEMonthlyTotalSummaryCardAdapter extends RecyclerView.Adapter<Recy
             txtNoOfWaterSamplesTaken = (TextView) itemView.findViewById(R.id.txtNoOfWaterSamplesTaken);
             txtNoOfSurveysCompleted = (TextView) itemView.findViewById(R.id.txtNoOfSurveysCompleted);
             txtDate = (TextView) itemView.findViewById(R.id.txtDate);
+            txtMonthlyTotalSummaryOnlineStatus = (TextView) itemView.findViewById(R.id.txtMonthlyTotalSummaryOnlineStatus);
             CardView monthlyTotalSummaryCard = (CardView) itemView.findViewById(R.id.monthlyTotalSummaryCard); // creating a CardView and assigning a value.
 
             monthlyTotalSummaryCard.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +133,26 @@ public class SWEMonthlyTotalSummaryCardAdapter extends RecyclerView.Adapter<Recy
                 txtDate.setText("");
             }
 
+            txtMonthlyTotalSummaryOnlineStatus.setVisibility(View.INVISIBLE);
             uuidSWEMonthlyTotalSummary = sweMonthlyTotalSummary.getId();
+
+            Amplify.API.query(
+                    ModelQuery.get(SWEMonthlyTotalSummary.class, uuidSWEMonthlyTotalSummary),
+                    response -> {
+                        if(response.getData()!=null && (response.getData()).getId().contentEquals(uuidSWEMonthlyTotalSummary)){
+                            Activity activity = (Activity) context;
+                            activity.runOnUiThread(new Runnable() {
+                                public void run() {
+                                    txtMonthlyTotalSummaryOnlineStatus.setVisibility(View.VISIBLE);
+                                }
+                            });
+                            Log.i("bwfsurveybeta", (response.getData()).getNamebwe() +"meeting is on the cloud");
+                        }
+                    },
+                    error -> {
+                        Log.e("bwfsurveybeta", error.toString(), error);
+                    }
+            );
         }
     }
 
