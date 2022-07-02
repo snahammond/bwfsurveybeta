@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bwfsurvey.bwfsurveybeta.activities.collect.SWEMonthlyTotalSummaryActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.MeetingCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.SWEMonthlySchoolSummaryCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.SWEMonthlySummaryCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.SWEMonthlyTotalSummaryCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerCardSelectActivity;
@@ -89,6 +90,20 @@ public class ViewSubMenuMonthlySummaryActivity extends AppCompatActivity {
                 i.putExtra("NAME_BWE", namebwe);
                 i.putExtra("POSITION_BWE", "Educator");
                 i.putExtra("SURVEY_TYPE","SWETOTALSUMMARY");
+                i.putExtra("OPERATION","VIEW");
+                i.putExtra("LAT",lat);
+                i.putExtra("LNG",lng);
+                startActivity(i);
+            }
+        });
+
+        Button sweSchMonthlyActivitySummary = (Button) findViewById(R.id.button_SchWaterTreatmentActivitySummary);
+        sweSchMonthlyActivitySummary.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SWEMonthlySchoolSummaryCardSelectActivity.class);
+                i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("POSITION_BWE", "Educator");
+                i.putExtra("SURVEY_TYPE","SCHACTIVITYSUMMARY");
                 i.putExtra("OPERATION","VIEW");
                 i.putExtra("LAT",lat);
                 i.putExtra("LNG",lng);

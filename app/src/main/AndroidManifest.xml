@@ -379,10 +379,23 @@
             android:screenOrientation="portrait">
         </activity>
 
-
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.SWEMonthlySchoolSummaryActivity"
             android:label="School Activity Summary"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.SWEMonthlySchoolSummaryCardSelectActivity"
+            android:label="Monthly School Summary"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewSWEMonthlySchoolSummaryActivity"
+            android:label="Monthly School Summary"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>

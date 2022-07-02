@@ -60,7 +60,7 @@ public class ViewSWEMonthlyTotalSummaryActivity extends AppCompatActivity {
     private void createViewOnlyInterchangesAndShowOnRecyclerView() {
         Amplify.DataStore.query(
                 SWEMonthlyTotalSummary.class,
-                Where.matches(SWEMonthlySummary.ID.eq(uuidSWEMonthlyTotalSummary)),
+                Where.matches(SWEMonthlyTotalSummary.ID.eq(uuidSWEMonthlyTotalSummary)),
                 sweMonthlySummary -> {
                     Log.i("Tutorials", "DataStore is queried.");
                     while (sweMonthlySummary.hasNext()) {
