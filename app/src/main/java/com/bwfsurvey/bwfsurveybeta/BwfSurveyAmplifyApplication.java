@@ -20,6 +20,7 @@ import com.amplifyframework.datastore.generated.model.HouseholdAttendingMeeting;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.amplifyframework.datastore.generated.model.Meeting;
+import com.amplifyframework.datastore.generated.model.SWEMonthlySchoolSummary;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
 import com.amplifyframework.datastore.generated.model.SWEMonthlyTotalSummary;
 import com.amplifyframework.datastore.generated.model.Volunteer;
@@ -34,6 +35,7 @@ import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.bwfsurvey.bwfsurveybeta.types.Config;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
 import com.bwfsurvey.bwfsurveybeta.types.Question;
+import com.bwfsurvey.bwfsurveybeta.types.School;
 import com.bwfsurvey.bwfsurveybeta.types.Validation;
 import com.bwfsurvey.bwfsurveybeta.utils.ConfigXmlParser;
 import com.example.bwfsurveybeta.R;
@@ -123,6 +125,10 @@ public class BwfSurveyAmplifyApplication extends Application {
                     .syncExpression(
                             VolunteerMonthlyTotalSummary.class,
                             () -> VolunteerMonthlyTotalSummary.NAMEBWE.eq(namebwe)
+                    )
+                    .syncExpression(
+                            SWEMonthlySchoolSummary.class,
+                            () -> SWEMonthlySchoolSummary.NAMEBWE.eq(namebwe)
                     )
                     .build()));
             Amplify.addPlugin(new AWSApiPlugin());
@@ -332,6 +338,49 @@ public class BwfSurveyAmplifyApplication extends Application {
             }
         }
         return surveyConfig;
+    }
+
+    public static ArrayList<School> getSchools(String nameOfCommunity){
+        ArrayList<School> schools = null;
+
+        //search for the config with name nameOfCommunity
+        Config configOfCountryBeingRequested = searchConfigForCommSchool(nameOfCommunity);
+        //make the community list
+        //this config "configOfCountryBeingRequestedon" contains all the communities, so get the communities out of int
+        schools = getSchoolsFromCommSchConfig(configOfCountryBeingRequested,nameOfCommunity);
+
+        return schools;
+    }
+
+    private static Config searchConfigForCommSchool(String community){
+        Config surveyConfig = null;
+        for(Config config : BwfSurveyAmplifyApplication.configs){
+            if(config.getName().contentEquals(community.toUpperCase()) && config.getType().contentEquals("CS")){
+                return config;
+            }
+        }
+        return surveyConfig;
+    }
+
+    private static ArrayList<School> getSchoolsFromCommSchConfig(Config configOfCountryBeingRequested,String nameOfCommunity) {
+        ArrayList<School> schools = null;
+        if(configOfCountryBeingRequested!=null){
+            schools = new ArrayList<>();
+            String arrayOfSchools = configOfCountryBeingRequested.getChildValue(); //enveloped in square brackets
+            //take off the square brackets
+            String arrayOfSchoolsWithoutSquareBrackets = arrayOfSchools.substring(1, arrayOfSchools.length() - 1);
+            //they are seperated by "," so split them by ","
+            String[] arrayOfIndSchools = arrayOfSchoolsWithoutSquareBrackets.split(",");
+
+            for(int i=0; i<arrayOfIndSchools.length;i++){
+                //each array element has \"\" around it, so take them off
+                String schoolValue = arrayOfIndSchools[i].substring(1, arrayOfIndSchools[i].length() - 1);
+                //make new school object
+                School school = new School(nameOfCommunity,schoolValue);
+                schools.add(school);
+            }
+        }
+        return schools;
     }
 
     public static ArrayList<String> getCountries(){

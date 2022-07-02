@@ -1770,3 +1770,104 @@ query ListVolunteerMonthlyTotalSummarys(
     startedAt
   }
 }
+query SyncSweMonthlySchoolSummaries(
+  $filter: ModelSWEMonthlySchoolSummaryFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncSWEMonthlySchoolSummaries(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      Namebwe
+      date
+      SWEPosition
+      NoTabletUsedAtDrinkingStation1
+      NoTabletUsedAtDrinkingStation2
+      NoTabletUsedAtDrinkingStation3
+      NoStudentsTaughtSafeWaterPrinciples
+      NoEnrolledInSchoolHealthClub
+      NoHealthClubMeetingHeld
+      NoHealthClubLessonsTaught
+      DoHealthClubManageStations
+      NoHealthClubCleanUpProject
+      Completed
+      Lat
+      Lng
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetSweMonthlySchoolSummary($id: ID!) {
+  getSWEMonthlySchoolSummary(id: $id) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoTabletUsedAtDrinkingStation1
+    NoTabletUsedAtDrinkingStation2
+    NoTabletUsedAtDrinkingStation3
+    NoStudentsTaughtSafeWaterPrinciples
+    NoEnrolledInSchoolHealthClub
+    NoHealthClubMeetingHeld
+    NoHealthClubLessonsTaught
+    DoHealthClubManageStations
+    NoHealthClubCleanUpProject
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListSweMonthlySchoolSummarys(
+  $filter: ModelSWEMonthlySchoolSummaryFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listSWEMonthlySchoolSummarys(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      Namebwe
+      date
+      SWEPosition
+      NoTabletUsedAtDrinkingStation1
+      NoTabletUsedAtDrinkingStation2
+      NoTabletUsedAtDrinkingStation3
+      NoStudentsTaughtSafeWaterPrinciples
+      NoEnrolledInSchoolHealthClub
+      NoHealthClubMeetingHeld
+      NoHealthClubLessonsTaught
+      DoHealthClubManageStations
+      NoHealthClubCleanUpProject
+      Completed
+      Lat
+      Lng
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}

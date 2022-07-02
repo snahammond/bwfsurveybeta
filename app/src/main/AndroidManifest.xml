@@ -97,6 +97,13 @@
         </activity>
 
         <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.SchoolCardSelectActivity"
+            android:label="Select school"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.CommunityWaterSurveyActivity"
             android:label="Community Water Test"
             android:configChanges="orientation"
@@ -368,6 +375,14 @@
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.select.VolunteerMonthlyTotalSummaryCardSelectActivity"
             android:label="Volunteer Monthly Summary"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.SWEMonthlySchoolSummaryActivity"
+            android:label="School Activity Summary"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>

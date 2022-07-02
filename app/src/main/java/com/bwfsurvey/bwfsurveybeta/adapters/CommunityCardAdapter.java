@@ -17,6 +17,7 @@ import com.bwfsurvey.bwfsurveybeta.activities.collect.InitialSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.collect.CommunityWaterSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.MeetingCardSelectActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.SchoolCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.example.bwfsurveybeta.R;
 
@@ -73,6 +74,8 @@ public class CommunityCardAdapter extends RecyclerView.Adapter<RecyclerView.View
                         startInitialSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString(),surveyIdForInitialSurvey);
                     }else if(surveyType.contentEquals("WATERSURVEYCOMMUNITY")) {
                         startCommunityWaterSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString());
+                    }else if(surveyType.contentEquals("SCHACTIVITYSUMMARY")){
+                        startSchoolCardSelectActivity(txtCountry.getText().toString(), txtCommunity.getText().toString());
                     }
                 }
             });
@@ -106,6 +109,19 @@ public class CommunityCardAdapter extends RecyclerView.Adapter<RecyclerView.View
         i.putExtra("COUNTRY_BWE",country);
         i.putExtra("COMMUNITY",community);
         i.putExtra("SURVEY_ID",surveyIdForInitialSurvey);
+        i.putExtra("LAT",lat);
+        i.putExtra("LNG",lng);
+        context.startActivity(i);
+        ((Activity)context).finish();
+    }
+
+    private void startSchoolCardSelectActivity(String country, String community){
+        Intent i = new Intent(this.context, SchoolCardSelectActivity.class);
+        i.putExtra("NAME_BWE", namebwe);
+        i.putExtra("POSITION_BWE", positionbwe);
+        i.putExtra("SURVEY_TYPE",surveyType);
+        i.putExtra("COUNTRY_BWE",country);
+        i.putExtra("COMMUNITY",community);
         i.putExtra("LAT",lat);
         i.putExtra("LNG",lng);
         context.startActivity(i);

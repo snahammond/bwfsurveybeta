@@ -13,7 +13,7 @@ import java.util.Set;
  */
 
 public final class AmplifyModelProvider implements ModelProvider {
-  private static final String AMPLIFY_MODEL_VERSION = "d0574b2c09f1c1266bd4dd309ee7e3f6";
+  private static final String AMPLIFY_MODEL_VERSION = "9f1b5f2bcc33c1a9e50ab7bcd496b917";
   private static AmplifyModelProvider amplifyGeneratedModelInstance;
   private AmplifyModelProvider() {
     
@@ -34,7 +34,7 @@ public final class AmplifyModelProvider implements ModelProvider {
   @Override
    public Set<Class<? extends Model>> models() {
     final Set<Class<? extends Model>> modifiableSet = new HashSet<>(
-          Arrays.<Class<? extends Model>>asList(InitialSurvey.class, FollowUpSurvey.class, HealthCheckSurvey.class, SWEMonthlySummary.class, HouseholdWaterTest.class, CommunityWaterTest.class, CommunityWater.class, ConfigDefinitions.class, BWFSURVEYTOTALS.class, VolunteerHouseholdWaterTest.class, VolunteerHousehold.class, Volunteer.class, VolunteerMonthlySummary.class, Meeting.class, HouseholdAttendingMeeting.class, SWEMonthlyTotalSummary.class, VolunteerMonthlyTotalSummary.class)
+          Arrays.<Class<? extends Model>>asList(InitialSurvey.class, FollowUpSurvey.class, HealthCheckSurvey.class, SWEMonthlySummary.class, HouseholdWaterTest.class, CommunityWaterTest.class, CommunityWater.class, ConfigDefinitions.class, BWFSURVEYTOTALS.class, VolunteerHouseholdWaterTest.class, VolunteerHousehold.class, Volunteer.class, VolunteerMonthlySummary.class, Meeting.class, HouseholdAttendingMeeting.class, SWEMonthlyTotalSummary.class, VolunteerMonthlyTotalSummary.class, SWEMonthlySchoolSummary.class)
         );
     
         return Immutable.of(modifiableSet);

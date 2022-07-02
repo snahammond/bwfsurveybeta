@@ -360,3 +360,22 @@ Completed: Int!
 Lat: String!
 Lng: String!
 }
+
+type SWEMonthlySchoolSummary @model @auth(rules: [{ allow: public,provider: apiKey }]){
+id: ID!
+Namebwe: String!
+date: AWSDate
+SWEPosition: String!
+NoTabletUsedAtDrinkingStation1: Int!
+NoTabletUsedAtDrinkingStation2: Int!
+NoTabletUsedAtDrinkingStation3: Int!
+NoStudentsTaughtSafeWaterPrinciples: Int!
+NoEnrolledInSchoolHealthClub: Int!
+NoHealthClubMeetingHeld: Int!
+NoHealthClubLessonsTaught: Int!
+DoHealthClubManageStations: String!
+NoHealthClubCleanUpProject: Int!
+Completed: Int!
+Lat: String!
+Lng: String!
+}

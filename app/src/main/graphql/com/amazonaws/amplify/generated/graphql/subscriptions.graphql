@@ -1352,3 +1352,78 @@ subscription OnDeleteVolunteerMonthlyTotalSummary {
     updatedAt
   }
 }
+subscription OnCreateSweMonthlySchoolSummary {
+  onCreateSWEMonthlySchoolSummary {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoTabletUsedAtDrinkingStation1
+    NoTabletUsedAtDrinkingStation2
+    NoTabletUsedAtDrinkingStation3
+    NoStudentsTaughtSafeWaterPrinciples
+    NoEnrolledInSchoolHealthClub
+    NoHealthClubMeetingHeld
+    NoHealthClubLessonsTaught
+    DoHealthClubManageStations
+    NoHealthClubCleanUpProject
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateSweMonthlySchoolSummary {
+  onUpdateSWEMonthlySchoolSummary {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoTabletUsedAtDrinkingStation1
+    NoTabletUsedAtDrinkingStation2
+    NoTabletUsedAtDrinkingStation3
+    NoStudentsTaughtSafeWaterPrinciples
+    NoEnrolledInSchoolHealthClub
+    NoHealthClubMeetingHeld
+    NoHealthClubLessonsTaught
+    DoHealthClubManageStations
+    NoHealthClubCleanUpProject
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteSweMonthlySchoolSummary {
+  onDeleteSWEMonthlySchoolSummary {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoTabletUsedAtDrinkingStation1
+    NoTabletUsedAtDrinkingStation2
+    NoTabletUsedAtDrinkingStation3
+    NoStudentsTaughtSafeWaterPrinciples
+    NoEnrolledInSchoolHealthClub
+    NoHealthClubMeetingHeld
+    NoHealthClubLessonsTaught
+    DoHealthClubManageStations
+    NoHealthClubCleanUpProject
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

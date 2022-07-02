@@ -100,6 +100,21 @@ public class SubMenuMonthlySummaryActivity extends AppCompatActivity {
             }
         });
 
+        Button schWaterTreatmentActivitySummary = (Button) findViewById(R.id.button_SchWaterTreatmentActivitySummary);
+        schWaterTreatmentActivitySummary.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), CommunityCardSelectActivity.class);
+                i.putExtra("NAME_BWE", namebwe);
+                i.putExtra("COUNTRY_BWE", countrybwe);
+                i.putExtra("POSITION_BWE", "Educator");
+                i.putExtra("SURVEY_TYPE","SCHACTIVITYSUMMARY");
+                i.putExtra("OPERATION","CREATE");
+                i.putExtra("LAT",lat);
+                i.putExtra("LNG",lng);
+                startActivity(i);
+            }
+        });
+
         Button sweSubCreateVol = (Button) findViewById(R.id.button_SWESubCreateVolunteer);
         sweSubCreateVol.setText("Create New Volunteer");
         sweSubCreateVol.setOnClickListener(new View.OnClickListener() {

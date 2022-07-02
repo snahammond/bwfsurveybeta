@@ -1505,3 +1505,87 @@ mutation DeleteVolunteerMonthlyTotalSummary(
     updatedAt
   }
 }
+mutation CreateSweMonthlySchoolSummary(
+  $input: CreateSWEMonthlySchoolSummaryInput!
+  $condition: ModelSWEMonthlySchoolSummaryConditionInput
+) {
+  createSWEMonthlySchoolSummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoTabletUsedAtDrinkingStation1
+    NoTabletUsedAtDrinkingStation2
+    NoTabletUsedAtDrinkingStation3
+    NoStudentsTaughtSafeWaterPrinciples
+    NoEnrolledInSchoolHealthClub
+    NoHealthClubMeetingHeld
+    NoHealthClubLessonsTaught
+    DoHealthClubManageStations
+    NoHealthClubCleanUpProject
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateSweMonthlySchoolSummary(
+  $input: UpdateSWEMonthlySchoolSummaryInput!
+  $condition: ModelSWEMonthlySchoolSummaryConditionInput
+) {
+  updateSWEMonthlySchoolSummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoTabletUsedAtDrinkingStation1
+    NoTabletUsedAtDrinkingStation2
+    NoTabletUsedAtDrinkingStation3
+    NoStudentsTaughtSafeWaterPrinciples
+    NoEnrolledInSchoolHealthClub
+    NoHealthClubMeetingHeld
+    NoHealthClubLessonsTaught
+    DoHealthClubManageStations
+    NoHealthClubCleanUpProject
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteSweMonthlySchoolSummary(
+  $input: DeleteSWEMonthlySchoolSummaryInput!
+  $condition: ModelSWEMonthlySchoolSummaryConditionInput
+) {
+  deleteSWEMonthlySchoolSummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoTabletUsedAtDrinkingStation1
+    NoTabletUsedAtDrinkingStation2
+    NoTabletUsedAtDrinkingStation3
+    NoStudentsTaughtSafeWaterPrinciples
+    NoEnrolledInSchoolHealthClub
+    NoHealthClubMeetingHeld
+    NoHealthClubLessonsTaught
+    DoHealthClubManageStations
+    NoHealthClubCleanUpProject
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
