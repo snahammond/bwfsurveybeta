@@ -1589,3 +1589,69 @@ mutation DeleteSweMonthlySchoolSummary(
     updatedAt
   }
 }
+mutation CreateSweMonthlyClinicSummary(
+  $input: CreateSWEMonthlyClinicSummaryInput!
+  $condition: ModelSWEMonthlyClinicSummaryConditionInput
+) {
+  createSWEMonthlyClinicSummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoTabletUsedAtDrinkingStation1
+    NoTabletUsedAtDrinkingStation2
+    NoTabletUsedAtDrinkingStation3
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateSweMonthlyClinicSummary(
+  $input: UpdateSWEMonthlyClinicSummaryInput!
+  $condition: ModelSWEMonthlyClinicSummaryConditionInput
+) {
+  updateSWEMonthlyClinicSummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoTabletUsedAtDrinkingStation1
+    NoTabletUsedAtDrinkingStation2
+    NoTabletUsedAtDrinkingStation3
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteSweMonthlyClinicSummary(
+  $input: DeleteSWEMonthlyClinicSummaryInput!
+  $condition: ModelSWEMonthlyClinicSummaryConditionInput
+) {
+  deleteSWEMonthlyClinicSummary(input: $input, condition: $condition) {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoTabletUsedAtDrinkingStation1
+    NoTabletUsedAtDrinkingStation2
+    NoTabletUsedAtDrinkingStation3
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

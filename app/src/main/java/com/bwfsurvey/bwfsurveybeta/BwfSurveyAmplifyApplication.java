@@ -20,6 +20,7 @@ import com.amplifyframework.datastore.generated.model.HouseholdAttendingMeeting;
 import com.amplifyframework.datastore.generated.model.HouseholdWaterTest;
 import com.amplifyframework.datastore.generated.model.InitialSurvey;
 import com.amplifyframework.datastore.generated.model.Meeting;
+import com.amplifyframework.datastore.generated.model.SWEMonthlyClinicSummary;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySchoolSummary;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySummary;
 import com.amplifyframework.datastore.generated.model.SWEMonthlyTotalSummary;
@@ -31,6 +32,7 @@ import com.amplifyframework.datastore.generated.model.VolunteerMonthlyTotalSumma
 import com.bwfsurvey.bwfsurveybeta.types.Answer;
 import com.bwfsurvey.bwfsurveybeta.types.AnswerDef;
 import com.bwfsurvey.bwfsurveybeta.types.AnswerValue;
+import com.bwfsurvey.bwfsurveybeta.types.Clinic;
 import com.bwfsurvey.bwfsurveybeta.types.Community;
 import com.bwfsurvey.bwfsurveybeta.types.Config;
 import com.bwfsurvey.bwfsurveybeta.types.Interchange;
@@ -129,6 +131,10 @@ public class BwfSurveyAmplifyApplication extends Application {
                     .syncExpression(
                             SWEMonthlySchoolSummary.class,
                             () -> SWEMonthlySchoolSummary.NAMEBWE.eq(namebwe)
+                    )
+                    .syncExpression(
+                            SWEMonthlyClinicSummary.class,
+                            () -> SWEMonthlyClinicSummary.NAMEBWE.eq(namebwe)
                     )
                     .build()));
             Amplify.addPlugin(new AWSApiPlugin());
@@ -381,6 +387,49 @@ public class BwfSurveyAmplifyApplication extends Application {
             }
         }
         return schools;
+    }
+
+    public static ArrayList<Clinic> getClinics(String nameOfCommunity){
+        ArrayList<Clinic> clinics = null;
+
+        //search for the config with name nameOfCommunity
+        Config configOfCountryBeingRequested = searchConfigForCommClinic(nameOfCommunity);
+        //make the community list
+        //this config "configOfCountryBeingRequestedon" contains all the communities, so get the communities out of int
+        clinics = getClinicsFromCommClinicConfig(configOfCountryBeingRequested,nameOfCommunity);
+
+        return clinics;
+    }
+
+    private static Config searchConfigForCommClinic(String community){
+        Config surveyConfig = null;
+        for(Config config : BwfSurveyAmplifyApplication.configs){
+            if(config.getName().contentEquals(community.toUpperCase()) && config.getType().contentEquals("CC")){
+                return config;
+            }
+        }
+        return surveyConfig;
+    }
+
+    private static ArrayList<Clinic> getClinicsFromCommClinicConfig(Config configOfCountryBeingRequested,String nameOfCommunity) {
+        ArrayList<Clinic> clinics = null;
+        if(configOfCountryBeingRequested!=null){
+            clinics = new ArrayList<>();
+            String arrayOfClinics = configOfCountryBeingRequested.getChildValue(); //enveloped in square brackets
+            //take off the square brackets
+            String arrayOfClinicsWithoutSquareBrackets = arrayOfClinics.substring(1, arrayOfClinics.length() - 1);
+            //they are seperated by "," so split them by ","
+            String[] arrayOfIndClinics = arrayOfClinicsWithoutSquareBrackets.split(",");
+
+            for(int i=0; i<arrayOfIndClinics.length;i++){
+                //each array element has \"\" around it, so take them off
+                String clinicValue = arrayOfIndClinics[i].substring(1, arrayOfIndClinics[i].length() - 1);
+                //make new school object
+                Clinic clinic = new Clinic(nameOfCommunity,clinicValue);
+                clinics.add(clinic);
+            }
+        }
+        return clinics;
     }
 
     public static ArrayList<String> getCountries(){

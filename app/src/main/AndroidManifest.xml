@@ -104,6 +104,13 @@
         </activity>
 
         <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.ClinicCardSelectActivity"
+            android:label="Select clinic"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.CommunityWaterSurveyActivity"
             android:label="Community Water Test"
             android:configChanges="orientation"
@@ -382,6 +389,13 @@
         <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.SWEMonthlySchoolSummaryActivity"
             android:label="School Activity Summary"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.collect.SWEMonthlyClinicSummaryActivity"
+            android:label="Clinic Activity Summary"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>

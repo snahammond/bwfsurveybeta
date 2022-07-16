@@ -1427,3 +1427,60 @@ subscription OnDeleteSweMonthlySchoolSummary {
     updatedAt
   }
 }
+subscription OnCreateSweMonthlyClinicSummary {
+  onCreateSWEMonthlyClinicSummary {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoTabletUsedAtDrinkingStation1
+    NoTabletUsedAtDrinkingStation2
+    NoTabletUsedAtDrinkingStation3
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateSweMonthlyClinicSummary {
+  onUpdateSWEMonthlyClinicSummary {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoTabletUsedAtDrinkingStation1
+    NoTabletUsedAtDrinkingStation2
+    NoTabletUsedAtDrinkingStation3
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteSweMonthlyClinicSummary {
+  onDeleteSWEMonthlyClinicSummary {
+    id
+    Namebwe
+    date
+    SWEPosition
+    NoTabletUsedAtDrinkingStation1
+    NoTabletUsedAtDrinkingStation2
+    NoTabletUsedAtDrinkingStation3
+    Completed
+    Lat
+    Lng
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

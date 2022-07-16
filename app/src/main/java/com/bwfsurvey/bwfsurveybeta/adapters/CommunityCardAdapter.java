@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bwfsurvey.bwfsurveybeta.activities.collect.InitialSurveyActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.select.ClinicCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.CommunityCardSelectActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.collect.CommunityWaterSurveyActivity;
 import com.bwfsurvey.bwfsurveybeta.activities.select.MeetingCardSelectActivity;
@@ -76,6 +77,8 @@ public class CommunityCardAdapter extends RecyclerView.Adapter<RecyclerView.View
                         startCommunityWaterSurveyActivity(txtCountry.getText().toString(), txtCommunity.getText().toString());
                     }else if(surveyType.contentEquals("SCHACTIVITYSUMMARY")){
                         startSchoolCardSelectActivity(txtCountry.getText().toString(), txtCommunity.getText().toString());
+                    }else if(surveyType.contentEquals("CLINICACTIVITYSUMMARY")){
+                        startClinicCardSelectActivity(txtCountry.getText().toString(), txtCommunity.getText().toString());
                     }
                 }
             });
@@ -117,6 +120,19 @@ public class CommunityCardAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private void startSchoolCardSelectActivity(String country, String community){
         Intent i = new Intent(this.context, SchoolCardSelectActivity.class);
+        i.putExtra("NAME_BWE", namebwe);
+        i.putExtra("POSITION_BWE", positionbwe);
+        i.putExtra("SURVEY_TYPE",surveyType);
+        i.putExtra("COUNTRY_BWE",country);
+        i.putExtra("COMMUNITY",community);
+        i.putExtra("LAT",lat);
+        i.putExtra("LNG",lng);
+        context.startActivity(i);
+        ((Activity)context).finish();
+    }
+
+    private void startClinicCardSelectActivity(String country, String community){
+        Intent i = new Intent(this.context, ClinicCardSelectActivity.class);
         i.putExtra("NAME_BWE", namebwe);
         i.putExtra("POSITION_BWE", positionbwe);
         i.putExtra("SURVEY_TYPE",surveyType);
