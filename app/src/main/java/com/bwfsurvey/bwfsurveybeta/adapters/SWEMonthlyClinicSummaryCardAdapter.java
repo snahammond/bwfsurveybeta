@@ -15,17 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.SWEMonthlyClinicSummary;
 import com.amplifyframework.datastore.generated.model.SWEMonthlySchoolSummary;
-import com.bwfsurvey.bwfsurveybeta.activities.view.ViewSWEMonthlySchoolSummaryActivity;
+import com.bwfsurvey.bwfsurveybeta.activities.view.ViewSWEMonthlyClinicSummaryActivity;
 import com.example.bwfsurveybeta.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class SWEMonthlySchoolSummaryCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-
-    private ArrayList<SWEMonthlySchoolSummary> listOfSWEMonthlySchoolSummarys;
+public class SWEMonthlyClinicSummaryCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+    private ArrayList<SWEMonthlyClinicSummary> listOfSWEMonthlyClinicSummarys;
     private String namebwe;
     private String countrybwe;
     private String surveyType;
@@ -34,8 +34,8 @@ public class SWEMonthlySchoolSummaryCardAdapter extends RecyclerView.Adapter<Rec
     private String lng;
     private Context context;
 
-    public SWEMonthlySchoolSummaryCardAdapter(Context context, ArrayList<SWEMonthlySchoolSummary> listOfSWEMonthlySchoolSummarys, String namebwe, String countrybwe, String surveyType, String operation, String lat, String lng ) {
-        this.listOfSWEMonthlySchoolSummarys = listOfSWEMonthlySchoolSummarys;
+    public SWEMonthlyClinicSummaryCardAdapter(Context context, ArrayList<SWEMonthlyClinicSummary> listOfSWEMonthlySchoolSummarys, String namebwe, String countrybwe, String surveyType, String operation, String lat, String lng ) {
+        this.listOfSWEMonthlyClinicSummarys = listOfSWEMonthlySchoolSummarys;
         this.namebwe = namebwe;
         this.countrybwe = countrybwe;
         this.surveyType = surveyType;
@@ -48,37 +48,35 @@ public class SWEMonthlySchoolSummaryCardAdapter extends RecyclerView.Adapter<Rec
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.monthly_school_summary_card, parent, false);
-        return new SWEMonthlySchoolSummaryCardViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.monthly_clinic_summary_card, parent, false);
+        return new SWEMonthlyClinicSummaryCardViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ((SWEMonthlySchoolSummaryCardViewHolder) holder).setMonthlySummaryDetails(listOfSWEMonthlySchoolSummarys.get(position),position);
+        ((SWEMonthlyClinicSummaryCardViewHolder) holder).setMonthlySummaryDetails(listOfSWEMonthlyClinicSummarys.get(position),position);
     }
 
     @Override
     public int getItemCount() {
-        return listOfSWEMonthlySchoolSummarys.size();
+        return listOfSWEMonthlyClinicSummarys.size();
     }
 
-    private class SWEMonthlySchoolSummaryCardViewHolder extends RecyclerView.ViewHolder {
+    private class SWEMonthlyClinicSummaryCardViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtNoTabletUsedAtDrinkingStation1;
-        private TextView txtNoStudentsTaughtSafeWaterPrinciples;
         private TextView txtDate;
-        private TextView txtMonthlySchoolSummaryOnlineStatus;
-        private String uuidSWEMonthlySchoolSummary;
+        private TextView txtMonthlyClinicSummaryOnlineStatus;
+        private String uuidSWEMonthlyClinicSummary;
 
-        public SWEMonthlySchoolSummaryCardViewHolder(View view) {
+        public SWEMonthlyClinicSummaryCardViewHolder(View view) {
             super(view);
             txtNoTabletUsedAtDrinkingStation1 = (TextView) itemView.findViewById(R.id.txtNoTabletUsedAtDrinkingStation1);
-            txtNoStudentsTaughtSafeWaterPrinciples = (TextView) itemView.findViewById(R.id.txtNoStudentsTaughtSafeWaterPrinciples);
             txtDate = (TextView) itemView.findViewById(R.id.txtDate);
-            txtMonthlySchoolSummaryOnlineStatus = (TextView) itemView.findViewById(R.id.txtMonthlySchoolSummaryOnlineStatus);
-            CardView monthlySchoolSummaryCard = (CardView) itemView.findViewById(R.id.monthlySchoolSummaryCard); // creating a CardView and assigning a value.
+            txtMonthlyClinicSummaryOnlineStatus = (TextView) itemView.findViewById(R.id.txtMonthlyClinicSummaryOnlineStatus);
+            CardView monthlyClinicSummaryCard = (CardView) itemView.findViewById(R.id.monthlyClinicSummaryCard); // creating a CardView and assigning a value.
 
-            monthlySchoolSummaryCard.setOnClickListener(new View.OnClickListener() {
+            monthlyClinicSummaryCard.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // do whatever you want to do on click (to launch any fragment or activity you need to put intent here.)
@@ -86,7 +84,7 @@ public class SWEMonthlySchoolSummaryCardAdapter extends RecyclerView.Adapter<Rec
                     if(operation.contentEquals("CREATE")){
 
                     }else if(operation.contentEquals("VIEW")){
-                        startViewSWEMonthlySchoolSummaryActivity(uuidSWEMonthlySchoolSummary);
+                        startViewSWEMonthlyClinicSummaryActivity(uuidSWEMonthlyClinicSummary);
                     }else if(operation.contentEquals("UPDATE")){
                         //startUpdateSWEMonthlyTotalSummaryActivity(uuidSWEMonthlyTotalSummary);
                     }
@@ -95,10 +93,9 @@ public class SWEMonthlySchoolSummaryCardAdapter extends RecyclerView.Adapter<Rec
             });
         }
 
-        void setMonthlySummaryDetails(SWEMonthlySchoolSummary sweMonthlySchoolSummary, int position) {
-            txtNoTabletUsedAtDrinkingStation1.setText(sweMonthlySchoolSummary.getNoTabletUsedAtDrinkingStation1().toString());
-            txtNoStudentsTaughtSafeWaterPrinciples.setText(sweMonthlySchoolSummary.getNoStudentsTaughtSafeWaterPrinciples().toString());
-            String dateStr = sweMonthlySchoolSummary.getDate().toString();
+        void setMonthlySummaryDetails(SWEMonthlyClinicSummary sweMonthlyClinicSummary, int position) {
+            txtNoTabletUsedAtDrinkingStation1.setText(sweMonthlyClinicSummary.getNoTabletUsedAtDrinkingStation1().toString());
+            String dateStr = sweMonthlyClinicSummary.getDate().toString();
             if(dateStr.indexOf("{")>0&&dateStr.indexOf("}")>0){
                 dateStr = dateStr.substring(dateStr.indexOf("{") + 1);
                 dateStr = dateStr.substring(0, dateStr.indexOf("}"));
@@ -129,17 +126,17 @@ public class SWEMonthlySchoolSummaryCardAdapter extends RecyclerView.Adapter<Rec
                 txtDate.setText("");
             }
 
-            txtMonthlySchoolSummaryOnlineStatus.setVisibility(View.INVISIBLE);
-            uuidSWEMonthlySchoolSummary = sweMonthlySchoolSummary.getId();
+            txtMonthlyClinicSummaryOnlineStatus.setVisibility(View.INVISIBLE);
+            uuidSWEMonthlyClinicSummary = sweMonthlyClinicSummary.getId();
 
             Amplify.API.query(
-                    ModelQuery.get(SWEMonthlySchoolSummary.class, uuidSWEMonthlySchoolSummary),
+                    ModelQuery.get(SWEMonthlyClinicSummary.class, uuidSWEMonthlyClinicSummary),
                     response -> {
-                        if(response.getData()!=null && (response.getData()).getId().contentEquals(uuidSWEMonthlySchoolSummary)){
+                        if(response.getData()!=null && (response.getData()).getId().contentEquals(uuidSWEMonthlyClinicSummary)){
                             Activity activity = (Activity) context;
                             activity.runOnUiThread(new Runnable() {
                                 public void run() {
-                                    txtMonthlySchoolSummaryOnlineStatus.setVisibility(View.VISIBLE);
+                                    txtMonthlyClinicSummaryOnlineStatus.setVisibility(View.VISIBLE);
                                 }
                             });
                             Log.i("bwfsurveybeta", (response.getData()).getNamebwe() +"meeting is on the cloud");
@@ -152,11 +149,10 @@ public class SWEMonthlySchoolSummaryCardAdapter extends RecyclerView.Adapter<Rec
         }
     }
 
-    private void startViewSWEMonthlySchoolSummaryActivity(String uuidSWEMonthlySchoolSummary) {
-        Intent i = new Intent(context, ViewSWEMonthlySchoolSummaryActivity.class);
-        i.putExtra("UUID", uuidSWEMonthlySchoolSummary);
+    private void startViewSWEMonthlyClinicSummaryActivity(String uuidSWEMonthlyClinicSummary) {
+        Intent i = new Intent(context, ViewSWEMonthlyClinicSummaryActivity.class);
+        i.putExtra("UUID", uuidSWEMonthlyClinicSummary);
         context.startActivity(i);
         ((Activity)context).finish();
     }
-
 }

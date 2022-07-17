@@ -408,13 +408,25 @@
         </activity>
 
         <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.select.SWEMonthlyClinicSummaryCardSelectActivity"
+            android:label="Monthly Clinic Summary"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
             android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewSWEMonthlySchoolSummaryActivity"
             android:label="Monthly School Summary"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
 
-
+        <activity
+            android:name="com.bwfsurvey.bwfsurveybeta.activities.view.ViewSWEMonthlyClinicSummaryActivity"
+            android:label="Monthly Clinic Summary"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
