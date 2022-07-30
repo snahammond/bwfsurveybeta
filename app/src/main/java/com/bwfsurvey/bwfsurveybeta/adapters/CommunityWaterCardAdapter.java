@@ -68,10 +68,10 @@ public class CommunityWaterCardAdapter extends RecyclerView.Adapter<RecyclerView
 
         public CommunityWaterCardViewHolder(View view) {
             super(view);
-            txtCountry = (TextView) itemView.findViewById(R.id.txtCountry);
-            txtCommunity = (TextView) itemView.findViewById(R.id.txtCommunity);
-            txtCommunityWaterLoc = (TextView) itemView.findViewById(R.id.txtCommunityWaterLoc);
-            CardView communityWaterCard = (CardView) itemView.findViewById(R.id.volHouseholdCard); // creating a CardView and assigning a value.
+            txtCountry = (TextView) view.findViewById(R.id.txtCountry);
+            txtCommunity = (TextView) view.findViewById(R.id.txtCommunity);
+            txtCommunityWaterLoc = (TextView) view.findViewById(R.id.txtCommunityWaterLoc);
+            CardView communityWaterCard = (CardView) view.findViewById(R.id.volHouseholdCard); // creating a CardView and assigning a value.
 
             communityWaterCard.setOnClickListener(new View.OnClickListener() {
                 @Override

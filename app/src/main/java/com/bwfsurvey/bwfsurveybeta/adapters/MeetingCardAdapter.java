@@ -63,16 +63,16 @@ public class MeetingCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         public MeetingCardViewHolder(View view) {
             super(view);
-            txtMeetingDate = (TextView) itemView.findViewById(R.id.txtMeetingDate);
-            txtCommunityName = (TextView) itemView.findViewById(R.id.txtCommunity);
-            txtLessonsTaught = (TextView) itemView.findViewById(R.id.txtLessonsTaught);
-            textVolunteerAssistingDesc = (TextView) itemView.findViewById(R.id.textVolunteerAssistingDesc);
+            txtMeetingDate = (TextView) view.findViewById(R.id.txtMeetingDate);
+            txtCommunityName = (TextView) view.findViewById(R.id.txtCommunity);
+            txtLessonsTaught = (TextView) view.findViewById(R.id.txtLessonsTaught);
+            textVolunteerAssistingDesc = (TextView) view.findViewById(R.id.textVolunteerAssistingDesc);
             textVolunteerAssistingDesc.setVisibility(View.GONE);
-            textVolunteerAssisting = (TextView) itemView.findViewById(R.id.textVolunteerAssisting);
+            textVolunteerAssisting = (TextView) view.findViewById(R.id.textVolunteerAssisting);
             textVolunteerAssisting.setVisibility(View.GONE);
-            txtMeetingSummaryOnlineStatus = (TextView) itemView.findViewById(R.id.txtMeetingSummaryOnlineStatus);
+            txtMeetingSummaryOnlineStatus = (TextView) view.findViewById(R.id.txtMeetingSummaryOnlineStatus);
 
-            CardView meetingCard = (CardView) itemView.findViewById(R.id.meetingCard); // creating a CardView and assigning a value.
+            CardView meetingCard = (CardView) view.findViewById(R.id.meetingCard); // creating a CardView and assigning a value.
 
             meetingCard.setOnClickListener(new View.OnClickListener() {
                 @Override

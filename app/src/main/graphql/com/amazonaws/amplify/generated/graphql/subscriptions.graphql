@@ -1358,6 +1358,9 @@ subscription OnCreateSweMonthlySchoolSummary {
     Namebwe
     date
     SWEPosition
+    Country
+    Community
+    School
     NoTabletUsedAtDrinkingStation1
     NoTabletUsedAtDrinkingStation2
     NoTabletUsedAtDrinkingStation3
@@ -1383,6 +1386,9 @@ subscription OnUpdateSweMonthlySchoolSummary {
     Namebwe
     date
     SWEPosition
+    Country
+    Community
+    School
     NoTabletUsedAtDrinkingStation1
     NoTabletUsedAtDrinkingStation2
     NoTabletUsedAtDrinkingStation3
@@ -1408,6 +1414,9 @@ subscription OnDeleteSweMonthlySchoolSummary {
     Namebwe
     date
     SWEPosition
+    Country
+    Community
+    School
     NoTabletUsedAtDrinkingStation1
     NoTabletUsedAtDrinkingStation2
     NoTabletUsedAtDrinkingStation3
@@ -1433,6 +1442,9 @@ subscription OnCreateSweMonthlyClinicSummary {
     Namebwe
     date
     SWEPosition
+    Country
+    Community
+    Clinic
     NoTabletUsedAtDrinkingStation1
     NoTabletUsedAtDrinkingStation2
     NoTabletUsedAtDrinkingStation3
@@ -1452,6 +1464,9 @@ subscription OnUpdateSweMonthlyClinicSummary {
     Namebwe
     date
     SWEPosition
+    Country
+    Community
+    Clinic
     NoTabletUsedAtDrinkingStation1
     NoTabletUsedAtDrinkingStation2
     NoTabletUsedAtDrinkingStation3
@@ -1471,6 +1486,9 @@ subscription OnDeleteSweMonthlyClinicSummary {
     Namebwe
     date
     SWEPosition
+    Country
+    Community
+    Clinic
     NoTabletUsedAtDrinkingStation1
     NoTabletUsedAtDrinkingStation2
     NoTabletUsedAtDrinkingStation3

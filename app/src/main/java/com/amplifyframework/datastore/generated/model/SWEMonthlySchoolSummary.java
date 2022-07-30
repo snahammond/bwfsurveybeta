@@ -29,6 +29,9 @@ public final class SWEMonthlySchoolSummary implements Model {
   public static final QueryField NAMEBWE = field("Namebwe");
   public static final QueryField DATE = field("date");
   public static final QueryField SWE_POSITION = field("SWEPosition");
+  public static final QueryField COUNTRY = field("Country");
+  public static final QueryField COMMUNITY = field("Community");
+  public static final QueryField SCHOOL = field("School");
   public static final QueryField NO_TABLET_USED_AT_DRINKING_STATION1 = field("NoTabletUsedAtDrinkingStation1");
   public static final QueryField NO_TABLET_USED_AT_DRINKING_STATION2 = field("NoTabletUsedAtDrinkingStation2");
   public static final QueryField NO_TABLET_USED_AT_DRINKING_STATION3 = field("NoTabletUsedAtDrinkingStation3");
@@ -45,6 +48,9 @@ public final class SWEMonthlySchoolSummary implements Model {
   private final @ModelField(targetType="String", isRequired = true) String Namebwe;
   private final @ModelField(targetType="AWSDate") Temporal.Date date;
   private final @ModelField(targetType="String", isRequired = true) String SWEPosition;
+  private final @ModelField(targetType="String", isRequired = true) String Country;
+  private final @ModelField(targetType="String", isRequired = true) String Community;
+  private final @ModelField(targetType="String", isRequired = true) String School;
   private final @ModelField(targetType="Int", isRequired = true) Integer NoTabletUsedAtDrinkingStation1;
   private final @ModelField(targetType="Int", isRequired = true) Integer NoTabletUsedAtDrinkingStation2;
   private final @ModelField(targetType="Int", isRequired = true) Integer NoTabletUsedAtDrinkingStation3;
@@ -71,6 +77,18 @@ public final class SWEMonthlySchoolSummary implements Model {
   
   public String getSwePosition() {
       return SWEPosition;
+  }
+  
+  public String getCountry() {
+      return Country;
+  }
+  
+  public String getCommunity() {
+      return Community;
+  }
+  
+  public String getSchool() {
+      return School;
   }
   
   public Integer getNoTabletUsedAtDrinkingStation1() {
@@ -121,11 +139,14 @@ public final class SWEMonthlySchoolSummary implements Model {
       return Lng;
   }
   
-  private SWEMonthlySchoolSummary(String id, String Namebwe, Temporal.Date date, String SWEPosition, Integer NoTabletUsedAtDrinkingStation1, Integer NoTabletUsedAtDrinkingStation2, Integer NoTabletUsedAtDrinkingStation3, Integer NoStudentsTaughtSafeWaterPrinciples, Integer NoEnrolledInSchoolHealthClub, Integer NoHealthClubMeetingHeld, Integer NoHealthClubLessonsTaught, String DoHealthClubManageStations, Integer NoHealthClubCleanUpProject, Integer Completed, String Lat, String Lng) {
+  private SWEMonthlySchoolSummary(String id, String Namebwe, Temporal.Date date, String SWEPosition, String Country, String Community, String School, Integer NoTabletUsedAtDrinkingStation1, Integer NoTabletUsedAtDrinkingStation2, Integer NoTabletUsedAtDrinkingStation3, Integer NoStudentsTaughtSafeWaterPrinciples, Integer NoEnrolledInSchoolHealthClub, Integer NoHealthClubMeetingHeld, Integer NoHealthClubLessonsTaught, String DoHealthClubManageStations, Integer NoHealthClubCleanUpProject, Integer Completed, String Lat, String Lng) {
     this.id = id;
     this.Namebwe = Namebwe;
     this.date = date;
     this.SWEPosition = SWEPosition;
+    this.Country = Country;
+    this.Community = Community;
+    this.School = School;
     this.NoTabletUsedAtDrinkingStation1 = NoTabletUsedAtDrinkingStation1;
     this.NoTabletUsedAtDrinkingStation2 = NoTabletUsedAtDrinkingStation2;
     this.NoTabletUsedAtDrinkingStation3 = NoTabletUsedAtDrinkingStation3;
@@ -152,6 +173,9 @@ public final class SWEMonthlySchoolSummary implements Model {
               ObjectsCompat.equals(getNamebwe(), sweMonthlySchoolSummary.getNamebwe()) &&
               ObjectsCompat.equals(getDate(), sweMonthlySchoolSummary.getDate()) &&
               ObjectsCompat.equals(getSwePosition(), sweMonthlySchoolSummary.getSwePosition()) &&
+              ObjectsCompat.equals(getCountry(), sweMonthlySchoolSummary.getCountry()) &&
+              ObjectsCompat.equals(getCommunity(), sweMonthlySchoolSummary.getCommunity()) &&
+              ObjectsCompat.equals(getSchool(), sweMonthlySchoolSummary.getSchool()) &&
               ObjectsCompat.equals(getNoTabletUsedAtDrinkingStation1(), sweMonthlySchoolSummary.getNoTabletUsedAtDrinkingStation1()) &&
               ObjectsCompat.equals(getNoTabletUsedAtDrinkingStation2(), sweMonthlySchoolSummary.getNoTabletUsedAtDrinkingStation2()) &&
               ObjectsCompat.equals(getNoTabletUsedAtDrinkingStation3(), sweMonthlySchoolSummary.getNoTabletUsedAtDrinkingStation3()) &&
@@ -174,6 +198,9 @@ public final class SWEMonthlySchoolSummary implements Model {
       .append(getNamebwe())
       .append(getDate())
       .append(getSwePosition())
+      .append(getCountry())
+      .append(getCommunity())
+      .append(getSchool())
       .append(getNoTabletUsedAtDrinkingStation1())
       .append(getNoTabletUsedAtDrinkingStation2())
       .append(getNoTabletUsedAtDrinkingStation3())
@@ -198,6 +225,9 @@ public final class SWEMonthlySchoolSummary implements Model {
       .append("Namebwe=" + String.valueOf(getNamebwe()) + ", ")
       .append("date=" + String.valueOf(getDate()) + ", ")
       .append("SWEPosition=" + String.valueOf(getSwePosition()) + ", ")
+      .append("Country=" + String.valueOf(getCountry()) + ", ")
+      .append("Community=" + String.valueOf(getCommunity()) + ", ")
+      .append("School=" + String.valueOf(getSchool()) + ", ")
       .append("NoTabletUsedAtDrinkingStation1=" + String.valueOf(getNoTabletUsedAtDrinkingStation1()) + ", ")
       .append("NoTabletUsedAtDrinkingStation2=" + String.valueOf(getNoTabletUsedAtDrinkingStation2()) + ", ")
       .append("NoTabletUsedAtDrinkingStation3=" + String.valueOf(getNoTabletUsedAtDrinkingStation3()) + ", ")
@@ -253,6 +283,9 @@ public final class SWEMonthlySchoolSummary implements Model {
       null,
       null,
       null,
+      null,
+      null,
+      null,
       null
     );
   }
@@ -262,6 +295,9 @@ public final class SWEMonthlySchoolSummary implements Model {
       Namebwe,
       date,
       SWEPosition,
+      Country,
+      Community,
+      School,
       NoTabletUsedAtDrinkingStation1,
       NoTabletUsedAtDrinkingStation2,
       NoTabletUsedAtDrinkingStation3,
@@ -281,7 +317,22 @@ public final class SWEMonthlySchoolSummary implements Model {
   
 
   public interface SwePositionStep {
-    NoTabletUsedAtDrinkingStation1Step swePosition(String swePosition);
+    CountryStep swePosition(String swePosition);
+  }
+  
+
+  public interface CountryStep {
+    CommunityStep country(String country);
+  }
+  
+
+  public interface CommunityStep {
+    SchoolStep community(String community);
+  }
+  
+
+  public interface SchoolStep {
+    NoTabletUsedAtDrinkingStation1Step school(String school);
   }
   
 
@@ -352,10 +403,13 @@ public final class SWEMonthlySchoolSummary implements Model {
   }
   
 
-  public static class Builder implements NamebweStep, SwePositionStep, NoTabletUsedAtDrinkingStation1Step, NoTabletUsedAtDrinkingStation2Step, NoTabletUsedAtDrinkingStation3Step, NoStudentsTaughtSafeWaterPrinciplesStep, NoEnrolledInSchoolHealthClubStep, NoHealthClubMeetingHeldStep, NoHealthClubLessonsTaughtStep, DoHealthClubManageStationsStep, NoHealthClubCleanUpProjectStep, CompletedStep, LatStep, LngStep, BuildStep {
+  public static class Builder implements NamebweStep, SwePositionStep, CountryStep, CommunityStep, SchoolStep, NoTabletUsedAtDrinkingStation1Step, NoTabletUsedAtDrinkingStation2Step, NoTabletUsedAtDrinkingStation3Step, NoStudentsTaughtSafeWaterPrinciplesStep, NoEnrolledInSchoolHealthClubStep, NoHealthClubMeetingHeldStep, NoHealthClubLessonsTaughtStep, DoHealthClubManageStationsStep, NoHealthClubCleanUpProjectStep, CompletedStep, LatStep, LngStep, BuildStep {
     private String id;
     private String Namebwe;
     private String SWEPosition;
+    private String Country;
+    private String Community;
+    private String School;
     private Integer NoTabletUsedAtDrinkingStation1;
     private Integer NoTabletUsedAtDrinkingStation2;
     private Integer NoTabletUsedAtDrinkingStation3;
@@ -378,6 +432,9 @@ public final class SWEMonthlySchoolSummary implements Model {
           Namebwe,
           date,
           SWEPosition,
+          Country,
+          Community,
+          School,
           NoTabletUsedAtDrinkingStation1,
           NoTabletUsedAtDrinkingStation2,
           NoTabletUsedAtDrinkingStation3,
@@ -400,9 +457,30 @@ public final class SWEMonthlySchoolSummary implements Model {
     }
     
     @Override
-     public NoTabletUsedAtDrinkingStation1Step swePosition(String swePosition) {
+     public CountryStep swePosition(String swePosition) {
         Objects.requireNonNull(swePosition);
         this.SWEPosition = swePosition;
+        return this;
+    }
+    
+    @Override
+     public CommunityStep country(String country) {
+        Objects.requireNonNull(country);
+        this.Country = country;
+        return this;
+    }
+    
+    @Override
+     public SchoolStep community(String community) {
+        Objects.requireNonNull(community);
+        this.Community = community;
+        return this;
+    }
+    
+    @Override
+     public NoTabletUsedAtDrinkingStation1Step school(String school) {
+        Objects.requireNonNull(school);
+        this.School = school;
         return this;
     }
     
@@ -519,10 +597,13 @@ public final class SWEMonthlySchoolSummary implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String namebwe, Temporal.Date date, String swePosition, Integer noTabletUsedAtDrinkingStation1, Integer noTabletUsedAtDrinkingStation2, Integer noTabletUsedAtDrinkingStation3, Integer noStudentsTaughtSafeWaterPrinciples, Integer noEnrolledInSchoolHealthClub, Integer noHealthClubMeetingHeld, Integer noHealthClubLessonsTaught, String doHealthClubManageStations, Integer noHealthClubCleanUpProject, Integer completed, String lat, String lng) {
+    private CopyOfBuilder(String id, String namebwe, Temporal.Date date, String swePosition, String country, String community, String school, Integer noTabletUsedAtDrinkingStation1, Integer noTabletUsedAtDrinkingStation2, Integer noTabletUsedAtDrinkingStation3, Integer noStudentsTaughtSafeWaterPrinciples, Integer noEnrolledInSchoolHealthClub, Integer noHealthClubMeetingHeld, Integer noHealthClubLessonsTaught, String doHealthClubManageStations, Integer noHealthClubCleanUpProject, Integer completed, String lat, String lng) {
       super.id(id);
       super.namebwe(namebwe)
         .swePosition(swePosition)
+        .country(country)
+        .community(community)
+        .school(school)
         .noTabletUsedAtDrinkingStation1(noTabletUsedAtDrinkingStation1)
         .noTabletUsedAtDrinkingStation2(noTabletUsedAtDrinkingStation2)
         .noTabletUsedAtDrinkingStation3(noTabletUsedAtDrinkingStation3)
@@ -546,6 +627,21 @@ public final class SWEMonthlySchoolSummary implements Model {
     @Override
      public CopyOfBuilder swePosition(String swePosition) {
       return (CopyOfBuilder) super.swePosition(swePosition);
+    }
+    
+    @Override
+     public CopyOfBuilder country(String country) {
+      return (CopyOfBuilder) super.country(country);
+    }
+    
+    @Override
+     public CopyOfBuilder community(String community) {
+      return (CopyOfBuilder) super.community(community);
+    }
+    
+    @Override
+     public CopyOfBuilder school(String school) {
+      return (CopyOfBuilder) super.school(school);
     }
     
     @Override

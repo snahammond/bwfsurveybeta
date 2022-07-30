@@ -62,7 +62,7 @@ public class SWEMonthlyClinicSummaryActivity extends AppCompatActivity {
             positionbwe = getIntent().getStringExtra("POSITION_BWE");
         if(getIntent().getStringExtra("COMMUNITY")!=null)
             community = getIntent().getStringExtra("COMMUNITY");
-        if(getIntent().getStringExtra("SCHOOL")!=null)
+        if(getIntent().getStringExtra("CLINIC")!=null)
             clinic = getIntent().getStringExtra("CLINIC");
 
         if(getIntent().getStringExtra("SURVEY_TYPE")!=null)
@@ -163,6 +163,9 @@ public class SWEMonthlyClinicSummaryActivity extends AppCompatActivity {
 
         String Namebwe = namebwe;
         String SwePosition = positionbwe;
+        String Country = countrybwe;
+        String Community = community;
+        String Clinic = clinic;
 
         Integer NoTabletUsedAtDrinkingStation1 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoTabletUsedAtDrinkingStation1",interchangesWithUserAns),0);
         Integer NoTabletUsedAtDrinkingStation2 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoTabletUsedAtDrinkingStation2",interchangesWithUserAns),0);
@@ -172,6 +175,9 @@ public class SWEMonthlyClinicSummaryActivity extends AppCompatActivity {
         SWEMonthlyClinicSummary sweMonthlyClinicSummary = SWEMonthlyClinicSummary.builder()
                 .namebwe(Namebwe)
                 .swePosition(SwePosition)
+                .country(Country)
+                .community(Community)
+                .clinic(Clinic)
                 .noTabletUsedAtDrinkingStation1(NoTabletUsedAtDrinkingStation1)
                 .noTabletUsedAtDrinkingStation2(NoTabletUsedAtDrinkingStation2)
                 .noTabletUsedAtDrinkingStation3(NoTabletUsedAtDrinkingStation3)

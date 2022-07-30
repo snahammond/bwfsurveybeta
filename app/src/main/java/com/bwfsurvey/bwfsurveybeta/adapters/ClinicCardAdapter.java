@@ -67,7 +67,7 @@ public class ClinicCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 @Override
                 public void onClick(View v) {
                     // do whatever you want to do on click (to launch any fragment or activity you need to put intent here.)
-                    Log.i("Tutorials", "Selected school: " + txtClinic.getText());
+                    Log.i("Tutorials", "Selected clinic: " + txtClinic.getText());
 
                     if(surveyType.contentEquals("CLINICACTIVITYSUMMARY")){
                         startClinicSummaryActivity(txtClinic.getText().toString());

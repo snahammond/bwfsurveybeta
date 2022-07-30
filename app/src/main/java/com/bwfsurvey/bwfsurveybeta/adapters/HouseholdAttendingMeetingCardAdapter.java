@@ -55,12 +55,12 @@ public class HouseholdAttendingMeetingCardAdapter extends RecyclerView.Adapter<R
 
         public HouseholdAttendingMeetingCardViewHolder(View view) {
             super(view);
-            txtHeadHouseholdName = (TextView) itemView.findViewById(R.id.txtHeadHouseholdName);
-            txtPhoneNumber = (TextView) itemView.findViewById(R.id.txtPhoneNumber);
-            txtNumberOfAdultPresent = (TextView) itemView.findViewById(R.id.txtNumberOfAdultPresent);
-            txtCommittedToUseAquaTabs = (TextView) itemView.findViewById(R.id.txtCommittedToUseAquaTabs);
-            textNumberOfAquatabsReceived = (TextView) itemView.findViewById(R.id.textNumberOfAquatabsReceived);
-            txtHouseholdAttendingMeetingOnlineStatus = (TextView) itemView.findViewById(R.id.txtHouseholdAttendingMeetingOnlineStatus);
+            txtHeadHouseholdName = (TextView) view.findViewById(R.id.txtHeadHouseholdName);
+            txtPhoneNumber = (TextView) view.findViewById(R.id.txtPhoneNumber);
+            txtNumberOfAdultPresent = (TextView) view.findViewById(R.id.txtNumberOfAdultPresent);
+            txtCommittedToUseAquaTabs = (TextView) view.findViewById(R.id.txtCommittedToUseAquaTabs);
+            textNumberOfAquatabsReceived = (TextView) view.findViewById(R.id.textNumberOfAquatabsReceived);
+            txtHouseholdAttendingMeetingOnlineStatus = (TextView) view.findViewById(R.id.txtHouseholdAttendingMeetingOnlineStatus);
             /*CardView householdAttendingMeetingCard = (CardView) itemView.findViewById(R.id.householdAttendingMeetingCard); // creating a CardView and assigning a value.
 
             meetingCard.setOnClickListener(new View.OnClickListener() {

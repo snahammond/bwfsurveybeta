@@ -1787,6 +1787,9 @@ query SyncSweMonthlySchoolSummaries(
       Namebwe
       date
       SWEPosition
+      Country
+      Community
+      School
       NoTabletUsedAtDrinkingStation1
       NoTabletUsedAtDrinkingStation2
       NoTabletUsedAtDrinkingStation3
@@ -1815,6 +1818,9 @@ query GetSweMonthlySchoolSummary($id: ID!) {
     Namebwe
     date
     SWEPosition
+    Country
+    Community
+    School
     NoTabletUsedAtDrinkingStation1
     NoTabletUsedAtDrinkingStation2
     NoTabletUsedAtDrinkingStation3
@@ -1849,6 +1855,9 @@ query ListSweMonthlySchoolSummarys(
       Namebwe
       date
       SWEPosition
+      Country
+      Community
+      School
       NoTabletUsedAtDrinkingStation1
       NoTabletUsedAtDrinkingStation2
       NoTabletUsedAtDrinkingStation3
@@ -1888,6 +1897,9 @@ query SyncSweMonthlyClinicSummaries(
       Namebwe
       date
       SWEPosition
+      Country
+      Community
+      Clinic
       NoTabletUsedAtDrinkingStation1
       NoTabletUsedAtDrinkingStation2
       NoTabletUsedAtDrinkingStation3
@@ -1910,6 +1922,9 @@ query GetSweMonthlyClinicSummary($id: ID!) {
     Namebwe
     date
     SWEPosition
+    Country
+    Community
+    Clinic
     NoTabletUsedAtDrinkingStation1
     NoTabletUsedAtDrinkingStation2
     NoTabletUsedAtDrinkingStation3
@@ -1938,6 +1953,9 @@ query ListSweMonthlyClinicSummarys(
       Namebwe
       date
       SWEPosition
+      Country
+      Community
+      Clinic
       NoTabletUsedAtDrinkingStation1
       NoTabletUsedAtDrinkingStation2
       NoTabletUsedAtDrinkingStation3

@@ -1514,6 +1514,9 @@ mutation CreateSweMonthlySchoolSummary(
     Namebwe
     date
     SWEPosition
+    Country
+    Community
+    School
     NoTabletUsedAtDrinkingStation1
     NoTabletUsedAtDrinkingStation2
     NoTabletUsedAtDrinkingStation3
@@ -1542,6 +1545,9 @@ mutation UpdateSweMonthlySchoolSummary(
     Namebwe
     date
     SWEPosition
+    Country
+    Community
+    School
     NoTabletUsedAtDrinkingStation1
     NoTabletUsedAtDrinkingStation2
     NoTabletUsedAtDrinkingStation3
@@ -1570,6 +1576,9 @@ mutation DeleteSweMonthlySchoolSummary(
     Namebwe
     date
     SWEPosition
+    Country
+    Community
+    School
     NoTabletUsedAtDrinkingStation1
     NoTabletUsedAtDrinkingStation2
     NoTabletUsedAtDrinkingStation3
@@ -1598,6 +1607,9 @@ mutation CreateSweMonthlyClinicSummary(
     Namebwe
     date
     SWEPosition
+    Country
+    Community
+    Clinic
     NoTabletUsedAtDrinkingStation1
     NoTabletUsedAtDrinkingStation2
     NoTabletUsedAtDrinkingStation3
@@ -1620,6 +1632,9 @@ mutation UpdateSweMonthlyClinicSummary(
     Namebwe
     date
     SWEPosition
+    Country
+    Community
+    Clinic
     NoTabletUsedAtDrinkingStation1
     NoTabletUsedAtDrinkingStation2
     NoTabletUsedAtDrinkingStation3
@@ -1642,6 +1657,9 @@ mutation DeleteSweMonthlyClinicSummary(
     Namebwe
     date
     SWEPosition
+    Country
+    Community
+    Clinic
     NoTabletUsedAtDrinkingStation1
     NoTabletUsedAtDrinkingStation2
     NoTabletUsedAtDrinkingStation3

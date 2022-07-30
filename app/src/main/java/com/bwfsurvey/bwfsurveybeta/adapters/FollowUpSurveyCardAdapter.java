@@ -75,13 +75,13 @@ public class FollowUpSurveyCardAdapter extends RecyclerView.Adapter<RecyclerView
 
         public FollowUpSurveyCardViewHolder(View view) {
             super(view);
-            txtFamilySurveyId = (TextView) itemView.findViewById(R.id.txtFamilySurveyId);
-            txtCountry = (TextView) itemView.findViewById(R.id.txtCountry);
-            txtCommunity = (TextView) itemView.findViewById(R.id.txtCommunity);
-            txtHeadHousehold = (TextView) itemView.findViewById(R.id.txtHeadHousehold);
-            txtDate = (TextView) itemView.findViewById(R.id.txtDate);
-            txtFollowUpSurveyOnlineStatus = (TextView) itemView.findViewById(R.id.txtFollowUpSurveyOnlineStatus);
-            CardView familyCard = (CardView) itemView.findViewById(R.id.familyCard); // creating a CardView and assigning a value.
+            txtFamilySurveyId = (TextView) view.findViewById(R.id.txtFamilySurveyId);
+            txtCountry = (TextView) view.findViewById(R.id.txtCountry);
+            txtCommunity = (TextView) view.findViewById(R.id.txtCommunity);
+            txtHeadHousehold = (TextView) view.findViewById(R.id.txtHeadHousehold);
+            txtDate = (TextView) view.findViewById(R.id.txtDate);
+            txtFollowUpSurveyOnlineStatus = (TextView) view.findViewById(R.id.txtFollowUpSurveyOnlineStatus);
+            CardView familyCard = (CardView) view.findViewById(R.id.familyCard); // creating a CardView and assigning a value.
 
             familyCard.setOnClickListener(new View.OnClickListener() {
                 @Override

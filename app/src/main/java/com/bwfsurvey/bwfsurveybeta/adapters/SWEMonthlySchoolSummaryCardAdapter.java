@@ -64,6 +64,7 @@ public class SWEMonthlySchoolSummaryCardAdapter extends RecyclerView.Adapter<Rec
 
     private class SWEMonthlySchoolSummaryCardViewHolder extends RecyclerView.ViewHolder {
 
+        private TextView txtSchoolName;
         private TextView txtNoTabletUsedAtDrinkingStation1;
         private TextView txtNoStudentsTaughtSafeWaterPrinciples;
         private TextView txtDate;
@@ -72,11 +73,12 @@ public class SWEMonthlySchoolSummaryCardAdapter extends RecyclerView.Adapter<Rec
 
         public SWEMonthlySchoolSummaryCardViewHolder(View view) {
             super(view);
-            txtNoTabletUsedAtDrinkingStation1 = (TextView) itemView.findViewById(R.id.txtNoTabletUsedAtDrinkingStation1);
-            txtNoStudentsTaughtSafeWaterPrinciples = (TextView) itemView.findViewById(R.id.txtNoStudentsTaughtSafeWaterPrinciples);
-            txtDate = (TextView) itemView.findViewById(R.id.txtDate);
-            txtMonthlySchoolSummaryOnlineStatus = (TextView) itemView.findViewById(R.id.txtMonthlySchoolSummaryOnlineStatus);
-            CardView monthlySchoolSummaryCard = (CardView) itemView.findViewById(R.id.monthlySchoolSummaryCard); // creating a CardView and assigning a value.
+            txtSchoolName = (TextView) view.findViewById(R.id.txtSchoolName);
+            txtNoTabletUsedAtDrinkingStation1 = (TextView) view.findViewById(R.id.txtNoTabletUsedAtDrinkingStation1);
+            txtNoStudentsTaughtSafeWaterPrinciples = (TextView) view.findViewById(R.id.txtNoStudentsTaughtSafeWaterPrinciples);
+            txtDate = (TextView) view.findViewById(R.id.txtDate);
+            txtMonthlySchoolSummaryOnlineStatus = (TextView) view.findViewById(R.id.txtMonthlySchoolSummaryOnlineStatus);
+            CardView monthlySchoolSummaryCard = (CardView) view.findViewById(R.id.monthlySchoolSummaryCard); // creating a CardView and assigning a value.
 
             monthlySchoolSummaryCard.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -96,6 +98,7 @@ public class SWEMonthlySchoolSummaryCardAdapter extends RecyclerView.Adapter<Rec
         }
 
         void setMonthlySummaryDetails(SWEMonthlySchoolSummary sweMonthlySchoolSummary, int position) {
+            txtSchoolName.setText(sweMonthlySchoolSummary.getSchool());
             txtNoTabletUsedAtDrinkingStation1.setText(sweMonthlySchoolSummary.getNoTabletUsedAtDrinkingStation1().toString());
             txtNoStudentsTaughtSafeWaterPrinciples.setText(sweMonthlySchoolSummary.getNoStudentsTaughtSafeWaterPrinciples().toString());
             String dateStr = sweMonthlySchoolSummary.getDate().toString();

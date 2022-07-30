@@ -64,6 +64,7 @@ public class SWEMonthlyClinicSummaryCardAdapter extends RecyclerView.Adapter<Rec
 
     private class SWEMonthlyClinicSummaryCardViewHolder extends RecyclerView.ViewHolder {
 
+        private TextView txtClinicName;
         private TextView txtNoTabletUsedAtDrinkingStation1;
         private TextView txtDate;
         private TextView txtMonthlyClinicSummaryOnlineStatus;
@@ -71,10 +72,11 @@ public class SWEMonthlyClinicSummaryCardAdapter extends RecyclerView.Adapter<Rec
 
         public SWEMonthlyClinicSummaryCardViewHolder(View view) {
             super(view);
-            txtNoTabletUsedAtDrinkingStation1 = (TextView) itemView.findViewById(R.id.txtNoTabletUsedAtDrinkingStation1);
-            txtDate = (TextView) itemView.findViewById(R.id.txtDate);
-            txtMonthlyClinicSummaryOnlineStatus = (TextView) itemView.findViewById(R.id.txtMonthlyClinicSummaryOnlineStatus);
-            CardView monthlyClinicSummaryCard = (CardView) itemView.findViewById(R.id.monthlyClinicSummaryCard); // creating a CardView and assigning a value.
+            txtClinicName = (TextView) view.findViewById(R.id.txtClinicName);
+            txtNoTabletUsedAtDrinkingStation1 = (TextView) view.findViewById(R.id.txtNoTabletUsedAtDrinkingStation1);
+            txtDate = (TextView) view.findViewById(R.id.txtDate);
+            txtMonthlyClinicSummaryOnlineStatus = (TextView) view.findViewById(R.id.txtMonthlyClinicSummaryOnlineStatus);
+            CardView monthlyClinicSummaryCard = (CardView) view.findViewById(R.id.monthlyClinicSummaryCard); // creating a CardView and assigning a value.
 
             monthlyClinicSummaryCard.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -94,6 +96,7 @@ public class SWEMonthlyClinicSummaryCardAdapter extends RecyclerView.Adapter<Rec
         }
 
         void setMonthlySummaryDetails(SWEMonthlyClinicSummary sweMonthlyClinicSummary, int position) {
+            txtClinicName.setText(sweMonthlyClinicSummary.getClinic());
             txtNoTabletUsedAtDrinkingStation1.setText(sweMonthlyClinicSummary.getNoTabletUsedAtDrinkingStation1().toString());
             String dateStr = sweMonthlyClinicSummary.getDate().toString();
             if(dateStr.indexOf("{")>0&&dateStr.indexOf("}")>0){

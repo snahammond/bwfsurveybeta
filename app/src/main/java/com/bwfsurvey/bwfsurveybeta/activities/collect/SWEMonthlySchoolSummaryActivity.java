@@ -163,6 +163,9 @@ public class SWEMonthlySchoolSummaryActivity extends AppCompatActivity {
 
         String Namebwe = namebwe;
         String SwePosition = positionbwe;
+        String Country = countrybwe;
+        String Community = community;
+        String School = school;
 
         Integer NoTabletUsedAtDrinkingStation1 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoTabletUsedAtDrinkingStation1",interchangesWithUserAns),0);
         Integer NoTabletUsedAtDrinkingStation2 = IntegerUtils.parseIntegerWithDefault( InterchangeUtils.getInterchangeAns("NoTabletUsedAtDrinkingStation2",interchangesWithUserAns),0);
@@ -178,6 +181,9 @@ public class SWEMonthlySchoolSummaryActivity extends AppCompatActivity {
         SWEMonthlySchoolSummary sweMonthlySchoolSummary = SWEMonthlySchoolSummary.builder()
                 .namebwe(Namebwe)
                 .swePosition(SwePosition)
+                .country(Country)
+                .community(Community)
+                .school(School)
                 .noTabletUsedAtDrinkingStation1(NoTabletUsedAtDrinkingStation1)
                 .noTabletUsedAtDrinkingStation2(NoTabletUsedAtDrinkingStation2)
                 .noTabletUsedAtDrinkingStation3(NoTabletUsedAtDrinkingStation3)

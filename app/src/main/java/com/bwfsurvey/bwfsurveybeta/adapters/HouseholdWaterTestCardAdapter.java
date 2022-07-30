@@ -72,11 +72,11 @@ public class HouseholdWaterTestCardAdapter extends RecyclerView.Adapter<Recycler
 
         public HouseholdWaterTestCardViewHolder(View view) {
             super(view);
-            txtCountry = (TextView) itemView.findViewById(R.id.txtCountry);
-            txtCommunity = (TextView) itemView.findViewById(R.id.txtCommunity);
-            txtHeadHousehold = (TextView) itemView.findViewById(R.id.txtHeadHousehold);
-            txtFamilySurveyOnlineStatus = (TextView) itemView.findViewById(R.id.txtFamilySurveyOnlineStatus);
-            CardView familyCard = (CardView) itemView.findViewById(R.id.familyCard); // creating a CardView and assigning a value.
+            txtCountry = (TextView) view.findViewById(R.id.txtCountry);
+            txtCommunity = (TextView) view.findViewById(R.id.txtCommunity);
+            txtHeadHousehold = (TextView) view.findViewById(R.id.txtHeadHousehold);
+            txtFamilySurveyOnlineStatus = (TextView) view.findViewById(R.id.txtFamilySurveyOnlineStatus);
+            CardView familyCard = (CardView) view.findViewById(R.id.familyCard); // creating a CardView and assigning a value.
 
             familyCard.setOnClickListener(new View.OnClickListener() {
                 @Override
