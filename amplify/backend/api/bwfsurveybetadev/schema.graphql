@@ -366,6 +366,9 @@ id: ID!
 Namebwe: String!
 date: AWSDate
 SWEPosition: String!
+Country: String!
+Community: String!
+School: String!
 NoTabletUsedAtDrinkingStation1: Int!
 NoTabletUsedAtDrinkingStation2: Int!
 NoTabletUsedAtDrinkingStation3: Int!
@@ -385,6 +388,9 @@ id: ID!
 Namebwe: String!
 date: AWSDate
 SWEPosition: String!
+Country: String!
+Community: String!
+Clinic: String!
 NoTabletUsedAtDrinkingStation1: Int!
 NoTabletUsedAtDrinkingStation2: Int!
 NoTabletUsedAtDrinkingStation3: Int!
