@@ -284,6 +284,18 @@ public class CreateNewMeeting extends DialogFragment {
         checkbox_4.setText("Lesson 4");
         checkbox_4.setHint("4");
 
+        CheckBox checkbox_5;
+        checkbox_5 = (CheckBox)layoutView.findViewById(R.id.checkbox_5);
+        checkbox_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setAnsValueOnCheckboxClick(v);
+            }
+        });
+        checkbox_5.setVisibility(View.VISIBLE);
+        checkbox_5.setText("Lesson 5 (other)");
+        checkbox_5.setHint("5");
+
         builder.setView(layoutView)
                 .setPositiveButton("Create", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

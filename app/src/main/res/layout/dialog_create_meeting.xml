@@ -92,5 +92,12 @@
             android:onClick="onCheckboxClicked"
             android:visibility="visible"/>
 
+        <CheckBox android:id="@+id/checkbox_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="lesson 5 (other)"
+            android:onClick="onCheckboxClicked"
+            android:visibility="visible"/>
+
     </LinearLayout>
 </ScrollView>
