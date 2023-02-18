@@ -16,4 +16,4 @@ This will successfully copy the repository from GitHub.com to your local machine
 ### Import project into android studio
 1. Open android studio
 2. On the Menu bar click on `File`
-3. On the dropdown list click and `New` then select `Import Project` 
+3. On the dropdown list click on `New` then select `Import Project` 
