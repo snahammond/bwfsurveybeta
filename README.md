@@ -17,3 +17,5 @@ This will successfully copy the repository from GitHub.com to your local machine
 1. Open android studio
 2. On the Menu bar click on `File`
 3. On the dropdown list click on `New` then select `Import Project` 
+4. On the `Select Eclipse or Gradle Project to Import` dialog box, please navigate to the cloned project
+5. All set and good to go
