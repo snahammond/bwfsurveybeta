@@ -8,4 +8,8 @@ To download on your android device, please go to the Google play store and searc
 Android studio will be a helpful IDE to use in maintaining the code. Please download Android studio on your local machine and follow the guide found [here](https://developer.android.com/studio/install) to install
 
 ### Clone the repository
-You can clone this repository to contribute to the project. You can do this with the following command `git clone https://github.com/snahammond/bwfsurveybeta.git`
+You can clone this repository to contribute to the project. On your local machine please create a new folder and run the following command 
+`git clone https://github.com/snahammond/bwfsurveybeta.git`
+
+This will successfully copy the repository from GitHub.com to your local machine.
+
